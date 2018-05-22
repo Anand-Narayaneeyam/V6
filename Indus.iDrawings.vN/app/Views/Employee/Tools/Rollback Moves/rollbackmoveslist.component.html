@@ -1,0 +1,71 @@
+﻿<page [pagetitle]="pagePath" [withoutSubmenu]="true">
+    <pagepath>
+    </pagepath>
+    <content>
+        <tabs [(selectedTab)]="selectedTab">
+            <tab tabTitle={{selectedTabName}} closeButtonVisible="hidden">
+                <split-view [splitviewObject]="splitviewInput" [pageTitle]="pageTitle">
+                    <primary-view>
+                        <div>
+                            <sub-menu [source]=menuData [count]=totalItems [menuIds]=enableMenu (onSubMenuChange)="onSubMenuChange($event);"></sub-menu>
+                        </div>
+                        <div style="height: calc(100% - 35px);">
+                            <div style="height: 30px;padding-top: 5px;">
+                                Move Executed on last
+                                <select title="" #items (change)="onChangeDays(items.value)" style="width:50px;height:25px;border:1px solid #bbb;border-radius:5px;border-width:1px;border-color:#888888;">
+                                    <option *ngFor="let item of totalDays" value={{item}}>{{item}}</option>
+                                </select>
+                                days
+                            </div>
+                            <div style="height: calc(100% - 35px);overflow: hidden;">
+                                <div style="width:100%;display:block" [ngClass]="totalItems > itemsPerPage ? 'pagewithPaging':'pagewithoutPaging'">
+                                    <slide [width]="slidewidth" type="'dialog'" [position]="position" [show]="showSlideTable" (closeDialog)="closeSlideDialog($event,1)">
+                                        <div>
+                                            <div class="detailsRollback" [innerHtml]="multipleRollbackFail">
+                                            </div>
+                                            <div style="width:100%; text-align:center;margin-top:5px;">
+                                                <button class="Savebutton " type="button" (click)="closeSlideDialog($event,1)">OK</button>
+                                            </div>
+                                        </div>
+                                    </slide>
+                                    <gridView [dataSource]="itemsSource" [properties]="inputItems" [columns]="fieldObject" [refreshgrid]="refreshgrid" (onSorting)="onSort($event)"></gridView>
+                                    <paging *ngIf="totalItems > itemsPerPage" [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="pageChanged($event);"></paging>
+                                </div>
+                            </div>
+                        </div>
+                    </primary-view>
+                    <secondary-view>
+                        <move-history *ngIf="splitviewInput.showSecondaryView" [fieldObject]="fieldObject" [employeeName]="selectedemployeeName" [moveId]="selectedMoveId"></move-history>
+                    </secondary-view>
+                </split-view>
+            </tab>
+        </tabs>
+    </content>
+</page>
+<style>
+    :host .detailsRollback {
+        width:430px;
+        padding:5px 5px 5px 5px; 
+        border:1px solid;
+    }
+    .detailsRollback table {
+    border: 1px solid black;
+    font-size:small;
+    padding:2px;
+    }
+        .detailsRollback tr {
+    border: 1px solid black;
+    font-size:small;
+    padding:2px;
+    }
+            .detailsRollback th {
+    border: 1px solid black;
+    font-size:small;
+    padding:2px;
+    }
+                .detailsRollback td {
+    border: 1px solid black;
+    font-size:small;
+    padding:2px;
+    }
+</style>

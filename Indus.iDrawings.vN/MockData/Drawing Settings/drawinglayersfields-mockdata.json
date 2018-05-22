@@ -1,0 +1,63 @@
+﻿{
+  "data": [
+    {
+      "FieldId": 1,
+      "FieldName": "Id",
+      "FieldType": 1,
+      "FieldValue": "",
+       "IsVisible": false,
+      "IsMultiValued": false,
+      "IsMandatory": false,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false
+    },
+    {
+      "FieldId": 2,
+      "FieldName": "Layer Name",
+      "FieldType": 1,
+      "FieldValue": "",
+      "IsVisible": true,
+      "IsMultiValued": false,
+      "IsMandatory": true,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false
+    },
+    {
+      "FieldName": "Module",
+      "FieldType": 5,
+      "FieldValue": "0",
+      "IsVisible": true,
+      "IsMandatory": true,
+      "IsDisabled": true,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false,
+      "IsMultiValued": true,
+      "MultiValuedDetails": {
+        "LookupValues": [
+        
+          {
+            "Id": 1,
+            "Value": "Space"
+          },
+          {
+            "Id": 2,
+            "Value": "Employee"
+          }
+        ],
+        "PopupComponentName": null
+      },
+      "NotificationType": "inline"
+    },
+    {
+      "FieldId": 3,
+      "FieldName": "Description",
+      "FieldType": 4,
+      "FieldValue": "",
+      "IsVisible": true,
+      "IsMultiValued": false,
+      "IsMandatory": true,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false
+    }
+  ]
+}

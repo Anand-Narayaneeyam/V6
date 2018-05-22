@@ -1,0 +1,13 @@
+﻿<div style="height:80%;">
+    <div style="height:15%;">
+        <DropDownListComponent *ngIf="ddlUsers !=undefined" [fieldObject]="ddlUsers" (change)="onChangeddlUsers($event.target.value)"></DropDownListComponent>
+    </div>
+    <div *ngIf="sectionEnable != -1" style="height:75%;">
+        <div [ngClass]="totalItems > itemsPerPage ? 'pagewithPaging':'pagewithoutPaging'">
+            <gridView [dataSource]="itemsSource" [properties]="inputItems" [columns]="fieldObject" (onSorting)="onSort($event)"></gridView>
+        </div>
+        <div [style.height]="totalItems >itemsPerPage ? '35px' : '0px'">
+            <paging [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="onPageChanged($event);"></paging>
+        </div>
+    </div>
+</div>

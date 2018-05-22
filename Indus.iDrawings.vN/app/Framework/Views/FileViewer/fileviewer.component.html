@@ -1,0 +1,24 @@
+﻿<div [style.visibility]="display" class="viewContents">
+    <!--<div *ngIf="pageTitle" style="display: block;width: 100%;font-size: 16px;background-color: #b2c5d0;padding: 5px 0px 5px 15px;color: white;font-weight:bold">
+        {{pageTitle}}
+        <img class="close-button" [src]="closeIconPath" *ngIf="inlineSecondaryView!=true" (click)="onClose(0)">
+    </div>-->
+    <submenu>
+        <sub-menu [source]=menuData [count]=totalItem [menuIds]=enableMenu (onSubMenuChange)="onSubMenuChange($event);"> </sub-menu>
+    </submenu>
+    <div id="testAttachmentView" class="previewAttachment">
+        <img src="Content/Images/Drawings/previous.png" class="previousButton" (click)="previousOnclick()">
+        <div class="viewImage">
+            <img  style="display:inline-block;max-width:100%" src={{imgSource}} />
+        </div>
+        <!--<div class="gridViewIcon">
+            <img [src]="closeIconPath"  (click)="gridViewOnclick()"> 
+        </div>-->
+        <img src="Content/Images/Drawings/next.png" class="nextButton" (click)="nextOnclick()" >
+</div>
+<slide [width]="350" [position]="position" [type]="'dialog'" [show]="viewGridChange" [absolute]="'true'" (closeDialog)="closeSlideDialog($event)">
+    <div style="height:100px !important">
+        <gridView [dataSource]="sourceData" [properties]="inputItems" [columns]="fields" [arrHighlightRowIds]="arrHighlightRowIds" (onSorting)="onSort($event)" (onSelectionChanging)="onDataSelectionChange($event)"></gridView>
+    </div>
+</slide>
+</div>

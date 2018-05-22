@@ -1,0 +1,52 @@
+﻿{
+  "data": [
+    {
+      "Id": "1",
+      "SpaceFunction": "1 Bed Isolation"
+    },
+    {
+      "Id": "2",
+      "SpaceFunction": "2 Bed Room"
+    },
+    {
+      "Id": "3",
+      "SpaceFunction": "3 Bed Room"
+    },
+    {
+      "Id": "4",
+      "SpaceFunction": "4 Bed Room"
+    },
+    {
+      "Id": "5",
+      "SpaceFunction": "Accounting"
+    },
+    {
+      "Id": "6",
+      "SpaceFunction": "Administration"
+    },
+    {
+      "Id": "7",
+      "SpaceFunction": "Auditorium"
+    },
+    {
+      "Id": "8",
+      "SpaceFunction": "Autopsy"
+    },
+    {
+      "Id": "9",
+      "SpaceFunction": "Elevator Mechanical Room"
+    },
+    {
+      "Id": "10",
+      "SpaceFunction": "Canteen"
+    },
+    {
+      "Id": "11",
+      "SpaceFunction": "Class Room"
+    },
+    {
+      "Id": "12",
+      "SpaceFunction": "Conference Room"
+    }
+  ]
+}

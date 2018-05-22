@@ -1,0 +1,71 @@
+﻿
+<page [pagetitle]="pagePath">
+    <content>
+        <section title="Administration" [isExpanded]="sectionExpansionStatus[0].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <customer-common-settings *ngIf="sectionExpansionStatus[0].isExpanded" ModuleSelect="true" FormId="387" ModuleId="0" Modulename="Administration" Moduleenabled="false"></customer-common-settings>
+             <!--<customer-administration-settings *ngIf="sectionExpansionStatus[0].isExpanded"></customer-administration-settings>-->
+        </section>
+        <section title="As Builts" [isExpanded]="sectionExpansionStatus[1].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <customer-common-settings *ngIf="sectionExpansionStatus[1].isExpanded" ModuleSelect="false" FormId="392" ModuleId="1" Modulename="As Builts" Moduleenabled="true"></customer-common-settings>
+            <!--<customer-asbuilts-settings *ngIf="sectionExpansionStatus[1].isExpanded"></customer-asbuilts-settings>-->
+        </section>
+        <section title="Projects" [isExpanded]="sectionExpansionStatus[2].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <customer-common-settings *ngIf="sectionExpansionStatus[2].isExpanded" ModuleSelect="false" FormId="394" ModuleId="2" Modulename="Projects" Moduleenabled="true"></customer-common-settings>
+        </section>
+        <section title="Space" [isExpanded]="sectionExpansionStatus[3].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <customer-space-settings *ngIf="sectionExpansionStatus[3].isExpanded"></customer-space-settings>
+        </section>
+        <section title="Documents" [isExpanded]="sectionExpansionStatus[4].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <customer-document-settings *ngIf="sectionExpansionStatus[4].isExpanded" ModuleSelect="false" FormId="445" ModuleId="4" Modulename="Documents" Moduleenabled="true"></customer-document-settings>
+        </section>
+        <section title="Scheduling" [isExpanded]="sectionExpansionStatus[5].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <customer-scheduling-settings *ngIf="sectionExpansionStatus[5].isExpanded" ModuleSelect="false" FormId="405" ModuleId="14" Modulename="Scheduling" Moduleenabled="true" ParentModuleId="3"></customer-scheduling-settings>
+        </section>
+        <section title="Employees" [isExpanded]="sectionExpansionStatus[6].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <customer-employee-settings *ngIf="sectionExpansionStatus[6].isExpanded" ModuleSelect="false" FormId="399" ModuleId="5" Modulename="Employees" Moduleenabled="true" ParentModuleId="3"></customer-employee-settings>
+        </section>
+        <section title="Telecom" [isExpanded]="sectionExpansionStatus[7].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <customer-object-settings *ngIf="sectionExpansionStatus[7].isExpanded" ModuleSelect="false" FormId="496" ModuleId="6" Modulename="Telecom" Moduleenabled="true" ObjectCategoryId="3" ObjectType="Object"></customer-object-settings>
+        </section>
+        <section title="Assets" [isExpanded]="sectionExpansionStatus[8].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <customer-object-settings *ngIf="sectionExpansionStatus[8].isExpanded" ModuleSelect="false" FormId="400" ModuleId="7" Modulename="Asset" Moduleenabled="true" ObjectCategoryId="1" ObjectType="Asset"></customer-object-settings>
+        </section>
+        <section title="Furniture" [isExpanded]="sectionExpansionStatus[9].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <customer-object-settings *ngIf="sectionExpansionStatus[9].isExpanded" ModuleSelect="false" FormId="403" ModuleId="8" Modulename="Furniture" Moduleenabled="true" ObjectCategoryId="2" ObjectType="Furniture"></customer-object-settings>
+        </section>
+        <section title="Work Order" [isExpanded]="sectionExpansionStatus[10].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">            
+            <customer-workorder-settings *ngIf="sectionExpansionStatus[10].isExpanded" ModuleSelect="false" FormId="401" ModuleId="9" Modulename="Work Order" Moduleenabled="true"></customer-workorder-settings>
+        </section>
+        <section title="Executive Summary" [isExpanded]="sectionExpansionStatus[11].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <customer-common-settings *ngIf="sectionExpansionStatus[11].isExpanded" ModuleSelect="false" FormId="504" ModuleId="11" Modulename="Executive Summary" Moduleenabled="true" ParentModuleId="3"></customer-common-settings>
+        </section>
+        <section title="CAI Space Driver" [isExpanded]="sectionExpansionStatus[12].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <customer-common-settings *ngIf="sectionExpansionStatus[12].isExpanded" ModuleSelect="false" FormId="503" ModuleId="12" Modulename="CAI Space Driver" Moduleenabled="true" ParentModuleId="3"></customer-common-settings>
+        </section>
+        <section title="Conditions" [isExpanded]="sectionExpansionStatus[13].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <customer-common-settings *ngIf="sectionExpansionStatus[13].isExpanded" ModuleSelect="false" FormId="505" ModuleId="13" Modulename="Conditions" Moduleenabled="true"></customer-common-settings>
+        </section>
+        <section title="Electrical" [isExpanded]="sectionExpansionStatus[14].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <customer-object-settings *ngIf="sectionExpansionStatus[14].isExpanded" ModuleSelect="false" FormId="497" ModuleId="17" Modulename="Electrical" Moduleenabled="true" ObjectCategoryId="8" ObjectType="Component"></customer-object-settings>
+        </section>
+        <section title="Fire and Safety" [isExpanded]="sectionExpansionStatus[15].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <customer-object-settings *ngIf="sectionExpansionStatus[15].isExpanded" ModuleSelect="false" FormId="498" ModuleId="18" Modulename="Fire and Safety" Moduleenabled="true" ObjectCategoryId="9" ObjectType="Component"></customer-object-settings>
+        </section>
+        <section title="Mechanical" [isExpanded]="sectionExpansionStatus[16].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <customer-object-settings *ngIf="sectionExpansionStatus[16].isExpanded" ModuleSelect="false" FormId="499" ModuleId="25" Modulename="Mechanical" Moduleenabled="true" ObjectCategoryId="10" ObjectType="Component"></customer-object-settings>
+        </section>
+        <section title="Plumbing" [isExpanded]="sectionExpansionStatus[17].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <customer-object-settings *ngIf="sectionExpansionStatus[17].isExpanded" ModuleSelect="false" FormId="500" ModuleId="26" Modulename="Plumbing" Moduleenabled="true" ObjectCategoryId="11" ObjectType="Component"></customer-object-settings>
+        </section>
+        <section title="Medical Gas" [isExpanded]="sectionExpansionStatus[18].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <customer-object-settings *ngIf="sectionExpansionStatus[18].isExpanded" ModuleSelect="false" FormId="501" ModuleId="27" Modulename="Medical Gas" Moduleenabled="true" ObjectCategoryId="12" ObjectType="Component"></customer-object-settings>
+        </section>
+        <section title="Security Assets" [isExpanded]="sectionExpansionStatus[19].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <customer-object-settings *ngIf="sectionExpansionStatus[19].isExpanded" ModuleSelect="false" FormId="502" ModuleId="24" Modulename="Security Assets" Moduleenabled="true" ObjectCategoryId="20" ObjectType="Asset"></customer-object-settings>
+        </section>
+        <section title="Real Property Management" [isExpanded]="sectionExpansionStatus[20].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <customer-common-settings *ngIf="sectionExpansionStatus[20].isExpanded" ModuleSelect="false" FormId="402" ModuleId="30" Modulename="Real Property Management" Moduleenabled="true"></customer-common-settings>
+        </section>
+
+    </content>
+</page>

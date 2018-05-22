@@ -1,0 +1,29 @@
+﻿<submenu>
+    <sub-menu [source]=menuData [count]=totalItems [menuCard]=types [menuIds]=enableMenu (onSubMenuChange)="onSubMenuChange($event);">
+     
+    </sub-menu>
+</submenu>
+<!--<sort *ngIf="fields" [fieldNames]="fields" [listItems]=sourceData (sortEvent)="onSorting($event)"></sort>-->
+<list [source]=sourceData [(selectedIds)]="selIds" [datakey]="'Id'" [selectionMode]="'Single'">
+    <template let-item>
+        <card (onSubmition)="onCardSubmit($event)" [datakeyValue]="item.Id" [type]="'list'" (inlineDelete)="onDelete($event)" (onCancelClick)="onCancel($event)" [submitSuccess]="submitSuccess" >
+            <div *ngIf="fields">    
+                <field [fieldObject]="fields[1]" [fieldValue]="item['MailDomainName']"></field>
+            </div>
+        </card>
+    </template>
+</list>
+<slide [width]="400" [position]="Position" [type]="dialog" [show]=showSlide (closeDialog)="closeSlideDialog($event)">
+    <div>
+        <div>
+            Are you sure you want to delete the selected Mail Domain?
+        </div>
+        <div>
+            <div style="width:100%">
+                <button  class="Savebutton "type="button" (click)="DefaultSetting($event)">Yes</button>
+                <button  class="Savebutton "type="button" (click)="cancelClick($event)">No</button>
+            </div>
+        </div>
+    </div>
+</slide>
+<!--<paging [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="pageChanged($event);"></paging>-->

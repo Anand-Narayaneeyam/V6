@@ -1,0 +1,59 @@
+﻿<page [pagetitle]="pagePath">
+    <pagepath>
+    </pagepath>
+    <content>
+        <section title="Logbook" [isExpanded]="true" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div>
+                <p>This option <img class="helpicon" src="Content/Layout/logbook.png" /> allows the Administrator to view a log of user activities in the Furniture Module. By default, the current users log should display the period for which the other users log is to be viewed through the Filter icon Select Criteria, Select User, Select Entities and Select Activities can be selected through the Filter icon. Activities will be listed in the chronological order. This option will be available only if the 'Logbook' option is enabled by Indus.</p>
+
+            </div>
+        </section>
+    </content>
+</page>
+<style type="text/css">
+    h3.Mainheader {
+        color: #178AE8;
+    }
+
+    .header1 {
+        font-weight: bold;
+        color: #178AE8;
+    }
+
+    .header2 {
+        font-weight: normal;
+        color: #178AE8;
+    }
+
+    p {
+        margin-left: 38px;
+        font-size: 13px;
+        margin-right: 3em;
+    }
+
+    .header3 {
+        font-weight: bold;
+        color: black;
+    }
+    /**/ h1 {
+        color: #178AE8;
+        font-size: 1.3em;
+        margin-left: 38px;
+    }
+
+    h2 {
+        color: #178AE8;
+        font-size: 1em;
+        margin-left: 38px;
+    }
+
+    .config {
+        background-color: #178AE8;
+    }
+
+    .helpicon {
+        vertical-align: baseline;
+        width: 20px;
+        height: 20px;
+    }
+</style>

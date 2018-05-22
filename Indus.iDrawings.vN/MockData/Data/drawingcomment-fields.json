@@ -1,0 +1,140 @@
+﻿{
+  "data": [
+    {
+      "FieldId": 1,
+      "FieldName": "Id",
+      "FieldType": 1,
+      "IsVisible": false,
+      "IsMandatory": false,
+      "IsDisabled": true,
+      "IsHiddenLabel": true,
+      "ReadOnlyMode": false,
+      "NotificationType": "return"
+    },
+    {
+      "FieldId": 2,
+            "FieldName": "Description",
+            "FieldType": 4,
+            "FieldValue": "",
+            "IsVisible": true,
+            "IsMultiValued": false,
+            "IsMandatory": false,
+            "IsHiddenLabel": false,
+            "ReadOnlyMode": false,
+            "MaxLength": 4000,
+            "NotificationType": "inline"
+    },
+    {
+
+      "FieldId": 3,
+      "FieldName": "Text Style",
+      "FieldType": 5,
+      "FieldValue": "0",
+      "IsMultiValued": true,
+      "HasRelation": false,
+      "MultiValuedDetails": {
+        "LookupValues": [
+          {
+            "Id": 1,
+            "Value": "Arial"
+          },
+          {
+            "Id": 2,
+            "Value": "Caliberi"
+          },
+          {
+            "Id": 3,
+            "Value": "Courier New"
+          },
+          {
+            "Id": 4,
+            "Value": "Times New Roman"
+          },
+          {
+            "Id": 5,
+            "Value": "Tahoma"
+          },
+          {
+            "Id": 6,
+            "Value": "Trebuchet MS"
+          },
+          {
+            "Id": 7,
+            "Value": "Verdana"
+          }
+        ],
+        "PopupComponentName": null
+      },
+      "IsMandatory": false,
+      "IsVisible": true,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false,
+      "NotificationType": ""
+    },
+    {   "FieldId": 4,
+      "FieldName": "Font Size",
+      "FieldType": 5,
+      "FieldValue": "0",
+      "IsMultiValued": true,
+      "HasRelation": false,
+      "MultiValuedDetails": {
+        "LookupValues": [
+          {
+            "Id": 1,
+            "Value": "2"
+          },
+          {
+            "Id": 2,
+            "Value": "4"
+          },
+          {
+            "Id": 3,
+            "Value": "5"
+          },
+          {
+            "Id": 4,
+            "Value": "6"
+          },
+          {
+            "Id": 5,
+            "Value": "8"
+          },
+          {
+            "Id": 6,
+            "Value": "10"
+          },
+          {
+            "Id":7,
+            "Value": "12"
+          },
+          {
+            "Id": 8,
+            "Value": "14"
+          },
+          {
+            "Id": 9,
+            "Value": "18"
+          },
+          {
+            "Id": 10,
+            "Value": "20"
+          },
+          {
+            "Id": 11,
+            "Value": "22"
+          },
+           {
+            "Id": 12,
+            "Value": "24"
+          }
+        ],
+        "PopupComponentName": null
+      },
+      "IsMandatory": false,
+      "IsVisible": true,
+      "IsHiddenLabel":  false,
+      "ReadOnlyMode": false,
+      "NotificationType": ""}
+   
+  ]
+}

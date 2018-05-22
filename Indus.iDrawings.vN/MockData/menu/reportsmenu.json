@@ -1,0 +1,356 @@
+﻿[
+  {
+    "id": 101,
+    "title": "Administration",
+    "path": "",
+    "subMenu": [
+
+      {
+        "id": 3,
+        "parentId": 101,
+        "title": "Users",
+        "path":  "/admin-users-report",
+        "subMenu": null
+      },
+      {
+        "id": 4,
+        "parentId": 101,
+        "title": "Sites",
+        "path": "/admin-sites-report",
+        "subMenu": null
+      },
+       {
+        "id": 9,
+        "parentId": 101,
+         "title": "Buildings",
+        "path": "/admin-buildings-report",
+        "subMenu": null
+      },
+      {
+        "id": 6,
+        "parentId": 101,
+        "title": "Floors",
+        "path": "/admin-floors-report",
+        "subMenu": null
+      },
+            {
+        "id": 6,
+        "parentId": 101,
+        "title": "Module wise Drawings",
+        "path": "/admin-module_drawings-report",
+        "subMenu": null
+      }
+
+    ]
+  },
+  {
+    "id": 102,
+    "title": "As Builts",
+    "path": "",
+    "subMenu": [
+      {
+        "id": 4,
+        "parentId": 101,
+        "title": "Sites",
+        "path": "/asbuilts-sites-report",
+        "subMenu": null
+      },
+       {
+        "id": 9,
+        "parentId": 101,
+         "title": "Buildings",
+        "path": "/asbuilts-buildings-report",
+        "subMenu": null
+      },
+      {
+        "id": 6,
+        "parentId": 101,
+        "title": "Floors",
+        "path": "/asbuilts-floors-report",
+        "subMenu": null
+      },
+            {
+        "id": 4,
+        "parentId": 101,
+        "title": "Drawings-All Drawings",
+        "path": "/asbuilts-alldrawings-report",
+        "subMenu": null
+      },
+       {
+        "id": 9,
+        "parentId": 101,
+         "title": "Drawings-Revisions",
+        "path": "/asbuilts-revisions-report",
+        "subMenu": null
+      },
+      {
+        "id": 6,
+        "parentId": 101,
+        "title": "Drawings-Markups",
+        "path": "/asbuilts-markups-report",
+        "subMenu": null
+      }
+    ]
+  },
+  {
+    "id": 103,
+    "title": "Space",
+    "path": "",
+    "subMenu": [
+      {
+        "id": 4,
+        "parentId": 101,
+        "title": "Gross Area Distribution",
+        "path": "/space-grossareadistributiontree-report",
+        "subMenu": null
+      },
+            {
+        "id": 4,
+        "parentId": 101,
+        "title": "Gross Area Organizational Distribution",
+        "path": "/space-grossareaorgdistributiontree-report",
+        "subMenu": null
+      },
+      {
+        "id": 9,
+        "parentId": 101,
+        "title": "Space Details",
+        "path": "/space-spacedetailstree-report",
+        "subMenu": null
+      },
+      {
+        "id": 6,
+        "parentId": 101,
+        "title": "Sites",
+        "path": "/space-sites-report",
+        "subMenu": null
+      },
+      {
+        "id": 4,
+        "parentId": 101,
+        "title": "Buildings",
+        "path": "/space-buildings-report",
+        "subMenu": null
+      },
+      {
+        "id": 9,
+        "parentId": 101,
+        "title": "Floors",
+        "path": "/space-floors-report",
+        "subMenu": null
+      },
+      {
+        "id": 6,
+        "parentId": 101,
+        "title": "Users",
+        "path": "/space-users-report",
+        "subMenu": null
+      },
+      {
+        "id": 9,
+        "parentId": 101,
+        "title": "Space Functions",
+        "path": "/space-spacefunctions-report",
+        "subMenu": null
+      },
+      {
+        "id": 6,
+        "parentId": 101,
+        "title": "Gross Area Report",
+        "path": "/space-grossareareporttree-report",
+        "subMenu": null
+      }
+    ]
+  },
+
+  {
+    "id": 103,
+    "title": "Employees",
+    "path": "",
+    "subMenu": [
+      {
+        "id": 4,
+        "parentId": 101,
+        "title": "All Employees",
+        "path": "/employees-allemployees-report",
+        "subMenu": null
+      },
+      {
+        "id": 9,
+        "parentId": 101,
+        "title": "Assigned Employees",
+        "path": "/employees-assignedemployeestree-report",
+        "subMenu": null
+      },
+      {
+        "id": 6,
+        "parentId": 101,
+        "title": "Unassigned Employees",
+        "path": "/employees-notassignedspaces-report",
+        "subMenu": null
+      },
+      {
+        "id": 4,
+        "parentId": 101,
+        "title": "Square Foot Analysis",
+        "path": "/employees-avgsqfootanalysistree-report",
+        "subMenu": null
+      },
+      {
+        "id": 9,
+        "parentId": 101,
+        "title": "Detailed Occupancy",
+        "path": "/employees-detailedoccupancytree-report",
+        "subMenu": null
+      },
+      {
+        "id": 6,
+        "parentId": 101,
+        "title": "Occupancy distribution -Space Standard",
+        "path": "/employees-spacestandardtree-report",
+        "subMenu": null
+      },
+      {
+        "id": 9,
+        "parentId": 101,
+        "title": "Under Occupied Spaces",
+        "path": "/employees-underoccupiedspacestree-report",
+        "subMenu": null
+      },
+      {
+        "id": 6,
+        "parentId": 101,
+        "title": "Over Occupied Spaces",
+        "path": "/employees-overoccupiedspacestree-report",
+        "subMenu": null
+      },
+      {
+        "id": 6,
+        "parentId": 101,
+        "title": "Nominally Occupied Spaces",
+        "path": "/employees-nominallyoccupiedspacestree-report",
+        "subMenu": null
+      },
+      {
+        "id": 6,
+        "parentId": 101,
+        "title": "Moves in the Queue",
+        "path": "/employees-movesinthequeue-report",
+        "subMenu": null
+      },
+      {
+        "id": 6,
+        "parentId": 101,
+        "title": "Closed-out Moves",
+        "path": "/employees-closedoutmoves-report",
+        "subMenu": null
+      },
+      {
+        "id": 6,
+        "parentId": 101,
+        "title": "Cancelled Moves",
+        "path": "/employees-cancelledmoves-report",
+        "subMenu": null
+      },
+      {
+        "id": 6,
+        "parentId": 101,
+        "title": "Employee Move Details",
+        "path": "/employees-employeemovedetails-report",
+        "subMenu": null
+      }
+    ]
+  },
+
+    {
+    "id": 101,
+    "title": "Assets",
+    "path": "",
+    "subMenu": [
+
+      {
+        "id": 3,
+        "parentId": 101,
+        "title": "Asset Class List",
+        "path": "/asset-classlist-report",
+        "subMenu": null
+      },
+      {
+        "id": 3,
+        "parentId": 101,
+        "title": "Asset List by Floor",
+        "path": "/asset-listbyfloor-report",
+        "subMenu": null
+      },
+             {
+        "id": 3,
+        "parentId": 101,
+        "title": "Asset Details",
+        "path": "/asset-details-report",
+        "subMenu": null
+      },
+             {
+        "id": 3,
+        "parentId": 101,
+        "title": "Asset List by Class",
+        "path": "/asset-listbyclass-report",
+        "subMenu": null
+      } 
+
+               
+    ]
+  },
+
+
+    {
+    "id": 101,
+    "title": "Work Order",
+    "path": "",
+    "subMenu": [
+
+      {
+        "id": 3,
+        "parentId": 101,
+        "title": "Equipment Work History",
+        "path": "/wo-workhistory-report",
+        "subMenu": null
+      },
+      {
+        "id": 3,
+        "parentId": 101,
+        "title": "Service Request Workflow History",
+        "path": "/wo-srworkflowhistory-report",
+        "subMenu": null
+      },
+
+                        {
+        "id": 3,
+        "parentId": 101,
+        "title": "Service Request Completed Workflow History",
+        "path": "/wo-srcompletedworkflowhistory-report",
+        "subMenu": null
+      },
+
+      {
+        "id": 3,
+        "parentId": 101,
+        "title": "PM Workflow History",
+        "path": "/wo-pmworkflowhistory-report",
+        "subMenu": null
+      },
+
+      {
+        "id": 3,
+        "parentId": 101,
+        "title": "PM Completed Workflow History",
+        "path": "/wo-pmcompletedworkflowhistory-report",
+        "subMenu": null
+      }
+
+
+     
+    ]
+  }
+
+
+]

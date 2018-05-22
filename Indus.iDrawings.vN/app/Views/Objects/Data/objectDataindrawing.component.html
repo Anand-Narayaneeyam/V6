@@ -1,0 +1,24 @@
+﻿
+<!--<page [pagetitle]="pagePath">-->
+    <content>
+        <tabs [selectedTab]="selectedTab" (getSelectedTab)="getSelectedTab($event)" class="assetTab" [verticalTab]="true">  
+            <!--<tab tabTitle="All" closeButtonVisible="hidden">
+                <objectData-listindrawing *ngIf="selectedTab == 0" [objectCategoryId]="1" [dataOption]="1"></objectData-listindrawing>
+            </tab>-->         
+            <tab tabTitle="Operational" closeButtonVisible="hidden">
+                <!--<floor-selection *ngIf="selectedTab == 1 && (floorSelected==false)" [moduleId]="3" [targetId]="1" (btnClickOut)="getSelectedIds($event)"></floor-selection>-->
+                <objectData-listindrawing *ngIf="selectedTab == 0" [updateDataSource]="updateDataSource" [isBuildingDrawing]="isBuildingDrawing" [SiteId]="SiteId" [objectCategoryId]="objectCategoryId" [moduleId]="moduleId" [dataOption]="2" [drawingIds] ="DrawingId" [Targetforstyle]="Targetforstyle" [selectedRow]="selectedRow" [IsObjectPlaced]="IsObjectPlaced" [IsObjectMoved]="IsObjectMoved" [ObjectDelinked]="ObjectDelinked" (showInDrawingOnClick)="objectShowInDrawingOnClick($event)" (showZoomOnClick)="objectShowZoomOnClick($event)" (DelinkOnClick)="DelinkObjectOnClick($event)"  (UpdatedSuccess)="UpdatedSuccessOnClick($event)" (onSearchInDrawing)="onSearchObjectInDrawing($event)" (Attachmentcount)="AttachmentcountOnClick($event)"></objectData-listindrawing>
+            </tab>
+            <tab tabTitle="Warehoused" closeButtonVisible="hidden">
+                <objectData-listindrawing *ngIf="selectedTab == 1" [objectCategoryId]="objectCategoryId" [isBuildingDrawing]="isBuildingDrawing" [SiteId]="SiteId" [moduleId]="moduleId" [dataOption]="3" [Targetforstyle]="Targetforstyle" [IsObjectPlaced]="IsObjectPlaced" [IsObjectMoved]="IsObjectMoved" [IsObjectDelinked]="IsObjectDelinked" [selectedRow]="selectedRow" (PlaceObjectOnClick)="PlaceObjectOnClick($event)" (UpdatedSuccess)="UpdatedSuccessOnClick($event)" (Attachmentcount)="AttachmentcountOnClick($event)"></objectData-listindrawing>
+            </tab>
+        </tabs>
+
+    </content>
+<!--</page>-->
+
+<style>
+    .assetTab .navbar li {
+        width: 100px !important;
+    }
+</style>

@@ -1,0 +1,78 @@
+﻿{
+  "data": [
+    {
+      "Id": 1,
+      "LayerFunction": "Administrator",
+      "DrawingLayer": "Space",
+       "DataField": "Wall Color"
+    },
+    {
+      "Id": 2,
+      "LayerFunction": "Administrator",
+      "DrawingLayer": "Space",
+       "DataField": "Wall Color"
+    },
+    {
+      "Id": 3,
+      "LayerFunction": "Administrator",
+      "DrawingLayer": "Space",
+       "DataField": "Wall Color"
+    },
+    {
+      "Id": 4,
+      "LayerFunction": "Administrator",
+      "DrawingLayer": "Space",
+       "DataField": "Wall Color"
+    },
+    {
+      "Id": 5,
+      "LayerFunction": "Administrator",
+      "DrawingLayer": "Space",
+       "DataField": "Wall Color"
+    },
+    {
+      "Id": 6,
+      "LayerFunction": "Administrator",
+      "DrawingLayer": "Space",
+       "DataField": "Wall Color"
+    }
+  ],
+   "paging": [
+    {
+      "Id": 11,
+      "LayerFunction": "Employee",
+      "DrawingLayer": "Space",
+       "DataField": "Wall Color"
+    },
+    {
+      "Id": 12,
+      "LayerFunction": "Employee",
+      "DrawingLayer": "Space",
+       "DataField": "Wall Color"
+    },
+    {
+      "Id": 13,
+      "LayerFunction": "Employee",
+      "DrawingLayer": "Space",
+      "DataField": "Wall Color"
+    },
+    {
+      "Id": 14,
+      "LayerFunction": "Employee",
+      "DrawingLayer": "Space",
+       "DataField": "Wall Color"
+    },
+    {
+      "Id": 15,
+      "LayerFunction": "Employee",
+      "DrawingLayer": "Space",
+       "DataField": "Wall Color"
+    },
+    {
+      "Id": 16,
+      "LayerFunction": "Employee",
+      "DrawingLayer": "Space",
+       "DataField": "Wall Color"
+    }
+  ]
+}

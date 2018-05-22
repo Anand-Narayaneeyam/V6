@@ -1,0 +1,57 @@
+﻿<submenu>
+    <sub-menu [menuCard]=true [source]=menuData [count]=gridcount [menuIds]=enableMenu (onSubMenuChange)="onSubMenuChange($event);"> </sub-menu>
+</submenu>
+<split-view [splitviewObject]="splitviewInput" [pageTitle]="pageTitle" style="height:100%;" (onSecondaryClose)="onSplitViewClose($event)">
+    <primary-view>
+        <div style="width:100%;height:calc(100% - 35px);display:block;overflow:visible">
+            <div style="height:60px;">
+                <DropDownListComponent *ngIf="ddlWorkType" [fieldObject]="ddlWorkType" (change)="onChangeWorkType($event.target.value)" [SetAlignment]=alignContent></DropDownListComponent>
+            </div>
+            <div style="height: calc(100% - 60px);">
+                <gridView [ngClass]="totalItems > itemsPerPage ? 'pagewithPaging':'pagewithoutPaging'" style="display:block;" [(dataSource)]="itemsSource" [properties]="inputItems" [columns]="fieldObject" [refreshgrid]="refreshgrid" (onSorting)="onSort($event)" (onRowDelete)="inlineDelete($event)"></gridView>
+                <paging [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="pageChanged($event);"></paging>
+            </div>
+            </div>
+    </primary-view>
+    <secondary-view *ngIf="target == 1">
+        <setworkflow-addedit [workFlowCategoryId]="workFlowCategoryId" [moduleId]="moduleId" [workTypeId]="workTypeId" [fieldDetailsAddEdit]="fieldDetailsAddEdit" [action]="action" [btnName]="btnName" (submitSuccess)="OnSuccessfulSubmit($event)" [selectedId]="inputItems.selectedIds[0]"></setworkflow-addedit>
+    </secondary-view>
+    <secondary-view *ngIf="target == 2">
+        <workflow-settings *ngIf="splitviewInput.showSecondaryView==true" style="display: block;width:500px;" [selectedId]="inputItems.selectedIds[0]" [worktype]="workTypeId" [isGeneral]="isGeneral"></workflow-settings>
+    </secondary-view>
+    <secondary-view *ngIf="target == 3" >
+        <workflow-outcomes *ngIf="splitviewInput.showSecondaryView==true" style="display: block;width:800px;" [workflowData]="inputItems.rowData" [selectedId]="inputItems.selectedIds[0]" [workTypeId]="workTypeId" [workFlowCategoryId]="workFlowCategoryId" [moduleId]="moduleId" [actionPointTypeId]="actionPointTypeId" [actionPointId]="actionPointId" [isChanged]="isChanged"></workflow-outcomes>
+    </secondary-view>
+    <secondary-view *ngIf="target == 4 && fieldDetailsCloneWorkflow" >
+        <copy-workflow [workTypeId]="workTypeId" [fieldDetailsCloneWorkflow]="fieldDetailsCloneWorkflow" [action]="action" [btnName]="btnName" (submitSuccess)="OnSuccessfulSubmit($event)" [selectedId]="inputItems.selectedIds[0]"></copy-workflow>
+    </secondary-view>
+    <secondary-view *ngIf="target==5">
+        <workflow-EscalationsNotifications *ngIf="splitviewInput.showSecondaryView==true" style="display: block;width:800px;" [workTypeId]="workTypeId"></workflow-EscalationsNotifications>
+    </secondary-view>
+</split-view>
+<slide [width]="200" [position]="position" [type]="dialog" [show]="showSlide" (closeDialog)="closeSlideDialog($event)">
+    <div>
+        <div>
+            Are you sure you want to delete the selected Action Point?
+        </div>
+        <div>
+            <div style="width:100%">
+                <button  class="Savebutton "type="button" (click)="okDelete($event)">Yes</button>
+                <button  class="Savebutton "type="button" (click)="cancelClick($event)">No</button>
+            </div>
+        </div>
+    </div>
+</slide>
+<slide *ngIf="showWorkflowSlide" [width]="200" [position]="Position" [type]="dialog" [show]=showWorkflowSlide (closeDialog)="closeSlideDialog($event)">
+    <div>
+        <div>
+            Workflow will be modified by deletion of Action Points. Do you want to continue?
+        </div>
+        <div>
+            <div style="width:100%">
+                <button  class="Savebutton "type="button" (click)="okWorkflowClick($event)">Yes</button>
+                <button  class="Savebutton "type="button" (click)="cancelWorkflowClick($event)">No</button>
+            </div>
+        </div>
+    </div>
+</slide>

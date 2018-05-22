@@ -1,0 +1,25 @@
+﻿<page [pagetitle]="pagePath" [withoutSubmenu]="true">
+    <content>
+        <tabs [selectedTab]="selectedTab" id="pm-Genrated" [deleteIndex]="tabDeleteIndex" (getSelectedTab)="getSelectedTab($event)">
+            <tab tabTitle="PM WOs Generated" closeButtonVisible="hidden">
+                <calenderControl *ngIf="calendarObj != undefined" [CalendarObj]="calendarObj" [blnIsGenerated]=true [blnBlockPrevClick]="blockPrevMnthClick" [blnBlockNextClick]="blockNextMnthClick" (prevMonClick)="prevMonthClick($event)" (nextMonClick)="nextMonthClick($event)" (btnClick)="onDayViewClick($event)"></calenderControl>
+            </tab>
+            <tab tabTitle="PM Work Orders" *ngIf="listTabEnabled" closeButtonVisible="hidden">
+                <reviewPM-list *ngIf="reviewPmListEnabled" (onReviewClick)="onPMReviewClick($event)" (itemSourceUpdate)="onPMListSourceUpdated($event)" [itemsSource]="pmListSource" [inputItems]="pmListInputItems"
+                               [userDetails]="userDetails" [itemsPerPage]="pmListItemsPerPage" [totalItems]="pmListTotalItems" [isActive]=true [isTimeSpentSubscribed]="isTimeSpentSubscribed" [dateToPerform]="dateToPerform" [shouldReload]="shouldReload"></reviewPM-list>
+            </tab>
+            <tab tabTitle="Review Work Order" *ngIf="reviewTabEnabled" closeButtonVisible="hidden">
+                <review-PMWorkOrders *ngIf="pmWorkOrderReviewEnabled" (submitClick)="onSubmitClick($event)" [action]="action" [btnName]="btnName" [userDetails]="userDetails" [inputItems]="pmListInputItems"
+                                     [fieldDetailsAdd]="fieldDetailsAdd1" [linkArray]="linkArray" (linkClick)="onLinkClick($event)" [entityCategoryId]="entityCategoryId" [outComeData]="outComeData" [statusId]="statusId"
+                                     [isInProgressSubscribed]="isInProgressSubscribed"></review-PMWorkOrders>
+            </tab>
+            <tab tabTitle={{addOnTabName}} *ngIf="addOnTabEnabled" closeButtonVisible="hidden">
+                <div *ngIf="costTabEnabled">
+                    <review-Cost *ngIf="costTabEnabled" (onCostSubmit)="onCostSubmit($event)" [workFlowEntityCategoryId]="entityCategoryId" [workFlowEntityIds]="workFlowEntityIds" [requestNumber]="requestNumber"></review-Cost>
+                </div>
+            </tab>
+        </tabs>
+    </content>
+</page>    
+
+

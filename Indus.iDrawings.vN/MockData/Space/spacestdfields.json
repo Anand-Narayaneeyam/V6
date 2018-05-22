@@ -1,0 +1,37 @@
+﻿{
+  "data": [
+    {
+      "FieldId": 1,
+      "FieldName": "Id",
+      "FieldType": 1,
+      "FieldValue": "",
+       "IsVisible": false,
+      "IsMultiValued": false,
+      "IsMandatory": false,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false
+    },
+    {
+      "FieldId": 2,
+      "FieldName": "Space Standard",
+      "FieldType": 1,
+      "FieldValue": "",
+       "IsVisible": true,
+      "IsMultiValued": false,
+      "IsMandatory": true,
+      "IsHiddenLabel": false,
+     "ReadOnlyMode": false
+    },
+    {
+      "FieldId": 3,
+      "FieldName": "Description",
+      "FieldType": 4,
+      "FieldValue": "",
+       "IsVisible": true,
+      "IsMultiValued": false,
+      "IsMandatory": true,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false
+    }
+  ]
+}

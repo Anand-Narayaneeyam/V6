@@ -1,0 +1,31 @@
+﻿
+<page [pagetitle]="pagePath">
+    <content>
+        <tabs [selectedTab]="selectedTab" [deleteIndex]="tabDeleteIndex" (getSelectedTab)="getSelectedTab($event)">
+            <tab tabTitle="Select Criteria" closeButtonVisible="hidden">
+                <submenu>
+                    <sub-menu [source]=menuData [menuCard]=iscard [menuIds]=enableMenu (onSubMenuChange)="onSubMenuChange($event);"> </sub-menu>
+                </submenu>
+                <div>
+                    <div style="width:100%">
+                        <DateComponent *ngIf="dateSelectorField != undefined" [fieldObject]="dateSelectorField[0]" [showDateOnLoad]="true"></DateComponent>
+                    </div>
+                    <div style="width:100%">
+                        <DateComponent *ngIf="dateSelectorField != undefined" [fieldObject]="dateSelectorField[1]" [showDateOnLoad]="true"></DateComponent>
+                    </div>
+                    <div style="width:100%">
+                        <DropDownListComponent *ngIf="ddlWorkType" [fieldObject]="ddlWorkType" (change)="onChangeWorkType($event.target.value)" [SetAlignment]=alignContent></DropDownListComponent>
+                    </div>
+                    <div style="width:100%">
+                        <DropDownListComponent *ngIf="ddlPriority" [fieldObject]="ddlPriority" (change)="onChangePriority($event.target.value)" [SetAlignment]=alignContent></DropDownListComponent>
+                    </div>
+                </div>
+            </tab>
+            <tab *ngIf="isnext != undefined" tabTitle="Report" closeButtonVisible="hidden">
+                <div style="height:100%" *ngIf="isNextClicked">
+                    <wo-pmweekly-report *ngIf="isNextClicked" [FromDate]="FromDate" [ToDate]="ToDate" [WorkTypeId]="WorkTypeId" [PriorityId]="PriorityId" [Priority]="Priority"> </wo-pmweekly-report>
+                </div>
+            </tab>
+        </tabs>
+    </content>
+</page>

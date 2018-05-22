@@ -1,0 +1,14 @@
+﻿<div [style.display]="setAlignment">
+ 
+    <div *ngIf="validate === true" control-group  style="width:100%;">     
+        <input autocomplete="off" placeholder="Search User" onpaste="return false;" validatetext [validationData]="validationData" [fieldObject]='fieldObject' name="lookupStringTextBox1" id="{{fieldObject.FieldId}}" type="text"  [(ngModel)]="fieldObject.FieldValue" (keyup)=filter($event) style="height:30px;width:250px;background-color:white !important;margin-top:5px;">
+        <div class="suggestions" *ngIf="filteredList.length > 0"  style="line-height:25px;border:1px solid #eeeded;width:250px !important;">
+            <ul>
+                <li *ngFor="let item of filteredList" (click)="select(item)">
+                    <a>{{item.Value}}</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div> 
+

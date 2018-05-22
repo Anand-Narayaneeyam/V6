@@ -1,0 +1,10 @@
+﻿<div style="height:10%;float:right;width:100%;">
+    <button  class="Savebutton "style="float:right;" (click)="CloseClick()">Close</button>
+    <button  class="Savebutton "style="float:right;" (click)="ViewClick()">View</button>
+</div>
+<div style="height:80%;float:left;width:100%;">
+    <gridView [dataSource]="itemsSource" [properties]="inputItems" [columns]="fieldObject" (onSorting)="onSort($event)"></gridView>
+</div>
+<div style="height:80%;float:left;width:100%;">
+    <paging [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="pageChanged($event);"></paging>
+</div>

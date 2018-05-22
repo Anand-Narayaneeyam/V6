@@ -1,0 +1,105 @@
+﻿{
+  "data": [
+    {
+      "FieldId": 0,
+      "FieldName": "Id",
+      "FieldType": 2,
+      "IsVisible": false,
+      "IsMandatory": true,
+      "IsDisabled": true,
+      "IsHiddenLabel": true,
+      "ReadOnlyMode": false
+    },
+    {
+      "FieldId": 1,
+      "FieldName": "Site",
+      "FieldType": 1,
+      "IsVisible": true,
+      "IsMandatory": true,
+      "IsDisabled": false,
+      "IsHiddenLabel": true,
+      "ReadOnlyMode": false
+    },
+    {
+      "FieldId": 2,
+      "FieldName": "Building",
+      "FieldType": 1,
+      "IsMandatory": true,
+      "IsHiddenLabel": true,
+      "ReadOnlyMode": false,
+      "IsVisible": true
+    },
+    {
+      "FieldId": 3,
+      "FieldName": "Floor",
+      "FieldType": 1,
+      "IsMandatory": true,
+      "IsHiddenLabel": true,
+      "ReadOnlyMode": false,
+      "IsVisible": true
+    },
+    {
+      "FieldId": 4,
+      "FieldName": "Category",
+      "FieldType": 1,
+      "IsVisible": true,
+      "IsMandatory": true,
+      "IsDisabled": false,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false
+    },
+    {
+      "FieldId": 5,
+      "FieldName": "Description",
+      "FieldType": 4,
+      "FieldValue": "",
+      "IsMandatory": true,
+      "IsHiddenLabel": true,
+      "ReadOnlyMode": false,
+      "IsVisible": true
+    },
+    {
+      "FieldId": 6,
+      "FieldName": "Type",
+      "FieldType": 1,
+      "IsVisible": true,
+      "IsMandatory": true,
+      "IsDisabled": false,
+      "IsHiddenLabel": true,
+      "ReadOnlyMode": false
+    },
+    {
+      "FieldId": 7,
+      "FieldName": "DWG File Name",
+      "FieldType": 1,
+      "HasRelation": false,
+      "IsVisible": true,
+      "IsMandatory": true,
+      "IsDisabled": false,
+      "IsHiddenLabel": true,
+      "ReadOnlyMode": true
+    },
+    {
+      "FieldId": 8,
+      "FieldName": "DWG File Size(KB)",
+      "FieldType": 2,
+      "HasRelation": false,
+      "IsVisible": true,
+      "IsMandatory": true,
+      "IsDisabled": false,
+      "IsHiddenLabel": true,
+      "ReadOnlyMode": true
+    },
+    {
+      "FieldId": 9,
+      "FieldName": "Uploaded By",
+      "FieldType": 1,
+      "HasRelation": false,
+      "IsVisible": true,
+      "IsMandatory": true,
+      "IsDisabled": false,
+      "IsHiddenLabel": true,
+      "ReadOnlyMode": true
+    }
+  ]
+}

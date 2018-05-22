@@ -1,0 +1,16 @@
+﻿<notification></notification>
+<div *ngIf="field != undefined">
+    <DropDownListComponent [fieldObject]="field" (ddlChange)="ddlcategoryChange($event)" [SetAlignment]=setAlignment></DropDownListComponent>
+</div>
+<div *ngIf="fieldlist != undefined" style="height:80%;overflow-y:scroll">
+    <ListBoxComponent [fieldObject]="fieldlist" (change)="selectAllOptions($event)"></ListBoxComponent>
+</div>
+<div  *ngIf="btnEnable == true">
+    <button  class="Savebutton "type="button" (click)="Updateclick()">Save Changes</button>
+</div>
+<div *ngIf="btnEnable == false">
+    <button  class="Savebutton "type="button" style="cursor:not-allowed" (click)="Updateclick()" disabled>Save Changes</button>
+</div>
+
+
+

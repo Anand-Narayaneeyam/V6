@@ -1,0 +1,74 @@
+﻿<page [pagetitle]="pagePath" [withoutSubmenu]="true">
+    <content>
+        <tabs [selectedTab]="selectedTab" id="review" [deleteIndex]="tabDeleteIndex" (getSelectedTab)="getSelectedTab($event)" (onTabClose)="onTabClose($event)">
+            <tab tabTitle="Service Requests" closeButtonVisible="hidden">
+                <serviceReview-list *ngIf="selectedTab == 0" (addEditClicked)="onServiceRequestAddEditClicked($event)" (itemSourceUpdate)="onServiceListSourceUpdated($event)" [itemsSource]="serviceRequestListSource"
+                                    [totalItems]="reviewListTotalItems" [userDetails]="userDetails" [inputItems]="serviceRequestInputItems" [itemsPerPage]="reviewListItemsPerPage" [isTimeSpentSubscribed]="isTimeSpentSubscribed" [isInProgressSubscribed]="isInProgressSubscribed" [reloadData]="reloadData"></serviceReview-list>
+            </tab>
+            <tab tabTitle="PM Work Orders" closeButtonVisible="hidden">
+                <reviewPM-list *ngIf="selectedTab == 1" (onReviewClick)="onPMReviewClick($event)" (itemSourceUpdate)="onPMListSourceUpdated($event)" [itemsSource]="pmListSource" [inputItems]="pmListInputItems"
+                               [userDetails]="userDetails" [itemsPerPage]="pmListItemsPerPage" [totalItems]="pmListTotalItems" [isActive]=true [isTimeSpentSubscribed]="isTimeSpentSubscribed"></reviewPM-list>
+            </tab>
+            <tab tabTitle={{createReviewTabName}} *ngIf="reviewTabEnabled" closeButtonVisible="show">
+                <div style="height:calc(100% -15px) !important">
+                    <review-ServiceRequests *ngIf="createRequestEnabled" (submitClick)="onSubmitClick($event)" [action]="action" [btnName]="btnName" [userDetails]="userDetails" [inputItems]="serviceRequestInputItems"
+                                            [fieldDetailsAdd]="fieldDetailsAdd1" [linkArray]="linkArray" (linkClick)="onLinkClick($event)" [entityCategoryId]="entityCategoryId" [outComeData]="outComeData" [totalCostItems]="totalCostItems"
+                                            (requesterPermissionUpdate)="onRequesterPermissionUpdate($event)" [isInProgressSubscribed]="isInProgressSubscribed"></review-ServiceRequests>
+
+                    <review-PMWorkOrders *ngIf="pmWorkOrderReviewEnabled" (submitClick)="onSubmitClick($event)" [action]="action" [btnName]="btnName" [userDetails]="userDetails" [inputItems]="pmListInputItems"
+                                         [fieldDetailsAdd]="fieldDetailsAdd1" [linkArray]="linkArray" (linkClick)="onLinkClick($event)" [entityCategoryId]="entityCategoryId" [outComeData]="outComeData" [statusId]="statusId"
+                                         [isInProgressSubscribed]="isInProgressSubscribed"></review-PMWorkOrders>
+                </div>
+            </tab>
+            <tab tabTitle={{addOnTabName}} *ngIf="addOnTabEnabled" closeButtonVisible="show">
+                <attachments *ngIf="invoiceTabEnabled" style="width:100%" [attachmentCategoryId]="12" [moduleId]="9" [baseEntityId]="workFlowEntityIds[0]" (attachmentSuccess)="attachmentSuccess($event)" class="attachment"></attachments>
+                <reviewDocument-list *ngIf="documentTabEnabled" (documentSubmit)="onDocumentSubmitClick($event)" (documentDelete)="onDocumentDelete($event)" [workrequestId]="requestId" [userDetails]="userDetails"
+                                     [itemsSource]="documentSource" [entityCategoryId]="entityCategoryId" [enableMenu]="documentEnableMenu" (itemSourceUpdate)="onDocumentSourceUpdated($event)"></reviewDocument-list>
+
+                <reviewEquipment-list *ngIf="equipmentTabEnabled" (itemSourceUpdate)="onEquipmentListSourceUpdated($event)" [itemsSource]="equipmentListSource" [inputItems]="equipmentListInputtems"
+                                      [itemsPerPage]="equipmentListItemsPerPage" [totalItems]="equipmentListTotalItems" [workRequestId]="requestId" [userDetails]="userDetails" [entityCategoryId]="entityCategoryId" [siteId]="siteId"></reviewEquipment-list>
+
+                <div *ngIf="costTabEnabled">
+                    <review-Cost *ngIf="costTabEnabled" (onCostSubmit)="onCostSubmit($event)" [workFlowEntityCategoryId]="entityCategoryId" [workFlowEntityIds]="workFlowEntityIds" [requestNumber]="requestNumber"></review-Cost>
+                </div>
+
+                <review-TeamMembers *ngIf="teamMemberTabEnabled" (onUpdate)="onTeamMemberUpdate($event)" [currentActionPointId]="currentWorkFlowActionPointId" [workFlowEntityIds]="workFlowEntityIds" [isMultiple]="isMultiple"></review-TeamMembers>
+
+                <div *ngIf="chargebackTabEnabled">
+                    <chargeback-list *ngIf="chargebackTabEnabled" [workOrderId] ="workOrderId"></chargeback-list>
+                </div>
+
+                <reviewHistory *ngIf="historyTabEnabled" [workflowEntityId]="workFlowEntityIds[0]"></reviewHistory>
+
+            </tab>
+
+        </tabs>
+
+    </content>
+</page>
+
+<style>
+    #review .navbar li {
+        width: 160px !important;
+    }
+
+  
+    .attachment {
+        width: 750px;
+        display: block;
+    }
+
+    @media only screen and (min-device-width: 320px) and (max-device-width: 813px) and (orientation: portrait) {
+        .attachment {
+            width: 100%!important;
+        }
+    }
+
+    @media only screen and (min-device-width: 320px) and (max-device-width: 812px) and (orientation: landscape) {
+        .attachment {
+            width: 100%!important;
+        }
+    }
+    
+
+</style>

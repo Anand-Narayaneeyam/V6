@@ -1,0 +1,53 @@
+﻿{
+  "data": [
+    {
+      "Id": "1",
+      "FileName": "Miami.jpg",
+      "FileSize": "59",
+      "Description": "",
+      "AttachmentCategory": "Photos",
+      "Uploadedon": "20 Feb 2013 11:43:05",
+      "Uploadedby": "Indus Administrator"
+    },
+    {
+      "Id": "2",
+      "FileName": "sitedetails.xml",
+      "FileSize": "5",
+      "Description": "",
+      "AttachmentCategory": "General",
+      "Uploadedon": "20 Feb 2016 12:53:05",
+      "Uploadedby": "Indus Administrator"
+    },
+    {
+      "Id": "3",
+      "FileName": "bill.pdf",
+      "FileSize": "10",
+      "Description": "",
+      "AttachmentCategory": "Invoice",
+      "Uploadedon": "20 Feb 2015 01:43:05",
+      "Uploadedby": "Indus Administrator"
+    },
+    {
+     "Id": "4",
+      "FileName": "JellyFish.jpg",
+      "FileSize": "10",
+      "Description": "",
+      "AttachmentCategory": "Photos",
+      "Uploadedon": "20 Feb 2014 01:43:05",
+      "Uploadedby": "Indus Administrator"
+    },
+    {
+      "Id": "5",
+      "FileName": "Grid.doc",
+      "FileSize": "3",
+      "Description": "",
+      "AttachmentCategory": "Manual",
+      "Uploadedon": "20 Feb 2012 08:04:05",
+      "Uploadedby": "Indus Administrator"
+    }
+  ],
+  "count": 
+    {
+      "TotalItems": "30"
+    }
+}

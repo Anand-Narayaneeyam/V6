@@ -1,0 +1,12 @@
+﻿
+<div style="padding-top:10px;width:400px;">
+  
+    <div class="search-container" style="margin-top:35px">
+        <search *ngIf="fieldObject" [disable]="disable" [smartSearch]=false [searchtype]="'Grid'" [keyWordLookup]=keyWordLookup [advancesearch]=false [Key]=2 [dataKey]="dataKey"  [KeywordFields]=KeywordFieldObject (onloadSearch)="onloadSearch($event)"></search>
+    </div>
+    <button class="Savebutton " type="button" (click)="updateDivisionAdminSettings($event)" style="margin-left:5px;margin-bottom:5px"> Save Changes </button>
+    <div *ngIf="totalItems>0" style="height: 80%;">
+        <gridView [dataSource]="itemsSource" [properties]="inputItems" [columns]="fieldObject" (onCellEdit)="onCellUpdate($event)" (onSorting)="onSort($event)"></gridView>
+    </div>
+   
+</div>

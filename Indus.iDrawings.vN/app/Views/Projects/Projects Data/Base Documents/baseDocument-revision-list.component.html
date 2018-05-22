@@ -1,0 +1,42 @@
+﻿<split-view [splitviewObject]="splitviewInput" [pageTitle]="pageTitle">
+    <primary-view>
+        <!--<div class="search-container">
+            <search *ngIf="fieldObject" [disable]="disable" [searchtype]="'Grid'" [keyWordLookup]=keyWordLookup [advancesearch]=true [Key]=2 [datasource]=advancelookup [dataKey]="dataKey" [KeywordFields]=KeywordFieldObject (SaveAs)="SaveAs($event)" (Delete)="Delete($event)" (onloadSearch)="onloadSearch($event)" (loadAdvanceSearch)="advanceSearch()" (Clear)="Clear($event)" (Submit)="Submit($event)"></search>
+        </div>-->
+        <submenu>
+            <sub-menu [source]=menuData [menuCard]=true [count]=totalItems [menuIds]=enableMenu (onSubMenuChange)="onSubMenuChange($event);"> </sub-menu>
+        </submenu>
+        <div style="height:calc(100% - 35px);width:100%;display:block">
+            <div style="height:35px;">
+                Project Name:<LabelComponent style="display:inline-block" [fieldObject]=fieldProjectName></LabelComponent>
+                Title:<LabelComponent style="display:inline-block" [fieldObject]=fieldtitle></LabelComponent>
+            </div>
+            <div style="height:calc(100% - 80px);" [ngClass]="totalItems > itemsPerPage ? 'pagewithPaging':'pagewithoutPaging'">
+                <confirmation (onConfirm)="okDelete($event)"></confirmation>
+                <gridView [dataSource]="itemsSource" [properties]="inputItems" [columns]="fieldObject" [refreshgrid]="refreshgrid" (onSorting)="onSort($event)" ></gridView>
+            </div>
+            <div style="height:45px;width:100%;display:block">
+                <paging [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="pageChanged($event);"></paging>
+            </div>
+        </div>
+    </primary-view>
+    <secondary-view>
+        <base-drawingmarkup-list *ngIf="splitviewInput.showSecondaryView " [projectName]="projectName" [projectId]="projectId" [rowData]="rowData" [pagetarget]="1"></base-drawingmarkup-list>
+    </secondary-view>
+</split-view>
+<slide [width]="200" [position]="position" [type]="dialog" [show]="showSlide" (closeDialog)="closeSlideDialog($event)">
+
+    <div>
+        <div>
+
+            {{drawingDialogMessages.message}}
+        </div>
+        <div>
+
+            <div style="width:100%">
+                <button class="Savebutton " type="button" (click)="okBaseDrawingDelete(drawingDialogMessages.key)">Yes</button>
+                <button class="Savebutton " type="button" (click)="cancelClick(drawingDialogMessages.key)">No</button>
+            </div>
+        </div>
+    </div>
+</slide>

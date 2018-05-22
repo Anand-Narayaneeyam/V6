@@ -1,0 +1,38 @@
+﻿{
+  "data": [
+    {
+      "Id": "1",
+      "Field Name": "FAC Code",
+      "Field Type": "Single Line Text",
+      "Max Characters Allowed": 10,
+      "Mandatory": false,
+      "Totalizable": false,
+      "Validated": false
+    },
+    {
+      "Id": "2",
+      "Field Name": "Ownership",
+      "Field Type": "Single Line Text",
+      "Max Characters Allowed": 10,
+      "Mandatory": false,
+      "Totalizable": false,
+      "Validated": true
+    },
+    {
+      "Id": "3",
+      "Field Name": "Total Number of Floors",
+      "Field Type": "Numeric",
+      "Max Characters Allowed": "",
+      "Mandatory": true,
+      "Totalizable": true,
+      "Validated": false
+    }
+  ],
+  "count": [
+    {
+      "TotalItems": "15"
+    }
+  ]
+}
+
+

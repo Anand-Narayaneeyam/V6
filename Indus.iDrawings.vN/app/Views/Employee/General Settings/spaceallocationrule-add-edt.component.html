@@ -1,0 +1,10 @@
+﻿<div *ngIf="fieldDetailsAdd1">
+    <DropDownListComponent  [fieldObject]="fieldDetailsAdd1[0]"></DropDownListComponent>
+</div>
+<div *ngIf="fieldDetailsAdd1">
+    <DropDownListComponent  [fieldObject]="fieldDetailsAdd1[1]"></DropDownListComponent>
+</div>
+
+<div style="margin-top:10px;">
+    <button (click)="submitSpaceAllocationtoGrade()" class="save-button" role="button" [attr.aria-label]="Save">Save</button>
+</div>

@@ -1,0 +1,1381 @@
+﻿/*For deletion*/
+/*************************/
+.ModuleHeader {
+  font-family: Arial;
+  font-size: 18px;
+  color: #333333;
+}
+.pathtextfont {
+  font-family: Arial;
+  font-size: 15px;
+  color: #333333;
+}
+.pagetextfont {
+  font-family: Arial;
+  font-size: 14px;
+  color: #333333;
+}
+.pagetitleFont {
+  font-family: Arial;
+  font-size: 20px;
+  color: #999999;
+}
+body {
+  margin: 0;
+  overflow: hidden;
+  max-height: 100%;
+  max-width: 100%;
+  height: 100%;
+  /*.sub-header {
+        background-color: @color-white;
+        height: @header-height-medium;
+        width: 100%;
+        padding: @header-padding-medium;
+        border-bottom: solid;
+        border-bottom-color: @color-light-grey;
+        border-bottom-width: 2px;
+
+        @media screen and (min-width: 768px) {
+            height: @header-height-large;
+            padding: @header-padding-large;
+        }
+
+        .menu {
+            width: 40px;
+            float: left;
+
+            .module-icon {
+                height: @height-small;
+                width: 40px;
+                float: left;
+
+                img {
+                    height: 25px;
+                    width: 30px;
+                    float: left;
+                }
+            }
+
+            .top-nav {
+                float: none !important;
+
+                .top-nav-menu {
+                    margin: 0 !important;
+                    left: 0 !important;
+                }
+            }
+        }
+
+        .module-name {
+            .ModuleHeader;
+            margin-left: 50px;
+            vertical-align: text-top;
+        }
+    }*/
+  /*.GridHeader {
+            width: 100%;
+            float: left;
+            background-color: @color-alto;
+            height: 35px;
+
+            p {
+                font-size: 14px;
+                padding: 8px;
+                float: left;
+                color: @color-black;
+            }
+        }*/
+}
+body .header {
+  background-color: #ededed;
+  width: 100%;
+  height: 40px;
+  padding: 7px 15px;
+}
+@media screen and (min-width: 768px) {
+  body .header {
+    height: 50px;
+    padding: 12px 15px;
+  }
+}
+body .header .module {
+  height: 30px;
+  width: 35px;
+  float: left;
+}
+body .header .module .first,
+body .header .module .second {
+  width: 25px;
+  height: 25px;
+}
+body .header .module .second {
+  display: none;
+}
+body .header .module .gridbox {
+  width: 370px;
+  position: relative;
+  background: #f9f9f9;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 2px;
+  display: none;
+  z-index: 10;
+  margin-top: 0;
+}
+body .header .module .gridbox:before {
+  bottom: 100%;
+  border: solid transparent;
+  content: " ";
+  height: 20px;
+  width: 20px;
+  position: absolute;
+  pointer-events: none;
+  border-bottom-color: #f9f9f9;
+  border-width: 13px;
+}
+body .header .module .gridbox .icons {
+  display: inline-block;
+  margin-bottom: 0;
+  list-style: none;
+  padding: 5px;
+}
+body .header .module .gridbox .icons li {
+  float: left;
+  padding: 10px;
+  border: solid #666666 0;
+  cursor: pointer;
+  height: 80px;
+  width: 120px;
+  text-align: center;
+}
+body .header .module .gridbox .icons li img {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 5px;
+  outline: none;
+}
+body .header .module .gridbox .icons li .module-name {
+  font-size: 12px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #000000;
+}
+body .header .module .gridbox .icons li:hover {
+  border: solid #e6e2e5 1px;
+  background-color: #ebe2e2;
+}
+body .header .module .gridbox .icons li a {
+  text-decoration: none;
+}
+body .header .module .gridbox .icons li a:hover {
+  text-decoration: none;
+}
+body .header .module .gridbox .icons li a:focus {
+  text-decoration: none;
+  outline: none;
+}
+body .header .module:hover .first {
+  display: none;
+}
+body .header .module:hover .second {
+  display: block;
+}
+body .header .module:hover .gridbox,
+body .header .module:hover .arrow {
+  display: block;
+}
+body .header .tapimage {
+  float: left;
+}
+body .header .tapimage img {
+  width: 200px;
+}
+body .header .settings {
+  height: 100%;
+  float: right;
+  align-items: flex-start;
+  display: flex;
+}
+body .header .settings .dropdown {
+  color: #666666;
+  width: 30px;
+  height: 30px;
+  float: right;
+}
+body .header .settings .dropdown .user-profile-pic {
+  float: right !important;
+}
+body .header .settings .dropdown:hover .profile {
+  display: inline-block;
+}
+body .header .settings .dropdown .profile-circle {
+  width: 30px;
+  height: 30px;
+}
+body .header .settings .dropdown .profile {
+  width: 180px;
+  position: absolute;
+  background: #f9f9f9;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  display: none;
+  left: -190px;
+  top: 30px;
+  z-index: 10;
+  padding: 10px;
+}
+body .header .settings .dropdown .profile:before {
+  right: 0;
+  bottom: 100%;
+  border: solid transparent;
+  border-width: 12px;
+  content: " ";
+  height: 10px;
+  width: 20px;
+  position: absolute;
+  pointer-events: none;
+  border-bottom-color: #f9f9f9;
+}
+body .header .settings .dropdown .profile .profilemenu {
+  margin: 10px;
+  float: left;
+  list-style: none;
+  padding: 0;
+}
+body .header .settings .dropdown .profile .profilemenu li {
+  height: 30px;
+  font-size: 14px;
+}
+body .header .settings .dropdown .profile .profilemenu li a {
+  color: #990000;
+  text-decoration: underline;
+}
+body .header .settings .dropdown .profile .profilemenu li a:hover {
+  color: #999999;
+  text-decoration: none;
+}
+body .header .settings .dropdown .profile .profile-pic {
+  height: 130px;
+  width: 130px;
+  float: left;
+  text-align: center;
+}
+body .header .settings .dropdown .profile .profile-pic img {
+  width: 100px;
+  height: 100px;
+}
+@media screen and (max-width: 600px) {
+  body .header .settings .dropdown .profile .profile-pic {
+    height: 155px;
+    width: 150px;
+  }
+  body .header .settings .dropdown .profile .profile-pic img {
+    margin-bottom: 10px;
+  }
+}
+body .header .settings .dropdown .profile .buttons {
+  float: right;
+  width: auto;
+}
+body .header .settings .dropdown .profile .buttons .help {
+  float: right;
+  background: #a0a0a0;
+}
+body .header .settings .dropdown .profile .userdetails {
+  display: flex;
+  -ms-flex-direction: column;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  align-items: center;
+  height: 30px;
+}
+body .header .settings .dropdown .profile .userdetails > span {
+  font-size: 14px;
+  color: #848383;
+  max-width: 150px;
+  white-space: nowrap;
+  overflow: hidden;
+  -ms-text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+}
+body .header .settings .dropdown .profile .userdetails > span.user-name {
+  margin-right: 5px;
+}
+body .header .settings .dropdown .profile .userdetails > span.role-customer {
+  font-size: 12px;
+}
+@media screen and (min-width: 600px) {
+  body .header .settings .dropdown .profile .userdetails {
+    display: none;
+  }
+}
+body .header .settings > .userdetails {
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  align-items: center;
+  height: 30px;
+  margin-right: 5px;
+  float: right;
+}
+@media screen and (min-width: 768px) {
+  body .header .settings > .userdetails > div {
+    width: auto;
+    top: 5px;
+    float: right;
+    right: 90px;
+    position: fixed;
+  }
+  body .header .settings > .userdetails > div .user-role {
+    cursor: pointer;
+    float: right;
+    white-space: nowrap;
+    margin-top: 5px;
+  }
+  body .header .settings > .userdetails > div .user-name {
+    cursor: pointer;
+    float: right;
+    margin-top: 5px;
+    max-width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    -ms-text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+  }
+  body .header .settings > .userdetails > div .release-notes {
+    cursor: pointer;
+    display: inline-block;
+    margin-right: 25px;
+    float: left;
+  }
+  body .header .settings > .userdetails .role-customer {
+    float: right;
+    cursor: pointer;
+    font-size: 13px;
+    margin-top: 25px;
+    text-align: right;
+  }
+}
+@media screen and (max-width: 767px) {
+  body .header .settings > .userdetails > div {
+    width: auto;
+    top: 0;
+    float: right;
+    right: 90px;
+    position: fixed;
+  }
+  body .header .settings > .userdetails > div .user-role {
+    float: right;
+    white-space: nowrap;
+    margin-top: 2px;
+    cursor: pointer;
+  }
+  body .header .settings > .userdetails > div .user-name {
+    float: right;
+    margin-top: 2px;
+    max-width: 100px;
+    white-space: nowrap;
+    overflow: hidden;
+    -ms-text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    cursor: pointer;
+  }
+  body .header .settings > .userdetails .role-customer {
+    font-size: 13px;
+    margin-top: 20px;
+    text-align: right;
+    right: 55px;
+    float: right;
+    cursor: pointer;
+  }
+}
+@media screen and (max-width: 600px) {
+  body .header .settings > .userdetails {
+    display: none;
+  }
+}
+body .header > .menu {
+  width: 40px;
+  float: left;
+  margin-left: 10px;
+}
+body .header > .menu .module-icon {
+  height: 30px;
+  width: 40px;
+  float: left;
+}
+body .header > .menu .module-icon img {
+  height: 25px;
+  width: 30px;
+  float: left;
+}
+body .header > .menu .top-nav {
+  float: none !important;
+}
+body .header > .menu .top-nav .top-nav-menu {
+  margin: 0 !important;
+  left: 0 !important;
+}
+body .header > .quick-menu {
+  float: left;
+  margin-top: 3px;
+}
+body .header > .quick-menu a {
+  margin: 2px;
+  color: #990000;
+  text-decoration: underline;
+}
+body .header > .quick-menu a:hover {
+  color: #990000;
+}
+body .header > .quick-menu a:after {
+  content: "|";
+  display: inline-block;
+  margin-left: 4px;
+}
+body .header > .quick-menu a:last-child:after {
+  content: "";
+}
+body .header > .module-name {
+  font-family: Arial;
+  font-size: 18px;
+  color: #333333;
+  float: left;
+  vertical-align: text-top;
+  margin-top: 2px;
+}
+body .header .pagetitle {
+  float: left;
+}
+body .header .pagetitle p {
+  font-family: Arial;
+  font-size: 20px;
+  color: #999999;
+  margin: 0;
+}
+body .container,
+body .ui-dialog .ui-dialog-content {
+  overflow:hidden!important;
+  margin: 0 15px 0 15px;
+  width: 97.5%;
+  /*For Safari */
+  width: calc(100% - 30px);
+  padding: 0 !important;
+  /*.pagetitle {
+            width: 100%;
+            padding: 10px 0 35px;
+            p {
+                .pagetitleFont;
+                float: left;
+                padding: 0;
+                margin: 0;
+            }
+        }*/
+}
+body .container .GridHeader,
+body .ui-dialog .ui-dialog-content .GridHeader {
+  width: 100%;
+  float: left;
+  background-color: #d8d4d4;
+  height: 35px;
+}
+body .container .GridHeader p,
+body .ui-dialog .ui-dialog-content .GridHeader p {
+  font-family: Arial;
+  font-size: 15px;
+  color: #333333;
+  padding: 8px;
+  float: left;
+}
+@media screen and (max-width: 768px) {
+  body .container .GridHeader p,
+  body .ui-dialog .ui-dialog-content .GridHeader p {
+    display: none;
+  }
+}
+body .container .GridHeader .menu-search-container,
+body .ui-dialog .ui-dialog-content .GridHeader .menu-search-container {
+  float: right;
+}
+body .container .GridHeader .menu-search-container .search-container,
+body .ui-dialog .ui-dialog-content .GridHeader .menu-search-container .search-container {
+  position: relative;
+  margin-top: 6px;
+  float: left;
+}
+body .container .GridHeader .menu-search-container .search-container .search-textbox-input,
+body .ui-dialog .ui-dialog-content .GridHeader .menu-search-container .search-container .search-textbox-input {
+  height: 24px;
+  width: 250px;
+  font-size: 14px;
+  border: 0;
+  padding-left: 5px;
+  padding-right: 30px;
+}
+body .container .GridHeader .menu-search-container .search-container .search-textbox-input:focus,
+body .ui-dialog .ui-dialog-content .GridHeader .menu-search-container .search-container .search-textbox-input:focus {
+  outline: none;
+}
+body .container .GridHeader .menu-search-container .search-container .search-button-holder,
+body .ui-dialog .ui-dialog-content .GridHeader .menu-search-container .search-container .search-button-holder {
+  background-color: #d8d4d4;
+  cursor: pointer;
+  height: 24px;
+  text-align: center;
+  width: 30px;
+  float: right;
+  position: absolute;
+  top: 0;
+  right: 0;
+  border: 1px solid white;
+}
+body .container .GridHeader .menu-search-container .search-container .search-button-holder img,
+body .ui-dialog .ui-dialog-content .GridHeader .menu-search-container .search-container .search-button-holder img {
+  width: 20px;
+}
+body .container ::-webkit-input-placeholder,
+body .ui-dialog .ui-dialog-content ::-webkit-input-placeholder {
+  margin-top: 5px;
+  color: #000000;
+  padding-left: 10px;
+}
+body .container ::-moz-placeholder,
+body .ui-dialog .ui-dialog-content ::-moz-placeholder {
+  margin-top: 5px;
+  color: #000000;
+  padding-left: 10px;
+}
+body .container input:focus::-webkit-input-placeholder,
+body .ui-dialog .ui-dialog-content input:focus::-webkit-input-placeholder {
+  color: #000000;
+  padding-left: 10px;
+}
+body .container input:focus:-moz-placeholder,
+body .ui-dialog .ui-dialog-content input:focus:-moz-placeholder {
+  color: #000000;
+  padding-left: 10px;
+}
+body .container .CustomPaging,
+body .ui-dialog .ui-dialog-content .CustomPaging {
+  /*height: 28px;*/
+  margin-top: 0;
+  font-weight: normal;
+  color: #000000;
+  background-color: #e6e2e5 !important;
+  border: 1px solid #bbbbbb;
+}
+body .container ul.simple-pagination,
+body .ui-dialog .ui-dialog-content ul.simple-pagination {
+  list-style: none;
+}
+body .container .simple-pagination,
+body .ui-dialog .ui-dialog-content .simple-pagination {
+  display: block;
+  overflow: hidden;
+  padding: 0 5px 5px 0;
+  margin: 0;
+}
+body .container .simple-pagination ul,
+body .ui-dialog .ui-dialog-content .simple-pagination ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 2px;
+}
+body .container .simple-pagination ul li,
+body .ui-dialog .ui-dialog-content .simple-pagination ul li {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  float: left;
+}
+body .container .light-theme a,
+body .ui-dialog .ui-dialog-content .light-theme a,
+body .container .light-theme span,
+body .ui-dialog .ui-dialog-content .light-theme span {
+  float: left;
+  color: #000000;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: normal;
+  text-align: center;
+  border: 1px solid #bbbbbb;
+  min-width: 14px;
+  padding: 0 5px;
+  margin: 0 3px 0 0;
+  border-radius: 3px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  background: #efefef;
+  background: -moz-linear-gradient(top, #ffffff 0, #efefef 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #ffffff), color-stop(100%, #efefef));
+  background: -webkit-linear-gradient(top, #ffffff 0, #efefef 100%);
+  background: -o-linear-gradient(top, #ffffff 0, #efefef 100%);
+  background: -ms-linear-gradient(top, #ffffff 0, #efefef 100%);
+  background: linear-gradient(top, #ffffff 0, #efefef 100%);
+}
+body .container .light-theme a:hover,
+body .ui-dialog .ui-dialog-content .light-theme a:hover {
+  text-decoration: none;
+  background: #ffffff;
+}
+body .container .light-theme .current,
+body .ui-dialog .ui-dialog-content .light-theme .current {
+  color: #000000;
+  background: #ffe475 url(../images/General/ui-bg_inset-hard_100_ffe475_1x100.png) bottom repeat-x;
+  border: #c28a30;
+  cursor: default;
+  margin-top: 1px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+body .container .light-theme .ellipse,
+body .ui-dialog .ui-dialog-content .light-theme .ellipse {
+  background: none;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  font-weight: bold;
+  cursor: default;
+}
+body .ui-dialog,
+body .container {
+  padding: 15px;
+  border-radius: 0 !important;
+  border: none !important;
+  position: fixed;
+  height: 90%;
+}
+body .ui-dialog .ui-dialog-titlebar,
+body .container .ui-dialog-titlebar {
+  background: none;
+  border: none;
+  border-bottom: 1px solid #ededed;
+  height: 30px;
+  padding: 0;
+  margin-bottom: 10px;
+}
+body .ui-dialog .ui-dialog-titlebar .ui-dialog-title,
+body .container .ui-dialog-titlebar .ui-dialog-title {
+  font-family: Arial;
+  display: flex;
+  align-items: flex-start;
+  font-size: 17px;
+  padding-top: 0;
+  color: #333333;
+  height: 100%;
+  margin: 0;
+}
+body .ui-dialog .ui-dialog-titlebar .ui-dialog-titlebar-close,
+body .container .ui-dialog-titlebar .ui-dialog-titlebar-close {
+  height: 0px !important;
+  /*Temporary style to test*/
+  min-width: 0px !important;
+  background: none !important;
+  outline: none;
+  top: 5px;
+  border: aliceblue;
+}
+body .ui-dialog .ui-dialog-titlebar .ui-dialog-titlebar-close:hover,
+body .container .ui-dialog-titlebar .ui-dialog-titlebar-close:hover {
+  background: #e7e7e7 !important;
+}
+body .ui-dialog .ui-dialog-titlebar .ui-dialog-titlebar-close:before,
+body .container .ui-dialog-titlebar .ui-dialog-titlebar-close:before {
+  content: "\00d7";
+  color: red;
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  -moz-transform: scale(3);
+  -ms-transform: scale(3);
+  -o-transform: scale(3);
+  -webkit-transform: scale(3);
+  transform: scale(3);
+  cursor:pointer;
+  font-weight: 100;
+}
+body .ui-dialog .ui-dialog-content #smart-green,
+body .container .ui-dialog-content #smart-green,
+body .ui-dialog .ui-dialog-content .smart-green,
+body .container .ui-dialog-content .smart-green {
+  margin-top: 20px;
+  height: 95% !important;
+  /*For Safari*/
+  height: calc(100% - 60px) !important;
+}
+body .ui-dialog > form,
+body .container > form {
+  height: 100%;
+}
+body .ui-dialog > form .gridStyle,
+body .container > form .gridStyle {
+  height: 100%;
+}
+body .ui-dialog .ui-dialog-content form,
+body .container .ui-dialog-content form,
+body .ui-dialog > form form,
+body .container > form form {
+  height: 100%;
+  padding-top: 10px;
+}
+body .ui-dialog .ui-dialog-content form .gridStyle,
+body .container .ui-dialog-content form .gridStyle,
+body .ui-dialog > form form .gridStyle,
+body .container > form form .gridStyle {
+  height: 90%;
+}
+body .ui-dialog .ui-dialog-content #smart-green,
+body .container .ui-dialog-content #smart-green,
+body .ui-dialog > form #smart-green,
+body .container > form #smart-green,
+body .ui-dialog .ui-dialog-content .smart-green,
+body .container .ui-dialog-content .smart-green,
+body .ui-dialog > form .smart-green,
+body .container > form .smart-green {
+  margin-top: 20px;
+  overflow-y: auto;
+}
+body .ui-dialog .ui-dialog-content #smart-green .text,
+body .container .ui-dialog-content #smart-green .text,
+body .ui-dialog > form #smart-green .text,
+body .container > form #smart-green .text,
+body .ui-dialog .ui-dialog-content .smart-green .text,
+body .container .ui-dialog-content .smart-green .text,
+body .ui-dialog > form .smart-green .text,
+body .container > form .smart-green .text {
+  /*padding-top: 5px;*/
+  margin-left: 0;
+  min-width: 35%;
+  max-width: 250px;
+  float: left;
+  height: 40px;
+  top: 5px;
+  text-align: left;
+  -ms-word-wrap: break-word;
+  word-wrap: break-word;
+  color: #000000;
+  font-family: Arial;
+  font-size: 13px;
+  white-space: nowrap;
+  overflow: hidden;
+  -ms-text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  margin-right: 0;
+}
+body .ui-dialog .ui-dialog-content #smart-green .text > div,
+body .container .ui-dialog-content #smart-green .text > div,
+body .ui-dialog > form #smart-green .text > div,
+body .container > form #smart-green .text > div,
+body .ui-dialog .ui-dialog-content .smart-green .text > div,
+body .container .ui-dialog-content .smart-green .text > div,
+body .ui-dialog > form .smart-green .text > div,
+body .container > form .smart-green .text > div {
+  max-width: 450px;
+  white-space: normal;
+  overflow: hidden;
+  font-family: Arial;
+  font-size: 14px;
+  color: #333333;
+}
+body .ui-dialog .ui-dialog-content #smart-green .control,
+body .container .ui-dialog-content #smart-green .control,
+body .ui-dialog > form #smart-green .control,
+body .container > form #smart-green .control,
+body .ui-dialog .ui-dialog-content .smart-green .control,
+body .container .ui-dialog-content .smart-green .control,
+body .ui-dialog > form .smart-green .control,
+body .container > form .smart-green .control {
+  margin-right: 5%;
+  min-width: 50%;
+  max-width: 305px;
+  max-height: 250px;
+  float: left;
+  height: 40px;
+  top: 5px;
+}
+body .ui-dialog .ui-dialog-content #smart-green .control input[type="text"],
+body .container .ui-dialog-content #smart-green .control input[type="text"],
+body .ui-dialog > form #smart-green .control input[type="text"],
+body .container > form #smart-green .control input[type="text"],
+body .ui-dialog .ui-dialog-content .smart-green .control input[type="text"],
+body .container .ui-dialog-content .smart-green .control input[type="text"],
+body .ui-dialog > form .smart-green .control input[type="text"],
+body .container > form .smart-green .control input[type="text"],
+body .ui-dialog .ui-dialog-content #smart-green .control input[type="number"],
+body .container .ui-dialog-content #smart-green .control input[type="number"],
+body .ui-dialog > form #smart-green .control input[type="number"],
+body .container > form #smart-green .control input[type="number"],
+body .ui-dialog .ui-dialog-content .smart-green .control input[type="number"],
+body .container .ui-dialog-content .smart-green .control input[type="number"],
+body .ui-dialog > form .smart-green .control input[type="number"],
+body .container > form .smart-green .control input[type="number"],
+body .ui-dialog .ui-dialog-content #smart-green .control select,
+body .container .ui-dialog-content #smart-green .control select,
+body .ui-dialog > form #smart-green .control select,
+body .container > form #smart-green .control select,
+body .ui-dialog .ui-dialog-content .smart-green .control select,
+body .container .ui-dialog-content .smart-green .control select,
+body .ui-dialog > form .smart-green .control select,
+body .container > form .smart-green .control select,
+body .ui-dialog .ui-dialog-content #smart-green .control textarea,
+body .container .ui-dialog-content #smart-green .control textarea,
+body .ui-dialog > form #smart-green .control textarea,
+body .container > form #smart-green .control textarea,
+body .ui-dialog .ui-dialog-content .smart-green .control textarea,
+body .container .ui-dialog-content .smart-green .control textarea,
+body .ui-dialog > form .smart-green .control textarea,
+body .container > form .smart-green .control textarea,
+body .ui-dialog .ui-dialog-content #smart-green .control input[type="password"],
+body .container .ui-dialog-content #smart-green .control input[type="password"],
+body .ui-dialog > form #smart-green .control input[type="password"],
+body .container > form #smart-green .control input[type="password"],
+body .ui-dialog .ui-dialog-content .smart-green .control input[type="password"],
+body .container .ui-dialog-content .smart-green .control input[type="password"],
+body .ui-dialog > form .smart-green .control input[type="password"],
+body .container > form .smart-green .control input[type="password"] {
+  width: 305px;
+  background-color: #e7e7e7;
+  border: 1px solid #bbbbbb;
+}
+body .ui-dialog .ui-dialog-content #smart-green .control input[type="text"] option,
+body .container .ui-dialog-content #smart-green .control input[type="text"] option,
+body .ui-dialog > form #smart-green .control input[type="text"] option,
+body .container > form #smart-green .control input[type="text"] option,
+body .ui-dialog .ui-dialog-content .smart-green .control input[type="text"] option,
+body .container .ui-dialog-content .smart-green .control input[type="text"] option,
+body .ui-dialog > form .smart-green .control input[type="text"] option,
+body .container > form .smart-green .control input[type="text"] option,
+body .ui-dialog .ui-dialog-content #smart-green .control input[type="number"] option,
+body .container .ui-dialog-content #smart-green .control input[type="number"] option,
+body .ui-dialog > form #smart-green .control input[type="number"] option,
+body .container > form #smart-green .control input[type="number"] option,
+body .ui-dialog .ui-dialog-content .smart-green .control input[type="number"] option,
+body .container .ui-dialog-content .smart-green .control input[type="number"] option,
+body .ui-dialog > form .smart-green .control input[type="number"] option,
+body .container > form .smart-green .control input[type="number"] option,
+body .ui-dialog .ui-dialog-content #smart-green .control select option,
+body .container .ui-dialog-content #smart-green .control select option,
+body .ui-dialog > form #smart-green .control select option,
+body .container > form #smart-green .control select option,
+body .ui-dialog .ui-dialog-content .smart-green .control select option,
+body .container .ui-dialog-content .smart-green .control select option,
+body .ui-dialog > form .smart-green .control select option,
+body .container > form .smart-green .control select option,
+body .ui-dialog .ui-dialog-content #smart-green .control textarea option,
+body .container .ui-dialog-content #smart-green .control textarea option,
+body .ui-dialog > form #smart-green .control textarea option,
+body .container > form #smart-green .control textarea option,
+body .ui-dialog .ui-dialog-content .smart-green .control textarea option,
+body .container .ui-dialog-content .smart-green .control textarea option,
+body .ui-dialog > form .smart-green .control textarea option,
+body .container > form .smart-green .control textarea option,
+body .ui-dialog .ui-dialog-content #smart-green .control input[type="password"] option,
+body .container .ui-dialog-content #smart-green .control input[type="password"] option,
+body .ui-dialog > form #smart-green .control input[type="password"] option,
+body .container > form #smart-green .control input[type="password"] option,
+body .ui-dialog .ui-dialog-content .smart-green .control input[type="password"] option,
+body .container .ui-dialog-content .smart-green .control input[type="password"] option,
+body .ui-dialog > form .smart-green .control input[type="password"] option,
+body .container > form .smart-green .control input[type="password"] option {
+  width: 305px;
+}
+body .ui-dialog .ui-dialog-content #smart-green .control input[type="text"],
+body .container .ui-dialog-content #smart-green .control input[type="text"],
+body .ui-dialog > form #smart-green .control input[type="text"],
+body .container > form #smart-green .control input[type="text"],
+body .ui-dialog .ui-dialog-content .smart-green .control input[type="text"],
+body .container .ui-dialog-content .smart-green .control input[type="text"],
+body .ui-dialog > form .smart-green .control input[type="text"],
+body .container > form .smart-green .control input[type="text"],
+body .ui-dialog .ui-dialog-content #smart-green .control input[type="number"],
+body .container .ui-dialog-content #smart-green .control input[type="number"],
+body .ui-dialog > form #smart-green .control input[type="number"],
+body .container > form #smart-green .control input[type="number"],
+body .ui-dialog .ui-dialog-content .smart-green .control input[type="number"],
+body .container .ui-dialog-content .smart-green .control input[type="number"],
+body .ui-dialog > form .smart-green .control input[type="number"],
+body .container > form .smart-green .control input[type="number"],
+body .ui-dialog .ui-dialog-content #smart-green .control select,
+body .container .ui-dialog-content #smart-green .control select,
+body .ui-dialog > form #smart-green .control select,
+body .container > form #smart-green .control select,
+body .ui-dialog .ui-dialog-content .smart-green .control select,
+body .container .ui-dialog-content .smart-green .control select,
+body .ui-dialog > form .smart-green .control select,
+body .container > form .smart-green .control select,
+body .ui-dialog .ui-dialog-content #smart-green .control input[type="password"],
+body .container .ui-dialog-content #smart-green .control input[type="password"],
+body .ui-dialog > form #smart-green .control input[type="password"],
+body .container > form #smart-green .control input[type="password"],
+body .ui-dialog .ui-dialog-content .smart-green .control input[type="password"],
+body .container .ui-dialog-content .smart-green .control input[type="password"],
+body .ui-dialog > form .smart-green .control input[type="password"],
+body .container > form .smart-green .control input[type="password"] {
+  height: 25px;
+}
+body .ui-dialog .ui-dialog-content #smart-green .control textarea,
+body .container .ui-dialog-content #smart-green .control textarea,
+body .ui-dialog > form #smart-green .control textarea,
+body .container > form #smart-green .control textarea,
+body .ui-dialog .ui-dialog-content .smart-green .control textarea,
+body .container .ui-dialog-content .smart-green .control textarea,
+body .ui-dialog > form .smart-green .control textarea,
+body .container > form .smart-green .control textarea {
+  height: 85px;
+  max-height: 90px;
+  max-width: 305px;
+  white-space: normal;
+}
+body .ui-dialog .ui-dialog-content #smart-green .control input[type="radio"],
+body .container .ui-dialog-content #smart-green .control input[type="radio"],
+body .ui-dialog > form #smart-green .control input[type="radio"],
+body .container > form #smart-green .control input[type="radio"],
+body .ui-dialog .ui-dialog-content .smart-green .control input[type="radio"],
+body .container .ui-dialog-content .smart-green .control input[type="radio"],
+body .ui-dialog > form .smart-green .control input[type="radio"],
+body .container > form .smart-green .control input[type="radio"] {
+  display: inline;
+}
+body .ui-dialog .ui-dialog-content #smart-green .control input[type="radio"] + label,
+body .container .ui-dialog-content #smart-green .control input[type="radio"] + label,
+body .ui-dialog > form #smart-green .control input[type="radio"] + label,
+body .container > form #smart-green .control input[type="radio"] + label,
+body .ui-dialog .ui-dialog-content .smart-green .control input[type="radio"] + label,
+body .container .ui-dialog-content .smart-green .control input[type="radio"] + label,
+body .ui-dialog > form .smart-green .control input[type="radio"] + label,
+body .container > form .smart-green .control input[type="radio"] + label {
+  color: #000000;
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+}
+body .ui-dialog .ui-dialog-content #smart-green .control input[type="radio"] + label span,
+body .container .ui-dialog-content #smart-green .control input[type="radio"] + label span,
+body .ui-dialog > form #smart-green .control input[type="radio"] + label span,
+body .container > form #smart-green .control input[type="radio"] + label span,
+body .ui-dialog .ui-dialog-content .smart-green .control input[type="radio"] + label span,
+body .container .ui-dialog-content .smart-green .control input[type="radio"] + label span,
+body .ui-dialog > form .smart-green .control input[type="radio"] + label span,
+body .container > form .smart-green .control input[type="radio"] + label span {
+  display: inline-block;
+  width: 13px;
+  height: 13px;
+  margin: -1px 4px 0 0;
+  vertical-align: middle;
+  cursor: pointer;
+  -moz-border-radius: 100%;
+  border-radius: 100%;
+  background-color: #d8d4d4;
+}
+body .ui-dialog .ui-dialog-content #smart-green .control input[type="checkbox"],
+body .container .ui-dialog-content #smart-green .control input[type="checkbox"],
+body .ui-dialog > form #smart-green .control input[type="checkbox"],
+body .container > form #smart-green .control input[type="checkbox"],
+body .ui-dialog .ui-dialog-content .smart-green .control input[type="checkbox"],
+body .container .ui-dialog-content .smart-green .control input[type="checkbox"],
+body .ui-dialog > form .smart-green .control input[type="checkbox"],
+body .container > form .smart-green .control input[type="checkbox"] {
+  color: #000000;
+  height: 15px;
+  width: 15px;
+}
+@media screen and (max-width: 768px) {
+  body .ui-dialog .ui-dialog-content #smart-green .control,
+  body .container .ui-dialog-content #smart-green .control,
+  body .ui-dialog > form #smart-green .control,
+  body .container > form #smart-green .control,
+  body .ui-dialog .ui-dialog-content .smart-green .control,
+  body .container .ui-dialog-content .smart-green .control,
+  body .ui-dialog > form .smart-green .control,
+  body .container > form .smart-green .control {
+    margin-left: 5%;
+  }
+}
+body .ui-dialog .ui-dialog-content .required,
+body .container .ui-dialog-content .required,
+body .ui-dialog > form .required,
+body .container > form .required {
+  margin-top: 5px;
+}
+body .ui-dialog .ui-dialog-buttonpane,
+body .container .ui-dialog-buttonpane {
+  border: none;
+  margin-top: 0;
+  padding: 0;
+  /*&:before{
+                      content:"* Required"; 
+                      margin-left:0px;
+                      color:red;                  
+                      span{
+                            content:"*";
+                            color:red; 
+                      }
+                }*/
+}
+body .ui-dialog .ui-dialog-buttonpane .ui-dialog-buttonset,
+body .container .ui-dialog-buttonpane .ui-dialog-buttonset {
+  margin-left: 43%;
+}
+body .ui-dialog .ui-dialog-buttonpane #ui-dialog-buttonset-id,
+body .container .ui-dialog-buttonpane #ui-dialog-buttonset-id {
+  margin-left: 20px;
+}
+body div[aria-describedby="dialogboxForMessage"] .ui-dialog-buttonset {
+  margin-left: 0 !important;
+  width: 100%;
+  text-align: center;
+}
+body .container {
+  margin-top: 5px;
+}
+body .position-top-right .ui-dialog-buttonpane .ui-dialog-buttonset {
+  float: right;
+  position: absolute;
+  top: 47px;
+  margin-left: 60% !important;
+}
+body .position-bottom-right .ui-dialog-buttonpane .ui-dialog-buttonset {
+  float: right;
+  align-items: flex-end;
+  top: 47px;
+}
+body .position-bottom-centre .ui-dialog-buttonpane .ui-dialog-buttonset {
+  float: none;
+  align-items: center;
+  top: 47px;
+}
+body input[type=button],
+body button[type=button] {
+  min-width: 75px;
+  max-width: 150px;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: bold;
+  font-style: normal;
+  font-family: Arial;
+  border: none;
+  padding: 5px 5px;
+  height: auto !important;
+}
+body input[type=button]:enabled,
+body button[type=button]:enabled {
+  background-color: #999999 !important;
+  cursor: pointer !important;
+  color: #ffffff !important;
+  margin-left: 10px;
+}
+body input[type=button]:enabled:hover,
+body button[type=button]:enabled:hover {
+  background-color: #666666 !important;
+}
+body input[type=button]:disabled,
+body button[type=button]:disabled {
+  cursor: default !important;
+  color: #bbbbbb !important;
+}
+body .marginborder {
+  margin: 10px 0;
+  padding: 10px 5px 6px 35px;
+  border: 1px solid;
+}
+body .flash {
+  border: 1px solid;
+  margin: 10px 0px;
+  padding: 15px 10px 15px 50px;
+  background-repeat: no-repeat;
+  background-position: 10px center;
+}
+body .flash-success {
+  color: #4f8a10;
+  background: url(../Images/General/success.png) #dff2bf left center no-repeat;
+  background-size: 28px 28px;
+  margin: 10px 0;
+  padding: 10px 5px 6px 35px;
+  border: 1px solid;
+}
+body .flash-info {
+  color: #00529b;
+  background: url(../images/General/notice.png) #bde5f8 left center no-repeat;
+  background-size: 28px 28px;
+  margin: 10px 0;
+  padding: 10px 5px 6px 35px;
+  border: 1px solid;
+}
+body .flash-warning {
+  color: #9f6000;
+  background: url(../images/General/warning.png) #feefb3 left center no-repeat;
+  background-size: 28px 28px;
+  margin: 10px 0;
+  padding: 10px 5px 6px 35px;
+  border: 1px solid;
+}
+body .flash-error {
+  color: #d8000c;
+  background: url(../Images/General/error.png) #ffbaba left center no-repeat;
+  background-size: 28px 28px;
+  margin: 10px 0;
+  padding: 10px 5px 6px 35px;
+  border: 1px solid;
+}
+body .flash-right {
+  float: left;
+  width: 5%;
+  margin-left: 95%;
+  background: url(../images/General/close.png) transparent right no-repeat;
+}
+body .flash-left {
+  float: left;
+  width: 95%;
+}
+body .flash-custom {
+  color: #ccffff;
+  border: 1px solid;
+  margin: 10px 0;
+  padding: 15px 10px 15px 50px;
+  background: url(../Images/General/custom.png) #999999 right center no-repeat;
+}
+body .flash-messages div {
+  font-family: Arial;
+}
+body .close {
+  margin-left: 97%;
+  cursor: pointer;
+  float: none;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1;
+  color: #000000;
+  text-shadow: 0 1px 0 #ffffff;
+  filter: alpha(opacity=20);
+  opacity: .2;
+}
+body #DivMessage,
+body .flash-message-container,
+body .FlashDiv {
+  position: absolute;
+  width: 100%;
+  top: 0;
+}
+body .help-dialog object {
+  width: 100%;
+  height: 100%;
+}
+body #dvMessageBox {
+  text-align: center;
+  max-width: 500px;
+  white-space: pre-wrap;
+  overflow: hidden;
+  font-family: Arial;
+  /*font-size: 14px;*/
+   font-size: 10pt;
+  color: #333333;
+}
+body .addltext {
+  padding-top: 0;
+  margin-left: 0;
+  min-width: 35%;
+  max-width: 250px;
+  float: left;
+  height: auto;
+  top: 0;
+  text-align: left;
+  -ms-word-wrap: break-word;
+  word-wrap: break-word;
+  color: #000000;
+  font-family: Arial;
+  font-size: 13px;
+  white-space: nowrap;
+  overflow: hidden;
+  -ms-text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  margin-right: 0;
+  margin-top: 0;
+}
+body .addltext > div {
+  max-width: 150px;
+  white-space: normal;
+  overflow: hidden;
+  font-family: Arial;
+  font-size: 14px;
+  color: #333333;
+}
+body .addlcontrol {
+  margin-right: 5%;
+  min-width: 50%;
+  max-width: 305px;
+  max-height: 250px;
+  float: left;
+  height: 40px;
+  margin-top: 0;
+  top: 5px;
+}
+body .addlcontrol input[type="text"],
+body .addlcontrol input[type="number"],
+body .addlcontrol select,
+body .addlcontrol textarea,
+body .addlcontrol input[type="password"] {
+  width: 305px;
+  background-color: #e7e7e7;
+  border: 1px solid #bbbbbb;
+}
+body .addlcontrol input[type="text"] option,
+body .addlcontrol input[type="number"] option,
+body .addlcontrol select option,
+body .addlcontrol textarea option,
+body .addlcontrol input[type="password"] option {
+  width: 305px;
+}
+body .addlcontrol select:focus {
+  width: 305px;
+}
+body .addlcontrol input[type="text"],
+body .addlcontrol input[type="number"],
+body .addlcontrol select,
+body .addlcontrol input[type="password"] {
+  height: 25px;
+}
+body .addlcontrol textarea {
+  height: 85px;
+  max-height: 90px;
+  max-width: 305px;
+}
+body .addlcontrol input[type="radio"] {
+  display: inline;
+}
+body .addlcontrol input[type="radio"] + label {
+  color: #000000;
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+}
+body .addlcontrol input[type="radio"] + label span {
+  display: inline-block;
+  width: 13px;
+  height: 13px;
+  margin: -1px 4px 0 0;
+  vertical-align: middle;
+  cursor: pointer;
+  -moz-border-radius: 100%;
+  border-radius: 100%;
+  background-color: #d8d4d4;
+}
+/*To differentiate all disabled and readonly fields*/
+input[readonly]:not([type="checkbox"]):not([type="radio"]):not([showdisabled]),
+input[disabled]:not([type="checkbox"]):not([type="radio"]):not([showdisabled]),
+select[disabled]:not([type="checkbox"]):not([type="radio"]):not([showdisabled]),
+select[readonly]:not([type="checkbox"]):not([type="radio"]):not([showdisabled]) {
+  border-color: white !important;
+  background-color: white !important;
+  font-weight: bold !important;
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+}
+select[disabled],
+select[readonly] {
+  /*For IE only*/
+}
+select[disabled]::-ms-expand,
+select[readonly]::-ms-expand {
+  display: none;
+}
+.date-picker-calendar {
+  display: inline-block;
+  width: 18px;
+  background-repeat: no-repeat;
+  background-image: url('../Images/General/Calendar_scheduleHS.png');
+  height: 18px;
+  margin-left: 5px;
+  vertical-align: middle;
+}
+.application-name {
+  float: left;
+  margin-top: 2px;
+  margin-left: 45%;
+  position: absolute;
+}
+/*Document Sliding Advanced Search */
+.sliding-search {
+  position: absolute;
+  width: 100%;
+  top: 42px;
+  z-index: 99;
+  background-color: white;
+  padding: 0;
+  -webkit-transition: height 1s;
+  /* Safari */
+  -moz-transition: height 1s;
+  -o-transition: height 1s;
+  transition: height 1s;
+  height: 0;
+  overflow: visible;
+}
+.sliding-search form {
+  overflow-y: hidden;
+}
+.sliding-search #smart-green {
+  margin-top: 20px;
+  height: auto !important;
+  width: 100%;
+  margin-top: 10px;
+}
+.sliding-search #smart-green .field-container {
+  width: 48%;
+  float: left;
+  height: 60px;
+}
+.sliding-search #smart-green .field-container:nth-child(even) {
+  margin-left: 10px;
+  width: calc(50% - 10px);
+}
+.sliding-search #smart-green .field-container .addltext {
+  width: 40%;
+  margin: 0;
+}
+.sliding-search #smart-green .field-container .addlcontrol {
+  width: 60%;
+  margin: 0;
+}
+.sliding-search #smart-green .field-container .addlcontrol div select[name="ddlCompareDate"],
+.sliding-search #smart-green .field-container .addlcontrol div select[name="ddlComparetxt"] {
+  width: 40%;
+}
+.sliding-search #smart-green .field-container .addlcontrol div input[name="txtBoxDate"],
+.sliding-search #smart-green .field-container .addlcontrol div input[name="txtBoxDateTime"],
+.sliding-search #smart-green .field-container .addlcontrol div input[name="txtBoxInteger"],
+.sliding-search #smart-green .field-container .addlcontrol div input[name="txtBoxNumber"] {
+  width: 58% !important;
+}
+.sliding-search #smart-green .field-container .addlcontrol div input[name="txtBoxDate1"] {
+  width: 58% !important;
+  float: right;
+}
+.sliding-search #smart-green .field-container .addlcontrol div input[name="txtBoxDateTime1"] {
+  width: 58% !important;
+  float: right;
+}
+.sliding-search #smart-green .field-container .addlcontrol div input {
+  width: 100% !important;
+}
+.sliding-search.show {
+  height: 300px;
+  padding: 10px;
+  border: 1px solid black;
+  z-index: 101;
+}
+.sliding-search.show::after {
+  content: '';
+  position: absolute;
+  left: 96%;
+  top: -10px;
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid #FFFFFF;
+  clear: both;
+}
+.menu-search-container #wijGridView1Menu li #wijGridView1SlidingSearch img,
+.menu-search-container #wijGridView1Menu li #wijGridView1ShowAll img {
+  background-color: #990000;
+}
+/*Document Sliding Advanced Search */
+/*# sourceMappingURL=LayoutStyle.css.map */

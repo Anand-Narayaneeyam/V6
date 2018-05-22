@@ -1,0 +1,78 @@
+﻿{
+    "data": [
+        {
+            "Id": 1,
+            "Select All": true,
+            "Site": "Aberdeen",
+            "Building": "Hawaii Towers",
+            "Floor": "01 - Architectural"
+        },
+        {
+            "Id": 2,
+            "Select All": true,
+            "Site": "Aberdeen",
+            "Building": "Hawaii Towers",
+            "Floor": " 01 - Telecommunications"
+        },
+        {
+            "Id": 3,
+            "Select All": true,
+            "Site": "Aberdeen",
+            "Building": "Miami Towers",
+            "Floor": "01 - Electrical"
+        },
+        {
+            "Id": 4,
+            "Select All": true,
+            "Site": "Aberdeen",
+            "Building": "Miami Towers",
+            "Floor": "01 - Fire Protection "
+        },
+        {
+            "Id": 5,
+            "Select All": true,
+            "Site": "Aberdeen",
+            "Building": "Miami Towers",
+            "Floor": "01 - Plumbing"
+        },
+        {
+            "Id": 6,
+            "Select All": true,
+            "Site": "Arlington",
+            "Building": "Brown Building",
+            "Floor": "1 - Architectural"
+        },
+        {
+            "Id": 7,
+            "Select All": true,
+            "Site": "Arlington",
+            "Building": "Brown Building",
+            "Floor": "1 - Electrical"
+        },
+        {
+            "Id": 8,
+            "Select All": true,
+            "Site": "Arlington",
+            "Building": "Columbus Building",
+            "Floor": "1 - Architectural"
+        },
+        {
+            "Id": 9,
+            "Select All": true,
+            "Site": "Arlington",
+            "Building": "Hamilton Building",
+            "Floor": "1B - Architectural"
+        },
+        {
+            "Id": 10,
+            "Select All": true,
+            "Site": "Arlington",
+            "Building": "Hamilton Building",
+            "Floor": "1B - Asset"
+        }
+    ],
+    "count": 
+    {
+        "TotalItems": "20"
+    }
+}

@@ -1,0 +1,64 @@
+﻿<style>
+    :host .colorPickerDiv {
+        position: inherit !important;
+    }
+    :host #overlayColorPicker {
+        width : 50% !important; 
+    }
+   
+    .employeeTab .navbar li {
+        width: 100px !important;
+    }
+    
+    .attachment {
+        width: 750px;
+        display: block;
+    }
+
+    @media only screen and (min-device-width: 320px) and (max-device-width: 813px) and (orientation: portrait) {
+        .attachment {
+            width: 100%;
+        }
+    }
+
+    @media only screen and (min-device-width: 320px) and (max-device-width: 812px) and (orientation: landscape) {
+        .attachment {
+            width: 100%;
+        }
+    }
+
+
+</style>
+<div>
+    <submenu>
+        <sub-menu [source]=menuData [menuCard]=true [count]=gridcount [menuIds]=enableMenu (onSubMenuChange)="onSubMenuChange($event);"> </sub-menu>
+    </submenu>
+    <split-view [splitviewObject]="splitviewInput"style="height: calc(100% - 35px);" [pageTitle]="pageTitle">
+        <primary-view>
+            <div [ngClass]="totalItems > itemsPerPage ? 'pagewithPaging':'pagewithoutPaging'">
+            <gridView style="display:block;" [(dataSource)]="itemsSource" [properties]="inputItems" [columns]="fieldObject" [refreshgrid]="refreshgrid"
+                      (onSorting)="onSort($event)" (onRowAdd)="inlineAdd($event)" (onRowUpdate)="inlineEdit($event)" (onRowDelete)="inlineDelete($event)"></gridView>
+            </div>
+            <paging [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="pageChanged($event);"></paging>
+
+        </primary-view>
+        <secondary-view *ngIf="action == 'add' || action == 'edit'">
+            <objectclasses-addedit [objectCategoryId]="objectCategoryId" [moduleId]="moduleId" [fieldDetailsAddEdit]="fieldDetailsAddEdit" 
+                                   [action]="action" [btnName]="btnName" (submitSuccess)="OnSuccessfulSubmit($event)" [selectedId]="inputItems.selectedIds[0]" [messages]="messages">
+            </objectclasses-addedit>
+
+        </secondary-view>
+        <secondary-view *ngIf="action == 'attachments'">
+            <attachments *ngIf="splitviewInput.showSecondaryView == true" [attachmentCategoryId]="6" [moduleId]="" [baseEntityId]="inputItems.selectedIds[0]" (attachmentSuccess)="attachmentSuccess($event)" class="attachment"></attachments>
+        </secondary-view>
+</split-view>
+    <slide [width]="slidewidth" [position]="position" [show]="showSlide" (closeDialog)="closeSlideDialog($event)">
+        <div>
+            <div> {{deleteConfrmtnMsg}} </div>
+            <div style="width:100%">
+                <button  class="Savebutton "type="button" (click)="okDelete($event)">Yes</button>
+                <button  class="Savebutton "type="button" (click)="cancelClick($event)">No</button>
+            </div>
+        </div>
+    </slide>
+</div>

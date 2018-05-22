@@ -1,0 +1,28 @@
+﻿{
+  "data": {
+    "FieldId": 1,
+    "FieldName": "Style Name",
+    "FieldType": 5,
+    "FieldValue": "0",
+    "IsMultiValued": true,
+    "HasRelation": false,
+    "MultiValuedDetails": {
+      "LookupValues": [
+        {
+          "Id": 1,
+          "Value": "AutoDesk-Color"
+        },
+        {
+          "Id": 2,
+          "Value": "AutoDesk-MONO"
+        }
+      ],
+      "PopupComponentName": null
+    },
+    "IsMandatory": true,
+    "IsVisible": true,
+    "IsHiddenLabel": false,
+    "ReadOnlyMode": false,
+    "NotificationType": ""
+  }
+}

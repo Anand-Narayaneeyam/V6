@@ -1,0 +1,61 @@
+﻿{ 
+    "data": { 
+        "FieldId": 1, 
+        "FieldName": "", 
+        "FieldType": 10,
+        "FieldValue": "",
+        "MultiFieldValues": [ ],
+        "IsMandatory": false,
+        "IsVisible": true, 
+        "IsHiddenLabel":  false,
+        "IsMultiValued": true, 
+        "ReadOnlyMode": false, 
+        "MultiValuedDetails": { 
+            "LookupValues": [ 
+                { 
+                    "Id": 1, 
+                    "Value": "Patrick, John"
+                }, 
+                { 
+                    "Id": 2, 
+                    "Value": "Admin, Sys" 
+                }, 
+                { 
+                    "Id": 3, 
+                    "Value": "User1, SAG"
+                }, 
+                { 
+                    "Id": 4, 
+                    "Value": "John, Marcus"
+                },
+                {
+                    "Id": 5,
+                    "Value": "Mathew, Philip"
+                },
+                 { 
+                    "Id": 6, 
+                    "Value": "John, Hayden" 
+                }, 
+                { 
+                    "Id": 7, 
+                    "Value": "Jessica, Brown" 
+                }, 
+                { 
+                    "Id": 8, 
+                    "Value": "Stephany, White"
+                }, 
+                { 
+                    "Id": 9, 
+                    "Value": "James, Sarah"
+                }, 
+                { 
+                    "Id": 10, 
+                    "Value": "Davis, Eric" 
+                } 
+            ], 
+            "PopupComponentName": null 
+        }, 
+        "NotificationType": "" 
+    } 
+} 
+

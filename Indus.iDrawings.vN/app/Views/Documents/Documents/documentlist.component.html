@@ -1,0 +1,63 @@
+﻿
+<page [pagetitle]="pagePath" [isEnableNotification]="isNotification" >
+    <content>
+        <split-view [splitviewObject]="splitviewInput" [pageTitle]="pageTitle" (onSecondaryClose)="onSplitViewClose($event)" id="splitView">
+            <primary-view>
+                <submenu>
+                    <sub-menu [source]=menuData [count]=totalItems [menuIds]=enableMenu (onSubMenuChange)="onSubMenuChange($event);"> </sub-menu>
+                </submenu>
+                <div *ngIf="!hideSerach" class="search-container">
+                    <search *ngIf="fieldObject" [isloadbit]=true [advancelookupSaveAs]="LoadSearchAdvanceSearch" [disable]="disable" [searchtype]="'Grid'" [keyWordLookup]=keyWordLookup [KeywordFields]=KeywordFieldObject [advancesearch]=true [dataKey]="dataKey" [Key]=2 [datasource]=advancelookup  (loadAdvanceSearch)="advanceSearch()" (onloadSearch)="onloadSearch($event)" (Submit)="Submit($event)" (SaveAs)="SaveAs($event)" (Delete)="Delete($event)" (Clear)="Clear($event)"></search>
+                </div>
+                <!--<confirmation (onConfirm)="okDelete($event)"></confirmation>-->
+                <div style="height: calc(100% - 35px);">
+                    <div [ngClass]="totalItems > itemsPerPage ? 'pagewithPaging':'pagewithoutPaging'">
+                        <gridView [ngClass]="totalItems > itemsPerPage ? 'pagewithPaging':'pagewithoutPaging'" style="display:block;" [(dataSource)]="itemsSource" [properties]="inputItems" [columns]="fieldObject" [refreshgrid]="refreshgrid" (onSorting)="onSort($event)" (onContextMenuOnClick)="onContextMenuOnClick($event)"></gridView>
+                        <analytics *ngIf="showAnalytics" [properties]="analyticsInput" (closeAnalytics)="closeAnalytics($event)"></analytics>
+                    </div>
+                    <div>
+                        <paging *ngIf="totalItems >itemsPerPage ? 'true' : 'false'" style="height:35px;display:block;" [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="onPageChanged($event);"></paging>
+                    </div>
+                </div>
+               </primary-view>
+
+            <secondary-view *ngIf="action == 'add' || action == 'edit'|| action == 'revise'|| action == 'replace'">
+                <documents-add-edit [selectedId]="inputItems.selectedIds[0]" [fieldDetailsAddEdit]="fieldDetailsAddEdit" [action]="action" [btnName]="btnName" (submitSuccess)="OnSuccessfulSubmit($event)"></documents-add-edit>
+            </secondary-view>
+            <secondary-view *ngIf="action == 'multipleedit'">
+                <multiple-Edit [datasource]="multipleEditFieldDetails" [applicationFormId]="documentAddEditformId" [moduleId]="4" (onUpdate)="onMultipleEditUpdate($event)"> </multiple-Edit>
+            </secondary-view>
+            <secondary-view *ngIf="action == 'displaysettings'">
+                <display-setting [IsGrid]="true" [DisplaySettingCategoryId]="7" [dragEnable]="true" [AdditionalDataFieldCategoryId]="5" (emitdisplaySetting)="getUpdatedDisplaySettings($event)"></display-setting>
+            </secondary-view>
+            <secondary-view *ngIf="action == 'Revisions'">
+                <ListRevisions  [documentId]="DocumentId"></ListRevisions>
+            </secondary-view>
+            <secondary-view *ngIf="action == 'checkout'">
+                <send-for-approval [moduleid]="4" [selectedid]="selectedId" [workflowcategoryId]="6" [entityWorkflowCategoryId]="7" [rowdata]="inputItems.rowData" (submitSuccess)="OnSuccessfulSubmit($event)"></send-for-approval>
+            </secondary-view>
+            <secondary-view *ngIf="action == 'sendforapproval'">
+                <send-for-approval [moduleid]="4" [selectedid]="selectedId" [workflowcategoryId]="6" [entityWorkflowCategoryId]="19" [rowdata]="inputItems.rowData" (submitSuccess)="OnSuccessfulSubmit($event)"></send-for-approval>
+            </secondary-view>
+
+        </split-view>
+        <slide [width]="200" [position]="position" [type]="dialog" [show]="showSlide" (closeDialog)="closeSlideDialog($event)">
+            <div>
+                <div tabindex="0">
+                    {{message}}
+                </div>
+                <div>
+                    <div style="width:100%">
+                        <button class="Savebutton " type="button" (click)="okClick($event)">Yes</button>
+                        <button class="Savebutton " type="button" (click)="cancelClick($event)">No</button>
+                    </div>
+                </div>
+            </div>
+        </slide>
+    </content>
+</page>
+<style>
+    #splitView .Secondaryviewheight {
+        overflow-y: hidden;
+    }
+</style>

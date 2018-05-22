@@ -1,0 +1,13 @@
+﻿{
+
+  "submit": [
+    {
+      "type": "Success",
+      "message": "added"
+    },
+    {
+      "type": "Error",
+      "message": "failed"
+    }
+  ]
+}

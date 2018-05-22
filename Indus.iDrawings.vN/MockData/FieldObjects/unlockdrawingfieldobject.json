@@ -1,0 +1,87 @@
+﻿{
+    "data": [
+       
+        {
+            "FieldId": 2,
+            "FieldName": "DrawingId",
+            "FieldType": 1,
+            "IsVisible": false,
+            "IsDisabled": true,
+            "ReadOnlyMode": true,
+            "IsMandatory": false,
+            "IsHiddenLabel": true,
+            "NotificationType": "return"
+        },
+        {
+            "FieldId": 3,
+            "FieldName": "Site",
+            "FieldType": 1,
+            "IsVisible": false,
+            "IsDisabled": true,
+            "ReadOnlyMode": true,
+            "IsMandatory": false,
+            "IsHiddenLabel": true,
+            "NotificationType": "return"
+        },
+        {
+            "FieldId": 4,
+            "FieldName": "Building",
+            "FieldType": 1,
+            "IsVisible": false,
+            "IsDisabled": true,
+            "ReadOnlyMode": true,
+            "IsMandatory": false,
+            "IsHiddenLabel": true,
+            "NotificationType": "return"
+        },
+      {
+        "FieldId": 5,
+        "FieldName": "Floor",
+        "FieldType": 1,
+        "IsVisible": true,
+        "IsDisabled": true,
+        "ReadOnlyMode": true,
+        "IsMandatory": false,
+        "IsHiddenLabel": true,
+        "NotificationType": "return",
+        "Width": "*"
+      },
+      {
+        "FieldId": 6,
+        "FieldName": "Category",
+        "FieldType": 1,
+        "IsVisible": true,
+        "IsDisabled": true,
+        "ReadOnlyMode": true,
+        "IsMandatory": false,
+        "IsHiddenLabel": true,
+        "NotificationType": "return",
+        "Width": "*"
+      },
+        {
+            "FieldId": 6,
+            "FieldName": "File Name",
+            "FieldType": 1,
+            "IsVisible": true,
+            "IsDisabled": true,
+            "ReadOnlyMode": true,
+            "IsMandatory": false,
+            "IsHiddenLabel": true,
+            "NotificationType": "return",
+            "Width": "*"
+        },
+        {
+            "FieldId": 6,
+            "FieldName": "File Size",
+            "FieldType": 1,
+            "IsVisible": true,
+            "IsDisabled": true,
+            "ReadOnlyMode": true,
+            "IsMandatory": false,
+            "IsHiddenLabel": true,
+            "NotificationType": "return",
+            "Width": "*"
+        }
+    ]
+}
+

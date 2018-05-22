@@ -1,0 +1,211 @@
+﻿<style type="text/css">
+    .row {
+        padding: 5px 20px;
+        background-color: #f3f3f3;
+        border: 1px solid #f3f3f3;
+        border-radius: 8px;
+        margin: 7.5px 0px !important;
+    }
+</style>
+
+<split-view [splitviewObject]="splitviewInput" [pageTitle]="pageTitle">
+    <primary-view>
+        <!--<div *ngIf="linkArray != undefined" style="height: calc(100% - 32px);">
+            <DynamicFields id="reviewPMWorkOrder" [dataSource]="fieldDetailsAdd" (submitFieldObject)="onSubmitData($event)" [btnName]="btnName" [dataKey]="dataKey" [showDateTimeOnLoad]="true" (fieldChange)="onDropDownChange($event.ddlRelationShipEvent.ChildFieldObject)"
+                            (chkChange)="onCheckBoxClicked($event)" (popupItemEmit)="popupItemEmit($event)"></DynamicFields>
+        </div>
+        <div *ngIf="linkArray == undefined">
+            <DynamicFields id="reviewPMWorkOrder" [dataSource]="fieldDetailsAdd" (submitFieldObject)="onSubmitData($event)" [btnName]="btnName" [dataKey]="dataKey" [showDateTimeOnLoad]="true" (fieldChange)="onDropDownChange($event.ddlRelationShipEvent.ChildFieldObject)"
+                            (chkChange)="onCheckBoxClicked($event)" (popupItemEmit)="popupItemEmit($event)"></DynamicFields>
+        </div>-->
+
+        <div *ngIf="fieldDetailsAdd != undefined">
+            <form #form="ngForm" id="form" (ngSubmit)="onSubmit(form,form.value)" style="overflow:auto;height:100%;">
+                <div style="display:flex; flex-direction: column;">
+                    <div style="order: 2;">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <StringTextBox id="StringTextBox" [SetAlignment]="horizontal" [labelwidth]="115" [style.display]="showComponent(fieldDetailsAdd[1].FieldLabel,fieldDetailsAdd[1].IsVisible)" name="StringTextBox" [validationData]='validationData' [fieldObject]=fieldDetailsAdd[1] (txtBoxChange)="txtBoxChanges($event)" [inttabIndex]="i" (keyUpemit)="emitKeyUp($event)" [readonlymode]=true></StringTextBox>
+                            </div>
+                            <div class="col-md-4">
+                                <StringTextBox id="StringTextBox" [SetAlignment]="horizontal" [labelwidth]="115" [style.display]="showComponent(fieldDetailsAdd[2].FieldLabel,fieldDetailsAdd[2].IsVisible)" name="StringTextBox" [validationData]='validationData' [fieldObject]=fieldDetailsAdd[2] (txtBoxChange)="txtBoxChanges($event)" [inttabIndex]="i" (keyUpemit)="emitKeyUp($event)" [readonlymode]=true></StringTextBox>
+                            </div>
+                            <div class="col-md-4">
+                                <StringTextBox id="StringTextBox" [SetAlignment]="horizontal" [labelwidth]="115" [style.display]="showComponent(fieldDetailsAdd[19].FieldLabel,fieldDetailsAdd[19].IsVisible)" name="StringTextBox" [validationData]='validationData' [fieldObject]=fieldDetailsAdd[19] (txtBoxChange)="txtBoxChanges($event)" [inttabIndex]="i" (keyUpemit)="emitKeyUp($event)" [readonlymode]=true></StringTextBox>
+                            </div>
+                            <div class="col-md-6">
+                                <DropDownListComponent [labelWidth]="145" [SetAlignment]="selectActionInline" id="DropDownListComponent" [style.display]="showComponent(fieldDetailsAdd[3].FieldLabel,fieldDetailsAdd[3].IsVisible)" name="DropDownListComponent" [validationData]='validationData' [fieldObject]=fieldDetailsAdd[3] (ddlChange)="onDropDownChange($event.ChildFieldObject)" (popupClick)="popupItemEmit($event)"></DropDownListComponent>
+                                <StringTextBox id="StringTextBox" [SetAlignment]="horizontal" [labelwidth]="145" [style.display]="showComponent(fieldDetailsAdd[5].FieldLabel,fieldDetailsAdd[5].IsVisible)" name="StringTextBox" [fieldObject]=fieldDetailsAdd[5] [validationData]='validationData' (txtBoxChange)="txtBoxChanges($event)" [inttabIndex]="i" (keyUpemit)="emitKeyUp($event)" style="margin-top:10px;"></StringTextBox>
+                            </div>
+                            <div class="col-md-6">
+                                <ListBoxComponent id="ListBoxComponent" [style.display]="showComponent(fieldDetailsAdd[4].FieldLabel,fieldDetailsAdd[4].IsVisible)" name="ListBoxComponent" [validationData]='validationData' [fieldObject]=fieldDetailsAdd[4]></ListBoxComponent>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12" style="padding-top:5px;">
+                                <TextAreaComponent id="TextAreaComponent" [SetAlignment]="selectActionInline" [labelwidth]="200" [style.display]="showComponent(fieldDetailsAdd[6].FieldLabel,fieldDetailsAdd[6].IsVisible)" name="TextAreaComponent" [validationData]='validationData' [fieldObject]=fieldDetailsAdd[6]></TextAreaComponent>
+                            </div>
+
+                            <div class="col-md-12" style="padding-top:5px;">
+                                <TextAreaComponent id="TextAreaComponent" [SetAlignment]="selectActionInline" [labelwidth]="200" [style.display]="showComponent(fieldDetailsAdd[7].FieldLabel,fieldDetailsAdd[7].IsVisible)" name="TextAreaComponent" [validationData]='validationData' [fieldObject]=fieldDetailsAdd[7]></TextAreaComponent>
+                            </div>
+
+                            <div class="col-md-12" style="padding-top:5px;">
+                                <TextAreaComponent id="TextAreaComponent" [SetAlignment]="selectActionInline" [labelwidth]="200" [style.display]="showComponent(fieldDetailsAdd[14].FieldLabel,fieldDetailsAdd[14].IsVisible)" name="TextAreaComponent" [validationData]='validationData' [fieldObject]=fieldDetailsAdd[14]></TextAreaComponent>
+                            </div>
+
+                        </div>
+
+                        <div class="row" *ngIf="fieldDetailsAdd[8].IsVisible">
+                            <div class="col-md-6" style="padding-top:5px;">
+                                <CheckBoxComponent id="CheckBoxComponent" [style.display]="showComponent(fieldDetailsAdd[8].FieldLabel,fieldDetailsAdd[8].IsVisible)" name="CheckBoxComponent" [validationData]='validationData' [fieldObject]=fieldDetailsAdd[8] (chkBoxClick)="chkBoxChange($event)"></CheckBoxComponent>
+                            </div>
+                            <div class="col-md-6" style="padding-top:5px;">
+                                <DateComponent id="Datecomponent" [labelwidth]="125" [SetAlignment]="horizontal" [style.display]="showComponent(fieldDetailsAdd[11].FieldLabel,fieldDetailsAdd[11].IsVisible)" name="DateTimeComponent" [validationData]='validationData' [fieldObject]=fieldDetailsAdd[11] [readonlymode]=true></DateComponent>
+                            </div>
+                            <div class="col-md-6" style="padding-top:5px;">
+                                <DropDownListComponent [SetAlignment]="'horizontal'" [labelWidth]="125" id="DropDownListComponent" [style.display]="showComponent(fieldDetailsAdd[9].FieldLabel,fieldDetailsAdd[9].IsVisible)" name="DropDownListComponent" [validationData]='validationData' [fieldObject]=fieldDetailsAdd[9] (ddlChange)="onDropDownChange($event.ChildFieldObject)" (popupClick)="popupItemEmit($event)"></DropDownListComponent>
+                            </div>
+                            <div class="col-md-6" style="padding-top:5px;">
+                                <DateTimeComponent [labelwidth]="125" [SetAlignment]="'horizontal'" id="DateTimeComponent" [style.display]="showComponent(fieldDetailsAdd[10].FieldLabel,fieldDetailsAdd[10].IsVisible)" name="DateTimeComponent" [validationData]='validationData' [showDateTimeOnLoad]="true" [fieldObject]=fieldDetailsAdd[10]></DateTimeComponent>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <DateTimeComponent id="DateTimeComponent" [style.display]="showComponent(fieldDetailsAdd[12].FieldLabel,fieldDetailsAdd[12].IsVisible)" name="DateTimeComponent" [validationData]='validationData' [showDateTimeOnLoad]="true" [fieldObject]=fieldDetailsAdd[12]></DateTimeComponent>
+                                <DateTimeComponent id="DateTimeComponent" [style.display]="showComponent(fieldDetailsAdd[13].FieldLabel,fieldDetailsAdd[13].IsVisible)" name="DateTimeComponent" [validationData]='validationData' [showDateTimeOnLoad]="true" [fieldObject]=fieldDetailsAdd[13]></DateTimeComponent>
+                                <StringTextBox id="StringTextBox" [style.display]="showComponent(fieldDetailsAdd[15].FieldLabel,fieldDetailsAdd[15].IsVisible)" name="StringTextBox" [validationData]='validationData' [fieldObject]=fieldDetailsAdd[15] (txtBoxChange)="txtBoxChanges($event)" (keyUpemit)="emitKeyUp($event)"></StringTextBox>
+                                <StringTextBox id="StringTextBox" [style.display]="showComponent(fieldDetailsAdd[16].FieldLabel,fieldDetailsAdd[16].IsVisible)" name="StringTextBox" [validationData]='validationData' [fieldObject]=fieldDetailsAdd[16] (txtBoxChange)="txtBoxChanges($event)" (keyUpemit)="emitKeyUp($event)"></StringTextBox>
+                                <StringTextBox id="StringTextBox" [style.display]="showComponent(fieldDetailsAdd[17].FieldLabel,fieldDetailsAdd[17].IsVisible)" name="StringTextBox" [validationData]='validationData' [fieldObject]=fieldDetailsAdd[17] (txtBoxChange)="txtBoxChanges($event)" (keyUpemit)="emitKeyUp($event)"></StringTextBox>
+                                <StringTextBox id="StringTextBox" [style.display]="showComponent(fieldDetailsAdd[18].FieldLabel,fieldDetailsAdd[18].IsVisible)" name="StringTextBox" [validationData]='validationData' [fieldObject]=fieldDetailsAdd[18] (txtBoxChange)="txtBoxChanges($event)" (keyUpemit)="emitKeyUp($event)"></StringTextBox>
+                            </div>
+                            <div class="col-md-6">
+                                <DropDownListComponent id="DropDownListComponent" [style.display]="showComponent(fieldDetailsAdd[20].FieldLabel,fieldDetailsAdd[20].IsVisible)" name="DropDownListComponent" [validationData]='validationData' [fieldObject]=fieldDetailsAdd[20] (ddlChange)="onDropDownChange($event.ChildFieldObject)" (popupClick)="popupItemEmit($event)"></DropDownListComponent>
+                                <DropDownListComponent id="DropDownListComponent" [style.display]="showComponent(fieldDetailsAdd[21].FieldLabel,fieldDetailsAdd[21].IsVisible)" name="DropDownListComponent" [validationData]='validationData' [fieldObject]=fieldDetailsAdd[21] (ddlChange)="onDropDownChange($event.ChildFieldObject)" (popupClick)="popupItemEmit($event)"></DropDownListComponent>
+                                <DropDownListComponent id="DropDownListComponent" [style.display]="showComponent(fieldDetailsAdd[22].FieldLabel,fieldDetailsAdd[22].IsVisible)" name="DropDownListComponent" [validationData]='validationData' [fieldObject]=fieldDetailsAdd[22] (ddlChange)="onDropDownChange($event.ChildFieldObject)" (popupClick)="popupItemEmit($event)"></DropDownListComponent>
+                                <DropDownListComponent id="DropDownListComponent" [style.display]="showComponent(fieldDetailsAdd[23].FieldLabel,fieldDetailsAdd[23].IsVisible)" name="DropDownListComponent" [validationData]='validationData' [fieldObject]=fieldDetailsAdd[23] (ddlChange)="onDropDownChange($event.ChildFieldObject)" (popupClick)="popupItemEmit($event)"></DropDownListComponent>
+                            </div>
+                        </div>
+                        <!--for space related fields-->
+                        <div class="row">
+
+                            <div *ngIf="fieldDetailsAdd[42] && fieldDetailsAdd[42].IsVisible" class="col-md-6">
+                                <DropDownListComponent *ngIf="fieldDetailsAdd[42]" id="DropDownListComponent" [style.display]="showComponent(fieldDetailsAdd[42].FieldLabel,fieldDetailsAdd[42].IsVisible)" name="DropDownListComponent" [validationData]='validationData' [fieldObject]=fieldDetailsAdd[42] (ddlChange)="onDropDownChange($event.ChildFieldObject)" (popupClick)="popupItemEmit($event)"></DropDownListComponent>
+                                <DropDownListComponent *ngIf="fieldDetailsAdd[43]" id="DropDownListComponent" [style.display]="showComponent(fieldDetailsAdd[43].FieldLabel,fieldDetailsAdd[43].IsVisible)" name="DropDownListComponent" [validationData]='validationData' [fieldObject]=fieldDetailsAdd[43] (ddlChange)="onDropDownChange($event.ChildFieldObject)" (popupClick)="popupItemEmit($event)"></DropDownListComponent>
+                            </div>
+
+                            <div *ngIf="fieldDetailsAdd[38] && fieldDetailsAdd[38].IsVisible" class="col-md-6">
+                                <DropDownListComponent *ngIf="fieldDetailsAdd[38]" id="DropDownListComponent" [style.display]="showComponent(fieldDetailsAdd[38].FieldLabel,fieldDetailsAdd[38].IsVisible)" name="DropDownListComponent" [validationData]='validationData' [fieldObject]=fieldDetailsAdd[38] (ddlChange)="onDropDownChange($event.ChildFieldObject)" (popupClick)="popupItemEmit($event)"></DropDownListComponent>
+                                <DropDownListComponent *ngIf="fieldDetailsAdd[39]" id="DropDownListComponent" [style.display]="showComponent(fieldDetailsAdd[39].FieldLabel,fieldDetailsAdd[39].IsVisible)" name="DropDownListComponent" [validationData]='validationData' [fieldObject]=fieldDetailsAdd[39] (ddlChange)="onDropDownChange($event.ChildFieldObject)" (popupClick)="popupItemEmit($event)"></DropDownListComponent>
+                                <DropDownListComponent *ngIf="fieldDetailsAdd[40]" id="DropDownListComponent" [style.display]="showComponent(fieldDetailsAdd[40].FieldLabel,fieldDetailsAdd[40].IsVisible)" name="DropDownListComponent" [validationData]='validationData' [fieldObject]=fieldDetailsAdd[40] (ddlChange)="onDropDownChange($event.ChildFieldObject)" (popupClick)="popupItemEmit($event)"></DropDownListComponent>
+                                <DropDownListComponent *ngIf="fieldDetailsAdd[41]" id="DropDownListComponent" [style.display]="showComponent(fieldDetailsAdd[41].FieldLabel,fieldDetailsAdd[41].IsVisible)" name="DropDownListComponent" [validationData]='validationData' [fieldObject]=fieldDetailsAdd[41] (ddlChange)="onDropDownChange($event.ChildFieldObject)" (popupClick)="popupItemEmit($event)"></DropDownListComponent>
+                            </div>
+
+                            <div *ngIf="fieldDetailsAdd[27] && fieldDetailsAdd[27].IsVisible" class="col-md-6">
+                                <DropDownListComponent *ngIf="fieldDetailsAdd[27]" id="DropDownListComponent" [style.display]="showComponent(fieldDetailsAdd[27].FieldLabel,fieldDetailsAdd[27].IsVisible)" name="DropDownListComponent" [validationData]='validationData' [fieldObject]=fieldDetailsAdd[27] (ddlChange)="onDropDownChange($event.ChildFieldObject)" (popupClick)="popupItemEmit($event)"></DropDownListComponent>
+                            </div>
+                            <div *ngIf="fieldDetailsAdd[28] && fieldDetailsAdd[28].IsVisible" class="col-md-6">
+                                <DropDownListComponent *ngIf="fieldDetailsAdd[28]" id="DropDownListComponent" [style.display]="showComponent(fieldDetailsAdd[28].FieldLabel,fieldDetailsAdd[28].IsVisible)" name="DropDownListComponent" [validationData]='validationData' [fieldObject]=fieldDetailsAdd[28] (ddlChange)="onDropDownChange($event.ChildFieldObject)" (popupClick)="popupItemEmit($event)"></DropDownListComponent>
+                            </div>
+                            <div *ngIf="fieldDetailsAdd[29] && fieldDetailsAdd[29].IsVisible" class="col-md-6">
+                                <DropDownListComponent *ngIf="fieldDetailsAdd[29]" id="DropDownListComponent" [style.display]="showComponent(fieldDetailsAdd[29].FieldLabel,fieldDetailsAdd[29].IsVisible)" name="DropDownListComponent" [validationData]='validationData' [fieldObject]=fieldDetailsAdd[29] (ddlChange)="onDropDownChange($event.ChildFieldObject)" (popupClick)="popupItemEmit($event)"></DropDownListComponent>
+                            </div>
+                            <div *ngIf="fieldDetailsAdd[30] && fieldDetailsAdd[30].IsVisible" class="col-md-6">
+                                <DropDownListComponent *ngIf="fieldDetailsAdd[30]" id="DropDownListComponent" [style.display]="showComponent(fieldDetailsAdd[30].FieldLabel,fieldDetailsAdd[30].IsVisible)" name="DropDownListComponent" [validationData]='validationData' [fieldObject]=fieldDetailsAdd[30] (ddlChange)="onDropDownChange($event.ChildFieldObject)" (popupClick)="popupItemEmit($event)"></DropDownListComponent>
+                            </div>
+                            <div *ngIf="fieldDetailsAdd[31] && fieldDetailsAdd[31].IsVisible" class="col-md-6">
+                                <StringTextBox *ngIf="fieldDetailsAdd[31]" id="StringTextBox" [labelwidth]="145" [style.display]="showComponent(fieldDetailsAdd[31].FieldLabel,fieldDetailsAdd[31].IsVisible)" name="StringTextBox" [fieldObject]=fieldDetailsAdd[31] [validationData]='validationData' (txtBoxChange)="txtBoxChanges($event)" [inttabIndex]="i" (keyUpemit)="emitKeyUp($event)" style="margin-top:10px;"></StringTextBox>
+                            </div>
+                            <div *ngIf="fieldDetailsAdd[32] && fieldDetailsAdd[32].IsVisible" class="col-md-6">
+                                <StringTextBox *ngIf="fieldDetailsAdd[32]" id="StringTextBox" [labelwidth]="145" [style.display]="showComponent(fieldDetailsAdd[32].FieldLabel,fieldDetailsAdd[32].IsVisible)" name="StringTextBox" [fieldObject]=fieldDetailsAdd[32] [validationData]='validationData' (txtBoxChange)="txtBoxChanges($event)" [inttabIndex]="i" (keyUpemit)="emitKeyUp($event)" style="margin-top:10px;"></StringTextBox>
+                            </div>
+                            <div *ngIf="fieldDetailsAdd[33] && fieldDetailsAdd[33].IsVisible" class="col-md-6">
+                                <StringTextBox *ngIf="fieldDetailsAdd[33]" id="StringTextBox" [labelwidth]="145" [style.display]="showComponent(fieldDetailsAdd[33].FieldLabel,fieldDetailsAdd[33].IsVisible)" name="StringTextBox" [fieldObject]=fieldDetailsAdd[33] [validationData]='validationData' (txtBoxChange)="txtBoxChanges($event)" [inttabIndex]="i" (keyUpemit)="emitKeyUp($event)" style="margin-top:10px;"></StringTextBox>
+                            </div>
+                            <div *ngIf="fieldDetailsAdd[34] && fieldDetailsAdd[34].IsVisible" class="col-md-6">
+                                <StringTextBox *ngIf="fieldDetailsAdd[34]" id="StringTextBox" [labelwidth]="145" [style.display]="showComponent(fieldDetailsAdd[34].FieldLabel,fieldDetailsAdd[34].IsVisible)" name="StringTextBox" [fieldObject]=fieldDetailsAdd[34] [validationData]='validationData' (txtBoxChange)="txtBoxChanges($event)" [inttabIndex]="i" (keyUpemit)="emitKeyUp($event)" style="margin-top:10px;"></StringTextBox>
+                            </div>
+                            <div *ngIf="fieldDetailsAdd[35] && fieldDetailsAdd[35].IsVisible" class="col-md-6">
+                                <StringTextBox *ngIf="fieldDetailsAdd[35]" id="StringTextBox" [labelwidth]="145" [style.display]="showComponent(fieldDetailsAdd[35].FieldLabel,fieldDetailsAdd[35].IsVisible)" name="StringTextBox" [fieldObject]=fieldDetailsAdd[35] [validationData]='validationData' (txtBoxChange)="txtBoxChanges($event)" [inttabIndex]="i" (keyUpemit)="emitKeyUp($event)" style="margin-top:10px;"></StringTextBox>
+                            </div>
+                            <div *ngIf="fieldDetailsAdd[36] && fieldDetailsAdd[36].IsVisible" class="col-md-6">
+                                <StringTextBox *ngIf="fieldDetailsAdd[36]" id="StringTextBox" [labelwidth]="145" [style.display]="showComponent(fieldDetailsAdd[36].FieldLabel,fieldDetailsAdd[36].IsVisible)" name="StringTextBox" [fieldObject]=fieldDetailsAdd[36] [validationData]='validationData' (txtBoxChange)="txtBoxChanges($event)" [inttabIndex]="i" (keyUpemit)="emitKeyUp($event)" style="margin-top:10px;"></StringTextBox>
+                            </div>
+                            <div *ngIf="fieldDetailsAdd[37] && fieldDetailsAdd[37].IsVisible" class="col-md-6">
+                                <StringTextBox *ngIf="fieldDetailsAdd[37]" id="StringTextBox" [labelwidth]="145" [style.display]="showComponent(fieldDetailsAdd[37].FieldLabel,fieldDetailsAdd[37].IsVisible)" name="StringTextBox" [fieldObject]=fieldDetailsAdd[37] [validationData]='validationData' (txtBoxChange)="txtBoxChanges($event)" [inttabIndex]="i" (keyUpemit)="emitKeyUp($event)" style="margin-top:10px;"></StringTextBox>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div *ngIf="fieldDetailsAddAdditionalDataFld !=undefined">
+                                <DynamicFields [supportMultiColumnDispay]=true [showButton]=false *ngIf="fieldDetailsAddAdditionalDataFld.length != 0" id="reviewPMWorkOrder" [dataSource]="fieldDetailsAddAdditionalDataFld" [btnName]="btnName" [dataKey]="dataKey" [showDateTimeOnLoad]="true" (fieldChange)="onDropDownChange($event.ddlRelationShipEvent.ChildFieldObject)"
+                                               (chkChange)="onCheckBoxClicked($event)" (popupItemEmit)="popupItemEmit($event)"></DynamicFields>
+                            </div>
+                        </div>
+                    </div>
+                    <div *ngIf="linkArray != undefined" style="order:1;padding:7px 1% 5px 0px;text-align: right;">
+                        <a role="menu" tabindex="0" id="permissions-link" *ngFor="let array of linkArray" (click)="onLinkClick(array)"> {{array.Name}} </a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12" style="text-align:left;padding-top:10px;">
+                        <button role="button" [attr.aria-label]="btnName" tabindex="0" type="submit" showButton="showButton" class="Savebutton">{{btnName}}</button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+
+    </primary-view>
+    <secondary-view *ngIf="secondaryTarget == 0">
+        <DynamicFields [dataSource]="holdReasonAddFields" (submitFieldObject)="onReasonHoldAddSubmit($event)" [btnName]="btnName" [dataKey]="dataKey"></DynamicFields>
+    </secondary-view>
+</split-view>
+
+<style type="text/css">
+    #permissions-link {
+        text-decoration: none;
+        padding: 5px;
+        cursor: pointer;
+        border: 1px solid beige;
+        background-color: #178ae8;
+        color: white;
+        border-radius: 5px;
+        margin-right: 0.5%;
+    }
+
+        #permissions-link:focus {
+            outline: 1px solid #00a3e8 !important;
+            outline-offset: 3px;
+        }
+
+    #reviewPMWorkOrder #form .list-group {
+        height: auto !important;
+        margin-bottom: 0px !important;
+    }
+
+    #reviewPMWorkOrder .MainContainer_1260, #reviewPMWorkOrder .MainContainer_1259 {
+        margin-top: 10px !important;
+        margin-bottom: 10px !important;
+        width: calc(100%);
+    }
+
+    #reviewPMWorkOrder #form .list-group div {
+        /*margin-top:0px!important;
+            min-height:0px!important*/
+    }
+
+    #reviewPMWorkOrder #form {
+        height: auto;
+    }
+
+    #reviewPMWorkOrder .MainContainer_1260 #TextAreaComponent div span textarea {
+        width: 100% !important;
+        height: 100px !important;
+    }
+
+    #reviewPMWorkOrder .MainContainer_1259 #TextAreaComponent div span textarea {
+        width: 100% !important;
+        height: 100px !important;
+    }
+</style>

@@ -1,0 +1,36 @@
+﻿<div>
+    <submenu>
+        <sub-menu [menuCard]=true [source]=menuData [count]=gridcount [menuIds]=enableMenu (onSubMenuChange)="onSubMenuChange($event);"> </sub-menu>
+    </submenu>
+    <split-view [splitviewObject]="splitviewInput" style="height:100%;" [pageTitle]="pageTitle">
+        <primary-view>
+            <div>
+                <DropDownListComponent *ngIf="ddlClass!=undefined" [fieldObject]="ddlClass"(change)="onChangeClass($event.target.value)" [SetAlignment]=alignContent></DropDownListComponent>
+            </div>
+            <gridView style="height:85%;display:block;" [(dataSource)]="itemsSource" [properties]="inputItems" [columns]="fieldObject" [refreshgrid]="refreshgrid"
+                      (onSorting)="onSort($event)"></gridView>
+
+            <paging [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="pageChanged($event);"></paging>
+
+        </primary-view>       
+        <secondary-view *ngIf="menuClickValue == 2|| menuClickValue == 1">
+            <classattributes-addedit [objectCategoryId]="objectCategoryId" [moduleId]="moduleId" [ClassAttributesAddEdit]="ClassAttributesAddEdit" [action]="action" [btnName]="btnName"
+                                (submitSuccess)="OnSuccessfulSubmit($event)" [selectedId]="inputItems.selectedIds[0]" [ClassId] ="ClassId"></classattributes-addedit>
+
+        </secondary-view>
+        <secondary-view *ngIf="menuClickValue == 4">
+            <attributevalues *ngIf="action == 'fieldvalues'&& splitviewInput.showSecondaryView" style="display: block;width:400px;" [objectCategoryId]="objectCategoryId" [moduleId]="moduleId"
+                             [selectedId]="inputItems.selectedIds[0]" [fieldType]="fieldType" [PageTarget] ="2" (AddSuccess)="Successfulladd($event)"></attributevalues>
+        </secondary-view> 
+    </split-view>
+    <slide [width]="slidewidth" [position]="position" [show]="showSlide" (closeDialog)="closeSlideDialog($event)">
+        <div>
+            <div> {{message}}  </div>
+            <div style="width:100%">
+                <button  class="Savebutton "type="button" (click)="okDelete($event)">Yes</button>
+                <button  class="Savebutton "type="button" (click)="cancelClick($event)">No</button>
+            </div>
+        </div>
+    </slide>
+</div>
+

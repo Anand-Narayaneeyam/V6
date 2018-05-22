@@ -1,0 +1,42 @@
+﻿<page [pagetitle]="pagePath" [withoutSubmenu]="true">
+    <content>
+        <tabs [(selectedTab)]="selectedTab" (getSelectedTab)="getSelectedTab($event)" (onTabClose)="onTabClose($event)" [deleteIndex]="deleteIndex">
+            <tab tabTitle="Move Projects" closeButtonVisible="hidden">
+                <split-view [splitviewObject]="splitviewInput" [pageTitle]="pageTitle">
+                    <primary-view>
+                        <submenu>
+                            <sub-menu [menuCard]=true [source]=moveProjectMenu [count]=moveProjectMenuTotalItems [menuIds]=enablemoveProjectMenu (onSubMenuChange)="updatemoveProjectMenu($event);"> </sub-menu>
+                        </submenu>
+                        <div style="height:calc(100% - 35px);overflow: hidden;" *ngIf="selectedTab ==0">
+                            <div  [ngClass]="totalItems > itemsPerPage ? 'pagewithPaging':'pagewithoutPaging'"  style="float:left;width:100%;display:block;">
+                                <slide>
+
+                                </slide>
+
+                                <gridView [(dataSource)]="itemsSource" [properties]="inputItems" [(columns)]="fieldObject" (onSorting)="onSort($event)" (onRowUpdate)="RowUpdate($event)" (onRowDelete)="RowDelete($event)" (onRowAdd)="RowAdd($event)" (onColValClick)="onColValClick($event)" (ddlChangeFrmGrid)="ddlChangeFrmGrid($event)" [refreshgrid]="refreshgrid"></gridView>
+                            </div>
+                            <div style="width:100%;float:left;display:block;"  [style.height]="totalItems >itemsPerPage ? '35px' : '0px'">
+                                <paging *ngIf="totalItems >itemsPerPage ? 'true' : 'false'" [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="pageChanged($event);"></paging>
+                            </div>
+                        </div>
+                    </primary-view>
+                    <secondary-view *ngIf="secondaryTarget == 0">
+                        <DynamicFields [dataSource]="executeFlowFields" (submitFieldObject)="onWorkFlowSubmit($event)" (fieldChange)="onDropDownChange($event.ddlRelationShipEvent.ChildFieldObject)" [btnName]="btnName" [dataKey]="dataKey"></DynamicFields>
+                    </secondary-view>
+                </split-view>
+            </tab>
+            <tab *ngIf="eventAction=='ShowDetails'" tabTitle="Show Details" closeButtonVisible="hidden">
+                <show-details [projectId]="inputItems.selectedIds[0]" [MoveProjectStatus]="MoveProjectStatus"></show-details>
+            </tab>
+        </tabs>
+        <slide [width]="slidewidth" [position]="position" [show]="showSlide" (closeDialog)="closeSlideDialog($event)">
+            <div>
+                <div>Do you want to create a Work Order to execute the selected Move Project?  </div>
+                <div style="width:100%">
+                    <button  class="Savebutton "type="button" (click)="onYesClick($event)">Yes</button>
+                    <button  class="Savebutton "type="button" (click)="onNoClick($event)">No</button>
+                </div>
+            </div>
+        </slide>
+    </content>
+</page>

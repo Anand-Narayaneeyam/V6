@@ -1,0 +1,129 @@
+﻿{
+"data": [
+{
+"FieldId": 1,
+"Site": "Aberdeen",
+"Sitecode": "ADN",
+"Description": "Site details at Aberdeen",
+"Site Area": "0.00",
+"Country": "United States",
+"State": "Washington",
+"Time Zone": "Pacific Time",
+"Sq.Ft.Cost": "12222.00",
+"Site Ownership": "Owned",
+"Construction Date": "22 Jun 1896",
+  "Site Contact": "4562567777",
+  "No.Of Buildings": "4"
+
+},
+{
+"FieldId": 2,
+"Site": "Concord",
+"Sitecode": "CDN",
+"Description": "Site details at Concord",
+"Site Area": "0.00",
+"Country": "United States",
+"State": "California",
+"Time Zone": "Pacific Time",
+"Sq.Ft.Cost": "14444.00",
+"Site Ownership": "Owned",
+"Construction Date": "22 Apr 1896",
+"Site Contact": "4562568845",
+  "No.Of Buildings": "4"
+},
+{
+  "FieldId": 3,
+  "Site": "Arlington",
+"Sitecode": "ARN",
+"Description": "Site details at Arlington",
+"Site Area": "0.00",
+"Country": "United States",
+"State": "Texas",
+"Time Zone": "Pacific Time",
+"Sq.Ft.Cost": "45222.00",
+"Site Ownership": "Owned",
+"Construction Date": "21 Dec 1896",
+"Site Contact": "4562568881",
+  "No.Of Buildings": "4"
+
+},
+  
+{
+"FieldId": 4,
+"Site": "Framingham",
+"Sitecode": "FR",
+"Description": "Site details at Framingham",
+"Site Area": "0.00",
+"Country": "United States",
+"State": "Massachusetts",
+"Time Zone": "Pacific Time",
+"Sq.Ft.Cost": "456663.20",
+"Site Ownership": "Owned",
+"Construction Date": "02 Jun 1896",
+"Site Contact": "4562568881",
+  "No.Of Buildings": "4"
+},
+{
+"FieldId": 5,
+"Site": "Greenwood",
+"Sitecode": "GW",
+"Description": "Site details at Greenwood",
+"Site Area": "0.00",
+"Country": "United States",
+"State": "Indiana",
+"Time Zone": "Pacific Time",
+"Sq.Ft.Cost": "456315.25",
+"Site Ownership": "Owned",
+"Construction Date": "02 Jul 1896",
+"Site Contact": "4562568881",
+  "No.Of Buildings": "4"
+},
+{
+"FieldId":6,
+"Site": "Manchester",
+"Sitecode": "MAN",
+"Description": "Site details at Manchester",
+"Site Area": "0.00",
+"Country": "United States",
+"State": "New Hampshire",
+"Time Zone": "Pacific Time",
+"Sq.Ft.Cost": "4525.25",
+"Site Ownership": "Owned",
+"Construction Date": "22 Jun 1968",
+"Site Contact": "4562568881",
+  "No.Of Buildings": "4"
+},
+{
+"FieldId": 7,
+"Site": "Site 1",
+"Sitecode": "",
+"Description": "Site details at Site 1",
+"Site Area": "0.00",
+"Country": "Site 1",
+"State": "Site 1",
+"Time Zone": "Pacific Time",
+  "Sq.Ft.Cost": "45526.22",
+"Site Ownership": "Owned",
+"Construction Date": "22 Jun 1896",
+"Site Contact": "4562568881",
+  "No.Of Buildings": "4"
+},
+  {
+    "FieldId": 8,
+    "Site": "WhiteField",
+    "Sitecode": "WF",
+    "Description": "Site details at WhiteField",
+    "Site Area": "0.00",
+    "Country": "United States",
+    "State": "New Hampshire",
+    "Time Zone": "Pacific Time",
+    "Sq.Ft.Cost": "45263.25",
+    "Site Ownership": "Owned",
+    "Construction Date": "22 Jun 1896",
+    "Site Contact": "4562568881",
+  "No.Of Buildings": "4"
+  }
+
+]
+  
+}

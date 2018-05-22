@@ -1,0 +1,18 @@
+﻿<div [style.height]="formHeight">
+    <DynamicFields [dataSource]="fieldDetailsAddEdit" (submitFieldObject)="onSubmitData($event)" id="pmshdleaddedit" [btnName]="btnName" [dataKey]="dataKey" (fieldChange)="fieldChange($event)" (rbnChange)="rbtnOnChange($event)" (chkChange)="checkBoxChange($event)" [showDateOnLoad]=true (lstBoxChange)="lstBoxChange($event)"></DynamicFields>
+</div>
+
+<style>
+
+    @-moz-document url-prefix() {
+      #pmshdleaddedit .list-group {
+            height:85%!important;
+        }
+    }
+
+      #sectiongroup #pmshdleaddedit .list-group {
+            height:90%!important;
+            max-height: none !important;
+        }
+
+</style>

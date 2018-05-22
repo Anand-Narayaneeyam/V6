@@ -1,0 +1,64 @@
+﻿<div>
+    <split-view [splitviewObject]="splitviewInput" style="height:100%;" [pageTitle]="pageTitle">
+        <primary-view style="overflow:hidden">
+            <div *ngIf="FromdateObj!= undefined" style="height:65px;display:flex;width:100%;padding-top:4px">
+
+                <DateComponent [disableDates]="disableDates" id="fromDate" *ngIf="FromdateObj!=undefined" [showDateOnLoad]="true" [fieldObject]="FromdateObj" (datepickerOut)="dateSearchClick($event,1)" [SetAlignment]="horizontal"></DateComponent>
+
+                &nbsp;&nbsp;<DropDownListComponent id="fromtimeseat" *ngIf="FromTimeObj!=undefined" [fieldObject]="FromTimeObj" (change)="onChangefrom($event.target.value)"></DropDownListComponent>
+
+                &nbsp;&nbsp;&nbsp; to &nbsp;&nbsp;&nbsp;<DropDownListComponent id="totimeseat" *ngIf="ToTimeObj!=undefined" [fieldObject]="ToTimeObj"></DropDownListComponent>
+
+                &nbsp;&nbsp;<DateComponent [disableDates]="disableDates" *ngIf="TodateObj!=undefined" [showDateOnLoad]="true" [fieldObject]="TodateObj" (datepickerOut)="dateSearchClick($event,2)" [SetAlignment]="horizontal"></DateComponent>
+                <button class="Savebutton" type="button" style="display:block;height:30px; margin-left: 10px;" aria-label="Search" (click)="OnSearchBtnClick($event)">Search</button>
+            </div>
+            <div class="search-containerforschedule">
+                <searchforschedule [Title]="'Search Equipment'" [searchtype]="'Grid'" [keyWordLookup]=keyWordLookup [disable]="disable" [Key]=2 [KeywordFields]=KeywordFieldObject [advancesearch]=true [Customsearch]=true [datasource]=advancelookup [Target]="3" (loadAdvanceSearch)="advanceSearch()" (Submit)="Submit($event)" [(showSearchFilter)]="showSearchFilter" (Clear)="Clear($event)"></searchforschedule>
+            </div>
+            <div style="width:100%;height:28px;padding:2px;"><input (click)="chkboxClick($event)" type="checkbox" id="inpChk" style="width:15px" checked /> <span style="padding-left:2px;font-size:small;color:black;"> Show available Equipment</span></div>
+
+            <div style="overflow: hidden;height: calc(100% - 90px);">
+                <div style="height:100%;overflow: hidden;">
+                    <div [ngClass]="totalItems > itemsPerPage ? 'pagewithPaging':'pagewithoutPaging'">
+                        <slide></slide>
+                        <gridView style="height:100%;" [(dataSource)]="itemsSource" [properties]="inputItems" [columns]="fieldObject"
+                                  (onSorting)="onSort($event)" (onColValClick)="onHyperLinkClick($event)" [refreshgrid]="refreshgrid"></gridView>
+                    </div>
+                    <div [style.height]="totalItems >itemsPerPage ? '35px' : '0px'">
+                        <paging [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="pageChanged($event);"></paging>
+                    </div>
+                </div>
+            </div>
+        </primary-view>
+        <secondary-view *ngIf="showBookEqpt==true && splitviewInput.showSecondaryView">
+            <book-equipment [Sitetime]="Sitetime" (reserveEquipmentReturn)="reserveEquipmtSubmitRet($event)" [selRowObj]="selRowData"></book-equipment>
+        </secondary-view>
+    </split-view>
+
+</div>
+<style>
+    #fromtimeseat div {
+        margin-top: 0px !important;
+    }
+
+    #totimeseat div {
+        margin-top: 0px !important;
+    }
+
+    .search-containerforschedule {
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        padding-top: 40px;
+        margin-right: 10px;
+        z-index: 51;
+    }
+
+    .Div-2461 #dateContainerDiv {
+        position: absolute;
+    }
+
+    .Div-2463 #dateContainerDiv {
+        position: absolute;
+    }
+</style>

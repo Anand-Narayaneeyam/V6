@@ -1,0 +1,217 @@
+﻿@using Indus.iDrawings.vN.Models
+@model LoginViewModel
+@{
+    ViewBag.Title = "";
+    Layout = null;
+}
+<head>
+    <title></title>
+    <script src="~/CopyScripts/jquery-1.10.2.min.js"></script>
+    <script src="~/CopyScripts/jquery-ui-1.10.3.js"></script>
+    <script src="~/CopyScripts/BigIntBarretRSA.js"></script>
+    <script src="~/CopyScripts/RSA.js"></script>
+    <script src="~/CopyScripts/GeneralCopy.js"></script>
+    <script src="~/CopyScripts/JqueryDialogCopy.js"></script>
+    <link href="~/CopyScripts/LayoutStyle.css" rel="stylesheet" />
+    <link href="~/CopyScripts/General.css" rel="stylesheet" />
+</head>
+<h2>@ViewBag.Title</h2>
+@*<link href="~/app/Views/Shared/LoginPage.css" rel="stylesheet" />*@
+<link href="~/CopyScripts/LoginPage.css" rel="stylesheet" />
+<div id="dialogboxForMessage" tooltip="iDrawings">
+    <div id="dvMessageBox" style="text-align:center"></div>
+</div>
+<script type="text/javascript">
+
+    window.onload = start;
+    function start()
+    {
+        getAppTitle();
+        var loginStatus = @Model.loginStatus;
+        var psln = @Model.Passwordlength;
+        if(loginStatus == 10 || loginStatus == 11 || loginStatus == 12){
+            openreset(1,psln);
+        }
+        var Message = [@Html.Raw(Json.Encode(Model))][0];
+        var Msg = Message.ErrorMessage;
+        if(Msg != null && Msg.length > 0){
+            showAlertBox(Msg);
+        }
+        document.getElementById("txtUserName").focus();
+    }
+
+    function getAppTitle()
+    {
+        var url = '@Url.Action("GetAppTitle", "Account")';
+
+        $.ajax({
+            url: url,
+            type: 'POST',
+            success: function (result) {
+                    $("#appname").html(result);
+            },
+            error: function (xhr, textStatus, errorThrown) {
+                return "";
+            }
+        });
+    }
+
+    function openreset(val,psln)
+    {
+        if (val == "1") {
+            var url = '@Url.Action("ChangePassword", "Account")';
+
+            $.ajax({
+                url: url,
+                type: 'POST',
+                data: {txtLn: document.getElementById('txtUserName').value,pswrdLn:psln},
+                success: function (result) {
+                    $("#changepassworddialog").html(result);
+                },
+                cache: false,
+                error: function (xhr, textStatus, errorThrown) {
+                    return "";
+                }
+            });
+
+
+            jDialogOpenwithHeight($("#changepassworddialog"), 390, 600, "Update", "Cancel", "Change Password");
+
+        } else {
+            $("form").unbind('submit').submit();
+        }
+    }
+
+    function loginClientClick(e) {
+        initKey();
+        document.getElementById('TxtPassword').value = almaarrattam(document.getElementById('TxtPassword').value);
+    }
+
+    var key;
+
+    function initKey() {
+        setMaxDigits(131);
+        RSA_E = document.getElementById("txtRSAE").value;
+        RSA_M = document.getElementById("txtRSAM").value;
+        key = new RSAKeyPair(RSA_E, "", RSA_M);
+    }
+
+    function forgotPassword() {
+
+        var url = '@Url.Action("ForgotPassword", "Account")';
+
+        $.ajax({
+            url: url,
+            type: 'GET',
+            data: "",
+            success: function (result) {
+                $("#forgotpassworddialog").html(result);
+            },
+            error: function (xhr, textStatus, errorThrown) {
+                return "";
+            }
+        });
+        jDialogOpenwithHeight($("#forgotpassworddialog"), 230, 600, "Submit", "Cancel", "Retrieve Forgotten Password");
+        setTimeout(function(){
+            $('#forgotpassworddialog input[type="text"]').attr("aria-label","Enter your login name");
+            $('#forgotpassworddialog input[type="text"]')[0].focus();
+        },100)        
+    }
+
+    $('input[type="text"]').focus(function() {
+        $(this).addClass("focus");
+    });
+
+    $('input[type="text"]').blur(function() {
+        $(this).removeClass("focus");
+    });
+
+</script>
+
+
+<body id="bodyy" class="loginBody" style="height:100%">
+    <div id="DivMessage">
+    </div>
+    <div class="loginHolder">
+        <div class="loginsection">
+            <section id="loginForm" class="login">
+                @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form", style = "color:red;" }))
+                {
+                    <div style="height:220px;">
+                        @Html.AntiForgeryToken()
+                        <div id="appname" style="padding-top:20px;padding-bottom:40px;color:white;text-align: -webkit-center;text-align: center;font-size:25px;">
+                            @*@Html.LabelFor(m => m.AppName)*@
+                        </div>
+                        @*<div class="errormessage">
+                            @Html.ValidationSummary(true)
+                        </div>*@
+                        <div>
+                            @Html.TextBoxFor(m => m.UserName, new { placeholder = "Login Name", @class = "btnclass", id = "txtUserName"})
+                        </div>
+                        <div style="margin-left:60px;height:10px;">
+                            @Html.ValidationMessageFor(m => m.UserName)
+                        </div>
+                        <div>
+                            @Html.PasswordFor(m => m.Password, new { placeholder = "Password", @class = "btnclass", id = "TxtPassword", @Autocomplete = "off" })
+                        </div>
+                        <div style="margin-left:60px;height:10px;">
+                            @Html.ValidationMessageFor(m => m.Password)
+                        </div>
+                        <div style="height:15px;color:#fff;margin-left:60px;margin-top:10px; text-decoration:underline">
+                            <a href="#" onclick="forgotPassword()" class="Forgotpaswword">Forgot your password?</a>
+                            @*Html.ActionLink("Forgot your password?", "ForgotPassword", "Account", new { id = "" }, new { @class = "Forgotpaswword" })*@
+                        </div>
+                        <div class="" style="height:80px;margin-bottom:0;bottom:0;margin-top:40px;">
+                            <input type="submit" value="Login" id="login-button" onclick="loginClientClick(event)" />
+                        </div>
+                    </div>
+                        
+                        @Html.HiddenFor(m => m.RSA_E, new { id = "txtRSAE" })
+                        @Html.HiddenFor(m => m.RSA_M, new { id = "txtRSAM" })
+                }
+            </section>
+        </div>
+        <div class="copyrightsection">
+            <p>&copy 2000-2018 Indus Systems, Inc. All Rights Reserved</p>
+        </div>
+    </div>
+    <div id="forgotpassworddialog"></div>
+    <div id="changepassworddialog"></div>
+</body>
+
+
+<style>
+.login input[type=text]:focus { 
+    border:3px solid white!important;
+}
+
+
+.login input[type=password] { 
+   background: #178AE8!important;
+}
+
+
+.login input[type=password]:focus { 
+   border:3px solid white!important;
+}
+
+.login input:focus 
+{
+     border:3px solid white!important;
+}
+
+body input[type=button]:enabled, body button[type=button]:enabled {
+    background-color: #4387FD!important;
+    cursor: pointer !important;
+    color: #ffffff !important;
+    margin-left: 10px;
+}
+
+body input[type=button]:enabled, body button[type=button]:enabled:hover {
+    background-color: #3d7be6!important;
+    cursor: pointer !important;
+    color: #ffffff !important;
+    margin-left: 10px;
+}
+
+</style>

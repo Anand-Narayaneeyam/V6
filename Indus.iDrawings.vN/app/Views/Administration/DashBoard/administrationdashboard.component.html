@@ -1,0 +1,65 @@
+﻿<!--<page [pagetitle]="pagePath" [withoutSubmenu]="true">
+    <content>
+        <dashboard style="height:80%;">
+            <widget >
+                <div style="font-weight:bold"> Number of Users: {{UserCount}} </div>
+                <piechart *ngIf="PieChart1Data != undefined" [sourceData]="PieChart1Data"> </piechart>
+            </widget>
+            <widget >
+                <div style="font-weight:bold"> Area Distribution ({{AreaUnit}}) </div>
+                <multibarchart *ngIf="Barchart1Data != undefined" [sourceData]="Barchart1Data"> </multibarchart>
+            </widget>
+            <widget >
+                <div style="font-weight:bold"> Number of Drawings: {{DwgCount}} </div>
+                <piechart *ngIf="PieChart2Data != undefined" [sourceData]="PieChart2Data"> </piechart>
+            </widget>
+            <widget >
+                <div style="font-weight:bold"> User List  </div>
+                <div [ngClass]="'pagewithPaging'" style="text-align:left">
+                    <gridView *ngIf="fieldObject" [(dataSource)]="itemsSource" [properties]="inputItems" [columns]="fieldObject"
+                              (onSorting)="onSort($event)">
+                    </gridView>
+                </div>
+            </widget>
+        </dashboard>
+    </content>
+</page>-->
+<page [pagetitle]="pagePath" [withoutSubmenu]="true">
+    <content>
+        <dashboard style="height:95%;display:block;">
+           
+                        <widget>
+                            <div style="font-weight:bold"> Number of Users: {{UserCount}} </div>
+                            <piechart *ngIf="PieChart1Data != undefined" [sourceData]="PieChart1Data"> </piechart>
+                        </widget>
+                        <widget>
+                            <div style="font-weight:bold"> Area Distribution ({{AreaUnit}}) </div>
+                            <multibarchart *ngIf="Barchart1Data != undefined" [sourceData]="Barchart1Data"> </multibarchart>
+                        </widget>
+                    
+                        <widget>
+                            <div style="font-weight:bold"> Number of Drawings: {{DwgCount}} </div>
+                            <piechart *ngIf="PieChart2Data != undefined" [sourceData]="PieChart2Data"> </piechart>
+                        </widget>
+                   
+                        <widget style="height:250px">
+                           
+                            <div style="font-weight:bold"> User List  </div>
+                            <div [ngClass]="'pagewithPaging'" style="text-align:left;" *ngIf="Barchart1Data != undefined" >  
+                                <gridView *ngIf="fieldObject" [(dataSource)]="itemsSource"  [properties]="inputItems" [columns]="fieldObject"
+                                            (onSorting)="onSort($event)">
+                                </gridView>
+                                <div style="height:5px"></div>
+                                <div style="display:inline-flex">
+                                    <div style="font-size:xx-small;">Expiring Within</div>&nbsp;
+                                    <div style="color:red;font-size:xx-small;"> (30 Days)</div>&nbsp;
+                                    <div style="color:blue;font-size:xx-small;"> (60 Days)</div>&nbsp;
+                                    <div style="color:green;font-size:xx-small;"> (180 Days)</div>&nbsp;
+                                </div>
+                            </div>
+                            
+                        </widget>
+                   
+        </dashboard>
+    </content>
+</page>

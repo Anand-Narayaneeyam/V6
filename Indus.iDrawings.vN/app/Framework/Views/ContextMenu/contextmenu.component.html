@@ -1,0 +1,10 @@
+﻿<div *ngIf="menuItems" class="contextmenu" [ngStyle]=Styles [style.visibility]="display" (click)="menuOnClick()" id="contextmenu_mainMenu">
+    <div *ngFor="let menuItem of menuItems;let i=index" class="contextmenuitem" (click)="menuOnClick(menuItem)" (mouseover)="firstLevelMenuOver(menuItem)" (mouseup)="firstLevelMenuOver(menuItem)">
+        {{menuItem.menuName}}<span *ngIf="menuItem.secondMenu" style="width:auto"> ></span>
+      </div>
+</div>
+<div *ngIf="secondMenu" style="z-index: 99997 !important;" class="contextSubmenu" [ngStyle]=secondMenuStyles [style.visibility]="secondmenudisplay" id="contextmenu_subMenu">
+    <div *ngFor="let menuItem of secondMenu;let i=index" class="contextSubmenuitem" (click)="menuOnClick(menuItem)">
+        {{menuItem.menuName}}
+    </div>
+</div>

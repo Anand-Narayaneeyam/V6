@@ -1,0 +1,38 @@
+﻿<div>
+    <submenu>
+        <sub-menu [source]=menuData [menuCard]=types [count]=totalItems [menuIds]=enableMenu (onSubMenuChange)="onSubMenuChange($event);"> </sub-menu>
+    </submenu>
+    <split-view [splitviewObject]="splitviewInput" [pageTitle]="pageTitle" style="height: calc(100% - 35px);">
+        <primary-view>
+            <div>
+                <div [ngClass]="totalItems > itemsPerPage ? 'pagewithPaging':'pagewithoutPaging'">
+                    <slide [width]="200" [position]="position" [type]="dialog" [show]="showSlide" (closeDialog)="closeSlideDialog($event)">
+                        <div>
+                            <div>
+                                {{message}}
+                            </div>
+                            <div>
+                                <div style="width:100%">
+                                    <button  class="Savebutton "type="button" (click)="okDelete($event)">Yes</button>
+                                    <button  class="Savebutton "type="button" (click)="cancelClick($event)">No</button>
+                                </div>
+                            </div>
+                        </div>
+                    </slide>
+                    <gridView style="width:100%" [(dataSource)]="itemsSource" [properties]="inputItems" [columns]="fieldObject" (onSorting)="onSort($event)" [refreshgrid]="refreshgrid"></gridView>
+                </div>
+                <div>
+                    <paging [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="pageChanged($event);"></paging>
+                </div>
+            </div>
+        </primary-view>
+        <secondary-view *ngIf="secondaryTarget == 0" >
+            <cost-categories-add-edit (submitSuccess)="submitReturn($event)" [fieldDetailsAdd]="fieldDetailsAdd1" [btnName]="btnName" [dataKey]="dataKey" [selectedId]="inputItems.selectedIds" [action]="action"></cost-categories-add-edit>
+        </secondary-view>
+        <secondary-view *ngIf="secondaryTarget == 1">
+            <div style="height:100%;">
+                <cost-category-rates *ngIf="inputItems.selectedIds[0] != undefined && splitviewInput.showSecondaryView == true" [SelectedCostCategoryId]="inputItems.selectedIds[0]"></cost-category-rates>
+            </div>
+        </secondary-view>
+    </split-view>
+</div>

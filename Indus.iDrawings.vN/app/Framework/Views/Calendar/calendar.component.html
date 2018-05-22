@@ -1,0 +1,388 @@
+﻿<style>
+    table {
+        /*height: 500px;*/
+        height: 80%;
+        /*width: 700px;*/
+        width: 100%;
+        border: 1px solid #00A3E8;
+        box-shadow: 1px 1px 1px 1px #00A3E8;
+    }
+
+    th,
+    td {
+        border: 1px solid;
+        border-color: #00A3E8;
+    }
+
+    th {
+        height: 5%;
+        background-color: #00A3E8;
+        color: white;
+        font-family: inherit;
+        text-align: center;
+    }
+
+    td {
+        text-align: left;
+        font-weight: bold;
+        height: 10%;
+        width: 10%;
+    }
+
+    button {
+        height: 5px;
+        min-width: 70px;
+    }
+
+    .btnGenerated {
+        background-color: #008000;
+        border-color: 	#008000;
+        min-width: 70%;
+        font-weight: normal;
+        text-align: center;
+        color: white;
+    }
+
+    .btnDue {
+        background-color: crimson;
+        border-color: crimson;
+        min-width: 70%;
+        font-weight: normal;
+        text-align: center;
+        color:white;
+    }
+
+    .btnHide {
+        visibility: hidden;
+    }
+
+    .headerDiv {
+        width: 100%;
+        height: 40px;
+        background-color: #00A3E8;
+        color: whitesmoke;
+        font-weight: 900;
+        box-shadow: 1px 1px 1px 1px #00A3E8;
+        display: inline-flex;
+        min-width: 212px;
+    }
+
+    div {
+        text-align: center;
+    }
+
+    span {
+        margin-top: 1px;
+        margin-left: 4px;
+    }
+
+    .monthSelector {
+        margin-top: 7px;
+        background-color: #00A3E8;
+    }
+
+    .tdDisabled {
+        background-color: whitesmoke;
+    }
+
+    .tdEnabled {
+        background-color: white;
+    }
+</style>
+<div class="headerDiv">
+    <div style="width:30%;">
+        <span *ngIf="blnBlockPrevClick == false">
+            <input type="button" class="monthSelector" value="<" (click)="getPreviousMonth($event)">
+        </span>
+        <span *ngIf="blnBlockPrevClick == true">
+            <input type="button" class="monthSelector" value="<"  disabled>
+        </span>
+        
+    </div>
+    <div style="margin-top:10px;width:40%;">
+        <div>{{SelectedMonth}} {{SelectedYear}}</div>
+    </div>
+    <div style="width:30%;">
+        <span *ngIf="blnBlockNextClick == false">
+            <input type="button" class="monthSelector" value=">" (click)="getNextMonth($event)">
+        </span>
+        <span *ngIf="blnBlockNextClick == true">
+            <input type="button" class="monthSelector" value=">" disabled>
+        </span>
+</div>
+</div>
+<table>
+    <tr>
+        <th>Sun</th>
+        <th>Mon</th>
+        <th>Tue</th>
+        <th>Wed</th>
+        <th>Thu</th>
+        <th>Fri</th>
+        <th>Sat</th>
+    </tr>
+    <tr>
+        <td id="td0" class="tdDisabled">
+            <span id="sp0"></span>
+            <div id="div0">
+                <input id="btn0" type="button" class="btnHide" value="" (click)="getBtnClick($event,'sp0')">
+            </div>
+        </td>
+        <td id="td1" class="tdDisabled">
+            <span id="sp1"></span>
+            <div id="div1">
+                <input id="btn1" type="button" class="btnHide" value="" (click)="getBtnClick($event,'sp1')">
+            </div>
+        </td>
+        <td id="td2" class="tdDisabled">
+            <span id="sp2"></span>
+            <div id="div2">
+                <input id="btn2" type="button" class="btnHide" value="" (click)="getBtnClick($event,'sp2')">
+            </div>
+        </td>
+        <td id="td3" class="tdDisabled">
+            <span id="sp3"></span>
+            <div id="div3">
+                <input id="btn3" type="button" class="btnHide" value="" (click)="getBtnClick($event,'sp3')">
+            </div>
+        </td>
+        <td id="td4" class="tdDisabled">
+            <span id="sp4"></span>
+            <div id="div4">
+                <input id="btn4" type="button" class="btnHide" value="" (click)="getBtnClick($event,'sp4')">
+            </div>
+        </td>
+        <td id="td5" class="tdDisabled">
+            <span id="sp5"></span>
+            <div id="div5">
+                <input id="btn5" type="button" class="btnHide" value="" (click)="getBtnClick($event,'sp5')">
+            </div>
+        </td>
+        <td id="td6" class="tdDisabled">
+            <span id="sp6"></span>
+            <div id="div6">
+                <input id="btn6" type="button" class="btnHide" value="" (click)="getBtnClick($event,'sp6')">
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td id="td7" class="tdDisabled">
+            <span id="sp7"></span>
+            <div id="div7">
+                <input id="btn7" type="button" class="btnHide" value="" (click)="getBtnClick($event,'sp7')">
+            </div>
+        </td>
+        <td id="td8" class="tdDisabled">
+            <span id="sp8"></span>
+            <div id="div8">
+                <input id="btn8" type="button" class="btnHide" value="" (click)="getBtnClick($event,'sp8')">
+            </div>
+        </td>
+        <td id="td9" class="tdDisabled">
+            <span id="sp9"></span>
+            <div id="div9">
+                <input id="btn9" type="button" class="btnHide" value="" (click)="getBtnClick($event,'sp9')">
+            </div>
+        </td>
+        <td id="td10" class="tdDisabled">
+            <span id="sp10"></span>
+            <div id="div10">
+                <input id="btn10" type="button" class="btnHide" value="" (click)="getBtnClick($event,'sp10')">
+            </div>
+        </td>
+        <td id="td11" class="tdDisabled">
+            <span id="sp11"></span>
+            <div id="div11">
+                <input id="btn11" type="button" class="btnHide" value="" (click)="getBtnClick($event,'sp11')">
+            </div>
+        </td>
+        <td id="td12" class="tdDisabled">
+            <span id="sp12"></span>
+            <div id="div12">
+                <input id="btn12" type="button" class="btnHide" value="" (click)="getBtnClick($event,'sp12')">
+            </div>
+        </td>
+        <td id="td13" class="tdDisabled">
+            <span id="sp13"></span>
+            <div id="div13">
+                <input id="btn13" type="button" class="btnHide" value="" (click)="getBtnClick($event,'sp13')">
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td id="td14" class="tdDisabled">
+            <span id="sp14"></span>
+            <div id="div14">
+                <input id="btn14" type="button" class="btnHide" value="" (click)="getBtnClick($event,'sp14')">
+            </div>
+        </td>
+        <td id="td15" class="tdDisabled">
+            <span id="sp15"></span>
+            <div id="div15">
+                <input id="btn15" type="button" class="btnHide" value="" (click)="getBtnClick($event,'sp15')">
+            </div>
+        </td>
+        <td id="td16" class="tdDisabled">
+            <span id="sp16"></span>
+            <div id="div16">
+                <input id="btn16" type="button" class="btnHide" value="" (click)="getBtnClick($event,'sp16')">
+            </div>
+        </td>
+        <td id="td17" class="tdDisabled">
+            <span id="sp17"></span>
+            <div id="div17">
+                <input id="btn17" type="button" class="btnHide" value="" (click)="getBtnClick($event,'sp17')">
+            </div>
+        </td>
+        <td id="td18" class="tdDisabled">
+            <span id="sp18"></span>
+            <div id="div18">
+                <input id="btn18" type="button" class="btnHide" value="" (click)="getBtnClick($event,'sp18')">
+            </div>
+        </td>
+        <td id="td19" class="tdDisabled">
+            <span id="sp19"></span>
+            <div id="div19">
+                <input id="btn19" type="button" class="btnHide" value="" (click)="getBtnClick($event,'sp19')">
+            </div>
+        </td>
+        <td id="td20" class="tdDisabled">
+            <span id="sp20"></span>
+            <div id="div20">
+                <input id="btn20" type="button" class="btnHide" value="" (click)="getBtnClick($event,'sp20')">
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td id="td21" class="tdDisabled">
+            <span id="sp21"></span>
+            <div id="div21">
+                <input id="btn21" type="button" class="btnHide" value="" (click)="getBtnClick($event,'sp21')">
+            </div>
+        </td>
+        <td id="td22" class="tdDisabled">
+            <span id="sp22"></span>
+            <div id="div22">
+                <input id="btn22" type="button" class="btnHide" value="" (click)="getBtnClick($event,'sp22')">
+            </div>
+        </td>
+        <td id="td23" class="tdDisabled">
+            <span id="sp23"></span>
+            <div id="div23">
+                <input id="btn23" type="button" class="btnHide" value="" (click)="getBtnClick($event,'sp23')">
+            </div>
+        </td>
+        <td id="td24" class="tdDisabled">
+            <span id="sp24"></span>
+            <div id="div24">
+                <input id="btn24" type="button" class="btnHide" value="" (click)="getBtnClick($event,'sp24')">
+            </div>
+        </td>
+        <td id="td25" class="tdDisabled">
+            <span id="sp25"></span>
+            <div id="div25">
+                <input id="btn25" type="button" class="btnHide" value="" (click)="getBtnClick($event,'sp25')">
+            </div>
+        </td>
+        <td id="td26" class="tdDisabled">
+            <span id="sp26"></span>
+            <div id="div26">
+                <input id="btn26" type="button" class="btnHide" value="" (click)="getBtnClick($event,'sp26')">
+            </div>
+        </td>
+        <td id="td27" class="tdDisabled">
+            <span id="sp27"></span>
+            <div id="div27">
+                <input id="btn27" type="button" class="btnHide" value="" (click)="getBtnClick($event,'sp27')">
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td id="td28" class="tdDisabled">
+            <span id="sp28"></span>
+            <div id="div28">
+                <input id="btn28" type="button" class="btnHide" value="" (click)="getBtnClick($event,'sp28')">
+            </div>
+        </td>
+        <td id="td29" class="tdDisabled">
+            <span id="sp29"></span>
+            <div id="div29">
+                <input id="btn29" type="button" class="btnHide" value="" (click)="getBtnClick($event,'sp29')">
+            </div>
+        </td>
+        <td id="td30" class="tdDisabled">
+            <span id="sp30"></span>
+            <div id="div30">
+                <input id="btn30" type="button" class="btnHide" value="" (click)="getBtnClick($event,'sp30')">
+            </div>
+        </td>
+        <td id="td31" class="tdDisabled">
+            <span id="sp31"></span>
+            <div id="div31">
+                <input id="btn31" type="button" class="btnHide" value="" (click)="getBtnClick($event,'sp31')">
+            </div>
+        </td>
+        <td id="td32" class="tdDisabled">
+            <span id="sp32"></span>
+            <div id="div32">
+                <input id="btn32" type="button" class="btnHide" value="" (click)="getBtnClick($event,'sp32')">
+            </div>
+        </td>
+        <td id="td33" class="tdDisabled">
+            <span id="sp33"></span>
+            <div id="div33">
+                <input id="btn33" type="button" class="btnHide" value="" (click)="getBtnClick($event,'sp33')">
+            </div>
+        </td>
+        <td id="td34" class="tdDisabled">
+            <span id="sp34"></span>
+            <div id="div34">
+                <input id="btn34" type="button" class="btnHide" value="" (click)="getBtnClick($event,'sp34')">
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td id="td35" class="tdDisabled">
+            <span id="sp35"></span>
+            <div id="div35">
+                <input id="btn35" type="button" class="btnHide" value="" (click)="getBtnClick($event,'sp35')">
+            </div>
+        </td>
+        <td id="td36" class="tdDisabled">
+            <span id="sp36"></span>
+            <div id="div36">
+                <input id="btn36" type="button" class="btnHide" value="" (click)="getBtnClick($event,'sp36')">
+            </div>
+        </td>
+        <td id="td37" class="tdDisabled">
+            <span id="sp37"></span>
+            <div id="div37">
+                <input id="btn37" type="button" class="btnHide" value="" (click)="getBtnClick($event,'sp37')">
+            </div>
+        </td>
+        <td id="td38" class="tdDisabled">
+            <span id="sp38"></span>
+            <div id="div38">
+                <input id="btn38" type="button" class="btnHide" value="" (click)="getBtnClick($event,'sp38')">
+            </div>
+        </td>
+        <td id="td39" class="tdDisabled">
+            <span id="sp39"></span>
+            <div id="div39">
+                <input id="btn39" type="button" class="btnHide" value="" (click)="getBtnClick($event,'sp39')">
+            </div>
+        </td>
+        <td id="td40" class="tdDisabled">
+            <span id="sp40"></span>
+            <div id="div40">
+                <input id="btn40" type="button" class="btnHide" value="" (click)="getBtnClick($event,'sp40')">
+            </div>
+        </td>
+        <td id="td41" class="tdDisabled">
+            <span id="sp41"></span>
+            <div id="div41">
+                <input id="btn41" type="button" class="btnHide" value="" (click)="getBtnClick($event,'sp41')">
+            </div>
+        </td>
+    </tr>
+</table>

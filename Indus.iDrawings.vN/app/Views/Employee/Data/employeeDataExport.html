@@ -1,0 +1,229 @@
+﻿<split-view [splitviewObject]="splitviewExportExtApp" [pageTitle]="splitViewTitle" (onSecondaryClose)="onSplitViewClose($event)">
+        <primary-view>
+
+            <div id="export-div">
+                <table style="width:100%">
+                    <tr>
+                        <td class="hdTitle">Purpose</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <table style="width:100%">
+                                <tr>
+                                    <td style="width:40px;"></td>
+                                    <td>To get employee data</td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="hdTitle">Description</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <table style="width:100%">
+                                <tr>
+                                    <td style="width:40px;"></td>
+                                    <td>This is to get the data from iDrawings  server for data syncing</td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="hdTitle">Prerequisites</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <table style="width:100%">
+                                <tr>
+                                    <td style="width:40px;"></td>
+                                    <td>Web service username and password to login to retrieve data</td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="hdTitle">Base URL</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <table style="width:100%">
+                                <tr>
+                                    <td style="width:40px;"></td>
+                                    <td>
+                                        {{baseUrl}}
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="hdTitle">
+                            Test The API
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="padding-left:40px;">
+                            <a (click)="exportClick($event)" style="text-decoration:none;font-weight:bold;cursor:hand;">Click to Test</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="hdTitle">API Details</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <table style="width:100%">
+                                <tr>
+                                    <td style="width:40px;"></td>
+                                    <td>
+                                        <table style="width:100%">
+                                            <tr>
+                                                <td class="hdTitle">API URL</td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <table style="width:100%">
+                                                        <tr>
+                                                            <td style="width:40px;"></td>
+                                                            <td>{BaseUrl}/api/IndusImport/GetEmployeeData</td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="hdTitle">Access Method</td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <table style="width:100%">
+                                                        <tr>
+                                                            <td style="width:40px;"></td>
+                                                            <td>POST</td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="hdTitle">Input Class Name</td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <table style="width:100%">
+                                                        <tr>
+                                                            <td style="width:40px;"></td>
+                                                            <td>WSEmployeeInput</td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="hdTitle">Input Properties of WSEmployeeInput</td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <table style="width:100%;">
+                                                        <tr>
+                                                            <td style="width:40px;"></td>
+                                                            <td> 
+                                                                <table style="border:1px solid rgb(165, 163, 163);" cellpadding="0" cellspacing="0" width="90%" class="tdInputProp">
+                                                                    <tr>
+                                                                        <td class="hdTitle" style="width:20%;">Parameter</td>
+                                                                        <td class="hdTitle"  style="width:20%;">Data Type</td>
+                                                                        <td class="hdTitle">Description</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>UserName</td>
+                                                                        <td>String</td>
+                                                                        <td style="text-align:left;">Web service user name to login for accessing the data through web API</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>Password</td>
+                                                                        <td>String</td>
+                                                                        <td style="text-align:left;">Web service login password for accessing the data through web API</td>
+                                                                    </tr>
+                                                                </table>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="hdTitle">Return of API Call</td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <table style="width:100%;">
+                                                        <tr>
+                                                            <td class="hdTitle" style="padding-left:40px;">Successful Return</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="padding-left:80px;"> { Code = 0, Message = "Successfully Retrieved", Data = { JSON DATA }  }</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="hdTitle" style="padding-left:40px;"> Authentication Failed</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="padding-left:80px;"> { Code = 1, Message = "Authentication Failed", Data = "" }</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="hdTitle" style="padding-left:40px;"> Permission Denied</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="padding-left:80px;"> { Code = 13, Message = "Permission Denied", Data = "" } </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="hdTitle" style="padding-left:40px;">UnExpected Error</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="padding-left:80px;"> { Code = 8, Message = "UnExpected Error", Data = "" } </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <style>
+                td {
+                    border: 0px solid green;
+                    height: 20px;
+                    font-size: 13px;
+                }
+
+                table {
+                    margin-right: 5px;
+                }
+
+                .hdTitle {
+                    font-weight: bold;
+                    padding-top: 15px;
+                }
+
+                .tdInputProp td {
+                    border: 1px solid rgb(165, 163, 163);
+                    height: 10px;
+                    padding: 1px;
+                    width: 130px;
+                    text-align: center;
+                }
+
+                #export-div {
+                    overflow-y: scroll;
+                    height: 90%;
+                    z-index: 10000;
+                }
+            </style>
+
+        </primary-view>
+    <secondary-view>
+        <!--<export-employee-data *ngIf="allEmployeeAction == 'exportEmployeData' &&(splitviewAllEmployee.showSecondaryView)" [exportClick]=""></export-employee-data>-->
+
+        <demo-employee-export></demo-employee-export>
+    </secondary-view>
+</split-view>
+

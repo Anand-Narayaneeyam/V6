@@ -1,0 +1,28 @@
+﻿<div>
+    <submenu>
+        <sub-menu [menuCard]=true [source]=menuData [count]=gridcount [menuIds]=enableMenu (onSubMenuChange)="onSubMenuChange($event);"> </sub-menu>
+    </submenu>
+    <split-view [splitviewObject]="splitviewInput" [pageTitle]="pageTitle" style="height: calc(75% - 35px);">
+        <primary-view style="height: calc(100% - 35px);">
+            <gridView [ngClass]="totalItems > itemsPerPage ? 'pagewithPaging':'pagewithoutPaging'" style="display:block;" [(dataSource)]="itemsSource" [properties]="inputItems" [columns]="fieldObject" [refreshgrid]="refreshgrid" (onSorting)="onSort($event)" (onRowDelete)="inlineDelete($event)"></gridView>
+            <paging [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="pageChanged($event);"></paging>
+        </primary-view>
+        <secondary-view *ngIf="target==1">
+            <workflowEscalationNotifications-addedit *ngIf="fieldDetailsAddEdit != undefined && splitviewInput.showSecondaryView" style="display: block;width:500px;" [fieldDetailsAddEdit]="fieldDetailsAddEdit" [workTypeId]="workTypeId" [action]="action" [btnName]="btnName" (submitSuccess)="OnSuccessfulSubmit($event)" 
+                                                     [notificationSubjectLookUpDetails]="notificationSubjectDetails" [notificationRecipientsDetails]= "notificationRecipientsDetails" [selectedId]="inputItems.selectedIds[0]" (recipientsList)="getRecipientsList($event)"></workflowEscalationNotifications-addedit>
+        </secondary-view>
+    </split-view>
+    <slide [width]="200" [position]="position" [type]="dialog" [show]="showSlide" (closeDialog)="closeSlideDialog($event)">
+        <div>
+            <div>
+                Are you sure you want to delete the selected Workflow Escalation Notification?
+            </div>
+            <div>
+                <div style="width:100%">
+                    <button class="Savebutton " type="button" (click)="okDelete($event)">Yes</button>
+                    <button class="Savebutton " type="button" (click)="cancelClick($event)">No</button>
+                </div>
+            </div>
+        </div>
+    </slide>
+</div>

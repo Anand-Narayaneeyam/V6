@@ -1,0 +1,37 @@
+﻿{
+  "data": 
+    {
+      "FieldId": 1,
+      "FieldName": "Additional Data Field Category",
+      "FieldType": 5,
+      "FieldValue": "0",
+      "IsMultiValued": true,
+      "HasRelation": false,
+      "MultiValuedDetails": {
+        "LookupValues": [
+          {
+            "Id": 1,
+            "Value": "Site"
+          },
+          {
+            "Id": 2,
+            "Value": "Building"
+          },
+          {
+            "Id": 3,
+            "Value": "Floor"
+          },
+          {
+            "Id": 4,
+            "Value": "Space"
+          }
+        ],
+        "PopupComponentName": null
+      },
+      "IsMandatory": true,
+      "IsVisible": true,
+      "IsHiddenLabel":  false,
+      "ReadOnlyMode": false,
+      "NotificationType": ""
+    }
+}

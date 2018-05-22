@@ -1,0 +1,47 @@
+﻿<submenu>
+    <sub-menu [source]=menuData [menuCard]=iscard [menuIds]=enableMenu [selectedId]=selIds (onSubMenuChange)="onSubMenuChange($event);"> </sub-menu>
+</submenu>
+<split-view [splitviewObject]="splitviewInput" [pageTitle]="pageTitle">
+    <primary-view>
+        <div style="max-height:400px;overflow:auto">
+            <tree-view [directories]="itemsSource" (onselection)="onSelectedIds($event)"></tree-view>
+        </div>
+    </primary-view>
+    <secondary-view *ngIf="splitviewInput.showSecondaryView && splitViewTarget==0">
+
+        <addorganizational-units  *ngIf="splitviewInput.showSecondaryView && splitViewTarget==0" (submitSuccess)="OnSuccessfulSubmi($event)" [selectedIds]="selectedIds" [addEdit]="action" [level]="Level" [levelName]="levelTitle"></addorganizational-units>
+        <!--<section title="{{Levelno2}}" *ngIf="isneedLevel2">
+            <addorganizational-units (submitSuccess)="OnSuccessfulSubmi($event)" [selectedIds]="selectedIds" [addEdit]="action" [level]="2"  levelName="{{Levelno2}}"></addorganizational-units>
+        </section>
+        <section title="{{Levelno3}}" *ngIf="isneedLevel3">
+            <addorganizational-units (submitSuccess)="OnSuccessfulSubmi($event)" [selectedIds]="selectedIds" [addEdit]="action" [level]="3" levelName="{{Levelno3}}"></addorganizational-units>
+        </section>
+        <section title="New" *ngIf="isneedLevel3">
+            <addorganizational-units *ngIf="showSecondaryView" (submitSuccess)="OnSuccessfulSubmi($event)" [selectedIds]="selectedIds" [addEdit]="action" [level]="3"></addorganizational-units>
+        </section>-->
+    </secondary-view>
+    <secondary-view *ngIf="splitviewInput.showSecondaryView && splitViewTarget==1">
+        <div class="secdiv">
+         
+                <access-many-users  *ngIf="splitviewInput.showSecondaryView && splitViewTarget==1" [selectedIds]="selectedIds" [orgName]="level1"></access-many-users>
+         
+        </div>
+    </secondary-view>
+
+</split-view>
+
+<slide [width]= width [position]="Position" [show]=showSlide (closeDialog)="closeSlideDialog($event)">
+    <div>
+        <div>
+            Are you sure you want to delete the selected {{deleteTtile}}?
+        </div>
+        <div>
+            <div style="width:100%">
+                <button class="Savebutton " type="button" (click)="okDelete($event)">Yes</button>
+                <button class="Savebutton " type="button" (click)="cancelClick($event)">No</button>
+            </div>
+        </div>
+    </div>
+</slide>
+
+

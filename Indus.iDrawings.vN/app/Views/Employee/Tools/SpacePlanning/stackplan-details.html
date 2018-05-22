@@ -1,0 +1,44 @@
+﻿<div>
+    <submenu>
+        <sub-menu [menuCard]=true [source]=menuData [count]=totalItems [menuIds]=enableMenu (onSubMenuChange)="onSubMenuChange($event);"> </sub-menu>
+    </submenu>
+
+    <div style="width:100%;">
+        <div style="display:inline-flex;width:50%;">
+            Project Name: &nbsp; <LabelComponent [fieldObject]=fieldProjectName></LabelComponent>
+        </div>
+        <div style="display:inline-flex;width:50%;">
+            Date Requested: &nbsp;<LabelComponent [fieldObject]=fieldDateRequested></LabelComponent>
+        </div>
+        <div style="display:inline-flex;width:40%;float:right;height:20px;">
+            Date to Complete: &nbsp;<LabelComponent [fieldObject]=fieldDateToComplete></LabelComponent>
+        </div>
+    </div>
+
+    <split-view [splitviewObject]="splitviewInput" [pageTitle]="pageTitle" style="height:100%;">
+        <primary-view>
+            <gridView style="height:85%;display:block;" [(dataSource)]="itemsSource" [properties]="inputItems" [columns]="fieldObject" [refreshgrid]="refreshgrid"(onSorting)="onSort($event)" (onRowDelete)="inlineDelete($event)"></gridView>
+            <paging [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="pageChanged($event);"></paging>
+        </primary-view>
+        <secondary-view *ngIf="target == 5 || target == 1">
+            <assign-location [fieldDetailsAssign]="fieldDetailsAssign" [action]="action" [btnName]="btnName" [dateRequested]="dateRequested" [dateToComplete]="dateToComplete" [stackplanDetailsRowData]="inputItems.rowData" (submitSuccess)="OnSuccessfulSubmit($event)" [selectedIds]="inputItems.selectedIds"></assign-location>
+        </secondary-view>
+        <secondary-view *ngIf="target == 3">
+            <employeeResourceList style="display: block;width:700px;" [EmployeeData]="inputItems.rowData" [selectedId]="inputItems.selectedIds[0]" [target]="4"></employeeResourceList>
+        </secondary-view>
+    </split-view>
+
+    <slide [width]="200" [position]="position" [type]="dialog" [show]="showSlide" (closeDialog)="closeSlideDialog($event)">
+        <div>
+            <div>
+                Are you sure you want to delete the selected Employee from the Stack Plan?
+            </div>
+            <div>
+                <div style="width:100%">
+                    <button  class="Savebutton "type="button" (click)="okDelete($event)">Yes</button>
+                    <button  class="Savebutton "type="button" (click)="cancelClick($event)">No</button>
+                </div>
+            </div>
+        </div>
+    </slide>
+</div>

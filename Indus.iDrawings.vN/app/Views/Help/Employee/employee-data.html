@@ -1,0 +1,220 @@
+﻿<page [pagetitle]="pagePath">
+    <pagepath>
+    </pagepath>
+    <content>
+        <section title="All" [isExpanded]="sectionExpansionStatus[0].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div *ngIf="sectionExpansionStatus[0].isExpanded">
+                <p>This option is used to display the details of both assigned and unassigned Employees. Assigned employees will be displayed in data grid with Space/location details like space key, space category, organizational unit fields etc. Unassigned employees will be displayed without Space details and will be displayed with employee fields. </p>
+
+                <p><span class="header1">Add</span></p>
+                <p>This option is for entering the details of a new employee into the system. On clicking <span class="header2">Add</span> <img class="helpicon" src="Content/icons/data_addN.png" alt="Add" /> icon, the Employee Data Entry window is displayed, with the predefined data fields and the additional data fields defined by the user. The details of the employee can be entered. Employee photo can be uploaded by browsing and selecting the same. Email of employee is not mandatory, but if entered, it should be unique. No two employees can have the same email id.Also email of Employee should with Mail Domain added in <span class="header2">Settings: Administration: General Settings: Mail Domains.</span> While adding an Employee, the Status of the Employee will be set as ‘Active’ by default. On clicking the Save button, the data and the photograph will be saved in the system and a message ‘Employee added’ will be displayed.  </p>
+
+                <p><span class="header1">Edit</span></p>
+                <p>This option is for editing the details of an employee. Select the employee record to be edited and click <span class="header2">Edit</span> <img class="helpicon" src="Content/Layout/edit_button.png" alt="Edit" /> icon. The details will be displayed. Make the necessary changes and click on Save Changes button.  </p>
+                <p>While editing the employee details the status can be changed from Active to Terminated/Resigned/Retired/Transferred. The Date of Relieving field will be displayed while changing the status to Terminated/Resigned/Retired/Transferred and corresponding date has to be entered. Such employees will get unassigned automatically.</p>
+
+                <p><span class="header1">Delete</span></p>
+                <p>This option is for deleting the details of an employee. Select the record to be deleted and click <span class="header2">Delete</span> <img class="helpicon" src="Content/Layout/delete_button.png" alt="Delete" /> icon. A confirmation message will be displayed. Click Yes to delete the employee record from the system.  </p>
+
+                <p><span class="header1">Assign Space</span></p>
+                <p>This option is to assign space for an employee in the drawing. On selecting an Employee and then selecting the Assign Space <img class="helpicon" src="Content/Images/Drawings/assign_employee.png" title="Assign Space" /> icon, the drawing list is displayed. Select the Drawing to which the Employee has to be assigned, and click the View  <img class="helpicon" src="Content/Icons/view-drawingN.png" title="View" /> icon. A message appears prompting the user to select the space where the employee is to be assigned .Click on the exact location where the employee is to be placed.</p>
+
+                <p><span class="header1">Resources</span></p>
+                <p>This option is for associating Resources (Asset/ Furniture) with an employee. Select the employee record to which the resource is to be added/viewed or deleted, and click on Resources <img class="helpicon" src="Content/Icons/resourcesN.png" title="Resources" /> icon. The resources assigned if any will be displayed as Card with Employee Name & Employee Code as read only. Resources cannot be assigned for unassigned employees if ‘Move Resources Based on Employee Location’ option is enabled by Indus.</p>
+
+                <p><span class="header2"> Add</span></p>
+                <p>New resource can be added by clicking the <span class="header2"> Add </span><img class="helpicon" src="Content/icons/data_addN.png" alt="Add" /> icon.</p>
+                <p>Make required selections and click Save to associate the resource with the employee. Any number of resources can be associated with the employee.</p>
+
+                <p><span class="header2">Delete</span> </p>
+                <p>One or more assigned Resources can be deleted by selecting it and clicking on the <span class="header">Delete </span> <img class="helpicon" src="Content/Layout/delete_button.png" alt="Delete" /> icon.</p>
+
+                <p><span class="header1">Attachments</span></p>
+                <p>Users can add/edit/delete/view/download attachments to an employee using this option. Select the required employee and click the <span class="header2">Attachments</span> <img class="helpicon" src="Content/Icons/attachmentN.png" title="Attachments" /> icon. If any attachments that are already attached will be displayed in a list with Add, Edit, Delete, View and Download icons.  </p>
+                <p><span class="header3">Add: </span> An attachment can be added by selecting the Attachment Category first, and then selecting the file. The attachment has to be uploaded by clicking on the Upload button.</p>
+                <p><span class="header3">Edit:</span> Edit an Attachment by selecting it and clicking the <span class="header2">Edit</span> <img class="helpicon" src="Content/Layout/edit_button.png" alt="Edit" /> icon.</p>
+                <p>Select an attachment and click <span class="header2">Edit</span> <img class="helpicon" src="Content/Layout/edit_button.png" alt="Edit" /> icon. The Edit Attachment window will be displayed with the current file name. The user can select the Attachment Category and the corresponding file. Changes can be saved by clicking the Save Changes button. </p>
+                <p><span class="header3">Delete:</span> Delete an attachment by selecting it and clicking the <span class="header2">Delete</span> <img class="helpicon" src="Content/Layout/delete_button.png" alt="Delete" /> </p>
+                <p><span class="header3">View: </span>The attachment can be viewed by selecting the file and then clicking the <span class="header2">View </span> <img class="helpicon" src="Content/Icons/view-drawingN.png" title="View" /> icon. The selected attachment will be opened in an attachment viewer.</p>
+                <p>View is supported only for image files.</p>
+                <p><span class="header3">Download: </span> Attachment can be downloaded and saved in the user's computer by clicking the <span class="header2"> Download </span><img class="helpicon" src="Content/Layout/download_icon.png" title="Download" /> icon. </p>
+
+                <p><span class="header1">Display Settings</span></p>
+                <p>This option <img class="helpicon" src="Content/Icons/data_display-settingsN.png" title="Display Settings " /> allows the user to change the visibility of the employee and space data fields displayed in the data grid. On selecting this option, all the available space and employee data fields are displayed in different tabs. Display settings can be modified by selecting the required fields from the list. Changes made here will be saved as user default settings and will be effective whenever the User takes the Employee Data grid. </p>
+                <p>For making permanent changes, an administrator has to click Yes to the confirmation message “Display Settings updated. Do you want to save this as System default?”</p>
+
+                <p><span class="header1">Show Drawing</span></p>
+                <p>This option is for showing the selected employee in drawing. Select the employee record and click on the <span class="header2">Show Drawing</span> <img class="helpicon" src="Content/Images/Drawings/show_drawigs.png" title="Show Drawing" /> icon. The drawing will be opened blinking the selected employee and space hatched.</p>
+
+                <p><span class="header1">Show Zoomed</span></p>
+                <p>This option is for showing the selected employee in drawing, in the zoomed in position. Select the employee record and click on the <span class="header2">Show Zoomed </span> <img class="helpicon" src="Content/Images/Drawings/show_zoomed1.png" title="Show Zoomed" /> icon. The drawing will be displayed in the zoomed in position with the selected employee and space hatched. </p>
+
+                <p><span class="header1">Export</span></p>
+                <p>This option is to export the employee records to the Excel. On clicking <span class="header2">Export</span> <img class="helpicon" src="Content/Icons/exportN.png" title="Export" /> icon, data will be exported to an excel file. </p>
+
+                <p><span class="header1">Keyword Search</span></p>
+                <p>This option is available only after clicking the <img class="helpicon" src="Content/Icons/keyword-search.png" style="border:hidden!important;" title="Keyword Search" type="image" /> icon.</p>
+                <p>This option helps users to search for employee details using keywords. The keyword could belong to any data field of the employee. The user need not know or specify which field to look in. </p>
+                <p>On entering the keyword and clicking on the Search  icon, the data grid will be filtered with employee records having data matching the specified keyword. The employees displaying in the grid as a result of search operation will blink in the drawing.</p>
+                <p>A facility user would be able to view only those floors/divisions for which privileges are granted to him. </p>
+
+                <p><span class="header1">Advanced Search</span></p>
+                <p>This option <img class="helpicon" src="Content/Icons/advanced-search.png" title="Advanced Search" type="image" /> helps users to search for employee details with specific data in known data fields. The data being searched for can be selected from the list boxes or entered into text boxes provided against the data fields. Click on the Search button and the data grid will befilteredwith employee records having data matching the specified criteria. </p>
+                <p>The Search criteria once created will be saved and will be available throughout the current session. For searching with First Name or Last Name, on entering the first character, all employee na.mes starting with that will be listed in the list box provided. User can select the required employee from the list .</p>
+                <p>Fields to be displayed in the Search window can be set using the <span class="header2">Configure</span> <img class="config helpicon" src="Content/Icons/filter-config-icon.png" alt="Configure" /> icon, provided in the Search window. </p>
+                <p>Search criteria entered in the Search window can be cleared by clicking the <span class="header"> Clear</span> button provided in the Search window. After clearing the Search criteria and click <span class="header">Search</span> button to clear the Search Results in the Data grid. </p>
+            </div>
+        </section>
+        <section title="Assigned" [isExpanded]="sectionExpansionStatus[1].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div *ngIf="sectionExpansionStatus[1].isExpanded">
+
+                <p>This option (Data: Assigned Employees) allows the user to get the details of assigned employees in the data grid. Select the required floors, the details of assigned employees in the selected floor can be viewed in the data grid.</p>
+
+                <p><span class="header1">Edit</span></p>
+                <p>This option is for editing the details of an employee. Select the employee record to be edited and click <span class="header2">Edit</span> <img class="helpicon" src="Content/Layout/edit_button.png" alt="Edit" /> icon. The details will be displayed. Make the necessary changes and click on Save Changes button.  </p>
+                <p>While editing the employee details the status can be changed from Active to Terminated/Resigned/Retired/Transferred. The Date of Relieving field will be displayed while changing the status to Terminated/Resigned/Retired/Transferred and corresponding date has to be entered. Such employees will get unassigned automatically.</p>
+
+                <p><span class="header1">Delete</span></p>
+                <p>This option is for deleting the details of an employee. Select the record to be deleted and click <span class="header2">Delete</span> <img class="helpicon" src="Content/Layout/delete_button.png" alt="Delete" /> icon. A confirmation message will be displayed. Click Yes to delete the employee record from the system.  </p>
+
+                <p><span class="header1">Resources</span></p>
+                <p>This option is for associating Resources (Asset/Furniture) with an employee. Select the employee record to which the resource is to be added/viewed or deleted, and click on Resources icon. The resources assigned if any will be displayed as Card with Employee Name & Employee Code as read only. Resources cannot be assigned for unassigned employees if ‘Move Resources Based on Employee Location’ option is enabled by Indus.</p>
+
+                <p><span class="header2"> Add</span></p>
+                <p>New resource can be added by clicking the <span class="header2"> Add </span><img class="helpicon" src="Content/icons/data_addN.png" alt="Add" /> icon.</p>
+                <p>Make required selections and click Save to associate the resource with the employee. Any number of resources can be associated with the employee.</p>
+
+                <p><span class="header2">Delete</span> </p>
+                <p>One or more assigned Resources can be deleted by selecting it and clicking on the <span class="header">Delete </span> <img class="helpicon" src="Content/Layout/delete_button.png" alt="Delete" /> icon.</p>
+
+                <p><span class="header1">Attachments</span></p>
+                <p>Users can add/edit/delete/view/download attachments to an employee using this option. Select the required employee and click the <span class="header2">Attachments</span> <img class="helpicon" src="Content/Icons/attachmentN.png" title="Attachments" /> icon. If any attachments that are already attached will be displayed in a list with Add, Edit, Delete, View and Download icons.  </p>
+                <p><span class="header3">Add: </span> An attachment can be added by selecting the Attachment Category first, and then selecting the file. The attachment has to be uploaded by clicking on the Upload button.</p>
+                <p><span class="header3">Edit:</span> Edit an Attachment by selecting it and clicking the <span class="header2">Edit</span> <img class="helpicon" src="Content/Layout/edit_button.png" alt="Edit" /> icon.</p>
+                <p>Select an attachment and click <span class="header2">Edit</span><img class="helpicon" src="Content/Layout/edit_button.png" alt="Edit" /> icon. The Edit Attachment window will be displayed with the current file name. The user can select the Attachment Category and the corresponding file. Changes can be saved by clicking the Save Changes button. </p>
+                <p><span class="header3">Delete:</span> Delete an attachment by selecting it and clicking the <span class="header2">Delete</span> <img class="helpicon" src="Content/Layout/delete_button.png" alt="Delete" /> </p>
+                <p><span class="header3">View: </span>The attachment can be viewed by selecting the file and then clicking the <span class="header2">View </span> <img class="helpicon" src="Content/Icons/view-drawingN.png" title="View" /> icon. The selected attachment will be opened in an attachment viewer.</p>
+                <p>View is supported only for image files.</p>
+                <p><span class="header3">Download: </span> Attachment can be downloaded and saved in the user's computer by clicking the <span class="header2"> Download </span><img class="helpicon" src="Content/Layout/download_icon.png" title="Download" /> icon. </p>
+
+                <p><span class="header1">Display Settings</span></p>
+                <p>This option <img class="helpicon" src="Content/Icons/data_display-settingsN.png" title="Display Settings " /> allows the user to change the visibility of the employee and space data fields displayed in the data grid. On selecting this option, all the available space and employee data fields are displayed in different tabs. Display settings can be modified by selecting the required fields from the list. Changes made here will be saved as user default settings and will be effective whenever the User takes the Employee Data grid. </p>
+                <p>For making permanent changes, an administrator has to click Yes to the confirmation message “Display Settings updated. Do you want to save this as System default?”</p>
+
+                <p><span class="header1">Show Drawing</span></p>
+                <p>This option is for showing the selected employee in drawing. Select the employee record and click on the <span class="header2">Show Drawing</span> <img class="helpicon" src="Content/Images/Drawings/show_drawigs.png" title="Show Drawing" /> icon. The drawing will be opened blinking the selected employee and space hatched.</p>
+
+                <p><span class="header1">Show Zoomed</span></p>
+                <p>This option is for showing the selected employee in drawing, in the zoomed in position. Select the employee record and click on the <span class="header2">Show Zoomed </span> <img class="helpicon" src="Content/Images/Drawings/show_zoomed1.png" title="Show Zoomed" /> icon. The drawing will be displayed in the zoomed in position with the selected employee and space hatched. </p>
+
+                <p><span class="header1">Export</span></p>
+                <p>This option is to export the employee records to the Excel. On clicking <span class="header2">Export</span><img class="helpicon" src="Content/Icons/exportN.png" title="Export" /> icon, data will be exported to an excel file. </p>
+
+                <p><span class="header1">Keyword Search</span></p>
+                <p>This option is available only after clicking the <img class="helpicon" src="Content/Icons/keyword-search.png" style="border:hidden!important;" title="Keyword Search" type="image" /> icon.</p>
+                <p>This option helps users to search for employee details using keywords. The keyword could belong to any data field of the employee. The user need not know or specify which field to look in. </p>
+                <p>On entering the keyword and clicking on the Search  icon, the data grid will be filtered with employee records having data matching the specified keyword. The employees displaying in the grid as a result of search operation will blink in the drawing.</p>
+                <p>A facility user would be able to view only those floors/divisions for which privileges are granted to him. </p>
+
+                <p><span class="header1">Advanced Search</span></p>
+                <p>This option <img class="helpicon" src="Content/Icons/advanced-search.png" title="Advanced Search" type="image" /> helps users to search for employee details with specific data in known data fields. The data being searched for can be selected from the list boxes or entered into text boxes provided against the data fields. Click on the Search button and the data grid will befilteredwith employee records having data matching the specified criteria. </p>
+                <p>The Search criteria once created will be saved and will be available throughout the current session. For searching with First Name or Last Name, on entering the first character, all employee na.mes starting with that will be listed in the list box provided. User can select the required employee from the list .</p>
+                <p>Fields to be displayed in the Search window can be set using the <span class="header2">Configure</span> <img class="config helpicon" src="Content/Icons/filter-config-icon.png" alt="Configure" /> icon, provided in the Search window. </p>
+                <p>Search criteria entered in the Search window can be cleared by clicking the <span class="header"> Clear</span> button provided in the Search window. After clearing the Search criteria and click <span class="header">Search</span> button to clear the Search Results in the Data grid. </p>
+            </div>
+        </section>
+        <section title="Unassigned" [isExpanded]="sectionExpansionStatus[2].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div *ngIf="sectionExpansionStatus[2].isExpanded">
+                <p><span class="header1">Add</span></p>
+                <p>This option is for entering the details of a new employee into the system. On clicking <span class="header2">Add</span><img class="helpicon" src="Content/icons/data_addN.png" alt="Add" /> icon, the Employee Data Entry window is displayed, with the predefined data fields and the additional data fields defined by the user. The details of the employee can be entered. Employee photo can be uploaded by browsing and selecting the same. Email of employee is not mandatory, but if entered, it should be unique. No two employees can have the same email id.Also email of Employee should with Mail Domain added in <span class="header2">Settings: Administration: General Settings: Mail Domains.</span> While adding an Employee, the Status of the Employee will be set as ‘Active’ by default. On clicking the Save button, the data and the photograph will be saved in the system and a message ‘Employee added’ will be displayed.  </p>
+
+                <p><span class="header1">Edit</span></p>
+                <p>This option is for editing the details of an employee. Select the employee record to be edited and click <span class="header2">Edit</span> <img class="helpicon" src="Content/Layout/edit_button.png" alt="Edit" /> icon. The details will be displayed. Make the necessary changes and click on Save Changes button.  </p>
+                <p>While editing the employee details the status can be changed from Active to Terminated/Resigned/Retired/Transferred. The Date of Relieving field will be displayed while changing the status to Terminated/Resigned/Retired/Transferred and corresponding date has to be entered. Such employees will get unassigned automatically.</p>
+
+                <p><span class="header1">Delete</span></p>
+                <p>This option is for deleting the details of an employee. Select the record to be deleted and click <span class="header2">Delete</span> <img class="helpicon" src="Content/Layout/delete_button.png" alt="Delete" /> icon. A confirmation message will be displayed. Click Yes to delete the employee record from the system.  </p>
+
+                <p><span class="header1">Assign Space</span></p>
+                <p>This option is to assign space for an employee in the drawing. On selecting an Employee and then selecting the Assign Space <img class="helpicon" src="Content/Images/Drawings/assign_employee.png" title="Assign Space" /> icon, the drawing list is displayed. Select the Drawing to which the Employee has to be assigned, and click the View  <img class="helpicon" src="Content/Icons/view-drawingN.png" title="View" /> icon. A message appears prompting the user to select the space where the employee is to be assigned .Click on the exact location where the employee is to be placed.</p>
+
+                <p><span class="header1">Attachments</span></p>
+                <p>Users can add/edit/delete/view/download attachments to an employee using this option. Select the required employee and click the <span class="header2">Attachments</span> <img class="helpicon" src="Content/Icons/attachmentN.png" title="Attachments" /> icon. If any attachments that are already attached will be displayed in a list with Add, Edit, Delete, View and Download icons.  </p>
+                <p><span class="header2">Add: </span> An attachment can be added by selecting the Attachment Category first, and then selecting the file. The attachment has to be uploaded by clicking on the Upload button.</p>
+                <p><span class="header2">Edit:</span> Edit an Attachment by selecting it and clicking the <span class="header2">Edit</span> <img class="helpicon" src="Content/Layout/edit_button.png" alt="Edit" /> icon.</p>
+                <p>Select an attachment and click <span class="header2">Edit</span><img class="helpicon" src="Content/Layout/edit_button.png" alt="Edit" /> icon. The Edit Attachment window will be displayed with the current file name. The user can select the Attachment Category and the corresponding file. Changes can be saved by clicking the Save Changes button. </p>
+                <p><span class="header2=">Delete:</span> Delete an attachment by selecting it and clicking the <span class="header2">Delete</span> <img class="helpicon" src="Content/Layout/delete_button.png" alt="Delete" /> </p>
+                <p><span class="header2">View: </span>The attachment can be viewed by selecting the file and then clicking the <span class="header2">View </span> <img class="helpicon" src="Content/Icons/view-drawingN.png" title="View" /> icon. The selected attachment will be opened in an attachment viewer.</p>
+                <p>View is supported only for image files.</p>
+                <p><span class="header2">Download: </span> Attachment can be downloaded and saved in the user's computer by clicking the <span class="header2"> Download </span><img class="helpicon" src="Content/Layout/download_icon.png" title="Download" /> icon. </p>
+
+                <p><span class="header1">Display Settings</span></p>
+                <p>This option <img class="helpicon" src="Content/Icons/data_display-settingsN.png" title="Display Settings " /> allows the user to change the visibility of the employee and space data fields displayed in the data grid. On selecting this option, all the available space and employee data fields are displayed in different tabs. Display settings can be modified by selecting the required fields from the list. Changes made here will be saved as user default settings and will be effective whenever the User takes the Employee Data grid. </p>
+                <p>For making permanent changes, an administrator has to click Yes to the confirmation message “Display Settings updated. Do you want to save this as System default?”</p>
+
+                <p><span class="header1">Export</span></p>
+                <p>This option is to export the employee records to the Excel. On clicking <span class="header2">Export</span> <img class="helpicon" src="Content/Icons/exportN.png" title="Export" /> icon, data will be exported to an excel file. </p>
+
+                <p><span class="header1">Keyword Search</span></p>
+                <p>This option is available only after clicking the <img class="helpicon" src="Content/Icons/keyword-search.png" style="border:hidden!important;" title="Keyword Search" type="image" /> icon.</p>
+                <p>This option helps users to search for employee details using keywords. The keyword could belong to any data field of the employee. The user need not know or specify which field to look in. </p>
+                <p>On entering the keyword and clicking on the Search  icon, the data grid will be filtered with employee records having data matching the specified keyword. The employees displaying in the grid as a result of search operation will blink in the drawing.</p>
+                <p>A facility user would be able to view only those floors/divisions for which privileges are granted to him. </p>
+
+                <p><span class="header1">Advanced Search</span></p>
+                <p>This option <img class="helpicon" src="Content/Icons/advanced-search.png" title="Advanced Search" type="image" /> helps users to search for employee details with specific data in known data fields. The data being searched for can be selected from the list boxes or entered into text boxes provided against the data fields. Click on the Search button and the data grid will befilteredwith employee records having data matching the specified criteria. </p>
+                <p>The Search criteria once created will be saved and will be available throughout the current session. For searching with First Name or Last Name, on entering the first character, all employee na.mes starting with that will be listed in the list box provided. User can select the required employee from the list .</p>
+                <p>Fields to be displayed in the Search window can be set using the <span class="header2">Configure</span> <img class="config helpicon" src="Content/Icons/filter-config-icon.png" alt="Configure" /> icon, provided in the Search window. </p>
+                <p>Search criteria entered in the Search window can be cleared by clicking the <span class="header"> Clear</span> button provided in the Search window. After clearing the Search criteria and click <span class="header">Search</span> button to clear the Search Results in the Data grid. </p>
+
+            </div>
+        </section>
+    </content>
+</page>
+<style type="text/css">
+    h3.Mainheader {
+        color: #178AE8;
+    }
+
+    .header1 {
+        font-weight: bold;
+        color: #178AE8;
+    }
+
+    .header2 {
+        font-weight: normal;
+        color: #178AE8;
+    }
+
+    p {
+        margin-left: 38px;
+        font-size: 13px;
+        margin-right: 3em;
+    }
+
+    .header3 {
+        font-weight: bold;
+        color: black;
+    }
+    /**/ h1 {
+        color: #178AE8;
+        font-size: 1.3em;
+        margin-left: 38px;
+    }
+
+    h2 {
+        color: #178AE8;
+        font-size: 1em;
+        margin-left: 38px;
+    }
+
+    .config {
+        background-color: #178AE8;
+    }
+
+    .helpicon {
+        vertical-align: baseline;
+        width: 20px;
+        height: 20px;
+    }
+</style>

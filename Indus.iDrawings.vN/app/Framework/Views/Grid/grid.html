@@ -1,0 +1,93 @@
+﻿<div style="display:block;height:99%;" (contextmenu)="onContextMenu($event, item)" (click)="gridOnClick($event)" id="gridmainDiv" (mousedown)="gridMousedown($event)">
+    <wj-flex-grid [itemsSource]="dataSource"
+                  #flexgrid
+                  [allowSorting]="properties.allowSort==undefined ?true:properties.allowSort"
+                  (itemsSourceChanged)="itemsSourceChangedHandler()"
+                  (selectionChanged)="onSelectionChanged($event)"
+                  (selectionChanging)="onSelnChanging($event,columns)"
+                  [autoGenerateColumns]="false"
+                  [allowDelete]="true"
+                  [autoClipboard]="true"  
+                  [groupHeaderFormat] ="'{name}: &lt;b&gt;{value}'" 
+                  [allowAddNew]="properties.allowAdd==undefined ?true:properties.allowAdd"
+                  [autoSizeMode]="1"
+                   [treeIndent] ="10"
+                  [showMarquee]="true"
+                  [isReadOnly]="properties.allowEdit==undefined ?false:!properties.allowEdit"
+                  [selectionMode]="setSelectioMode()"
+                  [headersVisibility]="properties.headerVisibility==undefined ?3:2"
+                  (sortingColumn)="sortingColumn($event)"               
+                  (beginningEdit)="onBeginEdit($event,flexgrid,columns)"
+                  (prepareCellForEdit)="onPrepareCellForEdit($event,flexgrid,columns)"
+                  (cellEditEnding)="onCellEditEnding($event,flexgrid,columns)"
+                  (cellEditEnded)="onCellEditEnded($event,flexgrid,columns)"
+                  (rowEditEnding)="onRowEditEnding($event,flexgrid,columns)"
+                  (rowEditEnded)="onRowEditEnded($event,flexgrid,columns)"
+                  (rowAdded)="onRowAdded($event,flexgrid)"
+                  (deletingRow)="onDeletingRow($event,flexgrid)"
+                  (deletedRow)="onDeletedRow($event,flexgrid)"
+                  [preserveSelectedState]="true"                       
+                  (updatedLayout)="onUpdatedLayout($event)"                      
+                  role="none"          
+                  aria-label="Use arrow keys to navigate through Data List"                    
+                  >
+
+        <wj-flex-grid-column *ngFor="let col of columns"
+                             [header]="col.FieldLabel"
+                             [binding]="col.FieldLabel"
+                             [name]="col.FieldLabel"
+                             [dataType]="mapDataType(col.GenericDataTypeId)"
+                             [format]="mapFormat(col.GenericDataTypeId)"
+                             [cssClass]="mapClassBasedType(col.GenericDataTypeId)"
+                             [visible]="col.IsVisible"
+                             [isReadOnly]="!col.IsEnabled"
+                             [allowSorting]="col.DataEntryControlId== 6?false:true"
+                             [allowDragging]="col.DataEntryControlId== 6?0:1"
+                             [width]="col.Width"   
+                                          
+                             [isContentHtml]="col.isContentHtml!==undefined ? true:false">
+            <template  [cellType]="'ColumnHeader'" *ngIf="(col.DataEntryControlId == 6&& properties.isHeaderCheckBx==true)" wjFlexGridCellTemplate let-cell="cell">
+                <div style="text-align:center;"><input type="checkbox" #checkAll [ngModel]="isChecked" (click)="checkAllClick($event,flexgrid,col)" style="margin-top:2px;margin:2px" />{{col.FieldLabel}}</div>
+            </template>
+            <template [cellType]="'Cell'" *ngIf="col.isContentHtml == 'hyperlink'" wjFlexGridCellTemplate let-cell="cell">
+                <!--<a (click)="colValClick(col.FieldLabel, cell.item[col.FieldLabel]);">{{cell.item[col.FieldLabel]}} </a>-->
+                <a style="cursor:pointer;" (click)="colValClick(col.FieldLabel, cell.item);">{{cell.item[col.FieldLabel]}} </a>
+            </template>
+            <template *ngIf="col.DataEntryControlId == 1" wjFlexGridCellTemplate [cellType]="'CellEdit'" let-cell="cell">
+             
+                <StringTextBox [fieldObject]="updateFieldValue(col,cell.value)" (change)="onChangestrInput($event,col)"></StringTextBox>
+            </template>
+            <template *ngIf="col.DataEntryControlId == 3" wjFlexGridCellTemplate [cellType]="'CellEdit'" let-cell="cell">
+                <TextAreaComponent [fieldObject]="updateFieldValue(col,cell.value)"></TextAreaComponent>
+            </template>
+            <template *ngIf="col.DataEntryControlId == 4" wjFlexGridCellTemplate [cellType]="'CellEdit'" let-cell="cell">
+                <DropDownListComponent [fieldObject]="updateFieldValue(col,cell.value)" (ddlChange)="ddlRelationChange($event)"></DropDownListComponent>
+            </template>
+            <template *ngIf="col.DataEntryControlId == 2" wjFlexGridCellTemplate [cellType]="'CellEdit'" let-cell="cell">
+                <DateComponent [fieldObject]="updateFieldValue(col,cell.value)"></DateComponent>
+            </template>
+            <template *ngIf="col.DataEntryControlId == 8" wjFlexGridCellTemplate [cellType]="'CellEdit'" let-cell="cell">
+                <DateTimeComponent [fieldObject]="updateFieldValue(col,cell.value)"></DateTimeComponent>
+            </template>
+            <template *ngIf="col.DataEntryControlId == 7" wjFlexGridCellTemplate [cellType]="'CellEdit'" let-cell="cell">
+                <ListBoxComponent [fieldObject]="updateFieldValue(col,cell.value)"></ListBoxComponent>
+            </template>
+        </wj-flex-grid-column>
+    </wj-flex-grid>
+    <div class="endgrid" aria-live="off" style="height:0%;width:0%;"></div>
+    <div class="focusgrid" (focusout)="gridfocusout($event)" style="height:0%;width:0%;"></div>
+</div>
+<grid-context-menu [xposition]="contextMenuXPosition" [yposition]="contextMenuYPosition" [visibility]="contextMenuVisibility" [menuItems]="contextMenuData" [gridElement]="gridElement" (contextMenuOnClick)="contextMenuOnClick($event)"></grid-context-menu>
+
+        <!--<template [cellType]="'GroupHeader'"   *ngIf="properties.grpWithCheckBx!=undefined"  wjFlexGridCellTemplate let-cell="cell">
+             <input type="checkbox" (click)="test(cell)"  style="margin-top:2px;"  /> {{//col.FieldLabel}}: <b>{{//cell.item._name}} </b> ({{//cell.item._items.length}} items)
+         </template>
+
+        <template *ngIf="col.DataEntryControlId == 6" wjFlexGridCellTemplate [cellType]="'CellEdit'" let-cell="cell">
+               <CheckBoxComponent [fieldObject]="updateFieldValue(col,cell.value)" ></CheckBoxComponent>
+           </template>-->
+
+
+
+
+

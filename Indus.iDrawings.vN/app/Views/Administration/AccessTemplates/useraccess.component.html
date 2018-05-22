@@ -1,0 +1,5 @@
+﻿<div style="margin-left:10px;" *ngIf="userList">
+    <!--<confirmation (onConfirm)="okDelete($event)"></confirmation>-->
+    <ListBoxComponent [fieldObject]=userList></ListBoxComponent>
+</div>
+<button  class="Savebutton "type="button" (click)="updateUserAccessData($event)"> Save Changes </button>

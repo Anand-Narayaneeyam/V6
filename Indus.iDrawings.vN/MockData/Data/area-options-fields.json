@@ -1,0 +1,49 @@
+﻿{
+  "data": [
+    {
+      "FieldId": 1,
+      "FieldName": "Include External Wall Area for chargeback ",
+      "FieldType": 6,
+      "FieldValue": "",
+      "IsMandatory": false,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false,
+      "IsVisible": true,
+      "MaxLength": 100
+    },
+    {
+      "FieldId": 2,
+      "FieldName": "Include Vertical Area for chargeback ",
+      "FieldType": 6,
+      "FieldValue": "",
+      "IsMandatory": false,
+      "IsHiddenLabel": false,
+      "IsVisible": true,
+      "IsDisabled": false,
+      "ReadOnlyMode": false
+    },
+    {
+      "FieldId": 3,
+      "FieldName": "Enable Net Area ",
+      "FieldType": 6,
+      "FieldValue": "",
+      "IsMandatory": false,
+      "IsHiddenLabel": false,
+      "IsVisible": true,
+      "IsDisabled": false,
+      "ReadOnlyMode": false
+    },
+    {
+      "FieldId": 4,
+      "FieldName": "Rate for Common Area ",
+      "FieldType": 2,
+      "FieldValue": "",
+      "IsMandatory": true,
+      "IsHiddenLabel": false,
+      "IsVisible": true,
+      "IsDisabled": false,
+      "ReadOnlyMode": false,
+      "NotificationType": "inline"
+    } 
+  ]
+}

@@ -1,0 +1,19 @@
+﻿<page [pagetitle]="pagePath">
+    <content>
+        <split-view [splitviewObject]="splitviewInput" [pageTitle]="pageTitle" (onSecondaryClose)="onSplitViewClose($event)">
+            <primary-view>
+                <div style="height: 40px; margin-top:9px;">
+                    <button *ngIf="!IsMobile"  class="Savebutton " style="margin-right:5px;" type="button" (click)="customizeClick($event)">Customize</button>
+                </div>
+                <div style="width:100%;height: calc(100% - 40px)" *ngIf="ReportData != undefined">
+                    <reportviewer [reportData]=ReportData> Loading ...</reportviewer>
+                </div>
+            </primary-view>
+            <secondary-view style="height:100%;">
+                <div style="width:100%;display:block;height:100%;">
+                    <customrpt-addedit *ngIf="splitviewInput.showSecondaryView==true" [btnName]="btnName" [selectedId]="reportId" [fieldObject]="fieldObjectAddEdit" [itemSource]="itemsSourceAddEdit" [moduleId]="ModuleId" [pageTarget]="2" [listFieldDetails]="listFieldDetails" [showMyDef]="showMyDef" [showSetMyDef]="showSetMyDef" (applyCustomRptClick)="applyCustomRptClick($event)"></customrpt-addedit>
+                </div>
+            </secondary-view>
+        </split-view>
+    </content>
+</page>

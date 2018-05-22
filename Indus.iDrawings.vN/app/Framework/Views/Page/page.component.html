@@ -1,0 +1,84 @@
+﻿<style type="text/css">
+    :host .Savebutton {
+        background: #178ae8 !important;
+        padding: 5px 10px !important;
+        color: #fff !important;
+        border: 1px solid rgba(0, 0, 0, 0.2) !important;
+        width: auto !important;
+        border-radius: 6px !important;
+    }
+        :host .Savebutton:focus {
+         outline: 1px solid #00a3e8!important; 
+         outline-offset: 3px;
+    }
+            /*:host button.Savebutton:focus {
+ 
+         outline: solid #00a3e8!important; 
+         outline-offset: 3px;
+    }*/
+
+    :host widget:nth-child(1)   {
+        border-right: 1px solid #e4e3e3;
+    }
+
+    :host widget:nth-child(3)   {
+        border-top: 1px solid #e4e3e3;
+        border-right: 1px solid #e4e3e3;
+    }
+    :host widget:nth-child(4)    {
+        border-top: 1px solid #e4e3e3;
+    }
+
+     @media screen and (-ms-high-contrast: active) and (max-width:660px ), (-ms-high-contrast: none) and (max-width:660px ) {
+         :host .filter {
+            position:-ms-page!important;
+            margin-left: -300px!important;
+        }
+          :host #slideout 
+        {
+            position:-ms-page!important;
+        }
+
+    }
+
+    @media screen and (-ms-high-contrast: active) and (min-width:660px ), (-ms-high-contrast: none) and (min-width:660px ) {
+         :host .filter {
+            position:-ms-page!important;
+            margin-left: -540px!important;
+        }
+          :host #slideout 
+        {
+            position:-ms-page!important;
+        }
+
+    }
+
+    :host input:focus {
+        outline: 1px solid #00a3e8!important;
+    }
+
+    :host select:focus {
+        outline: 1px solid #00a3e8!important;
+    }
+
+</style>
+
+<div class="pageLayout">
+    <div class="pageHeader" style="float:left;">
+        <div class="pagepath" style="height:auto !important;">
+            <ng-content  class="pagepath" select="pagepath"></ng-content>
+        </div>
+        <div class="pagesubmenu" style="height:auto !important;width:100%;">
+            <ng-content select="submenu"></ng-content>
+        </div>
+        <div class="pageFilter" style="height:auto !important;">
+            <ng-content select="searchBox"></ng-content>
+        </div>
+    </div>
+    <div class="pageContent"  [ngClass]="withoutSubmenu==true?'pageContent' : 'pageContentwithMenu' ">
+        <div class="pageContectLayout">
+            <ng-content select="content"></ng-content>
+        </div>
+        <notification *ngIf="isEnableNotification" ></notification>
+    </div>
+</div>

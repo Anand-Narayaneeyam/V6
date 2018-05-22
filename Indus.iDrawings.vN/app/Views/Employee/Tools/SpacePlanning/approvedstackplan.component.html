@@ -1,0 +1,72 @@
+﻿<page [pagetitle]="pagePath"  [withoutSubmenu]="true">
+    <pagepath>
+    </pagepath>
+    <content>
+        <split-view [splitviewObject]="splitViewApprovedStackPlan" [pageTitle]="pageTitle">
+            <primary-view>
+                
+                <tabs [selectedTab]="selectedTab" (getSelectedTab)="getSelectedTab($event)" (onTabClose)="onTabClose($event)" [deleteIndex]="deleteIndex" id="approvedStackPlan">
+                 
+                    <tab tabTitle="Approved Stack Plans" closeButtonVisible="hidden">
+                        <div>
+                            <sub-menu [source]=menuData [count]=gridcount [menuIds]=enableMenu (onSubMenuChange)="onSubMenuChange($event);"></sub-menu>
+                        </div>
+                        <div style="height:calc(100% - 35px)">
+                            <div  *ngIf="selectedTab ==0" [ngClass]="totalItems > itemsPerPage ? 'pagewithPaging':'pagewithoutPaging'">
+                                <slide [width]="400" [position]="Position" [type]="dialog" [show]=showSlideMoveProject (closeDialog)="closeSlideDialog($event)">
+                                    <div>
+                                        <div>
+                                            Are you sure you want to convert the selected Stack Plan to Move Project?
+                                        </div>
+                                        <div>
+                                            <div style="width:100%">
+                                                <button class="Savebutton " type="button" (click)="PromptConvertToMoveProject($event)">Yes</button>
+                                                <button class="Savebutton " type="button" (click)="ConvertToMoveProjectcancelClick($event)">No</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </slide>
+                                <gridView [dataSource]="itemSource" [properties]="inputItems" [columns]="fieldObject" (onSorting)="onSort($event)" [refreshgrid]="refreshgrid"></gridView>
+                            </div>
+                            <div *ngIf="totalItems >itemsPerPage ? 'true' : 'false'" style="height:35px;display:block;">
+                                <paging [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="pageChanged($event);"></paging>
+                            </div>
+                        </div>
+                    </tab>
+                    <tab tabTitle="Stack Plan Details" *ngIf="isTabOpen == true" closeButtonVisible="hidden">
+                        <div>
+                            <stackplan-details [selectedId]="inputItems.selectedIds[0]" [stackPlanRowData]="inputItems.rowData"></stackplan-details>
+                        </div>
+                    </tab>
+                </tabs>
+            </primary-view>
+            <secondary-view>
+                 <div style="width:100%;display:block;">
+                    <span *ngIf="splitViewApprovedStackPlan.showSecondaryView == true && target == 1">
+                        <view-stack *ngIf="target == 1" [prjtId]="ProjectId" [stackPlanDetailsId]="StackPlanDetailsId" [spacePlaningPrjtStatusId]=27></view-stack>
+                    </span>
+                 </div>
+</secondary-view>
+        </split-view>
+    </content>
+</page>
+<slide [width]="400" [position]="Position" [type]="dialog" [show]=showSlide (closeDialog)="closeSlideDialog($event)">
+    <div>
+        <div>
+            {{scenarioSlideText}}
+        </div>
+        <div>
+            <div style="width:100%">
+                <button  class="Savebutton "type="button" (click)="scenarioOKClick($event)">Yes</button>
+                <button  class="Savebutton "type="button" (click)="cancelScenarioClick($event)">No</button>
+            </div>
+        </div>
+    </div>
+</slide>
+
+
+<style>
+    #approvedStackPlan .navbar li {
+        width: 200px !important;
+    }
+</style>

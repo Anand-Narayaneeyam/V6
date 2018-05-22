@@ -1,0 +1,82 @@
+﻿<div>
+    <page [pagetitle]="pagePath">
+        <content>
+            <tabs [selectedTab]="selectedTab" (getSelectedTab)="getSelectedTab($event)">
+                <tab tabTitle="Owned" closeButtonVisible="hidden" >
+                    <split-view  *ngIf="OwnerShipId == 1" [splitviewObject]="splitviewInput" [pageTitle]="pageTitle">
+                        <primary-view>
+                            <submenu>
+                                <sub-menu [source]=menuData [count]=totalItems [menuIds]=enableMenu (onSubMenuChange)="onSubMenuChange($event);"> </sub-menu>
+                            </submenu>
+                            <div style="height: calc(100% - 35px);" *ngIf="selectedTab == 0">
+                                <div [ngClass]="totalItems > itemsPerPage ? 'pagewithPaging':'pagewithoutPaging'">
+                                    <gridView [(dataSource)]="itemsSource" [properties]="inputItems" [columns]="fieldObject" (onSorting)="onSort($event)"></gridView>
+                                </div>
+                                <div [style.height]="totalItems >itemsPerPage ? '35px' : '0px'">
+                                    <paging [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="pageChanged($event);"></paging>
+                                </div>
+                            </div>
+                        </primary-view>
+                        
+                        <secondary-view>
+                         <!-- Edit -->
+                            <building-Edit *ngIf="menuClick == 1 && splitviewInput.showSecondaryView == true" (submitSuccess)="submitReturn($event)" [btnName]="btnName" [selectedId]="inputItems.selectedIds" [fieldDetailsAdd]="fieldDetailsAdd1" ></building-Edit>
+                        
+                        <!-- Renovations -->
+                        
+                            <buildings-rennovations *ngIf="menuClick == 2 && splitviewInput.showSecondaryView == true" style="display: block;width:700px;" [selectedId]="inputItems.selectedIds" [BuildingName]="BuildingName" [BuildingConstructionDate]="BuildingConstructionDate"></buildings-rennovations>
+                        
+                        <!-- Attachments -->
+                        
+                            <attachments *ngIf="menuClick == 3 && splitviewInput.showSecondaryView == true" style="display: block;width:700px;" [attachmentCategoryId]=3  [moduleId]="30" [baseEntityId]="inputItems.selectedIds[0]" class="attachment"></attachments>
+                        </secondary-view>
+                    </split-view>
+                </tab>              
+                <tab tabTitle="Leased" closeButtonVisible="hidden">
+                    <split-view  *ngIf="OwnerShipId == 3" [splitviewObject]="splitviewInput" [pageTitle]="pageTitle">
+                        <primary-view>
+                            <submenu>
+                                <sub-menu [source]=menuData [count]=totalItems [menuIds]=enableMenu (onSubMenuChange)="onSubMenuChange($event);"> </sub-menu>
+                            </submenu>
+                            <div style="height:90%;" *ngIf="selectedTab == 1">
+                                <gridView [(dataSource)]="itemsSource" [properties]="inputItems" [columns]="fieldObject"  (onSorting)="onSort($event)" ></gridView>
+                                <paging [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="pageChanged($event);"></paging>
+                            </div>
+                        </primary-view>
+                        <!-- Edit -->
+                        <secondary-view>
+                            <building-Edit *ngIf="menuClick == 1 && splitviewInput.showSecondaryView == true" (submitSuccess)="submitReturn($event)" [btnName]="btnName" [selectedId]="inputItems.selectedIds" [fieldDetailsAdd]="fieldDetailsAdd1"></building-Edit>
+                        
+                        <!-- Renovations -->
+                        
+                            <buildings-rennovations *ngIf="menuClick == 2 && splitviewInput.showSecondaryView == true" style="display: block;width:700px;"  [selectedId]="inputItems.selectedIds" [BuildingName]="BuildingName" [BuildingConstructionDate]="BuildingConstructionDate"></buildings-rennovations>
+                        
+                        <!-- Attachments -->
+                        
+                            <attachments *ngIf="menuClick == 3 && splitviewInput.showSecondaryView == true" class="attachment" [attachmentCategoryId]=3  [moduleId]="30" [baseEntityId]="inputItems.selectedIds[0]"></attachments>
+                        </secondary-view>
+                    </split-view>
+                </tab>
+            </tabs>
+        </content>
+    </page>
+</div>
+
+<style>
+    .attachment {
+        width: 750px;
+        display: block;
+    }
+
+    @media only screen and (min-device-width: 320px) and (max-device-width: 813px) and (orientation: portrait) {
+        .attachment {
+            width: 100%!important;
+        }
+    }
+
+    @media only screen and (min-device-width: 320px) and (max-device-width: 812px) and (orientation: landscape) {
+        .attachment {
+            width: 100%!important;
+        }
+    }
+</style>

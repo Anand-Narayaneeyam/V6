@@ -1,0 +1,70 @@
+﻿<page [pagetitle]="pagePath">
+    <pagepath>
+    </pagepath>
+    <content>
+        <section title="Create Request" [isExpanded]="sectionExpansionStatus[0].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div *ngIf="sectionExpansionStatus[0].isExpanded">
+                <p>New Requests for the selected Work Type can be created through this option. On clicking this, New Request page will be displayed.</p>
+                <p>Administrators and Action Point Userscan create and review Requests. Work Order Users can only create New Requests and track its status. </p>
+                <p>New Request of the selected Work type can be registered by selecting the Work Type, Site and filling up the required fields like Description, Expected Date of Completion, Priority, etc. </p>
+                <p>There is an option to specify the type of Requester as 'Me' or 'Others'. If the requester is the logged in user, the 'Me' option can be selected. If the request is created for some other person, the 'Other' option can be selected. By default the 'Me' option will be selected. In such cases the First Name, Middle Name, Last Name and email id given when the user is created will be displayed in corresponding fields as read only. If the 'Other' option is selected these fields should be entered manually. </p>
+                <p>Additional Data fields which are set under Editable Fields (through through Settings: Workflow Settings: Set Work Type: Workflow Settings <img class="helpicon" src="Content/Icons/workflow_settings.png" alt="Workflow Settings"> icon) for the Requester Action Point of the selected Work Type, will be displayed to view/edit. </p>
+                <p>Site, Building, Floor, Organizational Units drop downs will be populated based on the selections made.</p>
+                <p>Documents can be attached to the Request by clicking the <span class="header2">Manage Documents</span> button. Manage Document will display only if the required permissions are set for the Requester Action point (through Settings: Workflow Settings: Set Work Type: Workflow Settings <img class="helpicon" src="Content/Icons/workflow_settings.png" alt="Workflow Settings"> ) for the selected Work Type. The Request can be saved by clicking the Save button. The saved Request will be available for Review for the action point user under <span class="header2">Current Tasks</span> option. </p>
+            </div>
+        </section>
+        <section title="My Requests" [isExpanded]="sectionExpansionStatus[1].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div *ngIf="sectionExpansionStatus[1].isExpanded">
+                <p>Status of Requests created by logged in user can be tracked through this option. Requests in different status which are completed, closed or Work Order generated also can be viewed through the My Requests option. The two tabs namely Active Requests and Closed Requests are provided to keep track of both currently Active and Closed requests</p>
+                <p><span class="header1">Edit</span>: Requests which are sent back by the Action Point User can be edited by clicking <span class="header2">Edit</span> <img class="helpicon" src="Content/Layout/edit_button.png" alt="Edit" />  icon. </p>
+            </div>
+        </section>
+    </content>
+</page>
+<style type="text/css">
+    h3.Mainheader {
+        color: #178AE8;
+    }
+
+    .header1 {
+        font-weight: bold;
+        color: #178AE8;
+    }
+
+    .header2 {
+        font-weight: normal;
+        color: #178AE8;
+    }
+
+    p {
+        margin-left: 38px;
+        font-size: 13px;
+        margin-right: 3em;
+    }
+
+    .header3 {
+        font-weight: bold;
+        color: black;
+    }
+    /**/ h1 {
+        color: #178AE8;
+        font-size: 1.3em;
+        margin-left: 38px;
+    }
+
+    h2 {
+        color: #178AE8;
+        font-size: 1em;
+        margin-left: 38px;
+    }
+
+    .config {
+        background-color: #178AE8;
+    }
+
+    .helpicon {
+        vertical-align: baseline;
+        width: 20px;
+        height: 20px;
+    }
+</style>

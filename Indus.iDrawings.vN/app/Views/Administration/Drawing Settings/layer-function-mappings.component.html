@@ -1,0 +1,38 @@
+﻿<div style="width: 100%;display:inline-table;">
+    <div style="width: 100%;height: 100%;float: left;line-height: 100%;">
+        <submenu>
+            <sub-menu [selectedId]=selIds [menuCard]=types [source]=menuData [count]=gridcount [menuIds]=enableMenu (onSubMenuChange)="onSubMenuChange($event);"> </sub-menu>
+        </submenu>
+    </div>
+    <!--<div style="float: right; width: 50%;height: 100%;line-height: 100%;">
+        <sort *ngIf="fields" [fieldNames]="fields" [listItems]=listSource (sortEvent)="onSorting($event)"></sort>
+    </div>-->
+</div>
+<!--<confirmation (onConfirm)="okDelete($event)"></confirmation>-->
+<list [source]=listSource [(selectedIds)]="selIds" [datakey]="'Drawing Layer'" [selectionMode]="'Single'">
+    <template let-item>
+        <card (onSubmition)="onCardSubmit($event)" (onCancelClick)="onCardCancelClick()" [datakeyValue]="item['Drawing Layer']" (inlineDelete)="onDelete($event)">
+            <div *ngIf="fields">
+                <!--<field [(fieldObject)]="fields[0]" [(fieldValue)]="item.Id"></field>-->
+                <field [(fieldObject)]="fields[0]" [(fieldValue)]="item['Layer Function']"></field>
+                <field [(fieldObject)]="fields[1]" [(fieldValue)]="item['Drawing Layer']"></field>
+                <field [(fieldObject)]="fields[2]" [(fieldValue)]="item['Data Field']"></field>
+            </div>
+        </card>
+    </template>
+</list>
+<!--<paging [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="pageChanged($event);"></paging>-->
+
+<slide [width]=width [position]="Position" [show]=showSlide (closeDialog)="closeSlideDialog($event)">
+    <div>
+        <div>
+            Are you sure you want to delete the selected Layer Function Mapping?
+        </div>
+        <div>
+            <div style="width:100%">
+                <button  class="Savebutton "type="button" (click)="okDelete($event)">Yes</button>
+                <button  class="Savebutton "type="button" (click)="cancelClick($event)">No</button>
+            </div>
+        </div>
+    </div>
+</slide>

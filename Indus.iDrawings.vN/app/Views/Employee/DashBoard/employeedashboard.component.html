@@ -1,0 +1,65 @@
+﻿<page [pagetitle]="pagePath" [withoutSubmenu]="true">
+    <content>
+        <div style="width:100%;height:40px;overflow:hidden" class="dropdownholder">
+            <table cellpadding="0" cellspacing="0" width="100%">
+                <tr style="background-color:#DADADA;">
+                    <td>
+                        <DropDownListComponent style="font-size: 0.9em;" *ngIf="ddlSite" [fieldObject]="ddlSite" [ShowSelectOption]="false" (change)="onChangeddlSite($event.target.value)" [SetAlignment]=alignContent></DropDownListComponent>
+                    </td>
+
+                    <td>
+                        <DropDownListComponent style="font-size: 0.9em;" *ngIf="ddlBuilding" [fieldObject]="ddlBuilding" [ShowSelectOption]="false" (change)="onChangeddlBuilding($event.target.value)" [SetAlignment]=alignContent></DropDownListComponent>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <dashboard style="height: calc(100% - 40px);display:block;">
+           
+            <widget>
+                <div style="font-weight:bold"> Occupancy by {{OrgLvel1Name}} </div>
+                <piechart *ngIf="PieChart1Data != undefined" [sourceData]="PieChart1Data" [isSourceChanged]="changeHapndOrgOccupancy"> </piechart>
+            </widget>
+            <widget>
+                <div style="font-weight:bold"> Occupancy / Vacancy by {{BldngFloorLabel}} </div>
+                <multibarchart *ngIf="Barchart1Data != undefined" [sourceData]="Barchart1Data" [isSourceChanged]="changeHapndBldngOccupancy"> </multibarchart>
+            </widget>
+                    
+            <widget>
+                <div style="font-weight:bold"> Occupancy by Space Standard  </div>
+                <piechart *ngIf="PieChart2Data != undefined" [sourceData]="PieChart2Data" [isSourceChanged]="changeHapndSpaceStd"> </piechart>
+            </widget>
+                   
+            <widget>
+                <div style="font-weight:bold"> Occupancy / Vacancy by {{OrgLvel1Name}} </div>
+                <multibarchart *ngIf="Barchart2Data != undefined" [sourceData]="Barchart2Data" [isSourceChanged]="changeHapndOrgOccupancy"> </multibarchart>
+            </widget>
+                   
+        </dashboard>
+    
+</content>
+</page>
+
+<style>
+    .dropdownholder {
+        height:40px;
+    }
+
+@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 812px) 
+  and (orientation: portrait)
+    {
+        .dropdownholder {
+            height:55px!important;
+        }
+    }
+
+    @media only screen and (min-device-width: 320px) 
+                    and (max-device-width: 812px) 
+                    and (orientation: landscape) 
+    {
+       .dropdownholder {
+            height:55px!important;
+        }
+    }
+</style>

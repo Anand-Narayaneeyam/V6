@@ -1,0 +1,34 @@
+﻿<div>
+    <submenu>
+        <sub-menu [source]=menuData [count]=totalItems [menuIds]=enableMenu [menuCard]=true (onSubMenuChange)="onSubMenuChange($event);"> </sub-menu>
+    </submenu>
+    <split-view [splitviewObject]="splitviewInput" [pageTitle]="pageTitle" style="height: calc(85% - 35px);">
+        <primary-view>
+            <div>
+                <div [ngClass]="totalItems > itemsPerPage ? 'pagewithPaging':'pagewithoutPaging'">
+                    <gridView [(dataSource)]="itemsSource" [properties]="inputItems" [columns]="fieldObject" [refreshgrid]="refreshgrid"
+                              (onSorting)="onSort($event)" (onRowAdd)="inlineAdd($event)" (onRowUpdate)="inlineEdit($event)" (onRowDelete)="inlineDelete($event)"></gridView>
+                </div>
+                <div [style.height]="totalItems >itemsPerPage ? '35px' : '0px'">
+                    <paging [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="pageChanged($event);"></paging>
+                </div>
+            </div>
+        </primary-view>
+        <secondary-view *ngIf="action == 'add' || action =='edit'">
+            <warranty-add-edit (submitSuccess)="submitReturn($event)" [action]="action" [btnName]="btnName" [selectedId]="inputItems.selectedIds" [objectId]="selectedId" [fieldDetailsAdd]="fieldDetailsAdd1" [objectCategoryName]="objectCategoryName"></warranty-add-edit>
+        </secondary-view>
+        <secondary-view *ngIf="action == 'alert'">
+            <warranty-alert *ngIf="splitviewInput.showSecondaryView == true" (generateSuccess)="submitReturn($event)" [objectId]="selectedId" [warrantyNotificationDate]="warrantyNotificationDate"></warranty-alert>
+        </secondary-view>
+    </split-view>
+    <slide [width]="slidewidth" [position]="position" [show]="showSlide" (closeDialog)="closeSlideDialog($event)">
+        <div>
+            <div>Are you sure you want to delete the selected Warranty?  </div>
+            <div style="width:100%">
+                <button  class="Savebutton "type="button" (click)="okDelete($event)">Yes</button>
+                <button  class="Savebutton "type="button" (click)="cancelClick($event)">No</button>
+            </div>
+        </div>
+    </slide>
+</div>
+

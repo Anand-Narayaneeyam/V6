@@ -1,0 +1,10 @@
+﻿<div>
+    <split-view [splitviewObject]="splitviewInput" [pageTitle]="pageTitle">
+        <primary-view>
+            <DynamicFields [dataSource]="ServiceField" (dynamicListAddEmit)="listbuttonadd($event)" (dynamicListRemoveEmit)="listbuttondelete($event)"></DynamicFields>
+        </primary-view>
+        <secondary-view>
+            <CustomServiceAdd *ngIf="splitviewInput.showSecondaryView" (submitSuccess)="OnSuccessfulSubmit($event)"></CustomServiceAdd>
+        </secondary-view>
+    </split-view>
+</div>

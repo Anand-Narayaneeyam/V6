@@ -1,0 +1,29 @@
+﻿<div style="height:100%">
+    <div style="height:45%;margin-right:15px;">
+        <div *ngFor="let field of fieldDetailsAdd;let i=index;">
+            <StringTextBox *ngIf="field && field.DataEntryControlId == '1' && field.IsVisible" [fieldObject]=field></StringTextBox>
+            <DropDownListComponent *ngIf="field &&  field.DataEntryControlId == '4'" (ddlChange)="onDropDownChange($event.ChildFieldObject)" [fieldObject]="field"></DropDownListComponent>            
+        </div>
+        <div style="margin-top:7%;">
+            <button class="Savebutton " [disabled]="isbtnDisable" type="button" (click)="onSubmitData($event)">{{btnName}}</button>
+        </div> 
+    <!--</div>-->
+    <div style="height:53%;margin-top: 10%;">
+        <gridView *ngIf="fieldDetailsConnectivity" [dataSource]="fieldDetailsConnectivity" [properties]="inputItems" [columns]="fieldObjectlist" [refreshgrid]="refreshgrid"></gridView>
+    </div>
+ </div>
+<slide  [width]="200" [position]="position" [type]="dialog" [show]="ShowRemoveConnection" (closeDialog)="closeSlideDialog($event)">
+    <div style="">
+        Are you sure you want to remove the selected Connection?
+    </div>
+    <div>
+        <div style="width:100%">
+            <button class="Savebutton " type="button" (click)="okRemoveConnectivityClick($event)">Yes</button>
+            <button class="Savebutton " type="button" (click)="cancelRemoveConnectivityClick($event)">No</button>
+        </div>
+    </div>
+</slide>
+
+   
+   
+   

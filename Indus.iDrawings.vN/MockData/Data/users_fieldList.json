@@ -1,0 +1,143 @@
+﻿{
+  "data": [
+    {
+      "FieldId": 1,
+      "FieldName": "UserId",
+      "FieldType": 2,
+      "IsVisible": false,
+      "IsMandatory": false,
+      "IsDisabled": false,
+      "IsHiddenLabel": true,
+      "ReadOnlyMode": false,
+      "NotificationType": "return"
+    },
+    {
+      "FieldId": 2,
+      "FieldName": "First Name",
+      "FieldType": 1,
+      "IsVisible": true,
+      "IsMandatory": true,
+      "IsDisabled": false,
+      "IsHiddenLabel": true,
+      "ReadOnlyMode": false,
+      "NotificationType": "return"
+    },
+    {
+      "FieldId": 3,
+      "FieldName": "Middle Name",
+      "FieldType": 1,
+      "IsVisible": true,
+      "IsMandatory": false,
+      "IsDisabled": false,
+      "IsHiddenLabel": true,
+      "ReadOnlyMode": false,
+      "NotificationType": "return"
+    },
+    {
+      "FieldId": 4,
+      "FieldName": "Last Name",
+      "FieldType": 1,
+      "IsVisible": true,
+      "IsMandatory": true,
+      "IsDisabled": false,
+      "IsHiddenLabel": true,
+      "ReadOnlyMode": false,
+      "NotificationType": "return"
+    },
+    {
+      "FieldId": 5,
+      "FieldName": "Login Name",
+      "FieldType": 1,
+      "IsVisible": true,
+      "IsMandatory": true,
+      "IsDisabled": false,
+      "IsHiddenLabel": true,
+      "ReadOnlyMode": false,
+      "NotificationType": "return"
+    },
+    {
+      "FieldId": 6,
+      "FieldName": "User Role",
+      "FieldType": 1,
+      "IsVisible": true,
+      "IsMandatory": true,
+      "IsDisabled": false,
+      "IsHiddenLabel": true,
+      "ReadOnlyMode": false,
+      "NotificationType": "return"
+    },
+    {
+      "FieldId": 7,
+      "FieldName": "Status",
+      "FieldType": 5,
+      "IsVisible": true,
+      "IsMandatory": true,
+      "IsDisabled": false,
+      "IsHiddenLabel": true,
+      "ReadOnlyMode": false,
+      "IsMultiValued": true,
+      "MultiValuedDetails": {
+        "LookupValues": [
+          {
+            "Id": 1,
+            "Value": "Active"
+          },
+          {
+            "Id": 2,
+            "Value": "Expired"
+          },
+          {
+            "Id": 3,
+            "Value": "Deleted"
+          }
+        ],
+        "PopupComponentName": null
+      },
+      "NotificationType": "return"
+    },
+    {
+      "FieldId": 8,
+      "FieldName": "User Access Level",
+      "FieldType": 1,
+      "IsVisible": true,
+      "IsMandatory": false,
+      "IsDisabled": false,
+      "IsHiddenLabel": true,
+      "ReadOnlyMode": false,
+      "NotificationType": "return"
+    },
+    {
+      "FieldId": 9,
+      "FieldName": "Account Expiry Date",
+      "FieldType": 1,
+      "IsVisible": true,
+      "IsMandatory": false,
+      "IsDisabled": true,
+      "IsHiddenLabel": true,
+      "ReadOnlyMode": true,
+      "NotificationType": "return"
+    },
+    {
+      "FieldId": 10,
+      "FieldName": "Account Activation Date",
+      "FieldType": 1,
+      "IsVisible": true,
+      "IsMandatory": false,
+      "IsDisabled": true,
+      "IsHiddenLabel": true,
+      "ReadOnlyMode": true,
+      "NotificationType": "return"
+    },
+    {
+      "FieldId": 11,
+      "FieldName": "Email",
+      "FieldType": 1,
+      "IsVisible": true,
+      "IsMandatory": true,
+      "IsDisabled": false,
+      "IsHiddenLabel": true,
+      "ReadOnlyMode": false,
+      "NotificationType": "return"
+    }
+  ]
+}

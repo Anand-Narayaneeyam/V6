@@ -1,0 +1,86 @@
+﻿<page [pagetitle]="pagePath">
+    <pagepath>
+    </pagepath>
+    <content>
+        <section title="Forecasting" [isExpanded]="true" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div>
+                <h2>Seating Capacities by Organizational Unit over Time</h2>
+                <p>This option is to show the Trend and Forecasting of Total Seating Capacity of an Organizational Unit based on the Snapshots created. On clicking <span class="header2">Seating Capacities by Organizational Unit over Time </span> menu, a period, Organizational Unit selection window will be displayed.</p>
+                <p><span class="header2">Show Trend </span></p>
+                <p>Select the required period and Organizational Unit, click <span class="header2"> </span> <img class="helpicon" src="Content/Icons/showTrend.png" title="Show Trend" /> icon. A Line graph will be displayed with the selected Organizational Unit’s trend in the selected period based on the Snap Shot created. </p>
+                <p><span class="header2">Show Forecast</span></p>
+                <p>This option is to view forecast for 3 years by entering a Growth Rate.</p>
+                <p>Select the required period and Organizational Unit, click the <span class="header2">Show Forecast </span> <img class="helpicon" src="Content/Icons/showForecast.png" title="Show Forecast for 3 years" /> icon.  Enter Growth Rate (%) and click OK button, a graph will be displayed with Year in X-axis and Seating Capacity in Y-axis. Line Graphs of Total Seating Capacity (Green color) and the Seating Capacity of the selected Organizational Unit (Red color) will be displayed with respect to the selected Years. </p>
+                <h2>Seating Capacities by Space Standard over Time </h2>
+                <p>This option is to show the Trend and Forecasting of Total Seating Capacity of Space Standards based on the Snapshots created. On clicking <span class="header2">Space Capacities by Space Standard over Time </span> menu, a period selection window will be displayed. </p>
+                <p><span class="header2"> Show Trend  </span></p>
+                <p>Select the required period and the Space Standards, click <span class="header2"> Show Trend</span> <img class="helpicon" src="Content/Icons/showTrend.png" title="Show Trend" /> icon. A graph will be displayed showing the trend of the selected Space Standards in the selected period based on the Snap Shot created. </p>
+                <p><span class="header2">Show Forecast </span></p>
+                <p>This option is to view forecast for 3 years by entering a Growth Rate.</p>
+                <p>Select the required period and Space Standards, and click the <span class="header2">Show Forecast </span> <img class="helpicon" src="Content/Icons/showForecast.png" title="Show Forecast for 3 years" /> icon. Enter Growth Rate (%) and click OK button, a graph will be displayed with Year in X-axis and Seating Capacity in Y-axis. Line Graphs of Total Seating Capacity and the Seating Capacity of the selected Space Standards will be displayed with respect to the selected Years. </p>
+                <h2>Occupancy by Grade over Time </h2>
+                <p>This option is to show the Trend and Forecasting of total number of employees in each grade during a year based on the snapshot created for a time period. On clicking <span class="header2">Occupancy by Grade over Time </span> menu, a period selection window will be displayed.</p>
+                <p><span class="header2">Show Trend </span></p>
+                <p>Select the required period and Grades, click <span class="header2">Show Trend </span> <img class="helpicon" src="Content/Icons/showTrend.png" title="Show Trend" /> icon. A Line graph will be displayed showing the trend of the selected Grades in the selected period based on the Snap Shot created.  </p>
+                <p><span class="header2">Show Forecast </span></p>
+                <p>This option is to view forecast for 3 years by entering a Growth Rate.</p>
+                <p>Select the required period and Grades, and click the <span class="header2"> Show Forecast  </span>  <img class="helpicon" src="Content/Icons/showForecast.png" title="Show Forecast for 3 years" /> icon. Enter Growth Rate (%) and click OK button, a graph will be displayed with Year in X-axis and Number of Employees in Y-axis. Line Graphs of Total Employees in all grades and Total Employees in the selected Grades based on the selected year will be displayed. </p>
+                <h2> Hiring Rate over Time </h2>
+                <p>This option is to show the Trend and Forecasting of Employees hiring rate based on the Employee Organizational Unit. On clicking <span class="header2">Hiring Rate over Time </span> menu, a period selection window will be displayed.</p>
+                <p><span class="header2">Show Trend </span></p>
+                <p>Select the required period and Organizational Unit, click <span class="header2">Show Trend </span> <img class="helpicon" src="Content/Icons/showTrend.png" title="Show Trend" /> icon. A Line graph will be displayed showing the trend of the Employee Hiring Rate in the selected period for the selected Employee Organizational Unit.  </p>
+                <p><span class="header2">Show Forecast </span></p>
+                <p>This option is to view forecast for 3 years by entering a Growth Rate.</p>
+                <p>Select the required period and Organizational Unit, and click the <span class="header2"> Show Forecast  </span>  <img class="helpicon" src="Content/Icons/showForecast.png" title="Show Forecast for 3 years" /> icon. Enter Growth Rate (%) and click OK button, a graph will be displayed with Year in X-axis and Number of Employees in Y-axis. Line Graphs of Total Employees hired (Green color) and the number of Employees hired in the selected Organizational Unit (Red color) based on the selected year will be displayed. </p>
+
+            </div>
+        </section>
+    </content>
+</page>
+<style type="text/css">
+    h3.Mainheader {
+        color: #178AE8;
+    }
+
+    .header1 {
+        font-weight: bold;
+        color: #178AE8;
+    }
+
+    .header2 {
+        font-weight: normal;
+        color: #178AE8;
+    }
+
+    p {
+        margin-left: 38px;
+        font-size: 13px;
+        margin-right: 3em;
+    }
+
+    .header3 {
+        font-weight: bold;
+        color: black;
+    }
+    /**/ h1 {
+        color: #178AE8;
+        font-size: 1.3em;
+        margin-left: 38px;
+    }
+
+    h2 {
+        color: #178AE8;
+        font-size: 1em;
+        margin-left: 38px;
+    }
+
+    .config {
+        background-color: #178AE8;
+    }
+
+    .helpicon {
+        vertical-align: baseline;
+        width: 20px;
+        height: 20px;
+    }
+</style>

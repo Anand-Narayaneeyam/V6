@@ -1,0 +1,9 @@
+﻿<tabs [selectedTab]="selectedTab" (getSelectedTab)="getSelectedTab($event)"  [deleteIndex]="deleteIndex">
+    <tab tabTitle="Select Floors" closeButtonVisible="hidden">
+        <floorselectionreport *ngIf="selectedTab == 0 && isFlooraenabled == true" [Criteria]="selectedCriteria" [ReportCategoryId]="ReportCategoryId" (selectedIds)="submit($event)" [additionalReportName]="reportName"></floorselectionreport>
+    </tab>
+    <tab *ngIf="next != undefined" tabTitle="Report" closeButtonVisible="hidden">
+        <additionalReport-report *ngIf="isInitialised" [Ids]="next" [reportBy]="selectedCriteria" [reportFieldId]="reportFieldId" [reportName]="reportName"></additionalReport-report>
+    </tab>
+</tabs>
+

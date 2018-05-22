@@ -1,0 +1,79 @@
+﻿<split-view [splitviewObject]="splitviewUnlock" [pageTitle]="secondaryPageTitle" (onSecondaryClose)="onSplitViewClose($event)">
+    <primary-view>
+        <drawingdetails [moduleId]=moduleId [pageTarget]=pageTarget [spaceObjInUnlock]="spaceObj" (outDrawingobject)="getDrawingObject($event)" (outUnlockDrawingClicked)="unlockDrawinOnClick($event)" (unlockSpacedataClicked)="onSpacedataClicked($event)" [isDrawingUnlocked]="isDrawingUnlocked" (showDrawingAfterUnlock)="spShowInDrawingOnClick($event)" (showZoomAfterUnlock)="spShowZoomOnClick($event)" (onDrawingTabClose)="onDrawingTabClose()"></drawingdetails>
+
+    </primary-view>
+    <secondary-view>
+        <!--<div style="width:600px;height:96%">
+            <spaceDataGrid *ngIf="splitviewUnlock.showSecondaryView==true" [(selectedDrwgIds)]="inputItems.selectedIds" [pageTarget]="pageTarget" (showInDrawingOnClick)="spShowInDrawingOnClick($event)" (showZoomOnClick)="spShowZoomOnClick($event)"> </spaceDataGrid>
+        </div>-->
+        <relink-space *ngIf="isOrphanrecordsExists && spaceDetailsRelinkInput!=undefined" [style.width]="innerwidth" style="display:block" [itemsSource]="orphanRecordItemSource" [drawingId]="drawingId" [spaceDetails]="spaceDetailsRelinkInput" [isNetCustomer]="isNetCustomer" [handlesNotInDB]="handlesNotInDB" (hatchSpace)="hatchSpace($event)" (onRelinkClick)="onRelinkClick($event)" (relinkSubmitSuccess)="relinkSubmitSuccess($event)" (afterAllOrphansUpdated)="afterAllOrphansUpdated($event)"></relink-space>
+    </secondary-view>
+</split-view>
+<slide [width]="250" [position]="position" [type]="'notification'" [show]="showSlide" (closeDialog)="closeSlideDialognotify($event)" [zindex]="110">
+
+    <div>
+        <div>
+            {{dialogmessages.message}}
+        </div>
+        <div>
+            <div style="width:100%">
+                <button class="Savebutton " type="button" [disabled]="yesClicked" (click)="yesOnClick(dialogmessages.key,$event)">Yes</button>
+                <button class="Savebutton " type="button" (click)="noOnClick($event)">No</button>
+            </div>
+        </div>
+    </div>
+</slide>
+
+<slide [width]="600" [position]="positionNotification" [type]="'dialog'" [autoclose]=false [show]="showNotification" (closeDialog)="closeSlideDialog($event)">
+    <div>
+        <div cellpadding="2" cellspacing="0" id="tblVerificationReport" style="font-weight: bold; width: 95%; font-size: xx-small;overflow:auto" [style.maxHeight]="notificationHeight">
+
+            <div *ngFor="let notificationMessage of notificationMessageArray" style="display: inline-flex;">
+                <div style="color:blue;font-size:small" *ngIf="notificationMessage.root==true">
+                    <div style="float:left;">
+                        {{notificationMessage.NotificationMessage}}
+
+                    </div>
+                    <div style="margin-left:300px">
+                        <div *ngIf="notificationMessage.Status=='Failed'" style="color:red;font-size:small">&nbsp;{{notificationMessage.Status}}</div>
+                        <div *ngIf="notificationMessage.Status=='Passed'" style="color:green;font-size:small">&nbsp;{{notificationMessage.Status}}</div>
+                    </div>
+
+                </div>
+
+                <div style="font-size:small" *ngIf="notificationMessage.root==null">
+                    <div style="float:left;">
+                        {{notificationMessage.NotificationMessage}}
+                    </div>
+                    <div style="margin-left:300px">
+                        <div *ngIf="notificationMessage.Status=='Failed'" style="color:red;font-size:small">&nbsp;{{notificationMessage.Status}}</div>
+                        <div *ngIf="notificationMessage.Status=='Passed'" style="color:green;font-size:small">&nbsp;{{notificationMessage.Status}}</div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</slide>
+<!--<slide  [width]="250" [position]="position" [autoclose]=true [show]="showSuccess" (closeDialog)="closeSlideDialog($event)">
+        <div style="color:white">
+            Drawing unlocked and is available for space data entry
+        </div>
+</slide>-->
+<style type="text/css">
+    :host .Savebutton {
+        background: #178ae8 !important;
+        padding: 5px 10px !important;
+        color: #fff !important;
+        border: 1px solid rgba(0, 0, 0, 0.2) !important;
+        width: auto !important;
+        border-radius: 6px !important;
+    }
+
+        :host .Savebutton:focus {
+            outline: 1px solid #00a3e8 !important;
+            outline-offset: 3px;
+        }
+</style>

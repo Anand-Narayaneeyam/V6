@@ -1,0 +1,460 @@
+﻿<style>
+    :host ul {
+        width: 330px !important;
+    }
+    :host ul li {
+        width: 80px !important;
+    }
+    td {
+        padding : 10px 10px 10px 10px;
+    }
+    img {
+        height:40px;
+        width:40px;
+    }
+        .HatchPickerDiv {
+        border:double;
+        border-color:darkgrey;
+        width:330px;
+        box-shadow: 2px 2px 2px 2px lightgray;
+        background-color:white;
+        position:absolute;
+        z-index:1;
+        display:inline-block;
+    }
+        .HatchPatternTable:focus {
+        outline: 1px solid blue!important; 
+        outline-offset: 6px;
+    }
+</style>
+<div control-group>
+    <div *ngIf="showLabel == true">
+        <label *ngIf="fieldObject.FieldLabel != null || fieldObject.FieldLabel != undefined">
+            {{fieldObject.FieldLabel}}<span class="required" *ngIf="fieldObject.IsMandatory === true">  * </span>
+        </label>
+    </div>
+</div>
+<div class="HatchPatternTable" style="display:block;height:30px;width:30px;border: 1px solid black" tabindex="0" (click)="toggleHatchPattern($event)" (keydown)="KeyPresstoggleHatchPattern($event)">
+    <img  src={{strImageSrc}} style="height:30px;width:30px;" />
+</div>
+
+<div  style="position:relative;display:block" *ngIf="fieldObject.IsEnabled == true">
+
+    <!--<div style="position:fixed;width:100%;height:100%;top:0px;left:0px;" (click)="toggleHatchPattern($event)"></div>-->
+    <div [style.display]="showPicker" style="position:fixed;height:100%;width:95%;left:0;top:0;opacity:0.99;z-index: 1" (click)="toggleHatchPattern($event)"></div>
+    <div id="HatchPickerDiv" class="HatchPickerDiv"  [style.display]="showPicker">
+        <div style="background-color:white;width:330px;height:300px;border: 1px solid;box-shadow: 1px 1px 1px 3px lightgray">
+            <div style="height:30px;width:100%;background-color:#178AE8;color:white;">
+                <label style="margin-top:3px;margin-left:3px;color:white;font-weight:bold">Hatch Patterns</label>
+            </div>
+            <div style="height:25px;margin-top:3px;margin-left:3px;width:100%">
+                <span style="font-size:12px;">
+                    Angle
+                    <select style="border-radius:3px;" [ngModel]="angleInput" (change)="onAngleChange($event)">
+                        <option *ngFor="let angle of hatchAngle; let i= index">{{angle}}</option>
+                    </select>
+                </span>
+                <span style="font-size:12px;">
+                    Scale
+                    <select style="border-radius:3px;" [ngModel]="scaleInput" (change)="onScaleChange($event)">
+                        <option *ngFor="let scale of hatchScale; let i= index">{{scale}}</option>
+                    </select>
+                </span>
+            </div>
+            <tabs [(selectedTab)]="selectedTab" (getSelectedTab)="getSelectedTab($event)">
+                
+                <tab tabTitle="ANSI" closeButtonVisible="hidden">
+                    <div style="height:75%;overflow:auto;">
+                        <table>
+                            <tr>
+                                <td tabindex="0" (keydown)="KeyPressselectedImageData($event,60)"> 
+                                    <img src="Content/HatchPatterns/ANSI/ANSI31.bmp" (click)="selectedImageData($event,60)"/>
+                                    <label style="font-size:11px;">ANSI31</label>
+                                </td>
+                                <td tabindex="0" (keydown)="KeyPressselectedImageData($event,61)">
+                                    <img src="Content/HatchPatterns/ANSI/ANSI32.bmp" (click)="selectedImageData($event,61)"/>
+                                    <label style="font-size:11px;">ANSI32</label>
+                                </td>
+                                <td tabindex="0" (keydown)="KeyPressselectedImageData($event,62)">
+                                    <img src="Content/HatchPatterns/ANSI/ANSI33.bmp" (click)="selectedImageData($event,62)"/>
+                                    <label style="font-size:11px;">ANSI33</label>
+                                </td>
+                                <td tabindex="0" (keydown)="KeyPressselectedImageData($event,63)">
+                                    <img src="Content/HatchPatterns/ANSI/ANSI34.bmp" (click)="selectedImageData($event,63)"/>
+                                    <label style="font-size:11px;">ANSI34</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td tabindex="0" (keydown)="KeyPressselectedImageData($event,64)">
+                                    <img src="Content/HatchPatterns/ANSI/ANSI35.bmp" (click)="selectedImageData($event,64)"/>
+                                    <label style="font-size:11px;">ANSI35</label>
+                                </td>
+                                <td  tabindex="0" (keydown)="KeyPressselectedImageData($event,65)">
+                                    <img src="Content/HatchPatterns/ANSI/ANSI36.bmp" (click)="selectedImageData($event,65)"/>
+                                    <label style="font-size:11px;">ANSI36</label>
+                                </td>
+                                <td tabindex="0" (keydown)="KeyPressselectedImageData($event,66)">
+                                    <img src="Content/HatchPatterns/ANSI/ANSI37.bmp" (click)="selectedImageData($event,66)"/>
+                                    <label style="font-size:11px;">ANSI37</label>
+                                </td>
+                                <td tabindex="0" (keydown)="KeyPressselectedImageData($event,67)">
+                                    <img src="Content/HatchPatterns/ANSI/ANSI38.bmp" (click)="selectedImageData($event,67)"/>
+                                    <label style="font-size:11px;">ANSI38</label>
+                                </td>
+                            </tr>
+                        </table>
+                     </div>
+                </tab>
+                <tab tabTitle="ISO" closeButtonVisible="hidden">
+                    <div style="height:75%;overflow:auto;">
+                        <table>
+                            <tr>
+                                <td tabindex="0" (keydown)="KeyPressselectedImageData($event,68)">
+                                    <img src="Content/HatchPatterns/ISO/ISO02W100.bmp" (click)="selectedImageData($event,68)"/>
+                                    <label style="font-size:11px;">ISO02W100</label>
+                                </td>
+                                <td tabindex="0" (keydown)="KeyPressselectedImageData($event,69)">
+                                    <img src="Content/HatchPatterns/ISO/ISO03W100.bmp" (click)="selectedImageData($event,69)"/>
+                                    <label style="font-size:11px;">ISO03W100</label>
+                                </td>
+                                <td tabindex="0" (keydown)="KeyPressselectedImageData($event,70)">
+                                    <img src="Content/HatchPatterns/ISO/ISO04W100.bmp" (click)="selectedImageData($event,70)"/>
+                                    <label style="font-size:11px;">ISO04W100</label>
+                                </td>
+                                <td tabindex="0" (keydown)="KeyPressselectedImageData($event,71)">
+                                    <img src="Content/HatchPatterns/ISO/ISO05W100.bmp" (click)="selectedImageData($event,71)"/>
+                                    <label style="font-size:11px;">ISO05W100</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td tabindex="0" (keydown)="KeyPressselectedImageData($event,72)">
+                                    <img src="Content/HatchPatterns/ISO/ISO06W100.bmp" (click)="selectedImageData($event,72)"/>
+                                    <label style="font-size:11px;">ISO06W100</label>
+                                </td>
+                                <td tabindex="0" (keydown)="KeyPressselectedImageData($event,73)">
+                                    <img src="Content/HatchPatterns/ISO/ISO07W100.bmp" (click)="selectedImageData($event,73)"/>
+                                    <label style="font-size:11px;">ISO07W100</label>
+                                </td>
+                                <td tabindex="0" (keydown)="KeyPressselectedImageData($event,74)">
+                                    <img src="Content/HatchPatterns/ISO/ISO08W100.bmp" (click)="selectedImageData($event,74)"/>
+                                    <label style="font-size:11px;">ISO08W100</label>
+                                </td>
+                                <td tabindex="0" (keydown)="KeyPressselectedImageData($event,75)">
+                                    <img src="Content/HatchPatterns/ISO/ISO09W100.bmp" (click)="selectedImageData($event,75)"/>
+                                    <label style="font-size:11px;">ISO09W100</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td tabindex="0" (keydown)="KeyPressselectedImageData($event,76)">
+                                    <img src="Content/HatchPatterns/ISO/ISO10W100.bmp" (click)="selectedImageData($event,76)"/>
+                                    <label style="font-size:11px;">ISO10W100</label>
+                                </td>
+                                <td tabindex="0" (keydown)="KeyPressselectedImageData($event,77)">
+                                    <img src="Content/HatchPatterns/ISO/ISO11W100.bmp" (click)="selectedImageData($event,77)"/>
+                                    <label style="font-size:11px;">ISO11W100</label>
+                                </td>
+                                <td tabindex="0" (keydown)="KeyPressselectedImageData($event,78)">
+                                    <img src="Content/HatchPatterns/ISO/ISO12W100.bmp" (click)="selectedImageData($event,78)"/>
+                                    <label style="font-size:11px;">ISO12W100</label>
+                                </td>
+                                <td tabindex="0" (keydown)="KeyPressselectedImageData($event,79)">
+                                    <img src="Content/HatchPatterns/ISO/ISO13W100.bmp" (click)="selectedImageData($event,79)"/>
+                                    <label style="font-size:11px;">ISO13W100</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td tabindex="0" (keydown)="KeyPressselectedImageData($event,80)">
+                                    <img src="Content/HatchPatterns/ISO/ISO14W100.bmp" (click)="selectedImageData($event,80)"/>
+                                    <label style="font-size:11px;">ISO14W100</label>
+                                </td>
+                                <td tabindex="0" (keydown)="KeyPressselectedImageData($event,81)">
+                                    <img src="Content/HatchPatterns/ISO/ISO15W100.bmp" (click)="selectedImageData($event,81)"/>
+                                    <label style="font-size:11px;">ISO15W100</label>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                   
+                </tab>
+                <tab tabTitle="Predefined" closeButtonVisible="hidden">
+                    <div style="height:75%;overflow:auto;">
+                        <table>
+                            <tr>
+                                <td tabindex="0" (keydown)="KeyPressselectedImageData($event,13)">
+                                    <img src="Content/HatchPatterns/Predefined/ANGLE.bmp" (click)="selectedImageData($event,13)"/>
+                                    <label style="font-size:11px;">ANGLE</label>
+                                </td>
+                                <td tabindex="0" (keydown)="KeyPressselectedImageData($event,14)">
+                                    <img src="Content/HatchPatterns/Predefined/AR-B816.bmp" (click)="selectedImageData($event,14)"/>
+                                    <label style="font-size:11px;">AR-B816</label>
+                                </td>
+                                <td tabindex="0" (keydown)="KeyPressselectedImageData($event,15)">
+                                    <img src="Content/HatchPatterns/Predefined/AR-B816C.bmp" (click)="selectedImageData($event,15)"/>
+                                    <label style="font-size:11px;">AR-B816C</label>
+                                </td>
+                                <td tabindex="0" (keydown)="KeyPressselectedImageData($event,16)">
+                                    <img src="Content/HatchPatterns/Predefined/AR-B88.bmp" (click)="selectedImageData($event,16)"/>
+                                    <label style="font-size:11px;">AR-B88</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td tabindex="0" (keydown)="KeyPressselectedImageData($event,17)">
+                                    <img src="Content/HatchPatterns/Predefined/AR-BRELM.bmp" (click)="selectedImageData($event,17)"/>
+                                    <label style="font-size:11px;">AR-BRELM</label>
+                                </td>
+                                <td tabindex="0" (keydown)="KeyPressselectedImageData($event,18)">
+                                    <img src="Content/HatchPatterns/Predefined/AR-BRSTD.bmp" (click)="selectedImageData($event,18)"/>
+                                    <label style="font-size:11px;">AR-BRSTD</label>
+                                </td>
+                                <td tabindex="0" (keydown)="KeyPressselectedImageData($event,19)">
+                                    <img src="Content/HatchPatterns/Predefined/AR-HBONE.bmp" (click)="selectedImageData($event,19)"/>
+                                    <label style="font-size:11px;">AR-HBONE</label>
+                                </td>
+                                <td tabindex="0" (keydown)="KeyPressselectedImageData($event,21)">
+                                    <img src="Content/HatchPatterns/Predefined/AR-RROOF.bmp" (click)="selectedImageData($event,21)"/>
+                                    <label style="font-size:11px;">AR-RROOF</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td tabindex="0" (keydown)="KeyPressselectedImageData($event,22)">
+                                    <img src="Content/HatchPatterns/Predefined/AR-RSHKE.bmp" (click)="selectedImageData($event,22)"/>
+                                    <label style="font-size:11px;">AR-RSHKE</label>
+                                </td>
+                                <td tabindex="0" (keydown)="KeyPressselectedImageData($event,23)">
+                                    <img src="Content/HatchPatterns/Predefined/AR-SAND.bmp" (click)="selectedImageData($event,23)"/>
+                                    <label style="font-size:11px;">AR-SAND</label>
+                                </td>
+                                <td tabindex="0" (keydown)="KeyPressselectedImageData($event,20)">
+                                    <img src="Content/HatchPatterns/Predefined/AR_PARQ1.bmp" (click)="selectedImageData($event,20)"/>
+                                    <label style="font-size:11px;">AR_PARQ1</label>
+                                </td>
+                                <td tabindex="0" (keydown)="KeyPressselectedImageData($event,24)">
+                                    <img src="Content/HatchPatterns/Predefined/BOX.bmp" (click)="selectedImageData($event,24)"/>
+                                    <label style="font-size:11px;">BOX</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td tabindex="0" (keydown)="KeyPressselectedImageData($event,25)">
+                                    <img src="Content/HatchPatterns/Predefined/BRASS.bmp" (click)="selectedImageData($event,25)"/>
+                                    <label style="font-size:11px;">BRASS</label>
+                                </td>
+                                <td tabindex="0" (keydown)="KeyPressselectedImageData($event,26)">
+                                    <img src="Content/HatchPatterns/Predefined/BRICK.bmp" (click)="selectedImageData($event,26)"/>
+                                    <label style="font-size:11px;">BRICK</label>
+                                </td>
+                                <td tabindex="0" (keydown)="KeyPressselectedImageData($event,27)">
+                                    <img src="Content/HatchPatterns/Predefined/BRSTONE.bmp" (click)="selectedImageData($event,27)"/>
+                                    <label style="font-size:11px;">BRSTONE</label>
+                                </td>
+                                <td tabindex="0" (keydown)="KeyPressselectedImageData($event,28)">
+                                    <img src="Content/HatchPatterns/Predefined/CLAY.bmp" (click)="selectedImageData($event,28)"/>
+                                    <label style="font-size:11px;">CLAY</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td tabindex="0" (keydown)="KeyPressselectedImageData($event,29)">
+                                    <img src="Content/HatchPatterns/Predefined/CORK.bmp" (click)="selectedImageData($event,29)"/>
+                                    <label style="font-size:11px;">CORK</label>
+                                </td>
+                                <td tabindex="0" (keydown)="KeyPressselectedImageData($event,30)">
+                                    <img src="Content/HatchPatterns/Predefined/CROSS.bmp" (click)="selectedImageData($event,30)"/>
+                                    <label style="font-size:11px;">CROSS</label>
+                                </td>
+                                <td tabindex="0" (keydown)="KeyPressselectedImageData($event,31)">
+                                    <img src="Content/HatchPatterns/Predefined/DASH.bmp" (click)="selectedImageData($event,31)"/>
+                                    <label style="font-size:11px;">DASH</label>
+                                </td>
+                                <td tabindex="0" (keydown)="KeyPressselectedImageData($event,32)">
+                                    <img src="Content/HatchPatterns/Predefined/DOLMIT.bmp" (click)="selectedImageData($event,32)"/>
+                                    <label style="font-size:11px;">DOLMIT</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td tabindex="0" (keydown)="KeyPressselectedImageData($event,33)">
+                                    <img src="Content/HatchPatterns/Predefined/DOTS.bmp" (click)="selectedImageData($event,33)"/>
+                                    <label style="font-size:11px;">DOTS</label>
+                                </td>
+                                <td tabindex="0" (keydown)="KeyPressselectedImageData($event,34)">
+                                    <img src="Content/HatchPatterns/Predefined/EARTH.bmp" (click)="selectedImageData($event,34)"/>
+                                    <label style="font-size:11px;">EARTH</label>
+                                </td>
+                                <td tabindex="0" (keydown)="KeyPressselectedImageData($event,35)">
+                                    <img src="Content/HatchPatterns/Predefined/ESCHER.bmp" (click)="selectedImageData($event,35)"/>
+                                    <label style="font-size:11px;">ESCHER</label>
+                                </td>
+                                <td tabindex="0" (keydown)="KeyPressselectedImageData($event,36)">
+                                    <img src="Content/HatchPatterns/Predefined/FLES.bmp" (click)="selectedImageData($event,36)"/>
+                                    <label style="font-size:11px;">FLES</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td tabindex="0" (keydown)="KeyPressselectedImageData($event,37)">
+                                    <img src="Content/HatchPatterns/Predefined/GRASS.bmp" (click)="selectedImageData($event,37)"/>
+                                    <label style="font-size:11px;">GRASS</label>
+                                </td>
+                                <td tabindex="0" (keydown)="KeyPressselectedImageData($event,38)">
+                                    <img src="Content/HatchPatterns/Predefined/GRATE.bmp" (click)="selectedImageData($event,38)"/>
+                                    <label style="font-size:11px;">GRATE</label>
+                                </td>
+                                <td tabindex="0" (keydown)="KeyPressselectedImageData($event,39)">
+                                    <img src="Content/HatchPatterns/Predefined/HEX.bmp" (click)="selectedImageData($event,39)"/>
+                                    <label style="font-size:11px;">HEX</label>
+                                </td>
+                                <td tabindex="0" (keydown)="KeyPressselectedImageData($event,58)">
+                                    <img src="Content/HatchPatterns/Predefined/HEXAS.bmp" (click)="selectedImageData($event,58)"/>
+                                    <label style="font-size:11px;">HEXAS</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td tabindex="0" (keydown)="KeyPressselectedImageData($event,40)">
+                                    <img src="Content/HatchPatterns/Predefined/HONEY.bmp" (click)="selectedImageData($event,40)"/>
+                                    <label style="font-size:11px;">HONEY</label>
+                                </td>
+                                <td tabindex="0" (keydown)="KeyPressselectedImageData($event,41)">
+                                    <img src="Content/HatchPatterns/Predefined/HOUND.bmp" (click)="selectedImageData($event,41)"/>
+                                    <label style="font-size:11px;">HOUND</label>
+                                </td>
+                                <td tabindex="0" (keydown)="KeyPressselectedImageData($event,42)">
+                                    <img src="Content/HatchPatterns/Predefined/INSUL.bmp" (click)="selectedImageData($event,42)"/>
+                                    <label style="font-size:11px;">INSUL</label>
+                                </td>
+                                <td tabindex="0" (keydown)="KeyPressselectedImageData($event,43)">
+                                    <img src="Content/HatchPatterns/Predefined/LINE.bmp" (click)="selectedImageData($event,43)"/>
+                                    <label style="font-size:11px;">LINE</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td tabindex="0" (keydown)="KeyPressselectedImageData($event,45)">
+                                    <img src="Content/HatchPatterns/Predefined/MESH.bmp" (click)="selectedImageData($event,45)"/>
+                                    <label style="font-size:11px;">MESH</label>
+                                </td>
+                                <td tabindex="0" (keydown)="KeyPressselectedImageData($event,44)">
+                                    <img src="Content/HatchPatterns/Predefined/MUDST.bmp" (click)="selectedImageData($event,44)"/>
+                                    <label style="font-size:11px;">MUDST</label>
+                                </td>
+                                <td tabindex="0" (keydown)="KeyPressselectedImageData($event,46)">
+                                    <img src="Content/HatchPatterns/Predefined/NET3.bmp" (click)="selectedImageData($event,46)"/>
+                                    <label style="font-size:11px;">NET3</label>
+                                </td>
+                                <td tabindex="0" (keydown)="KeyPressselectedImageData($event,59)">
+                                    <img src="Content/HatchPatterns/Predefined/NOHEXAS.bmp" (click)="selectedImageData($event,59)"/>
+                                    <label style="font-size:11px;">NOHEXAS</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td tabindex="0" (keydown)="KeyPressselectedImageData($event,47)">
+                                    <img src="Content/HatchPatterns/Predefined/PLAST.bmp" (click)="selectedImageData($event,47)"/>
+                                    <label style="font-size:11px;">PLAST</label>
+                                </td>
+                                <td tabindex="0" (keydown)="KeyPressselectedImageData($event,48)">
+                                    <img src="Content/HatchPatterns/Predefined/PLASTI.bmp" (click)="selectedImageData($event,48)"/>
+                                    <label style="font-size:11px;">PLASTI</label>
+                                </td>
+                                <td tabindex="0" (keydown)="KeyPressselectedImageData($event,49)">
+                                    <img src="Content/HatchPatterns/Predefined/SACNCR.bmp" (click)="selectedImageData($event,49)"/>
+                                    <label style="font-size:11px;">SACNCR</label>
+                                </td>
+                                <td tabindex="0" (keydown)="KeyPressselectedImageData($event,50)">
+                                    <img src="Content/HatchPatterns/Predefined/SQUARE.bmp" (click)="selectedImageData($event,50)"/>
+                                    <label style="font-size:11px;">SQUARE</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td tabindex="0" (keydown)="KeyPressselectedImageData($event,51)">
+                                    <img src="Content/HatchPatterns/Predefined/STARS.bmp" (click)="selectedImageData($event,51)"/>
+                                    <label style="font-size:11px;">STARS</label>
+                                </td>
+                                <td tabindex="0" (keydown)="KeyPressselectedImageData($event,52)">
+                                    <img src="Content/HatchPatterns/Predefined/STEEL.bmp" (click)="selectedImageData($event,52)"/>
+                                    <label style="font-size:11px;">STEEL</label>
+                                </td>
+                                <td tabindex="0" (keydown)="KeyPressselectedImageData($event,53)">
+                                    <img src="Content/HatchPatterns/Predefined/SWAMP.bmp" (click)="selectedImageData($event,53)"/>
+                                    <label style="font-size:11px;">SWAMP</label>
+                                </td>
+                                <td tabindex="0" (keydown)="KeyPressselectedImageData($event,54)">
+                                    <img src="Content/HatchPatterns/Predefined/TRANS.bmp" (click)="selectedImageData($event,54)"/>
+                                    <label style="font-size:11px;">TRANS</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td tabindex="0" (keydown)="KeyPressselectedImageData($event,55)">
+                                    <img src="Content/HatchPatterns/Predefined/TRIANGLE.bmp" (click)="selectedImageData($event,55)"/>
+                                    <label style="font-size:11px;">TRIANG</label>
+                                </td>
+                                <td tabindex="0" (keydown)="KeyPressselectedImageData($event,57)">
+                                    <img src="Content/HatchPatterns/Predefined/WEAVE.bmp" (click)="selectedImageData($event,57)"/>
+                                    <label style="font-size:11px;">WEAVE</label>
+                                </td>
+                                <td tabindex="0" (keydown)="KeyPressselectedImageData($event,56)">
+                                    <img src="Content/HatchPatterns/Predefined/ZIGZAG.bmp" (click)="selectedImageData($event,56)"/>
+                                    <label style="font-size:11px;">ZIGZAG</label>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </tab>
+                <tab tabTitle="Others" closeButtonVisible="hidden">
+                    <div style="height:75%;overflow:auto;">
+                        <table>
+                            <tr>
+                                <td tabindex="0" (keydown)="KeyPressselectedImageData($event,3)">
+                                    <img src="Content/HatchPatterns/Others/Bevel Minus.bmp" (click)="selectedImageData($event,3)"/>
+                                    <label style="font-size:11px;">Bevel Minus</label>
+                                </td>
+                                <td tabindex="0" (keydown)="KeyPressselectedImageData($event,1)">
+                                    <img src="Content/HatchPatterns/Others/Bevel Plus.bmp" (click)="selectedImageData($event,1)"/>
+                                    <label style="font-size:11px;">Bevel Plus</label>
+                                </td>
+                                <td tabindex="0" (keydown)="KeyPressselectedImageData($event,4)">
+                                    <img src="Content/HatchPatterns/Others/Chamfer Minus.bmp" (click)="selectedImageData($event,4)"/>
+                                    <label style="font-size:11px;">Chamfer Minus</label>
+                                </td>
+                                <td tabindex="0" (keydown)="KeyPressselectedImageData($event,2)">
+                                    <img src="Content/HatchPatterns/Others/Chamfer Plus.bmp" (click)="selectedImageData($event,2)" />
+                                    <label style="font-size:11px;">Chamfer Plus</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td tabindex="0" (keydown)="KeyPressselectedImageData($event,7)">
+                                    <img src="Content/HatchPatterns/Others/Course.bmp" (click)="selectedImageData($event,7)" />
+                                    <label style="font-size:11px;">Course</label>
+                                </td>
+                                <td tabindex="0" (keydown)="KeyPressselectedImageData($event,6)">
+                                    <img src="Content/HatchPatterns/Others/Custona.bmp" (click)="selectedImageData($event,6)" />
+                                    <label style="font-size:11px;">Custona</label>
+                                </td>
+                                <td tabindex="0" (keydown)="KeyPressselectedImageData($event,12)">
+                                    <img src="Content/HatchPatterns/Others/Diamonds.bmp" (click)="selectedImageData($event,12)" />
+                                    <label style="font-size:11px;">Diamonds</label>
+                                </td>
+                                <!--<td tabindex="0" (keydown)="KeyPressselectedImageData($event,5)">
+                                    <img src="Content/HatchPatterns/Others/Fascia.bmp" (click)="selectedImageData($event,5)" />
+                                    <label style="font-size:11px;">Fascia</label>
+                                </td>-->
+                            </tr>
+                            <tr>
+                                <td tabindex="0" (keydown)="KeyPressselectedImageData($event,8)">
+                                    <img src="Content/HatchPatterns/Others/Frieze.bmp" (click)="selectedImageData($event,8)" />
+                                    <label style="font-size:11px;">Frieze</label>
+                                </td>
+                                <td tabindex="0" (keydown)="KeyPressselectedImageData($event,9)">
+                                    <img src="Content/HatchPatterns/Others/Grafiti.bmp" (click)="selectedImageData($event,9)" />
+                                    <label style="font-size:11px;">Grafiti</label>
+                                </td>
+                                <td tabindex="0" (keydown)="KeyPressselectedImageData($event,10)">
+                                    <img src="Content/HatchPatterns/Others/Net.bmp" (click)="selectedImageData($event,10)" />
+                                    <label style="font-size:11px;">Net</label>
+                                </td>
+                                <td tabindex="0" (keydown)="KeyPressselectedImageData($event,11)">
+                                    <img src="Content/HatchPatterns/Others/Solid.bmp" (click)="selectedImageData($event,11)" />
+                                    <label style="font-size:11px;">Solid</label>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </tab>
+            </tabs>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,22 @@
+﻿<page [pagetitle]="pagePath">
+    <content>
+        <split-view [splitviewObject]="splitviewInput" style="height:100%;">
+            <primary-view>
+                <div *ngIf="ddluserfilterreport != undefined" style="height:8%;display:inline-block;margin-bottom: 6px;margin-left: 9px;">
+                    <DropDownListComponent [fieldObject]="ddluserfilterreport" [ShowSelectOption]="false" (change)="onChangeType($event.target.value)" [SetAlignment]=alignContent></DropDownListComponent>
+                </div>
+                <div *ngIf="ReportData != undefined"  style="height:105%;">
+                    <reportviewer [reportData]=ReportData> Loading ...</reportviewer>
+                </div>
+            </primary-view>
+            <secondary-view>
+                <select-reportperiod (onSubmitClick)="dateSelect($event)" style="display: block;width:300px;"></select-reportperiod>
+            </secondary-view>
+        </split-view>
+    </content>
+</page>
+<style>
+    :host .ddllabel_1085 {
+        width: 80px !important;
+    }
+</style>

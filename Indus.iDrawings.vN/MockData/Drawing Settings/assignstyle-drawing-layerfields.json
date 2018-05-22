@@ -1,0 +1,49 @@
+﻿{
+"data": [
+{
+"FieldId": 1,
+"FieldName": "Id",
+"FieldType": 1,
+"IsVisible": false,
+"IsMandatory": false,
+"IsDisabled": true,
+"IsHiddenLabel": true,
+"ReadOnlyMode": false,
+"NotificationType": "return"
+},
+{
+"FieldId": 2,
+"FieldName": "Select All",
+"FieldType": 7,
+"FieldValue": "true",
+"IsMandatory": false,
+"IsHiddenLabel": false,
+"IsVisible": true,
+"ReadOnlyMode": false
+},
+{
+"FieldId": 3,
+"FieldName": "Drawing Layer",
+"FieldType": 1,
+"IsVisible": true,
+"IsMandatory": true,
+"IsDisabled": true,
+"IsHiddenLabel": true,
+"ReadOnlyMode": false,
+  "NotificationType": "return",
+      "Width": "1*"
+},
+{
+"FieldId": 4,
+"FieldName": "Module",
+"FieldType": 1,
+"IsVisible": true,
+"IsMandatory": true,
+"IsDisabled": true,
+"IsHiddenLabel": true,
+"ReadOnlyMode": false,
+  "NotificationType": "return",
+     "Width": "*"
+}
+]
+}

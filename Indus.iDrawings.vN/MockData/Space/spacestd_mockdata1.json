@@ -1,0 +1,35 @@
+﻿{
+  "data": [
+    {
+      "Id": 11,
+      "SpaceStandard": "Visting area",
+      "Description": "Office with more than one seat"
+    },
+    {
+      "Id": 12,
+      "SpaceStandard": "Administration",
+      "Description": "Space used for conference and other meetings"
+    },
+    {
+      "Id": 13,
+      "SpaceStandard": "Administration",
+      "Description": "Office with more than one seat"
+    },
+    {
+      "Id": 14,
+      "SpaceStandard": "Network",
+      "Description": "Office with window"
+    },
+    {
+      "Id": 15,
+      "SpaceStandard": "Administration",
+      "Description": "HR Office with window"
+    },
+    {
+      "Id": 16,
+      "SpaceStandard": "Visting area",
+      "Description": "Office with window"
+    }
+  ]
+   
+}

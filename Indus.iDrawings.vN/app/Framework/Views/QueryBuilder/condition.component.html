@@ -1,0 +1,25 @@
+﻿
+<div style="display:inline-flex;" class="form-inline">
+    <div style="margin-top:27px;margin-right:30px;width:80px"  >
+        <span *ngIf="groupFields.Conditions[0].ConditionId!=conditionFields.ConditionId">{{conditionFields.OperatorFieldObj.FieldValue==1?'AND':'OR'}} </span>
+    </div>
+    <div >
+        <DropDownListComponent [ShowSelectOption]="false" id=ddlFld{{conditionFields.ConditionId}} [fieldObject]="conditionFields.FldNameFieldObj" (ddlChange)="ddlChangeFldName($event,conditionFields)"></DropDownListComponent>
+    </div>
+    <div style="padding-left:10px;width:120px">
+        <DropDownListComponent [ShowSelectOption]="false" id=ddlCondition{{conditionFields.ConditionId}} [fieldObject]="conditionFields.ConditionFieldObj" (ddlChange)="ddlChangeCondition($event,conditionFields.FldValueFieldObj,conditionFields.FldValueFieldObj)"></DropDownListComponent>
+    </div>
+    <div  *ngIf="fieldValueVisible==true" >
+        <!--<div *ngFor='let field of conditionFields.FldNameFieldObj.LookupDetails.LookupValues; let b = index;'>
+            <span *ngIf="field['Id']== conditionFields.FldNameFieldObj.FieldValue">-->
+              <StringTextBox *ngIf="conditionFields.FldValueFieldObj.DataEntryControlId!=8 && conditionFields.FldValueFieldObj.DataEntryControlId!=2"  id=txtstringValue{{conditionFields.ConditionId}} [validationData]='validationData' [fieldObject]="conditionFields.FldValueFieldObj"></StringTextBox>
+               <DateComponent *ngIf="conditionFields.FldValueFieldObj.DataEntryControlId==2" name="Datecomponent"   id=txtdateValue{{conditionFields.ConditionId}} [validationData]='validationData' [fieldObject]=conditionFields.FldValueFieldObj></DateComponent>
+               <DateTimeComponent *ngIf="conditionFields.FldValueFieldObj.DataEntryControlId==8"  [showDateTimeOnLoad]="false" id=txtdatetimeValue{{conditionFields.ConditionId}}  name="DateTimeComponent"   [validationData]='validationData' [fieldObject]=conditionFields.FldValueFieldObj></DateTimeComponent>
+            <!--</span>
+        </div>-->
+    </div>
+    <div style="padding-left:10px;">
+        <button title="Remove Condition" style="margin-left: 5px;margin-top:25px" id=btnCnRemove{{conditionFields.ConditionId}} (click)="removeCondition(conditionFields)" class="btn btn-sm btn-danger"><span class="glyphicon glyphicon-minus-sign"></span></button>
+    </div>
+</div>
+

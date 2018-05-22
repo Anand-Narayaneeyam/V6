@@ -1,0 +1,75 @@
+﻿<div>
+    <split-view [splitviewObject]="splitviewInput" style="height: calc(100% - 35px);" [pageTitle]="pageTitle">
+        <primary-view>
+            <submenu>
+                <sub-menu [menuCard]=types [source]=menuData [count]=totalItems [menuIds]=enableMenu (onSubMenuChange)="onSubMenuChange($event);"> </sub-menu>
+            </submenu>
+            <div style="margin-top:5px;display:inline-flex;max-height:70px">
+                <span style="width:50%">
+                    <DropDownListComponent *ngIf="ddlWorkType != undefined" [fieldObject]="ddlWorkType" (change)="onChangeEquipmentCategory($event.target.value)"></DropDownListComponent> 
+                </span>
+                <!--<span style="width:50%;margin-left:10px">
+                    <barCode *ngIf="(barCodeUploadField != undefined && barCodeTextField != undefined)" (objectId)="setobjectId($event)" [fileUploadField]="barCodeUploadField" [textField]="barCodeTextField"></barCode>
+                </span>-->
+
+                
+                </div>
+            <div style="height: calc(100% - 100px);margin-top:5px" >
+                <div [ngClass]="totalItems > itemsPerPage ? 'pagewithPaging':'pagewithoutPaging'">
+                    <div style="height:91%" *ngIf="IsBarcodeSubscribed">
+                        <gridView [(dataSource)]="itemsSource" [properties]="inputItems" [columns]="fieldObject"
+                                  (onSorting)="onSort($event)"></gridView>
+                    </div>
+                    <div style="height:88%"  *ngIf="!IsBarcodeSubscribed">
+                        <gridView [(dataSource)]="itemsSource" [properties]="inputItems" [columns]="fieldObject"
+                                  (onSorting)="onSort($event)"></gridView>
+                    </div>
+                </div>
+                <div>
+                    <paging [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="pageChanged($event);"></paging>
+                </div>
+            </div>
+        </primary-view>
+        <secondary-view *ngIf="secondaryTarget == 1 && splitviewInput.showSecondaryView">
+
+            <div class="search-containerInlinefromgrid">
+                <search *ngIf="fieldObject" [searchtype]="'Grid'" [keyWordLookup]=keyWordLookup [disable]="disable" [Key]=2 [KeywordFields]=KeywordFieldObject [advancesearch]=true [datasource]=advancelookup (onloadSearch)="onKeyWordSearch($event)" (loadAdvanceSearch)="loadAdvanceSearch()" (Submit)="onAdvanceSearch($event)"></search>
+            </div>
+            <div style="height: calc(100% - 140px);">  
+                <span *ngIf="IsBarcodeSubscribed" style="width:50%">
+                    <barcodeReader *ngIf="(barcodeFieldObject != undefined)" (barcodeData)="barcodeData($event)"  [fieldObject]="barcodeFieldObject"></barcodeReader>
+                </span>
+                <div>
+                    <div [ngClass]="searchResultTotalItems > searchResultitemsPerPage ? 'pagewithPaging':'pagewithoutPaging'">
+                        <div *ngIf="!IsBarcodeSubscribed" style="height:99%">
+                            <gridView [(dataSource)]="searchResultItemSource" [properties]="searchResultInputItems" [columns]="searchResultFieldObject"
+                                      (onSorting)="onSearchResultSort($event)"></gridView>
+                        </div>
+                        <div style="height:88%" *ngIf="IsBarcodeSubscribed">
+                            <gridView [(dataSource)]="searchResultItemSource" [properties]="searchResultInputItems" [columns]="searchResultFieldObject"
+                                      (onSorting)="onSearchResultSort($event)"></gridView>
+                        </div>
+                       
+                        </div>
+
+                    <div>
+                        <paging [totalItems]="searchResultTotalItems" [itemsPerPage]="searchResultitemsPerPage" (onPageChanged)="searchResultpageChanged($event);"></paging>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <button  class="Savebutton "style="margin-top:6px;margin-left:5px;float:left" type="button" (click)="onSaveButtonClick($event)">Save</button>
+            </div>
+        </secondary-view>
+    </split-view>
+    <slide [width]="slidewidth" [position]="position" [show]="showSlide" (closeDialog)="closeSlideDialog($event)">
+        <div>
+            <div>Are you sure you want to delete the selected Equipment?  </div>
+            <div style="width:100%">
+                <button  class="Savebutton "type="button" (click)="okDelete($event)">Yes</button>
+                <button  class="Savebutton "type="button" (click)="cancelClick($event)">No</button>
+            </div>
+        </div>
+    </slide>
+</div> 
+

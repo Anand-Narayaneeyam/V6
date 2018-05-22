@@ -1,0 +1,16 @@
+﻿
+<!--<popupAdd (addClick)="addClick($event)"></popupAdd>-->
+<slide [width]="300" [position]="position" [type]="'dialog'" [show]="showSlide" [title]="title" (closeDialog)="closeSlideDialog($event)" >
+    <!--<DynamicFields [dataSource]="fieldDetailsSpaceEdit" (submitFieldObject)="onSubmitData($event)" [btnName]="btnName"></DynamicFields>-->
+    <site-addEdit style="height:550px;display:block" *ngIf="siteadd==38" [addEdit]="addedit" [moduleId]="moduleId" (submitSuccess)="OnSuccessfulSubmi($event)"></site-addEdit>
+</slide>
+
+<split-view [splitviewObject]="splitview" [pageTitle]="pageTitle">
+    <primary-view>
+        <DynamicFields [dataSource]="fieldDetailsSpaceEdit" (submitFieldObject)="onSubmitData($event)" [btnName]="btnName" (popupItemEmit)="popupItemEmit($event)" (fieldChange)="fieldChange($event)"></DynamicFields>
+        <!--<DynamicFields [dataSource]="fieldDetailsSpaceEdit" (submitFieldObject)="onSubmitData($event)" [btnName]="btnName" (popupItemEmit)="popupItemEmit($event)" (fieldChange)="fieldChange($event)"></DynamicFields>-->
+    </primary-view>
+    <secondary-view *ngIf="flag">
+        <indus-map style="display:block;width:800px;" *ngIf="flag == true" [properties]="inputItems" (outDraggable)="outputDraggedValue($event)"></indus-map>
+    </secondary-view>
+</split-view>

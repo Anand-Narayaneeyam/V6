@@ -1,0 +1,68 @@
+﻿{
+    "data": [
+        {
+            "Id": 1,
+            "Division": "23 Hour Observation/Care",
+            "View": true,
+            "Edit": false
+        },
+        {
+            "Id": 2,
+            "Division": "A&MM Warehouse",
+            "View": true,
+            "Edit": false
+        },
+        {
+            "Id": 3,
+            "Division": "ACS - Primary Care",
+            "View": true,
+            "Edit": false
+        },
+        {
+            "Id": 4,
+            "Division": "ACS - Specialty Care",
+            "View": true,
+            "Edit": false
+        },
+        {
+            "Id": 5,
+            "Division": "ACS - Urgent Care",
+            "View": true,
+            "Edit": false
+        },
+        {
+            "Id": 6,
+            "Division": "Administration",
+            "View": true,
+            "Edit": false
+        },
+        {
+            "Id": 7,
+            "Division": "Audiology",
+            "View": true,
+            "Edit": false
+        },
+        {
+            "Id": 8,
+            "Division": "Biochemistry & Molecular biology",
+            "View": true,
+            "Edit": false
+        },
+        {
+            "Id": 9,
+            "Division": "Bone & Mineral Research",
+            "View": true,
+            "Edit": false
+        },
+        {
+            "Id": 10,
+            "Division": "Cardiology",
+            "View": true,
+            "Edit": false
+        }
+    ],
+    "count": 
+    {
+        "TotalItems": "20"
+    }
+}

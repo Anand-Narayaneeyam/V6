@@ -1,0 +1,36 @@
+﻿<split-view [splitviewObject]="splitviewInput" style="height:100%;" [pageTitle]="pageTitle">
+    <primary-view style="overflow:hidden">
+
+        <div style="height:100%;width:100%;overflow-y:auto;overflow-x:visible">
+            <div style="float:left;height:50%;width:40%">
+                <div style="height:40%;">
+                    <div tabindex="0"  [attr.aria-label]="''+'Room Details'" style="height:17%;font-size:15px;"><b>Room Details</b></div>
+                    <div tabindex="0"  style="overflow:hidden;margin-left:25px" [attr.aria-label]="'Room Number '+Roomno">Room No:&nbsp;<b>{{Roomno}}</b></div>
+                    <div tabindex="0"  style="overflow:hidden;margin-left:25px" [attr.aria-label]= "spaceFunText+''+ SpaceFunction ">{{spaceFunText}}:&nbsp;<b>{{SpaceFunction}}</b></div>
+                    <div tabindex="0"  style="overflow:hidden;margin-left:25px" [attr.aria-label]="'Seating Capacity '+SeatingCapacity">Seating Capacity:&nbsp;<b>{{SeatingCapacity}}</b></div>
+                    <div tabindex="0"  style="overflow:hidden;margin-left:25px" [attr.aria-label]="'Area (Square feet)'+Area">Area (Sq.ft):&nbsp;<b>{{Area}}</b></div>
+                    <!--<div *ngIf="Target==2" style="width:690px;overflow:hidden;margin-left:25px" [title]=site>Site:&nbsp;<b>{{site}}</b></div>-->
+                    <!--<div *ngIf="Target==2" style="width:690px;overflow:hidden;margin-left:25px" [title]=building>Building:&nbsp;<b>{{building}}</b></div>-->
+                    <!--<div *ngIf="Target==2" style="width:690px;overflow:hidden;margin-left:25px" [title]=floor>Floor:&nbsp;<b>{{floor}}</b></div>-->
+                </div>
+                <div style="height:35%;" *ngIf="Target==1 && enableAminity == true">
+                    <div tabindex="0" title="Amenities" style="height:17%;font-size:15px;"><b>Amenities</b></div>
+                    <div tabindex="0" *ngFor="let object of amenityforroomdata " style="width:690px;overflow:hidden;margin-left:25px" title="{{object.Name}} {{object.Count}}">{{object.Name}}:&nbsp;<b>{{object.Count}}</b></div>
+                </div>
+            </div>
+            <div style="width:60%;float:right;height:50%;position:relative;display:block;overflow:hidden" *ngIf="showAttachment">
+                <file-viewer style="display:block;height:100%;width:350px;" [attachmentCategoryId]="5" [moduleId]="3" [baseEntityId]="selectedId" [objectClassId]="0" [isVisible]="showAttachment" (attachmentViewerClose)="attachmentViewerClose()"></file-viewer>
+            </div>
+            <div style="width:95%;height:70px;">
+                <div *ngIf="dateSelectorField != undefined">
+                    <DateComponent *ngIf="Target==2" [showDateOnLoad]="true" [fieldObject]="dateSelectorField[0]" (datepickerOut)="divClicked($event)"></DateComponent>
+                    <div style="height:10px"></div>
+                    <dashboardscheduler *ngIf="Target==2 && Dateforcalender!=''" style="height:100%;" [rowcount]="totalItems2" [SelectedDate]="Dateforcalender" [bookedDateObj]="schedulerArrObj" [IsAddpageopened]="IsAddpageopened" [IsGridloaded]="IsGridloaded" [day]="seatday" (cellClick)="cellclicked($event)" [SeatNo]="SeatNo" [Todaydate]="Todaydate"></dashboardscheduler>
+                </div>
+            </div>
+        </div>
+    </primary-view>
+    <secondary-view *ngIf="splitviewInput.showSecondaryView == true">
+        <book-seat (submitSuccess)="submitReturn($event)" [selSeatId]="selSeatId" [fieldDetailsBook]="fieldDetailsBook" (reserveSeatReturn)="reserveSeatSubmitRet($event)" [Sitetime]="Todaydate"></book-seat>
+    </secondary-view>
+</split-view>

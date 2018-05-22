@@ -1,0 +1,101 @@
+﻿{
+    "data": [
+        {
+            "FieldId": 1,
+            "FieldName": "Id",
+            "FieldType": 1,
+            "IsVisible": false,
+            "IsMandatory": false,
+            "IsDisabled": true,
+            "IsHiddenLabel": true,
+            "ReadOnlyMode": false,
+            "NotificationType": "inline"
+        },
+        {
+            "FieldId": 2,
+            "FieldName": "Template Name",
+            "FieldType": 1,
+            "IsVisible": true,
+            "IsMandatory": true,
+            "IsDisabled": false,
+            "IsHiddenLabel": false,
+            "ReadOnlyMode": false,
+            "NotificationType": "inline"
+        },
+        {
+            "FieldId": 3,
+            "FieldName": "Description",
+            "FieldType": 4,
+            "FieldValue": "",
+            "IsVisible": true,
+            "IsMultiValued": false,
+            "IsMandatory": false,
+            "IsHiddenLabel": false,
+            "ReadOnlyMode": false,
+            "MaxLength": 4000,
+            "NotificationType": "inline"
+        },
+        {
+            "FieldId": 4,
+            "FieldName": "User Role",
+            "FieldType": 5,
+            "FieldValue": "Module Administrator",
+            "IsHiddenLabel": false,
+            "IsMandatory": true,
+            "IsMultiValued": true,
+            "IsVisible": true,
+            "ReadOnlyMode": false,
+            "MultiValuedDetails": {
+                "LookupValues": [
+                    {
+                        "Id": 1,
+                        "Value": "Module Administrator"
+                    },
+                    {
+                        "Id": 2,
+                        "Value": "Division Administrator"
+                    },
+                    {
+                        "Id": 3,
+                        "Value": "Facility Administrator"
+                    }
+                ],
+                "PopupComponentName": null
+            },
+            "NotificationType": "inline"
+        },
+        {
+            "FieldId": 5,
+            "FieldName": "Site",
+            "FieldType": 5,
+            "FieldValue": "Aberdeen",
+            "IsHiddenLabel": false,
+            "IsMandatory": false,
+            "IsMultiValued": true,
+            "IsVisible": true,
+            "ReadOnlyMode": false,
+            "MultiValuedDetails": {
+                "LookupValues": [
+                    {
+                        "Id": 1,
+                        "Value": "Aberdeen"
+                    },
+                    {
+                        "Id": 2,
+                        "Value": "Arlington"
+                    },
+                    {
+                        "Id": 3,
+                        "Value": "Concord"
+                    },
+                    {
+                        "Id": 4,
+                        "Value": "Farmingham"
+                    }
+                ],
+                "PopupComponentName": null
+            },
+            "NotificationType": "inline"
+        }
+    ]
+}

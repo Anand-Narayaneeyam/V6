@@ -1,0 +1,118 @@
+﻿<style>
+    .userTbl {
+        border-collapse: collapse;
+        left: 5px;
+        border: 1px solid #c6c6c6;
+        height: 100%;
+    }
+
+        .userTbl th:last-child {
+            border-right: none;
+        }
+
+        .userTbl tbody tr:last-child {
+            border-bottom: none;
+        }
+
+        .userTbl thead {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 13px;
+            font-weight: bold;
+            text-wrap: normal;
+            color: #747474;
+        }
+
+            .userTbl thead tr {
+                height: 30px;
+                display: block;
+                position: relative;
+                border-bottom: 1px solid #c6c6c6;
+            }
+
+    .colheader {
+        text-indent: 2px;
+        border-right: 1px solid #c6c6c6;
+        top: 0px;
+        left: 0px;
+    }
+
+    .userTbl tbody tr {
+        border-bottom: 1px solid #c6c6c6;
+    }
+
+    .userTbl tbody {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 13px;
+        display: block;
+        overflow-y: auto;
+        overflow-x: hidden;
+        width: 100%;
+        height: 100%;
+    }
+
+    .customTxtBox_1625 div span span input {
+        margin: 2px 0px 2px 2px;
+        width: 245px !important;
+        height: 23px !important;
+    }
+
+    .customTxtBox_1626 div span span input {
+        margin: 2px 0px 2px 2px;
+        height: 23px !important;
+        width: 73px !important;
+    }
+
+    @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+        #userlicensetbldiv {
+            overflow: auto;
+        }
+    }
+</style>
+
+
+<div style="height:100%" *ngIf="isRolewise">
+
+    <div style="height:40px;margin-top:10px">
+        <button role="button" [attr.aria-label]="btnSave" class="Savebutton " (click)="Update()" [disabled]="disableBtn">{{btnSave}}</button>
+    </div>
+    <div style="height:50px">
+        <DropDownListComponent *ngIf="ddlCustomer" [fieldObject]="ddlCustomer" [SetAlignment]=alignContent></DropDownListComponent>
+    </div>
+    <div style="height:50px">
+        <DropDownListComponent *ngIf="ddlLicenceAllotment" [fieldObject]="ddlLicenceAllotment" (change)="onChangeLicence($event.target.value)" [SetAlignment]=alignContent></DropDownListComponent>
+    </div>
+    <div style="height:50px">
+        <DropDownListComponent *ngIf="ddlDeviceType" [fieldObject]="ddlDeviceType" (change)="onChangeDevicetype($event.target.value)" [SetAlignment]=alignContent></DropDownListComponent>
+    </div>
+
+    <div >
+       
+        <div id="userlicensetbldiv" style="height:calc(100% - 200px);margin:10px;">
+            <table class="userTbl">
+                <thead>
+                    <tr class="tablerow">
+                        <th class="colheader" *ngFor="let column of fieldObject" [style.width.px]="column.Width">
+                            <div *ngIf="column.IsVisible" id="head_col{{column.DataEntryControlId}}">
+                                {{column.FieldLabel}}
+                            </div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="tablerow" *ngFor="let item of itemSource;let i=index">
+                        <td *ngFor="let col of sourceFieldObj[i]" id="colum_{{i}}">
+                            <div *ngIf="col.IsVisible" [style.width.px]="col.Width" style="overflow:hidden;">
+                                <span style="padding-left:2px;" id="{{col.FieldId}}_{{i}}" *ngIf="col.DataEntryControlId == '1' && col.ReportFieldId==439">{{col.FieldValue}} </span>
+                                <StringTextBox id="{{col.FieldId}}_{{i}}" class="customTxtBox_{{col.FieldId}}" *ngIf="col.DataEntryControlId == '1'&& col.ReportFieldId!=439" [fieldObject]="col"></StringTextBox>                           
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div style="height:100%" *ngIf="!isRolewise && dynamicfieldObject && itemSource">
+    <DynamicFields [dataSource]="dynamicfieldObject" (submitFieldObject)="onSubmitData($event)" [btnName]="btnSave" [dataKey]="dataKey" (fieldChange)="onChangeDevicetype($event.ddlRelationShipEvent.ChildFieldObject.FieldValue)"></DynamicFields>
+</div>

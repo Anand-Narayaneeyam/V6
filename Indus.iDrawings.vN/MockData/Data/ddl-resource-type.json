@@ -1,0 +1,29 @@
+﻿{
+  "data": 
+    {
+      "FieldId": 1,
+      "FieldName": "Resource Type",
+      "FieldType": 5,
+      "FieldValue": "0",
+      "IsMultiValued": true,
+      "HasRelation": false,
+      "MultiValuedDetails": {
+        "LookupValues": [
+          {
+            "Id": 1,
+            "Value": "Personal Cabinet"
+          },
+          {
+            "Id": 2,
+            "Value": "Signage"
+          }
+        ],
+        "PopupComponentName": null
+      },
+      "IsMandatory": true,
+      "IsVisible": true,
+      "IsHiddenLabel":  false,
+      "ReadOnlyMode": false,
+      "NotificationType": ""
+    }
+}

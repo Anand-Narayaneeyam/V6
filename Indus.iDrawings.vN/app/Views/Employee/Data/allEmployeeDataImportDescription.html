@@ -1,0 +1,198 @@
+﻿<div id="import-div">
+    <table style="width:100%">
+        <tr>
+            <td class="hdTitle">
+                Purpose
+            </td>
+        </tr>
+        <tr>
+            <td style="padding-left:40px;">
+                To sync employee data
+            </td>
+        </tr>
+        <tr>
+            <td class="hdTitle">
+                Description
+            </td>
+        </tr>
+        <tr>
+            <td style="padding-left:40px;">
+                To import employee data to iDraawings from external Apps
+            </td>
+        </tr>
+        <tr>
+            <td class="hdTitle">
+                Prerequisites
+            </td>
+        </tr>
+        <tr>
+            <td style="padding-left:40px;">
+                Web service username and password to login to sync data to iDrawings
+            </td>
+        </tr>
+        <tr>
+            <td class="hdTitle">
+                Base URL
+            </td>
+        </tr>
+        <tr>
+            <td style="padding-left:40px;">
+                {{baseUrl}}
+            </td>
+        </tr>
+        <tr>
+            <td class="hdTitle">
+                API Details
+            </td>
+        </tr>
+        <tr>
+            <td class="hdTitle" style="padding-left:40px;">
+                API URL
+            </td>
+        </tr>
+        <tr>
+            <td style="padding-left:80px;">
+                {BaseUrl}/api/IndusExport/ExportEmployeeData
+            </td>
+        </tr>
+        <tr>
+            <td class="hdTitle" style="padding-left:40px;">
+                Access Method
+            </td>
+        </tr>
+        <tr>
+            <td style="padding-left:80px;">
+                POST
+            </td>
+        </tr>
+        <tr>
+            <td class="hdTitle" style="padding-left:40px;">
+                Input Class Name
+            </td>
+        </tr>
+        <tr>
+            <td style="padding-left:80px;">
+                WSEmployeeDataInput
+            </td>
+        </tr>
+        <tr>
+            <td class="hdTitle" style="padding-left:40px;">
+                Input Properties of WSEmployeeDataInput
+            </td>
+        </tr>
+        <tr>
+            <td style="padding-left:80px;">
+                <table style="border:1px solid rgb(165, 163, 163);" cellpadding="0" cellspacing="0" class="tdInputProp">
+                    <tr>
+                        <td class="hdTitle">Parameter</td>
+                        <td class="hdTitle">Data Type</td>
+                        <td class="hdTitle">Description</td>
+                    </tr>
+                    <tr>
+                        <td>UserName</td>
+                        <td>String</td>
+                        <td style="text-align:left;">Web service user name to login for updating the data through web API</td>
+                    </tr>
+                    <tr>
+                        <td>Password</td>
+                        <td>String</td>
+                        <td style="text-align:left;">Web service login password for updating the data through web API</td>
+                    </tr>
+                    <tr>
+                        <td>IsDataInsert</td>
+                        <td>Boolean</td>
+                        <td style="text-align:left;">
+                            To denote whether to Insert or Update the data
+                            <ul>
+                                <li>True to Insert data</li>
+                                <li>False to Update data</li>
+                            </ul>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>DataInput</td>
+                        <td>JSON</td>
+                        <td style="text-align:left;">The data which is to be ported to iDrawings Database</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td class="hdTitle" style="padding-left:40px;">
+                Return of API Call
+            </td>
+        </tr>
+        <tr>
+            <td style="padding-left:80px;" class="hdTitle">
+                Successful Return
+            </td>
+        </tr>
+        <tr>
+            <td style="padding-left:120px;">
+                { StatusId = 1, Message = "Success", Data = { JSON DATA RETURN } }
+            </td>
+        </tr>
+        <tr>
+            <td style="padding-left:80px;" class="hdTitle">
+                Authentication Failed
+            </td>
+        </tr>
+        <tr>
+            <td style="padding-left:120px;">
+                { StatusId = 5, Message = "Authentication Failed", Data = "" }
+            </td>
+        </tr>
+        <tr>
+            <td style="padding-left:80px;" class="hdTitle">
+                Permission Denied
+            </td>
+        </tr>
+        <tr>
+            <td style="padding-left:120px;">
+                { StatusId = 4, Message = "Permission Denied", Data = "" }
+            </td>
+        </tr>
+        <tr>
+            <td style="padding-left:80px;" class="hdTitle">
+                UnExpected Error
+            </td>
+        </tr>
+        <tr>
+            <td style="padding-left:120px;">
+                { StatusId = 6, Message = "UnExpected Error", Data = "" }
+            </td>
+        </tr>
+    </table>
+</div>
+
+<style>
+    td {
+        border: 0px solid green;
+        height: 20px;
+        font-size: 13px;
+    }
+
+    table {
+        
+    }
+
+    .hdTitle {
+        font-weight: bold;
+        padding-top: 15px;
+    }
+
+    .tdInputProp td {
+        border: 1px solid rgb(165, 163, 163);
+        height: 10px;
+        padding: 1px;
+        width: 130px;
+        text-align: center;
+    }
+
+    #import-div {
+        overflow-y: scroll;
+        height: 90%;
+        z-index: 10000;
+    }
+</style>

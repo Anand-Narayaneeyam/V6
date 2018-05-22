@@ -1,0 +1,39 @@
+﻿<page [pagetitle]="pagePath">
+    <content>
+        <split-view [splitviewObject]="splitviewInput" [pageTitle]="pageTitle" style="height: calc(100% - 35px);">
+            <primary-view>
+                <div style="height:100%;width:100%;overflow-y:auto;overflow-x:auto;">
+                    <div style="display:inline-flex;width:98%;margin-bottom: 5px;margin-left: 9px;">
+                        <div *ngIf="ddlspacegrossareareport != undefined" style="display:block;">
+                            <DropDownListComponent [fieldObject]="ddlspacegrossareareport" [ShowSelectOption]="false" (change)="onChangeType($event.target.value)" [SetAlignment]=alignContent></DropDownListComponent>
+                        </div>
+                        <div style="padding-left: 1%;margin-top:5px;display:block">
+                            <div *ngIf="IsFloor == 0" style="margin-right:5px;">
+                                <button class="Savebutton" style="white-space:nowrap;" type="button" (click)="onSubmitArchive($event)">Archive</button>
+                            </div>
+                            <div *ngIf="IsFloor == 0 && disableButton==false" style="margin-left:80px;margin-top:-31px;">
+                                <button class="Savebutton" type="button" style="white-space:nowrap;" (click)="onSubmit($event)">By Floor</button>
+                            </div>
+                            <div *ngIf="IsFloor != 0" style="margin-right:5px;">
+                                <button class="Savebutton" style="white-space:nowrap;" type="button" (click)="onSubmit($event)">Summary</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div *ngIf="ReportData != undefined" style="height:88%;">
+                        <reportviewer [reportData]=ReportData> Loading ...</reportviewer>
+                    </div>
+                </div>
+            </primary-view>
+            <secondary-view *ngIf="showArchive == true">
+                <archive-add (submitSuccess)="submitReturn($event)" [selectedId]="Ids"></archive-add>
+            </secondary-view>
+        </split-view>
+    </content>
+</page>
+
+<style>
+    :host .ddllabel_2738 {
+        width: 100px !important;
+        margin-top: 7px !important;
+    }
+</style>

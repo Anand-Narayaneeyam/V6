@@ -1,0 +1,69 @@
+﻿{
+  "data": 
+    {
+      "FieldId": 1,
+      "FieldLabel": "Font Size",
+      "FieldType": 5,
+      "FieldValue": "0",
+      "IsMultiValued": true,
+      "HasRelation": false,
+      "LookupDetails": {
+        "LookupValues": [
+          {
+            "Id": 1,
+            "Value": "2"
+          },
+          {
+            "Id": 2,
+            "Value": "4"
+          },
+          {
+            "Id": 3,
+            "Value": "5"
+          },
+          {
+            "Id": 4,
+            "Value": "6"
+          },
+          {
+            "Id": 5,
+            "Value": "8"
+          },
+          {
+            "Id": 6,
+            "Value": "10"
+          },
+          {
+            "Id":7,
+            "Value": "12"
+          },
+          {
+            "Id": 8,
+            "Value": "14"
+          },
+          {
+            "Id": 9,
+            "Value": "18"
+          },
+          {
+            "Id": 10,
+            "Value": "20"
+          },
+          {
+            "Id": 11,
+            "Value": "22"
+          },
+           {
+            "Id": 12,
+            "Value": "24"
+          }
+        ],
+        "PopupComponentName": null
+      },
+      "IsMandatory": false,
+      "IsVisible": true,
+      "IsHiddenLabel":  false,
+      "ReadOnlyMode": false,
+      "NotificationType": ""
+    }
+}

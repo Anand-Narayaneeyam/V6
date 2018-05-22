@@ -1,0 +1,2 @@
+﻿<DynamicFields *ngIf="fieldObjectAssignWorkType!=undefined" [dataSource]="fieldObjectAssignWorkType" (submitFieldObject)="onSubmitData($event)" [btnName]="btnName"
+               (fieldChange)="onDropDownChange($event.ddlRelationShipEvent.ChildFieldObject)" (lstBoxSelAllChange)="lbSelectAllChange($event)"> </DynamicFields>

@@ -1,0 +1,106 @@
+﻿.markupicons {
+    width: 24px;
+    height: 24px;
+}
+
+.dwgdetailsdiv {
+    display: inline-flex;
+    width: 40%;
+}
+
+.dwgdetailskeylabel {
+    font-weight: normal;
+    white-space: nowrap;
+}
+
+.dwgdetailsvaluelabel {
+    white-space: nowrap;
+    overflow: hidden;
+    -ms-text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    max-width: 250px;
+}
+
+.open-drawing-details-container {
+    width: 640px;
+    height:95%;
+}
+.distributionmenu {
+    width: 100%;
+    height: 25px;
+    cursor: pointer;
+    padding: 5px;
+    color:black;
+}
+
+    .distributionmenu:hover {
+  color: #fff;
+  background: #178ae8;
+    }
+button {
+    background: #2980b9;
+    color: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    width: auto;    
+}
+.drawingDetails {
+    color: #000000;
+    display: inline-block;
+    float: left;
+    margin-left: 10px;
+    margin-top: 7px;
+    font-weight: 100;
+    font-size: 13px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-decoration: none;
+    background-color: transparent;
+}
+.exportnmenu {
+    width: 60px;
+    height: 25px;
+    cursor: pointer;
+    padding: 5px;
+    color:black;
+}
+
+    .exportnmenu:hover {
+          color: #fff;
+  background: #178ae8;
+    }
+    .saveasnmenu {
+    width: 110px;
+    height: 25px;
+    cursor: pointer;
+    padding: 5px;
+    color:black;
+}
+
+    .saveasnmenu:hover {
+          color: #fff;
+  background: #178ae8;
+    }
+.icon {
+    display: inline-block;
+    padding: 2px 2px;
+    text-decoration: initial;
+    color: black;
+    cursor:pointer;
+}
+.mainDiv {
+    width:100%;
+    background-color:#ededed ;
+    display:inline-block;
+    height:35px;
+    padding-top:3px;
+    overflow:hidden;
+}
+div.icon:hover {
+     color: #fff;
+  background: #178ae8;
+}
+div.icon {
+        color: black;
+}

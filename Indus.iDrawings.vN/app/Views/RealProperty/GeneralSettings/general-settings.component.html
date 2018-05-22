@@ -1,0 +1,41 @@
+﻿<page [pagetitle]="pagePath">  
+
+    <content>
+        <section title="Landlords" [isExpanded]="sectionExpansionStatus[0].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <landlord-list [categorytype]=1 *ngIf="sectionExpansionStatus[0].isExpanded"></landlord-list>
+        </section>
+        <section title="Tenants" [isExpanded]="sectionExpansionStatus[1].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <landlord-list [categorytype]=2 *ngIf="sectionExpansionStatus[1].isExpanded"></landlord-list>
+        </section>
+        <section title="Contacts" [isExpanded]="sectionExpansionStatus[2].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <contact-list *ngIf="sectionExpansionStatus[2].isExpanded" [isAdministration]="false" [moduleId]="30"></contact-list>
+        </section>
+        <section title="Additional Data Fields" [isExpanded]="sectionExpansionStatus[3].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <additional-datafields *ngIf="sectionExpansionStatus[3].isExpanded" [addlDataFieldCategoryId]="30"></additional-datafields>
+        </section>
+        <section title="Additional  Charges" [isExpanded]="sectionExpansionStatus[4].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <additionalcharges *ngIf="sectionExpansionStatus[4].isExpanded"></additionalcharges>
+        </section>
+        <section title="Additional Charge Rates" [isExpanded]="sectionExpansionStatus[5].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <additional-charge-rates *ngIf="sectionExpansionStatus[5].isExpanded"> </additional-charge-rates>
+        </section>
+        <section title="Agreement Clauses" [isGrid]=true [isExpanded]="sectionExpansionStatus[6].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <agreement-clauses *ngIf="sectionExpansionStatus[6].isExpanded" [leaseId]="" [leaseRenewalCount]="" [leaseIdentifier]="" [pageTarget]="1"></agreement-clauses>
+        </section>
+            <!--<section title="Tenants" [categorytype]="tenants" [isExpanded]="sectionExpansionStatus[1].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <landlord-list *ngIf="sectionExpansionStatus[1].isExpanded"></landlord-list>
+        </section>-->
+            <!--<section title="Landlords" [isExpanded]="sectionExpansionStatus[0].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+           <landlord-list  [categorytype]="landlords"  *ngIf="sectionExpansionStatus[0].isExpanded"></landlord-list>
+        </section>
+        <section title="Tenants" [isExpanded]="sectionExpansionStatus[1].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <landlord-list [categorytype]="tenants" *ngIf="sectionExpansionStatus[1].isExpanded"></landlord-list>
+        </section>-->
+        <section *ngIf="showCustomRptSection==true" title="Custom Reports" [isExpanded]="sectionExpansionStatus[7].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <customReportGrid *ngIf="sectionExpansionStatus[7].isExpanded==true" [moduleId]=30 ></customReportGrid>
+        </section>
+</content>
+</page>
+
+
+

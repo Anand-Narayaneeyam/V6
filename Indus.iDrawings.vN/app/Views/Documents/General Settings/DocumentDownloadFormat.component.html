@@ -1,0 +1,33 @@
+﻿<div *ngIf="fieldObject" style="margin-left:50px">
+    <button style="margin-left: 5px;margin-top: 5px;" class="Savebutton " type="button" (click)="updateNumberFormat($event)"> Save Changes </button>
+    <DynamicDownloadFormatListComponent [style.display]="showComponent(fieldObject[0].FieldLabel,fieldObject[0].IsVisible)" style="margin-left:110px;" imgsrc1="{{imgEdit}}" imgsrc2="{{imgDelete}}" *ngIf="fieldObject[0] && fieldObject[0].DataEntryControlId == '13' && isrefresh" [fieldObject]=fieldObject[0] (dynamicListAdd)="getDynamicListEdit($event)" (dynamicListRemove)="getDynamicListRemove($event)" [enableButton]="enableButton"></DynamicDownloadFormatListComponent>
+    <DynamicDownloadFormatListComponent [style.display]="showComponent(fieldObject[0].FieldLabel,fieldObject[0].IsVisible)" style="margin-left:110px;" imgsrc1="{{imgEdit}}" imgsrc2="{{imgDelete}}" *ngIf="fieldObject[0] && fieldObject[0].DataEntryControlId == '13' && !isrefresh" [fieldObject]=fieldObject[0] (dynamicListAdd)="getDynamicListEdit($event)" (dynamicListRemove)="getDynamicListRemove($event)" [enableButton]="enableButton"></DynamicDownloadFormatListComponent>
+    <div style="margin-left: 5px;margin-top:10px;font-size:14px;">Condition Builder</div>
+    <div style="margin-top:10px;">
+        
+        <table style="border-collapse: separate;border-spacing: 5px 0;">
+            <tr>
+                <td style="background-color: rgb(23, 138, 232);" align="center"><input role="radio" aria-label="Field Name" type="radio" id="FieldFormat" name="1" value="" (click)="OnFieldClick($event,'FieldName')" checked /><span style="color:white;margin-left:6px;font-size: 14px;">Field Name</span></td>
+                <td style="background-color: rgb(23, 138, 232);" align="center"><input role="radio" aria-label="Constant Value" type="radio" id="ConstantFormat" name="1" value="" (click)="OnFieldClick($event,'ConstantValue')" /><span style="color:white;margin-left:6px;font-size: 14px;">Constant Value</span></td>
+                <td style="padding-left:50px;height: 25px;background-color: rgb(23, 138, 232);"><input type="checkbox" aria-label="Separator" role="checkbox" id="SeparatorFormat" name="check" value="All" [checked]="false" (change)="OnFieldClick($event,'Separator')" /><span style="color:white;margin-left:6px;font-size: 14px;">Separator</span></td>
+            </tr>
+            <tr style="white-space: nowrap;height:10px"></tr>
+            <tr>
+                <td valign="top"><DropDownListComponent *ngIf="fieldObject[1].DataEntryControlId == '4'" style="white-space: nowrap;margin-top:-5px;font-size:13px;" [style.display]="showComponent(fieldObject[1].FieldLabel,fieldObject[1].IsVisible)" [fieldObject]=fieldObject[1] (change)="onChangeDataFieldCategory($event,fieldObject[1].FieldId)" SetAlignment="horizontal"></DropDownListComponent></td>
+                <td valign="top"><StringTextBox *ngIf="fieldObject[2].DataEntryControlId == '1'" style="white-space: nowrap;" [style.display]="showComponent(fieldObject[2].FieldLabel,fieldObject[2].IsVisible)" [fieldObject]=fieldObject[2] SetAlignment="horizontal" [validationData]='validationData'></StringTextBox></td>
+                <td valign="top">
+                    <div style="display:inline-flex;flex-direction:row;">
+                        <StringTextBox *ngIf="fieldObject[3].DataEntryControlId == '1'" style="white-space: nowrap;" [style.display]="showComponent(fieldObject[3].FieldLabel,fieldObject[3].IsVisible)" [fieldObject]=fieldObject[3] SetAlignment="horizontal" [validationData]='validationData'></StringTextBox>
+                        <span *ngIf="IsAdd" style="width:30px;margin-left:5px;margin-top:2px;cursor:pointer;" tabindex="0" aria-label="Add Button"><img src="{{imgAdd}}" alt="Add" (click)="ChangeList($event,1)" title="Add"></span>
+                        <span *ngIf="!IsAdd" style="width:30px;margin-left:5px;margin-top:2px;cursor:pointer;" tabindex="0" aria-label="Edit Button"><img *ngIf="!IsAdd"src="Content/Layout/tick_green.png" alt="Save Changes" (click)="ChangeList($event,2)"  title="Save Changes"></span>
+                        <span style="margin-top:2px;cursor:pointer;" tabindex="0" aria-label="Cancel Button"><img src="{{imgCancel}}" alt="Cancel" (click)="cancelList($event)"  title="Cancel"></span>
+                    </div>
+                </td>
+            </tr>
+        </table> 
+       
+    </div>
+</div>
+
+
+<!--#0164AD-->

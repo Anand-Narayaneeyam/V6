@@ -1,0 +1,94 @@
+﻿[
+  {
+    "id": 1,
+    "title": "Administration",
+    "path": "",
+    "subMenu": [
+       {
+          "id": 80,
+          "parentId": 8,
+          "title": "Portfolio List",
+          "path": "/portfolio",
+          "subMenu": null
+        },
+        {
+          "id": 81,
+          "parentId": 8,
+          "title": "Users",
+          "path": "/users",
+          "subMenu": null
+        },
+        {
+            "id": 83,
+            "parentId": 8,
+            "title": "User Groups",
+            "path": "/user-groups",
+            "subMenu": null
+        },
+      {
+        "id": 84,
+        "parentId": 8,
+        "title": "Access Templates",
+        "path": "/access-templates",
+        "subMenu": null
+      },
+       {
+        "id": 80,
+        "parentId": 8,
+        "title": "General Settings",
+        "path": "/general-settings",
+        "subMenu": null
+      },
+      {
+        "id": 81,
+        "parentId": 8,
+        "title": "Drawing Settings",
+        "path": "/drawing-settings",
+        "subMenu": null
+      },
+        {
+        "id": 3,
+        "title": "Additional Data Fields",
+        "path": "/additional-datafields",
+        "subMenu": null
+      }
+    ]
+
+  },
+  {
+    "id": 2,
+    "title": "Space",
+    "path": "",
+    "subMenu": [
+       {
+          "id": 80,
+          "parentId": 8,
+          "title": "Space Resources",
+          "path": "/space-resources",
+          "subMenu": null
+        },
+        {
+          "id": 81,
+          "parentId": 8,
+          "title": "Space General Settings",
+          "path": "/space-general-settings",
+          "subMenu": null
+        },
+        {
+          "id": 82,
+          "parentId": 8,
+          "title": "Space Data",
+          "path": "/spacedata",
+          "subMenu": null
+        },
+                {
+           "id": 83,
+          "parentId": 8,
+          "title": "Drawings",
+          "path": "/drawings",
+          "subMenu": null
+        }
+    ]
+  }
+]
+

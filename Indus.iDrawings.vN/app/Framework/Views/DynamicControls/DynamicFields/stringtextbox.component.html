@@ -1,0 +1,54 @@
+﻿<div [style.display]="setAlignment">
+    <div control-group *ngIf="!fieldObject.IsHiddenLabel && fieldObject.FieldLabel != undefined && fieldObject.FieldLabel != null" [style.max-width]="labelWidth" [style.min-width]="labelWidth">
+        <label style="margin-top:5px;padding-right:10px;">
+            {{fieldObject.FieldLabel}}
+            <span class="required" *ngIf="fieldObject.IsMandatory == undefined || fieldObject.IsMandatory === true">* </span>
+        </label>
+    </div>
+    <div control-group style="min-height:30px;display: inline-flex;" [ngStyle]="fieldObject.LookupDetails && fieldObject.LookupDetails.PopupComponent && !fieldObject.LookupDetails.PopupComponent.showImage?{'flex-direction':'column','align-items': 'flex-end'}:{'flex-direction':'row'}" [style.margin-left]="setAlignment=='inline-flex' ? '5px' : ''" *ngIf="readonlymode!=true">
+
+        <span *ngIf="fieldObject.IsEnabled == true || fieldObject.IsEnabled == null">
+            <label style="overflow:hidden" class="readOnly" *ngIf="fieldObject.ReadOnlyMode === true">{{fieldObject.FieldValue}}</label>
+            <span *ngIf="fieldObject.MaxLength == undefined || fieldObject.MaxLength == NULL">
+                <input #StringTextBox name="StringTextBox"  [attr.aria-label]="fieldObject.FieldLabel" attr.maxlength=100 id="{{fieldObject.FieldId}}" validatetext [validationData]="validationData" [fieldObject]='fieldObject' type="text" *ngIf="fieldObject.ReadOnlyMode == undefined || fieldObject.ReadOnlyMode === false" [(ngModel)]="fieldObject.FieldValue" (ngModelChange)="fieldObject.FieldValue = $event" (validateMessage)="validateMessage($event)" (change)="getTxtBoxDetails($event)" [style.text-align]="txtAlign" [style.width]="fieldWidth" [style.height]="fieldHeight" (paste)="onPaste($event)" autofocus>
+            </span>
+            <span *ngIf="fieldObject.MaxLength > 0 && fieldObject.FieldFormatId != 9">
+                <input #StringTextBox name="StringTextBox"  [attr.aria-label]="fieldObject.FieldLabel" attr.maxlength={{fieldObject.MaxLength}} id="{{fieldObject.FieldId}}" validatetext [validationData]="validationData" [fieldObject]='fieldObject' type="text" *ngIf="fieldObject.ReadOnlyMode == undefined || fieldObject.ReadOnlyMode === false" [(ngModel)]="fieldObject.FieldValue" (ngModelChange)="fieldObject.FieldValue = $event" (validateMessage)="validateMessage($event)" (change)="getTxtBoxDetails($event)" [style.text-align]="txtAlign" [style.width]="fieldWidth" [style.height]="fieldHeight" (keyup)="onKey($event)" (paste)="onPaste($event)" autofocus>
+            </span>
+            <span *ngIf="fieldObject.FieldFormatId == 9">
+                <input type="password" #StringTextBox name="StringTextBox" [attr.aria-label]="fieldObject.FieldLabel" attr.maxlength={{fieldObject.MaxLength}} id="{{fieldObject.FieldId}}" validatetext [validationData]="validationData" [fieldObject]='fieldObject' *ngIf="fieldObject.ReadOnlyMode == undefined || fieldObject.ReadOnlyMode === false" [(ngModel)]="fieldObject.FieldValue" (ngModelChange)="fieldObject.FieldValue = $event" (validateMessage)="validateMessage($event)" (change)="getTxtBoxDetails($event)" [style.text-align]="txtAlign" [style.width]="fieldWidth" [style.height]="fieldHeight" (keyup)="onKey($event)" (paste)="onPaste($event)" autofocus>
+            </span>
+        </span>
+        <span *ngIf="fieldObject.IsEnabled == undefined || fieldObject.IsEnabled == false">
+            <span style="width:250px;display:block;overflow:hidden" class="readOnly" *ngIf="fieldObject.ReadOnlyMode === true">{{fieldObject.FieldValue}}</span>
+            <span *ngIf="fieldObject.MaxLength == undefined || fieldObject.MaxLength == NULL"  tabindex="0" [attr.aria-label]="''+fieldObject.FieldLabel+' '+fieldObject.FieldValue+' Read Only'">
+                <input #StringTextBox name="StringTextBox" attr.maxlength=100 id="{{fieldObject.FieldId}}" validatetext [validationData]="validationData" [fieldObject]='fieldObject' type="text" *ngIf="fieldObject.ReadOnlyMode == undefined || fieldObject.ReadOnlyMode === false" [(ngModel)]="fieldObject.FieldValue" (ngModelChange)="fieldObject.FieldValue = $event" (validateMessage)="validateMessage($event)" (change)="getTxtBoxDetails($event)" disabled [style.text-align]="txtAlign" [style.width]="fieldWidth" [style.height]="fieldHeight"  (paste)="onPaste($event)" autofocus>
+            </span>
+            <span *ngIf="fieldObject.MaxLength > 0" tabindex="0" [attr.aria-label]="''+fieldObject.FieldLabel+' '+fieldObject.FieldValue+' Read Only'">
+                <input #StringTextBox name="StringTextBox"  attr.maxlength={{fieldObject.MaxLength}} id="{{fieldObject.FieldId}}" validatetext [validationData]="validationData" [fieldObject]='fieldObject' type="text" *ngIf="fieldObject.ReadOnlyMode == undefined || fieldObject.ReadOnlyMode === false" [(ngModel)]="fieldObject.FieldValue" (ngModelChange)="fieldObject.FieldValue = $event" (validateMessage)="validateMessage($event)" (change)="getTxtBoxDetails($event)" disabled [style.text-align]="txtAlign" [style.width]="fieldWidth" [style.height]="fieldHeight"  (paste)="onPaste($event)" autofocus>
+            </span>
+        </span>
+        <span *ngIf="fieldObject.LookupDetails && fieldObject.LookupDetails.PopupComponent" style="padding: 2px 0px 0px 5px;">
+            <span *ngIf="fieldObject.LookupDetails.PopupComponent.showImage" style="float:right">
+                <img id="ddlPopup" role="button" src="Content/Layout/add_data_button.png" (click)="popupAdd($event)" [attr.aria-label]="Add" tabindex="0" (keypress)="onPopupKeyPress($event)">
+            </span>
+            <span *ngIf="!fieldObject.LookupDetails.PopupComponent.showImage">
+                <span role="button" class="span-popup-text" (click)="popupAdd($event)" tabindex="0" [attr.aria-label]="fieldObject.LookupDetails.PopupComponent.Name" (keypress)="onPopupKeyPress($event)">{{fieldObject.LookupDetails.PopupComponent.Name}}</span>
+            </span>
+        </span>
+    </div>
+    <div style="min-height:30px;line-height: 30px;" [style.margin-left]="setAlignment=='inline-flex' ? '5px' : ''" *ngIf="readonlymode==true">
+        <label  role="none" tabindex="0" title="{{fieldObject.FieldLabel}}" style="overflow:hidden;font-weight: 800;">{{fieldObject.FieldValue}}</label>
+    </div>
+</div>
+
+<style>
+    .span-popup-text {
+        /*margin-left: 5px !important;*/
+        margin-left: auto;
+        color: blue;
+        cursor: hand;
+        cursor: pointer;
+        text-decoration: underline;
+    }
+</style>

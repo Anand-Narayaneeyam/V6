@@ -1,0 +1,134 @@
+﻿<page [pagetitle]="pagePath">
+    <pagepath>
+    </pagepath>
+    <content>
+        <section title="Drawing Management" [isExpanded]="sectionExpansionStatus[0].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div *ngIf="sectionExpansionStatus[0].isExpanded">
+                <p>This option allows the Administrator to select floors for Furniture Management. The floors are displayed in the site-building-floor hierarchy along with Drawing Category, with select boxes for each. Sites/Buildings/Floors can be selected by selecting the select boxes against each and then click on Save Changes button. A check box is also provided to select all floors for Furniture Management.</p>
+
+            </div>
+        </section>
+        <section title="Furniture Classes" [isExpanded]="sectionExpansionStatus[1].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div *ngIf="sectionExpansionStatus[1].isExpanded">
+                <p> Users can Add/Edit/Delete Furniture Classes through this option. The default data fields available for Furniture Classes are Furniture  Category, Furniture Class Name, Furniture No. Prefix, Symbol Name and Color of the Symbol. These will be common to all Furniture Classes. The user can add more common attributes like Type, Make, and Manufacturer etc. through the Common Attributes option. In addition, the User can add fields specific to a particular class through the Furniture Class Attributes option.</p>
+                <p> A PM Required checkbox is provided in the Add/Edit Furniture Class page, to mention whether the Furniture of this Furniture Class needed a Preventive Maintenance or not.</p>
+                <p><span class="header1">Add:</span> Furniture Class can be created by clicking the <span class="header2">Add</span> <img class="helpicon" src="Content/Icons/data_addN.png" title="Add" /> icon.</p>
+                <p><span class="header1">Edit:</span> Furniture Class can be edited by selecting it and then clicking the <span class="header2">Edit</span> <img class="helpicon" src="Content/Icons/data_editN.png" title="Edit" /> icon.</p>
+                <p><span class="header1">Delete:</span> Delete a Furniture class by selecting it and then clicking the <span class="header2"> Delete</span> <img class="helpicon" src="content/Icons/data_deleteN.png" title="Delete" /> icon.</p>
+                <p><span class="header1">Attachments </span> </p>
+                <p>The Administrator can view/add/edit/delete attachments to a Furniture Class using this option. Select the required Furniture Class, and then click on the  <span class="header2"> Attachments </span>  <img class="helpicon" src="Content/Icons/attachmentN.png" alt="Attachments" />  icon.  </p>
+                <p>Select a Furniture Class and clicking  <span class="header2"> Attachments </span>  <img class="helpicon" src="Content/Icons/attachmentN.png" alt="Attachments" />  icon, any files that are already attached to this Furniture Class will be listed. Attachments can now be added to the selected Furniture Class. The attachments added to the Furniture Class will be available to all Furniture belong to that Class. </p>
+                <p>The files that can be attached will be restricted to data files like Word, Excel, pdf, jpg, gif, etc.</p>
+                <p><span class="header3">Add: </span> An attachment can be added by clicking on the <span class="header2">Add </span> <img class="helpicon" src="Content/Icons/data_addN.png" alt="Add" /> icon.  The New Attachment window will be displayed. Select the Attachment Category first, and then select the required file. The attachment has to be uploaded by clicking on the Upload button.</p>
+                <p><span class="header3">Edit: </span>  An Attachment can be edited by clicking on the  <span class="header2">Edit </span>  <img class="helpicon" src="Content/Icons/data_editN.png" alt="Edit" />  icon.</p>
+                <p>Select an attachment and click on the <span class="header2"> Edit </span>  <img class="helpicon" src="Content/Icons/data_editN.png" alt="Edit" />  icon.The Edit Attachment window will be displayed with the current file name. The user can select the attachment category and select the required file. The attachment has to be updated by clicking on the Save Changes button.  </p>
+                <p><span class="header3">Delete: </span> Delete an attachment by selecting the required file and clicking the  <span class="header2">Delete </span> <img class="helpicon" src="Content/Icons/data_deleteN.png" alt="Delete" /> icon.</p>
+                <p><span class="header3">View : </span> The attachment can be viewed by selecting the file and then clicking the  <span class="header2"> View </span> <img class="helpicon" src="Content/Icons/view-drawingN.png" alt="View" />  icon. The selected attachment will be opened in an attachment viewer. </p>
+                <p>View is supported only for image files</p>
+                <p><span class="header3">Download :</span> Attachment can be downloaded and saved in the user's computer by clicking the  <span class="header2"> Download </span>  <img class="helpicon" src="Content/Layout/download_icon.png" alt="Download" />  icon.</p>
+
+            </div>
+        </section>
+        <section title="Common Attributes" [isExpanded]="sectionExpansionStatus[2].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div *ngIf="sectionExpansionStatus[2].isExpanded">
+                <p> Users can create/view/delete attributes common to all Furniture .The Attribute Name, Field Type (Single Line Text, Multi Line Text, Date, Date Time, Integer or Numeric), whether Mandatory or not, whether a Validated field or not and whether the field is Totalizable or not have to be specified. For Validated fields, the set of allowed values will also have to be specified through the Common Attribute Values <img class="helpicon" src="Content/Icons/field-valueN.png" title="Field Values" />  icon. </p>
+                <p><span class="header1">Add:</span> Create a common attribute by clicking the <span class="header2">Add</span> <img class="helpicon" src="Content/Icons/data_addN.png" title="Add" /> icon.  </p>
+                <p><span class="header1">Edit:</span> A Common Attribute can be edited by selecting it and then clicking the <span class="header2">Edit</span> <img class="helpicon" src="Content/Icons/data_editN.png" title="Edit" /> icon.After making necessary changes click the Save Changes button to update the changes . A Validated Single Line Text Field cannot be changed to a Date Time or Numeric field after values have been entered.</p>
+                <p><span class="header1">Delete:</span> Delete a common attribute by selecting it and then clicking the <span class="header2"> Delete</span> <img class="helpicon" src="content/Icons/data_deleteN.png" title="Delete" /> icon.
+                <p><span class="header1">Attribute Values :</span> This icon is for creating/viewing/editing/deleting values for validated Data Fields. Select a Validated Field and click <span class="header2">Attributes Values  </span> <img class="helpicon" src="Content/Icons/field-valueN.png" title="Field Values" /> icon, all values defined for the validated field will be displayed in a list . </p>
+                <p><span class="header1">Add:</span> A new Attribute Value can be created by clicking the <span class="header2"> Add </span> <img class="helpicon" src="Content/Icons/data_addN.png" title="Add" /> icon.</p>
+                <p><span class="header1">Edit:</span> Attribute Value can be edited by clicking the <span class="header2"> Edit </span> <img class="helpicon" src="Content/Icons/data_editN.png" title="Edit" /> icon.Edit icon will be displayed when the mouse points to a row or clicking the required row. </p>
+                <p><span class="header1">Delete:</span> Delete an Attribute value by selecting it and then clicking the <span class="header2"> Delete </span> <img class="helpicon" src="content/Icons/data_deleteN.png" title="Delete" /> icon. Delete icon will be displayed when clicking the required row.</p>
+            </div>
+        </section>
+        <section title="Class Attributes" [isExpanded]="sectionExpansionStatus[3].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div *ngIf="sectionExpansionStatus[3].isExpanded">
+                <p> Users can add/edit/delete Furniture Class attributes through this option. The Attribute Name, Field Type (Single Line Text, Multi Line Text, Date, Date Time, Integer or Numeric), whether Mandatory or not, whether a Validated field or not and whether Totalizable or not have to be specified. For Validated Class Attributes, the set of allowed values can be specified through the Furniture Class Attribute Value option.</p>
+                <p><span class="header1">Add:</span> Furniture Class Attribute can be created by clicking the <span class="header2"> Add </span> <img class="helpicon" src="Content/Icons/data_addN.png" title="Add" /> icon after selecting the required Class.</p>
+                <p><span class="header1">Edit:</span> Edit an Attribute by selecting it and then clicking the  <span class="header2">Edit</span> <img class="helpicon" src="Content/Icons/data_editN.png" title="Edit" /> icon. </p>
+                <p><span class="header1">Delete:</span> Delete an Attribute by selecting it and then clicking the <span class="header2"> Delete </span> <img class="helpicon" src="content/Icons/data_deleteN.png" title="Delete" /> icon.</p>
+                <p><span class="header1">Attribute Values :</span> This icon is for creating/viewing/editing/deleting values for validated Data Fields. Select a Validated Field and click <span class="header2">Attributes Values  </span> <img class="helpicon" src="Content/Icons/field-valueN.png" title="Field Values" /> icon, all values defined for the validated field will be displayed in a list. </p>
+                <p><span class="header1">Add:</span> A new Attribute Value can be created by clicking the  <span class="header2">Add</span> <img class="helpicon" src="Content/Icons/data_addN.png" title="Add" /> icon after selecting the required Class. </p>
+                <p><span class="header1">Edit:</span> Attribute Value can be edited by clicking the <span class="header2"> Edit </span> <img class="helpicon" src="Content/Icons/data_editN.png" title="Edit" /> icon. Edit icon will be displayed when the mouse points to a row or clicking the required row once or twice and click Save Changes <img class="helpicon" src="Content/Layout/tick_green.png" style="width:20px;height:20px;" title="Save Changes" /> icon. </p>
+                <p><span class="header1">Delete:</span> Delete an Attribute value by selecting it and then clicking the <span class="header2"> Delete </span> <img class="helpicon" src="content/Icons/data_deleteN.png" title="Delete" /> icon. Delete icon will be displayed when clicking the required row once.</p>
+
+
+            </div>
+        </section>
+        <section title="Custom Reports" [isExpanded]="sectionExpansionStatus[4].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div *ngIf="sectionExpansionStatus[4].isExpanded">
+                <p>Custom Reports are reports created by the users according to their own requirements. Users can create and save reports with a suitable name through the Custom Reports option under <span class="header2">Settings: Furniture: General Settings </span>. It is also possible to share these reports with other users of the system. </p>
+                <p>Users can view and print these reports whenever required by selecting them from the Custom Reports option under Reports. Reports created by other users and shared will be listed with the name of the owner displayed in parenthesis after the report name.</p>
+                <p>The Custom Reports option under General Settings lists all the custom reports created by the user. </p>
+                <p><span class="header1">Add: </span> Create a new Custom Report by clicking the <span class="header2">Add </span> <img class="helpicon" src="Content/Icons/data_addN.png" title="Add" /> icon. </p>
+                <p>On clicking the <span class="header2"> Add </span> <img class="helpicon" src="Content/Icons/data_addN.png" title="Add" /> icon, a report column selection window pops up with buttons for Field Order, Preview and Save. All the Data fields that are available will be listed in alphabetic order with check boxes.  </p>
+                <p>The required columns for the Report can be selected by checking the corresponding data fields. Fields once selected can be deselected by unchecking them. Group Fields can be specified for grouping the data rows of the report. Each group will be printed with a Sub heading showing the group field values of the group. Show Subtotal, Show Grand Total also can be set for Numeric/Integer type static fields and Numeric/Integer type additional data fields which are set as totalizable in the setup.</p>
+                <p>Field properties like Column Heading and Column Width (in Inches) can also be set. By default, the Report Column Headings will be the same as the Data Field Names. Users can change a Report Column Heading by changing the Field Name in the Column Heading. The width of a Report Column is set as 1.5 inch by default. User can change the Report Column Width of the required Data Fields.  </p>
+                <p><span class="header3">Field Order </span></p>
+                <p>The order of the Report Columns and Sub Header Fields can be set through this option. On clicking Field Order button, Field Order window pops up with all the Header and Sub Header fields. Each data field can be moved by selecting and dragging it to the required position.</p>
+                <p><span class="header3"> Preview </span></p>
+                <p>Users can view the report using this Preview option. After selecting the report fields and setting the Field Order the report can be previewed by clicking the Preview button. A Report Heading can also be given for viewing the report. The Paper orientation can be set to Landscape or Portrait by clicking on the corresponding radio button. </p>
+                <p>The report can be shared with other users by checking the corresponding check box.</p>
+                <p> User can go to the previous stages and edit the settings already specified using the corresponding buttons.</p>
+                <p><span class="header3"> Save </span></p>
+                <p> User can save the report by clicking the Save button. Once a new report is created and saved by a user, it will be listed in the Custom reports in Reports menu.</p>
+                <p><span class="header1">Edit:</span> Edit a Custom Report by selecting it and then clicking the <span class="header2">Edit </span> <img class="helpicon" src="Content/Icons/data_editN.png" title="Edit" /> icon. The Report Columns, field order, report name, etc. can be modified through this option.</p>
+                <p>Report column selection window pops up with buttons for Field Order, Preview, Save As and Save on clicking Edit icon. All the Data fields that are available will be listed in alphabetic order with check boxes and all the data fields selected for the report will be displayed as checked.</p>
+                <p><span class="header3"> Preview </span></p>
+                <p>After making the modifications, Users can view the report using this Preview option.</p>
+                <p><span class="header1"> Save </span></p>
+                <p>User can save the changes in the report by clicking the Save button.</p>
+                <p><span class="header3"> Save As </span></p>
+                <p>User can make changes to an existing report and save it as a new report with a different name using this option, by clicking the Save As button.</p>
+                <p><span class="header1"> Delete: </span> Delete a Custom Report by selecting it and then clicking the <span class="header2">Delete </span> <img class="helpicon" src="Content/Icons/data_deleteN.png" title="Delete" /> icon.</p>
+            </div>
+        </section>
+    </content>
+</page>
+<style type="text/css">
+    h3.Mainheader {
+        color: #178AE8;
+    }
+
+    .header1 {
+        font-weight: bold;
+        color: #178AE8;
+    }
+
+    .header2 {
+        font-weight: normal;
+        color: #178AE8;
+    }
+
+    p {
+        margin-left: 38px;
+        font-size: 13px;
+        margin-right: 3em;
+    }
+
+    .header3 {
+        font-weight: bold;
+        color: black;
+    }
+    /**/ h1 {
+        color: #178AE8;
+        font-size: 1.3em;
+        margin-left: 38px;
+    }
+
+    h2 {
+        color: #178AE8;
+        font-size: 1em;
+        margin-left: 38px;
+    }
+
+    .config {
+        background-color: #178AE8;
+    }
+
+    .helpicon {
+        vertical-align: baseline;
+        width: 20px;
+        height: 20px;
+    }
+</style>

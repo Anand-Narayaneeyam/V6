@@ -1,0 +1,61 @@
+﻿<page [pagetitle]="pagePath">
+    <pagepath>
+    </pagepath>
+    <content>
+        <section title="Dash Board" [isExpanded]="true" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div>
+                <p>When a user logs in, Home page will be displayed with pie charts and bar charts of User Details and Facility Details. The User and Drawing statistics are displayed as Pie Charts in which Status wise User details and Category wise Drawing details are shown. The pie chart tooltip shows the percentage of each status or category, and the legend shows the actual number of users or drawings. Area Distribution is displayed as a bar chart which represents Usable Gross Area, Common Area and Chargeable Gross Area in each building. </p>
+                <p>An user list is also provided in the Dashboard with User Name, Login Name, User Role and Expiry Date. Users are listing in the ascending order of Expiry Date. User accounts expiring in the next 30 days are shown in red, those expiring within 60 days are shown in blue, and those expiring in 180 days are shown in green.</p>
+                <p>Since the Dashboard is customer-dependent, the chart values vary according to customer settings. Dashboard is available only for users with Administrator privilege. </p>
+
+            </div>
+        </section>
+    </content>
+</page>
+<style type="text/css">
+    h3.Mainheader {
+        color: #178AE8;
+    }
+
+    .header1 {
+        font-weight: bold;
+        color: #178AE8;
+    }
+
+    .header2 {
+        font-weight: normal;
+        color: #178AE8;
+    }
+
+    p {
+        margin-left: 38px;
+        font-size: 13px;
+        margin-right: 3em;
+    }
+
+    .header3 {
+        font-weight: bold;
+        color: black;
+    }
+    /**/ h1 {
+        color: #178AE8;
+        font-size: 1.3em;
+        margin-left: 38px;
+    }
+
+    h2 {
+        color: #178AE8;
+        font-size: 1em;
+        margin-left: 38px;
+    }
+
+    .config {
+        background-color: #178AE8;
+    }
+
+    .helpicon {
+        vertical-align: baseline;
+        width: 20px;
+        height: 20px;
+    }
+</style>

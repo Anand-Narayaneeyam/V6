@@ -1,0 +1,24 @@
+﻿.dwgsubmenu {
+    display: block;
+    color: #000;
+    padding: 8px 16px;
+    text-decoration: none;
+    text-align: left;
+    border-bottom: 0px;
+
+}
+
+    .dwgsubmenu:hover {
+        background-color: #555555;
+        color: white;
+        cursor:pointer;
+    }
+.viewdwg {
+    cursor:pointer;
+    padding-left: 1%;
+    height: 25px;
+    border-bottom: 1px solid black;
+    background-color: lightgray;
+    padding-top: .4%;
+    padding-right: 1%;
+}

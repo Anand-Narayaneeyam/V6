@@ -1,0 +1,26 @@
+﻿<page [pagetitle]="pagePath">
+    <content>
+        <tabs [selectedTab]="selectedTab"  [deleteIndex]="tabDeleteIndex" (getSelectedTab)="getSelectedTab($event)">
+            <tab tabTitle="Select Period" closeButtonVisible="hidden">
+                <submenu>
+                    <sub-menu [source]=menuData [menuCard]=iscard [menuIds]=enableMenu (onSubMenuChange)="onSubMenuChange($event);"> </sub-menu>
+                </submenu>
+                <div style="margin-left:2%">
+                    <div id="dateDiv" style="width:100%" [style.height]="divDateHeight">
+
+                        <div *ngIf="blnShowDate == true" style="margin-left:5%;margin-top:1%">
+                            <DateComponent *ngIf="dateSelectorField != undefined" [fieldObject]="dateSelectorField[0]"></DateComponent>
+                            <DateComponent *ngIf="dateSelectorField != undefined" [fieldObject]="dateSelectorField[1]"></DateComponent>
+
+                        </div>
+                    </div>
+                </div>
+            </tab>
+            <tab *ngIf="reportType != undefined" tabTitle="Report" closeButtonVisible="hidden">
+                <div style="height:100%" *ngIf="nextClicked">
+                    <space-trend-reportviewer [reportType]="reportType" [fromDate]="fromDate" [toDate]="toDate" [reportTitle]="ReportTitle" [pagePath]="pagePath"> </space-trend-reportviewer>
+                </div>
+            </tab>
+        </tabs>
+    </content>
+</page>

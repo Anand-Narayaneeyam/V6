@@ -1,0 +1,48 @@
+﻿<div>
+    <div *ngIf="newUserTab == false">
+        <DropDownListComponent *ngIf="ddlUsers !=undefined" [fieldObject]="ddlUsers" (change)="onChangeddlUsers($event.target.value)"></DropDownListComponent>
+    </div>
+    <div *ngIf="sectionEnable != -1">
+        <tabs [selectedTab]="selectedTab" (getSelectedTab)="getSelectedTab($event)" (onTabClose)="onTabClose($event)" [deleteIndex]="deleteIndex" id="DocumentGroup">
+            <tab *ngIf="firstTabFlag == true" [tabTitle]="tabTitle" closeButtonVisible="hidden">
+                <div>
+                    <submenu>
+                        <sub-menu [menuCard]=types [source]=menuData [count]=totalItems [menuIds]=enableMenu (onSubMenuChange)="onSubMenuChange($event);"> </sub-menu>
+                    </submenu>
+                </div>
+                <div *ngIf="itemsSource != undefined" style="height:calc(100% - 75px)">
+                    <div [ngClass]="totalItems > itemsPerPage ? 'pagewithPaging':'pagewithoutPaging'">
+                        <gridView [(dataSource)]="itemsSource" [properties]="inputItems" [columns]="fields" (onSorting)="onSort($event)"></gridView>
+                    </div>
+                    <div [style.height]="totalItems >itemsPerPage ? '35px' : '0px'">
+                        <paging [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="pageChanged($event);"></paging>
+                    </div>
+                </div>
+            </tab>
+            <tab [tabTitle]="selectTabTitle" *ngIf="newUserTab == true" closeButtonVisible="hidden">
+                <div><documentsDirectly-accessibletoaUser-mainList [UserId]="sectionEnable" (submitSuccess)="submitSuccess($event)"></documentsDirectly-accessibletoaUser-mainList></div>
+            </tab>
+        </tabs>
+    </div>
+</div>
+<slide [width]="200" [position]="position" [type]="dialog" [show]="showSlide" (closeDialog)="closeSlideDialog($event)">
+
+    <div style="width:200px">
+        <div tabindex="0" aria-label="Are you sure you want to remove the selected Document from the User Access?">
+            {{deleteMsg}}
+        </div>
+        <div>
+
+            <div style="width:100%">
+                <button class="Savebutton " type="button" (click)="okDelete($event)" role="button" aria-label="Yes">Yes</button>
+                <button class="Savebutton " type="button" (click)="cancelClick($event)" role="button" aria-label="No">No</button>
+            </div>
+        </div>
+    </div>
+</slide>
+
+<style>
+    #DocumentGroup .navbar li {
+        width: 285px !important;
+    }
+</style>

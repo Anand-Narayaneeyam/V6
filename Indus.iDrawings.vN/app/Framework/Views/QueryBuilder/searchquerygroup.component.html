@@ -1,0 +1,28 @@
+﻿<span>
+     <!-- <span *ngIf="datasource.OperatorFieldObj && isOperatorVisible">
+        <span *ngIf="isOperatorVisible==true">
+           
+
+        </span>
+      <span *ngFor='let objsubgrp of allGroupData.SubGroups;let j=index'>
+            <span *ngIf="isOperatorVisible==false&&j==0&&allGroupData.SubGroups[0].GroupId== objsubgrp.GroupId&&(allGroupData.Conditions.length > 0 || allGroupData.SubGroups.length > 1)">
+              
+               
+            </span>
+        </span>
+     </span>-->
+    <span *ngIf="isOperatorVisible && datasource.OperatorFieldObj && (allGroupData.Conditions.length > 0 ||( allGroupData.SubGroups.length > 1&& allGroupData.SubGroups[0].GroupId!=datasource.GroupId))">
+        <!--<span *ngIf="isOperatorVisible && datasource.OperatorFieldObj">-->
+        {{allGroupData.OperatorFieldObj.FieldValue==1?'AND':'OR'}}
+    </span>   
+        (
+        <span *ngFor='let objcondition of datasource.Conditions;let b=index'>
+            <qbsearchquerycondition [datasource]="objcondition" [conditionindex]="b"></qbsearchquerycondition>
+        </span>
+
+        <span *ngFor='let objsubgrp of datasource.SubGroups;let j=index'>
+            <qbsearchquerygroup [datasource]="objsubgrp" [allGroupData]="datasource"></qbsearchquerygroup>
+
+        </span>
+        )
+    </span>

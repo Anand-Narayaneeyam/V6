@@ -1,0 +1,138 @@
+﻿<page [pagetitle]="pagePath">
+    <pagepath>
+    </pagepath>
+    <content>
+        <section title="Drawings" [isExpanded]="true" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div>
+
+
+                <p>This option is available under Settings <img class="helpicon" src="Content/Layout/settings_icon.png" /> icon.</p>
+                <p>This section provides options for the administrator for setting up the as-built drawings in the drawings repository organized by Site, Building, Floor and Drawing category. Each drawing is stored in the DWG format. </p>
+                <p>On clicking <span class="header2">Settings: As Builts: Drawings</span> menu, drawings added if any will be listed in a grid. Through this option Administrator can add, edit description, delete, revise and replace drawings. View, List Revisions and List Markups are the other menu options available in the Drawings list page.</p>
+
+                <p><span class="header1">Add </span></p>
+                <p>This option is for uploading drawings to iDrawings<sup>® </sup> repository. Click <span class="header2">Add </span><img class="helpicon" src="Content/Icons/data_addN.png" title="Add" /> icon. Add Drawing window will be displayed. Select the Site, Building, Floor and Category from the lists. Select the Type from the combo box and enter the description for the drawing. User can upload DWG file if the Type selected is 2D Drawing. Browse the file location by clicking the Choose File button. Click the Upload button to add the new drawing to the repository.</p>
+
+                <p><span class="header1">Edit Description</span></p>
+                <p>Description of a drawing can be edited through this option. Select the required drawing from the list and click <span class="header2">Edit Description</span> <img class="helpicon" src="Content/Icons/data_editN.png" title="Edit Description" /> icon. Edit Drawing Description window will be displayed. Description entered can be edited and the changes can be saved by clicking the Save Changes button.</p>
+
+                <p><span class="header1">Delete</span></p>
+                <p>This option is for deleting a drawing from the repository. Select the drawing to be deleted and click <span class="header2">Delete</span> <img class="helpicon" src="Content/Icons/data_deleteN.png" title="Delete" /> icon. A confirmation message will be displayed. Click Yes to delete the drawing and the drawing will be removed from the repository. The current version (latest revision) of this drawing and all its markups will be deleted.</p>
+
+                <p><span class="header1">View</span></p>
+                <p>This option is to view the selected drawing in the browser. Users can add comments and markup the drawing with different shapes and save them to the repository.</p>
+                <p>Select the drawing to be viewed and click <span class="header2">View</span> <img class="helpicon" src="Content/Icons/view-drawingN.png" title="View" /> icon. The selected file will be opened up in the Browser. </p>
+                <p>User can change the view mode to full screen by clicking the <span class="header2">Maximize</span> <img class="helpicon" src="Content/Images/Drawings/Maximize.png" title="Maximize" /> icon provided above the top right corner of the drawing window. User can exit from the full screen to normal view by clicking the <span class="header2">Minimize</span> <img class="helpicon" src="Content/Images/Drawings/Minimize.png" title="Minimize" /> icon provided above the top right corner of the drawing window.</p>
+
+                <p><span class="header2">Drawing Details and Markups </span></p>
+                <p>Markups and comments that exist in the selected drawing can be viewed using this option. On clicking <span class="header2">Drawing Details and Markups</span> <img class="helpicon" src="Content/Images/Drawings/DdrawingDetailsmarkups.png" title="Drawing Details and Markups" /> icon, a window opens up with the drawing details and list of existing markups and comments of the selected drawing with check box against each markup. </p>
+                <p>In the Markups section, Administrator can edit markup description, delete or view the selected markup.</p>
+                <p><span class="header2">Edit:</span> Select the required markup and click <span class="header2">Edit</span> <img class="helpicon" src="Content/Icons/data_editN.png" title="Edit Description" /> icon. Edit Markup Description window will be displayed. Description entered can be edited and the changes can be saved by clicking the Save Changes button. </p>
+                <p><span class="header2">Delete:</span> Select the required markup and click <span class="header2">Delete</span> <img class="helpicon" src="Content/Icons/data_deleteN.png" title="Delete" /> icon. A confirmation message will be displayed. Click Yes to delete the selected markup file and the markup will be removed from the repository.</p>
+                <p><span class="header2">View:</span> Select the required markup and click <span class="header2">View</span> <img class="helpicon" src="Content/Icons/view-drawingN.png" title="View" /> icon. Then the selected Markup will be displayed in the drawing. </p>
+
+                <p><span class="header2">Comment</span></p>
+                <p>This option is used to add text comments on the drawing. The comments once added can be moved or deleted. To add text comments on the drawing, click on the <span class="header2">Add Comment</span> <img class="helpicon" src="Content/Images/Drawings/text.png" title="Add Comment" /> icon in the toolbar above the drawing. On clicking this <img class="helpicon" src="Content/Images/Drawings/text.png" title="Add Comment" /> icon, the cursor turns to a cross. Click on the drawing where the comment is to be placed, to create a text box. Select the required Font and Font Size. Font Style can be changed to Bold or Italics by clicking on <input class="markupicons" style="font-weight: bold; background: transparent;" title="Bold" type="button" value="B"> or <input class="markupicons" style="font-style: italic; background: transparent;" title="Italics" type="button" value="I"> icon. Enter the comment in the text box that shows up and click Save button. The comments once added can be edited by selecting the comment to be edited after clicking the <span class="header2">Edit Comment</span> <img class="helpicon" src="Content/Icons/data_editN.png" title="Edit Comment" /> icon. Edit the changes in the comment in the text box that shows up and click Save button to update the comment. Click the <span class="header2">Save</span> <img class="helpicon" src="Content/Images/Drawings/save.png" title="Save" /> icon to save the changes done in the comments in the current Drawing. </p>
+
+                <p><span class="header2">Markup</span></p>
+                <p>Markups in different shapes (Rectangle, Ellipse, Line, Cloud, Free Hand) can be added in the drawing using this menu. Set the required Line Thickness for the markup. Click on the desired shape icon, the cursor turns to a cross. Click and drag the cursor to make markups anywhere in the drawing. Markups once created cannot be edited, they can be moved or deleted.</p>
+
+                <p><span class="header2">Move</span></p>
+                <p>Markups and comments can be moved using this option. Click on the <span class="header2">Move</span> <img class="helpicon" src="Content/Images/Drawings/move.png" title="Move" /> icon, the cursor changes to a box shape. Select the markup to be moved by bringing the box cursor over the markup and clicking on it. After selection, when the cursor is moved, a rubber band like line will appear showing the line of movement. Click on the location where the Markup is to be placed. The Markup will be moved to the new place.</p>
+
+                <p><span class="header2">Delete</span></p>
+                <p>Markup or comment can be deleted using this option. Click <span class="header2">Delete</span> <img class="helpicon" src="Content/Icons/data_deleteN.png" title="Delete" /> icon, the cursor changes to a box shape. Click on the Markup to be deleted. A confirmation message will be displayed. Click Yes to the confirmation message, the selected Markup will get deleted.</p>
+
+                <p><span class="header2">Save</span></p>
+                <p>After creating comments and markups, click on the <span class="header2">Save</span> <img class="helpicon" src="Content/Images/Drawings/save.png" title="Save" /> icon to save the markup. A description about the markup also can be entered, and on clicking the Save button the comments and markup added will be saved. On saving the markup each time, it is saved in a different file. All markups are listed and can be viewed through the <span class="header2">Drawings: List Markups</span> menu option.</p>
+
+                <p><span class="header2">Export</span></p>
+                <p>This option is for exporting the current view of the drawing to the user's computer. On clicking <span class="header2">Export</span> <img class="helpicon" src="Content/Images/Drawings/exportdwg.png" title="Export" /> icon, different file formats like BMP, DWF, DXB, DXF, JPEG, PDF and SVG will be available and the user can select the desired file format to export.</p>
+
+                <p><span class="header2">Save As</span></p>
+                <p>On clicking <span class="header2">Save As</span> <img class="helpicon" src="Content/Images/Drawings/SaveAsDwg.png" title="Save As" /> icon the current view of the drawing will be saved as a DWG file to a folder in the user's computer. </p>
+
+                <p><span class="header1">Revise</span></p>
+                <p>This option is for adding a revision for an existing drawing. Select the drawing to be revised from the list and click <span class="header2">Revise</span> <img class="helpicon" src="Content/Icons/reviseN.png" title="Revise" /> icon. Site, Building, Floor, Category and Type details will be displayed as read only. Enter a new description or modify the existing description appropriately for the revised drawing if required, and choose the DWG file for 2D drawings to be uploaded. (Browse the file location by clicking the Choose File button). Click the Upload button to add the new drawing to the repository.</p>
+                <p>This will be saved as a revised drawing of the selected site, building, floor and category. Any number of revisions can be made to a drawing. The latest revised drawing will be set by default as the current version of the corresponding site, building, floor and category. </p>
+
+                <p><span class="header1">Replace </span></p>
+                <p>This option is to replace a drawing. Select the drawing to be replaced from the list and click <span class="header2">Replace</span> <img class="helpicon" src="Content/Icons/replaceN.png" title="Replace" /> icon. Site, Building, Floor, Category, Type and Revision No. will be displayed as read only. The description can be edited, if required. Select the DWG file for 2D Drawings to be uploaded. (Browse the file location by clicking the Choose File button). Click the Upload button to upload the new drawing to the repository and replace the original drawing. </p>
+
+                <p><span class="header1">List Revisions </span></p>
+                <p>On clicking <span class="header2">List Revisions</span> <img class="helpicon" src="Content/Icons/revisionN.png" title="List Revisions" /> icon, the revisions added to the drawing will be listed in a grid. Different menu options like Edit Description, Delete and View options are available to manage the revisions.  </p>
+
+                <p><span class="header1">List Markups </span></p>
+                <p>On clicking <span class="header2">List Markups</span> <img class="helpicon" src="Content/Icons/markupN.png" title="List Markups" /> icon, all markups available for the drawing will be listed in a grid. Different menu options like Edit, Delete and View options are available to manage the markups. </p>
+
+                <p><span class="header1">Display Settings </span></p>
+                <p>This option allows the user to change the visibility of the data fields displayed in the data grid. On clicking <span class="header2">Display Settings</span> <img class="helpicon" src="Content/Icons/data_display-settingsN.png" title="Display Settings" /> icon, all the available data fields will be displayed here with the System Default Settings with checkboxes against Show in Grid. The desired check boxes can be checked or unchecked and the settings can be saved by clicking the Save Changes button.</p>
+                <p>Changes made here will be saved as user default settings and will be effective for the logged in user only</p>
+                <p>For making the display settings as System default, an administrator has to click Yes to the confirmation message "Display Settings updated. Do you want to make this as System default?". Then the display settings will be effective for all the users logged in to that particular Customer.</p>
+
+                <p><span class="header1">Download</span></p>
+                <p>The DWG files can be downloaded and saved in the user's computer by selecting the drawing and clicking the <span class="header2">Download</span> <img class="helpicon" src="Content/Layout/download_icon.png" title="Download" /> icon.</p>
+
+                <p><span class="header1">Keyword Search</span></p>
+                <p>This option helps users to search for drawings using keywords. The keyword can be part of drawing file name, drawing description, category, type, site, building, floor etc. Enter the keyword in the text box provided and click on the <span class="header2">Search</span> <img class="helpicon" src="Content/Icons/keyword-search.png" title="Keyword Search" /> icon. All drawings matching the keyword will be listed.</p>
+                <p>A facility user would be able to view only those floors/divisions for which privileges are granted to him. </p>
+
+                <p><span class="header1">Advanced Search</span></p>
+                <p>On clicking <span class="header2">Advanced Search</span> <img class="helpicon" src="Content/Icons/advanced-search.png" title="Advanced Search" /> icon, Advanced Search window will be displayed which allows the user to search for the drawings details for specific data in known data fields. The data being searched for can be selected from the list boxes or entered into text boxes provided against the data fields. On clicking the Search button, all drawings meeting the search criteria will be listed. </p>
+                <p>Fields to be displayed in the Search window can be set using the <span class="header2">Configure</span> <img class="helpicon" src="Content/Icons/settings_icon.png" title="Configure" /> icon provided in the Search window. </p>
+                <p>Search criteria entered in the Advanced Search window can be cleared by clicking the Clear button provided in the Search window. After clearing the Search criteria and click Search button to clear the Search results in the Drawings grid.</p>
+                <p>A facility user would be able to view only those floors for which privileges are granted him.</p>
+
+
+            </div>
+        </section>
+    </content>
+</page>
+
+<style type="text/css">
+    h3.Mainheader {
+        color: #178AE8;
+    }
+
+    .header1 {
+        font-weight: bold;
+        color: #178AE8;
+    }
+
+    .header2 {
+        font-weight: normal;
+        color: #178AE8;
+    }
+
+    p {
+        margin-left: 38px;
+        font-size: 13px;
+        margin-right: 3em;
+    }
+
+    .header3 {
+        font-weight: bold;
+        color: black;
+    }
+    /**/ h1 {
+        color: #178AE8;
+        font-size: 1.3em;
+        margin-left: 38px;
+    }
+
+    h2 {
+        color: #178AE8;
+        font-size: 1em;
+        margin-left: 38px;
+    }
+
+    .config {
+        background-color: #178AE8;
+    }
+
+    .helpicon {
+        vertical-align: baseline;
+        width: 20px;
+        height: 20px;
+    }
+</style>

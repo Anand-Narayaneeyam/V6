@@ -1,0 +1,28 @@
+﻿
+<!--<div style="float: right; width: 100%;">-->
+    <!--<sort *ngIf="fields" [fieldNames]="fields" [listItems]=sourceData (sortEvent)="onSorting($event)"></sort>-->
+    <slide [width]="slidewidth" [position]="position" [show]="showSlide" (closeDialog)="closeSlideDialog($event)">
+        <div>
+            <div>{{message}}  </div>
+            <div style="width:100%">
+                <button  class="Savebutton "type="button" (click)="okDelete($event)">Yes</button>
+                <button  class="Savebutton "type="button" (click)="cancelClick($event)">No</button>
+            </div>
+        </div>
+    </slide>
+<!--</div>-->
+<submenu>
+    <sub-menu [selectedId]=selIds [source]=menuData [count]=totalItems [menuCard]=true [menuIds]=enableMenu (onSubMenuChange)="onSubMenuChange($event);"> </sub-menu>
+</submenu>
+<sort *ngIf="fields" [fieldNames]="fields" [listItems]=sourceData [disableSort]="disableSort" (sortEvent)="onSorting($event)"></sort>
+<!--<confirmation (onConfirm)="okDelete($event)"></confirmation>-->
+<list style="width: 100%;max-height: 400px;overflow-y: auto;overflow-x:hidden" [source]=sourceData [(selectedIds)]="selIds" [datakey]="'Id'" [selectionMode]="'Single'">
+    <template let-item>
+        <card (onSubmition)="onCardSubmit($event)" [datakeyValue]="item.Id" [type]="'list'" (inlineDelete)="onDelete($event)" (onCancelClick)="onCancel($event)" [submitSuccess]="submitSuccess">
+            <div *ngIf="fields">
+                <field [fieldObject]="fields[2]" [fieldValue]="item['Attribute Value']"></field>
+            </div>
+        </card>
+    </template>
+</list>
+<paging [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="pageChanged($event);"></paging>

@@ -1,0 +1,7 @@
+﻿<div>
+    <submenu>
+        <sub-menu [menuCard]=true [source]=menuData [menuIds]=enableMenu (onSubMenuChange)="updateLeaseAgreementClauses($event);"> </sub-menu>
+    </submenu>
+    <gridView style="height:95%;display:block;" [dataSource]="itemsSource" [properties]="inputItems" [columns]="fieldObject" (onSorting)="onSort($event)"></gridView>
+</div>
+

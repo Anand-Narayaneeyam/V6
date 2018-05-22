@@ -1,0 +1,23 @@
+﻿
+<page [pagetitle]="pagePath" [withoutSubmenu]="true">
+    <content>
+        <tabs [selectedTab]="selectedTab" [deleteIndex]="tabDeleteIndex" (getSelectedTab)="getSelectedTab($event)" (onTabClose)="onTabClose($event)">
+            <tab tabTitle="Active Requests" *ngIf="initList" closeButtonVisible="hidden">
+                <trackRequest-list *ngIf="selectedTab == 0"  (itemSourceUpdate)="onActiveRequestListSourceUpdated($event)" [itemsSource]="activeRequestListSource" [totalItems]="activeRequestListTotalItems" 
+                                   [userDetails]="userDetails" [inputItems]="activeRequestInputItems" [itemsPerPage]="activeRequestListItemsPerPage" (editClicked)="onEditClicked($event)" [isActive]=true [target]="1"></trackRequest-list>
+            </tab>
+            <tab tabTitle="Closed Requests" *ngIf="initList" closeButtonVisible="hidden">
+                <trackRequest-list *ngIf="selectedTab == 1" (itemSourceUpdate)="onClosedRequestListSourceUpdated($event)" [itemsSource]="closedRequestListSource" [totalItems]="closedRequestListTotalItems"
+                                   [userDetails]="userDetails" [inputItems]="closedRequestInputItems" [itemsPerPage]="closedRequestListItemsPerPage" [isActive]=false [target]="1"></trackRequest-list>
+            </tab>
+            <tab tabTitle="Edit Request" *ngIf="reviewTabEnabled" closeButtonVisible="show">
+                <review-ServiceRequests *ngIf="reviewServiceRequestEnabled" (submitClick)="onSubmitClick($event)" [action]="action" [btnName]="btnName" [userDetails]="userDetails" [inputItems]="activeRequestInputItems"
+                                        [fieldDetailsAdd]="fieldDetailsAdd1" [linkArray]="linkArray" (linkClick)="onLinkClick($event)" [entityCategoryId]="entityCategoryId" [outComeData]="outComeData"></review-ServiceRequests>
+            </tab>
+            <tab tabTitle="Documents" *ngIf="documentTabEnabled" closeButtonVisible="show">
+                <reviewDocument-list *ngIf="documentTabEnabled" (documentSubmit)="onDocumentSubmitClick($event)" (documentDelete)="onDocumentDelete($event)" [workrequestId]="requestId" [userDetails]="userDetails"
+                                     [itemsSource]="documentSource" [entityCategoryId]="entityCategoryId" [enableMenu]="documentEnableMenu" (itemSourceUpdate)="onDocumentSourceUpdated($event)"></reviewDocument-list>
+            </tab>
+        </tabs>
+    </content>
+</page>

@@ -1,0 +1,14 @@
+﻿<div>
+    <div style="width:100%;display: inline-flex;" *ngIf="itemsSource && isBtnVisible">
+        <div style="display: block;" >
+            <button class="Savebutton " style="float:right;" type="button" (click)="updateEmployeeToWorkOrderUser($event)" title="Save">Save Changes</button>
+        </div>
+        <div style="float: right !important;margin-left: calc(100% - 389px);">
+            <search *ngIf="fieldObject" [disable]="disable" [searchtype]="'Grid'" [(showSearchFilter)]="showSearchFilter" [keyWordLookup]=keyWordLookup [advancesearch]=false [Key]=2 [dataKey]="inputItems.dataKey" [KeywordFields]=KeywordFieldObject (onloadSearch)="onloadSearch($event)" (Clear)="Clear($event)" (Submit)="Submit($event)"></search>
+        </div>
+    </div>
+    <div style="height:5px">&nbsp;</div>
+    <div style="height:70%;"><gridView [dataSource]="itemsSource" [properties]="inputItems" [columns]="fieldObject" (onSorting)="onSort($event)"></gridView></div>
+    <div style="height:20%;"><paging [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="pageChanged($event);"></paging></div>
+</div>
+

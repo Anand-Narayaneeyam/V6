@@ -1,0 +1,58 @@
+﻿<button *ngIf ="isupdate && fieldObject && NumberFormatCategoryId> 0" style="margin-left: 55px;margin-top: 5px;" class="Savebutton" type="button" (click)="updateNumberFormat($event)"> Save Changes </button>
+<button *ngIf="!isupdate && fieldObject && NumberFormatCategoryId> 0" style="margin-left: 55px;margin-top: 5px;pointer-events:none;cursor:default;opacity:0.5" class="Savebutton" type="button"> Save Changes </button>
+<DropDownListComponent  *ngIf="Category && Category.DataEntryControlId == '4'" style="margin-left:55px;" [labelWidth]=210 [style.display]="showComponent(Category.FieldLabel,Category.IsVisible)" [fieldObject]=Category (ddlChange)="onChangeDataFieldCategory($event)" SetAlignment="horizontal"></DropDownListComponent>
+<div *ngIf="fieldObject && NumberFormatCategoryId > 0" style="margin-left:50px">    
+    <RadioComponent *ngIf="Prefix && Prefix.DataEntryControlId == '5'" id="PrefixRadio" name="RadioComponent" style="white-space: nowrap;margin-top:20px;margin-left:5px;" [style.display]="showRadioComponent(Prefix.FieldLabel,Prefix.IsVisible)" [fieldObject]=Prefix (rbtnClick)="rbtnChange($event)" [validationData]='validationData' SetAlignment="horizontal"></RadioComponent>
+    <NumberFormatListComponent [style.display]="showComponent(FormatCondition.FieldLabel,FormatCondition.IsVisible)" style="margin-left:110px;margin-top:20px;" imgsrc1="{{imgEdit}}" imgsrc2="{{imgDelete}}" *ngIf="FormatCondition && FormatCondition.DataEntryControlId == '13' && isrefresh" [fieldObject]=FormatCondition (dynamicListAdd)="getDynamicListEdit($event)" (dynamicListRemove)="getDynamicListRemove($event)" [enableButton]="enableButton && isupdate"></NumberFormatListComponent>
+    <NumberFormatListComponent [style.display]="showComponent(FormatCondition.FieldLabel,FormatCondition.IsVisible)" style="margin-left:110px;margin-top:20px;" imgsrc1="{{imgEdit}}" imgsrc2="{{imgDelete}}" *ngIf="FormatCondition && FormatCondition.DataEntryControlId == '13' && !isrefresh" [fieldObject]=FormatCondition (dynamicListAdd)="getDynamicListEdit($event)" (dynamicListRemove)="getDynamicListRemove($event)" [enableButton]="enableButton && isupdate"></NumberFormatListComponent>    
+    <div *ngIf="isupdate" style="margin-left: 5px;margin-top:20px;font-size:14px;">Condition Builder</div>
+    <div style="margin-top:20px;" [ngStyle]="isupdate?{'pointer-events':'auto'}:{'pointer-events':'none','cursor':'default','opacity':'0.5'}">
+        <table style="border-collapse: separate;border-spacing: 5px 0;">
+            <tr>
+                <td *ngIf="iscombination" style="background-color: rgb(23, 138, 232);" align="center"><input role="radio" aria-label="Field Name" type="radio" id="FieldFormat" name="1" value="" (click)="OnFieldClick($event,'FieldName')" checked /><span style="color:white;margin-left:6px;font-size: 14px;">Field Name</span></td>
+                <td *ngIf="iscombination" style="background-color: rgb(23, 138, 232);" align="center"><input role="radio" aria-label="Constant Value" type="radio" id="ConstantFormat" name="1" value="" (click)="OnFieldClick($event,'ConstantValue')" /><span style="color:white;margin-left:6px;font-size: 14px;">Constant Value</span></td>
+                <td *ngIf="!iscombination" style="background-color: rgb(23, 138, 232);" align="center"><input role="radio" aria-label="Constant Value" type="radio" id="ConstantFormat" name="1" value="" (click)="OnFieldClick($event,'ConstantValue')" checked/><span style="color:white;margin-left:6px;font-size: 14px;">Constant Value</span></td>
+                <td style="padding-left:50px;height: 25px;background-color: rgb(23, 138, 232);"><input type="checkbox" aria-label="Separator" role="checkbox" id="SeparatorFormat" name="check" value="All" [checked]="false" (change)="OnFieldClick($event,'Separator')" /><span style="color:white;margin-left:6px;font-size: 14px;">Separator</span></td>
+            </tr>
+            <tr style="white-space: nowrap;height:10px"></tr>
+            <tr>
+                <td *ngIf="iscombination" valign="top"><DropDownListComponent *ngIf="FieldName.DataEntryControlId == '4'" style="white-space: nowrap;margin-top:-5px;font-size:13px;" [style.display]="showComponent(FieldName.FieldLabel,FieldName.IsVisible)" [fieldObject]=FieldName (ddlChange)="onChangeDataFieldCategory($event)" SetAlignment="horizontal"></DropDownListComponent></td>
+                <td valign="top"><StringTextBox *ngIf="Constant.DataEntryControlId == '1'" style="white-space: nowrap;" [style.display]="showComponent(Constant.FieldLabel,Constant.IsVisible)" [fieldObject]=Constant SetAlignment="horizontal" [validationData]='validationData'></StringTextBox></td>
+                <td valign="top">
+                    <div style="display:inline-flex;flex-direction:row;">
+                        <StringTextBox *ngIf="Separator.DataEntryControlId == '1'" style="white-space: nowrap;" [style.display]="showComponent(Separator.FieldLabel,Separator.IsVisible)" [fieldObject]=Separator SetAlignment="horizontal" [validationData]='validationData'></StringTextBox>
+                        <span *ngIf="IsAdd" style="width:30px;margin-left:5px;margin-top:2px;cursor:pointer;" tabindex="0" aria-label="Add Button"><img src="{{imgAdd}}" alt="Add" (click)="ChangeList($event,1)" title="Add"></span>
+                        <span *ngIf="!IsAdd" style="width:30px;margin-left:5px;margin-top:2px;cursor:pointer;" tabindex="0" aria-label="Edit Button"><img *ngIf="!IsAdd" src="Content/Layout/tick_green.png" alt="Save Changes" (click)="ChangeList($event,2)" title="Save Changes"></span>
+                        <span style="margin-top:2px;cursor:pointer;" tabindex="0" aria-label="Cancel Button"><img src="{{imgCancel}}" alt="Cancel" (click)="initialfieldchanges()" title="Cancel"></span>
+                    </div>
+                </td>
+            </tr>
+        </table>      
+    </div>
+    <div *ngIf="issequence"><label style="width:210px;margin-top:20px;">Sequence Type:</label> Numeric</div>
+    <div style="display:inline-flex;flex-direction:row;margin-top:20px;">
+        <StringTextBox *ngIf="StartNumber && StartNumber.DataEntryControlId == '1'" style="white-space: nowrap;" [style.display]="showComponent(StartNumber.FieldLabel,StartNumber.IsVisible)" [fieldObject]=StartNumber SetAlignment="horizontal" [validationData]='validationData'></StringTextBox>
+        <CheckBoxComponent *ngIf="ResetEveryYear && ResetEveryYear.DataEntryControlId=='6'" IsSelectAllChecked="true" class="CheckBoxFeature" style="white-space: nowrap;margin-left:20px;" id="CheckBoxComponent" [style.display]="showComponent(ResetEveryYear.FieldLabel,ResetEveryYear.IsVisible)" name="CheckBoxComponent" [validationData]='validationData' [fieldObject]=ResetEveryYear (chkBoxClick)="chkBoxChange($event)"></CheckBoxComponent>
+    </div>    
+    <slide [width]="300" [position]="position" [type]="dialog" [show]="showSlide" (closeDialog)="closeSlideDialog($event)">
+        <div>
+            <div>
+                {{slidemsg}}
+            </div>
+            <div>
+
+                <div style="width:100%">
+                    <button class="Savebutton " type="button" (click)="okupdate()">Yes</button>
+                    <button class="Savebutton " type="button" (click)="cancelClick()">No</button>
+                </div>
+            </div>
+        </div>
+    </slide>
+</div>
+<style>
+    :host #PrefixRadio .Radio-3084 
+    {
+       margin-left:70px;
+    }
+</style>
+<!--#0164AD-->

@@ -1,0 +1,137 @@
+﻿<div style="display:inline-flex">
+    <!--<DynamicFields *ngIf="dynamicFields != undefined" id="manageEquipment" class="two-column" [dataSource]="dynamicFields" (submitFieldObject)="onSubmitData($event)" [btnName]="btnName" [dataKey]="dataKey"></DynamicFields>-->
+    <span style="width:50%;">
+        <StringTextBox *ngIf="textField != undefined" [fieldObject]="textField" (txtBoxChange)="txtBoxChanges($event)"></StringTextBox>
+        <button  class="Savebutton "style="margin-top:-27px;margin-bottom: 2%;position:absolute;margin-left:260px; width: auto;" type="button" (click)="onSubmit($event)">Search</button>
+    </span>
+    <!--<span style="width:50%;margin-left:2%">
+        <FileUploadComponent *ngIf="fileUploadField != undefined" [fieldObject]="fileUploadField" (fileData)="getFileData($event)" [commonFileExtensions]="strFileExtensions"></FileUploadComponent>
+    </span>-->
+
+</div>
+
+
+<style type="text/css">
+    #manageEquipment #form .list-group div {
+        margin-top: 0px !important;
+        min-height: 0px !important;
+    }
+    #manageEquipment #form .list-group {
+        background-color: #ffffff;
+    }
+
+    /*#reviewServiceRequest .MainContainer_1264 #StringTextBox {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    #reviewServiceRequest .MainContainer_1266 #Datecomponent {
+        margin-top: 10px;
+    }
+
+    #reviewServiceRequest .MainContainer_1269 #Datecomponent {
+        margin-top: 10px;
+    }
+
+    #reviewServiceRequest .MainContainer_1258 {
+        margin-top: 10px !important;
+        margin-bottom: 10px !important;
+    }
+
+    #reviewServiceRequest .MainContainer_1258, #reviewServiceRequest .MainContainer_1259, #reviewServiceRequest .MainContainer_1260, #reviewServiceRequest .MainContainer_1262 {
+        margin-top: 10px !important;
+        margin-bottom: 10px !important;
+        width: calc(100%);
+    }
+
+        #reviewServiceRequest .MainContainer_1258 #TextAreaComponent div span textarea {
+            width: 100% !important;
+            height: 100px !important;
+        }
+
+        #reviewServiceRequest .MainContainer_1259 #TextAreaComponent div span textarea {
+            width: 100% !important;
+            height: 100px !important;
+        }
+
+        #reviewServiceRequest .MainContainer_1260 #TextAreaComponent div span textarea {
+            width: 100% !important;
+            height: 100px !important;
+        }
+
+        #reviewServiceRequest .MainContainer_1262 #TextAreaComponent div span textarea {
+            width: 100% !important;
+            height: 100px !important;
+        }*/
+
+    /*.MainContainer_1239  {
+        width: 50% !important;
+    }
+
+    .MainContainer_1261  {
+        margin-top: -35px !important;
+        width: 50% !important;
+        float: right !important;
+    }
+    .MainContainer_1255  {
+        margin-top: -34px !important;
+        margin-left: 275px;
+        float:left;
+    }
+     .MainContainer_1488  {
+        width: 50% !important;
+    }
+
+    .MainContainer_1253  {
+        margin-top: -35px !important;
+        width: 50% !important;
+        float: right !important;
+    }
+    .MainContainer_1254  {
+        margin-top: -34px !important;
+        margin-left: 275px;
+        float:left;
+    }
+     .MainContainer_1256  {
+        width: 50% !important;
+    }
+
+    .MainContainer_1258  {
+        margin-top: -35px !important;
+        width: 50% !important;
+        float: right !important;
+    }
+    .MainContainer_1259  {
+        margin-top: -34px !important;
+        margin-left: 275px;
+        float:left;
+    }
+     .MainContainer_1260  {
+        width: 50% !important;
+    }
+
+    .MainContainer_1262  {
+        margin-top: -35px !important;
+        width: 50% !important;
+        float: right !important;
+    }
+    .MainContainer_1348  {
+        margin-top: -34px !important;
+        margin-left: 275px;
+        float:left;
+    }
+     .MainContainer_450 {
+        width: 50% !important;
+    }
+
+    .MainContainer_251 {
+        margin-top: -35px !important;
+        width: 50% !important;
+        float: right !important;
+    }
+    .MainContainer_915 {
+        margin-top: -34px !important;
+        margin-left: 275px;
+        float:left;
+    }*/
+</style>

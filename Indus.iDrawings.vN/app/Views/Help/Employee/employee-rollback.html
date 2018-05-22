@@ -1,0 +1,64 @@
+﻿<page [pagetitle]="pagePath">
+    <pagepath>
+    </pagepath>
+    <content>
+        <section title="Rollback Moves" [isExpanded]="true" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div>
+                <h2>Rollback Moves</h2>
+                <p>This option is to rollback selected moves from the employee moves executed in the last 30 days. On selecting this option, Recent Moves page will be displayed with the details of all the employee moves executed through different options (Employees that are moved through Move Employee / Move Multiple Employees options from drawing, Employees moved through the Space Planning Projects)  </p>
+                <p>An option is provided to select the number of days of recent moves executed. On selecting the number of days from the combo ‘Moves executed in last days’ to Rollback, the employee move details will be loaded in the page as per this selection. By default 1 day will be selected. This can be set to a maximum of 30 days. If an employee is moved more than once, the latest move will be listed. </p>
+                <p>Select the employee record and click the Roll back icon. While doing the rollback, any resource that was moved with the employee will also be moved back to the previous positions. If the employee is already planned for any move or employee is currently de-assigned, such employees cannot be moved back to their previous position. Also resources which are de-assigned from the drawing cannot be moved back to previous position. </p>
+                <p>The following conditions are to be satisfied for the Rollback process. The Seating Capacity of the space to which the selected employee is to be moved back is not of Zero Seating Capacity.  Space Assignment Type of the space should be of Assignable type. </p>
+                <p>History option is provided to show the previous moves associated if any. Select the employee record and click the History icon, the previous moves will be displayed as a list.</p>
+
+            </div>
+        </section>
+    </content>
+</page>
+<style type="text/css">
+    h3.Mainheader {
+        color: #178AE8;
+    }
+
+    .header1 {
+        font-weight: bold;
+        color: #178AE8;
+    }
+
+    .header2 {
+        font-weight: normal;
+        color: #178AE8;
+    }
+
+    p {
+        margin-left: 38px;
+        font-size: 13px;
+        margin-right: 3em;
+    }
+
+    .header3 {
+        font-weight: bold;
+        color: black;
+    }
+    /**/ h1 {
+        color: #178AE8;
+        font-size: 1.3em;
+        margin-left: 38px;
+    }
+
+    h2 {
+        color: #178AE8;
+        font-size: 1em;
+        margin-left: 38px;
+    }
+
+    .config {
+        background-color: #178AE8;
+    }
+
+    .helpicon {
+        vertical-align: baseline;
+        width: 20px;
+        height: 20px;
+    }
+</style>

@@ -1,0 +1,143 @@
+﻿@{
+    Layout = null;
+}
+
+<style type="text/css">
+    body {
+        margin:0px !important;
+        overflow:hidden;
+    }    
+    .layout {     
+        width:100%;
+        height:100%;
+        display:block;            
+    }
+    .layout .loading {
+        display: block;
+        margin: 0 auto;
+        width:200px;
+        margin-top:20%;
+    }
+    .search-container {
+        position: absolute;
+        right: 0;
+        top: 0px;
+        padding-top: 3px;
+        margin-right: 10px;
+        z-index: 10;
+    }
+      datepicker-inner .well {
+        background-color: white  !important;
+        width: 310px !important; 
+        border-radius: 10px !important;
+        margin-bottom: 1px !important;
+    }
+    span .text-muted {
+        color: transparent !important;
+    }
+     datepicker-inner .well .btn-sm, .btn-group-sm > .btn {
+        background-color:white;
+        color: black;
+    }
+    datepicker-inner .well .btn-sm.active, .btn-group-sm > .btn {
+        background-color:white;
+        color: black;
+    }
+   
+    
+    
+</style>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>iDrawings</title>
+    <base id="app-bs" href="" target="_blank">
+    <script>document.getElementById("app-bs").href = document.location;</script>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 1. Load libraries -->
+    <!-- Polyfill(s) for older browsers -->
+    <script src="~/node_modules/core-js/client/shim.min.js"></script>
+
+    <script src="~/node_modules/zone.js/dist/zone.js"></script>
+    <script src="~/node_modules/reflect-metadata/Reflect.js"></script>
+    <script src="~/node_modules/systemjs/dist/system.src.js"></script>
+
+    <!-- 2. Configure SystemJS -->
+    <script src="~/systemjs.config.js"></script>
+ 
+    <link href="~/node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/GrapeCity.ActiveReports.Viewer.Html.css" rel="stylesheet" />
+    <!-- Wijmo Angular2 -->
+    <script src="~/app/Framework/ExternalLibraries/wijmo/Scripts/wijmo.min.js" type="text/javascript"></script>
+    <script src="~/app/Framework/ExternalLibraries/wijmo/Scripts/wijmo.input.min.js" type="text/javascript"></script>
+    <script src="~/app/Framework/ExternalLibraries/wijmo/Scripts/wijmo.grid.min.js" type="text/javascript"></script>   
+    <script src="~/app/Framework/ExternalLibraries/wijmo/Scripts/wijmo.angular2.min.js" type="text/javascript"></script>
+    
+    <!-- 2. Active Report -->
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+
+    <link href="~/Content/pace-progress-bar.css" rel="stylesheet" />
+    <link href="~/Content/leaflet.css" rel="stylesheet" />
+    <link href="~/Content/markercluster.css" rel="stylesheet" />
+    <script data-pace-options='{ "restartOnRequestAfter": false }' src="~/Scripts/pace-progress-bar.js"></script>
+
+    <script src="~/Scripts/bootstrap-3.0.0.js"></script>
+    <script src="~/Scripts/knockout-2.3.0.js"></script>
+    <script src="~/Scripts/GrapeCity.ActiveReports.Viewer.Html.js"></script>
+
+    <script src="~/Scripts/FileSaver.min.js"></script>
+
+    <!-- ng2-nvd3 -->
+    <link href="~/app/Framework/ExternalLibraries/ng2-nvd3/Scripts/nv.d3.min.css" rel="stylesheet" />
+    <script src="~/node_modules/d3/d3.js" charset="utf-8"></script>
+    <script src="~/node_modules/nvd3/build/nv.d3.js"></script>
+    <script src="~/app/Framework/ExternalLibraries/ng2-nvd3/Scripts/gauge.js"></script>
+    <script src="~/app/Framework/ExternalLibraries/ng2-nvd3/Scripts/gaugeChart.js"></script>
+
+
+    <link href="~/Scripts/WexBimDrawing/Libs/jquery-ui-styles/jquery-ui.min.css" rel="stylesheet" />
+    <link href="~/app/Views/Common/DrawingDetails/xbrowser-styles.css" rel="stylesheet" />
+    <link href="~/app/Views/Common/DrawingDetails/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/app/Views/Common/DrawingDetails/bootstrap.min.css" rel="stylesheet" />
+
+    @*<script src="~/app/Framework/ExternalLibraries/HighCharts/Scripts/highcharts-more.js"></script>
+    <script src="~/app/Framework/ExternalLibraries/HighCharts/Scripts/highcharts.js"></script>*@
+
+    @*<script src="~/Scripts/highcharts.js"></script>
+    <script src="~/Scripts/highcharts-more.js"></script>*@
+
+    <link href="~/app/Framework/Views/Notification/toaster.css" rel="stylesheet" />
+    <!--Need to me moved in to grid-->
+    <link href="~/app/Framework/Views/Grid/wijmo.min.css" rel="stylesheet" />
+
+
+    <script>
+        System.import('app').catch(function (err) { console.error(err); });
+        window.onerror = function (message, url, line, column, error) {
+            console.log(message, url, line, column, error);
+        }
+
+        function BeforeUnload() {
+            $.ajax({
+                type: 'GET',
+                url: '@Url.Action("LogOff", "Account")',
+                success: function (result) {
+                    console.log(result, "Expiration")
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+   @using (Html.BeginForm("Index", "Home", FormMethod.Post, new {onsubmit = "return false;" }))
+   {
+        @Html.AntiForgeryToken()
+        <idrawings class="layout">
+            @*<img class="loading" src="~/Content/Images/progress.gif">*@
+        </idrawings>
+   }
+    
+    <script async src="~/Scripts/Drawing/teigha-lib.js" type="text/javascript"></script>
+</body>
+</html>

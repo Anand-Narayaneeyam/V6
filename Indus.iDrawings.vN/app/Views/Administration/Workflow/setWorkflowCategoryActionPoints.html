@@ -1,0 +1,19 @@
+﻿<notification></notification>
+<div style="height:100%;display:block">
+    <div *ngIf="field != undefined">
+        <DropDownListComponent [fieldObject]="field" (ddlChange)="ddlcategoryChange($event)" [SetAlignment]=setAlignment></DropDownListComponent>
+        <!--<p>Check/Clear to Add/Remove</p>-->
+    </div>
+    <div *ngIf="fieldlist != undefined" style="height:calc(100% - 100px);display:block;">
+        <ListBoxComponent [fieldObject]="fieldlist" (change)="selectAllOptions($event)" [heading1]="header1" [heading2]="header2"></ListBoxComponent>
+    </div>
+    <div *ngIf="btnEnable == true" style="display:block">
+        <button  class="Savebutton "type="button" (click)="Updateclick()">Save Changes</button>
+    </div>
+    <div *ngIf="btnEnable == false"  style="display:block;margin-top:15px">
+        <button  class="Savebutton "type="button" style="cursor:not-allowed" (click)="Updateclick()" disabled>Save Changes</button>
+    </div>
+</div>
+
+
+

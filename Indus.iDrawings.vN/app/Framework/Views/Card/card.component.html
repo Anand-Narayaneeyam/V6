@@ -1,0 +1,30 @@
+﻿<form class="cardformStyle">
+   <div style="width:100%; position:relative;">
+
+       <div id="card-item-each" [attr.aria-label]="titleForCard" title="{{titleForCard}}" tabindex="0" (focus)="cardFunctions($event,4)">
+           <ng-content></ng-content>
+       </div>
+        <div id="btndiv" style="position:absolute;right:2px;top:3px;">   
+          
+            <img src="Content/Layout/tick_green.png" tabindex="0" role="button" [attr.aria-label]="submitTitle"  title="{{submitTitle}}" [hidden]="!isEditted" (keydown)="cardFunctions($event,5)" (click)="onSubmit($event)" style="width:20px;height:20px;" draggable="false"/>
+            <!--<img src="../../../../Content/Layout/hidemarkup.png" />-->
+            <img src="Content/Layout/button_cancel.png" role="button" tabindex="0" aria-label="Cancel" title="Cancel" (click)="cancel($event)" (keydown)="cardFunctions($event,1)"   [hidden]="!isEditted" style="width:20px;height:20px;" draggable="false" />
+            <img src="Content/Layout/edit_button.png"  role="button" tabindex="0" aria-label="Edit" title="Edit" *ngIf="enableEditBtn == true" class="imgEdit" (keydown)="cardFunctions($event,2)"   [hidden]="!hoverEffect" (click)="edit($event)" style="width:20px;height:20px;" draggable="false"/>           
+            <img src="Content/Layout/delete_button.png" role="button" tabindex="0" aria-label="Delete" title="Delete"  *ngIf="(enableDeleBtn  == true) && localenableDeleBtn" class="imgDelete" (keydown)="cardFunctions($event,3)"  [hidden]="!selection"   (click)="delete($event)" style="width:20px;height:20px;" draggable="false"/>           
+            <img src="Content/Layout/viewDrawing.png" tabindex="0" role="button" [attr.aria-label]="viewTooltip" title="{{viewTooltip}}" (click)="ViewDrwg($event)" *ngIf="isViewForDrwg && (selection)" style="width:20px;height:20px" draggable="false"/>
+        </div>
+
+    </div>
+</form>
+<style>
+    :host .date-container-div {
+        position:relative !important;
+    }
+    :host .date-time-container-div {
+        position:relative !important;
+    }
+    /*:host img:focus{
+        outline: 1px solid #00a3e8!important; 
+        outline-offset: 3px; 
+    }*/
+</style>

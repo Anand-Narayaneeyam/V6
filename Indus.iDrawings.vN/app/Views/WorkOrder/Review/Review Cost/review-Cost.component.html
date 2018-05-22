@@ -1,0 +1,36 @@
+﻿<div style="width:100%;min-height:100%">
+    <div style="height:36px">
+        <button  class="Savebutton "style="margin-top:6px;float:left;margin-left:1%" type="button" (click)="onSubmit($event)">Save Changes</button>
+        <div style="margin-top:6px;margin-right: 3%;width: auto;float:right;">{{labelName}} <span style="font-weight: bold">{{requestNumber}}</span></div>
+    </div>
+    <div style="height:calc(100% - 36px);">
+        <div style="width:100%;height:50%;float:left;">
+            <div style="width:50%;height:100%;float:left">
+                <div style="font-weight:bold">Technicians</div>
+                    <reviewTechnicians-list [workrequestId]="requestId" [workFlowEntityIds]="workFlowEntityIds" (itemSourceUpdate)="onTechnicianListSourceUpdated($event)" (onSubmit)="onTechnicianAdd($event)" (onCostUpdate)="onTechnicianCostUpdate($event)" (onDelete)="onTechnicianCostDelete($event)"
+                                            [itemsSource]="technicianListSource" [inputItems]="technicianInputItems" [itemsPerPage]="technicianListItemsPerPage" [totalItems]="technicianListTotalItems" style="margin-top:10px;" [enableMenu]="technicianEnableMenu"></reviewTechnicians-list>
+                <div style="font-weight:bold;float:right;margin-right: 3%;margin-top:-5%;">Total Cost: {{totalCostItems.TechnicianTotalCost}}</div>
+            </div>
+            <div style="width:50%;height:100%;float:left">
+                <div style="font-weight:bold">Parts</div>
+                    <reviewParts-list [workrequestId]="requestId" [workFlowEntityIds]="workFlowEntityIds" (itemSourceUpdate)="onPartsListSourceUpdated($event)" (onSubmit)="onPartsAdd($event)" (onCostUpdate)="onPartsCostUpdate($event)" (onDelete)="onPartsCostDelete($event)"
+                                      [itemsSource]="partsListSource" [inputItems]="partsInputItems" [itemsPerPage]="partsListItemsPerPage" [totalItems]="partsListTotalItems" [enableMenu]="partsEnableMenu"></reviewParts-list>
+                <div style="font-weight:bold;float:right;margin-right: 3%;margin-top:-5%;">Total Cost: {{totalCostItems.PartsTotalCost}}</div>
+            </div>
+        </div>
+        <div style="width:100%;height:50%;float:left">
+            <div style="width:50%;height:100%;float:left">
+                <div style="font-weight:bold">Tools</div>
+                    <reviewTools-list [workrequestId]="requestId" [workFlowEntityIds]="workFlowEntityIds" (itemSourceUpdate)="onToolsListSourceUpdated($event)" (onSubmit)="onToolsAdd($event)" (onCostUpdate)="onToolsCostUpdate($event)" (onDelete)="onToolsCostDelete($event)"
+                                      [itemsSource]="toolsListSource" [inputItems]="toolsInputItems" [itemsPerPage]="toolsListItemsPerPage" [totalItems]="toolsListTotalItems" [enableMenu]="toolsEnableMenu"></reviewTools-list>
+                <div style="font-weight:bold;float:right;margin-right: 3%;margin-top:-5%;">Total Cost: {{totalCostItems.ToolsTotalCost}}</div>
+            </div>
+            <div style="width:50%;height:100%;float:left">
+                <div style="font-weight:bold"> Other Costs</div>
+                    <reviewOtherCosts-list [workrequestId]="requestId" [workFlowEntityIds]="workFlowEntityIds" (itemSourceUpdate)="onOtherCostListSourceUpdated($event)" (onSubmit)="onOtherCostAdd($event)" (onCostUpdate)="onOtherCostUpdate($event)" (onDelete)="onOthersCostDelete($event)"
+                                           [itemsSource]="otherCostListSource" [inputItems]="otherCostInputItems" [itemsPerPage]="otherCostListItemsPerPage" [totalItems]="otherCostListTotalItems" [enableMenu]="otherCostEnableMenu"></reviewOtherCosts-list>
+                <div style="font-weight:bold;float:right;margin-right: 3%;margin-top:-5%;">Total Cost: {{totalCostItems.OtherTotalCost}}</div>
+            </div>
+        </div>
+    </div>
+</div>

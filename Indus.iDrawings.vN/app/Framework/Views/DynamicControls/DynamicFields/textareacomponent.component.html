@@ -1,0 +1,20 @@
+﻿<div [style.display]="setAlignment">
+    <div control-group *ngIf="!fieldObject.IsHiddenLabel && fieldObject.FieldLabel != undefined && fieldObject.FieldLabel != null" [style.max-width]="labelWidth" [style.min-width]="labelWidth" >
+        <label style="margin-top:7px;">
+            {{fieldObject.FieldLabel}}<span class="required" *ngIf="fieldObject.IsMandatory == undefined || fieldObject.IsMandatory === true"> * &nbsp; </span>
+            <span *ngIf="fieldObject.MaxLength > 0 || fieldObject.IsEnabled != null"></span>
+            <span *ngIf="fieldObject.MaxLength == undefined  || fieldObject.IsEnabled == null"></span>
+        </label>
+    </div>
+    <div control-group style="min-height:46px;width:100%;min-width:200px;">
+        <span *ngIf="fieldObject.IsEnabled == true || fieldObject.IsEnabled == null">
+            <span style="width:330px;display:block;overflow:hidden;text-overflow:ellipsis;" class="readOnly" *ngIf="fieldObject.ReadOnlyMode === true">{{fieldObject.FieldValue}}</span>
+            <textarea id="{{fieldObject.FieldId}}" title="{{fieldObject.FieldLabel}}" validatetext [validationData]="validationData" [fieldObject]='fieldObject' attr.maxlength={{fieldObject.MaxLength}} type="text" *ngIf="fieldObject.ReadOnlyMode == undefined || fieldObject.ReadOnlyMode === false" [(ngModel)]="fieldObject.FieldValue" (ngModelChange)="fieldObject.FieldValue = $event" [placeholder]="maxLength" [style.width]="SetAlignment == 'horizontal' ? '100%' :fieldWidth" [style.height]="fieldHeight"></textarea>
+        </span>
+        <span  *ngIf="fieldObject.IsEnabled == undefined || fieldObject.IsEnabled == false" tabindex="0" [attr.aria-label]="''+fieldObject.FieldLabel+' '+fieldObject.FieldValue+' Read Only'">
+            <span style="width:330px;display:block;overflow:hidden;text-overflow:ellipsis;" class="readOnly" *ngIf="fieldObject.ReadOnlyMode === true">{{fieldObject.FieldValue}}</span>
+            <textarea id="{{fieldObject.FieldId}}" title="{{fieldObject.FieldLabel}}" validatetext [validationData]="validationData" [fieldObject]='fieldObject' attr.maxlength={{fieldObject.MaxLength}} type="text" *ngIf="fieldObject.ReadOnlyMode == undefined || fieldObject.ReadOnlyMode === false" [(ngModel)]="fieldObject.FieldValue" (ngModelChange)="fieldObject.FieldValue = $event" [placeholder]="maxLength" disabled [style.width]="SetAlignment == 'horizontal' ? '100%' : fieldWidth" [style.height]="fieldHeight"></textarea>
+        </span>
+    
+    </div>
+</div>

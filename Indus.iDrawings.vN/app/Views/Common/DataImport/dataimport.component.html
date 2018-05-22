@@ -1,0 +1,219 @@
+﻿<style>
+    #ColorPicker {
+        position: absolute !important;
+    }
+
+    #overlayColorPicker {
+        width: 100% !important;
+    }
+
+    .excelClm th,.excelClm td {
+        font-size: 0.8em;
+        width: 200px;
+        word-break: break-word;
+    }
+
+    #783 {
+        text-align: center;
+    }
+
+    span.required {
+        display: none !important;
+    }
+
+    .excelClm .displaySettingsheader {
+        text-align: center;
+        font-weight: bold;
+        background-color: #7E9DB2;
+        color: white;
+        width: 100%;
+    }
+
+    .dispSettingSelAll {
+        background-color: lightgray;
+    }
+
+    .fontSize {
+        width: 80px;
+    }
+
+    .chkBoxes {
+        width: 75px;
+    }
+
+    .colorPickers {
+        width: 75px;
+    }
+    .excelClm tr {
+        position: relative;
+        display: block;
+        padding: 10px 15px;
+        margin-bottom: -1px;
+        background-color: #fff;
+        border: 1px solid #ddd;
+    }
+    button {
+        background: #2980b9;
+        color: #fff;
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        width: auto;
+    }
+
+</style>
+
+<page [pagetitle]="'Settings / Administration / Import from Excel'">
+    <content>
+        <split-view [splitviewObject]="splitviewInput" [pageTitle]="splitViewTitle" (onSecondaryClose)="onSecondaryClose()">
+            <primary-view>
+                <div style="max-height:100%;overflow-y:auto">
+                    <div style="height: 90px;">
+                        <DynamicFields id="importCategoryDrpdwn" [showButton]=false [FileExtDynamicFields]='strAllowedExtensions' [dataSource]="imprtCategoryfield" (submitFieldObject)="onSubmitData($event)" (fieldChange)="dropDownChange($event)"></DynamicFields>
+                    </div>
+
+                    <div>
+                        <DynamicFields *ngIf="showField" [showButton]=false id="importFieldControl"  supportMultiColumnDispay="true"  class="two-column" [FileExtDynamicFields]='strAllowedExtensions' (fileChange)="getFileData($event)" [dataSource]="importControlfield" (rbnChange)="onRbnChange($event)" (submitFieldObject)="onSubmitData($event)" (fieldChange)="dropDownChange($event)"></DynamicFields>
+                    </div>
+
+                    <div style="margin-left:13%;" *ngIf="showExcel">
+                        <table class="fixed_headers">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        Excel Columns
+                                    </th>
+                                    <th>
+                                        iDrawings Columns
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody style="overflow-x:hidden">
+                                <tr *ngFor="let field of (mappingtable);let i=index" style="height:30px;">
+                                    <td style="font-size:14px;">
+                                        {{field["ExcelColumns"]}}
+                                    </td>
+                                    <td style="font-size:14px;">
+                                        {{field["iDrawingsColumns"]}}
+                                    </td>
+                                </tr>                               
+                            </tbody>
+                        </table>
+                    </div>
+                    <div style="margin-left:13%;margin-top:10px;" *ngIf="showExcel">
+                        <button  class="Savebutton "type="button" value="Configure" (click)="onConfigure()"  [disabled]="disabled">
+                            Configure
+                        </button>
+                        <button  class="Savebutton "type="button" value="Import" (click)="onImport()" [disabled]="disabled">
+                            Import
+                        </button>
+                    </div>
+                </div>
+            </primary-view>
+            <secondary-view *ngIf="splitViewTarget">   
+                   <configure-import  *ngIf="splitViewTarget" [drawingCategory]="drawingCategoryValue" [excelColumns]="mappingtable" [moduleId]="moduleId" [importcategoryId]="importcategoryId" [importColumns]="importColumnsList" (reload)="reloadConfigMapping()" (cancel)="onCancel()"></configure-import>        
+            </secondary-view>
+            <secondary-view *ngIf="splitViewGridTarget">
+                <div *ngIf="splitViewGridTarget" style="display: inherit;">
+                    <div style="display: inherit;">
+                        <submenu>
+                            <sub-menu [source]=menumock [count]=100 [menuIds]=enableMenu (onSubMenuChange)="onMenuClick($event);"> </sub-menu>
+                        </submenu>
+                    </div>
+                    <div style="padding:0px 0px 10px 10px;height:calc(95% - 35px)">
+                        <gridView [(dataSource)]="itemsSource" [properties]="inputItems" [(columns)]="importGridFieldObject"></gridView>
+                    </div>
+                </div>
+            </secondary-view>
+        </split-view>
+
+        <slide [width]= width [position]="Position" [type]="dialog" [show]=showSlide (closeDialog)="closeSlideDialog($event)">
+            <div>
+                <div>
+                    {{slideMsg}}
+                </div>
+                <div>
+                    <div style="width:100%">
+                        <button  class="Savebutton "type="button" (click)="update($event)">OK</button>
+                        <button  class="Savebutton "type="button" (click)="cancelClick($event)">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </slide>
+
+    </content>
+</page>
+
+<div *ngIf="importLoading" class="background-blockImport"></div>
+
+<style>
+
+     #importCategoryDrpdwn #form  
+    {
+         height:100%!important;
+    }
+
+     #importCategoryDrpdwn #form .list-group div
+    {
+        margin-top:0px!important;
+        min-height:0px!important
+    }
+
+     #importCategoryDrpdwn #form .list-group
+    {
+       margin-left: 12%;
+       background-color: #ffffff;
+       max-height:100%!important;
+    }
+
+    #importFieldControl #form ,#importFieldControl #form .list-group {
+     height:auto !important;
+     background-color: #ffffff;
+    }
+
+    #importCategoryDrpdwn .MainContainer_1620 label
+    {
+        padding-left:15px;
+    }
+
+     #importCategoryDrpdwn .MainContainer_1620 .Div-1620
+    {
+        padding-left:15px;
+    }
+    #importCategoryDrpdwn .MainContainer_1618 
+    {
+        height:88px;
+    }
+     #importFieldControl .fileuploader 
+    {
+        margin-left:-2px!important;
+    }
+    #importFieldControl .MainContainer_1793  
+    {
+        margin-left:190px!important;
+        margin-top:-30px!important;
+    }
+     #importFieldControl .MainContainer_1792  
+    {
+        width:100%!important;
+    }
+
+    #importFieldControl .MainContainer_1618  
+    {
+        height:70px!important;
+    }
+
+    #importFieldControl .multi-column-form {
+        background-color: white!important;
+    }
+
+    .background-blockImport {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 50;
+    background-color: darkgray;
+    opacity: 0.3;
+}
+      
+</style>

@@ -1,0 +1,60 @@
+﻿<div> 
+    <submenu>
+        <sub-menu [menuCard]=true [source]=menuData [count]=gridcount [menuIds]=enableMenu (onSubMenuChange)="onSubMenuChange($event);"> </sub-menu>
+    </submenu> 
+    <div style="width:100%;">
+        <div *ngIf="siteId > 0" style="display:inline-flex">
+            Site:&nbsp;<LabelComponent [fieldObject]=siteName></LabelComponent>
+        </div>
+        <div *ngIf="routeId > 0" style="display:inline-flex">
+            Route:&nbsp;<LabelComponent [fieldObject]=routeName></LabelComponent>
+        </div>
+    </div>
+    <split-view [splitviewObject]="splitviewInput" [pageTitle]="pageTitle">
+        <primary-view  style="height:calc(100% - 35px);">
+            <div>
+                <div  [ngClass]="totalItems > itemsPerPage ? 'pagewithPaging':'pagewithoutPaging'">
+                    <gridView [(dataSource)]="itemsSource" [properties]="inputItems" [columns]="fieldObject"  [refreshgrid]="refreshgrid"(onSorting)="onSort($event)" (onRowDelete)="inlineDelete($event)"></gridView>
+                </div>
+                <div *ngIf="totalItems >itemsPerPage ? 'true' : 'false'">
+                    <paging [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="pageChanged($event);"></paging>
+                </div>
+            </div>
+        </primary-view>
+        <secondary-view *ngIf="target == 1">
+            <pmschedules-addedit *ngIf="splitviewInput.showSecondaryView==true && fieldDetailsAddEdit != undefined"  style="display: block;width:400px;" [fieldDetailsAddEdit]="fieldDetailsAddEdit" [scheduleTypesSiteId]="siteId" [scheduleTypesEquipmentCategoryId]="equipmentCategoryId" [scheduleTypesEquipmentClassId]="equipmentClassId" [scheduleTypesRouteId]="routeId" [action]="action" [btnName]="btnName" (submitSuccess)="OnSuccessfulSubmit($event)" [selectedId]="inputItems.selectedIds"></pmschedules-addedit>
+        </secondary-view>
+        <secondary-view *ngIf="target == 2">
+            <div style="padding:5px;">
+                <pmProcedures-list *ngIf="splitviewInput.showSecondaryView==true" style="display: block;width:800px;" [equipmentClassName]="pmEquipmentClassName" [equipmentCategoryName]="pmEquipmentCategoryName" [pmId]="pmIdforProcedure" [equipmentClassIdfor]="pmEquipmentClassId" [pagetarget]="1" (pmScheduleRowUpdate)="onPMScheduleRowUpdate($event)"></pmProcedures-list>
+            </div>
+            
+        </secondary-view>
+    </split-view>
+    <slide [width]="200" [position]="position" [type]="dialog" [show]="showSlide" (closeDialog)="closeSlideDialog($event)">
+        <div>
+            <div>
+                Are you sure you want to delete the selected PM Schedule(s)?
+            </div>
+            <div>
+                <div style="width:100%">
+                    <button  class="Savebutton "type="button" (click)="okDelete($event)">Yes</button>
+                    <button  class="Savebutton "type="button" (click)="cancelClick($event)">No</button>
+                </div>
+            </div>
+        </div>
+    </slide>
+    <slide [width]="400" [position]="Position" [type]="dialog" [show]=showProcedureSlide (closeDialog)="closeSlideDialog($event)">
+        <div>
+            <div>
+                Do you want to associate this PM Schedule with one or more Procedures?
+            </div>
+            <div>
+                <div style="width:100%">
+                    <button  class="Savebutton "type="button" (click)="okProcedureClick($event)">Yes</button>
+                    <button  class="Savebutton "type="button" (click)="cancelProcedureClick($event)">No</button>
+                </div>
+            </div>
+        </div>
+    </slide>
+</div>

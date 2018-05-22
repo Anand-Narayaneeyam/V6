@@ -1,0 +1,10 @@
+﻿<div *ngIf="itemsSourceLogActivity != undefined" style="height:90%;">
+    <gridView [dataSource]="itemsSourceLogActivity" [properties]="inputItems" [columns]="fieldObject"></gridView>
+    <button  class="Savebutton "type="button" (click)="getActivitySelection($event)">Generate Log</button>
+</div>
+
+<style>
+    :host button {
+        position: -ms-device-fixed;
+    }
+</style>

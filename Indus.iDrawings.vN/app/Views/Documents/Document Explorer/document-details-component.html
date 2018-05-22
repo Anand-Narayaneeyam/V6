@@ -1,0 +1,29 @@
+﻿<div>
+    <split-view [splitviewObject]="splitviewInput" [pageTitle]="pageTitle">
+        <primary-view>
+            <div>
+                <submenu>
+                    <sub-menu [source]=menuData [menuIds]=enableMenu   [count]=totalItems (onSubMenuChange)="onSubMenuChange($event);"> </sub-menu>
+                </submenu>
+            </div>
+            <div *ngIf="fieldDetailsObj != undefined" style="overflow:auto;height:80%;">
+                <!--<DynamicFields *ngIf="fieldDetailsObj != undefined" [dataSource]="fieldDetailsObj" (submitFieldObject)="onSubmitData($event)" [showButton]="false" [dataKey]="dataKey" supportMultiColumnDispay="true" multiColumnNumber=2></DynamicFields>-->
+                <table cellpadding="0" cellspacing="2" style="overflow:auto;width:100%;height:60%;"> 
+                    <tr *ngFor="let object of firstColumObj; let i = index" [ngStyle]="i%2!=0?{'background-color':'whitesmoke'}:{'background-color':'white'}" style="font-size:smaller;">     
+                        <td style="border-bottom:2px solid #dadada;border-right:2px solid #dadada;border-left:2px solid #dadada;padding-left:2px;border-top:2px solid #dadada;" align="left">{{firstColumObj[i].FieldLabel}}</td>
+                        <td style="border-bottom:2px solid #dadada;border-right:2px solid #dadada;font-weight:bold;padding-left:2px;border-top:2px solid #dadada;" align="left">{{firstColumObj[i].FieldValue}}</td>
+                        <td style="width:7px;border-right:2px solid #dadada;"></td>
+                        <td *ngIf="secondColumObj[i] != undefined" style="border-bottom:2px solid #dadada;border-right:2px solid #dadada;padding-left:2px;border-top:2px solid #dadada;" align="left">{{secondColumObj[i].FieldLabel}}</td>
+                        <td *ngIf="secondColumObj[i] != undefined" style="border-bottom:2px solid #dadada;border-right:2px solid #dadada;font-weight:bold;padding-left:2px;border-top:2px solid #dadada;" align="left">{{secondColumObj[i].FieldValue}}</td>
+                        <td *ngIf="secondColumObj[i] == undefined" style="border-bottom:2px solid #dadada;border-right:2px solid #dadada;border-top:2px solid #dadada;" align="left">   </td>
+                        <td *ngIf="secondColumObj[i] == undefined" style="border-bottom:2px solid #dadada;border-right:2px solid #dadada;font-weight:bold;border-top:2px solid #dadada;" align="left">   </td>
+                    </tr>
+                </table>
+            </div>
+        </primary-view>
+        <secondary-view *ngIf="splitviewInput.showSecondaryView == true">
+            <documents-add-edit *ngIf="fieldDetailsAddEdit" [selectedId]="fieldDetails.DocumentId" [fieldDetailsAddEdit]="fieldDetailsAddEdit" [action]="action" [btnName]="btnName" (submitSuccess)="OnSuccessfulSubmit($event)"></documents-add-edit>
+        </secondary-view>
+    </split-view>
+</div>
+

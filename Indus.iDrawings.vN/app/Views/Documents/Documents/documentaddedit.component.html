@@ -1,0 +1,10 @@
+﻿<split-view [splitviewObject]="splitviewInput" [pageTitle]="pageTitle" >
+    <primary-view>
+        <DynamicFields [dataSource]="fieldDetailsAddEdit" (submitFieldObject)="onSubmitData($event)" [btnName]="btnName" [dataKey]="dataKey"></DynamicFields>
+    </primary-view>
+    <secondary-view *ngIf="action == 'sendforapproval'">
+        <send-for-approval [moduleid]="4" [selectedid]="selectedId" [workflowcategoryId]="6" [entityWorkflowCategoryId]="19" [rowdata]="rowData" [DocId]="DocId" (submitSuccess)="OnSuccessfullRequestSent($event)"></send-for-approval>
+    </secondary-view>
+
+</split-view>
+

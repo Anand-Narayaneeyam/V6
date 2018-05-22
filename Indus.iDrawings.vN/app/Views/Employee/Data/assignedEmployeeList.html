@@ -1,0 +1,134 @@
+﻿
+<div style="height: calc(100% - 35px);height: -webkit-calc(100% - 35px);height: -moz-calc(100% - 35px);overflow: hidden;">
+    <div [ngClass]="Stylename">
+        <search *ngIf="fieldObject" [disable]="disable" [searchtype]="'Grid'" [keyWordLookup]=keyWordLookup [advancesearch]=true [Key]=2 [datasource]=advancelookup [dataKey]="dataKey" [KeywordFields]=KeywordFieldObject (SaveAs)="SaveAs($event)" (Delete)="Delete($event)" (onloadSearch)="onloadSearch($event)" (loadAdvanceSearch)="advanceSearch()" (Clear)="Clear($event)" (Submit)="Submit($event)" [smartSearch]=isSmartSearch></search>
+    </div>
+    <div style="height:100%;">
+        <div style="float:left;width:100%;display:block;" [ngClass]="totalItems > itemsPerPage ? 'pagewithPaging':'pagewithoutPaging'">
+            <!--<div style="float:left;width:100%;" [ngStyle]="{ 'height': height }">-->
+            <confirmation (onConfirm)="okDelete($event)"></confirmation>
+            <gridView style="display:block" [style.height]="gridHeight" [dataSource]="itemsSource" [properties]="inputItems" [columns]="fieldObject" [refreshgrid]="refreshgrid" [arrHighlightRowIds]="arrHighlightRowIds" (onSorting)="onSort($event)" (onRowUpdate)="RowUpdate($event)" (onRowDelete)="RowDelete($event)" (onRowAdd)="RowAdd($event)" [refreshgrid]="refreshgrid" (onContextMenuOnClick)="onContextMenuOnClick($event)"></gridView>
+            <analytics *ngIf="showAnalytics" [properties]="analyticsInput" (closeAnalytics)="closeAnalytics($event)"></analytics>
+        </div>
+        <div *ngIf="pageTarget!=1" style="width:100%;float:left;display:block;" [style.height]="totalItems >itemsPerPage ? '35px' : '0px'">
+            <paging *ngIf="totalItems >itemsPerPage ? 'true' : 'false'" [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="pageChanged($event);"></paging>
+            <!--<paging [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="pageChanged($event);"></paging>-->
+        </div>
+    </div>
+    <slide [width]="200" [position]="position" [type]="dialog" [show]="showSlide" (closeDialog)="closeSlideDialog($event,1)">
+        <div>
+            <div>
+                Are you sure you want to delete the selected Employee?
+            </div>
+            <div>
+
+                <div style="width: 100%">
+                    <button class="Savebutton " type="button" (click)="okDelete($event)">Yes</button>
+                    <button class="Savebutton " type="button" (click)="cancelClick($event,1)">No</button>
+                </div>
+            </div>
+        </div>
+    </slide>
+    <slide [width]="200" [position]="position" [type]="dialog" [show]="showdeletionSlide" (closeDialog)="closeSlideDialog($event,2)">
+
+        <div>
+            <div>
+                Selected Employee is a supervisor for other employees. Do you want to continue with the deletion?
+            </div>
+            <div>
+
+                <div style="width:100%">
+                    <button class="Savebutton " type="button" (click)="okSuperVisorDelete($event)">Yes</button>
+                    <button class="Savebutton " type="button" (click)="cancelClick($event,2)">No</button>
+                </div>
+            </div>
+        </div>
+    </slide>
+</div>
+
+
+<style>
+    .search-containerInline {
+        position: fixed !important;
+        position: -ms-page !important;
+        right: 0;
+        top: 133px !important;
+        margin-right: 10px;
+        z-index: 10;
+    }
+   @media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 812px) 
+  and (orientation: portrait) { 
+        .search-containerInline 
+        {
+            display:none!important;
+        }
+    }
+     @media only screen and (min-device-width: 320px) 
+                and (max-device-width: 812px) 
+                and (orientation: landscape) 
+    {
+        .search-containerInline 
+        {
+            display:none!important;
+        }
+         .search-containerInlinefromgrid
+         {
+            display:none!important;
+        }
+    }
+
+    .search-containerInlinefromgrid {
+        position: fixed !important;
+        /*position:-ms-page!important;*/
+        right: 0;
+        top: 122px !important;
+        margin-right: 10px;
+        z-index: 10;
+    }
+
+    .search-containerInlineforplace {
+        position: fixed !important;
+        position: -ms-page !important;
+        right: 0;
+        top: 158px !important;
+        margin-right: 10px;
+        z-index: 10;
+    }
+
+    @media screen and (-ms-high-contrast: active) and (max-width:660px ), (-ms-high-contrast: none) and (max-width:660px ) {
+        .search-containerInlinefromgrid {
+            position: absolute !important;
+            top: 2px !important;
+        }
+
+        :host .filter {
+            position: -ms-page !important;
+            margin-left: -300px !important;
+        }
+    }
+
+    @media screen and (-ms-high-contrast: active) and (min-width:660px ), (-ms-high-contrast: none) and (min-width:660px ) {
+        .search-containerInlinefromgrid {
+            position: absolute !important;
+            top: 2px !important;
+        }
+
+        :host .filter {
+            position: -ms-page !important;
+            margin-left: -540px !important;
+        }
+    }
+
+
+    @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+
+        :host .background-block-slide {
+            position: -ms-page !important;
+        }
+    }
+</style>
+
+
+

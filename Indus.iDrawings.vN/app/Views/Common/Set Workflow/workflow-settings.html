@@ -1,0 +1,11 @@
+﻿<content>
+    <section title="Editable Fields" [isExpanded]="sectionExpansionStatus[0].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+        <setworkflow-editablefields *ngIf="sectionExpansionStatus[0].isExpanded" [selectedId]="selectedId" [worktype]="worktype"></setworkflow-editablefields>
+    </section>
+    <section title="Permissions" [isExpanded]="sectionExpansionStatus[1].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+        <setworkflow-permissions [selectedId]="selectedId" *ngIf="sectionExpansionStatus[1].isExpanded" [isGeneral]="isGeneral"></setworkflow-permissions>
+    </section>
+</content>
+
+
+

@@ -1,0 +1,82 @@
+﻿[
+  {
+    "id": 1,
+    "title": "General",
+    "path": "/General",
+    "subMenu": [
+      {
+        "id": 4,
+        "parentId": 8,
+        "title": "General Settings",
+        "path": "/GeneralSettings",
+        "subMenu": null
+      }    
+    ]
+  },
+   {
+    "id": 2,
+    "title": "Data",
+    "path": "",
+    "subMenu": [
+
+     {
+        "id": 3,
+        "parentId": 8,
+        "title": "Data",
+        "path": "/employeeData",
+        "subMenu": null
+      },    
+       {
+        "id": 9,
+        "parentId": 8,
+         "title": "Drawings",
+        "path": "/EmployeeDrawings",
+        "subMenu": null
+      }
+    ]
+  },
+  {
+    "id":3,
+    "title": "Request",
+    "path": "",
+    "subMenu": [
+       {
+        "id": 6,
+        "parentId": 8,
+        "title": "Space Planning Projects",
+        "path": "/space-planning-projects",
+        "subMenu": null
+      },
+      {
+        "id": 9,
+        "parentId": 8,
+        "title": "Move Projects",
+        "path": "/move-projects",
+        "subMenu": null
+      },
+      
+       {
+        "id": 8,
+        "parentId": 1,
+        "title": "Space Planning Approval Requests",
+        "path": "/space-planning-approval-requests",
+        "subMenu": null
+      },
+       {
+        "id": 9,
+        "parentId": 1,
+        "title": "Scenarios",
+        "path": "/scenarios",
+        "subMenu": null
+      },
+      {
+        "id": 5,
+        "parentId": 8,
+        "title": "Space Planning Approval Review",
+        "path": "/spaceplanningapprovalreview",
+        "subMenu": null
+      }
+    ]
+  }
+  
+]

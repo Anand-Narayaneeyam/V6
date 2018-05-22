@@ -1,0 +1,61 @@
+﻿{ 
+    "data": { 
+        "FieldId": 1, 
+        "FieldName": "", 
+        "FieldType": 10,
+        "FieldValue": "",
+        "MultiFieldValues": [ ],
+        "IsMandatory": false,
+        "IsVisible": true, 
+        "IsHiddenLabel":  false,
+        "IsMultiValued": true, 
+        "ReadOnlyMode": false, 
+        "MultiValuedDetails": { 
+            "LookupValues": [ 
+                { 
+                    "Id": 1, 
+                    "Value": "23 Hour Observation/Care" 
+                }, 
+                { 
+                    "Id": 2, 
+                    "Value": "A&MM Warehouse" 
+                }, 
+                { 
+                    "Id": 3, 
+                    "Value": "ACS - Primary Care" 
+                }, 
+                { 
+                    "Id": 4, 
+                    "Value": "ACS - Specialty Care" 
+                },
+                {
+                    "Id": 5,
+                    "Value": "ACS - Urgent Care"
+                },
+                 { 
+                    "Id": 6, 
+                    "Value": "Administration" 
+                }, 
+                { 
+                    "Id": 7, 
+                    "Value": "Audiology" 
+                }, 
+                { 
+                    "Id": 8, 
+                    "Value": "Biochemistry & Molecular biology" 
+                }, 
+                { 
+                    "Id": 9, 
+                    "Value": "Bone & Mineral Research" 
+                }, 
+                { 
+                    "Id": 10, 
+                    "Value": "Cardiology" 
+                } 
+            ], 
+            "PopupComponentName": null 
+        }, 
+        "NotificationType": "" 
+    } 
+} 
+

@@ -1,0 +1,578 @@
+﻿{
+  "data": [
+    {
+      "FieldName": "Id",
+      "FieldValue": "0",
+      "FieldType": 1,
+      "IsVisible": false,
+      "ReadOnlyMode": false
+
+    },
+    {
+      "FieldName": "Style Name",
+      "FieldValue": "",
+      "FieldType": 14,
+       "IsHiddenLabel": true,
+      "IsVisible": true,
+      "IsMandatory": true,
+      "IsDisabled": true,
+      "NotificationType": "inline",
+      "MaxLength": 100
+    },
+    {
+      "FieldName": "Dither",
+      "FieldType": 5,
+      "FieldValue": "0",
+      "IsVisible": true,
+      "IsMandatory": true,
+      "IsDisabled": false,
+      "IsHiddenLabel": true,
+      "ReadOnlyMode": false,
+      "IsMultiValued": true,
+      "MultiValuedDetails": {
+        "LookupValues": [
+         
+          {
+            "Id": 1,
+            "Value": "On"
+          },
+          {
+            "Id": 2,
+            "Value": "Off"
+          }
+        ],
+        "PopupComponentName": null
+      },
+      "NotificationType": "inline"
+    },
+    {
+      "FieldName": "Grayscale",
+       "FieldType": 5,
+      "FieldValue": "0",
+      "IsVisible": true,
+      "IsMandatory": true,
+      "IsDisabled": false,
+      "IsHiddenLabel": true,
+      "ReadOnlyMode": false,
+      "IsMultiValued": true,
+      "MultiValuedDetails": {
+        "LookupValues": [
+         
+          {
+            "Id": 1,
+            "Value": "On"
+          },
+          {
+            "Id": 2,
+            "Value": "Off"
+          }
+        ],
+        "PopupComponentName": null
+      },
+      "NotificationType": "inline"
+    },
+    {
+      "FieldName": "Pen",
+      "FieldValue": "",
+      "IsMandatory": true,
+      "FieldType": 2,
+      "IsVisible": true,
+      "IsDisabled": false,
+        "IsHiddenLabel": true,
+      "NotificationType": "inline",
+      "MaxLength": 100
+    },
+    {
+
+      "FieldName": "Virtual Pen",
+      "FieldValue": "",
+      "FieldType": 2,
+      "IsMandatory": true,
+      "IsVisible": true,
+      "IsDisabled": false,
+        "IsHiddenLabel": true,
+      "NotificationType": "inline",
+      "MaxLength": 100
+    },
+    {
+
+      "FieldName": "Screening",
+      "FieldValue": "",
+      "FieldType": 2,
+      "IsMandatory": true,
+      "IsVisible": true,
+      "IsDisabled": false,
+        "IsHiddenLabel": true,
+      "NotificationType": "inline",
+      "MaxLength": 100
+    },
+    {
+      "FieldName": "Linetype",
+     "FieldType": 5,
+      "FieldValue": "0",
+      "IsVisible": true,
+      "IsMandatory": true,
+      "IsDisabled": false,
+      "IsHiddenLabel": true,
+      "ReadOnlyMode": false,
+      "IsMultiValued": true,
+      "MultiValuedDetails": {
+        "LookupValues": [
+         
+          {
+            "Id": 1,
+            "Value": "On"
+          },
+          {
+            "Id": 2,
+            "Value": "Off"
+          }
+        ],
+        "PopupComponentName": null
+      },
+      "NotificationType": "inline"
+    },
+    {
+      "FieldName": "Adaptive",
+      "FieldType": 5,
+      "FieldValue": "0",
+      "IsVisible": true,
+      "IsMandatory": true,
+      "IsDisabled": false,
+      "IsHiddenLabel": true,
+      "ReadOnlyMode": false,
+      "IsMultiValued": true,
+      "MultiValuedDetails": {
+        "LookupValues": [
+         
+          {
+            "Id": 1,
+            "Value": "On"
+          },
+          {
+            "Id": 2,
+            "Value": "Off"
+          }
+        ],
+        "PopupComponentName": null
+      },
+      "NotificationType": "inline"
+    },
+    {
+      "FieldName": "Lineweight",
+      "FieldValue": "",
+      "FieldType": 3,
+      "IsMandatory": true,
+      "IsVisible": true,
+      "IsDisabled": false,
+        "IsHiddenLabel": true,
+      "NotificationType": "inline",
+      "MaxLength": 100
+    },
+    {
+      "FieldName": "Line End",
+     "FieldType": 5,
+      "FieldValue": "0",
+      "IsVisible": true,
+      "IsMandatory": true,
+      "IsDisabled": false,
+      "IsHiddenLabel": true,
+      "ReadOnlyMode": false,
+      "IsMultiValued": true,
+      "MultiValuedDetails": {
+        "LookupValues": [
+         
+          {
+            "Id": 1,
+            "Value": "Solid"
+          },
+          {
+            "Id": 2,
+            "Value": "Diamonds"
+          }
+        ],
+        "PopupComponentName": null
+      },
+      "NotificationType": "inline"
+    }
+
+  ],
+"add": [
+    {
+      "FieldName": "Id",
+      "FieldValue": "0",
+      "FieldType": 1,
+      "IsVisible": false,
+      "ReadOnlyMode": false
+
+    },
+    {
+      "FieldName": "Style Name",
+      "FieldValue": "",
+      "FieldType": 14,
+      "IsHiddenLabel": false,
+      "IsVisible": true,
+      "IsMandatory": true,
+      "ReadOnlyMode": false,
+      "NotificationType": "inline",
+      "MaxLength": 100
+    },
+    {
+      "FieldName": "Dither",
+      "FieldType": 5,
+      "FieldValue": "0",
+      "IsVisible": true,
+      "IsMandatory": true,
+      "IsDisabled": true,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false,
+      "IsMultiValued": true,
+      "MultiValuedDetails": {
+        "LookupValues": [
+         
+          {
+            "Id": 1,
+            "Value": "On"
+          },
+          {
+            "Id": 2,
+            "Value": "Off"
+          }
+        ],
+        "PopupComponentName": null
+      },
+      "NotificationType": "inline"
+    },
+    {
+      "FieldName": "Grayscale",
+      "FieldType": 5,
+      "IsVisible": true,
+      "IsMandatory": true,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false,
+      "FieldValue": "0",
+      "IsMultiValued": true,
+      "MultiValuedDetails": {
+        "LookupValues": [
+         
+          {
+            "Id": 1,
+            "Value": "On"
+          },
+          {
+            "Id": 2,
+            "Value": "Off"
+          }
+        ],
+        "PopupComponentName": null
+      },
+      "NotificationType": "inline"
+    },
+    {
+      "FieldName": "Pen",
+      "FieldValue": "",
+      "IsHiddenLabel": false,
+      "IsMandatory": true,
+      "FieldType": 2,
+      "IsVisible": true,
+      "ReadOnlyMode": false,
+      "NotificationType": "inline",
+      "MaxLength": 100
+    },
+    {
+
+      "FieldName": "Virtual Pen",
+      "FieldValue": "",
+      "FieldType": 2,
+      "IsHiddenLabel": false,
+      "IsMandatory": true,
+      "IsVisible": true,
+      "ReadOnlyMode": false,
+      "NotificationType": "inline",
+      "MaxLength": 100
+    },
+    {
+
+      "FieldName": "Screening",
+      "FieldValue": "",
+      "FieldType": 2,
+      "IsMandatory": true,
+      "IsHiddenLabel": false,
+      "IsVisible": true,
+      "ReadOnlyMode": false,
+      "NotificationType": "inline",
+      "MaxLength": 100
+    },
+    {
+      "FieldName": "Linetype",
+      "FieldValue": "0",
+      "FieldType": 5,
+      "IsVisible": true,
+      "IsMandatory": true,
+      "ReadOnlyMode": false,
+      "IsHiddenLabel": false,
+      "IsMultiValued": true,
+      "MultiValuedDetails": {
+        "LookupValues": [
+         
+          {
+            "Id": 1,
+            "Value": "On"
+          },
+          {
+            "Id": 2,
+            "Value": "Off"
+          }
+        ],
+        "PopupComponentName": null
+      },
+      "NotificationType": "inline"
+    },
+    {
+      "FieldName": "Adaptive",
+      "FieldValue": "0",
+      "FieldType": 5,
+      "IsVisible": true,
+      "IsMandatory": true,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false,
+      "IsMultiValued": true,
+      "MultiValuedDetails": {
+        "LookupValues": [
+        
+          {
+            "Id": 1,
+            "Value": "On"
+          },
+          {
+            "Id": 2,
+            "Value": "Off"
+          }
+        ],
+        "PopupComponentName": null
+      },
+      "NotificationType": "inline"
+    },
+    {
+      "FieldName": "Lineweight",
+      "FieldValue": "",
+      "FieldType": 3,
+      "IsMandatory": true,
+      "IsHiddenLabel": false,
+      "IsVisible": true,
+      "ReadOnlyMode": false,
+      "NotificationType": "inline",
+      "MaxLength": 100
+    },
+    {
+      "FieldName": "Line End",
+      "FieldValue": "0",
+      "FieldType": 5,
+      "IsHiddenLabel": false,
+      "IsMandatory": true,
+      "IsVisible": true,
+      "ReadOnlyMode": false,
+      "IsMultiValued": true,
+      "MultiValuedDetails": {
+        "LookupValues": [
+      
+          {
+            "Id": 1,
+            "Value": "Solid"
+          },
+          {
+            "Id": 2,
+            "Value": "Diamonds"
+          }
+        ],
+        "PopupComponentName": null
+      },
+      "NotificationType": "inline"
+    }
+
+  ],
+  "edit": [
+    {
+      "FieldName": "Id",
+      "FieldValue": "1",
+      "FieldType": 1,
+      "IsVisible": false,
+      "ReadOnlyMode": false
+
+    },
+    {
+      "FieldName": "Style Name",
+      "FieldValue": "AutoDesk-Color",
+      "FieldType": 1,
+      "IsVisible": true,
+      "IsMandatory": true,
+      "ReadOnlyMode": false,
+      "NotificationType": "inline",
+      "MaxLength": 100
+    },
+    {
+      "FieldName": "Dither",
+      "FieldValue": "1",
+      "FieldType": 5,
+      "IsVisible": true,
+      "IsMandatory": true,    
+      "IsHiddenLabel": true,
+      "ReadOnlyMode": false,
+      "IsMultiValued": true,
+      "MultiValuedDetails": {
+        "LookupValues": [
+          {
+            "Id": 1,
+            "Value": "On"
+          },
+          {
+            "Id": 2,
+            "Value": "Off"
+          }
+        ],
+        "PopupComponentName": null
+      },
+      "NotificationType": "inline"
+    },
+    {
+      "FieldName": "Grayscale",
+      "FieldType": 5,
+      "IsVisible": true,
+      "IsMandatory": true,
+      "ReadOnlyMode": false,
+      "FieldValue": "1",
+      "IsMultiValued": true,
+      "MultiValuedDetails": {
+        "LookupValues": [
+         
+          {
+            "Id": 1,
+            "Value": "On"
+          },
+          {
+            "Id": 2,
+            "Value": "Off"
+          }
+        ],
+        "PopupComponentName": null
+      },
+      "NotificationType": "inline"
+    },
+    {
+      "FieldName": "Pen",
+      "IsMandatory": true,
+      "FieldValue": "0",
+      "FieldType": 2,
+      "IsVisible": true,
+      "ReadOnlyMode": false,
+      "NotificationType": "inline",
+      "MaxLength": 100
+    },
+    {
+
+      "FieldName": "Virtual Pen",
+      "FieldValue": "0",
+      "FieldType": 2,
+      "IsMandatory": true,
+      "IsVisible": true,
+      "ReadOnlyMode": false,
+      "NotificationType": "inline",
+      "MaxLength": 100
+    },
+    {
+
+      "FieldName": "Screening",
+      "FieldValue": "100",
+      "FieldType": 2,
+      "IsMandatory": true,
+      "IsVisible": true,
+      "ReadOnlyMode": false,
+      "NotificationType": "inline",
+      "MaxLength": 100
+    },
+    {
+      "FieldName": "Linetype",
+      "FieldType": 5,
+      "IsVisible": true,
+      "IsMandatory": true,
+      "ReadOnlyMode": false,
+      "FieldValue": "1",
+      "IsMultiValued": true,
+      "MultiValuedDetails": {
+        "LookupValues": [
+        
+          {
+            "Id": 1,
+            "Value": "On"
+          },
+          {
+            "Id": 2,
+            "Value": "Off"
+          }
+        ],
+        "PopupComponentName": null
+      },
+      "NotificationType": "inline"
+    },
+    {
+      "FieldName": "Adaptive",
+      "FieldType": 5,
+      "IsVisible": true,
+      "IsMandatory": true,
+      "ReadOnlyMode": false,
+      "FieldValue": "1",
+      "IsMultiValued": true,
+      "MultiValuedDetails": {
+        "LookupValues": [
+        
+          {
+            "Id": 1,
+            "Value": "On"
+          },
+          {
+            "Id": 2,
+            "Value": "Off"
+          }
+        ],
+        "PopupComponentName": null
+      },
+      "NotificationType": "inline"
+    },
+    {
+      "FieldName": "Lineweight",
+      "FieldValue": "2.99",
+      "FieldType": 3,
+      "IsMandatory": true,
+      "IsVisible": true,
+      "ReadOnlyMode": false,
+      "NotificationType": "inline",
+      "MaxLength": 100
+    },
+    {
+      "FieldName": "Line End",
+      "FieldType": 5,
+      "FieldValue": "1",
+      "IsHiddenLabel": false,
+      "IsMandatory": true,
+      "IsVisible": true,
+      "ReadOnlyMode": false,
+      "IsMultiValued": true,
+      "MultiValuedDetails": {
+        "LookupValues": [
+         
+          {
+            "Id": 1,
+            "Value": "Solid"
+          },
+          {
+            "Id": 2,
+            "Value": "Diamonds"
+          }
+        ],
+        "PopupComponentName": null
+      },
+      "NotificationType": "inline"
+    }
+
+  ]
+}

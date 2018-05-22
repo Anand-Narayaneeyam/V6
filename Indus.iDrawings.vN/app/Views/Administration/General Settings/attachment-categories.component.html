@@ -1,0 +1,28 @@
+﻿<submenu>
+    <sub-menu [source]=menuData [count]=totalItems [menuIds]=enableMenu [menuCard]=types (onSubMenuChange)="onSubMenuChange($event);"> </sub-menu>
+</submenu>
+<div style="overflow:auto;">
+    <list [source]=sourceData [(selectedIds)]="selIds" [datakey]="'Id'" [selectionMode]="'Single'" style="overflow:auto">
+        <template let-item>
+            <card (onSubmition)="onCardSubmit($event)" [datakeyValue]="item.Id" [type]="'list'" (inlineDelete)="onDelete($event)" (onCancelClick)="onCancel($event)" [submitSuccess]="submitSuccess">
+                <div *ngIf="fields">
+
+                    <field [fieldObject]="fields[1]" [fieldValue]="item['Value']"></field>
+                </div>
+            </card>
+        </template>
+    </list>
+</div>
+<slide [width]="400" [position]="Position" [type]="dialog" [show]=showSlide (closeDialog)="closeSlideDialog($event)">
+    <div>
+        <div>
+            Are you sure you want to delete the selected Attachment Category?
+        </div>
+        <div>
+            <div style="width:100%">
+                <button  class="Savebutton "type="button" (click)="DefaultSetting($event)">Yes</button>
+                <button  class="Savebutton "type="button" (click)="cancelClick($event)">No</button>
+            </div>
+        </div>
+    </div>
+</slide>

@@ -1,0 +1,16 @@
+﻿
+<page [pagetitle]="pagePath" [withoutSubmenu]="true">
+    <content>
+        <tabs [selectedTab]="selectedTab" [deleteIndex]="tabDeleteIndex" (getSelectedTab)="getSelectedTab($event)" (onTabClose)="onTabClose($event)">
+            <tab tabTitle="Create Request" closeButtonVisible="hidden">
+                <review-ServiceRequests *ngIf="createRequestEnabled" (submitClick)="onSubmitClick($event)" [action]="action" [btnName]="btnName" [userDetails]="userDetails" [fieldDetailsAdd]="fieldDetailsAdd1"
+                                     [boolcheck]="boolcheck"   [linkArray]="linkArray" (linkClick)="onLinkClick($event)" [entityCategoryId]="entityCategoryId" (requesterPermissionUpdate)="onRequesterPermissionUpdate($event)"></review-ServiceRequests>
+            </tab>
+            <tab tabTitle={{addOnTabName}} *ngIf="addOnTabEnabled" closeButtonVisible="show">
+                <reviewDocument-list *ngIf="documentTabEnabled" (documentSubmit)="onDocumentSubmitClick($event)" (documentDelete)="onDocumentDelete($event)" [workrequestId]="requestId" [userDetails]="userDetails"
+                                     [itemsSource]="documentSource" [entityCategoryId]="1" (itemSourceUpdate)="onDocumentSourceUpdated($event)"></reviewDocument-list>
+                <setrule-childrequest *ngIf="ruleTabEnabled" (submitSuccess)="onRuleUpdate($event)" [ParentEntityId]="parentEntityId" [InitialData]="ruleData ? ruleData[0] : undefined"></setrule-childrequest>
+            </tab>
+        </tabs>
+    </content>
+</page>

@@ -1,0 +1,92 @@
+﻿<page [pagetitle]="pagePath">
+    <pagepath>
+    </pagepath>
+    <content>
+        <section title="Unlock Drawings" [isExpanded]="true" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div>
+                <p>This option is available under <span class="header2"> Settings </span><img class="helpicon" src="Content/Layout/settings_icon.png" /> icon.</p>
+                <p>A newly uploaded drawing is automatically locked by the application. It will not be available to the users, till it is unlocked by the Administrator. The Administrator needs to verify the integrity of the drawing before unlocking it.</p>
+                <p>On clicking Unlock Drawings option, the list of drawings to be unlocked will be listed. Select the required drawing and click on <span class="header2"> View Drawing </span><img class="helpicon" src="Content/Icons/view-drawingN.png" title="View" /> icon, the drawing will be opened.  </p>
+                <p>The following menu options are available to work with Unlock Drawing.</p>
+                <h1> Data </h1><img class="helpicon" src="Content/Icons/space_data_detailS.png" title="Space Data" />
+                <p>The data option allows the user to view the space data, if the drawing has already been linked. </p>
+                <h1>Unlock Drawing</h1>
+                <p>The following verification checks will be done on clicking <span class="header2"> Unlock </span><img class="helpicon" src="Content/Images/Drawings/unblockdwg.png" title="Unlock" /> icon, one after the other. After each check, the system will display whether the drawing has passed or failed in the test, and then proceed to the next check. After performing all checks, if the drawing passes, it will be unlocked and will be available for Space Data Entry. It is possible to stop the process at any stage of the unlocking process. </p>
+                <p> Verification process will continue even if an intermediate task fails.</p>
+                <p><span class="header1">Layer verification check</span>
+                <p>In this Layer verification check, the system will check for the presence of the iDrawings® layers and mandatory layers specified in Administration: Drawing Settings section. There are three scenarios for layer verification depending upon the Polyline Standard used. </p>
+                <p><span class="header1">•	Net standard </span>
+                <p>iDrawings® layers are checked for Gross and Net polyline layers. </p>
+                <p><span class="header1">•	Centerline and Net standard and Net Area enabled</span>
+                <p>iDrawings® layers are checked for Gross, Construction, Space and Net polyline layers.</p>
+                <p><span class="header1">•	Centerline and Net standard and Net Area not enabled</span>
+                <p>iDrawings® layers are checked for Gross, Construction and Space polyline layers.</p>
+                <p>In addition, Mandatory layers specified will be checked for all the above three scenarios. Layer verification will fail if any one of the required layers (iDrawings® and mandatory layers) is not present in the drawing.</p>
+                <p><span class="header1">Gross Area Verification Check </span>
+                <p>In the Area verification check, the system checks the Floor Gross, Construction area and all the Space areas in the selected drawing. If the equation, <span class="header2"> Floor Gross = Construction + Space </span> holds good for the drawing (with a permissible tolerance), it passes the Area Verification check. If the difference is not within the acceptable limit, it fails the check, and the drawing needs to be corrected and uploaded again. </p>
+                <p><span class="header1"> Polyline Verification </span>
+                <p>During this verification stage, it checks the validity of the Net Polyline or Space Polyline or both depending upon the Polyline Standard settings by Indus.</p>
+                <p>It checks for overlapping polylines, spaces with multiple net handles, Net with multiple space handles, spaces with Net Area less than 80% of the Gross Area, spaces with invalid handles, Net polylines without Space polylines, etc.</p>
+                <p>This check would return the number of valid Net polylines in the drawing, along with details of invalid Net Polylines, like those found outside Space polylines, etc. The percentage of valid and invalid Net polylines to the total Space polylines will also be shown).</p>
+                <p>A typical test report would look like this: </p>
+                <p>Total Spaces:118;</p>
+                <p>Invalid Entities in SP Layer : 76A92; 76A98; 76A9B; </p>
+                <p>Spaces with valid Net Polylines: 30 (25 %) </p>
+                <p>Spaces without valid Net polylines: 57 (50 %) </p>
+                <p>Unlinked (No Data) Spaces with valid Net polylines: 1 (1 %) </p>
+                <p>Spaces with multiple Net polylines: 7 (6 %) </p>
+                <p>Linked Spaces with Net Area less than 80% of the Gross Area: 19 (17 %) </p>
+                <p>Unlinked (No Data) Spaces with Net Area less than 80% of the Gross Area: 1 (1 %) </p>
+                <p>The test results are also shown just below the unlock Drawing window. </p>
+
+            </div>
+        </section>
+    </content>
+</page>
+<style type="text/css">
+    h3.Mainheader {
+        color: #178AE8;
+    }
+
+    .header1 {
+        font-weight: bold;
+        color: #178AE8;
+    }
+
+    .header2 {
+        font-weight: normal;
+        color: #178AE8;
+    }
+
+    p {
+        margin-left: 38px;
+        font-size: 13px;
+        margin-right: 3em;
+    }
+
+    .header3 {
+        font-weight: bold;
+        color: black;
+    }
+    /**/ h1 {
+        color: #178AE8;
+        font-size: 1.3em;
+        margin-left: 38px;
+    }
+
+    h2 {
+        color: #178AE8;
+        font-size: 1em;
+        margin-left: 38px;
+    }
+
+    .config {
+        background-color: #178AE8;
+    }
+
+    .helpicon {
+        vertical-align: baseline;
+        width: 20px;
+        height: 20px;
+    }
+</style>

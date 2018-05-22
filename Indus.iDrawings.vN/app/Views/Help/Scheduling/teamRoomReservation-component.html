@@ -1,0 +1,143 @@
+﻿<page [pagetitle]="pagePath">
+    <pagepath>
+    </pagepath>
+    <content>
+        <section title="Reserve Team Room" [isExpanded]="sectionExpansionStatus[0].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div *ngIf="sectionExpansionStatus[0].isExpanded==true">
+
+
+                <p>This option is used to create Team Room Reservations and book space for meetings or other events. Through this option it is possible to check the availability of space and ensure that there are no conflicting bookings. This option will be available only if Enable Team Room Booking option is enabled for the customer. Reservations can be submitted for booking the required meeting rooms.</p>
+
+                <p><span class="header2">Reserve Team Room</span> and <span class="header2">Reservations</span> are provided under the <span class="header2">Team Room Reservation</span> menu. Two tabs namely <span class="header2">My Reservations</span> and <span class="header2">Active Reservations</span> are provided in the <span class="header2">Reservations</span> menu.</p>
+
+                <p>Reserve Team Room option helps users to book team rooms for meetings or events. Reservations can be submitted for booking the required rooms.</p>
+
+                <p>My Reservations option is for processing Reservations created for the logged in User. User can modify or cancel the Reservations or can send reminder mail to the invitees through <span class="header2">My Reservations</span> tab.</p>
+
+                <p>Active Reservations tab will be available only for Administrators and Concierges (Division Administrators).  For an Administrator, all the Reservations made by different Users will be listed in the <span class="header2">Active Reservations</span> tab.  All the Reservations made by the concierges or Reservations made in the accessible Site and Team will be listed for a Concierge in the Active Reservations tab.</p>
+
+                <h2>Reserve Team Room</h2>
+
+                <p>The user can reserve a Team room through the option Team Room Reservation: Reserve Team Room. On selecting this option, all the Team rooms available for Reservation for the current date will be displayed by default. Team Rooms available for booking are those for which the Space Assignment Type is selected as Scheduling Space. </p>
+
+                <p>User can change the date displayed as required.  By default, the time slot chart will be displayed with half hour slots for each room starting from 6:00 AM to 7:00 PM. Already The time slots which are already booked, will be shown as highlighted and on pointing the mouse of the highlighted cell; booking details will be displayed at the tool tip. The time slots that cannot be booked will be displayed as inactive and cannot be selected.</p>
+
+                <p>A <span class="header2">Filter</span> link is provided to filter the workspaces based on Site, Building, Floor, Room Number and Space Function.</p>
+
+                <p>The user can view the location of a room in the floor plan by clicking the <span class="header2">Floor</span> link in the listed Team Rooms. On clicking this link, the Floor plan of the selected floor will be opened with the available rooms as hatched and its tool tip will show the space details.The selected room will be shown in green color and other rooms which can be scheduled will be shown in yellow color.</p>
+
+                <p>The Room Availability Calendar with Room No. link and time slots representing the details of the highlighted room will be displayed below the floor plan.</p>
+
+                <p>On clicking the <span class="header2">Room No.</span> link, selected Room will be shown as blinking in the Floor Plan and a Room Details window will be displayed with all the details of the selected room. Any photo added for the room will also be displayed in the Room Details window.</p>
+
+                <p>The reservation of the required room can be done by clicking the required time slot in the time slot chart displayed in the Reserve Team Room page as well as through the time slot chart in the Floor link. On clicking a time slot, New Team Room Reservation page will be displayed where the User can enter/select From (Date time), To (Date time), Event Name, Participants (Count), Booked for, Invitees and Comments. </p>
+
+                <p>
+                    On clicking the <span class="header2">Location</span> button, the details of the Location which includes the Site, Building, Floor, Space Function and Room No. will be displayed as read only.
+
+                    The requester can specify the number of participants and also select Invitees for the meeting. Invitees can be selected from iDrawings Users.
+                </p>
+
+                <p><span class="header1">Add Invitees:</span> Invitees can be added by clicking the <span class="header2"> Add</span> <img src="Content/list_adD.png" alt="Add" class="helpicon" /> button placed at the right side of the Invitees list box. On clicking the <span class="header2"> Add</span> <img src="Content/list_adD.png" alt="Add" class="helpicon" /> button, Invitees page will be displayed to select the invitees. iDrawings Users and Employees are the options listed in the User Category combo. User has to select the required User Category from the combo and all the Users of selected User Category will be listed. Select the required Invitees and click Save button. Selected Invitees will be added. </p>
+
+                <p>Invitees can be removed from the list by clicking the <span class="header2"> Remove</span> <img src="Content/list_removE.png" alt="Remove" class="helpicon" /> button after selecting the Invitee to be deleted. </p>
+
+                <p>Once all the requirements are entered, the request can be submitted by clicking the Reserve button. The newly submitted Reservation will be listed in the My Reservations tab of the Booked for User.  </p>
+
+                <p>Reservation can be made by any Users. All Users except a Concierge can make reservation for themselves only. A Concierge can make reservation for users in his / her Team or Division.</p>
+
+            </div>
+        </section>
+
+        <section title="Reservations" [isExpanded]="sectionExpansionStatus[1].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div *ngIf="sectionExpansionStatus[1].isExpanded==true">
+                <p>This options list the Team Room Reservations created for the Customer. Two tabs namely My Reservations and Active Reservations are provided in Reservations menu.</p>
+
+                <h1>My Reservations</h1>
+
+                <p>This option is to list all the Team Room Reservations booked for the logged in user. Through this option the user can modify, set reminder or cancel the reservations. </p>
+
+                <p>All the active Reservations will be listed with 'Confirmed' status. A checkbox "Show active reservations" is provided in the My Reservations tab to show only Reservations in 'Confirmed' or 'Checked In' status. By default, the checkbox will be displayed as selected.</p>
+
+                <p>Reservation will be moved to 'Auto Bump' status if the Reservation time is lapsed and the User has not checked in the Reservation. If the User has checked in the Reservation from Hoteling App or KIOSK, and Reservation time is lapsed, the Reservation will be moved to 'Expired' status.</p>
+
+                <p><span class="header1">Modify Reservation:</span> This option <img class="helpicon" src="Content/Icons/data_editN.png" alt="Modify Reservation" /> is to modify a Team Room Reservation. The logged in User can modify the reservation if the Reservation is created by logged in User and if the Reservation is in Confirmed Status. After modifying the Reservation, Meeting Rescheduled Mail will be sent to all Invitees. </p>
+
+                <p>Note: Reservations in Confirmed status only can be modified.</p>
+
+                <p><span class="header1">Reminder:</span> This option is used to send reminder to the invitees in the selected scheduled Reservation. Reminder can be set for a Reservation by clicking the <span class="header2">Reminder</span> <img class="helpicon" src="Content/Icons/remindeR.png" alt="Reminder" />  icon. User can send reminder to the invitees only if the selected Reservation is in Confirmed status. </p>
+
+                <p><span class="header1">Cancel Reservation:</span> A Reservation can be cancelled by clicking the <span class="header2">Cancel Reservation</span> <img class="helpicon" src="Content/Icons/cancel_RequestS.png" alt="Cancel Reservation" />  icon. User can cancel the Reservation in Confirmed status only. While cancelling the Reservation, status of the selected Reservation will be changed to Cancelled. If a Confirmed Reservation is cancelled, Meeting Cancelled mail will be sent to all invitees in the Reservation and to the Requester.</p>
+
+                <p><span class="header1">Invitee Status</span></p>
+                <p>The user can view the status of the invitees using this option. On selecting this <img class="helpicon" src="Content/Icons/invitee_statuS.png" alt="Invitee Status" />  icon, an Invitee Status window will be displayed with the Event name as the caption and, other details like when, where and who all are attending the meeting will also be listed in the window. The text of each invitee&#39;s names will be displayed in Green, Red or Black color as per the response to the invitation mail send to each of them. If the invitee has accepted the invitation then the text color of the name will be displayed in Green color. If the invitee has declined the invitation then the text color of the name will be displayed in Red color and if the invitee has not taken any action in response to the invitation then the text color of  his/her name will be displayed in black color in the Invitee Status window.</p>
+
+                <h1>Active Reservations</h1>
+
+                <p>This option is used for viewing all the Team Room Reservations submitted by different users. This tab will be available only for Administrators and Division Administrators (Concierges). For an Administrator, all the Reservations made by different Users will be listed.  All the Reservations made by the concierges or Reservations made in the accessible Site and Team will be listed for a Concierge.</p>
+
+                <p>A checkbox "Show active reservations" is provided in the Active Reservations tab to show only Reservations in 'Confirmed' or 'Checked In' status. By default, the checkbox will be displayed as selected.</p>
+
+                <p>Through this option the user can modify, set reminder or cancel the reservations or see the Invitees for the Reservation.</p>
+
+                <p>By default, the Reservations will be listed in the ascending order of 'From' and 'To' dates of the Reservations. The list can be sorted on any column by clicking the column header.</p>
+
+                <p><span class="header1">Modify Reservation:</span>This option <img class="helpicon" src="Content/Icons/data_editN.png" alt="Modify Reservation" /> is to modify a Team Room Reservation. The logged in User can modify the reservation if the Reservation is created by logged in User and if the Reservation is in Confirmed Status. After modifying the Reservation, Meeting Rescheduled Mail will be sent to all Invitees.</p>
+
+                <p><i>Note:</i> Reservations in Confirmed status only can be modified.</p>
+
+                <p><span class="header1">Cancel Reservation:</span> This option is to cancel the Reservations which are in confirmed status.  Select the Reservation to be cancelled and click <span class="header2">Cancel Reservation</span> <img class="helpicon" src="Content/Icons/cancel_RequestS.png" alt="Cancel Reservation" />  icon, the selected Reservation will be cancelled. On Cancelling the Reservation, Invitation Cancelled mail will be sent to all selected Invitees in the Reservation and to the Requester.</p>
+
+                <p><span class="header1">Check In </span> and <span class="header1">Check Out</span> can be done by the Booked for Users and this option will be available in Mobile or KIOSK application.</p>
+            </div>
+
+        </section>
+    </content>
+</page>
+<style type="text/css">
+    h3.Mainheader {
+        color: #178AE8;
+    }
+
+    .header1 {
+        font-weight: bold;
+        color: #178AE8;
+    }
+
+    .header2 {
+        font-weight: normal;
+        color: #178AE8;
+    }
+
+    p {
+        margin-left: 38px;
+        font-size: 13px;
+        margin-right: 3em;
+    }
+
+    .header3 {
+        font-weight: bold;
+        color: black;
+    }
+    /**/ h1 {
+        color: #178AE8;
+        font-size: 1.3em;
+        margin-left: 38px;
+    }
+
+    h2 {
+        color: #178AE8;
+        font-size: 1em;
+        margin-left: 38px;
+    }
+
+    .config {
+        background-color: #178AE8;
+    }
+
+    .helpicon {
+        vertical-align: baseline;
+        width: 20px;
+        height: 20px;
+    }
+</style>

@@ -1,0 +1,8 @@
+﻿<split-view [splitviewObject]="splitviewInput" [pageTitle]="pageTitle">
+    <primary-view>
+        <DynamicFields [dataSource]="fieldDetailsAddEdit" (submitFieldObject)="onSubmitData($event)" [btnName]="btnName" [dataKey]="dataKey" (fieldChange)="fieldChange($event)" (chkChange)="checkBoxChange($event)" (dynamicListAddEmit)="listbuttonadd($event)" (dynamicListRemoveEmit)="listbuttondelete($event)"></DynamicFields>
+    </primary-view>
+    <secondary-view>
+        <notificationRecipients-checkboxgrid *ngIf="splitviewInput.showSecondaryView" style="display: block;width:600px;" (submitSuccess)="OnSuccessfulSubmit($event)" [chkBxValuesforRecipients]="chkBxValuesforRecipients"></notificationRecipients-checkboxgrid>
+    </secondary-view>
+</split-view>

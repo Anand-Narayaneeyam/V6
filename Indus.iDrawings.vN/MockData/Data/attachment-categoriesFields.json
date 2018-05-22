@@ -1,0 +1,27 @@
+﻿{
+  "data": [
+    {
+      "FieldId": 1,
+      "FieldName": "Id",
+      "FieldType": 1,
+      "FieldValue": "",
+      "IsVisible": false,
+      "IsMultiValued": false,
+      "IsMandatory": false,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false
+    },
+    {
+      "FieldId": 2,
+      "FieldName": "Category Name",
+      "FieldType": 1,
+      "FieldValue": "",
+      "IsVisible": true,
+      "IsMultiValued": false,
+      "IsMandatory": true,
+      "IsHiddenLabel": true,
+      "ReadOnlyMode": false,
+      "NotificationType": "inline"
+    }
+  ]
+}

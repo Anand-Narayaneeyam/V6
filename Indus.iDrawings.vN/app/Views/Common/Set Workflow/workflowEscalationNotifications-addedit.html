@@ -1,0 +1,37 @@
+﻿<div>
+    <split-view [splitviewObject]="splitviewInput" [pageTitle]="pageTitle">
+        <primary-view>
+            <DynamicFields [dataSource]="fieldDetailsAddEdit" (submitFieldObject)="onSubmitData($event)" [btnName]="btnName" [dataKey]="dataKey" (fieldChange)="fieldChange($event)" (dynamicListAddEmit)="listbuttonadd($event)" (dynamicListRemoveEmit)="listbuttondelete($event)" [strLstBoxValidateMessage]="strLstBoxValidateMessage"></DynamicFields>
+        </primary-view>
+        <secondary-view>
+            <notificationRecipients-checkboxgrid *ngIf="splitviewInput.showSecondaryView" style="display: block;width:550px;" (submitSuccess)="OnSuccessfulSubmit($event)" [chkBxValuesforRecipients]="chkBxValuesforRecipients"></notificationRecipients-checkboxgrid>
+        </secondary-view>
+    </split-view>
+    <slide [width]="200" [position]="Position" [type]="dialog" [show]=showMessageTemplate (closeDialog)="closeSlideDialog($event)">
+        <div>
+            <div>
+                Changes made here in Notification Message will be updated in the corresponding Template in Administration Module. Are you sure you want to update?
+            </div>
+            <div>
+                <div style="width:100%">
+                    <button class="Savebutton " type="button" (click)="okDelete($event)">Yes</button>
+                    <button class="Savebutton " type="button" (click)="cancelClick($event)">No</button>
+                </div>
+            </div>
+        </div>
+    </slide>
+</div>
+
+<style>
+
+    .ddllabel_2770{
+        width:156pc !important;
+    }
+    .ddllabel_2768{
+        width:156px !important;
+    }
+    .ddllabel_2769{
+        width:156px !important;
+    }
+
+</style>

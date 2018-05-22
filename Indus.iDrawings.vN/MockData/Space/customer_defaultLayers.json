@@ -1,0 +1,27 @@
+﻿{
+
+  "data": [
+    {
+      "Id": 1,
+      "LayerName": "$POLYLINE_GR"
+
+    },
+    {
+      "Id": 2,
+      "LayerName": "$POLYLINE_CN"
+
+    },
+    {
+      "Id": 3,
+      "LayerName": "$POLYLINE_SP"
+
+    },
+    {
+      "Id": 4,
+      "LayerName": "$POLYLINE_NT"
+
+    }
+
+  ]
+
+}

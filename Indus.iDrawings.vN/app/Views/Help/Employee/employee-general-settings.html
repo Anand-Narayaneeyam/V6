@@ -1,0 +1,131 @@
+﻿<page [pagetitle]="pagePath">
+    <pagepath>
+    </pagepath>
+    <content>
+        <section title="Drawing Management" [isExpanded]="sectionExpansionStatus[0].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div *ngIf="sectionExpansionStatus[0].isExpanded">
+                <p>This option allows the administrator to select floors for Employee management. The floors available for Employee management are displayed in the form of site-building-floor hierarchy with select boxes for each. Sites/Buildings/Floors can be selected by selecting the select boxes against each and then clicking the Save Changes button.  </p>
+
+            </div>
+        </section>
+        <section title="Job Titles" [isExpanded]="sectionExpansionStatus[1].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div *ngIf="sectionExpansionStatus[1].isExpanded">
+                <p>This option allows the administrator to add, edit and delete the Job Titles. On clicking this, Job Titles added if any, will be displayed.</p>
+                <p><span class="header1">Add: </span> Create a new Job Title by clicking <span class="header2">Add </span> <img class="helpicon" src="Content/Icons/data_addN.png" title="Add" /> icon. A new value entry field will be inserted on clicking Add icon. Enter the Job Title and click the Save button. </p>
+                <p><span class="header1">Edit: </span>Job Title can be edited by selecting the required Job Title and then clicking the <span class="header2">Edit </span> <img class="helpicon" src="Content/Icons/data_editN.png" title="Edit" /> icon.</p>
+                <p><span class="header1">Delete: </span> Delete a Job Title by selecting the required Job Title and then clicking the <span class="header2">Delete </span><img class="helpicon" src="Content/Icons/data_deleteN.png" title="Delete" /> icon.</p>
+
+            </div>
+        </section>
+        <section title="Grades" [isExpanded]="sectionExpansionStatus[2].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div *ngIf="sectionExpansionStatus[2].isExpanded">
+                <p>This option allows the administrator to add, edit and delete Employee Grades.On clicking this option, Grades added, if any, will be displayed as grid with Grade and Rank Number.</p>
+                <p><span class="header1">Add: </span> Add a new Grade by clicking the <span class="header2">Add </span> <img class="helpicon" src="Content/Icons/data_addN.png" title="Add" /> icon. Enter the Grade and click the Save button. </p>
+                <p><span class="header1">Edit: </span> A Grade can be edited by selecting the required Grade and then clicking the <span class="header2">Edit </span> <img class="helpicon" src="Content/Icons/data_editN.png" title="Edit" /> icon.</p>
+                <p>Note: Rank Number cannot be edited.</p>
+                <p><span class="header1">Delete: </span> Delete a Grade by selecting the required Grade and then clicking the <span class="header2">Delete </span><img class="helpicon" src="Content/Icons/data_deleteN.png" title="Delete" /> icon.</p>
+
+            </div>
+        </section>
+        <section title="Additional Data Fields - Employees" [isExpanded]="sectionExpansionStatus[3].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div *ngIf="sectionExpansionStatus[3].isExpanded">
+                <p>The default data fields available for Employee information are Employee Code, First Name, Middle Name, Last Name, Suffix, Title, Grade, Employee Cost Centre, Supervisor etc. In addition to this users can add more fields like Date of Joining, Telephone No, etc.</p>
+                <p><span class="header1"> Data Field  </span> Users can create Additional Data Fields to the Employee and Move Project data in addition to the system defined data fields which are available by default. For creating a new Data Field, the <span class="header2">Add </span> <img class="helpicon" src="Content/Icons/data_addN.png" title="Add" /> and <span class="header2">Edit </span><img class="helpicon" src="Content/Icons/data_editN.png" title="Edit" /> options are provided. The Data Field Name, Data Field Type (Text Field, Text Area, Date, Date Time, Integer or Numeric), whether Mandatory or not, whether the field is Totalizable or not and whether a Validated field or not etc. have to be specified. If the selected data type is of Text Area, the validated property will not be available. If the selected data field is of type Numeric, then only the Totalizable option is available. If a data field is set as Totalizable, the total value of that field will be displayed in reports (Subtotal and Total) as well as in Totalize window. For Validated fields, the set of allowed values will also have to be specified through the <span class="header2"> Field Values </span> <img class="helpicon" src="Content/Icons/field-valueN.png" title="Field Values" /> option. For e.g. Marital Status could be a validated field for Employee with values Single, Married, Divorced, and Separated. For Mandatory fields, it would be required to enter a value for it while entering Employee or Move Project data.</p>
+                <p>This option is for creating/viewing/editing/deleting Additional Data Fields for Employee data. On selecting this option, any Additional Data Fields defined for the Employee Data will be displayed in a grid with Field Name, Field Type, Mandatory and Validated.</p>
+                <p><span class="header1">Add : </span> Create a new Data Field for the Employee Data by clicking the  <span class="header2">Add  </span> <img class="helpicon" src="Content/Icons/data_addN.png" title="Add" /> icon.</p>
+                <p><span class="header1">Edit: </span> Edit a data Field by selecting it and then clicking the <span class="header2">Edit </span> <img class="helpicon" src="Content/Icons/data_editN.png" title="Edit" /> icon.</p>
+                <p><span class="header1">Delete: </span> Delete a Data Field by selecting it and then clicking the <span class="header2">Delete </span><img class="helpicon" src="Content/Icons/data_deleteN.png" title="Delete" /> icon.</p>
+                <p><span class="header1">Field Values </span>
+                <p>For validated fields, a set of allowed values will also have to be specified through this option. Select a Validated Field and click <span class="header2"> Field Values </span><img class="helpicon" src="Content/Icons/field-valueN.png" title="Field Values" /> icon, all values defined for the validated field will be displayed in a list.</p>
+                <p><span class="header1">Add : </span> Create a new Value for the Data Field by clicking the <span class="header2">Add  </span> <img class="helpicon" src="Content/Icons/data_addN.png" title="Add" /> icon.</p>
+                <p><span class="header1">Edit: </span> Edit a Data Field by selecting it and then clicking the  <span class="header2">Edit </span> <img class="helpicon" src="Content/Icons/data_editN.png" title="Edit" /> icon.</p>
+                <p><span class="header1">Delete: </span> Delete a value by selecting it and then clicking the <span class="header2">Delete </span><img class="helpicon" src="Content/Icons/data_deleteN.png" title="Delete" /> icon.</p>
+
+            </div>
+        </section>
+        <section title="Additional Data Fields - Move Projects" [isExpanded]="sectionExpansionStatus[4].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div *ngIf="sectionExpansionStatus[4].isExpanded">
+                <p>The default data fields available for Move Projects are Project Name, Project Description, Project Manager, Move Requested By, Date Requested, Date to Complete, Status. In addition users can add more fields like Contact Person, Reason for Move, etc. </p>
+                <p> This option is for creating/viewing/editing/deleting Additional Data Fields for Move Project data. On selecting this option, any Additional Data Fields defined for the Move Project will be displayed in a grid with Field Name, Field Type, Mandatory and Validated.</p>
+                <p><span class="header1">Add : </span> Create a new Data Field for the Move Project Data by clicking the <span class="header2">Add  </span> <img class="helpicon" src="Content/Icons/data_addN.png" title="Add" /> icon.</p>
+                <p><span class="header1">Edit: </span> Edit a Data Field by selecting it and then clicking the <span class="header2">Edit </span> <img class="helpicon" src="Content/Icons/data_editN.png" title="Edit" /> icon.</p>
+                <p><span class="header1">Delete: </span>Delete a Data Field by selecting it and then clicking the  <span class="header2">Delete </span><img class="helpicon" src="Content/Icons/data_deleteN.png" title="Delete" /> icon.</p>
+                <p><span class="header1">Field Values: </span> On clicking <span class="header2"> Field Values </span> <img class="helpicon" src="Content/Icons/field-valueN.png" title="Field Values" /> icon after selecting a validated field, all Field Values defined for the selected Field will be displayed in a data grid. </p>
+                <p><span class="header1">Add : </span> Create a new Value for the Data Field by clicking the <span class="header2">Add  </span> <img class="helpicon" src="Content/Icons/data_addN.png" title="Add" /> icon.</p>
+                <p><span class="header1">Edit: </span> Edit a Data Field by selecting it and then clicking the  <span class="header2">Edit </span> <img class="helpicon" src="Content/Icons/data_editN.png" title="Edit" /> icon.</p>
+                <p><span class="header1">Delete: </span> Delete a value by selecting it and then clicking the <span class="header2">Delete </span><img class="helpicon" src="Content/Icons/data_deleteN.png" title="Delete" /> icon.</p>
+
+            </div>
+        </section>
+        <section title="Custom Reports" [isExpanded]="sectionExpansionStatus[5].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div *ngIf="sectionExpansionStatus[5].isExpanded">
+                <p>Custom Reports are reports created by the users according to their own requirements. Users can create and save reports with a suitable name through the Custom Reports option under <span class="header2"> Settings: Space: General Settings</span>. It is also possible to share these reports with other users of the system.</p>
+                <p> Users can view and print these reports whenever required by selecting them from the Custom Reports option under Reports. Reports created by other users and shared will be listed with the name of the owner displayed in parenthesis after the report name</p>
+                <p> The Custom Reports option under General Settings lists all the custom reports created by the user. </p>
+                <p><span class="header1">Add: </span>Create a new Custom Report by clicking the <span class="header2">Add </span> <img class="helpicon" src="Content/Icons/data_addN.png" title="Add" /> icon. </p>
+                <p>On clicking the <span class="header2"> Add </span> <img class="helpicon" src="Content/Icons/data_addN.png" title="Add" /> icon, a report column selection window pops up with buttons for Field Order, Preview and Save. All the Data fields that are available will be listed in alphabetic order with check boxes. </p>
+                <p>The required columns for the Report can be selected by checking the corresponding data fields. Fields once selected can be deselected by unchecking them. Group Fields can be specified for grouping the data rows of the report. Each group will be printed with a Sub heading showing the group field values of the group. Show Subtotal, Show Grand Total also can be set for Numeric/Integer type static fields like Area, Cost, etc. and Numeric/Integer type additional data fields which are set as totalizable in the setup.</p>
+                <p>Field properties like Column Heading and Column Width (in Inches) can also be set. By default, the Report Column Headings will be the same as the Data Field Names. Users can change a Report Column Heading by changing the Field Name in the Column Heading. The width of a Report Column is set as 1.5 inch by default. User can change the Report Column Width of the required Data Fields.  </p>
+                <p><span class="header1">Field Order: </span> The order of the Report Columns and Sub Header Fields can be set through this option. On clicking Field Order button, Field Order window pops up with all the Header and Sub Header fields. Each data field can be moved by selecting and dragging it to the required position.</p>
+                <p><span class="header1">Preview: </span> Users can view the report using this Preview option. After selecting the report fields and setting the Field Order the report can be previewed by clicking the Preview button. A Report Heading can also be given for viewing the report. The Paper orientation can be set to Landscape or Portrait by clicking on the corresponding radio button.</p>
+                <p> The report can be shared with other users by checking the corresponding check box.</p>
+                <p>User can go to the previous stages and edit the settings already specified using the corresponding buttons.</p>
+                <p><span class="header1">Save: </span> User can save the report by clicking the Save button. Once a new report is created and saved by a user, it will be listed in the Custom reports in Reports menu.  </p>
+                <p><span class="header1">Edit: </span>Edit a Custom Report by selecting it and then clicking the <span class="header2">Edit </span> <img class="helpicon" src="Content/Icons/data_editN.png" title="Edit" /> icon. The Report Columns, field order, report name, etc. can be modified through this option.  </p>
+                <p>Report column selection window pops up with buttons for Field Order and Preview, Save As and Save, on clicking Edit icon. All the Data fields that are available will be listed in alphabetic order with check boxes and all the data fields selected for the report will be displayed as checked.</p>
+                <p><span class="header1">Preview: </span> After making the modifications, Users can view the report using this Preview option.</p>
+                <p><span class="header1">Save: </span> User can save the changes in the report by clicking the Save button.</p>
+                <p><span class="header1">Save As: </span> User can make changes to an existing report and save it as a new report with a different name using this option, by clicking the Save As button. </p>
+                <p><span class="header1">Delete: </span> Delete a Custom Report by selecting it and then clicking the  <span class="header2">Delete </span><img class="helpicon" src="Content/Icons/data_deleteN.png" title="Delete" /> icon.</p>
+
+            </div>
+        </section>
+    </content>
+</page>
+<style type="text/css">
+    h3.Mainheader {
+        color: #178AE8;
+    }
+
+    .header1 {
+        font-weight: bold;
+        color: #178AE8;
+    }
+
+    .header2 {
+        font-weight: normal;
+        color: #178AE8;
+    }
+
+    p {
+        margin-left: 38px;
+        font-size: 13px;
+        margin-right: 3em;
+    }
+
+    .header3 {
+        font-weight: bold;
+        color: black;
+    }
+    /**/ h1 {
+        color: #178AE8;
+        font-size: 1.3em;
+        margin-left: 38px;
+    }
+
+    h2 {
+        color: #178AE8;
+        font-size: 1em;
+        margin-left: 38px;
+    }
+
+    .config {
+        background-color: #178AE8;
+    }
+
+    .helpicon {
+        vertical-align: baseline;
+        width: 20px;
+        height: 20px;
+    }
+</style>

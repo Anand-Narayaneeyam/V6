@@ -1,0 +1,34 @@
+﻿{
+  "data": [
+    {
+      "Id": 1,
+      "userGroupName": "Workorder Technician",
+      "description": "Technician",
+      "site": "Arlington"
+    },
+    {
+      "Id": 2,
+      "userGroupName": "Workorder Contractors",
+      "description": "Contractors",
+      "site": "Concord"
+    },
+    {
+      "Id": 3,
+      "userGroupName": "Facility Management Group",
+      "description": "Managing All Groups",
+      "site": "Arlington"
+    },
+    {
+      "Id": 4,
+      "userGroupName": "Purchase Dept",
+      "description": "Purchase Items",
+      "site": "Aberdeen"
+    },
+    {
+      "Id": 5,
+      "userGroupName": "Concord Group",
+      "description": "site group",
+      "site": "Concord"
+    }
+  ]
+}

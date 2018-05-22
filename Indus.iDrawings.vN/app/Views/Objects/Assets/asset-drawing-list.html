@@ -1,0 +1,12 @@
+﻿<div *ngIf="pageTarget == 1">
+            <div *ngIf="objectCategoryId != undefined">
+                <!--<objectDrawinglist [ObjectCategoryId]="objectCategoryId"></objectDrawinglist>-->
+                <drawingdetails [moduleId]="moduleId" [pageTarget]="pageTarget" [selectedRow]="selectedRow" [objectCategoryId]="objectCategoryId"></drawingdetails>
+            </div>
+</div>
+<div *ngIf="pageTarget == 2">
+            <div *ngIf="objectCategoryId != undefined">
+                <!--<objectDrawinglist [ObjectCategoryId]="objectCategoryId"></objectDrawinglist>-->
+                <drawingdetails [moduleId]="moduleId" [pageTarget]="pageTarget" [selectedRow]="selectedRow" [objectCategoryId]="objectCategoryId" [isNotification]=false></drawingdetails>
+            </div>
+</div>

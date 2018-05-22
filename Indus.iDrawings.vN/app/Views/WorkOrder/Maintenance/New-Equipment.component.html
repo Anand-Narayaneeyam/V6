@@ -1,0 +1,12 @@
+﻿<div>
+    <div style="width:50%;float:left"><DropDownListComponent *ngIf="ddlEquipmentCategory" [fieldObject]="ddlEquipmentCategory" (change)="onChangeEquipmentCategory($event.target.value)" [SetAlignment]=alignContent></DropDownListComponent></div>
+    <div style="width:50%;float:right"><DropDownListComponent *ngIf="ddlEquipmentType" [fieldObject]="ddlEquipmentType" (change)="onChangeEquipmentType($event.target.value)" [SetAlignment]=alignContent></DropDownListComponent></div>
+    <div style="width:100%;display: inline-flex;margin-top:5px">
+        <div style="display: block;width:6%;float:left;">
+            <button  class="Savebutton "style="float:right;" type="button" (click)="insertEquipmentList($event)" title="Save">Save</button>
+        </div>
+    </div>
+    <div style="height:5px">&nbsp;</div>
+    <div style="height:65%;"><gridView [dataSource]="itemsSource" [properties]="inputItems" [columns]="fieldObject" (onSorting)="onSort($event)"></gridView></div>
+    <div style="height:20%;"><paging [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="pageChanged($event);"></paging></div>
+</div>

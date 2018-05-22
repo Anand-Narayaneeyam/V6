@@ -1,0 +1,7 @@
+﻿
+<div style="margin-left:10px;">
+    <gridView [dataSource]="itemsSource" [properties]="inputItems" [columns]="fieldObject"></gridView>
+</div>
+<paging [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="onPageChanged($event);"></paging>
+
+<button  class="Savebutton "type="button" (click)="updateFloorAccess($event)"> Save Changes </button>

@@ -1,0 +1,21 @@
+﻿
+<div *ngIf="ddlcriteriareport != undefined" style="margin-left: 2px;">
+    <DropDownListComponent [fieldObject]="ddlcriteriareport" [ShowSelectOption]="false" (change)="onChangeType($event.target.value)" [SetAlignment]=alignContent></DropDownListComponent>
+</div>
+<div style="height:calc(100% - 50px);">
+    <tabs [selectedTab]="selectedTab" (getSelectedTab)="getSelectedTab($event)">
+        <tab *ngIf="onCriteriaChange" tabTitle={{tabTitle}} closeButtonVisible="hidden">
+            <floorselectionreport *ngIf="selectedTab == 0 && onCriteriaChange && !orgLevelSelect" [Criteria]="selectedCriteria" [ReportCategoryId]="ReportCategoryId" (selectedIds)="submit($event)"></floorselectionreport>
+            <select-orgunit-report *ngIf="selectedTab == 0 && orgLevelSelect" [ReportCategoryId]="ReportCategoryId" (onSubmitClick)="Selected($event)"></select-orgunit-report>
+        </tab>
+        <tab *ngIf="next != undefined" tabTitle="Report" closeButtonVisible="hidden">
+            <employees-OverOccupiedSpaces *ngIf="isInitialised" [Ids]="next" [reportBy]="selectedCriteria" [orgName]="orgName"></employees-OverOccupiedSpaces>
+        </tab>
+    </tabs>
+</div>
+
+<style>
+    :host .ddllabel_1342 {
+        margin-top: 5px !important;
+    }
+</style>

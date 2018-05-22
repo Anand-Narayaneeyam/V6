@@ -1,0 +1,43 @@
+﻿<div style="float: right; width: 50%;">
+    <div *ngIf="blnShowSort == true">
+        <sort *ngIf="fields && sourceData" [fieldNames]="fields" [listItems]=sourceData (sortEvent)="onSorting($event)"></sort>
+    </div>
+</div>
+<submenu>
+    <sub-menu [menuCard]=types [source]=menuData [count]=gridcount [menuIds]=enableMenu (onSubMenuChange)="onSubMenuChange($event);"> </sub-menu>
+</submenu>
+<div>
+    <content>
+        <list style="height:85%;overflow-y:scroll;" [source]=sourceData [(selectedIds)]="selIds" [datakey]="'AttachmentId'" [selectionMode]="'Single'">
+            <template let-item>
+                <card [enableEditBtn]="cardButtonPrivilege[0]" [enableDeleBtn]="cardButtonPrivilege[1]" (onSubmition)="onCardSubmit($event)" [datakeyValue]="item['AttachmentId']" (inlineDelete)="onDelete($event)" (onCancelClick)="onCancel($event)" (onFileUpload)="onFileUpload($event)" [submitSuccess]="submitSuccess">
+                    <!--<div *ngIf="fields != undefined">-->
+                    <div *ngIf="fields">
+                        <field [isEditEnabled]="cardButtonPrivilege[0]" [fieldObject]="fields[0]" [fieldValue]="item['File Name']"></field>
+                        <field [isEditEnabled]="cardButtonPrivilege[0]" [fieldObject]="fields[1]" [fieldValue]="item['File Size (KB)']"></field>
+                        <field [isEditEnabled]="cardButtonPrivilege[0]" [fieldObject]="fields[2]" [fieldValue]="item['Description']"></field>
+                        <field [isEditEnabled]="cardButtonPrivilege[0]" [fieldObject]="fields[3]" [fieldValue]="item['Attachment Category']"></field>
+                        <field [isEditEnabled]="cardButtonPrivilege[0]" [fieldObject]="fields[4]" [fieldValue]="item['Uploaded On']"></field>
+                        <field [isEditEnabled]="cardButtonPrivilege[0]" [fieldObject]="fields[5]" [fieldValue]="item['Uploaded By']"></field>
+                    </div>
+                </card>
+            </template>
+        </list>
+        <!--<paging [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="pageChanged($event);"></paging>-->
+    </content>
+    <slide [width]="slidewidth" [position]="position" [show]="showSlide" (closeDialog)="closeSlideDialog($event)">
+        <div>
+            <div>Are you sure you want to delete the selected Attachment?  </div>
+            <div style="width:100%">
+                <button  class="Savebutton "type="button" (click)="okDelete($event)">Yes</button>
+                <button  class="Savebutton "type="button" (click)="cancelClick($event)">No</button>
+            </div>
+        </div>
+    </slide>
+
+</div>
+<slide [width]="600" [position]="positionImage" [type]="'dialog'" [show]="viewImage" [absolute]="'true'" (closeDialog)="closeSlideDialogPreview($event)">
+    <div *ngIf="imgData1 != undefined">
+        <img src={{imgData1}} height="500" width="590" />
+    </div>
+</slide>

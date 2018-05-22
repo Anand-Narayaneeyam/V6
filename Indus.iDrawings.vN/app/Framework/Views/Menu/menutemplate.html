@@ -1,0 +1,114 @@
+﻿
+<div class="menu-loading" *ngIf="menusource == undefined">
+    <img src="Content/Images/progress.gif" />
+</div>
+<div id="module" class="overall-menu-component" *ngIf="type=='overall'">
+    <div class="list">
+        <ul style="margin-top: 10px;">
+            <li class="next-row" *ngFor="let menu of menusource">
+                <a *ngIf="menu.id < 1000" [routerLink]="[menu.path]" id="{{menu.id}}" style="text-decoration: none;cursor:none;pointer-events: none;">{{menu.title}}</a>
+                <a *ngIf="menu.id >= 1000" [routerLink]="[menu.path, menu.id]" id="{{menu.id}}" style="text-decoration: none;cursor:none;pointer-events: none;">{{menu.title}}</a>
+
+                <ul>
+                    <li class="sub-row" *ngFor="let subitem of menu.subMenu">
+                        <a *ngIf="subitem.id < 1000" [routerLink]="[subitem.path]">{{subitem.title}}</a>
+                        <a *ngIf="subitem.id >= 1000" [routerLink]="[subitem.path, subitem.id]">{{subitem.title}}</a>
+                    </li>
+                </ul>
+
+            </li>
+        </ul>
+    </div>
+</div>
+<div class='verticalmenu' *ngIf="(type=='context' || type=='mobile' ) && generalmenu==false ">
+    <div style="position:fixed; margin-left:140px;top:49%;padding:13px 0px;background: #178AE8;" (click)="closeVerticalMenu()" *ngIf="ishideMenu ==false && type=='context'">
+        <img style="width:30px;" src="Content/Images//close_siteN.png" />
+    </div>
+
+    <div *ngIf="ishideMenu ==true && type=='context'" style="position:fixed;z-index:10;padding:13px 0px;background: #178AE8; margin-left:-5px;top:49%; -moz-transform: scaleX(-1); -o-transform: scaleX(-1);-webkit-transform: scaleX(-1);transform: scaleX(-1);filter: FlipH;-ms-filter:FlipH;" (click)="closeVerticalMenu()">
+        <img style="width:30px;" src="Content/Images//close_siteN.png" />
+    </div>
+
+    <ul>
+        <li *ngFor="let menu of menusource">
+            <div class="navHeader">
+                <span style="padding-left:5px;">{{menu.title}}</span>
+            </div>
+            <ul *ngIf="menu.subMenu.length !=0">
+                <li *ngFor="let subitem of menu.subMenu" [class.selected]="subitem === submenuItem" (click)="onSelect(subitem)">
+                    <a *ngIf="subitem.id < 1000" [routerLink]="[subitem.path]" (click)="onMainMenuClick(subitem)">{{subitem.title}}</a>
+                    <a *ngIf="subitem.id >= 1000" [routerLink]="[subitem.path, subitem.id]" (click)="onMainMenuClick(subitem)">{{subitem.title}}</a>
+                </li>
+            </ul>
+
+        </li>
+    </ul>
+</div>
+<div class='verticalGeneralmenu' *ngIf="(type=='context' || type=='mobile') && generalmenu==true && (isReportFlag==null || isReportFlag==false)">
+    <div style="position:fixed; margin-left:140px;top:49%;padding:13px 0px;background: #178AE8;" (click)="closeVerticalMenu()" *ngIf="ishideMenu ==false && type=='context'">
+        <img style="width:30px;" src="Content/Images//close_siteN.png" />
+    </div>
+
+    <div *ngIf="ishideMenu ==true && type=='context'" style="position:fixed;z-index:10;padding:13px 0px; margin-left:-5px;top:49%;background: #178AE8; -moz-transform: scaleX(-1); -o-transform: scaleX(-1);-webkit-transform: scaleX(-1);transform: scaleX(-1);filter: FlipH;-ms-filter:FlipH;" (click)="closeVerticalMenu()">
+        <img style="width:30px;" src="Content/Images//close_siteN.png" />
+    </div>
+    <div *ngFor="let menu of menusource;let i = index" [style.display]="ishideMenu ==true?'none':''">
+        <section title="{{menu.title}}" [isExpanded]="isExpandedArray[i].isExpanded" [type]="'menu'" style="border: none;border-bottom: 2px solid #ffffff;" *ngIf="menu.subMenu.length !=0 && isExpandedArray[i] != undefined" (onSectionExpandChange)="onSectionExpandChange(isExpandedArray[i].id)">
+            <ul>
+                <li>
+                    <ul>
+                        <li *ngFor="let subitem of menu.subMenu" [class.selected]="subitem === submenuItem" (click)="onSelect(subitem)">
+                            <a *ngIf="subitem.id < 1000" [routerLink]="[subitem.path]" (click)="onMainMenuClick(subitem)">{{subitem.title}}</a>
+                            <a *ngIf="subitem.id >= 1000" [routerLink]="[subitem.path, subitem.id]" (click)="onMainMenuClick(subitem)">{{subitem.title}}</a>
+                        </li>
+                    </ul>
+
+                </li>
+            </ul>
+        </section>
+    </div>
+</div>
+
+<div class='verticalGeneralmenu reportmenu' *ngIf="(type=='context' || type=='mobile') && generalmenu==true && isReportFlag==true ">
+    <div style="position:fixed; margin-left:140px;top:49%;padding:13px 0px;background: #178AE8;" (click)="closeVerticalMenu()" *ngIf="ishideMenu ==false && type=='context'">
+        <img style="width:30px;" src="Content/Images//close_siteN.png" />
+    </div>
+
+    <div *ngIf="ishideMenu ==true && type=='context'" style="position:fixed;z-index:10;padding:13px 0px; margin-left:-5px;top:49%;background: #178AE8; -moz-transform: scaleX(-1); -o-transform: scaleX(-1);-webkit-transform: scaleX(-1);transform: scaleX(-1);filter: FlipH;-ms-filter:FlipH;" (click)="closeVerticalMenu()">
+        <img style="width:30px;" src="Content/Images//close_siteN.png" />
+    </div>
+    <div *ngFor="let menu of menusource;let i = index" [style.display]="ishideMenu ==true?'none':''">
+        <section title="{{menu.title}}" [isExpanded]="isExpandedArray[i].isExpanded" [type]="'menu'" style="border: none;border-bottom: 2px solid #ffffff;" *ngIf="menu.subMenu.length !=0 && isExpandedArray[i] != undefined" (onSectionExpandChange)="onSectionExpandChange(isExpandedArray[i].id)">
+            <ul>
+                <li>
+                    <ul>
+                        <li *ngFor="let subitem of menu.subMenu" [class.selected]="subitem === submenuItem" (click)="onSelect(subitem)">
+                            <a *ngIf="subitem.id < 1000 && subitem.subMenu == null" [routerLink]="[subitem.path]" (click)="onMainMenuClick(subitem)">{{subitem.title}}</a>
+                            <a *ngIf="subitem.id >= 1000  && subitem.subMenu == null" [routerLink]="[subitem.path, subitem.id]" (click)="onMainMenuClick(subitem)">{{subitem.title}}</a>
+                            <a *ngIf="subitem.id < 1000 && subitem.subMenu != null"  (click)="onMainMenuClick(subitem)">{{subitem.title}}</a>
+                            <a *ngIf="subitem.id >= 1000  && subitem.subMenu != null"  (click)="onMainMenuClick(subitem)">{{subitem.title}}</a>
+                            <img *ngIf="subitem.subMenu != null" class="image-arrow-thirdlevel" [src]="(thirdLevelMenuItems != null && thirdLevelMenuCaption==subitem.title) ? hideIcon:expandIcon">
+                        </li>
+                    </ul>
+
+                </li>
+            </ul>
+        </section>
+    </div>
+    <div class="thirdlevel " *ngIf="thirdLevelMenuItems != null">
+        <section title="{{thirdLevelMenuCaption}}" [isExpanded]="thirdLevelMenuExpansion" [type]="'menu'" style="border: none;border-bottom: 2px solid #ffffff;" *ngIf="thirdLevelMenuItems.length !=0">
+            <ul>
+                <li>
+                    <ul>
+                        <li *ngFor="let subitem of thirdLevelMenuItems" [class.selected]="subitem === submenuItem" (click)="onSelect(subitem)">
+                            <a *ngIf="subitem.id < 1000" [routerLink]="[subitem.path]" (click)="onThirdMenuClick(subitem)">{{subitem.title}}</a>
+                            <a *ngIf="subitem.id >= 1000" [routerLink]="[subitem.path, subitem.id]" (click)="onThirdMenuClick(subitem)">{{subitem.title}}</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+       
+    </div>
+    <div class="thirdlevel-overlay" *ngIf="thirdLevelMenuItems != null" (click)="thirdLevelOverlayClick()"></div>
+</div>

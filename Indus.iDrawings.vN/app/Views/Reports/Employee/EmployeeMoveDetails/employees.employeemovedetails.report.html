@@ -1,0 +1,33 @@
+﻿<page [pagetitle]="pagePath">
+    <content>
+        <split-view [splitviewObject]="splitviewInput" style="height:100%;" [pageTitle]="pageTitle">
+            <primary-view>
+                <div style="height:90%;width:100%;">
+                    <div style="width:100%;height:100%" *ngIf="ReportData != undefined">
+                        <div style="display:inline-flex;width:100%;margin-bottom: 5px;height: 40px;margin-left: 9px; margin-top:9px;">
+                            <div>
+                                <button *ngIf="!IsMobile" class="Savebutton " style="margin-right:5px;" type="button" (click)="customizeClick($event)">Customize</button>
+                            </div>
+                            <div *ngIf="hasScheduledReport">
+                                <button class="Savebutton " style="margin-right:5px;" type="button" (click)="showSheduleReport($event)">Schedule this report</button>
+                            </div>
+                        </div>
+                        <div style="width:100%;height: calc(100% - 40px)" *ngIf="ReportData != undefined">
+                            <reportviewer [reportData]=ReportData> Loading ...</reportviewer>
+                        </div>
+                    </div>
+                </div>
+            </primary-view>
+
+            <secondary-view *ngIf="!showCustomize && showSheduleReportAddEdit && splitviewInput.showSecondaryView == true && ReportData.ExportFileName!='' ">
+                <schedule-report-addedit [reportData]="ReportData" (insertSuccess)="handleInsertSuccess($event)"></schedule-report-addedit>
+            </secondary-view>
+            <secondary-view *ngIf="showCustomize && !showSheduleReportAddEdit" style="height:100%;">
+                <div style="width:100%;display:block;height:100%;">
+                    <customrpt-addedit *ngIf="splitviewInput.showSecondaryView==true" [btnName]="btnName" [selectedId]="reportId" [fieldObject]="fieldObjectAddEdit" [itemSource]="itemsSourceAddEdit" [moduleId]="ModuleId" [pageTarget]="2" [listFieldDetails]="listFieldDetails" [showMyDef]="showMyDef" [showSetMyDef]="showSetMyDef" (applyCustomRptClick)="applyCustomRptClick($event)"></customrpt-addedit>
+                </div>
+            </secondary-view>
+        </split-view>
+    </content>
+</page>
+

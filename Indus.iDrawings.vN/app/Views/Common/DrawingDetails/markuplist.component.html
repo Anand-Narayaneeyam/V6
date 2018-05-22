@@ -1,0 +1,40 @@
+﻿<div>
+    <submenu>
+        <sub-menu [source]=menuData [count]="'3'" [menuCard]=true [menuIds]=enableMenu (onSubMenuChange)="onSubMenuChange($event)"> </sub-menu>
+    </submenu>
+    <split-view [splitviewObject]="splitviewInput" [pageTitle]="pageTitle" style="height: calc(100% - 35px);">
+        <primary-view>
+            <div [ngClass]="totalItems > itemsPerPage ? 'pagewithPaging':'pagewithoutPaging'">
+                <slide></slide>
+                <gridView [dataSource]="itemSource" [properties]="inputItems" [columns]="fieldObj" (onSorting)="onSort($event)"></gridView>
+            </div>
+        </primary-view>
+        <secondary-view>
+            <DynamicFields [dataSource]="fieldDetailsForEdit" (submitFieldObject)="onSubmitData($event)" [btnName]="'Save Changes'" (fieldChange)="fieldChange($event)" (popupItemEmit)="popupItemEmit($event)"></DynamicFields>
+        </secondary-view>
+    </split-view>
+</div>
+<slide [width]="300" [position]="position" [type]="'notification'" [show]="showSlide" [absolute]="'true'" (closeDialog)="closeSlideDialog($event)">
+    <div>
+        Are you sure you want to delete the selected markup file?
+    </div>
+    <div>
+        <button class="Savebutton " type="button" (click)="deleteMarkupFromListYesClick($event)">Yes</button>
+        <button class="Savebutton " type="button" (click)="deleteMarkupFromListNoClick($event)">No</button>
+    </div>
+</slide>
+   
+<!--<list [source]=cardSource [(selectedIds)]="selIds" [datakey]="'datakey'" [selectionMode] ="'Single'">
+    <div>
+        <template let-item>
+            <card [enableEditBtn]="cardButtonPrivilege[0]" [enableDeleBtn]="cardButtonPrivilege[1]" (onSubmition)="onCardSubmit($event)" [viewTitle]="'Markup'" [datakeyValue]="item.MarkupId" (inlineDelete)="onDelete($event)" (onCardClick)="onCardClick($event)" [isViewForDrwg]="'true'" (onViewForDrwgClick)="viewMarkup($event)">
+                <div *ngIf="cardFields">
+                    <field [isEditEnabled]="cardButtonPrivilege[0]" [fieldObject]="cardFields[1]" [fieldValue]="item['Uploaded by']"></field>
+                    <field [isEditEnabled]="cardButtonPrivilege[0]" [fieldObject]="cardFields[2]" [fieldValue]="item['Uploaded on']"></field>
+                    <field [isEditEnabled]="cardButtonPrivilege[0]" [fieldObject]="cardFields[3]" [fieldValue]="item.Description"></field>
+
+                </div>
+            </card>p
+        </template>
+    </div>
+</list>-->

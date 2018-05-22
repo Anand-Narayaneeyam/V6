@@ -1,0 +1,35 @@
+﻿<div> 
+    <slide [width]="slidewidth" [position]="position" [show]="showSlide" (closeDialog)="closeSlideDialog($event)">
+        <div>
+            <div>{{deleteMessage}}</div>
+            <div style="width:100%">
+                <button class="Savebutton " type="button" (click)="okDelete($event)">Yes</button>
+                <button class="Savebutton " type="button" (click)="cancelClick($event)">No</button>
+            </div>
+        </div>
+    </slide>
+    <submenu>
+        <sub-menu [source]=menuData [menuCard]=types [count]=gridcount [menuIds]=enableMenu (onSubMenuChange)="onSubMenuChange($event);"> </sub-menu>
+    </submenu>
+    <content>      
+        <split-view [splitviewObject]="splitviewInput" [pageTitle]="pageTitle">
+            <primary-view>
+                <div style="height:100%;">
+                    <div [ngClass]="totalItems > itemsPerPage ? 'pagewithPaging':'pagewithoutPaging'">
+                        <gridView [(dataSource)]="sourceData" [properties]="inputItems" [columns]="fields" [refreshgrid]="refreshgrid" (onSorting)="onSort($event)"></gridView>
+                    </div>
+                    <div [style.height]="totalItems >itemsPerPage ? '35px' : '0px'">
+                        <paging [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="pageChanged($event);"></paging>
+                    </div>
+                </div>
+            </primary-view>
+            <secondary-view *ngIf="splitviewInput.showSecondaryView == true">
+                <usergroup-add-edit *ngIf="(action == 'add' || action == 'edit')" (submitSuccess)="submitReturn($event)" [btnName]="btnName" [selectedId]="inputItems.selectedIds[0]" [fieldDetailsAdd]="fieldDetailsAdd1" [action]="action"></usergroup-add-edit>               
+                <iDrawings-users *ngIf="action == 'User'" [selectedIds]="inputItems.selectedIds" [UserCategoryId]="UserCategory" [SiteId]="SiteId" [UserGroupName]="UserGroupName"></iDrawings-users>                         
+                <!--<employees-users *ngIf="UserCategory == 2 && action == 'User'" [selectedIds]="inputItems.selectedIds"></employees-users>        
+                <technicians-users *ngIf="UserCategory == 3 && action == 'User'" [selectedIds]="inputItems.selectedIds"></technicians-users>             
+                <contractors-users *ngIf="UserCategory == 4 && action == 'User'" [selectedIds]="inputItems.selectedIds"></contractors-users>-->
+            </secondary-view>
+        </split-view>
+    </content>
+</div>

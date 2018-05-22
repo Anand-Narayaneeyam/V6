@@ -1,0 +1,102 @@
+﻿<style>
+    .date-picker-calendar {
+        border-radius: 5px;
+        margin-left: 40%;
+        margin-top: 0%;
+        margin-bottom: 10px;
+        /*position: absolute;*/
+        display: block;
+        z-index: 1;
+        width: 100%;
+    }
+
+    :host.grid {
+        height: 100%;
+    }
+
+    #roomdetails {
+        height: 50%;
+    }
+
+    .search-containerforschedule {
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        padding-top: 33px;
+        margin-right: 10px;
+        z-index: 51;
+    }
+    /*:host #primarySplitview{
+        height:99% !important;
+    }*/
+    @media screen and (max-height: 768px) {
+        :host #Reserveroom2 {
+            overflow-y: auto !important;
+        }
+    }
+</style>
+<div>
+    <split-view id="Reserveroom{{pageTarget}}" [splitviewObject]="splitviewInput" style="height:100%;overflow-y:hidden" [pageTitle]="pageTitle" (onSecondaryClose)="onSplitViewClose($event)">
+        <primary-view style="overflow:hidden">
+            <div *ngIf="dateSelectorField != undefined" class="date-picker-calendar" style="height:60px;">
+                <DateComponent [disableDates]="disableDates" [showDateOnLoad]="true" [fieldObject]="dateSelectorField[0]" (datepickerOut)="divClicked($event)"></DateComponent>
+            </div>
+            <div *ngIf="pageTarget != 2" class="search-containerforschedule">
+                <searchforschedule [Title]="searchTitle" [searchtype]="'Grid'" [keyWordLookup]=keyWordLookup [disable]="disable" [Key]=2 [KeywordFields]=KeywordFieldObject [advancesearch]=true [Customsearch]=true [datasource]=advancelookup [Target]="2" (SaveAs)="SaveAs($event)" (Delete)="Delete($event)" (onloadSearch)="onloadSearch($event)" (loadAdvanceSearch)="advanceSearch()" (Clear)="Clear($event)" (Submit)="Submit($event)"></searchforschedule>
+            </div>
+            <div style="height: calc(100% - 70px);">
+                <div *ngIf="pageTarget!=2" class="gridView" style="height:100% !important">
+                    <slide [width]="" [position]="" [show]="">
+                    </slide>
+                    <div [ngClass]="totalItems > itemsPerPage ? 'pagewithPaging':'pagewithoutPaging'">
+                        <gridView style="height:100%;" [arrHighlightRowIds]="arrHighlightRowIds" [(dataSource)]="itemsSource" [properties]="inputItems" [columns]="fieldObject"
+                                  (onSorting)="onSort($event)" (onColValClick)="onColValClick($event)" (onSelectionChanging)="onSelectionChange($event)"></gridView>
+                    </div>
+                    <div>
+                        <paging [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="pageChanged($event);"></paging>
+                    </div>
+                </div>
+                <div *ngIf="pageTarget==2" [ngClass]="isViewDrawing?'gridViewFromDrawingRoom':'gridViewFromHideDrawingRoom'">
+                    <gridView style="height:100%;" [arrHighlightRowIds]="arrHighlightRowIds" [(dataSource)]="itemsSource" [properties]="inputItems" [columns]="fieldObject"
+                              (onSorting)="onSort($event)" (onColValClick)="onColValClick($event)" (onSelectionChanging)="onSelectionChange($event)"></gridView>
+                </div>
+                <div *ngIf="pageTarget!=2 " [ngClass]="totalItems <= itemsPerPage?'schedulerView':'schedulerViewwithpaging'">
+                    <schedule-calendar style="height:100%;" [rowcount]="RowCount" [SelectedDate]="Dateforcalender" [bookedDateObj]="schedulerArrObj" [IsAddpageopened]="IsAddpageopened" [IsGridloaded]="IsGridloaded" [Sitedatetime]="SitedatetimeArrObj" (cellClick)="cellclicked($event)" [isRoom]="true"></schedule-calendar>
+                </div>
+                <div *ngIf="pageTarget==2 " class="schedulerViewFromDrawingRoom">
+                    <schedule-calendar style="height:100%;" [rowcount]="RowCount" [SelectedDate]="Dateforcalender" [bookedDateObj]="schedulerArrObj" [IsAddpageopened]="IsAddpageopened" [IsGridloaded]="IsGridloaded" [Sitedatetime]="SitedatetimeArrObj" (cellClick)="cellclicked($event)" [isRoom]="true"></schedule-calendar>
+                </div>
+                <!--<div  *ngIf="totalItems > itemsPerPage" [ngClass]="pageTarget!=2 ?'schedulerViewwithpaging':'schedulerViewFromDrawingwithpagingRoom'">
+                    <schedule-calendar style="height:100%;" [rowcount]="RowCount" [SelectedDate]="Dateforcalender" [bookedDateObj]="schedulerArrObj" [IsAddpageopened]="IsAddpageopened" [IsGridloaded]="IsGridloaded" [Sitedatetime]="SitedatetimeArrObj" (cellClick)="cellclicked($event)" [isRoom]="true"></schedule-calendar>
+                </div>-->
+                <!--<div *ngIf="sessionUserRoleId==7" style="display:inline-flex;flex-direction:row;position:absolute;left:45px;top:35px">
+                      <input type="radio" id="1" name="1" value="" (click)="onNormalClick($event)" checked />&nbsp;<div>Normal</div>
+                      &nbsp;&nbsp;&nbsp;<input type="radio" id="2" name="1" value="" (click)="onSURoomClick($event)" />&nbsp;<div>Special Use Rooms</div>
+                </div>-->
+            </div>
+        </primary-view>
+        <secondary-view *ngIf="SpaceId > 0 && splitviewInput.showSecondaryView && secondaryTarget == 1">
+            <!--<section title="New Room Booking Request" style="width:600px;" [isExpanded]="sectionAccessExpansionStatus[0].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">-->
+            <reservation-request [Roombookrequest]="Roombookrequest" [action]="action" [btnName]="btnName"
+                                 (submitSuccess)="OnSuccessfulSubmit($event)" [selectedId]="SpaceId" [RoomNo]="RoomNo" [FromTime]="FromTime" [Totime]="Totime" [Seats]="Seats" [FloorId]="FloorId" [SiteDate]="sitedatetimeforreservationrequest" [messages]="messages"
+                                 (InviteesList)="getInviteesList($event)" (AmnietyList)="getAmnietyList($event)" (ServiceList)="getServiceList($event)" (CateringList)="getCateringList($event)"></reservation-request>
+            <!--</section>-->
+            <!--<section title="Invitees" style="width:600px;" [isExpanded]="sectionAccessExpansionStatus[1].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <Invitees-list [InviteesField]="Invitees" (InviteesList)="getInviteesList($event)"></Invitees-list>
+              </section>-->
+            <!--<section title="Amenities" style="width:600px;" [isExpanded]="sectionAccessExpansionStatus[2].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <Amenities-listforreservation [AmenitiesField]="Amnitiy" (AmnietyList)="getAmnietyList($event)"></Amenities-listforreservation>
+            </section>-->
+            <!--<section title="Services" style="width:600px;" [isExpanded]="sectionAccessExpansionStatus[3].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+                <Services-listforresrvation [ServiceField]="Services" (ServiceList)="getServiceList($event)"></Services-listforresrvation>
+            </section>-->
+            <!--<section title="Catering" style="width:600px;" [isExpanded]="sectionAccessExpansionStatus[4].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+                <Catering-listforreservation [CateringField]="Catering" (CateringList)="getCateringList($event)"></Catering-listforreservation>
+            </section>-->
+            <!--<button style="display: block;background:#2980b9;color:#fff;margin-bottom:10px;" (click)="onReserve($event)">Reserve</button>-->
+        </secondary-view>
+        <secondary-view id="roomdetails" *ngIf="SpaceIdforrrom > 0 && splitviewInput.showSecondaryView && secondaryTarget == 2">
+            <roomdetails style="display:block;min-width:600px;max-width:800px" [selectedId]="SpaceIdforrrom" [Todaydate]="Dateforcalender" [Target]="1"></roomdetails>
+        </secondary-view>
+    </split-view>
+</div>

@@ -1,0 +1,128 @@
+﻿<page [pagetitle]="pagePath">
+    <pagepath>
+    </pagepath>
+    <content>
+        <section title="Trades" [isExpanded]="sectionExpansionStatus[0].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div *ngIf="sectionExpansionStatus[0].isExpanded">
+                <p>Trades are the job skills or specialization areas like Electrician, Plumber, Carpenter, etc. that required for performing a task.</p>
+                <p>Administrators can add trades, with trade code and can set the hourly rate for the trade.</p>
+                <p><span class="header1">Add:</span> New Trade can be added by clicking the <span class="header2">Add</span> <img class="helpicon" src="Content/Icons/data_addN.png" alt="Add" /> icon.</p>
+                <p><span class="header1">Edit:</span> Edit a Trade by selecting it and then clicking the <span class="header2">Edit</span> <img class="helpicon" src="Content/Layout/edit_button.png" alt="Edit" /> icon.</p>
+                <p><span class="header1">Delete:</span> Delete a Trade by selecting it and then clicking the <span class="header2">Delete</span> <img class="helpicon" src="Content/Layout/delete_button.png" alt="Delete" /> icon.</p>
+            </div>
+        </section>
+        <section title="Technicians" [isExpanded]="sectionExpansionStatus[1].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div *ngIf="sectionExpansionStatus[1].isExpanded">
+                <p>Technicians are generally in-house staff members who perform work orders. Each Technician would be identified with a Trade.</p>
+                <p>Administrators can add new technicians, with technician code, and specify their trades.</p>
+                <p><span class="header1">Add:</span> New technician can be added by clicking the <span class="header2">Add</span> <img class="helpicon" src="Content/Icons/data_addN.png" alt="Add" /> icon..</p>
+                <p><span class="header1">Edit:</span> Edit a technician by selecting it and then clicking the <span class="header2">Edit</span> <img class="helpicon" src="Content/Layout/edit_button.png" alt="Edit" /> icon.</p>
+                <p><span class="header1">Delete:</span> Delete a technician by selecting it and then clicking the <span class="header2">Delete</span> <img class="helpicon" src="Content/Layout/delete_button.png" alt="Delete" /> icon.</p>
+            </div>
+        </section>
+        <section title="Contractors" [isExpanded]="sectionExpansionStatus[2].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div *ngIf="sectionExpansionStatus[2].isExpanded">
+                <p>Contractors are external individuals or organizations who perform work orders. A contractor would be associated with a Trade. Administrators can add new contractors for different trades.</p>
+                <p><span class="header1">Add:</span> New contractor can be added by clicking the <span class="header2">Add</span> <img class="helpicon" src="Content/Icons/data_addN.png" alt="Add" /> icon.</p>
+                <p><span class="header1">Edit:</span> Edit a contractor by selecting the row and then clicking the <span class="header2">Edit</span> <img class="helpicon" src="Content/Layout/edit_button.png" alt="Edit" /> icon.</p>
+                <p><span class="header1">Delete:</span> Delete a contractor by selecting the row and then clicking the <span class="header2">Delete </span> <img class="helpicon" src="Content/Layout/delete_button.png" alt="Delete" /> icon.</p>
+            </div>
+        </section>
+        <section title="Manufacturers" [isExpanded]="sectionExpansionStatus[3].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div *ngIf="sectionExpansionStatus[3].isExpanded">
+                <p>Information about Manufacturers of Assets like Contact name, title, address, phone, email, etc. can be stored in the system. This information can be used for taking action or giving feedback based on the performance/lifetime analysis of equipment supplied by them. </p>
+                <p><span class="header1">Add:</span> New manufacturer can be added by clicking the <span class="header2">Add</span> <img class="helpicon" src="Content/Icons/data_addN.png" alt="Add" /> icon.</p>
+                <p><span class="header1">Edit:</span> Edit a manufacturer by selecting it and then clicking the <span class="header2">Edit</span> <img class="helpicon" src="Content/Layout/edit_button.png" alt="Edit" /> icon.</p>
+                <p><span class="header1">Delete:</span> Delete a manufacturer by selecting the row and then clicking the <span class="header2">Delete</span> <img class="helpicon" src="Content/Layout/delete_button.png" alt="Delete" /> icon.</p>
+            </div>
+        </section>
+        <section title="Parts" [isExpanded]="sectionExpansionStatus[4].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div *ngIf="sectionExpansionStatus[4].isExpanded">
+                <p>The parts and spares required for performing work orders can be defined through this option. The cost per unit and manufacturer name can also be entered. </p>
+                <p>On selecting this option, all parts will be displayed with details like manufacturer name, cost per unit, etc. </p>
+                <p>User can associate Equipment Classes to the selected Part using Associated Equipment Classes <img class="helpicon" src="Content/Icons/ae_clasS.png" title="Associated Equipment Classes"> icon.</p>
+                <p><span class="header1">Add:</span> New Part can be added by clicking the <span class="header2">Add</span> <img class="helpicon" src="Content/Icons/data_addN.png" alt="Add" /> icon.</p>
+                <p><span class="header1">Edit:</span> Edit a part by selecting it and then clicking the <span class="header2">Edit</span> <img class="helpicon" src="Content/Layout/edit_button.png" alt="Edit" /> icon.</p>
+                <p><span class="header1">Delete:</span> Delete a part by selecting it and then clicking the <span class="header2">Delete</span> <img class="helpicon" src="Content/Layout/delete_button.png" alt="Delete" /> icon.</p>
+                <p><span class="header1">Associated Equipment Classes:</span></p>
+                <p>This option is used to associate multiple Equipment Classes to the selected Part. Equipment Classes can be associated to the Part through <span class="header2">Add</span> <img class="helpicon" src="Content/Icons/data_addN.png" alt="Add" /> icon. Equipment Classes associated with the Part can be removed using the <span class="header2">Delete</span> <img class="helpicon" src="Content/Layout/delete_button.png" alt="Delete" /> icon.</p>
+                <p><span class="header1">Add:</span> Equipment Classes can be associated to the Part by clicking <span class="header2">Add</span> <img class="helpicon" src="Content/Icons/data_addN.png" alt="Add" /> icon. </p>
+                <p>On clicking Add, New Equipment Class tab will be displayed with an option to select the Equipment Category. On selecting the required Equipment Category, all Equipment Classes (having Equipment) of the selected Category will be listed. Already added Equipment Classes will not be listed. User can select the required Equipment Classes and click Save button. All the selected Equipment Classes will be added to the Associated Equipment Classes list.</p>
+                <p><span class="header1">Delete:</span> Equipment Classes added to the selected Part can be removed through this option. Equipment Class can be deleted by selecting the required Class and then clicking <span class="header2">Delete</span> <img class="helpicon" src="Content/Layout/delete_button.png" alt="Delete" /> icon displayed on selecting the required Card.</p>
+            </div>
+        </section>
+
+        <section title="Tools" [isExpanded]="sectionExpansionStatus[5].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div *ngIf="sectionExpansionStatus[5].isExpanded">
+                <p>The tools required for performing work orders can be defined through this option with their hourly rates. On selecting this option all tools will be displayed with their hourly rates. </p>
+                <p><span class="header1">Add:</span> New tool can be added by clicking the <span class="header2">Add</span> <img class="helpicon" src="Content/Icons/data_addN.png" alt="Add" /> icon.</p>
+                <p><span class="header1">Edit:</span> Edit a Tool by selecting it and then clicking the <span class="header2">Edit</span> <img class="helpicon" src="Content/Layout/edit_button.png" alt="Edit" /> icon.</p>
+                <p><span class="header1">Delete:</span> Delete a tool by selecting it and then clicking the <span class="header2">Delete</span> <img class="helpicon" src="Content/Layout/delete_button.png" alt="Delete" /> icon.</p>
+            </div>
+        </section>
+        <section title="Priorities" [isExpanded]="sectionExpansionStatus[6].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div *ngIf="sectionExpansionStatus[6].isExpanded">
+                <p>Different levels of Priority for Work Requests like High/Medium/Low can be defined through this option.</p>
+                <p><span class="header1">Add:</span> New Priority can be added by clicking the <span class="header2">Add</span> <img class="helpicon" src="Content/Icons/data_addN.png" alt="Add" /> icon.</p>
+                <p><span class="header1">Edit:</span> Edit a Priority by selecting it and then clicking the <span class="header2">Edit</span> <img class="helpicon" src="Content/Layout/edit_button.png" alt="Edit" /> icon.</p>
+                <p><span class="header1">Delete:</span> Delete a Priority by selecting it and then clicking <span class="header2">Delete </span> <img class="helpicon" src="Content/Layout/delete_button.png" alt="Delete" /> icon.</p>
+            </div>
+        </section>
+
+        <section title="Reasons for Hold" [isExpanded]="sectionExpansionStatus[7].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div *ngIf="sectionExpansionStatus[7].isExpanded">
+                <p>Work Orders can be put on hold for different reasons like Waiting for Building Engineer, Waiting for gathering information from Requester, Waiting for Government Approval, Waiting for Materials, Waiting for Other Reasons, Waiting for Outside Contractor etc. The reasons for hold can be defined through this option.</p>
+                <p><span class="header1">Add:</span> New Reason can be added by clicking the Add  icon. A new Card will be inserted on clicking <span class="header2">Add</span> <img class="helpicon" src="Content/Icons/data_addN.png" alt="Add" /> icon. Enter the Reason and Description and then click the Save (tick) button.</p>
+                <p><span class="header1">Edit:</span> Reason can be edited by clicking the particular field of the required reason twice or by clicking the <span class="header2">Edit</span> <img class="helpicon" src="Content/Layout/edit_button.png" alt="Edit" /> icon displayed on the card, when mouse points to the card. </p>
+                <p><span class="header1">Delete:</span> Reason can be deleted by clicking the <span class="header2">Delete </span> <img class="helpicon" src="Content/Layout/delete_button.png" alt="Delete" /> icon displayed when a card is selected.</p>
+            </div>
+        </section>
+    </content>
+</page>
+<style type="text/css">
+    h3.Mainheader {
+        color: #178AE8;
+    }
+
+    .header1 {
+        font-weight: bold;
+        color: #178AE8;
+    }
+
+    .header2 {
+        font-weight: normal;
+        color: #178AE8;
+    }
+
+    p {
+        margin-left: 38px;
+        font-size: 13px;
+        margin-right: 3em;
+    }
+
+    .header3 {
+        font-weight: bold;
+        color: black;
+    }
+    /**/ h1 {
+        color: #178AE8;
+        font-size: 1.3em;
+        margin-left: 38px;
+    }
+
+    h2 {
+        color: #178AE8;
+        font-size: 1em;
+        margin-left: 38px;
+    }
+
+    .config {
+        background-color: #178AE8;
+    }
+
+    .helpicon {
+        vertical-align: baseline;
+        width: 20px;
+        height: 20px;
+    }
+</style>

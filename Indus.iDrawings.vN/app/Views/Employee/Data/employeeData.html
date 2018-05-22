@@ -1,0 +1,212 @@
+﻿<page [pagetitle]="pagePath" [withoutSubmenu]="true" [isEnableNotification]="isNotification">
+    <content>
+        <tabs *ngIf="!isQuerybuilder" [selectedTab]="selectedTab" (getSelectedTab)="getSelectedTab($event)">
+            <tab tabTitle="All" closeButtonVisible="hidden" *ngIf="allEmployeeTotalItems!='0'">
+                <split-view [splitviewObject]="splitviewAllEmployee" [pageTitle]="splitViewTitle" (onSecondaryClose)="onSplitViewClose($event)">
+                    <primary-view>
+                        <submenu>
+                            <sub-menu [menuCard]=true [source]=allEmployeeMenu [count]=allEmployeeTotalItems [menuIds]=enableallEmployeeMenu (onSubMenuChange)="updateAllEmployeeMenu($event);"> </sub-menu>
+                        </submenu>
+                        <allEmployeeList *ngIf="selectedTab == 0" (emitMenu)="emitMenu($event)" [returnData]="returnData" (updateAllEmployeeSelectedId)="updateAllEmployeeSelectedId($event)" [action]="allEmployeeAction" [menuaccess]="allEmployeeMenu" [fieldObject]="fieldObject" [attachmentSuccess]="employeeAttachmentSuccess" [allEmployeeId]="allEmployeeId" [allEmpResourceCount]="allEmpResourceCount" [assignedEmpIds]="assignedEmpIds" [multipleEditChange]="multipleEditChange" [updateEmpData]="updateAllEmpData"></allEmployeeList>
+                    </primary-view>
+                    <secondary-view *ngIf="secondaryTarget == 1">
+                        <allemployee-addedit *ngIf="splitviewAllEmployee.showSecondaryView && allEmployeeSelectedId &&(!isAssigneEmployees) && (allEmployeeAction != 'displaySettings') && (allEmployeeAction != 'attachment') &&(allEmployeeAction != 'resource') && (allEmployeeAction != 'exportEmployeData') && (!IsOpenDrawingComponentActive) && (allEmployeeAction=='add'||allEmployeeAction=='edit')" [EmployeeData]="EmployeeData" [selectedId]="allEmployeeSelectedId[0]" (submitSuccess)="OnSuccessfulSubmi($event)" [addEdit]="allEmployeeAction" [showview]="showview"></allemployee-addedit>
+                        <attachments *ngIf="splitviewAllEmployee.showSecondaryView &&(!isAssigneEmployees && allEmployeeAction == 'attachment' &&(!IsOpenDrawingComponentActive) && (allEmployeeSelectedId))" [attachmentCategoryId]="9" [moduleId]="moduleId" [baseEntityId]="allEmployeeSelectedId[0]" (attachmentSuccess)="attachmentSuccess($event)" class="attachment"></attachments>
+                        <employeeResourceList style="display: block;width:700px;" *ngIf="splitviewAllEmployee.showSecondaryView &&(!isAssigneEmployees && allEmployeeAction == 'resource' &&(!IsOpenDrawingComponentActive) && (allEmployeeSelectedId))" [filterResourceChkbx]="filterResourceChkbx" [target]="target" [EmployeeData]="EmployeeData" [selectedId]="allEmployeeSelectedId[0]" (employeeResourceCount)="onUpdateResourceCount($event)"></employeeResourceList>
+                    </secondary-view>
+                    <secondary-view *ngIf="allEmployeeAction == 'displaySettings' &&(splitviewAllEmployee.showSecondaryView) &&(!IsOpenDrawingComponentActive) && (!isAssigneEmployees)">
+                        <tabs [selectedTab]="dispTab" style="height:100%;display:block">
+                            <tab tabTitle="Employee" closeButtonVisible="hidden" *ngIf="allEmployeeTotalItems!='0'">
+                                <display-setting [IsGrid]="blnIsGrid" [DisplaySettingCategoryId]="6" [AdditionalDataFieldCategoryId]="8" (emitdisplaySetting)="getUpdatedDisplaySettings($event)">></display-setting>
+                            </tab>
+                            <tab tabTitle="Space" closeButtonVisible="hidden" *ngIf="allEmployeeTotalItems!='0'">
+                                <display-setting [IsGrid]="blnIsGrid" [DisplaySettingCategoryId]="17" [AdditionalDataFieldCategoryId]="7" (emitdisplaySetting)="getUpdatedDisplaySettings($event)"></display-setting>
+                            </tab>
+                        </tabs>
+                    </secondary-view>
+
+                    <secondary-view>
+                        <export-employee-data *ngIf="allEmployeeAction == 'exportEmployeData' &&(splitviewAllEmployee.showSecondaryView) &&(!IsOpenDrawingComponentActive)"></export-employee-data>
+                    </secondary-view>
+                    <secondary-view>
+                        <div *ngIf="IsOpenDrawingComponentActive && (splitviewAllEmployee.showSecondaryView)" style="height:94%;min-width:80%">
+                            <opendrawing *ngIf="IsOpenDrawingComponentActive && (splitviewAllEmployee.showSecondaryView) &&(!isAssigneEmployees && allEmployeeAction != 'displaySettings' && allEmployeeAction != 'attachment' && allEmployeeAction != 'resource' && allEmployeeAction != 'edit' && allEmployeeAction != 'add' && allEmployeeAction !='allemployeeexport' && allEmployeeAction != 'exportEmployeData' && allEmployeeAction != 'attachment')" [extDrawingId]="selectedDrawingId" [moduleId]="moduleId" [activeModuleIds]="moduleId" [pageTarget]="dwgPageTarget" [extDrawingType]="drawingType" [extDrawingDetails]="selectedEmpIds"  style="display: block;" [style.width]="innerwidthAssign" (outDrawingobject)="getDrawingObject($event)"></opendrawing>
+                        </div>
+                    </secondary-view>
+                    <secondary-view>
+                        <div *ngIf="isAssigneEmployees && (splitviewAllEmployee.showSecondaryView)" style="height:94%;">
+                            <assignemployees *ngIf="isAssigneEmployees && splitviewAllEmployee.showSecondaryView && (allEmployeeAction != 'attachment') && (allEmployeeAction != 'displaySettings') && (allEmployeeAction != 'resource') && (allEmployeeAction != 'edit') && (allEmployeeAction != 'add')&&(allEmployeeAction != 'exportEmployeData') && (!IsOpenDrawingComponentActive)" [empDetails]="empDetails" (onDrawingClose)="onSplitViewClose($event)" (outAssignedEmpIds)="empAssignSuccess($event)" style="display: block;" [style.width]="innerwidthAssign"></assignemployees>
+                        </div>
+                    </secondary-view>
+                    <secondary-view>
+                        <export-employee-data *ngIf="allEmployeeAction == 'exportEmployeData' &&(splitviewAllEmployee.showSecondaryView)" [exportClick]=""></export-employee-data>
+                    </secondary-view>
+                    <secondary-view *ngIf="secondaryTarget == 2">
+                        <multiple-Edit *ngIf="isMultipleEditEnabled && splitviewAllEmployee.showSecondaryView" [datasource]="multipleEditFieldDetails" [applicationFormId]="employeeService.allemployeeAddEditFormId" [moduleId]="5" (onUpdate)="onMultipleEditUpdate($event)"> </multiple-Edit>
+                    </secondary-view>
+                    <secondary-view *ngIf="secondaryTarget == 3">
+                        <assignormove-emp-dataentry *ngIf="isassignmovedataentry && splitviewAllEmployee.showSecondaryView" [selectedEmployeeData]="empDataForAssigOrMoveDataEntry" [selectedIds]="allEmployeeSelectedId" [action]="assignOrMoveEmpAction" (submitSuccess)="submitSuccessAssignOrMoveDataEntry($event)"> </assignormove-emp-dataentry>
+                    </secondary-view>
+                </split-view>
+            </tab>
+            <tab tabTitle="Assigned" closeButtonVisible="hidden" *ngIf="assignedEmployeeTotalItems!='0'">
+                <split-view [splitviewObject]="splitviewAssignedEmployee" [pageTitle]="splitViewTitle" (onSecondaryClose)="onSplitViewClose($event)">
+                    <primary-view>
+                        <submenu>
+                            <sub-menu [menuCard]=true *ngIf="selectedTab == 1 && (floorSelected==true)" [source]=assignedEmployeeMenu [count]=assignedEmployeeTotalItems [menuIds]=enableassignedEmployeeMenu (onSubMenuChange)="updateAllEmployeeMenu($event);"> </sub-menu>
+                        </submenu>
+                        <!--<assignedMain *ngIf="selectedTab == 1 && (floorSelected==false)" (getSelectedFloor)="getSelectedFloor($event)" (floorSelected)="floorSelectedEvent($event)"></assignedMain>-->
+                        <floor-selection *ngIf="selectedTab == 1 && (floorSelected==false)" [moduleId]="moduleId" [targetId]="1" (btnClickOut)="getSelectedIds($event)"></floor-selection>
+                        <assignedEmployeeList (emitMenu)="emitMenu($event)" *ngIf="selectedTab == 1 && (floorSelected==true)" [returnData]="returnData" (updateAssignedEmployeeSelectedId)="updateAssignedEmployeeSelectedId($event)" [action]="assignedEmployeeAction" [floorId]="selectedFloorId" [menuaccess]="assignedEmployeeMenu" [fieldObject]="fieldObject" [attachmentSuccess]="employeeAttachmentSuccess" [assignedEmployeeId]="assignedEmployeeId" [assignedEmpResourceCount]="assignedEmpResourceCount" [multipleEditChange]="multipleEditChange" [updateEmpData]="updateAssignedEmpData"></assignedEmployeeList>
+                    </primary-view>
+                    <secondary-view *ngIf="secondaryTarget == 1">
+                        <assignedemployee-addedit *ngIf="splitviewAssignedEmployee.showSecondaryView && assignedEmployeeSelectedId &&assignedEmployeeAction == 'edit' && !IsOpenDrawingComponentActive && (assignedEmployeeAction != 'displaySettings' && (assignedEmployeeAction != 'attachment' && (assignedEmployeeAction != 'resource' &&(assignedEmployeeAction != 'exportEmployeData'))))" [EmployeeData]="EmployeeData" [selectedId]="assignedEmployeeSelectedId[0]" (submitSuccess)="OnSuccessfulSubmi($event)" [addEdit]="assignedEmployeeAction" [showview]="showview"></assignedemployee-addedit>
+                        <employeeResourceList style="display: block;width:700px;" *ngIf="splitviewAssignedEmployee.showSecondaryView &&(assignedEmployeeAction == 'resource' && (assignedEmployeeSelectedId))&& !IsOpenDrawingComponentActive && (assignedEmployeeAction != 'displaySettings' && (assignedEmployeeAction != 'attachment' && (assignedEmployeeAction != 'edit')))" [filterResourceChkbx]="filterResourceChkbx" [target]="target" [EmployeeData]="EmployeeData" [selectedId]="assignedEmployeeSelectedId[0]" (submitSuccess)="OnSuccessfulSubmi($event)" (employeeResourceCount)="onUpdateResourceCount($event)"></employeeResourceList>
+                        <attachments *ngIf="splitviewAssignedEmployee.showSecondaryView &&(assignedEmployeeAction == 'attachment' && (assignedEmployeeSelectedId))&& !IsOpenDrawingComponentActive && (assignedEmployeeAction != 'displaySettings' && (assignedEmployeeAction != 'edit' && (assignedEmployeeAction != 'resource')))" [attachmentCategoryId]="9" [moduleId]="moduleId" [baseEntityId]="assignedEmployeeSelectedId[0]" (attachmentSuccess)="attachmentSuccess($event)" class="attachment"></attachments>
+                    </secondary-view>
+                    <secondary-view *ngIf="assignedEmployeeAction == 'displaySettings' &&(splitviewAssignedEmployee.showSecondaryView)&& !IsOpenDrawingComponentActive && (assignedEmployeeAction != 'edit' && (assignedEmployeeAction != 'attachment' && (assignedEmployeeAction != 'resource')))">
+                        <tabs [selectedTab]="dispTab" style="height:100%;display:block">
+                            <tab tabTitle="Employee" closeButtonVisible="hidden" *ngIf="assignedEmployeeTotalItems!='0'">
+                                <display-setting [IsGrid]="blnIsGrid" [DisplaySettingCategoryId]="6" [AdditionalDataFieldCategoryId]="8" (emitdisplaySetting)="getUpdatedDisplaySettings($event)">></display-setting>
+                            </tab>
+                            <tab tabTitle="Space" closeButtonVisible="hidden" *ngIf="assignedEmployeeTotalItems!='0'">
+                                <display-setting [IsGrid]="blnIsGrid" [DisplaySettingCategoryId]="17" [AdditionalDataFieldCategoryId]="7" (emitdisplaySetting)="getUpdatedDisplaySettings($event)"></display-setting>
+                            </tab>
+                        </tabs>
+                    </secondary-view>
+                    <secondary-view *ngIf="assignedEmployeeAction == 'exportEmployeData' &&(splitviewAssignedEmployee.showSecondaryView)">
+                        <export-employee-data *ngIf="assignedEmployeeAction == 'exportEmployeData' &&(splitviewAssignedEmployee.showSecondaryView)"></export-employee-data>
+                    </secondary-view>
+                    <secondary-view *ngIf="IsOpenDrawingComponentActive && (splitviewAssignedEmployee.showSecondaryView) &&(assignedEmployeeAction != 'displaySettings' && assignedEmployeeAction != 'attachment' && assignedEmployeeAction != 'resource' && assignedEmployeeAction != 'edit')">
+                        <div style="height:94%">
+                            <opendrawing *ngIf="IsOpenDrawingComponentActive && (splitviewAssignedEmployee.showSecondaryView) &&(assignedEmployeeAction != 'displaySettings' && assignedEmployeeAction != 'attachment' && assignedEmployeeAction != 'resource' && assignedEmployeeAction != 'edit')" [extDrawingId]="selectedDrawingId" [moduleId]="moduleId" [activeModuleIds]="moduleId" [pageTarget]="dwgPageTarget" [extDrawingType]="drawingType" [extDrawingDetails]="selectedEmpIds"  style="display: block;" [style.width]="innerwidthAssign" (outDrawingobject)="getDrawingObject($event)"></opendrawing>
+                        </div>
+                    </secondary-view>
+                    <secondary-view *ngIf="secondaryTarget == 2">
+                        <multiple-Edit *ngIf="isMultipleEditEnabled && splitviewAssignedEmployee.showSecondaryView" [datasource]="multipleEditFieldDetails" [applicationFormId]="employeeService.allemployeeAddEditFormId" [moduleId]="5" (onUpdate)="onMultipleEditUpdate($event)"> </multiple-Edit>
+                    </secondary-view>
+                    <secondary-view *ngIf="secondaryTarget == 3 && splitviewAssignedEmployee.showSecondaryView">
+                        <assignormove-emp-dataentry *ngIf="isassignmovedataentry && splitviewAssignedEmployee.showSecondaryView" [selectedEmployeeData]="empDataForAssigOrMoveDataEntry" [selectedIds]="allEmployeeSelectedId" [action]="assignOrMoveEmpAction" (submitSuccess)="submitSuccessAssignOrMoveDataEntry($event)"> </assignormove-emp-dataentry>
+                    </secondary-view>
+                </split-view>
+            </tab>
+            <tab tabTitle="Unassigned" closeButtonVisible="hidden" *ngIf="unassignedEmployeeTotalItems!='0'">
+                <split-view [splitviewObject]="splitviewUnassignedEmployee" [pageTitle]="splitViewTitle" (onSecondaryClose)="onSplitViewClose($event)">
+                    <primary-view>
+                        <submenu>
+                            <sub-menu [menuCard]=true [source]=unassignedEmployeeMenu [count]=unassignedEmployeeTotalItems [menuIds]=enableunassignedEmployeeMenu (onSubMenuChange)="updateAllEmployeeMenu($event);"> </sub-menu>
+                        </submenu>
+                        <unassignedEmployeeList *ngIf="selectedTab==2" (emitMenu)="emitMenu($event)" [returnData]="returnData" (updateUnassignedEmployeeSelectedId)="updateUnassignedEmployeeSelectedId($event)" [action]="unassignedEmployeeAction" [menuaccess]="unassignedEmployeeMenu" [fieldObject]="fieldObject" [attachmentSuccess]="employeeAttachmentSuccess" [unAssignedEmployeeId]="unAssignedEmployeeId" [unAssignedEmpResourceCount]="unAssignedEmpResourceCount"[assignedEmpIds]="assignedEmpIds" [multipleEditChange]="multipleEditChange"  [updateEmpData]="updateUnassignedEmpData"></unassignedEmployeeList>
+                    </primary-view>
+                    <secondary-view *ngIf="secondaryTarget == 1">
+                        <unassignedemployee-addedit *ngIf="splitviewUnassignedEmployee.showSecondaryView && unassignedEmployeeSelectedId &&(unassignedEmployeeAction != 'displaySettings' && (unassignedEmployeeAction != 'attachment' && (unassignedEmployeeAction != 'resource' &&(unassignedEmployeeAction != 'exportEmployeData') && (!isAssigneEmployees))))" [EmployeeData]="EmployeeData" [selectedId]="unassignedEmployeeSelectedId[0]" (submitSuccess)="OnSuccessfulSubmi($event)" [addEdit]="unassignedEmployeeAction" [showview]="showview"></unassignedemployee-addedit>
+                        <employeeResourceList style="display: block;width:700px;" *ngIf="splitviewUnassignedEmployee.showSecondaryView &&(unassignedEmployeeAction == 'resource' && (unassignedEmployeeSelectedId))" [filterResourceChkbx]="filterResourceChkbx" [target]="target" [EmployeeData]="EmployeeData" [selectedId]="unassignedEmployeeSelectedId[0]" (submitSuccess)="OnSuccessfulSubmi($event)" (employeeResourceCount)="onUpdateResourceCount($event)"></employeeResourceList>
+                        <attachments *ngIf="splitviewUnassignedEmployee.showSecondaryView &&(unassignedEmployeeAction == 'attachment' && (unassignedEmployeeSelectedId))" [attachmentCategoryId]="9" [moduleId]="moduleId" [baseEntityId]="unassignedEmployeeSelectedId[0]" (attachmentSuccess)="attachmentSuccess($event)" class="attachment"></attachments>
+                    </secondary-view>
+                    <secondary-view *ngIf="splitviewUnassignedEmployee.showSecondaryView && (unassignedEmployeeAction != 'attachment') && (unassignedEmployeeSelectedId) && (unassignedEmployeeAction != 'displaySettings') && (unassignedEmployeeAction != 'resource') && (unassignedEmployeeAction != 'edit') && (unassignedEmployeeAction != 'add')&&(unassignedEmployeeAction != 'exportEmployeData') && (isAssigneEmployees)">
+                        <div style="height:94%;">
+                            <assignemployees *ngIf="splitviewUnassignedEmployee.showSecondaryView && (unassignedEmployeeAction != 'attachment') && (unassignedEmployeeSelectedId) && (unassignedEmployeeAction != 'displaySettings') && (unassignedEmployeeAction != 'resource') && (unassignedEmployeeAction != 'edit') && (unassignedEmployeeAction != 'add')&&(unassignedEmployeeAction != 'exportEmployeData') && (isAssigneEmployees)" (onDrawingClose)="onSplitViewClose($event)" (outAssignedEmpIds)="empAssignSuccess($event)" style="display: block;" [style.width]="innerwidthAssign" [empDetails]="empDetails" (outDrawingobject)="getDrawingObject($event)"></assignemployees>
+                        </div>
+                    </secondary-view>
+                    <secondary-view *ngIf="unassignedEmployeeAction == 'displaySettings' &&(splitviewUnassignedEmployee.showSecondaryView)">
+                        <tabs [selectedTab]="dispTab" style="height:100%;display:block">
+                            <tab tabTitle="Employee" closeButtonVisible="hidden" *ngIf="unassignedEmployeeTotalItems!='0'">
+                                <display-setting [IsGrid]="blnIsGrid" [DisplaySettingCategoryId]="6" [AdditionalDataFieldCategoryId]="8" (emitdisplaySetting)="getUpdatedDisplaySettings($event)">></display-setting>
+                            </tab>
+                            <!--<tab tabTitle="Space" closeButtonVisible="hidden" *ngIf="unassignedEmployeeTotalItems!='0'">
+                                <display-setting [IsGrid]="blnIsGrid" [DisplaySettingCategoryId]="17" [AdditionalDataFieldCategoryId]="7" (emitdisplaySetting)="getUpdatedDisplaySettings($event)"></display-setting>
+                            </tab>-->
+                        </tabs>
+                    </secondary-view>
+                    <secondary-view *ngIf="unassignedEmployeeAction == 'exportEmployeData' &&(splitviewUnassignedEmployee.showSecondaryView)">
+                        <export-employee-data *ngIf="unassignedEmployeeAction == 'exportEmployeData' &&(splitviewUnassignedEmployee.showSecondaryView)"></export-employee-data>
+                    </secondary-view>
+                    <secondary-view *ngIf="secondaryTarget == 2">
+                        <multiple-Edit *ngIf="isMultipleEditEnabled && splitviewUnassignedEmployee.showSecondaryView" [datasource]="multipleEditFieldDetails" [applicationFormId]="employeeService.allemployeeAddEditFormId" [moduleId]="5" (onUpdate)="onMultipleEditUpdate($event)"> </multiple-Edit>
+                    </secondary-view>
+                    <secondary-view *ngIf="secondaryTarget == 3 && splitviewUnassignedEmployee.showSecondaryView">
+                        <assignormove-emp-dataentry *ngIf="isassignmovedataentry && splitviewUnassignedEmployee.showSecondaryView" [selectedEmployeeData]="empDataForAssigOrMoveDataEntry" [selectedIds]="allEmployeeSelectedId" [action]="assignOrMoveEmpAction" (submitSuccess)="submitSuccessAssignOrMoveDataEntry($event)"> </assignormove-emp-dataentry>
+                    </secondary-view>
+                    </split-view>
+            </tab>
+
+        </tabs>
+        <div *ngIf="isQuerybuilder==true">
+            <split-view [splitviewObject]="splitviewAllEmployee" [pageTitle]="splitViewTitle" (onSecondaryClose)="onSplitViewClose($event)">
+                <primary-view>
+                    <submenu>
+                        <sub-menu [menuCard]=true [source]=allEmployeeMenu [count]=allEmployeeTotalItems [menuIds]=enableallEmployeeMenu (onSubMenuChange)="updateAllEmployeeMenu($event);"> </sub-menu>
+                    </submenu>
+                    <allEmployeeList [qResult]="qResult" [buildarray]="buildarray" *ngIf="qResult&&isQuerybuilder==true" [isQuerybuilder]="isQuerybuilder" (emitMenu)="emitMenu($event)" [returnData]="returnData" (updateAllEmployeeSelectedId)="updateAllEmployeeSelectedId($event)" [action]="allEmployeeAction" [menuaccess]="allEmployeeMenu" [fieldObject]="fieldObject" [attachmentSuccess]="employeeAttachmentSuccess" [allEmployeeId]="allEmployeeId" [allEmpResourceCount]="allEmpResourceCount" [assignedEmpIds]="assignedEmpIds" [multipleEditChange]="multipleEditChange"></allEmployeeList>
+                 
+                </primary-view>
+                <secondary-view *ngIf="secondaryTarget == 1">
+                    <allemployee-addedit *ngIf="splitviewAllEmployee.showSecondaryView && allEmployeeSelectedId &&(!isAssigneEmployees) && (allEmployeeAction != 'displaySettings') && (allEmployeeAction != 'attachment') &&(allEmployeeAction != 'resource') && (allEmployeeAction != 'exportEmployeData') && (!IsOpenDrawingComponentActive) && (allEmployeeAction=='add'||allEmployeeAction=='edit')" [EmployeeData]="EmployeeData" [selectedId]="allEmployeeSelectedId[0]" (submitSuccess)="OnSuccessfulSubmi($event)" [addEdit]="allEmployeeAction" [showview]="showview"></allemployee-addedit>
+                    <attachments *ngIf="splitviewAllEmployee.showSecondaryView &&(!isAssigneEmployees && allEmployeeAction == 'attachment' &&(!IsOpenDrawingComponentActive) && (allEmployeeSelectedId))" [attachmentCategoryId]="9" [moduleId]="moduleId" [baseEntityId]="allEmployeeSelectedId[0]" (attachmentSuccess)="attachmentSuccess($event)" class="attachment"></attachments>
+                    <employeeResourceList style="display: block;width:700px;" *ngIf="splitviewAllEmployee.showSecondaryView &&(!isAssigneEmployees && allEmployeeAction == 'resource' &&(!IsOpenDrawingComponentActive) && (allEmployeeSelectedId))" [filterResourceChkbx]="filterResourceChkbx" [target]="target" [EmployeeData]="EmployeeData" [selectedId]="allEmployeeSelectedId[0]" (employeeResourceCount)="onUpdateResourceCount($event)"></employeeResourceList>
+                </secondary-view>
+                <secondary-view *ngIf="allEmployeeAction == 'displaySettings' &&(splitviewAllEmployee.showSecondaryView) &&(!IsOpenDrawingComponentActive) && (!isAssigneEmployees)">
+                    <tabs [selectedTab]="dispTab" style="height:100%;display:block">
+                        <tab tabTitle="Employee" closeButtonVisible="hidden" *ngIf="allEmployeeTotalItems!='0'">
+                            <display-setting [IsGrid]="blnIsGrid" [DisplaySettingCategoryId]="6" [AdditionalDataFieldCategoryId]="8" (emitdisplaySetting)="getUpdatedDisplaySettings($event)">></display-setting>
+                        </tab>
+                        <tab tabTitle="Space" closeButtonVisible="hidden" *ngIf="allEmployeeTotalItems!='0'">
+                            <display-setting [IsGrid]="blnIsGrid" [DisplaySettingCategoryId]="17" [AdditionalDataFieldCategoryId]="7" (emitdisplaySetting)="getUpdatedDisplaySettings($event)"></display-setting>
+                        </tab>
+                    </tabs>
+                </secondary-view>
+
+                <secondary-view>
+                    <export-employee-data *ngIf="allEmployeeAction == 'exportEmployeData' &&(splitviewAllEmployee.showSecondaryView) &&(!IsOpenDrawingComponentActive)"></export-employee-data>
+                </secondary-view>
+                <secondary-view>
+                    <div *ngIf="IsOpenDrawingComponentActive && (splitviewAllEmployee.showSecondaryView)" style="height:94%;min-width:80%">
+                        <opendrawing *ngIf="IsOpenDrawingComponentActive && (splitviewAllEmployee.showSecondaryView) &&(!isAssigneEmployees && allEmployeeAction != 'displaySettings' && allEmployeeAction != 'attachment' && allEmployeeAction != 'resource' && allEmployeeAction != 'edit' && allEmployeeAction != 'add' && allEmployeeAction !='allemployeeexport' && allEmployeeAction != 'exportEmployeData' && allEmployeeAction != 'attachment')" [extDrawingId]="selectedDrawingId" [moduleId]="moduleId" [activeModuleIds]="moduleId" [pageTarget]="dwgPageTarget" [extDrawingType]="drawingType" [extDrawingDetails]="selectedEmpIds" style="display: block;" [style.width]="innerwidthAssign" (outDrawingobject)="getDrawingObject($event)"></opendrawing>
+                    </div>
+                </secondary-view>
+                <secondary-view>
+                    <div *ngIf="isAssigneEmployees && (splitviewAllEmployee.showSecondaryView)" style="height:94%;">
+                        <assignemployees *ngIf="isAssigneEmployees && splitviewAllEmployee.showSecondaryView && (allEmployeeAction != 'attachment') && (allEmployeeAction != 'displaySettings') && (allEmployeeAction != 'resource') && (allEmployeeAction != 'edit') && (allEmployeeAction != 'add')&&(allEmployeeAction != 'exportEmployeData') && (!IsOpenDrawingComponentActive)" [empDetails]="empDetails" (onDrawingClose)="onSplitViewClose($event)" (outAssignedEmpIds)="empAssignSuccess($event)" style="display: block;" [style.width]="innerwidthAssign"></assignemployees>
+                    </div>
+                </secondary-view>
+                <secondary-view>
+                    <export-employee-data *ngIf="allEmployeeAction == 'exportEmployeData' &&(splitviewAllEmployee.showSecondaryView)" [exportClick]=""></export-employee-data>
+                </secondary-view>
+                <secondary-view *ngIf="secondaryTarget == 2">
+                    <multiple-Edit *ngIf="isMultipleEditEnabled && splitviewAllEmployee.showSecondaryView" [datasource]="multipleEditFieldDetails" [applicationFormId]="employeeService.allemployeeAddEditFormId" [moduleId]="5" (onUpdate)="onMultipleEditUpdate($event)"> </multiple-Edit>
+                </secondary-view>
+            </split-view>
+        </div>
+        <slide [width]="400" [position]="'top-right'" [type]="dialog" [show]=showslide (closeDialog)="closeSlideDialog($event)">
+            <div>
+                <div>
+                    'One or more Employee is backed up for re-linking. Do you want to assign?'
+                </div>
+                <div>
+                    <div style="width:100%">
+                        <button class="Savebutton " type="button" (click)="yesClick()">Yes</button>
+                        <button class="Savebutton " type="button" (click)="noClick()">No</button>
+                    </div>
+                </div>
+            </div>
+        </slide>
+</content>
+</page>
+<style>
+    .attachment {
+        width: 750px;
+        display: block;
+    }
+
+    @media only screen and (min-device-width: 320px) and (max-device-width: 813px) and (orientation: portrait) {
+        .attachment {
+            width: 100%;
+        }
+    }
+
+    @media only screen and (min-device-width: 320px) and (max-device-width: 812px) and (orientation: landscape) {
+        .attachment {
+            width: 100%;
+        }
+    }
+</style>

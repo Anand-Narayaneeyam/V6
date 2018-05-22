@@ -1,0 +1,95 @@
+﻿{
+  "data": [
+    {
+      "FieldId": 1,
+      "FieldName": "Id",
+      "FieldType": 1,
+      "FieldValue": "",
+       "IsVisible": false,
+      "IsMultiValued": false,
+      "IsMandatory": false,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false
+    },
+    {
+      "FieldId": 2,
+      "FieldName": "Layer Function",
+      "FieldType": 5,
+      "FieldValue": "0",
+      "IsVisible": true,
+      "IsMandatory": true,
+      "IsDisabled": false,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false,
+      "IsMultiValued": true,
+      "MultiValuedDetails": {
+        "LookupValues": [
+          
+          {
+            "Id": 1,
+            "Value": "Administrator"
+          },
+          {
+            "Id": 2,
+            "Value": "Employee"
+          }
+        ],
+        "PopupComponentName": null
+      },
+      "NotificationType": "inline"
+    },
+    {
+      "FieldName": "Drawing Layer",
+      "FieldType": 5,
+      "FieldValue": "0",
+      "IsVisible": true,
+      "IsMandatory": true,
+      "IsDisabled": false,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false,
+      "IsMultiValued": true,
+      "MultiValuedDetails": {
+        "LookupValues": [
+        
+          {
+            "Id": 1,
+            "Value": "Space"
+          },
+          {
+            "Id": 2,
+            "Value": "Employee"
+          }
+        ],
+        "PopupComponentName": null
+      },
+      "NotificationType": "inline"
+    },
+    {
+      "FieldId": 3,
+      "FieldName": "Data Field",
+      "FieldType": 5,
+      "FieldValue": "0",
+      "IsVisible": true,
+      "IsMandatory": true,
+      "IsDisabled": false,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false,
+      "IsMultiValued": true,
+      "MultiValuedDetails": {
+        "LookupValues": [
+        
+          {
+            "Id": 1,
+            "Value": "Wall Color"
+          },
+          {
+            "Id": 2,
+            "Value": "Max Capacity"
+          }
+        ],
+        "PopupComponentName": null
+      },
+      "NotificationType": "inline"
+    }
+  ]
+}

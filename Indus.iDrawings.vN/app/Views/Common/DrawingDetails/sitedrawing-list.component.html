@@ -1,0 +1,32 @@
+﻿
+<div style="height:100%;overflow: hidden;">
+    <div style="height:50px;float:right;width:100%;">
+        <search *ngIf="fieldObject" [advancesearch]="true" [Key]=2 [datasource]="fieldObject" [dataKey]="dataKey" [keyWordLookup]=keyWordLookup (SaveAs)="SaveAs($event)" (Delete)="Delete($event)" (onloadSearch)="onloadSearch($event)" (Clear)="Clear($event)" (Submit)="Submit($event)"></search>
+    </div>
+    <div style="height:calc(100% - 150px);float:left;width:100%;">
+        <confirmation (onConfirm)="okDelete($event)"></confirmation>
+        <gridView [dataSource]="itemsSource" [properties]="inputItems" [columns]="fieldObject" (onSorting)="onSort($event)" (onRowUpdate)="RowUpdate($event)" (onRowDelete)="RowDelete($event)" (onRowAdd)="RowAdd($event)" (onColValClick)="onColValClick($event)"></gridView>
+    </div>
+    <div style="height:100px;width:100%;float:left;">
+        <paging [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="pageChanged($event);"></paging>
+    </div>
+    <slide [width]="200" [position]="position" [type]="dialog" [show]="showSlide" (closeDialog)="closeSlideDialog($event)">
+
+        <div>
+            <div>
+                Are you sure want to delete this selected site?
+            </div>
+            <div>
+
+                <div style="width:100%">
+                    <button  class="Savebutton "type="button" (click)="okDelete($event)">Yes</button>
+                    <button  class="Savebutton "type="button" (click)="cancelClick($event)">No</button>
+                </div>
+            </div>
+        </div>
+    </slide>
+
+</div>
+
+
+

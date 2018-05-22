@@ -1,0 +1,173 @@
+﻿<page [pagetitle]="pagePath">
+    <content>
+        <section title="Password Policy" [isExpanded]="sectionExpansionStatus[0].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div *ngIf="sectionExpansionStatus[0].isExpanded">
+
+                <p>This option enables the Administrators to define a password policy for enhancing the security by imposing some conditions on the creation of passwords by the users. The following conditions are provided in the Password policy setup. </p>
+                <p><span class="header2">Minimum length of the password</span> - The minimum length of the password can be specified using this option. This can be set from 8 to 30</p>
+                <p><span class="header2">Case sensitive</span> - Through this option, it can be specified whether the password is case sensitive or not. </p>
+                <p><span class="header2">Requires at least one upper case character</span> - If this option is checked, then the password entered should have at least one upper case character (capital letter)</p>
+                <p><span class="header2">Requires at least one lower case character</span> - If this option is checked, then the password entered should have at least one lower case character (small letter).</p>
+                <p><span class="header2">Requires at least one non-alphanumeric character</span> - If this option is checked, then the password entered should have at least one special character like @, #, $, *, etc.</p>
+                <p><span class="header2">Requires at least one numeric character</span> - If this option is checked, then the password entered should have at least one numeric character (0-9)</p>
+                <p><span class="header2">Password expiry</span> - Two options are provided for password expiry - Password Never Expires and Expire after (No. of) days.<br />If the set option is Password Never Expires then the password will never expire, otherwise the password will expire after the number of days entered in the text box. If the password has expired, the system will display ‘Your&nbsp;password&nbsp;has&nbsp;expired’ at the user’s next login and prompt the user to change the password.</p>
+                <p><span class="header2">Minimum time between password changes</span> - This is the minimum time interval needed between two password changes. Once a user has changed his password, the user will be allowed to change his password again only after the specified time interval.</p>
+                <p><span class="header2">Number of previous passwords that cannot be reused</span> – By specifying a number ‘n’ here, it can be ensured that when a user changes his password, it will be different from his past ‘n’ passwords.</p>
+                <p><span class="header2">Maximum number of consecutive failed attempts before the account gets locked</span> - This option is used to lock the user’s account if the user has entered wrong passwords for the specified number of consecutive attempts within a set Time Interval.</p>
+                <p><span class="header2">Time Interval for counting failed attempts to lock the account</span> - This is the Time Interval within which consecutive failed attempts can lock an account.</p>
+                <p><span class="header2">Account locked out period</span> – This option is used to specify a time period for keeping a user account disabled once it gets locked due to repeated failed attempts to login as defined by the two options defined above. The locked user account will be enabled automatically after the lock period specified here has elapsed.</p>
+                <p><span class="header2">Account inactive</span> – This option is used to set a policy for making the user account inactive if not logged in for a set period.<br /> The Administrator can specify whether the user account has to be locked if the account is inactive for the specified number of days or Account Never locked if the account is inactive.<br /> The locked user account will be enabled automatically after the Account inactive period specified in the policy has elapsed.</p>
+                <p>After a password policy change, when a user logs in, if his password does not comply with the new password policy, he will be prompted to change his password.</p>
+
+            </div>
+        </section>
+        <section title="Customer Support" [isExpanded]="sectionExpansionStatus[1].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div *ngIf="sectionExpansionStatus[1].isExpanded">
+
+                <p>Customer Support details can be added / updated through this option</p>
+
+            </div>
+        </section>
+        <section title="Attachment Categories" [isExpanded]="sectionExpansionStatus[3].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div *ngIf="sectionExpansionStatus[3].isExpanded">
+
+                <p>This option is to add/edit/delete the attachment file categories. On clicking this menu, any categories created earlier will be displayed.</p>
+                <p><span class="header1">Add: </span>Create a new category by clicking <span class="header2">Add</span> <img class="helpicon" src="Content/Icons/data_addN.png" alt="Add" /> icon.</p>
+                <p><span class="header1">Edit: </span>Attachment Category can be edited by clicking the <span class="header2">Edit</span> <img class="helpicon" src="Content/Layout/edit_button.png" alt="Edit" /> icon. Edit icon will be displayed when the mouse points to a row or clicking the required row once</p>
+                <p><span class="header1">Delete: </span>Delete a category by selecting it and then clicking the <span class="header2">Delete</span> <img class="helpicon" src="Content/Layout/delete_button.png" alt="Delete" /> icon. Delete icon will be displayed when clicking the required row once.</p>
+
+
+            </div>
+        </section>
+        <section title="Mail Domains" [isExpanded]="sectionExpansionStatus[4].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div *ngIf="sectionExpansionStatus[4].isExpanded">
+
+                <p>This option is used to define email domains for the customer. Emails created with the defined domains only will be accepted for iDrawings / Web Service users, Contacts, Employees, Technicians etc. </p>
+                <p>This option allows the users to identify the authenticated mail domains and thereby ensures security from unauthorized access. This option is available only if 'Email Domain Validation' option is enabled by Indus.</p>
+                <p><span class="header1">Add: </span>A new mail domain can be added by clicking the <span class="header2">Add</span> <img class="helpicon" src="Content/Icons/data_addN.png" alt="Add" /> icon.</p>
+                <p><span class="header1">Edit: </span>Mail Domain can be edited by clicking the <span class="header2">Edit</span> <img class="helpicon" src="Content/Layout/edit_button.png" alt="Edit" /> icon. Edit icon will be displayed when the mouse points to a row or clicking the required row once.</p>
+                <p><span class="header1">Delete: </span>Delete a Domain by selecting it and then clicking the <span class="header2">Delete</span> <img class="helpicon" src="Content/Layout/delete_button.png" alt="Delete" /> icon. Delete icon will be displayed when clicking the required row once.</p>
+
+            </div>
+        </section>
+        <section title="Report Setup" [isExpanded]="sectionExpansionStatus[5].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div *ngIf="sectionExpansionStatus[5].isExpanded">
+
+                <p>This option is used to set a user defined text for showing in the header and footer of all reports and a Watermark Image or Watermark Text in all reports.</p>
+                <p>By default, the watermark image will be the Customer Logo. If needed, the logo can be changed with another image. To show Watermark in Reports, check the corresponding checkbox.<br /> By default the Watermark Image option is enabled. Administrator can change this to Watermark Text if required. For setting the watermark Image, click the Browse button and select the required image.</p>
+                <p>For setting the Watermark Text, select the Watermark Text option first and enter the text to be displayed.  Font size for the Watermark Text can also be selected from the Watermark Text font size combo. </p>
+                <p>Click Save Changes to save the settings. </p>
+
+            </div>
+        </section>
+        <section title="Contact Details & Logo" [isExpanded]="sectionExpansionStatus[6].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div *ngIf="sectionExpansionStatus[6].isExpanded">
+
+                <p>On clicking <span class="header2">Contact Details & Logo</span> section, Address and other contact details of the organization can be entered. Click Save Changes button to save the details.</p>
+                <p>Customer Logo can be uploaded to the application through this option. Select the image type from the combo. Click the Browse button and select the required image file for the logo and click on the Save Changes button. The logo will be displayed in the iDrawings<sup>®</sup> header tab.</p>
+
+            </div>
+        </section>
+        <section title="Additional Data Fields" [isExpanded]="sectionExpansionStatus[8].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div *ngIf="sectionExpansionStatus[8].isExpanded">
+
+                <p>Users can define Additional Data Fields for all categories like Site, Building, Floor, Space, Employees etc in addition to the system defined data fields which are available by default. For defining Additional Data Fields, the required category has to be selected from the Additional Data Field Category drop down.</p>
+                <p>On selecting a Category from Additional Data Field Category drop down, any Additional Data Fields defined for the selected Category will be displayed in a grid.</p>
+                <p><span class="header1">Add:</span> Create a new Data Field by clicking the <span class="header2"> Add </span> <img class="helpicon" src="Content/Icons/data_addN.png" alt="Add" />   icon. The Field Name, Field Type (Single Line Text, Multi Line Text, Date Time, Integer or Number), whether Mandatory or not, and whether a Validated field or not, have to be specified. For Mandatory fields, it would be required to enter a value for it while entering data. Click on the Save button to add  the data field.</p>
+                <p><span class="header1">Edit: </span> a Data Field by selecting it and then clicking the <span class="header2"> Edit </span><img class="helpicon" src="Content/Layout/edit_button.png" alt="Edit" />  icon</p>
+                <p><span class="header1">Delete:</span> Delete a Data Field by selecting it and then clicking the <span class="header1"> Delete </span><img class="helpicon" src="Content/Layout/delete_button.png" alt="Delete" />    icon.</p>
+                <p><span class="header1">Field Values: </span><span class="header2">Field Values</span> <img class="helpicon" src="Content/Icons/field-valueN.png" alt="Field Values" />   icon is for creating/viewing/editing/deleting values for validated Data Fields. Select a Validated Field and click <span class="header2">Field Values</span> <img class="helpicon" src="Content/Icons/field-valueN.png" alt="Field Values" />   icon, all values defined for the validated field will be displayed in a list.</p>
+                <p><span class="header1">Delete:</span>  Delete a value by selecting it and then clicking the <span class="header2"> Delete </span> <img class="helpicon" src="Content/Layout/delete_button.png" alt="Delete" />   icon. Delete icon will be displayed when clicking the required row once.</p>
+
+            </div>
+        </section>
+        <section title="Organizational Units" [isExpanded]="sectionExpansionStatus[7].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div *ngIf="sectionExpansionStatus[7].isExpanded">
+
+                <p>This option allows the administrator to add/edit/delete organizational units. A new Organizational Unit (Division/Department/Group/Team etc. can be an organizational unit, this depends on the Organizational Structure of the organization) can be added by clicking   the corresponding menu item under Add icon, and entering the name and a Code for the new Organizational Unit.</p>
+                <p><span class="header1">Add:</span> A new Organizational Unit can be added by clicking the corresponding menu item under <span class="header2">Add</span> <img class="helpicon" src="Content/Icons/data_addN.png" alt="Add" />   icon.</p>
+                <p><span class="header1">Edit:</span> Edit an Organizational Unit by selecting it and then clicking the <span class="header2">Edit</span> <img class="helpicon" src="Content/Layout/edit_button.png" alt="Edit" />   icon.</p>
+                <p><span class="header1">Delete:</span> Delete an Organizational Unit by selecting it and then clicking on the <span class="header2">Delete</span> <img class="helpicon" src="Content/Layout/delete_button.png" alt="Delete" />   icon.</p>
+                <p><span class="header1">User Access:</span> This option is to assign access to an Organizational Unit for multiple Users. This can be done by selecting the required Organizational Unit and then selecting the <span class="header2"> User Access </span><img class="helpicon" src="Content/Icons/data_accessN.png" alt="User Access" /> icon. Select the required Users in the User selection page and clicking Save Changes button.</p>
+            </div>
+        </section>
+        <section title="GL Accounts" [isExpanded]="sectionExpansionStatus[9].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div *ngIf="sectionExpansionStatus[9].isExpanded">
+
+                <p>This option will be available only if the ‘Chargeback Option’ is set as GL Accounts by Indus. The GL Account Code and the GL Account Name can be entered. </p>
+                <p><span class="header1">Add:</span> New GL Account can be added by clicking the <span class="header2"> Add </span><img class="helpicon" src="Content/Icons/data_addN.png" alt="Add" />   icon.</p>
+                <p><span class="header1">Edit:</span> Edit a GL Account by selecting it and then clicking the <span class="header2"> Edit </span> <img class="helpicon" src="Content/Layout/edit_button.png" alt="Edit" />   icon.</p>
+                <p><span class="header1">Delete:</span> Delete a GL Account by selecting it and then clicking the <span class="header2">Delete </span><img class="helpicon" src="Content/Layout/delete_button.png" alt="Delete" />   icon.</p>
+
+
+            </div>
+        </section>
+
+        <section title="User Groups" [isExpanded]="sectionExpansionStatus[10].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div *ngIf="sectionExpansionStatus[10].isExpanded">
+
+                <p>Through this option, Administrator can create various User Groups and add Users to these groups in different User Categories provided. This option is used to group different type of users for different purposes or jobs.</p>
+                <p>On clicking this option all the User Groups added will be listed. Administrator can add, edit or delete User Groups through this option. After creating User Groups, users of different categories like iDrawings Users and Employees can be added to each group. </p>
+
+                <p><span class="header1">Add:</span> New User Group can be added by clicking the <span class="header2"> Add </span><img class="helpicon" src="Content/Icons/data_addN.png" alt="Add" />   icon.</p>
+                <p><span class="header1">Edit:</span> Edit a User Group by selecting it and then clicking the <span class="header2"> Edit </span> <img class="helpicon" src="Content/Layout/edit_button.png" alt="Edit" />   icon.</p>
+                <p><span class="header1">Delete:</span> Delete a User Group by selecting it and then clicking the <span class="header2">Delete </span><img class="helpicon" src="Content/Layout/delete_button.png" alt="Delete" />   icon.</p>
+
+                <p><span class="header1">User Category:</span></p>
+                <p>This option is to add users of different category to a User Group. The default User Categories provided are iDrawings Users/Employees/Technicians/Contractors and these Categories will be displayed as tabs. User Categories will be based on the modules selected by the customer. Employees’ tab will be available only if Employee module is enabled. Technicians or Contractors tab will be available only if Work Order module is enabled for the Customer.</p>
+                <p>Select the required User Group to which the Users are to be added and click the <span class="header2">User Category</span> icon.  All User Categories will be displayed as tabs. By Default iDrawings Users tab will be selected.</p>
+                <p><span class="header2">Add: </span> Administrator can add users of User Category ‘iDrawings Users’ to the selected User Group by clicking the <span class="header2">Add</span> icon in the <span class="header2">iDrawings Users</span> tab.  On clicking the Add button, iDrawings Users selection page will be displayed with the list of all active iDrawings Users (other than WO User) along with their Email and User Role. Select/Deselect the required users by checking/unchecking the checkboxes shown against each user. On clicking the Save Changes button in the iDrawings Users selection page the selected users will be added to the selected User Group. </p>
+                <p><span class="header1">Delete: </span>Users added to the selected User Group can be removed through this option.</p>
+                <p>Likewise, users of different categories like Employees, Technicians and Contractors can be added to each group. </p>
+
+            </div>
+        </section>
+    </content>
+</page>
+<style type="text/css">
+    h3.Mainheader {
+        color: #178AE8;
+    }
+
+    .header1 {
+        font-weight: bold;
+        color: #178AE8;
+    }
+
+    .header2 {
+        font-weight: normal;
+        color: #178AE8;
+    }
+
+    p {
+        margin-left: 38px;
+        font-size: 13px;
+        margin-right: 3em;
+    }
+
+    .header3 {
+        font-weight: bold;
+        color: black;
+    }
+    /**/ h1 {
+        color: #178AE8;
+        font-size: 1.3em;
+        margin-left: 38px;
+    }
+
+    h2 {
+        color: #178AE8;
+        font-size: 1em;
+        margin-left: 38px;
+    }
+
+    .config {
+        background-color: #178AE8;
+    }
+
+    .helpicon {
+        vertical-align: baseline;
+        width: 20px;
+        height: 20px;
+    }
+</style>

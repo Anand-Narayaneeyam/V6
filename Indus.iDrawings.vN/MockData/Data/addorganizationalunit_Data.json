@@ -1,0 +1,710 @@
+﻿{
+  "level1": [
+    {
+      "FieldId": 1,
+      "FieldName": "Id",
+      "FieldType": 1,
+      "FieldValue": "",
+      "IsVisible": false,
+      "IsMultiValued": false,
+      "IsMandatory": false,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false
+    },
+    {
+      "FieldId": 2,
+      "FieldName": "Division",
+      "FieldType": 1,
+      "FieldValue": "",
+      "IsMandatory": true,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false,
+      "IsVisible": true,
+      "MaxLength": 100,
+      "NotificationType": "inline"
+    },
+
+    {
+      "FieldId": 3,
+      "FieldName": "Code",
+      "FieldType": 1,
+      "FieldValue": "",
+      "IsMandatory": true,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false,
+      "IsVisible": true,
+      "MaxLength": 10,
+      "NotificationType": "inline"
+    }
+  ],
+  "level2": [
+    {
+      "FieldId": 1,
+      "FieldName": "Id",
+      "FieldType": 1,
+      "FieldValue": "",
+      "IsVisible": false,
+      "IsMultiValued": false,
+      "IsMandatory": false,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false
+    },
+    {
+      "FieldId": 2,
+      "FieldName": "Division",
+      "FieldType": 5,
+      "FieldValue": "0",
+      "IsVisible": true,
+      "IsMandatory": true,
+      "IsDisabled": false,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false,
+      "IsMultiValued": true,
+      "MultiValuedDetails": {
+        "LookupValues": [
+          {
+            "Id": 1,
+            "Value": "Division"
+          },
+          {
+            "Id": 2,
+            "Value": "Department"
+          },
+          {
+            "Id": 2,
+            "Value": "Class"
+          }
+        ],
+        "PopupComponentName": null
+      },
+      "NotificationType": "inline"
+
+    },
+    {
+      "FieldId": 2,
+      "FieldName": "Department",
+      "FieldType": 1,
+      "FieldValue": "",
+      "IsMandatory": true,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false,
+      "IsVisible": true,
+      "MaxLength": 100,
+      "NotificationType": "inline"
+    },
+
+    {
+      "FieldId": 3,
+      "FieldName": "Code",
+      "FieldType": 1,
+      "FieldValue": "",
+      "IsMandatory": true,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false,
+      "IsVisible": true,
+      "MaxLength": 10,
+      "NotificationType": "inline"
+    }
+  ],
+  "level3": [
+    {
+      "FieldId": 1,
+      "FieldName": "Id",
+      "FieldType": 1,
+      "FieldValue": "",
+      "IsVisible": false,
+      "IsMultiValued": false,
+      "IsMandatory": false,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false
+    },
+    {
+      "FieldId": 2,
+      "FieldName": "Division",
+      "FieldType": 5,
+      "FieldValue": "0",
+      "IsVisible": true,
+      "IsMandatory": true,
+      "IsDisabled": false,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false,
+      "IsMultiValued": true,
+      "MultiValuedDetails": {
+        "LookupValues": [
+          {
+            "Id": 1,
+            "Value": "Administration"
+          },
+          {
+            "Id": 2,
+            "Value": "Department"
+          },
+          {
+            "Id": 3,
+            "Value": "Class"
+          }
+        ],
+        "PopupComponentName": null
+      }
+    },
+    {
+      "FieldId": 3,
+      "FieldName": "Department",
+      "FieldType": 5,
+      "FieldValue": "0",
+      "IsVisible": true,
+      "IsMandatory": true,
+      "IsDisabled": false,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false,
+      "IsMultiValued": true,
+      "MultiValuedDetails": {
+        "LookupValues": [
+          {
+            "Id": 1,
+            "Value": "HR"
+          },
+          {
+            "Id": 2,
+            "Value": "ECG Block"
+          },
+          {
+            "Id": 3,
+            "Value": "Library"
+          }
+        ],
+        "PopupComponentName": null
+      }
+    },
+    {
+      "FieldId": 4,
+      "FieldName": "Class",
+      "FieldType": 1,
+      "FieldValue": "",
+      "IsMandatory": true,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false,
+      "IsVisible": true,
+      "MaxLength": 100,
+      "NotificationType": "inline"
+    },
+    {
+      "FieldId": 5,
+      "FieldName": "Code",
+      "FieldType": 1,
+      "FieldValue": "",
+      "IsMandatory": true,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false,
+      "IsVisible": true,
+      "MaxLength": 10,
+      "NotificationType": "inline"
+    }
+  ],
+  "level4": [
+    {
+      "FieldId": 1,
+      "FieldName": "Id",
+      "FieldType": 1,
+      "FieldValue": "",
+      "IsVisible": false,
+      "IsMultiValued": false,
+      "IsMandatory": false,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false
+    },
+    {
+      "FieldId": 2,
+      "FieldName": "Division",
+      "FieldType": 5,
+      "FieldValue": "0",
+      "IsVisible": true,
+      "IsMandatory": true,
+      "IsDisabled": false,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false,
+      "IsMultiValued": true,
+      "MultiValuedDetails": {
+        "LookupValues": [
+          {
+            "Id": 1,
+            "Value": "Administration"
+          },
+          {
+            "Id": 2,
+            "Value": "Department"
+          },
+          {
+            "Id": 2,
+            "Value": "Class"
+          }
+        ],
+        "PopupComponentName": null
+      }
+    },
+    {
+      "FieldId": 3,
+      "FieldName": "Department",
+      "FieldType": 5,
+      "FieldValue": "0",
+      "IsVisible": true,
+      "IsMandatory": true,
+      "IsDisabled": false,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false,
+      "IsMultiValued": true,
+      "MultiValuedDetails": {
+        "LookupValues": [
+          {
+            "Id": 1,
+            "Value": "HR"
+          },
+          {
+            "Id": 2,
+            "Value": "ECG Block"
+          },
+          {
+            "Id": 2,
+            "Value": "Library"
+          }
+        ],
+        "PopupComponentName": null
+      }
+    },
+    {
+      "FieldId": 4,
+      "FieldName": "Class",
+      "FieldType": 5,
+      "FieldValue": "0",
+      "IsVisible": true,
+      "IsMandatory": true,
+      "IsDisabled": false,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false,
+      "IsMultiValued": true,
+      "MultiValuedDetails": {
+        "LookupValues": [
+          {
+            "Id": 1,
+            "Value": "Equpiement"
+          },
+          {
+            "Id": 2,
+            "Value": "Assets"
+          }
+        ],
+        "PopupComponentName": null
+      }
+    },
+    {
+      "FieldId": 5,
+      "FieldName": "Object",
+      "FieldType": 5,
+      "FieldValue": "0",
+      "IsVisible": true,
+      "IsMandatory": true,
+      "IsDisabled": false,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false,
+      "IsMultiValued": true,
+      "MultiValuedDetails": {
+        "LookupValues": [
+          {
+            "Id": 1,
+            "Value": "Furniture"
+          }
+        ],
+        "PopupComponentName": null
+      }
+    },
+    {
+      "FieldId": 6,
+      "FieldName": "Other",
+      "FieldType": 1,
+      "FieldValue": "",
+      "IsMandatory": true,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false,
+      "IsVisible": true,
+      "MaxLength": 100,
+      "NotificationType": "inline"
+    },
+    {
+      "FieldId": 7,
+      "FieldName": "Code",
+      "FieldType": 1,
+      "FieldValue": "",
+      "IsMandatory": true,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false,
+      "IsVisible": true,
+      "MaxLength": 10,
+      "NotificationType": "inline"
+    }
+  ],
+
+  "level5": [
+    {
+      "FieldId": 1,
+      "FieldName": "Id",
+      "FieldType": 1,
+      "FieldValue": "",
+      "IsVisible": false,
+      "IsMultiValued": false,
+      "IsMandatory": false,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false
+    },
+    {
+      "FieldId": 2,
+      "FieldName": "Division",
+      "FieldType": 5,
+      "FieldValue": "0",
+      "IsVisible": true,
+      "IsMandatory": true,
+      "IsDisabled": false,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false,
+      "IsMultiValued": true,
+      "MultiValuedDetails": {
+        "LookupValues": [
+          {
+            "Id": 1,
+            "Value": "Administration"
+          },
+          {
+            "Id": 2,
+            "Value": "Department"
+          },
+          {
+            "Id": 2,
+            "Value": "Class"
+          }
+        ],
+        "PopupComponentName": null
+      }
+    },
+    {
+      "FieldId": 3,
+      "FieldName": "Department",
+      "FieldType": 5,
+      "FieldValue": "0",
+      "IsVisible": true,
+      "IsMandatory": true,
+      "IsDisabled": false,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false,
+      "IsMultiValued": true,
+      "MultiValuedDetails": {
+        "LookupValues": [
+          {
+            "Id": 1,
+            "Value": "HR"
+          },
+          {
+            "Id": 2,
+            "Value": "ECG Block"
+          },
+          {
+            "Id": 2,
+            "Value": "Library"
+          }
+        ],
+        "PopupComponentName": null
+      }
+    },
+    {
+      "FieldId": 4,
+      "FieldName": "Class",
+      "FieldType": 5,
+      "FieldValue": "0",
+      "IsVisible": true,
+      "IsMandatory": true,
+      "IsDisabled": false,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false,
+      "IsMultiValued": true,
+      "MultiValuedDetails": {
+        "LookupValues": [
+          {
+            "Id": 1,
+            "Value": "Equpiement"
+          },
+          {
+            "Id": 2,
+            "Value": "Assets"
+          }
+        ],
+        "PopupComponentName": null
+      }
+    },
+    {
+      "FieldId": 5,
+      "FieldName": "Object",
+      "FieldType": 5,
+      "FieldValue": "0",
+      "IsVisible": true,
+      "IsMandatory": true,
+      "IsDisabled": false,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false,
+      "IsMultiValued": true,
+      "MultiValuedDetails": {
+        "LookupValues": [
+          {
+            "Id": 1,
+            "Value": "Furniture"
+          }
+        ],
+        "PopupComponentName": null
+      }
+    },
+    {
+      "FieldId": 6,
+      "FieldName": "Other",
+      "FieldType": 5,
+      "FieldValue": "0",
+      "IsVisible": true,
+      "IsMandatory": true,
+      "IsDisabled": false,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false,
+      "IsMultiValued": true,
+      "MultiValuedDetails": {
+        "LookupValues": [
+          {
+            "Id": 1,
+            "Value": "Sample"
+          }
+        ],
+        "PopupComponentName": null
+      }
+    },
+    {
+      "FieldId": 7,
+      "FieldName": "Outside",
+      "FieldType": 1,
+      "FieldValue": "",
+      "IsMandatory": true,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false,
+      "IsVisible": true,
+      "MaxLength": 100,
+      "NotificationType": "inline"
+    },
+    {
+      "FieldId": 8,
+      "FieldName": "Code",
+      "FieldType": 1,
+      "FieldValue": "",
+      "IsMandatory": true,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false,
+      "IsVisible": true,
+      "MaxLength": 10,
+      "NotificationType": "inline"
+    }
+  ],
+   "editlevel1": [
+    {
+      "FieldId": 1,
+      "FieldName": "Id",
+      "FieldType": 1,
+      "FieldValue": "",
+      "IsVisible": false,
+      "IsMultiValued": false,
+      "IsMandatory": false,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false
+    },
+    {
+      "FieldId": 2,
+      "FieldName": "Division",
+      "FieldType": 1,
+      "FieldValue": "23 Hour Observation/Care ",
+      "IsMandatory": true,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false,
+      "IsVisible": true,
+      "MaxLength": 100,
+      "NotificationType": "inline"
+    },
+
+    {
+      "FieldId": 3,
+      "FieldName": "Code",
+      "FieldType": 1,
+      "FieldValue": "999",
+      "IsMandatory": true,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false,
+      "IsVisible": true,
+      "MaxLength": 10,
+      "NotificationType": "inline"
+    }
+  ],
+  "editlevel2": [
+    {
+      "FieldId": 1,
+      "FieldName": "Id",
+      "FieldType": 1,
+      "FieldValue": "",
+      "IsVisible": false,
+      "IsMultiValued": false,
+      "IsMandatory": false,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false
+    },
+    {
+      "FieldId": 2,
+      "FieldName": "Division",
+      "FieldType": 5,
+      "FieldValue": "1",
+      "IsVisible": true,
+      "IsMandatory": true,
+      "IsDisabled": false,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false,
+      "IsMultiValued": true,
+      "MultiValuedDetails": {
+        "LookupValues": [
+          {
+            "Id": 1,
+            "Value": "Division"
+          },
+          {
+            "Id": 2,
+            "Value": "Department"
+          },
+          {
+            "Id": 2,
+            "Value": "Class"
+          }
+        ],
+        "PopupComponentName": null
+      },
+      "NotificationType": "inline"
+
+    },
+    {
+      "FieldId": 2,
+      "FieldName": "Department",
+      "FieldType": 1,
+      "FieldValue": "Facilities Management",
+      "IsMandatory": true,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false,
+      "IsVisible": true,
+      "MaxLength": 100,
+      "NotificationType": "inline"
+    },
+
+    {
+      "FieldId": 3,
+      "FieldName": "Code",
+      "FieldType": 1,
+      "FieldValue": "120",
+      "IsMandatory": true,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false,
+      "IsVisible": true,
+      "MaxLength": 10,
+      "NotificationType": "inline"
+    }
+  ],
+  "editlevel3": [
+    {
+      "FieldId": 1,
+      "FieldName": "Id",
+      "FieldType": 1,
+      "FieldValue": "",
+      "IsVisible": false,
+      "IsMultiValued": false,
+      "IsMandatory": false,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false
+    },
+    {
+      "FieldId": 2,
+      "FieldName": "Division",
+      "FieldType": 5,
+      "FieldValue": "1",
+      "IsVisible": true,
+      "IsMandatory": true,
+      "IsDisabled": false,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false,
+      "IsMultiValued": true,
+      "MultiValuedDetails": {
+        "LookupValues": [
+          {
+            "Id": 1,
+            "Value": "Administration"
+          },
+          {
+            "Id": 2,
+            "Value": "Department"
+          },
+          {
+            "Id": 3,
+            "Value": "Class"
+          }
+        ],
+        "PopupComponentName": null
+      }
+    },
+    {
+      "FieldId": 3,
+      "FieldName": "Department",
+      "FieldType": 5,
+      "FieldValue": "1",
+      "IsVisible": true,
+      "IsMandatory": true,
+      "IsDisabled": false,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false,
+      "IsMultiValued": true,
+      "MultiValuedDetails": {
+        "LookupValues": [
+          {
+            "Id": 1,
+            "Value": "HR"
+          },
+          {
+            "Id": 2,
+            "Value": "ECG Block"
+          },
+          {
+            "Id": 3,
+            "Value": "Library"
+          }
+        ],
+        "PopupComponentName": null
+      }
+    },
+    {
+      "FieldId": 4,
+      "FieldName": "Class",
+      "FieldType": 1,
+      "FieldValue": "Public",
+      "IsMandatory": true,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false,
+      "IsVisible": true,
+      "MaxLength": 100,
+      "NotificationType": "inline"
+    },
+    {
+      "FieldId": 5,
+      "FieldName": "Code",
+      "FieldType": 1,
+      "FieldValue": "",
+      "IsMandatory": true,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false,
+      "IsVisible": true,
+      "MaxLength": 10,
+      "NotificationType": "inline"
+    }
+  ]
+}

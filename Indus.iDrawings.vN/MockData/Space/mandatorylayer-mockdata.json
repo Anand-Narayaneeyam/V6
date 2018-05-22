@@ -1,0 +1,54 @@
+﻿{
+
+  "data": [
+    {
+      "Id": 1,
+      "LayerName": "$POLYLINE_GR"
+    
+    },
+    {
+      "Id": 2,
+      "LayerName": "$POLYLINE_CN"
+     
+    },
+    {
+      "Id": 3,
+      "LayerName": "$POLYLINE_SP"
+    
+    },
+    {
+      "Id": 4,
+      "LayerName": "$POLYLINE_NT"
+    
+    }
+   
+  ],
+  "paging": [
+    {
+      "Id": 1,
+      "LayerName": "$POLYLINE_GR1"
+    
+    },
+    {
+      "Id": 2,
+      "LayerName": "$POLYLINE_CN1"
+     
+    },
+    {
+      "Id": 3,
+      "LayerName": "$POLYLINE_SP1"
+    
+    },
+    {
+      "Id": 4,
+      "LayerName": "$POLYLINE_NT"
+    
+    }
+   
+  ],
+  "count": [
+    {
+      "TotalItems": "20"
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+﻿<page [pagetitle]="pagePath">
+    <content>
+        <split-view [splitviewObject]="splitviewInput" [pageTitle]="pageTitle">
+            <primary-view>
+                <tabs [selectedTab]="selectedTab" (getSelectedTab)="getSelectedTab($event)" (onTabClose)="onTabClose($event)" [deleteIndex]="tabDeleteIndex">
+                    <tab tabTitle="Select Period" closeButtonVisible="hidden">
+                        <div style="height:100%">
+                            <div>
+                                <div>
+                                    <submenu>
+                                        <sub-menu [source]=menuData [menuCard]=iscard [menuIds]=enableMenu (onSubMenuChange)="onSubMenuChange($event);"> </sub-menu>
+                                    </submenu>
+                                </div>
+                                <div style="margin-left:5%;margin-top:1%;display:inline;">
+                                    <DateComponent *ngIf="dateSelectorField1 != undefined" [fieldObject]="dateSelectorField1"></DateComponent>
+                                    <DateComponent *ngIf="dateSelectorField2 != undefined" [fieldObject]="dateSelectorField2"></DateComponent>
+                                    <div *ngIf="ddlLevel1 != undefined">
+                                        <DropDownListComponent [fieldObject]="ddlLevel1" (change)="onChangeDdlLevel1($event.target.value)"></DropDownListComponent>
+                                    </div>
+                                    <div *ngIf="ddlLevel2 != undefined">
+                                        <DropDownListComponent [fieldObject]="ddlLevel2" (change)="onChangeDdlLevel2($event.target.value)"></DropDownListComponent>
+                                    </div>
+                                    <div *ngIf="ddlLevel3 != undefined">
+                                        <DropDownListComponent [fieldObject]="ddlLevel3" (change)="onChangeDdlLevel3($event.target.value)"></DropDownListComponent>
+                                    </div>
+                                    <div *ngIf="ddlLevel4 != undefined">
+                                        <DropDownListComponent [fieldObject]="ddlLevel4" (change)="onChangeDdlLevel4($event.target.value)"></DropDownListComponent>
+                                    </div>
+                                    <div *ngIf="ddlLevel5 != undefined">
+                                        <DropDownListComponent [fieldObject]="ddlLevel5" (change)="onChangeDdlLevel5($event.target.value)"></DropDownListComponent>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </tab>
+                    <tab *ngIf="isTabClicked == true" tabTitle="{{tabname}}" closeButtonVisible="hidden">
+                        <employee-TrendAnalysis-RateofHiringbyTimeChartView *ngIf="isNextClicked == true" [FromRpDate]="fromDate" [ToRpDate]="toDate" [chartData]="chartData"></employee-TrendAnalysis-RateofHiringbyTimeChartView>
+                    </tab>
+                </tabs>
+            </primary-view>
+            <secondary-view>
+                <!--<DynamicFields *ngIf="foreCastFieldObject != undefined && forecastFlag == true" [dataSource]="foreCastFieldObject" (submitFieldObject)="onSubmitData($event)" [btnName]="btnName"></DynamicFields>-->
+                <StringTextBox *ngIf="foreCastFieldObject != undefined && forecastFlag == true" id="StringTextBox" name="StringTextBox" [fieldObject]=foreCastFieldObject [validationData]='validationData'></StringTextBox>
+                <button  class="Savebutton" style="margin-top:3px;" *ngIf="foreCastFieldObject != undefined && forecastFlag == true" type="button" (click)="okSubmit($event)">OK</button>
+            </secondary-view>
+        </split-view>
+    </content>
+</page>

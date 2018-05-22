@@ -1,0 +1,98 @@
+﻿<page [pagetitle]="pagePath">
+    <pagepath>
+    </pagepath>
+    <content>
+        <section title="Drawing Management" [isExpanded]="sectionExpansionStatus[0].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div *ngIf="sectionExpansionStatus[0].isExpanded">
+                <p>
+                    This option allows the administrator to select the floor drawings for Scheduling. The floors defined by the administrator and selected for Space management are displayed in the site-building-floor hierarchy with select boxes for each floor. The floors which are selected here will be available in the Scheduling Module for managing the hoteling Seats and scheduling Rooms.
+                </p>
+                <p>Sites/Buildings/Floors can be selected by selecting the select boxes against each and then clicking Save Changes button.</p>
+
+            </div>
+        </section>
+        <section title="Amenities" [isExpanded]="sectionExpansionStatus[1].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div *ngIf="sectionExpansionStatus[1].isExpanded">
+                <p>Amenities comprise furniture like Conference Table, Podium, etc., Audio Visual equipment like bulletin boards, microphones, Overhead Projection system etc. that arerequired in meeting rooms. </p>
+                <p>This option allows the administrator to add, edit and delete Room Amenities. Amenities added will be available for the user while reserving the Rooms. </p>
+                <p><span class="header1">Add: </span>Create a new amenity by clicking the <span class="header2">Add </span> <img class="helpicon" src="Content/Icons/data_addN.png" alt="Add" /> icon. A new Amenity window will be displayed on clicking <span class="header2">Add </span> icon. The user can enter the name of the Amenity and Description and click Save button.</p>
+                <p><span class="header1">Edit: </span>Edit an Amenity by selecting it and then clicking the <span class="header2">Edit </span> <img class="helpicon" src="Content/Icons/data_editN.png" alt="Edit" /> icon.</p>
+                <p><span class="header1">Delete: </span>Delete an Amenity by selecting it and then clicking the <span class="header2">Delete </span><img class="helpicon" src="Content/Icons/data_deleteN.png" alt="Delete" /> icon.</p>
+            </div>
+        </section>
+        <section title="Services" [isExpanded]="sectionExpansionStatus[2].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div *ngIf="sectionExpansionStatus[2].isExpanded">
+                <p>Services list all the services offered in the scheduled room; which can be IT Services, Cleaning Services, Security services etc.that are required in meeting rooms.</p>
+                <p>This option allows Administrator to add, edit and delete services.</p>
+                <p><span class="header1">Add: </span>Create a new Service by clicking the <span class="header2">Add </span> <img class="helpicon" src="Content/Icons/data_addN.png" alt="Add" /> icon. A new Service window will be displayed on clicking <span class="header2">Add </span> <img _ngcontent-sdo-55="" style="width:25px;height:25px;" src="Content/Icons/data_addN.png" alt="Add"> icon. The user can enter the name of the Service and Description and click Save button.</p>
+                <p><span class="header1">Edit: </span>Edit a Service by selecting it and then clicking the <span class="header2">Edit </span> <img class="helpicon" src="Content/Icons/data_editN.png" alt="Edit" /> icon.</p>
+                <p><span class="header1">Delete: </span>Delete a Service by selecting it and then clicking the <span class="header2">Delete </span><img class="helpicon" src="Content/Icons/data_deleteN.png" alt="Delete" /> icon.</p>
+            </div>
+        </section>
+        <section title="Catering" [isExpanded]="sectionExpansionStatus[3].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div *ngIf="sectionExpansionStatus[3].isExpanded">
+                <p>Catering option lists all the catering services offered in the meeting room and its details which include the Catering Item, Rate and Description. This option allows the administrator to add, edit and delete Catering Items. </p>
+                <p><span class="header1">Add: </span>Create a new Catering Item by clicking the <span class="header2">Add </span> <img class="helpicon" src="Content/Icons/data_addN.png" alt="Add" /> icon. A new Catering Item window will be displayed on clicking <span class="header2">Add </span> <img _ngcontent-sdo-55="" style="width:25px;height:25px;" src="Content/Icons/data_addN.png" alt="Add"> icon. Enter Catering Item, Rate and Description and click Save button.</p>
+                <p><span class="header1">Edit: </span>Edit a Catering Item by selecting it and then clicking the <span class="header2">Edit </span> <img class="helpicon" src="Content/Icons/data_editN.png" alt="Edit" /> icon.</p>
+                <p><span class="header1">Delete: </span>Delete a Catering Item by selecting it and then clicking the <span class="header2">Delete </span><img class="helpicon" src="Content/Icons/data_deleteN.png" alt="Delete" /> icon.</p>
+            </div>
+        </section>
+        <section title="Resources" [isExpanded]="sectionExpansionStatus[4].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div *ngIf="sectionExpansionStatus[4].isExpanded">
+                <p>Different types of resources associated with seats such as Laptop, Phone, LAN Connection etc. can be defined through this option. The resources defined through this option will be available to the user while booking seats.</p>
+                <p>This Resources option allows the administrator to add, edit or delete Resources.</p>
+                <p><span class="header1">Add: </span>Create a new Resource by clicking the <span class="header2">Add </span> <img class="helpicon" src="Content/Icons/data_addN.png" alt="Add" /> icon. A new Resource window will be displayed on clicking <span class="header2">Add </span> <img _ngcontent-sdo-55="" style="width:25px;height:25px;" src="Content/Icons/data_addN.png" alt="Add"> icon. The user can enter the name of the Resource and Description and click Save button.</p>
+                <p><span class="header1">Edit: </span>Edit a Resource by selecting it and then clicking the <span class="header2">Edit </span> <img class="helpicon" src="Content/Icons/data_editN.png" alt="Edit" /> icon.</p>
+                <p><span class="header1">Delete: </span>Delete a Resource by selecting it and then clicking the <span class="header2">Delete </span><img class="helpicon" src="Content/Icons/data_deleteN.png" alt="Delete" /> icon.</p>
+            </div>
+        </section>
+    </content>
+</page>
+
+<style type="text/css">
+    h3.Mainheader {
+        color: #178AE8;
+    }
+
+    .header1 {
+        font-weight: bold;
+        color: #178AE8;
+    }
+
+    .header2 {
+        font-weight: normal;
+        color: #178AE8;
+    }
+
+    p {
+        margin-left: 38px;
+        font-size: 13px;
+        margin-right: 3em;
+    }
+
+    .header3 {
+        font-weight: bold;
+        color: black;
+    }
+    /**/ h1 {
+        color: #178AE8;
+        font-size: 1.3em;
+        margin-left: 38px;
+    }
+
+    h2 {
+        color: #178AE8;
+        font-size: 1em;
+        margin-left: 38px;
+    }
+
+    .config {
+        background-color: #178AE8;
+    }
+
+    .helpicon {
+        vertical-align: baseline;
+        width: 20px;
+        height: 20px;
+    }
+</style>

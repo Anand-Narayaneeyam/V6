@@ -1,0 +1,35 @@
+﻿<div>
+    <split-view [splitviewObject]="splitviewInput" [pageTitle]="pageTitle" style="height: calc(75% - 35px);">
+        <primary-view>            
+                <div style="height:160px;">
+                    <DynamicFields [dataSource]="formFieldObj" [showButton]="showButton" (fieldChange)="ddlChange($event)" (submitFieldObject)="onSaveChanges()" [btnName]="btnName"></DynamicFields>                    
+                </div>
+                <div *ngIf="isClass==false">
+                    <div style="height:calc(100% - 160px);overflow: hidden;">
+                        <div [ngClass]="totalItems > itemsPerPage ? 'pagewithPaging':'pagewithoutPaging'">
+                            <gridView [(dataSource)]="itemsSource" [properties]="inputItems" [columns]="fieldObject" [refreshgrid]="refreshgrid" (onSorting)="onSort($event)"></gridView>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="isClass==true">
+                    <div style="height:calc(100% - 160px);overflow: hidden;">
+                        <div [ngClass]="totalItems > itemsPerPage ? 'pagewithPaging':'pagewithoutPaging'">
+                            <gridView [(dataSource)]="itemsSource" [properties]="inputItems" [columns]="fieldObject" [refreshgrid]="refreshgrid" (onSorting)="onSort($event)"></gridView>
+                        </div>
+                    </div>
+                </div>
+</primary-view>
+    </split-view>
+    <slide [width]="300" [position]="'top-right'" [type]="slideType" [show]="showSlide" (closeDialog)="closeSlide($event)" [title]="slideTitle">
+        <div *ngIf="showSlide==true">
+            <div *ngIf="showCalendar==true">
+                <DynamicFields [dataSource]="fieldObjUpdate" [showButton]=false (submitFieldObject)="onSubmitData($event)" [btnName]="btnName"></DynamicFields>
+                    <div style="width:100%">
+                        <button class="Savebutton" type="button" (click)="yesOnClick($event)">Save Changes</button>
+                        <button class="Savebutton" type="button" (click)="closeSlide($event)">Cancel</button>
+                    </div>                
+            </div>            
+        </div>
+    </slide>
+</div>
+

@@ -1,0 +1,81 @@
+﻿
+<div id="textDiv" [ngStyle]="{'position':positionExpand}" style="top:51px;left:2px;right:2px;bottom:35px;z-index:40;overflow:hidden">
+    <submenu>
+        <sub-menu [source]=menuData [count]=totalItems [menuIds]=enableMenu [textOnRightSide]="workTypeName" (onSubMenuChange)="onSubMenuChange($event);"> </sub-menu>
+    </submenu>
+    <!--<ul>
+        <li><a><img src="Content/Images/Drawings/save.png" class="markupicons" (click)="saveOnClick()" title="Save" /></a></li>
+        <li *ngIf="displayMaximize=='initial'"><a><img src="Content/Images/Drawings/Maximize.png" class="markupicons" [style.display]="displayMaximize" (click)="maximizeOnClick($event)" title="Maximize" /></a></li>
+        <li *ngIf="displayMinimize=='initial'"><a><img src="Content/Images/Drawings/Minimize.png" class="markupicons" [style.display]="displayMinimize" (click)="minimizeOnClick($event)" title="Minimize" /></a></li>
+        <li class="dropdown">
+            <a class="dropbtn"><img src="Content/Images/Drawings/work_flow_toolS.png" style="width:25px;height:25px" title="Tools" /><span>▾</span></a>
+            <div class="dropdown-content">
+                <a *ngFor="let menudata of arrangeMenu;let i=index" (click)="arrangeMenuOnClick(menudata)">{{menudata.menuName}}</a>
+            </div>
+        </li>
+        <li style="float: right;margin-right: 36px;margin-top: 8px;"><span>Work Type: </span><span style="font-weight:bolder">{{workTypeName}}</span></li>
+    </ul>-->
+    <!--<flowchart title="" [isNotInuse]="isNotInuse" (flowchartBoxCreate)="onFlowchartActionpointCreate($event)" (DrawingObjectInitialize)="onDrawingObjectInitialize($event)" (flowchartConnectorCreate)="onFlowchartOutcomeCreate($event)"
+               (flowchartActionPointDoubleClick)="onFlowchartActionPointDoubleClick($event)" (flowchartConnectorDoubleClick)="onFlowchartOutcomeDoubleClick($event)"
+               (flowchartConnectorChange)="onFlowchartOutcomeChange($event)" (flowChartInvalidConnector)="onFlowchartInvalidOutcome($event)"
+               (flowchartActionPointDeleteClick)="onActionPointDeleteClick($event)" (flowchartOutcomeDeleteClick)="onFlowchartOutcomeDeleteClick($event)"></flowchart>
+    <drawing-tooltip [xposition]="tooltipXPosition" [yposition]="tooltipYPosition" [visibility]="tooltipVisibility" [data]="tooltipDatas" [canvas]="canvasElement"></drawing-tooltip>-->
+
+    <split-view [splitviewObject]="splitviewInput" [pageTitle]="pageTitle">
+        <primary-view>
+            <flowchart title="" [isNotInuse]="isNotInuse" [FileName]="filename" (flowchartBoxCreate)="onFlowchartActionpointCreate($event)" (DrawingObjectInitialize)="onDrawingObjectInitialize($event)" (flowchartConnectorCreate)="onFlowchartOutcomeCreate($event)"
+                       (flowchartActionPointDoubleClick)="onFlowchartActionPointDoubleClick($event)" (flowchartConnectorDoubleClick)="onFlowchartOutcomeDoubleClick($event)"
+                       (flowchartConnectorChange)="onFlowchartOutcomeChange($event)" (flowChartInvalidConnector)="onFlowchartInvalidOutcome($event)"
+                       (flowchartActionPointDeleteClick)="onActionPointDeleteClick($event)" (flowchartOutcomeDeleteClick)="onFlowchartOutcomeDeleteClick($event)"></flowchart>
+            <drawing-tooltip [xposition]="tooltipXPosition" [yposition]="tooltipYPosition" [visibility]="tooltipVisibility" [data]="tooltipDatas" [canvas]="canvasElement"></drawing-tooltip>
+        </primary-view>
+        <secondary-view *ngIf="target==1">
+           <workflow-EscalationsNotifications *ngIf="splitviewInput.showSecondaryView==true" style="display: block;width:800px;" [workTypeId]="workTypeId"></workflow-EscalationsNotifications>
+        </secondary-view>
+    </split-view>
+
+</div>
+
+<slide [width]="400" type="'dialog'" [position]="position" [show]="showSlide" [absolute]="'true'" [title]="pageTitle" (closeDialog)="closeSlideDialog($event)">
+    <setworkflow-addedit *ngIf="isActionpoint" [workFlowCategoryId]="workFlowCategoryId" [moduleId]="moduleId" [workTypeId]="workTypeId" [fieldDetailsAddEdit]="fieldDetailsAddEdit" [action]="action" [btnName]="btnName" (submitSuccess)="setActionpointData($event)" [selectedId]="selectedActionpointId" [pageTarget]="1" style="display:block;overflow:auto" [style.maxHeight]="slideHeight" ></setworkflow-addedit>
+    <workflowoutcomes-addedit *ngIf="isOutcome" [workFlowCategoryId]="workFlowCategoryId" [moduleId]="moduleId" [workTypeId]="workTypeId" [actionPointTypeId]="selectedActionpointtypeIdForOutcome" [workflowActionPointId]="fromActionId" [userLookUpDetails]="userLookUpDetails" [fieldDetailsAddEdit]="fieldDetailsAddEdit" [action]="action" [btnName]="btnName" (submitSuccess)="setOutcomedata($event)" [selectedId]="selectedOutcomeId" style="display:block;overflow:auto" [style.maxHeight]="slideHeight"></workflowoutcomes-addedit>
+</slide>
+<slide [width]="200" [position]="position" [type]="dialog" [show]="showSlideDeleteEditable" (closeDialog)="closeSlideDialog($event)">
+    <div>
+        <div>
+            Are you sure you want to delete the selected Action Point?
+        </div>
+        <div>
+            <div style="width:100%">
+                <button class="Savebutton " type="button" (click)="okEditableActionpointDelete($event)">Yes</button>
+                <button class="Savebutton " type="button" (click)="cancelDeleteEditableActionpoint($event)">No</button>
+            </div>
+        </div>
+    </div>
+</slide>
+<slide [width]="200" [position]="position" [type]="dialog" [show]=showSlideDeleteNotEditable (closeDialog)="closeSlideDialog($event)">
+    <div>
+        <div>
+            Workflow will be modified by deletion of Action Points. Do you want to continue?
+        </div>
+        <div>
+            <div style="width:100%">
+                <button class="Savebutton " type="button" (click)="okNotEditableActionpointDelete($event)">Yes</button>
+                <button class="Savebutton " type="button" (click)="cancelDeleteNotEditableActionpoint($event)">No</button>
+            </div>
+        </div>
+    </div>
+</slide>
+<slide [width]="200" [position]="position" [type]="dialog" [show]="showSlideOutcomeDalete" (closeDialog)="closeSlideDialog($event)">
+    <div>
+        <div>
+            Are you sure you want to delete the selected Outcome?
+        </div>
+        <div>
+            <div style="width:100%">
+                <button class="Savebutton " type="button" (click)="okOutcomeDelete($event)">Yes</button>
+                <button class="Savebutton " type="button" (click)="cancelOutcomeClick($event)">No</button>
+            </div>
+        </div>
+    </div>
+</slide>

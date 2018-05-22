@@ -1,0 +1,69 @@
+﻿<style>
+    table {
+        border-collapse: collapse;
+        border-spacing: 0;
+        width: 100%;
+        border: 1px solid #ddd;
+    }
+
+    th {
+        border: none;
+        text-align: left;
+        padding: 8px;
+        min-width: 200px;
+        font-size: 14px;
+    }
+
+    td {
+        border: none;
+        text-align: left;
+        padding: 8px 12px;
+        min-width: 200px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+</style>
+
+<div style="width:100%;display:inline-flex;flex-direction:column;">
+
+
+    <div style="overflow-x:auto;height:auto;overflow-y:auto;overflow-x:auto;max-height:550px;order:2;">
+        <table>
+            <tr>
+                <th *ngFor="let cell of fieldObject" [style.display]=displayOfHeader(cell)>
+                    {{cell.FieldLabel}}
+                </th>
+            </tr>
+
+            <tr *ngFor="let item of itemSource">
+                <td *ngFor="let new of fieldObject" [style.display]=displayOfHeader(new)>
+                    <ColorPicker [showLabel]=false id="ColorPicker" name="ColorPicker" (colorPickerValueChange)="onChangeInput($event,item,new.FieldLabel)" *ngIf="new.DataEntryControlId == '11'" [fieldObject]="updateField(new,item)" class="colorPickerClass"></ColorPicker>
+                    <Hatch-Pattern *ngIf="new.DataEntryControlId == '14' && item.Pattern" [fieldObject]="updateField(new,item)" [patternId]="item.Pattern" [angleInput]="item.HatchAngle" [scaleInput]="item.HatchScale" (hatchPatterEmit)="onChangePattern($event,item,new.FieldLabel)" aria-label="updateField(new,item).FieldValue" (scaleEmit)="scaleEmit($event,item,new.FieldLabel)" (angleEmit)="angleEmit($event,item,new.FieldLabel)" ></Hatch-Pattern>
+                    <label *ngIf="new && new.DataEntryControlId == '1'"  style="font-size:14px;font-weight:normal;text-align:left;border:none;" tabindex="0" aria-label="updateField(new,item).FieldValue">
+                        {{updateField(new,item).FieldValue}}
+                    </label>
+                    <!--<LabelComponent *ngIf="new.DataEntryControlId == '1'" [fieldObject]="updateField(new,item)" tabindex="0" aria-label="updateField(new,item).FieldValue"></LabelComponent>-->
+                </td>
+            </tr>
+
+        </table>
+    </div>
+    <div style="width:100%;order:1;">
+        <button class="Savebutton" type="button" style="margin:5px 0px 5px 0px;font-size:14px;height:29px;" (click)="update()" value="Save Changes" aria-label="Save Changes" role="button">Save Changes</button>
+    </div>
+</div>
+<slide [width]= width [position]="Position" [type]="dialog" [show]=showSlide (closeDialog)="closeSlideDialog($event)">
+    <div>
+        <div tabindex="0" aria-label="Color Preferences updated. Do you want to save this as Default Settings">
+            Color Preferences updated. Do you want to save this as Default Settings?
+        </div>
+        <div>
+            <div style="width:100%">
+                <button class="Savebutton " type="button" (click)="DefaultSetting($event)" aria-label="Yes" role="button">Yes</button>
+                <button class="Savebutton " type="button" (click)="cancelClick($event)" aria-label="No" role="button">No</button>
+            </div>
+        </div>
+    </div>
+</slide>

@@ -1,0 +1,248 @@
+﻿{
+  "data": [
+    {
+      "FieldId": 1,
+      "FieldName": "Room No.",
+      "FieldType": 1,
+      "FieldValue": "E10A71",
+      "IsMandatory": false,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false,
+      "IsVisible": true,
+      "MaxLength": 100,
+      "NotificationType": "inline"
+    },
+    {
+      "FieldId": 1,
+      "FieldName": "Gross Area",
+      "FieldType": 3,
+      "FieldValue": "160.50",
+      "IsMandatory": false,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false,
+      "IsVisible": true,
+      "MaxLength": 5,
+      "NotificationType": "inline"
+    },
+    {
+      "FieldId": 1,
+      "FieldName": "Net Area",
+      "FieldType": 3,
+      "FieldValue": "149.41",
+      "IsMandatory": false,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false,
+      "IsVisible": true,
+      "MaxLength": 5,
+      "NotificationType": "inline"
+    },
+    {
+      "FieldId": 5,
+      "FieldName": "Space Category",
+      "FieldType": 5,
+      "FieldValue": "1",
+      "HasRelation": false,
+      "IsVisible": true,
+      "IsMandatory": false,
+      "IsDisabled": false,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false,
+      "IsMultiValued": true,
+      "MaxLength": 100,
+      "MultiValuedDetails": {
+        "LookupValues": [
+          {
+            "Id": 1,
+            "Value": "01-Usable"
+          },
+          {
+            "Id": 2,
+            "Value": "02-Building Common"
+          },
+          {
+            "Id": 3,
+            "Value": "03-Floor Common"
+          },
+          {
+            "Id": 4,
+            "Value": "04-Vertical Space"
+          }
+        ],
+        "PopupComponentName": null
+      },
+      "NotificationType": "inline",
+      "Exclude": [ "--" ],
+      "Width": " ",
+      "Format": ""
+    },
+    {
+      "FieldId": 5,
+      "FieldName": "Space Function",
+      "FieldType": 5,
+      "FieldValue": "5",
+      "HasRelation": false,
+      "IsVisible": true,
+      "IsMandatory": false,
+      "IsDisabled": false,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false,
+      "IsMultiValued": true,
+      "MaxLength": 100,
+      "MultiValuedDetails": {
+        "LookupValues": [
+          
+          {
+            "Id": 1,
+            "Value": "Bed Isolation"
+          },
+          {
+            "Id": 2,
+            "Value": "Bed Room"
+          },
+          {
+            "Id": 3,
+            "Value": "Nursing"
+          },
+          {
+            "Id": 4,
+            "Value": "Office"
+          },
+          {
+            "Id": 5,
+            "Value": "Operating Room"
+          }
+        ],
+        "PopupComponentName": null
+      },
+      "NotificationType": "inline",
+      "Exclude": [ "--" ],
+      "Width": " ",
+      "Format": ""
+    },
+    {
+      "FieldId": 5,
+      "FieldName": "Cost Category",
+      "FieldType": 5,
+      "FieldValue": "0",
+      "HasRelation": false,
+      "IsVisible": true,
+      "IsMandatory": false,
+      "IsDisabled": false,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false,
+      "IsMultiValued": true,
+      "MaxLength": 100,
+      "MultiValuedDetails": {
+        "LookupValues": [
+         
+          {
+            "Id": 1,
+            "Value": "Category 1"
+          },
+          {
+            "Id": 2,
+            "Value": "Deluxe"
+          }
+        ],
+        "PopupComponentName": null
+      },
+      "NotificationType": "inline",
+      "Exclude": [ "--" ],
+      "Width": " ",
+      "Format": ""
+    },
+    {
+      "FieldId": 5,
+      "FieldName": "Floor Finish",
+      "FieldType": 5,
+      "FieldValue": "0",
+      "HasRelation": false,
+      "IsVisible": true,
+      "IsMandatory": false,
+      "IsDisabled": false,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false,
+      "IsMultiValued": true,
+      "MaxLength": 100,
+      "MultiValuedDetails": {
+        "LookupValues": [
+        
+          {
+            "Id": 1,
+            "Value": "Carpet"
+          },
+          {
+            "Id": 2,
+            "Value": "Ceramic Tile"
+          },
+          {
+            "Id": 3,
+            "Value": "Concrete Floor"
+          },
+          {
+            "Id": 4,
+            "Value": "Granite Floor"
+          },
+          {
+            "Id": 5,
+            "Value": "Hardwood Flooring"
+          }
+        ],
+        "PopupComponentName": null
+      },
+      "NotificationType": "inline",
+      "Exclude": [ "--" ],
+      "Width": " ",
+      "Format": ""
+    },
+    {
+
+      "FieldId": 1,
+      "FieldName": "Room Description",
+      "FieldType": 1,
+      "FieldValue": "",
+      "IsMandatory": false,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false,
+      "IsVisible": true,
+      "MaxLength": 100,
+      "NotificationType": "inline"
+    },
+    {
+      "FieldId": 1,
+      "FieldName": "Phone Number",
+      "FieldType": 1,
+      "FieldValue": "",
+      "IsMandatory": false,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false,
+      "IsVisible": true,
+      "MaxLength": 100,
+      "NotificationType": "inline"
+    },
+    {
+      "FieldId": 1,
+      "FieldName": "Maxmium Capacity",
+      "FieldType": 2,
+      "FieldValue": "E10A71",
+      "IsMandatory": false,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false,
+      "IsVisible": true,
+      "MaxLength": 3,
+      "NotificationType": "inline"
+    },
+    {
+      "FieldId": 1,
+      "FieldName": "Space Key",
+      "FieldType": 2,
+      "FieldValue": "01",
+      "IsMandatory": false,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false,
+      "IsVisible": true,
+      "MaxLength": 100,
+      "NotificationType": "inline"
+    }
+  ]
+}

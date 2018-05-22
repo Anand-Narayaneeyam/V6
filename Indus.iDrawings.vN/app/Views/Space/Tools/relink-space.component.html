@@ -1,0 +1,38 @@
+﻿<div style="height:90%;">
+    <div style="height:35px;">
+        <submenu>
+            <sub-menu [menuCard]=true  [source]=menuData [menuIds]=enableMenu  (onSubMenuChange)="onSubMenuChange($event);"> </sub-menu>
+        </submenu>
+    </div>
+    <div style="height:calc(100% - 35px);display:block;" [ngClass]="pagewithoutPaging">
+        <gridView [dataSource]="itemsSource" [properties]="inputItems" [columns]="fieldObject" (onSorting)="onSort($event)"></gridView>
+    </div>
+</div>
+<slide [width]="400" [position]="'top-right'" [type]="dialog" [show]=showRelinkSlide (closeDialog)="closeSlideDialog($event)">
+    <div>
+        <div>
+            Old area={{oldArea}}
+            New area={{newArea}}
+            Do you want to link the selected data to this space?
+        </div>
+        <div>
+            <div style="width:100%">
+                <button class="Savebutton " type="button" (click)="relinkYesOnclick()">Yes</button>
+                <button class="Savebutton " type="button" (click)="relinkNoOnclick()">No</button>
+            </div>
+        </div>
+    </div>
+</slide>
+<slide [width]="400" [position]="'top-right'" [type]="dialog" [show]=showDeleteSpaceDataSlide (closeDialog)="closeSlideDialog($event)">
+    <div>
+        <div>
+            Are you sure you want to delete the data of selected space(s)?
+        </div>
+        <div>
+            <div style="width:100%">
+                <button class="Savebutton " type="button" (click)="deleteSpaceDataYesOnclick()">Yes</button>
+                <button class="Savebutton " type="button" (click)="deleteSpaceDataNoOnclick()">No</button>
+            </div>
+        </div>
+    </div>
+</slide>

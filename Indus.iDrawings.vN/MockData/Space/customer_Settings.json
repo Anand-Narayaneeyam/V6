@@ -1,0 +1,11 @@
+﻿{
+  "data": [
+    {
+      "CustomerDWGUnit": 1 ,
+      "IsNetCustomer": true,
+      "IsNetAreaAllowed": true,
+      "IsNetAreaEnabled": true,
+      "IsBoundingPolygonEnabled": true
+    }
+  ]
+}

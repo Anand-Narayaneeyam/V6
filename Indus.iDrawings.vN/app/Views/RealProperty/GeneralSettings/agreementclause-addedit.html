@@ -1,0 +1,8 @@
+﻿<div class="agreementclause-addedit">
+    <DynamicFields [dataSource]="fieldDetailsAddEdit" (submitFieldObject)="onSubmitData($event)" [btnName]="btnName" [dataKey]="dataKey" (chkChange)="checkBoxChange($event)"></DynamicFields>
+</div>
+<style>
+    .agreementclause-addedit form {
+        height: 400px;
+    }
+</style>

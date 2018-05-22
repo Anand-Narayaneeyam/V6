@@ -1,0 +1,42 @@
+﻿<div>
+    <submenu>
+        <sub-menu [source]=menuData [count]=totalItems [menuIds]=enableMenu (onSubMenuChange)="onSubMenuChange($event);"> </sub-menu>
+    </submenu>
+    <split-view [splitviewObject]="splitviewInput" [pageTitle]="pageTitle">
+        <primary-view>
+            <!--<div>-->               
+                <!--<div style="overflow: hidden;height: calc(100% - 60px);">-->
+                    <div style="height:100%;overflow: hidden;">
+                        <div [ngClass]="totalItems > itemsPerPage ? 'pagewithPaging':'pagewithoutPaging'">
+                            <gridView [(dataSource)]="itemsSource" [properties]="inputItems" [columns]="fieldObject" [refreshgrid]="refreshgrid" (onSorting)="onSort($event)"></gridView>
+                        </div>
+                        <div [style.height]="totalItems >itemsPerPage ? '35px' : '0px'">
+                            <paging [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="pageChanged($event);"></paging>
+                        </div>
+                    </div>
+                <!--</div>-->
+            <!--</div>-->
+        </primary-view>
+        <secondary-view *ngIf="fieldDetailsAdd">
+            <!--<messagetemplate-addedit (submitSuccess)="submitReturn($event)" [action]="action" [btnName]="btnName" [selectedId]="inputItems.selectedIds" [fieldDetailsAdd]="fieldDetailsAdd" [msgCategory]="msgCategory"></messagetemplate-addedit>-->
+        </secondary-view>
+    </split-view>
+    <slide [width]="300" [position]="'top-right'" [type]="slideType" [show]="showSlide" (closeDialog)="closeSlide($event)" [title]="slideTitle">
+        <div *ngIf="showSlide==true">
+            <div *ngIf="showaddedit==true">
+                <DynamicFields [dataSource]="fieldObjAdd" (submitFieldObject)="onSubmitData($event)" [btnName]="btnName"></DynamicFields>
+            </div>
+            <div *ngIf="showaddedit==false">
+                {{ConfirmDeleteMsg}}
+            </div>
+            <div *ngIf="showaddedit==false">
+                <div style="width:100%">
+                    <button class="Savebutton" type="button" (click)="yesOnClick($event)">Yes</button>
+                    <button class="Savebutton" type="button" (click)="closeSlide($event)">No</button>
+                </div>
+            </div>
+        </div>
+    </slide>
+</div>
+
+

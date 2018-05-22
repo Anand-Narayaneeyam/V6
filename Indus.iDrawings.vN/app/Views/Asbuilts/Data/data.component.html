@@ -1,0 +1,80 @@
+﻿
+<page [pagetitle]="pagePath" [withoutSubmenu]="true">
+    <!--<submenu>
+        <sub-menu [menuCard]=true [source]=siteMenu [count]=siteTotalItems [menuIds]=enableSiteMenu (onSubMenuChange)="updateSiteMenu($event);"> </sub-menu>
+    </submenu>-->
+    <style>
+        .attachment {
+            width: 750px;
+            display: block;
+        }
+
+        @media only screen and (min-device-width: 320px) and (max-device-width: 813px) and (orientation: portrait) {
+            .attachment {
+                width: 100%;
+            }
+        }
+
+        @media only screen and (min-device-width: 320px) and (max-device-width: 812px) and (orientation: landscape) {
+            .attachment {
+                width: 100%;
+            }
+        }
+    </style>
+
+    <content>
+        <tabs [(selectedTab)]="selectedTab" (getSelectedTab)="getSelectedTab($event)">
+            <tab tabTitle="Sites" closeButtonVisible="hidden">
+                <split-view [splitviewObject]="splitviewSite" [pageTitle]="pageTitle">
+                    <primary-view>
+                        <submenu>
+                            <sub-menu [menuCard]=true [source]=siteMenu [count]=siteTotalItems [menuIds]=enableSiteMenu (onSubMenuChange)="updateSiteMenu($event);"> </sub-menu>
+                        </submenu>
+                        <site-list *ngIf="selectedTab == 0" (emitMenu)="emitMenu($event)" (updateSiteSelectedIds)="updateSiteSelectedID($event)" [returnData]="returnData" [action]="siteaction" (targetTab)="ShiftTab($event)" [attachmentSuccess]="siteAttachmentSuccess"></site-list>
+                    </primary-view>
+                    <secondary-view>
+                        <site-addEdit *ngIf="splitviewSite.showSecondaryView && selectedSiteIds && (selectedSiteIds.length < 2 &&(siteaction != 'displaySettings' && (siteaction != 'attachment')))" [selectedId]="selectedSiteIds[0]" (submitSuccess)="OnSuccessfulSubmi($event)" [addEdit]="siteaction" [moduleId]="moduleId"></site-addEdit>
+                        <display-setting *ngIf="splitviewSite.showSecondaryView &&(siteaction == 'displaySettings' && (siteaction != 'attachment'))" [fieldObject]="fieldObject" [dataKey]="dataKey" (displaySetting)="displaySettingSite($event)"></display-setting>
+                        <!--<attachments *ngIf="splitviewSite.showSecondaryView &&(siteaction == 'attachment')" [attachmentCategoryId]="(selectedTab+1)" [moduleId]=moduleId></attachments>-->
+                        <attachments *ngIf="splitviewSite.showSecondaryView &&(siteaction == 'attachment' && (selectedSiteIds) )" [attachmentCategoryId]="2" [moduleId]="moduleId" [baseEntityId]="selectedSiteIds[0]" (attachmentSuccess)="attachmentSuccess($event)" class="attachment"></attachments>
+                    </secondary-view>
+                </split-view>
+            </tab>
+            <tab tabTitle="Buildings" closeButtonVisible="hidden">
+
+                <split-view [splitviewObject]="splitviewBuilding" [pageTitle]="pageTitle">
+                    <primary-view>
+                        <submenu>
+                            <sub-menu [menuCard]=true [source]=siteMenu [count]=siteTotalItems [menuIds]=enableSiteMenu (onSubMenuChange)="updateSiteMenu($event);"> </sub-menu>
+                        </submenu>
+                        <building-list *ngIf="selectedTab == 1" (emitMenu)="emitMenu($event)" (updateBuildingSelectedIds)="updateBuildingSelectedID($event)" [returnData]="returnData" [siteId]="selectedSiteIds" [action]="buildingaction" (selectedTab)="ShiftTab($event)" [attachmentSuccess]="siteAttachmentSuccess"></building-list>
+                    </primary-view>
+                    <secondary-view>
+                        <building-addEdit *ngIf="splitviewBuilding.showSecondaryView  &&  selectedBuildingIds &&(buildingaction != 'displaySettings' && (buildingaction != 'attachment'))" [selectedId]="selectedBuildingIds[0]" (submitSuccess)="OnSuccessfulSubmi($event)" [addEdit]="buildingaction" [pagePath]="pagePath" [moduleId]="moduleId"></building-addEdit>
+                        <display-setting *ngIf="splitviewBuilding.showSecondaryView &&(buildingaction == 'displaySettings' && (buildingaction != 'attachment'))" [fieldObject]="fieldObject" [dataKey]="dataKey" (displaySetting)="displaySettingBuilding($event)"></display-setting>
+                        <!--<attachments *ngIf="splitviewBuilding.showSecondaryView && (buildingaction == 'attachment')" [attachmentCategoryId]="(selectedTab+1)" [moduleId]=moduleId></attachments>-->
+                        <attachments *ngIf="splitviewBuilding.showSecondaryView && (buildingaction == 'attachment' && (selectedBuildingIds))" [attachmentCategoryId]="3" [moduleId]="moduleId" [baseEntityId]="selectedBuildingIds[0]" (attachmentSuccess)="attachmentSuccess($event)" class="attachment"></attachments>
+                    </secondary-view>
+                </split-view>
+            </tab>
+            <tab tabTitle="Floors" closeButtonVisible="hidden">
+
+                <split-view [splitviewObject]="splitviewFloor" [pageTitle]="pageTitle">
+                    <primary-view>
+                        <submenu>
+                            <sub-menu [menuCard]=true [source]=siteMenu [count]=siteTotalItems [menuIds]=enableSiteMenu (onSubMenuChange)="updateSiteMenu($event);"> </sub-menu>
+                        </submenu>
+                        <floor-list *ngIf="selectedTab == 2" (emitMenu)="emitMenu($event)" (updateFloorSelectedIds)="updateFloorSelectedID($event)" [returnData]="returnData" [buildingId]="selectedBuildingIds" [action]="flooraction" [attachmentSuccess]="siteAttachmentSuccess"></floor-list>
+                    </primary-view>
+                    <secondary-view>
+                        <floor-addEdit *ngIf="splitviewFloor.showSecondaryView && selectedFloorIds && (flooraction != 'displaySettings'&& (flooraction != 'attachment'))" [selectedId]="selectedFloorIds[0]" (submitSuccess)="OnSuccessfulSubmi($event)" [addEdit]="flooraction" [moduleId]="moduleId"></floor-addEdit>
+                        <display-setting *ngIf="splitviewFloor.showSecondaryView &&(flooraction == 'displaySettings' && (flooraction != 'attachment'))" [fieldObject]="fieldObject" [dataKey]="dataKey" (displaySetting)="displaySettingFloor($event)"></display-setting>
+                        <!--<attachments *ngIf="splitviewFloor.showSecondaryView && (flooraction == 'attachment')" [attachmentCategoryId]="(selectedTab+1)" [moduleId]=moduleId></attachments>-->
+                        <attachments *ngIf="splitviewFloor.showSecondaryView && (flooraction == 'attachment' && (selectedFloorIds))" [attachmentCategoryId]="4" [moduleId]="moduleId" [baseEntityId]="selectedFloorIds[0]" (attachmentSuccess)="attachmentSuccess($event)" class="attachment"></attachments>
+                    </secondary-view>
+                </split-view>
+            </tab>
+        </tabs>
+    </content>
+</page>
+

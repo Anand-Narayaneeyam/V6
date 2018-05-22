@@ -1,0 +1,7 @@
+﻿
+
+<button class="Savebutton " type="button" (click)="updateDivisionAdminSettings($event)" style="margin-left:5px;margin-bottom:5px"> Save Changes </button>
+<div *ngIf="totalItems>0" style="height:50%">
+    <gridView [dataSource]="itemsSource" [properties]="inputItems" [columns]="fieldObject" (onCellEdit)="onCellEdit($event)"></gridView>
+</div>
+<paging [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="onPageChanged($event);"></paging>

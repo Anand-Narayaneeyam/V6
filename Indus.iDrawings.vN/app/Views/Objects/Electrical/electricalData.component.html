@@ -1,0 +1,16 @@
+﻿<page [pagetitle]="pagePath" [withoutSubmenu]="true">
+    <content>
+        <tabs [selectedTab]="selectedTab" (getSelectedTab)="getSelectedTab($event)" class="assetTab">
+            <tab tabTitle="All" closeButtonVisible="hidden">
+                <objectData-list *ngIf="selectedTab == 0" [objectCategoryId]="8" [moduleId]="17" [dataOption]="1" (ChangePagepath)="pagepathchange($event)"></objectData-list>
+            </tab>
+            <tab tabTitle="Operational" closeButtonVisible="hidden">
+                <floor-selection *ngIf="selectedTab == 1 && (floorSelected==false)" [moduleId]="17" (btnClickOut)="getSelectedIds($event)"></floor-selection>
+                <objectData-list *ngIf="selectedTab == 1 && (floorSelected==true)" [objectCategoryId]="8" [moduleId]="17" [dataOption]="2" [drawingIds]="selectedDrawingIds" (ChangePagepath)="pagepathchange($event)"></objectData-list>
+            </tab>
+            <tab tabTitle="Warehoused" closeButtonVisible="hidden">
+                <objectData-list *ngIf="selectedTab == 2 && (floorSelected==false)" [objectCategoryId]="8" [moduleId]="17" [dataOption]="3" (ChangePagepath)="pagepathchange($event)"></objectData-list>
+            </tab>
+        </tabs>
+    </content>
+</page>

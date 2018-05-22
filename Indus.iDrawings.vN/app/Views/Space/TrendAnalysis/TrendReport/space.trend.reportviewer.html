@@ -1,0 +1,17 @@
+﻿<page [pagetitle]="pagePath">
+    <content style="height:100%;">
+        <div style="float:right;margin-top:5px;" *ngIf ="showButton">
+            <div >
+                <div *ngIf="IsHistory == 0">
+                    <button  class="Savebutton "style="margin-right:5px;" type="button" (click)="onSubmit($event)">History</button>
+                </div>
+                <div *ngIf="IsHistory != 0">
+                    <button  class="Savebutton "style="margin-right:5px;" type="button" (click)="onSubmit($event)">Summary</button>
+                </div>
+            </div>
+        </div>
+        <div style="height:calc(100% - 45px);" *ngIf="ReportData != undefined" [style.margin-top]="divRptMargin">
+            <reportviewer [reportData]=ReportData> Loading ...</reportviewer>
+        </div>
+    </content>
+</page>

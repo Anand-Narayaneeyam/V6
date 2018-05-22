@@ -1,0 +1,14 @@
+﻿{
+  "data": [
+    {
+      "Id": 1,
+      "resourceType": "Personal Cabinet",
+      "resourceCategory": "General"
+    },
+    {
+      "Id": 2,
+      "resourceType": "Signage",
+      "resourceCategory": "Telecom"
+    }
+  ]
+}

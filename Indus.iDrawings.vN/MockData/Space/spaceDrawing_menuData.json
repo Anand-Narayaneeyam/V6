@@ -1,0 +1,21 @@
+﻿{
+  "data": [
+    {
+      "id": 1,
+      "title": "View",
+      "image": "View",
+      "path": "View",
+      "submenu": null
+    }
+  ],
+   "unlock": [
+    {
+      "id": 1,
+      "title":"UnblockDrawing", 
+      "image":"UnblockDrawing", 
+      "path":"UnblockDrawing", 
+      "submenu": null
+
+    }
+  ]
+}

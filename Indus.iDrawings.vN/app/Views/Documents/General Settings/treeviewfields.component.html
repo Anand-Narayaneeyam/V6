@@ -1,0 +1,62 @@
+﻿<style>
+    /*panel panel-default AllItemDrag {
+    cursor:pointer;
+    }*/
+</style>
+<div>
+    <button style="margin-left: 10px;margin-top: 5px;" class="Savebutton " type="button" (click)="updatetreeviewfieldsettings($event)"> Save Changes </button>
+    <div style="margin-left:150px;">(Drag and drop fields to set Tree View fields and field order)</div>
+</div>
+<div style="display:inline-flex;flex-direction:row;margin-top: 3px;">
+    <div style="margin-left:100px;min-width:300px;">
+        <div *ngIf="AllWidget" class="panel panel-info AllFieldContainer" dnd-sortable-container [sortableData]="AllWidget"
+             [dropZones]="['dragZone']" tabindex="0" [attr.aria-label]="AllContainerName +' Use Left Arrow keys to Move Fields'">
+            <div class="panel-heading" style="text-align:center">
+                {{AllContainerName}}
+            </div>
+            <div class="panel-body">
+                <div class="panel panel-default AllItemDrag" *ngFor="let widget of AllWidget; let x = index"
+                     dnd-sortable [sortableIndex]="x" [dragEnabled]="true"
+                     [dragData]="widget" tabindex="0" [attr.aria-label]="widget.Name+' Field'"
+                     (keydown)="onAllFieldcontainerkey($event,x)" (mouseover)="changecursorstyle($event)">
+                    <div class="panel-body" style="text-align:center;height:35px;">
+                        <div style="margin-top: -7px;">{{widget.Name}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="margin-left:50px;min-width:300px;">
+        <div *ngIf="SelectedWidget" class="panel panel-info TreeFieldContainer" dnd-sortable-container [sortableData]="SelectedWidget"
+             [dropZones]="['dragZone']" tabindex="0" [attr.aria-label]="selectedContainerName+' Use Right Arrow keys to Move Fields'"
+             >
+            <div class="panel-heading" style="text-align:center">
+                {{selectedContainerName}}
+            </div>
+            <div class="panel-body">
+                <div class="panel panel-default" *ngFor="let widget of SelectedWidget; let x = index"
+                     dnd-sortable [sortableIndex]="x" [dragEnabled]="true"
+                     [dragData]="widget" tabindex="0" [attr.aria-label]="widget.Name+' Field'"
+                     (keydown)="onTreeFieldcontainerkey($event,x)" (mouseover)="changecursorstyle($event)">
+                    <div class="panel-body" style="text-align:center;height:35px;">
+                        <div style="margin-top: -7px;">{{widget.Name}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<slide [width]= width [position]="Position" [type]="dialog" [show]=showSlide (closeDialog)="closeSlideDialog($event)">
+    <div>
+        <div>
+            Tree View Field Settings updated. Do you want to save this as Default Settings?
+        </div>
+        <div>
+            <div style="width:100%">
+                <button class="Savebutton " type="button" (click)="DefaultSetting($event)">Yes</button>
+                <button class="Savebutton " type="button" (click)="cancelClick($event)">No</button>
+            </div>
+        </div>
+    </div>
+</slide>
+

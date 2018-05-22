@@ -1,0 +1,41 @@
+﻿<split-view [splitviewObject]="splitviewObj"  [pageTitle]="pageTitle" (onSecondaryClose)="onSplitViewClose($event)">
+    <primary-view (contextmenu)="onContextMenu($event, item)" style="overflow:hidden">
+        <DynamicFields [dataSource]="fieldObject" (submitFieldObject)="onSubmitData($event)" [btnName]="btnName" (fieldChange)="fieldChange($event)"></DynamicFields>
+        </primary-view>
+    <secondary-view *ngIf="showSecondaryViewTarget==2">
+        <SelectReocource-ForEmployeeMove *ngIf="splitviewObj.showSecondaryView" [selectedId]="moveemployeeId" [employeemultiplemove]="selectedEmployeeData" (ResourceforApprovalprocess)="moveresourceListforapprovalprocess($event)"></SelectReocource-ForEmployeeMove>
+    </secondary-view>
+    <secondary-view *ngIf="showSecondaryViewTarget==1">
+        <employeemoverequest *ngIf="splitviewObj.showSecondaryView" style="display:block;" [empData]="selectedEmployeeData" [SpaceDetails]="SpaceDetailsForRequest" [ObjectDetails]="ObjectDetailsForRequest" [DrawingId]="drawingId" [drawingDetails]="dwgDetails" [IsForAssign]="showEmployeeMoveRequestFromAssign" (sumbitSuccess)="sumbitSuccessSentForApprovalFromMove($event)"></employeemoverequest>
+    </secondary-view>
+    </split-view>
+        <slide [width]="200" [position]="position" [type]="dialog" [show]="showSlide" (closeDialog)="closeClick($event,empDialogMessages.key)">
+
+            <div>
+                <div>
+                    {{empDialogMessages.message}}
+                </div>
+                <div>
+
+                    <div style="width:100%">
+                        <button class="Savebutton " type="button" (click)="okConfirm(empDialogMessages.key)">Yes</button>
+                        <button class="Savebutton " type="button" (click)="cancelClick(empDialogMessages.key)">No</button>
+                    </div>
+                </div>
+            </div>
+        </slide>
+<slide [width]="200" [position]="position" [type]="dialog" [show]="showSlideResource" (closeDialog)="cancelResourceClick($event.change,empDialogMessages.key)">
+
+    <div>
+        <div>
+            {{empDialogMessages.message}}
+        </div>
+        <div>
+
+            <div style="width:100%">
+                <button class="Savebutton " type="button" (click)="okResourceConfirm(empDialogMessages.key)">Yes</button>
+                <button class="Savebutton " type="button" (click)="cancelResourceClick(false,empDialogMessages.key)">No</button>
+            </div>
+        </div>
+    </div>
+</slide>

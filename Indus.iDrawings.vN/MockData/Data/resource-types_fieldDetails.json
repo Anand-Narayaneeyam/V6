@@ -1,0 +1,52 @@
+﻿{
+  "data": [
+    {
+      "FieldId": 1,
+      "FieldName": "Id",
+      "FieldType": 1,
+      "FieldValue": "",
+      "IsVisible": false,
+      "IsMultiValued": false,
+      "IsMandatory": false,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false
+    },
+    {
+      "FieldId": 1,
+      "FieldName": "Resource Type",
+      "FieldType": 1,
+      "FieldValue": "",
+      "IsVisible": true,
+      "IsMultiValued": false,
+      "IsMandatory": true,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false,
+      "NotificationType": "inline"
+    },
+    {
+      "FieldId": 2,
+      "FieldName": "Resource Category",
+      "FieldType": 5,
+      "FieldValue": "General",
+      "IsHiddenLabel": false,
+      "IsMandatory": true,
+      "IsMultiValued": true,
+      "IsVisible": true,
+      "ReadOnlyMode": false,
+      "MultiValuedDetails": {
+        "LookupValues": [
+          {
+            "Id": 1,
+            "Value": "General"
+          },
+          {
+            "Id": 2,
+            "Value": "Telecom"
+          }
+        ],
+        "PopupComponentName": null
+      },
+     "NotificationType": "inline"
+    }
+  ]
+}

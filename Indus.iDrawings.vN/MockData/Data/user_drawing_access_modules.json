@@ -1,0 +1,40 @@
+﻿{
+    "data": {
+        "FieldId": 1, 
+        "FieldName": "", 
+        "FieldType": 10,
+      "FieldValue": "",
+      "MultiFieldValues": [ ],
+        "IsMandatory": false,
+        "IsVisible": true, 
+        "IsHiddenLabel":  false,
+        "IsMultiValued": true, 
+        "ReadOnlyMode": false, 
+        "MultiValuedDetails": {
+            "LookupValues": [
+                {
+                    "Id": 1,
+                    "Value": "As-Builts"
+                },
+                {
+                    "Id": 2,
+                    "Value": "Space"
+                },
+                {
+                    "Id": 3,
+                    "Value": "Employees"
+                },
+                {
+                    "Id": 4,
+                    "Value": "Assets"
+                },
+                {
+                    "Id": 5,
+                    "Value": "Fire and Safety"
+                }
+            ],
+            "PopupComponentName": null
+        },
+        "NotificationType": ""
+    }
+}

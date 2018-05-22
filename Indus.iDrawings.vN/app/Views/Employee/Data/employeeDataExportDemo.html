@@ -1,0 +1,86 @@
+﻿<div id="emp-div">
+    <br />
+    <table>
+        <tr>
+            <td class="hdTitle">Web api Url</td>
+        </tr>
+        <tr>
+            <td style="padding-left:40px;">{{baseUrl}}/api/IndusImport/GetEmployeeData</td>
+        </tr>
+        <tr>
+            <td>
+                <br />
+                <input type="button" class="buttonEx" value="Invoke" (click)="onInvokeApi()" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <br />
+               <a class="hdTitle"> JSON Data</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div style="width:400px;height:270px;border:1px solid grey;overflow:auto;">
+                    {{employeeDataList}}
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <br />
+               <a class="hdTitle"> Data Description</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div style="width:400px;height:270px;border:1px solid grey;overflow:auto;">
+                    <table style="width:100%">
+                        <tr>
+                            <td style="border:1px solid grey;"><b> Column Alias</b></td>
+                            <td style="border:1px solid grey;"><b> Column Description</b></td>
+                        </tr>
+                        <tr *ngFor="let des of dataDescription">
+                            <td class="tdDataCols">{{des.ColumnAlias}}</td>
+                            <td class="tdDataCols">{{des.ColumnDescription}}</td>
+                        </tr>
+                    </table>
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<style>
+    td {
+        border: 0px solid green;
+        height: 20px;
+        font-size: 13px;
+    }
+    .hdTitle {
+        font-weight: bold;
+        padding-top: 15px;
+        color:black;
+    }
+
+    table {
+        margin-right: 5px;
+    }
+        
+    #emp-div{
+        overflow-y: scroll;
+        height: 90%;
+        z-index: 10000;
+    }
+
+    .buttonEx {
+    background: #2980b9;
+    color: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    width: 90px;
+    }
+
+    .tdDataCols{
+        border:1px solid rgb(165, 163, 163);
+    }
+</style>

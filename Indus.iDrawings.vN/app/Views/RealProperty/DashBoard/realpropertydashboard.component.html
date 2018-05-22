@@ -1,0 +1,37 @@
+﻿<page [pagetitle]="pagePath" [withoutSubmenu]="true">
+    <content>
+        <dashboard style="height:95%;display:block;">
+
+            <widget>
+                <div style="font-weight:bold"> Lease Expiry by Year ({{AreaUnit}})  </div>
+                <multibarchart *ngIf="Barchart1Data != undefined" [sourceData]="Barchart1Data"> </multibarchart>
+            </widget>
+
+            <widget>
+                <div style="font-weight:bold"> Lease Area </div>
+                <piechart *ngIf="PieChart1Data != undefined" [sourceData]="PieChart1Data"> </piechart>
+            </widget>
+
+            <widget>
+                <div style="font-weight:bold"> Utilization (%)  </div>
+                <multibarchart *ngIf="Barchart2Data != undefined" [sourceData]="Barchart2Data"> </multibarchart>
+            </widget>
+            <widget style="height:250px">
+                <div style="font-weight:bold"> Critical Dates  </div>
+                <div [ngClass]="'pagewithPaging'" style="text-align:left;" *ngIf="Barchart2Data != undefined">
+                    <gridView *ngIf="fieldObject" [(dataSource)]="itemsSource" [properties]="inputItems" [columns]="fieldObject"
+                              (onSorting)="onSort($event)">
+                    </gridView>
+                    <div style="height:5px"></div>
+                    <div style="display:inline-flex">
+                        <div style="font-size:xx-small;">Expiring Within</div>&nbsp;
+                        <div style="color:red;font-size:xx-small;"> (30 Days)</div>&nbsp;
+                        <div style="color:blue;font-size:xx-small;"> (60 Days)</div>&nbsp;
+                        <div style="color:green;font-size:xx-small;"> (180 Days)</div>&nbsp;
+                    </div>
+                </div>
+            </widget>
+
+        </dashboard>
+    </content>
+</page>

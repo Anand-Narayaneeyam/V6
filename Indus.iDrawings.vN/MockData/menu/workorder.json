@@ -1,0 +1,44 @@
+﻿[
+  {
+    "id": 1,
+    "title": "General",
+    "path": "/General",
+    "subMenu": [
+      {
+        "id": 4,
+        "parentId": 8,
+        "title": "General Settings",
+        "path": "/workorder/GeneralSettings",
+        "subMenu": null
+      }
+    ]
+  },
+  {
+    "id": 1,
+    "title": "Maintenance",
+    "path": "/Maintenance",
+    "subMenu": [
+      {
+        "id": 4,
+        "parentId": 8,
+        "title": "Maintenance",
+        "path": "/workorder/Maintenance",
+        "subMenu": null
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "title": "Review",
+    "path": "/Review",
+    "subMenu": [
+      {
+        "id": 6,
+        "parentId": 3,
+        "title": "Review",
+        "path": "/workorder-review",
+        "subMenu": null
+      }
+    ]
+  }
+]

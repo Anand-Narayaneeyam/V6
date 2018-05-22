@@ -1,0 +1,22 @@
+﻿<div>
+    <submenu>
+        <sub-menu [source]=menuData [count]=totalItems [menuIds]=enableMenu (onSubMenuChange)="onSubMenuChange($event);"> </sub-menu>
+    </submenu>
+    <split-view [splitviewObject]="splitviewInput" style="height: calc(100% - 35px);" [pageTitle]="pageTitle">
+        <primary-view>
+            <div>
+                <div [ngClass]="totalItems > itemsPerPage ? 'pagewithPaging':'pagewithoutPaging'">
+                    <gridView style="display:block;" [(dataSource)]="itemsSource" [properties]="inputItems" [columns]="fieldObject" (onSorting)="getlistDataForDynamic($event)" (onRowDelete)="inlineDelete($event)"></gridView>
+                </div>
+                <!--<div>
+                    <paging [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="pageChanged($event);"></paging>
+                </div>-->
+            </div>
+        </primary-view>
+        <secondary-view *ngIf="target == 1 && selectedId > 0 && splitviewInput.showSecondaryView">
+            <div style="display:block;">
+                <email-recipient *ngIf="target == 1 && selectedId > 0" [workTypeId]="workTypeId" [gridDetails]="gridDetails" [siteId]="siteId" (generateSuccess)="generateSuccess($event)"></email-recipient>
+            </div>
+        </secondary-view>
+    </split-view>
+</div>

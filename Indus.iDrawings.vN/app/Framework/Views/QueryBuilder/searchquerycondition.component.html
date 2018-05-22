@@ -1,0 +1,22 @@
+﻿<span>
+    <span *ngIf="conditionindex>0">
+        <span *ngIf="datasource.OperatorFieldObj&& datasource.OperatorFieldObj.FieldId!=null">
+            {{datasource.OperatorFieldObj.FieldValue==1?'AND':'OR'}}
+        </span>       
+    </span>
+    <span *ngFor='let field of datasource.FldNameFieldObj.LookupDetails.LookupValues; let b = index;'>
+        <span *ngIf="datasource.FldNameFieldObj.FieldValue == field['Id']">
+            {{field['Value']}}
+        </span>
+    </span>  
+    <span *ngFor='let field of datasource.ConditionFieldObj.LookupDetails.LookupValues; let c = index;'>
+        <span *ngIf="datasource.ConditionFieldObj.FieldValue == field['Id']">
+            {{field['Value']}}
+        </span>
+    </span>
+       <span *ngIf="datasource.FldValueFieldObj">
+            {{datasource.FldValueFieldObj.FieldValue}}
+        </span>
+    
+
+</span>

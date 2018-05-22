@@ -1,0 +1,19 @@
+﻿<page [pagetitle]="pagePath">
+    <content>
+        <section title="Document Groups" [isExpanded]="sectionExpansionStatus[0].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <document-groups *ngIf="sectionExpansionStatus[0].isExpanded"></document-groups>
+        </section>
+        <section title="Document Groups Accessible to a User" [isExpanded]="sectionExpansionStatus[1].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <document-DocumentGroupsAccessibletoaUser *ngIf="sectionExpansionStatus[1].isExpanded"></document-DocumentGroupsAccessibletoaUser>
+        </section>
+        <section title="Documents Directly Accessible to a User" [isExpanded]="sectionExpansionStatus[2].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <documentsDirectly-accessibletoaUser *ngIf="sectionExpansionStatus[2].isExpanded"></documentsDirectly-accessibletoaUser>
+        </section>
+        <section title="Direct Access to a Document by Many Users" [isExpanded]="sectionExpansionStatus[3].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <directAccesstoa-documentby-manyUsers *ngIf="sectionExpansionStatus[3].isExpanded"></directAccesstoa-documentby-manyUsers>
+        </section>
+        <section title="View All Documents Accessible to a User" [isExpanded]="sectionExpansionStatus[4].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <document-AllDocumentsAccessibletoaUser *ngIf="sectionExpansionStatus[4].isExpanded"></document-AllDocumentsAccessibletoaUser>
+        </section>
+    </content>
+</page>

@@ -1,0 +1,31 @@
+﻿<page [pagetitle]="pagePath" [withoutSubmenu]="true">
+    <content>
+        <dashboard style="height:95%;display:block;">
+
+            <widget>
+                <div style="font-weight:bold"> Gross Area Distribution ({{GrossArea}} {{AreaUnit}}) </div>
+                <piechart *ngIf="PieChart1Data != undefined" [sourceData]="PieChart1Data"> </piechart>
+            </widget>
+            <widget>
+                <div style="font-weight:bold"> Area in {{AreaUnit}} </div>
+                <multibarchart *ngIf="Barchart1Data != undefined" [sourceData]="Barchart1Data"> </multibarchart>
+            </widget>
+
+            <widget>
+                <div style="font-weight:bold"> Organizational Distribution ({{OrgArea}} {{AreaUnit}}) </div>
+                <piechart *ngIf="PieChart2Data != undefined" [sourceData]="PieChart2Data"> </piechart>
+            </widget>
+
+            <widget style="height:250px">
+
+                <div style="font-weight:bold"> Organizational Distribution  </div>
+                <div [ngClass]="'pagewithoutPaging'" style="text-align:left!important;">
+                    <gridView *ngIf="fieldObject" [(dataSource)]="itemsSource" [properties]="inputItems" [columns]="fieldObject"
+                              (onSorting)="onSort($event)">
+                    </gridView>
+                </div>
+            </widget>
+
+        </dashboard>
+    </content>
+</page>

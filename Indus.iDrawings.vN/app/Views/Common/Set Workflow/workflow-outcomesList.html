@@ -1,0 +1,38 @@
+﻿<div style="width:100%;padding-bottom:1%;height:100px">
+    <div tabindex="0" aria-label="Work Type">
+        Work Type: <LabelComponent [fieldObject]=fieldWorkType></LabelComponent>
+    </div>
+    <div tabindex="0" aria-label="Action Point">
+        Action Point: <LabelComponent [fieldObject]=fieldActionPoint></LabelComponent>
+    </div>
+</div>
+<div style="height:50px">
+    <submenu>
+        <sub-menu [menuCard]=true [source]=menuData [count]=gridcount [menuIds]=enableMenu (onSubMenuChange)="onSubMenuChange($event);"> </sub-menu>
+    </submenu>
+</div>
+<div style="height:calc(100% - 150px)">
+    <split-view [splitviewObject]="splitviewInput" [pageTitle]="pageTitle" style="height:100%;">
+        <primary-view>
+            <gridView style="height:85%;" [(dataSource)]="itemsSource" [properties]="inputItems" [columns]="fieldObject" (onSorting)="onSort($event)" (onRowDelete)="inlineDelete($event)"></gridView>
+            <paging [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="pageChanged($event);"></paging>
+        </primary-view>
+        <secondary-view *ngIf="target == 1">
+            <workflowoutcomes-addedit *ngIf="fieldDetailsAddEdit != undefined && splitviewInput.showSecondaryView" style="display: block;width:450px;" [workFlowCategoryId]="workFlowCategoryId" [moduleId]="moduleId" [workTypeId]="workTypeId" [actionPointTypeId]="actionPointTypeId" [workflowActionPointId]="selectedId" [userLookUpDetails]="userLookUpDetails" [fieldDetailsAddEdit]="fieldDetailsAddEdit" [action]="action" [btnName]="btnName" (submitSuccess)="OnSuccessfulSubmit($event)" 
+                                        [selectedId]="inputItems.selectedIds[0]" [notificationRecipientsDetails]="notificationRecipientsDetails"></workflowoutcomes-addedit>
+        </secondary-view>
+    </split-view>
+</div>
+<slide [width]="200" [position]="position" [type]="dialog" [show]="showSlide" (closeDialog)="closeSlideDialog($event)">
+    <div>
+        <div tabindex="0" aria-label="Are you sure you want to delete the selected Outcome?">
+            Are you sure you want to delete the selected Outcome?
+        </div>
+        <div>
+            <div style="width:100%">
+                <button role="button" aria-label="Yes" tabindex="0" class="Savebutton "type="button" (click)="okDelete($event)">Yes</button>
+                <button role="button" aria-label="No" tabindex="0" class="Savebutton "type="button" (click)="cancelClick($event)">No</button>
+            </div>
+        </div>
+    </div>
+</slide>

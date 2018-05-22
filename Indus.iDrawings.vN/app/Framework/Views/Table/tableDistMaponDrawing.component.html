@@ -1,0 +1,58 @@
+﻿<style>
+    table {
+        border-collapse: collapse;
+        border-spacing: 0;
+        width: 100%;
+        border: 1px solid #ddd;
+    }
+
+    th {
+        border: none;
+        text-align: left;
+        padding: 8px;
+        min-width: 200px;
+        font-size: 14px;
+    }
+
+    td {
+        border: none;
+        text-align: left;
+        padding: 8px 12px;
+        min-width: 200px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+</style>
+
+<div style="width:100%;">
+    <!--<div style="width:100%;" *ngIf="disableButton==false">
+        <button type="button" style="margin:5px 0px 5px 0px;font-size:14px;width:107px;height:24px;" (click)="update()" value="{{buttonName}}">{{buttonName}}</button>
+    </div>-->
+
+    <div style="overflow-x:auto;overflow-y:auto;max-height:600px;" [style.height]="height">
+        <table>
+            <tr>
+                <th *ngFor="let cell of fieldObject" [style.display]=displayOfHeader(cell)>
+                    <div style="display:inline"><input type="checkbox" [checked]="isAllChecked" id="SelectAll" *ngIf="cell.FieldLabel == 'Select All'" (change)="selectAllOptions($event)" /></div>{{cell.FieldLabel}}
+                </th>
+            </tr>
+
+            <tr *ngFor="let item of itemSource">
+                <td *ngFor="let new of fieldObject" [style.display]=displayOfHeader(new)>
+                    <ColorPicker [showLabel]=false id="ColorPicker" name="ColorPicker" (colorPickerValueChange)="onChangeInput($event,item,new.FieldLabel)" *ngIf="new.DataEntryControlId == '11'" [fieldObject]="updateField(new,item)"></ColorPicker>
+                    <input type="checkbox" *ngIf="new.DataEntryControlId == '6'" [checked]="isChecked" id="tableDistMap_{{item.Id}}" name="{{item.Id}}" (change)="selectOptions($event)" />
+                    <LabelComponent *ngIf="new.DataEntryControlId == '1'" [fieldObject]="updateField(new,item)"></LabelComponent>
+                </td>
+            </tr>
+
+        </table>
+    </div>
+
+    <div style="width:100%;" *ngIf="disableButton==false">
+        <button  class="Savebutton "type="button" style="margin:5px 0px 5px 0px;" (click)="update()" value="{{buttonName}}">{{buttonName}}</button>
+    </div>
+</div>
+
+

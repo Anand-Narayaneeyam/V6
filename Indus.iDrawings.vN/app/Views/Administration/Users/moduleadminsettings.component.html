@@ -1,0 +1,4 @@
+﻿<button class="Savebutton " type="button" (click)="updateModuleAdminSettings($event)"> Save Changes </button>
+<div style="margin-left:10px;" *ngIf="modulesList">
+    <ListBoxComponent [fieldObject]=modulesList[0] [blnSelectAllChecked]="IsSelectAllChecked" (selAll)="SelectAllOnClick($event)" (lstBox)="singleOnClick($event)"> </ListBoxComponent>
+</div>

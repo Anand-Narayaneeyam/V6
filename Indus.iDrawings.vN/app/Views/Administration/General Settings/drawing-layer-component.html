@@ -1,0 +1,35 @@
+﻿<div style="height:100%;overflow: hidden;">
+    <split-view [splitviewObject]="splitviewInput" [pageTitle]="pageTitle">
+        <primary-view>
+            <submenu>
+                <sub-menu [source]=menuData [count]=totalItems [menuIds]=enableMenu (onSubMenuChange)="onSubMenuChange($event);"> </sub-menu>
+            </submenu>
+            <div style="overflow: hidden;height: calc(100% - 65px);">
+                <div style="height:100%;overflow: hidden;">
+                    <div style="width:100%;display:block" [ngClass]="totalItems > itemsPerPage ? 'pagewithPaging':'pagewithoutPaging'">
+                        <gridView [dataSource]="itemSource" [properties]="inputItems" [columns]="fieldObject" [arrHighlightRowIds]="arrHighlightRowIds" [refreshgrid]="refreshgrid" (onSorting)="onSort($event)"></gridView>
+                    </div>
+                    <div style="height:45px;width:100%;float:left;display:block;">
+                        <paging [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="pageChanged($event);"></paging>
+                    </div>
+                </div>
+            </div>
+        </primary-view>
+        <secondary-view *ngIf="showaddedit==true">
+            <DynamicFields [dataSource]="fieldObjAdd" (submitFieldObject)="onSubmitData($event,btnName)" [btnName]="btnName"></DynamicFields>
+        </secondary-view>
+    </split-view>
+</div>
+<slide [width]="300" [position]="'top-right'" [type]="slideType" [show]=showslide (closeDialog)="closeSlide($event)" [title]="slideTitle">
+    <div *ngIf="showslide==true">
+        <div>
+            {{ConfirmDeleteMsg}}
+        </div>
+        <div>
+            <div style="width:100%">
+                <button class="Savebutton" type="button" (click)="yesOnClick($event)">Yes</button>
+                <button class="Savebutton" type="button" (click)="closeSlide($event)">No</button>
+            </div>
+        </div>
+    </div>
+</slide>

@@ -1,0 +1,19 @@
+﻿<!--<nav style="height: 35px;background-color: #ededed;width: 100%;display: block;min-height:35px;">-->
+<nav [ngClass]="isVertical ? 'menuVertical':'menuHorizontal'">
+    <ul class="submenu">
+        <li *ngFor="let menu of source" [class.diablemenu]="checkDisable(menu.id,menu.image)">
+            <a *ngIf="menu.subMenu==null && menu.image!=null" role="menu" tabindex="{{focusDisable(menu.id,menu.image)}}"  [attr.aria-label]="''+menu.title"  id="{{menu.id}}" href={{menu.path}} (click)="menuClick($event,menu.id)">
+                <img [src]=imagePath(menu.image) alt={{menu.title}} title={{menu.title}} style="width:25px;height:25px;"/>
+            </a>
+            <a *ngIf="menu.subMenu!=null" role="menu" tabindex="{{focusDisable(menu.id,menu.image)}}" [attr.aria-label]="''+menu.title" id="{{menu.id}}" href={{menu.path}} (click)="menuClick($event,menu.id,menu.title)" (focus)="onfocus($event)" (mouseover)='showDropDown($event)' (mouseout)='HideDropDown($event)'>
+                <img [src]=imagePath(menu.image) alt={{menu.title}} title={{menu.title}} style="width:25px;height:25px;" /><span>▾</span>
+            </a>
+            <ul class="dropdown submenudropdown" *ngIf="menu.subMenu!=null" id="dropdown-submenu">
+                <li  *ngFor="let subitem of menu.subMenu;let i=index;" [class.diablemenu]="checkDisable(subitem.id,subitem.image)" (focusin)="onfocusin(i,$event)"  (focusout)="onfocusout(i,menu.subMenu.length-1,$event)">
+                    <a style="width:150px" href="#" tabindex="0" role="menu" title={{subitem.title}}  [attr.aria-label]="subitem.title" id="{{subitem.id}}" (click)="menuClick($event,subitem.id,subitem.title)" (keypress)="onSubmenukeypress($event,subitem.id,subitem.title)">{{subitem.title}}</a>
+                </li>
+            </ul>
+        </li>
+        <li *ngIf="textOnRightSide!=undefined" id="rightSideli" style="float: right;margin-right: 36px;margin-top: 5px;"></li>
+    </ul>
+</nav>  

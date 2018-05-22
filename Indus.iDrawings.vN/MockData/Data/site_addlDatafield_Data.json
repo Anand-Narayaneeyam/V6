@@ -1,0 +1,54 @@
+﻿{
+  "data": [
+    {
+      "Id": "1",
+      "Field Name": "Site Ownerahip",
+      "Field Type": "Single Line Text",
+      "Max Characters Allowed": 10,
+      "Mandatory": false,
+      "Totalizable": false,
+      "Validated": true
+    },
+    {
+      "Id": "2",
+      "Field Name": "Construction Date",
+      "Field Type": "Date",
+      "Max Characters Allowed": "",
+      "Mandatory": false,
+      "Totalizable": false,
+      "Validated": false
+    },
+    {
+      "Id": "3",
+      "Field Name": "Site Contact",
+      "Field Type": "Single Line Text",
+      "Max Characters Allowed": 10,
+      "Mandatory": false,
+      "Totalizable": false,
+      "Validated": false
+    },
+    {
+      "Id": "4",
+      "Field Name": "Language",
+      "Field Type": "Single Line Text",
+      "Max Characters Allowed": 10,
+      "Mandatory": false,
+      "Totalizable": false,
+      "Validated": true
+    },
+    {
+      "Id": "5",
+      "Field Name": "Site Area",
+      "Field Type": "Numeric",
+      "Max Characters Allowed": "",
+      "Mandatory": true,
+      "Totalizable": true,
+      "Validated": false
+    }
+  ],
+  "count": [
+    {
+      "TotalItems": "15"
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+﻿{
+  "data": [
+    {
+      "Id": 1,
+      "LayerName": "Office",
+      "Module": "Space",
+      "Description": "Office with window"
+    },
+    {
+      "Id": 2,
+      "LayerName": "Scheduling Space",
+      "Module": "Space",
+      "Description": "Space used for conference and other meetings"
+    },
+    {
+      "Id": 3,
+      "LayerName": "Shared Office",
+      "Module": "Employee",
+      "Description": "Office with more than one seat"
+    },
+    {
+      "Id": 4,
+      "LayerName": "Network",
+      "Module": "Employee",
+      "Description": "Office with window"
+    },
+    {
+      "Id": 5,
+      "LayerName": "Administration",
+      "Module": "Employee",
+      "Description": "HR Office with window"
+    },
+    {
+      "Id": 6,
+      "LayerName": "Visting area",
+      "Module": "Space",
+      "Description": "Office with more than one seat"
+    }
+  ],
+   "paging": [
+    {
+      "Id": 11,
+      "LayerName": "Admin",
+      "Module": "Space",
+      "Description": "Office with window"
+    },
+    {
+      "Id": 12,
+      "LayerName": "Network",
+      "Module": "Space",
+      "Description": "Space used for conference and other meetings"
+    },
+    {
+      "Id": 13,
+      "LayerName": "Admin",
+      "Module": "Employee",
+      "Description": "Office with more than one seat"
+    },
+    {
+      "Id": 14,
+      "LayerName": "Network",
+      "Module": "Employee",
+      "Description": "Office with window"
+    },
+    {
+      "Id": 15,
+      "LayerName": "Administration",
+      "Module": "Employee",
+      "Description": "HR Office with window"
+    },
+    {
+      "Id": 16,
+      "LayerName": "Visting area",
+      "Module": "Space",
+      "Description": "Office with more than one seat"
+    }
+  ]
+}

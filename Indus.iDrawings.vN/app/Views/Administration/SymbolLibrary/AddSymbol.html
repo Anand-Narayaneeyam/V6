@@ -1,0 +1,66 @@
+﻿    <div>
+        <submenu>
+            <sub-menu [source]=menuData [menuCard]=types [count]=totalItems [menuIds]=enableMenu (onSubMenuChange)="onSubMenuChange($event);"> </sub-menu>
+        </submenu>
+        <split-view [splitviewObject]="splitviewInput" [pageTitle]="pageTitle" style="height: calc(100% - 35px);">
+            <primary-view>
+                <div id="uploadControlDiv">
+                    <FileUploadComponent *ngIf="fieldObject" id="FileUpload" (fileData)="getDWGData($event)" name="FileUpload" [fieldObject]=fieldObject></FileUploadComponent>                    
+                </div>
+                <canvas id="iWhizSymbolLibraryCanvas" oncontextmenu="return false;" title="" class="canvas" style="background-color:black;height: 80%;" #iWhizSymbolLibraryCanvas></canvas>
+                <div id="loading-indicator" colspan="5" class="signal" style="position: absolute; left: 50%; top: 50%; color: grey;display:none"></div>
+            </primary-view>
+            <secondary-view>
+                <Adding_Symbol [fieldDetailsAdd]="fieldDetailsAdd" [Coordinates]="Coordinates" [EntityText]="EntityText" [TextSize]="TextSize" [btnName]="btnName" [action]="action" (closeSecondaryView)="closeSecondaryView($event)"></Adding_Symbol>
+            </secondary-view>
+        </split-view>
+        <slide [width]="200" [position]="position" [type]="dialog" [show]="showSlide" (closeDialog)="closeSlideDialog($event)">
+            <div>
+                <div tabindex="0">
+                    {{message}}
+                </div>
+                <div>
+                    <div style="width:100%">
+                        <button class="Savebutton " type="button" (click)="ok($event)">Yes</button>
+                        <button class="Savebutton " type="button" (click)="cancel($event)">No</button>
+                    </div>
+                </div>
+            </div>
+        </slide>
+    </div>
+    <style>
+
+        #imagecontrol{
+            display:inline-flex !important;
+        }
+        .signal {
+            border: 5px solid #333;
+            border-radius: 30px;
+            border-color: #178AE8;
+            height: 30px;
+            left: 50%;
+            margin: -15px 0 0 -15px;
+            opacity: 0;
+            position: absolute;
+            top: 50%;
+            width: 30px;
+            animation: pulsate 1s ease-out;
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes pulsate {
+            0% {
+                transform: scale(.1);
+                opacity: 0.0;
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            100% {
+                transform: scale(1.2);
+                opacity: 0;
+            }
+        }
+    </style>

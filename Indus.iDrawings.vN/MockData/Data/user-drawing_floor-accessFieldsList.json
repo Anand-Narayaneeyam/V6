@@ -1,0 +1,62 @@
+﻿{
+    "data": [
+        {
+            "FieldId": 1,
+            "FieldName": "Select All",
+            "FieldType": 7,
+            "FieldValue": "true",
+            "IsMandatory": false,
+            "IsHiddenLabel": true,
+            "IsVisible": true,
+            "IsDisabled": false,
+            "ReadOnlyMode": false,
+            "NotificationType": "return"
+        },
+        {
+            "FieldId": 2,
+            "FieldName": "Id",
+            "FieldType": 1,
+            "IsVisible": false,
+            "IsDisabled": true,
+            "ReadOnlyMode": true,
+            "IsMandatory": false,
+            "IsHiddenLabel": true,
+            "NotificationType": "return"
+        },
+        {
+            "FieldId": 3,
+            "FieldName": "Site",
+            "FieldType": 1,
+            "IsVisible": true,
+            "IsDisabled": true,
+            "ReadOnlyMode": true,
+            "IsMandatory": false,
+            "IsHiddenLabel": true,
+            "NotificationType": "return",
+            "Width": "2*"
+        },
+        {
+            "FieldId": 4,
+            "FieldName": "Building",
+            "FieldType": 1,
+            "IsVisible": true,
+            "IsDisabled": true,
+            "ReadOnlyMode": true,
+            "IsMandatory": false,
+            "IsHiddenLabel": true,
+            "NotificationType": "return"
+        },
+        {
+            "FieldId": 5,
+            "FieldName": "Floor",
+            "FieldType": 1,
+            "IsVisible": true,
+            "IsDisabled": true,
+            "ReadOnlyMode": true,
+            "IsMandatory": false,
+            "IsHiddenLabel": true,
+            "NotificationType": "return",
+            "Width": "*"
+        }
+    ]
+}

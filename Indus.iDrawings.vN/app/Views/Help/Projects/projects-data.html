@@ -1,0 +1,65 @@
+﻿<page [pagetitle]="pagePath">
+    <pagepath>
+    </pagepath>
+    <content>
+        <section title="Data" [isExpanded]="true" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div>
+
+                <p>This option is used for creating, closing and reopening the Projects.</p>
+                <p>When clicking the Projects menu, the list of all projects will be displayed with Project Category drop down on the top of the list. Project Category dropdown is provided with General. </p>
+                <p><span class="header1">Add:</span> Create a new project by clicking <span class="header2">Add</span> <img class="helpicon" src="Content/Icons/data_addN.png" title="Add" /> icon. General category will be displayed as selected and disabled in Project Category drop down. Enter the details like Project Name, Status, Project Number, Project Type, Project Manager, Description etc. in the form displayed. Project Type can be selected from the list of predefined Project Types and Project Manager can be selected from the list of users having access to the Projects Module. Click on Save button to add the new project. </p>
+                <p><span class="header1">Edit:</span> This option is to edit an already added project. Click on <span class="header2">Edit</span> <img class="helpicon" src="Content/Icons/data_editN.png" title="Edit" /> icon, the Edit project window will be displayed, select the Project to be edited, the details will be shown in the form. Make the necessary changes and then click the Save Changes button to save the changes. </p>
+                <p><span class="header1">Close:</span> Close the project by selecting the project to be closed from the list and then clicking the <span class="header2">Close</span> <img class="helpicon" src="Content/Icons/closE.png" alt="Close"> icon.</p>
+
+
+            </div>
+        </section>
+    </content>
+</page>
+<style type="text/css">
+    h3.Mainheader {
+        color: #178AE8;
+    }
+
+    .header1 {
+        font-weight: bold;
+        color: #178AE8;
+    }
+
+    .header2 {
+        font-weight: normal;
+        color: #178AE8;
+    }
+
+    p {
+        margin-left: 38px;
+        font-size: 13px;
+        margin-right: 3em;
+    }
+
+    .header3 {
+        font-weight: bold;
+        color: black;
+    }
+    /**/ h1 {
+        color: #178AE8;
+        font-size: 1.3em;
+        margin-left: 38px;
+    }
+
+    h2 {
+        color: #178AE8;
+        font-size: 1em;
+        margin-left: 38px;
+    }
+
+    .config {
+        background-color: #178AE8;
+    }
+
+    .helpicon {
+        vertical-align: baseline;
+        width: 20px;
+        height: 20px;
+    }
+</style>

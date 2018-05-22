@@ -1,0 +1,55 @@
+﻿<!--<!--<div style="padding: 7px 1% 5px 0px;text-align: right;">
+    <a id="moverequestpermissions-link" (click)="onLinkClick()"> Show Details </a>
+</div>-->
+<div *ngIf="employeeitemsSource != undefined" style="height: 100px;width:100%;margin-top:10px;">
+    <gridView *ngIf="employeeitemsSource != undefined" [(dataSource)]="employeeitemsSource" [properties]="employeeDetailsinputItems" [(columns)]="employeeDetailsfieldObject" (onSorting)="onEmployeeDetailsSort($event)"></gridView>
+</div>
+<div *ngIf="linkArray == undefined" style="height: calc(100% - 32px);">
+    <DynamicFields *ngIf="fieldDetailsAdd != undefined" id="reviewEmployeeAssignRequest" [dataSource]="fieldDetailsAdd" (submitFieldObject)="onSubmitData($event)"
+                   [btnName]="btnName" [dataKey]="dataKey" (fieldChange)="onDropDownChange($event.ddlRelationShipEvent.ChildFieldObject)"></DynamicFields>
+</div>
+
+<style type="text/css">
+    @media only screen and (max-width: 768px) {
+        #TextAreaComponent:active ~ #reviewEmployeeAssignRequest #form {
+            margin-left: 6%;
+            height: 350% !important;
+            padding-top: 10px;
+        }
+    }
+
+    #moverequestpermissions-link {
+        text-decoration: none;
+        padding: 5px;
+        cursor: pointer;
+        border: 1px solid beige;
+        background-color: #178ae8;
+        color: white;
+        border-radius: 5px;
+        margin-right: 0.5%;
+    }
+
+    #reviewEmployeeAssignRequest #form .list-group div {
+        min-height: 0px !important;
+    }
+
+    #reviewEmployeeAssignRequest #form {
+        margin-left: 1.5%;
+        height: calc(100% - 40px);
+        padding-top: 5px;
+    }
+
+    #reviewEmployeeAssignRequest #form .list-group {
+        background-color: #ffffff;
+    }
+
+    #reviewEmployeeAssignRequest .MainContainer_1259 #TextAreaComponent div span textarea {
+        width: 100% !important;
+        height: 100px !important;
+    }
+
+    #reviewEmployeeAssignRequest .MainContainer_1260 #TextAreaComponent div span textarea {
+        width: 100% !important;
+        height: 100px !important;
+    }
+</style>

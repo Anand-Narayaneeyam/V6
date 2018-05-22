@@ -1,0 +1,76 @@
+﻿{
+  "data": [
+    {
+      "FieldId": 1,
+      "FieldName": "Organization Name",
+      "FieldType": 1,
+      "FieldValue": "Acadia Corporation",
+      "IsMandatory": false,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": true,
+      "IsVisible": true,
+      "MaxLength": 100,
+      "NotificationType": "inline"
+    },
+    {
+      "FieldId": 2,
+      "FieldName": "Sender Name",
+      "FieldType": 1,
+      "FieldValue": "iDrawings Support",
+      "IsMandatory": true,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false,
+      "IsVisible": true,
+      "MaxLength": 100,
+      "NotificationType": "inline"
+    },
+    {
+      "FieldId": 3,
+      "FieldName": "Sender Email",
+      "FieldType": 1,
+      "FieldValue": "support@indus-systems.com",
+      "IsMandatory": true,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false,
+      "IsVisible": true,
+      "MaxLength": 100,
+      "NotificationType": "inline"
+    },
+    {
+      "FieldId": 4,
+      "FieldName": "Footer Message",
+      "FieldType": 4,
+      "FieldValue": "iDrawings Customer Care",
+      "IsMandatory": true,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false,
+      "IsVisible": true,
+      "MaxLength": 500,
+      "NotificationType": "inline"
+    },
+    {
+      "FieldId": 5,
+      "FieldName": "Support Email",
+      "FieldType": 1,
+      "FieldValue": "support@indus-systems.com",
+      "IsMandatory": true,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false,
+      "IsVisible": true,
+      "MaxLength": 100,
+      "NotificationType": "inline"
+    },
+    {
+      "FieldId": 6,
+      "FieldName": "Support Phone",
+      "FieldType": 1,
+      "FieldValue": "978-461-0555",
+      "IsMandatory": true,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false,
+      "IsVisible": true,
+      "MaxLength": 100,
+      "NotificationType": "inline"
+    }
+  ]
+}

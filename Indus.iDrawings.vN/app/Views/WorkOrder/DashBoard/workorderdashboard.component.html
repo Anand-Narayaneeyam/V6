@@ -1,0 +1,27 @@
+﻿<page [pagetitle]="pagePath" [withoutSubmenu]="true">
+    <content>
+        <dashboard style="height:90%;">
+
+                        <widget>
+                            <div style="font-weight:bold"> PM Work Order Status - This Month </div>
+                            <piechart *ngIf="PieChart1Data != undefined" [sourceData]="PieChart1Data"> </piechart>
+                        </widget>
+                   
+                        <widget>
+                            <div style="font-weight:bold"> Open PM Work Orders Aging  </div>
+                            <multibarchart *ngIf="Barchart1Data != undefined" [sourceData]="Barchart1Data"> </multibarchart>
+                        </widget>
+                   
+                        <widget>
+                            <div style="font-weight:bold">Service Requests Status - This Month </div>
+                            <piechart *ngIf="PieChart2Data != undefined" [sourceData]="PieChart2Data"> </piechart>
+                        </widget>
+                  
+                        <widget>
+                            <div style="font-weight:bold">Service Requests Aging  </div>
+                            <multibarchart *ngIf="Barchart2Data != undefined" [sourceData]="Barchart2Data"> </multibarchart>
+                        </widget>
+                  
+</dashboard>
+    </content>
+</page>

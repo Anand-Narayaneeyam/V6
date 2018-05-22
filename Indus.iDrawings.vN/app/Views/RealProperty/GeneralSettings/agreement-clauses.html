@@ -1,0 +1,43 @@
+﻿<div>
+    <div style="width:100%;padding-bottom:1%;display:inline-flex" *ngIf="pageTarget==2">
+        Lease Identifier: <div style="margin-top:2px;margin-left:2px;"><LabelComponent [fieldObject]=fieldLeaseIdentifier></LabelComponent></div>
+    </div>
+    <submenu>
+        <sub-menu [menuCard]=true [source]=menuData [count]=gridcount [menuIds]=enableMenu (onSubMenuChange)="onSubMenuChange($event);"> </sub-menu>
+    </submenu>
+    <split-view [splitviewObject]="splitviewInput" [pageTitle]="pageTitle"  style="height: calc(100% - 75px);">
+        <primary-view>
+            <div style="height:100%;">
+                <div [ngClass]="totalItems > itemsPerPage ? 'pagewithPaging':'pagewithoutPaging'">
+                    <slide [width]="200" [position]="position" [type]="dialog" [show]="showSlide" (closeDialog)="closeSlideDialog($event)">
+                        <div>
+                            <div>
+                                Are you sure you want to delete the selected Agreement Clause?
+                            </div>
+                            <div>
+                                <div style="width:100%">
+                                    <button  class="Savebutton "type="button" (click)="okDelete($event)">Yes</button>
+                                    <button  class="Savebutton "type="button" (click)="cancelClick($event)">No</button>
+                                </div>
+                            </div>
+                        </div>
+                    </slide>
+                    <gridView style="height:100%;display:block;" [(dataSource)]="itemsSource" [properties]="inputItems" [columns]="fieldObject" [refreshgrid]="refreshgrid" (onSorting)="onSort($event)" (onRowDelete)="inlineDelete($event)"></gridView>
+                </div>
+                <div [style.height]="totalItems >itemsPerPage ? '35px' : '0px'">
+                    <paging [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="pageChanged($event);"></paging>
+                </div>
+            </div>
+        </primary-view>
+        <secondary-view *ngIf="target==1">
+            <agreementclause-addedit style="display: block;width:300px;" *ngIf="splitviewInput.showSecondaryView == true" [fieldDetailsAddEdit]="fieldDetailsAddEdit" [action]="action" [btnName]="btnName" (submitSuccess)="OnSuccessfulSubmit($event)" [selectedId]="inputItems.selectedIds[0]"></agreementclause-addedit>
+        </secondary-view>
+        <secondary-view *ngIf="target==2">
+            <lease-agreementclauses style="display: block;width:600px;" *ngIf="splitviewInput.showSecondaryView == true" [action]="action" [btnName]="btnName" (submitSuccess)="OnSuccessfulSubmit($event)" [leaseId]="leaseId" [leaseRenewalCount]="leaseRenewalCount"></lease-agreementclauses>
+        </secondary-view>
+        <secondary-view *ngIf="target == 3">
+            <!--<attachments style="display: block;width:700px;" *ngIf="splitviewInput.showSecondaryView == true" [attachmentCategoryId]="17" [moduleId]="" [baseEntityId]="inputItems.selectedIds" (attachmentSuccess)="attachmentSuccess($event)"></attachments>-->
+        </secondary-view>
+    </split-view>
+</div>
+

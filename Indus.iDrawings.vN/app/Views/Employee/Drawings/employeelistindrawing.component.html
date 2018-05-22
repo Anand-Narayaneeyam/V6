@@ -1,0 +1,99 @@
+﻿<content>
+    <tabs [selectedTab]="selectedTab" style="height:100%;display:block" (getSelectedTab)="getSelectedTab($event)"  class="employeeTab" [verticalTab]="true">
+        <tab tabTitle="Assigned" closeButtonVisible="hidden">
+            <split-view [splitviewObject]="splitviewAssignedEmployee" [pageTitle]="splitViewTitle" (onSecondaryClose)="onSecondaryClose()">
+                <primary-view>
+                    <submenu>
+                        <sub-menu [menuCard]=true [source]=assignedEmployeeMenu [count]=assignedEmployeeTotalItems [menuIds]=enableassignedEmployeeMenu (onSubMenuChange)="onSubmenuChange($event);"> </sub-menu>
+                    </submenu>
+                        <assignedEmployeeList  [Targetforstyle]="pagetargetStyle" *ngIf="selectedTab==0" (emitMenu)="emitMenuItems($event)" [returnData]="returnData" (updateAssignedEmployeeSelectedId)="updateAssignedEmployeeSelectedId($event)" [action]="assignedEmployeeAction" [floorId]="selectedDrawingId" [menuaccess]="assignedEmployeeMenu" [fieldObject]="fieldObject" [assignedEmpsData]="assignedEmpsData" [pageTarget]="1"  [attachmentSuccess]="employeeAttachmentSuccess" [assignedEmployeeId]="assignedEmployeeId" [deAssignedEmpId]="deAssignedEmpId" [assignedEmpResourceCount]="assignedEmpResourceCount" [highlightRows]="arrHighlightRowIds"  (onDeleteAssignedEmployee)="onDeleteAssignedEmployee($event)" (onSearchInDrawing)="onSearchEmployeeInDrawing($event)" [multipleEditChange]="multipleEditChange" [SelectedEmployeeDetails]="UpdateDrawingGridMoveEmployee"></assignedEmployeeList> 
+                </primary-view>
+                <secondary-view *ngIf="assignedSplitViewTarget==1">
+                    <assignedemployee-addedit *ngIf="assignedSplitViewTarget==1" [selectedId]="assignedEmployeeSelectedId[0]" [EmployeeData]="employeeData" (submitSuccess)="OnSuccessfulSubmit($event)" [addEdit]="assignedEmployeeAction" [showview]="showview"></assignedemployee-addedit>
+                </secondary-view>
+                <secondary-view *ngIf="assignedSplitViewTarget==2">
+                    <employeeResourceList *ngIf="splitviewAssignedEmployee.showSecondaryView==true" [target]="target" [EmployeeData]="employeeData" [selectedId]="assignedEmployeeSelectedId[0]" [filterResourceChkbx]="filterResourceChkbx" (submitSuccess)="OnSuccessfulSubmit($event)" (employeeResourceCount)="onUpdateResourceCount($event)" style="display: block;width:700px;"></employeeResourceList>
+                </secondary-view>
+                <secondary-view *ngIf="assignedSplitViewTarget==3">
+                    <attachments [attachmentCategoryId]="9" [moduleId]="moduleId" [baseEntityId]="assignedEmployeeSelectedId[0]" (attachmentSuccess)="attachmentSuccess($event)" class="attachment"></attachments>
+                </secondary-view>
+                <secondary-view *ngIf="assignedSplitViewTarget==4">
+                    <tabs style="height:100%;display:block">
+                        <tab tabTitle="Employee" closeButtonVisible="hidden" >
+                            <display-setting [IsGrid]="blnIsGrid" [DisplaySettingCategoryId]="6" [AdditionalDataFieldCategoryId]="8" (emitdisplaySetting)="getUpdatedDisplaySettings($event)">></display-setting>
+                        </tab>
+                        <tab tabTitle="Space" closeButtonVisible="hidden" >
+                            <display-setting [IsGrid]="blnIsGrid" [DisplaySettingCategoryId]="17" [AdditionalDataFieldCategoryId]="7" (emitdisplaySetting)="getUpdatedDisplaySettings($event)"></display-setting>
+                        </tab>
+                    </tabs>
+                </secondary-view>
+                <secondary-view *ngIf="assignedSplitViewTarget == 5">
+                    <multiple-Edit *ngIf="splitviewAssignedEmployee.showSecondaryView" [datasource]="multipleEditFieldDetails" [applicationFormId]="employeeService.allemployeeAddEditFormId" [moduleId] ="5" (onUpdate)="onMultipleEditUpdate($event)"> </multiple-Edit>
+                </secondary-view>
+            </split-view>
+        </tab> 
+        <tab tabTitle="Unassigned" closeButtonVisible="hidden">
+            <split-view [splitviewObject]="splitviewUnassignedEmployee" [pageTitle]="splitViewTitle" (onSecondaryClose)="onSecondaryClose()">
+                <primary-view>
+                    <submenu>
+                        <sub-menu [menuCard]=true [source]=unassignedEmployeeMenu [count]=unassignedEmployeeTotalItems [menuIds]=enableunassignedEmployeeMenu (onSubMenuChange)="onSubmenuChange($event);"> </sub-menu>
+                    </submenu>
+                    <unassignedEmployeeList [Targetforstyle]="pagetargetStyle" *ngIf="selectedTab==1" [pageTarget] ="'1'" (emitMenu)="emitMenuItems($event)" [returnData]="returnData" [assignedEmpIds]="assignedEmpIds" (updateUnassignedEmployeeSelectedId)="updateUnassignedEmployeeSelectedId($event)" [action]="unassignedEmployeeAction" [menuaccess]="unassignedEmployeeMenu" [fieldObject]="fieldObject"  [attachmentSuccess]="employeeAttachmentSuccess" [unAssignedEmployeeId]="unAssignedEmployeeId" [unAssignedEmpResourceCount]="unAssignedEmpResourceCount" [multipleEditChange]="multipleEditChange"></unassignedEmployeeList>
+                </primary-view>
+                    <secondary-view *ngIf="unAssignedSplitViewTarget==1 ||unAssignedSplitViewTarget==2" >
+                        <unassignedemployee-addedit   *ngIf="splitviewUnassignedEmployee.showSecondaryView && unassignedEmployeeSelectedId &&(unassignedEmployeeAction != 'displaySettings' && (unassignedEmployeeAction != 'attachment' && (unassignedEmployeeAction != 'resource')))"   [EmployeeData]="employeeData" [selectedId]="unassignedEmployeeSelectedId[0]" (submitSuccess)="OnSuccessfulSubmit($event)" [addEdit]="unassignedEmployeeAction" [showview]="showview"></unassignedemployee-addedit>
+                    </secondary-view>
+                        <secondary-view *ngIf="unAssignedSplitViewTarget==3">
+                            <employeeResourceList *ngIf="splitviewUnassignedEmployee.showSecondaryView==true" [target]="target" [EmployeeData]="employeeData" [selectedId]="unassignedEmployeeSelectedId[0]" [filterResourceChkbx]="filterResourceChkbx" (submitSuccess)="OnSuccessfulSubmit($event)" (employeeResourceCount)="onUpdateResourceCount($event)" style="display: block;width:700px;"></employeeResourceList>
+                        </secondary-view>
+                            <secondary-view *ngIf="unAssignedSplitViewTarget==4">
+                                <attachments [attachmentCategoryId]="9" [moduleId]="moduleId" [baseEntityId]="unassignedEmployeeSelectedId[0]" (attachmentSuccess)="attachmentSuccess($event)" class="attachment"></attachments>
+                            </secondary-view>
+                <secondary-view *ngIf="unAssignedSplitViewTarget==5">
+                    <tabs style="height:100%;display:block">
+                        <tab tabTitle="Employee" closeButtonVisible="hidden" >
+                            <display-setting [IsGrid]="blnIsGrid" [DisplaySettingCategoryId]="6" [AdditionalDataFieldCategoryId]="8" (emitdisplaySetting)="getUpdatedDisplaySettings($event)">></display-setting>
+                        </tab>
+                        <!--<tab tabTitle="Space" closeButtonVisible="hidden" *ngIf="unassignedEmployeeTotalItems!='0'">
+                <display-setting [IsGrid]="blnIsGrid" [DisplaySettingCategoryId]="17" [AdditionalDataFieldCategoryId]="7" (emitdisplaySetting)="getUpdatedDisplaySettings($event)"></display-setting>
+            </tab>-->
+                    </tabs>
+                </secondary-view>
+                <secondary-view *ngIf="unAssignedSplitViewTarget == 6">
+                    <multiple-Edit *ngIf="splitviewUnassignedEmployee.showSecondaryView" [datasource]="multipleEditFieldDetails" [applicationFormId]="employeeService.allemployeeAddEditFormId" [moduleId]="5" (onUpdate)="onMultipleEditUpdate($event)"> </multiple-Edit>
+                </secondary-view>
+            </split-view>
+        </tab>
+        <tab tabTitle="Scheduled Moves" closeButtonVisible="hidden" *ngIf="isScheduledMoves" >
+            <div style="height: calc(100% - 35px);width:100%">
+                <gridView [dataSource]="movesitemsSource" [properties]="inputItems" [columns]="movesfieldObject" (onSorting)="onSort($event)" ></gridView>
+            </div>
+        
+        </tab>
+    </tabs>
+    </content>
+
+
+<style>
+    .employeeTab .navbar li {
+        width: 100px !important;
+    }
+    
+    .attachment {
+        width: 750px;
+        display: block;
+    }
+
+    @media only screen and (min-device-width: 320px) and (max-device-width: 813px) and (orientation: portrait) {
+        .attachment {
+            width: 100%;
+        }
+    }
+
+    @media only screen and (min-device-width: 320px) and (max-device-width: 812px) and (orientation: landscape) {
+        .attachment {
+            width: 100%;
+        }
+    }
+
+</style>

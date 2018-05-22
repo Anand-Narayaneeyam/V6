@@ -1,0 +1,28 @@
+﻿
+<page [pagetitle]="pagePath">
+    <content>
+        <tabs [selectedTab]="selectedTab" (getSelectedTab)="getSelectedTab($event)">
+            <tab tabTitle="Select a Work Order" closeButtonVisible="hidden">
+                <submenu>
+                    <sub-menu [source]=menuData [menuCard]=iscard [menuIds]=enableMenu (onSubMenuChange)="onSubMenuChange($event);"> </sub-menu>
+                </submenu>
+                <div style="width:100%">
+                    <DropDownListComponent *ngIf="ddlWorkType" [fieldObject]="ddlWorkType" (change)="onChangeWorkType($event.target.value)" [SetAlignment]=alignContent></DropDownListComponent>
+                </div>
+                <div style="height:93%;" *ngIf="fieldObject">
+                    <div [ngClass]="totalItems > itemsPerPage ? 'pagewithPaging':'pagewithoutPaging'">
+                        <gridView [(dataSource)]="itemsSource" [properties]="inputItems" [columns]="fieldObject" (onSorting)="onSort($event)"></gridView>
+                    </div>
+                    <div [style.height]="totalItems >itemsPerPage ? '35px' : '0px'">
+                        <paging [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="pageChanged($event);"></paging>
+                    </div>
+                </div>
+            </tab>
+            <tab *ngIf="selectedIds != undefined" tabTitle="Report" closeButtonVisible="hidden">
+                <div style="height:100%" *ngIf="isNextClicked && selectedIds != undefined">
+                    <wo-srwocostdetails-report *ngIf="isNextClicked" [WorkOrderId]="WorkOrderId" [RequestNo]="RequestNo" [Description]="Description"> </wo-srwocostdetails-report>
+                </div>
+            </tab>
+        </tabs>
+    </content>
+</page>

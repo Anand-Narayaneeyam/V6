@@ -1,0 +1,170 @@
+﻿<page [pagetitle]="pagePath">
+    <pagepath>
+    </pagepath>
+    <content>
+        <section title="Current Tasks" [isExpanded]="sectionExpansionStatus[0].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div *ngIf="sectionExpansionStatus[0].isExpanded">
+                <p>Review of Service Requests and PM Work Orders are grouped under the Current Tasks menu.</p>
+                <p>Service Requests tab lists all the Service Requests that are pendingfor review by the logged in user, including those which have been converted to Work Orders, whereasPM Work Orders tab list all the PM Work Orders that are pending for review by the logged in user. For an action point user, all the requests/work orders which are to be reviewed by him will be displayed whereas for an administrator, all the requests/work orders will be displayed in the Service Requests / PM Work Orders tab. On clicking Current Tasks menu, Service Requests tab will be selected by default.</p>
+                <h1>Service Requests</h1>
+                <p>The Action Point user can review requests involving him/her. On clicking <span class="header2">Current Tasks: Service Requests</span> tab, all the Service Requests that are pending for review by the logged in user, including those which have been converted to Work Orderswill be listed. If the logged in user is a Customer Administrator or Module Administrator of Work Order module, requests/Work Orders to be reviewed by all other users also will be displayed. The Request will be displayed with all static fields. Action can be taken on these requests or work orders by selecting the desired request/work order and clicking the <span class="header2">Review <img class="helpicon" src="Content/Icons/Review.png" alt="Review request"> </span> icon. </p>
+                <p>Option to create a new service Request is provided in the Service Requests list.</p>
+                <p>Once a Service Request is created, it will be available for review under <span class="header2">Current Tasks: Service Requests</span> tab for the first Action Point user, for all Customer Administrators and for all Module Administrators of Work Order module. </p>
+                <p>On reviewing, the user can select one of the actions defined for the Action list and if the action point is of Specific User type, the Next Action Point User(s) can also be selected. Multiple User selection is allowed for Next Action Point User. Once the action is confirmed by clicking the Save Changes button, the request will move to the next Action Point as defined in the workflow.</p>
+                <p>A Work Order is generated when a request is reviewed and submitted by selecting the action 'Generate Work Order'. Once a Work Order is generated, it will be available for further review in Current Tasks: Service Tasks for the next Action Point user and for all Administrators. (Only if further Actions Points and Outcomes are defined in the corresponding Workflow)</p>
+                <p><span class="header1">Review</span>: User can select the required Request or Work Order to be reviewed from the list and click on <span class="header2">Review</span> <img class="helpicon" src="Content/Icons/Review.png" alt="Review request"> icon.</p>
+                <p>Review Request page is displayed as a tab with Review Comments, Previous Comments, Request details, additional data fields based on the settings made under <span class="header2">Settings: Work Order: General Settings: Set Workflow: Workflow Settings: Editable Fields</span>, and Outcomes of current Action Point. If the Next Action Point is associated with more than one user, then there is an option to select user(s) for the Next Action Point.  For this, the 'Specify User at Previous Action Point' should have been set through <span class="header2">Administration: Action Points: Add/Edit</span>. </p>
+                <p>If the Specify User option is not set, there will not be any option to select a User in the Review page. In this case, any one of the users associated with the selected Action Point can Review the request/Work Order and take necessary action.</p>
+                <p>Work Orders can be set to On Hold by entering the Hold details. When selecting the Work On Hold check box, a combo box under the Hold details will be enabled with reasons listed. The Reasons combo lists reasons such as Waiting for Building Engineer, Waiting for gathering information from Requester, Waiting for Government approval, Waiting for Materials, Waiting for Other Reasons and Waiting for Outside contractor. New Reasons can be entered by clicking the <span class="header2">Add</span> <img class="helpicon" src="Content/Icons/data_addN.png" alt="Add" /> icon near the Hold Reason field. On selecting the reason for On Hold, a date time control will be displayed for selecting the start time of the selected reason. On changing the Reason, the end time of the previous reason will be taken as the start time of the current reason and On Hold Time will be calculated based on that. </p>
+                <p>The particular Work Order can be completed by selecting the outcome 'Complete Work Order' and clicking Save Changes button. On selecting the outcome Complete Work Order, Date of Completion field will be enabled and populated with the Current Date. </p>
+                <p>Note: Only Work Orders which are completed can be closed.</p>
+                <p>Option to enter the Time Spent (Hours) will be displayed in the Review Request page only if the "Enable Time Spent Editing" option is enabled by Indus.</p>
+                <p>Permissions - Manage Equipment, Manage Documents, Manage Invoices, Manage Cost and Manage Chargeback are provided in the Review Page. These options will be available only if the corresponding Permissions are provided for the current Action point of the selected Request/Work Order.</p>
+                <p><span class="header3">Manage Equipment</span>: This link will be enabled only if the permission 'Manage Equipment' under Settings: Work Order: Workflow Settings: Set Workflow: Permissions for the particular Action Point is set and mapped against Service Requests Workflow Entity. </p>
+                <p>On clicking the Manage Equipment button, Equipment window will be displayed with a drop down to select the Equipment Category and with <span class="header2">Add</span> <img class="helpicon" src="Content/Icons/data_addN.png" alt="Add" /> and <span class="header2">Delete </span> <img class="helpicon" src="Content/Layout/delete_button.png" alt="Delete" /> icons. <span class="header2">Delete </span> <img class="helpicon" src="Content/Layout/delete_button.png" alt="Delete" /> icon will be enabled only if any Equipment are linked to the selected Service Request or Work Order.</p>
+                <p><span class="header3">Add</span>: Equipment can be added by clicking the <span class="header2">Add</span> <img class="helpicon" src="Content/Icons/data_addN.png" alt="Add" /> icon after selecting the required Equipment Category. On clicking the <span class="header2">Add</span> <img class="helpicon" src="Content/Icons/data_addN.png" alt="Add" /> icon, all the Equipment of the selected Category will be listed with check boxes. Users can select the Equipment from the list and add it to the Request. </p>
+                <p>Assigned Equipment will be displayed with Site/Building/Floor. Unassigned Equipment will be displayed without Site/Building/Floor. Clicking on the Site/Building/Floor, hyperlink will open the corresponding drawing, with the Equipment highlighted.</p>
+                <p>If Barcode option is enabled in any of the Object Module (Assets, Furniture etc), option to select image with valid barcode is provided. Attached Barcode will be decoded by the application. If any Equipment is linked with decoded barcode, it will be added to the selected Service Request.</p>
+                <p><span class="header3">Delete</span>: Delete Equipment by selecting it and then clicking the Delete <span class="header2">Delete </span> <img class="helpicon" src="Content/Layout/delete_button.png" alt="Delete" /> icon.</p>
+                <p><span class="header3">Manage Documents</span>: This link will be enabled only if the permission 'Manage Documents' under <span class="header2">Settings: Work Order: General Settings: Set Workflow: Permissions</span> for the particular Action Point is set and mapped against Service Requests Workflow Entity. </p>
+                <p>On clicking this link, Documents page will be displayed with an <span class="header2">Add</span> <img class="helpicon" src="Content/Icons/data_addN.png" alt="Add" /> icon. Any document already attached to the Request will be displayed here. </p>
+                <p><span class="header2">Add:</span> Documents can be added by clicking <span class="header2">Add</span> <img class="helpicon" src="Content/Icons/data_addN.png" alt="Add" /> icon</p>
+                <p><span class="header2">Delete:</span> Delete a document by selecting it and clicking on the <span class="header2">Delete </span> <img class="helpicon" src="Content/Layout/delete_button.png" alt="Delete" /> icon.</p>
+                <p><span class="header2">Download:</span> Document can be downloaded and saved in the user’s computer by clicking the <span class="header2">Download</span> <img class="helpicon" src="Content/Layout/download_icon.png" alt="Download" /> icon.</p>
+                <p><span class="header3">Manage Cost</span>: This link will be enabled only if the permission 'Manage Cost' under <span class="header2">Settings: Work Order: General Settings: Set Workflow: Permissions</span> for the particular Action Point is set and mapped against Service Requests Workflow Entity. On clicking this link, Manage Cost page will be displayed with options to add Technicians, Parts, Tools & Other Costs. Technicians/Parts/Tools/Other Costs already added (if any) will be displayed with the cost details.</p>
+                <p><span class="header1">Technicians</span> </p>
+                <p><span class="header3">Add</span>: A new Technician can be added by clicking <span class="header2">Add</span> <img class="helpicon" src="Content/Icons/data_addN.png" alt="Add" /> icon. Enter hours spent in the text box against Technician. Total Cost will be displayed at the bottom.</p>
+                <p><span class="header3">Delete</span>: Delete a Technician by selecting it and then clicking <span class="header2">Delete</span> <img class="helpicon" src="Content/Layout/delete_button.png" alt="Delete" /> icon</p>
+                <p><span class="header1">Parts</span></p>
+                <p><span class="header3">Add</span>: A new Part can be added by clicking <span class="header2">Add</span> <img class="helpicon" src="Content/Icons/data_addN.png" alt="Add" /> icon. Option to select the equipment Category and Class is provided in New Part window so as to select the Parts associated with a particular Equipment Category or Class. Select the Part(s) and add them to the Parts grid in Manage Cost window, Enter Quantity in the text box against Part. Total Cost will be displayed at the bottom. </p>
+                <p><span class="header3">Delete</span>: Delete a Part by selecting it and then clicking <span class="header2">Delete </span> <img class="helpicon" src="Content/Layout/delete_button.png" alt="Delete" /> icon.</p>
+                <p><span class="header1">Tools</span></p>
+                <p><span class="header3">Add</span>: A new Tool can be added by clicking <span class="header2">Add</span> <img class="helpicon" src="Content/Icons/data_addN.png" alt="Add" /> icon. Enter hours used in the text box against Tool. Total Cost will be displayed at the bottom. </p>
+                <p><span class="header3">Delete</span>: Delete a Tool by selecting it and then clicking <span class="header2">Delete</span> <img class="helpicon" src="Content/Layout/delete_button.png" alt="Delete" /> icon.</p>
+                <p><span class="header1">Other Costs</span></p>
+                <p><span class="header3">Add</span>: Other Cost can be added by clicking <span class="header2">Add</span> <img class="helpicon" src="Content/Icons/data_addN.png" alt="Add" /> icon. On clicking <span class="header2">Add</span> <img class="helpicon" src="Content/Icons/data_addN.png" alt="Add" /> icon, New Cost window will be displayed with Cost Item field. Enter the Cost Item and click Save button. The Cost Item will be added and displayed in Other Cost grid. Cost can be entered against the Cost Item. Total Cost will be displayed at the bottom.</p>
+                <p><span class="header3">Delete</span>: Delete an Other Cost by selecting it and then clicking <span class="header2">Delete </span> <img class="helpicon" src="Content/Layout/delete_button.png" alt="Delete" /> icon.</p>
+                <p>Enter the required cost entries. Click the Save Changes button to save and close the cost details page. On deleting any Cost item, the cost already entered against the item will be deducted from the total cost.</p>
+                <p><span class="header1">Keyword Search</span></p>
+                <p>This option helps users to search for Service Requests or Work Orders using keywords. The keyword could belong to any data field of the Service Request. The user need not know or specify which field to look in. The Keyword could be any part of the Service Request viz. Work Type, Request Number, Requested Date, Previous Review Comments, Next Action Point etc. or the additional data fields.</p>
+                <p>On entering the keyword and clicking on the <span class="header2">Search</span> <img class="helpicon" src="Content/Icons/keyword-search.png" alt="Keyword Search" /> icon, the data grid will be filtered with Service Requests records having data matching the specified keyword.</p>
+                <p><span class="header1">Advanced Search</span></p>
+                <p>This option <img class="helpicon" src="Content/Icons/advanced-search.png" alt="Advanced Search" /> helps users to search for Service Requests or Work Order details with specific data in known datafields. The data being searched for can be selected from the list boxes or entered into text boxes provided against the data fields. The user can select one or more data fields viz. Work Type, Request Number, Requested Date, Previous Review Comments, Next Action Point etc. or the additional data fields. After entering the search criteria and click <span class="header2">Search</span> button, the data grid will be filtered with Service Requests or Work Orders which satisfy the selection criteria. </p>
+                <p>Fields to be displayed in the Search window can be set using the <span class="header2">Configure</span> <img src="Content/Icons/filter-config-icon.png" alt="Configure" class="config helpicon" /> icon, provided in the Search window. </p>
+                <p>Search criteria entered in the Search window can be cleared by clicking the <span class="header2">Clear</span> button provided in the Search window. After clearing the Search criteria and click <span class="header2">Search</span> button to clear the Search Results in the Service Requests grid.</p>
+                <p><span class="header3">More icon </span></p>
+                <p><span class="header1">Complete</span>: This option enables the user to complete multiple requests in a single operation. For performing multiple complete operation of Service Requests, Work Orders following conditions are to be satisfied.</p>
+                <ol>
+                    <li>The Current Action Point should have the outcome 'Complete Request'/'Complete Work Order' defined.</li>
+                    <li>If the selected Requests have the Next Action Point in 'Complete Request'/'Complete Work Order' outcome different, the action point should be of non-specific type (Specify User at Previous action point unchecked)</li>
+                    <li>On Hold Work Orders are not supported in multiple Complete. </li>
+                    <li>Only Work orders with same Status can be selected.</li>
+                </ol>
+
+                <p>Select the Requests/Work Orders to be completed and click the <span class="header2">Complete</span> menu, Complete Service Requests/Complete Work Orders window will be displayed with Time Spent to complete. If Next Action point of the Complete Outcome is specific the users list box will be shown. Click the Save button after selecting User(s) and entering the time spent value, the selected requests/Work Orders will be completed and will be displayed in the grid with Completed Status.</p>
+                <p><span class="header1">Close</span>: Close option enables the user to close multiple requests/Work Orders  in a single operation, which are in Accepted or Completed status. For performing multiple Close operation of Service Requests/Work Orders following conditions are to be satisfied.</p>
+
+                <ol>
+                    <li>If the requests are in Accepted status, both Complete Request/Complete Work Order and Close Service Request/Close Work Order outcome should be defined in the Current Action point, also Current and Next Action Point of the Complete Request/Complete Work Order Outcome should be the same.</li>
+                    <li>If the requests are in Completed status, Close outcome should be defined in the current Action point.</li>
+                    <li>On Hold Work Orders are not supported in multiple Close. </li>
+                    <li>Only Requests/Work orders with same 'Status' can be selected.</li>
+                </ol>
+
+                <p>Select the requests/work orders to be closed and click the Close menu, Close Service Requests/Close Work Orders window will be displayed with Date of Completion and Remarks. Click the Submit button by entering the Date of Completion and Remarks, the selected requests will be closed. These requests will be available in reports of Closed Tasks.</p>
+                <p><span class="header1">Override</span>: Override option enables the Administrator to override the workflow of the requests which are in a workflow. Sometimes the workflow might get stuck at some Action Point and the Administrator can move the request to another Action Point defined in the same workflow using this Override option. </p>
+                <p>By selecting the required request to override and on selecting the Override menu, an Override Request page will be displayed. Current Action point will be displayed as read only, Next Action Point and User list box will be displayed. Select a new Action point from the list. If the selected Action Point is associated with Specific User, User selection can be done. Click on Add button, the Service Request's/Work Order's Current action point will get changed to the newly selected Action point and an auto generated mail will be sent to the person responsible for the new Action point.</p>
+                <p><span class="header1">Reminder</span>: Reminder option enables the Administrator to remind an Action Point user about a particular request. On selecting the required request to send reminder and on selecting the Reminder menu, Reminder message details will be displayed with default subject and message body. The Administrator can change the message details if required and click Send. The reminder email will be sent to the Action Point user. </p>
+                <h1>PM Work Orders</h1>
+                <p>The PM Work Order tab provides option for the users to manage the PM Work Orders. </p>
+                <p>PM Work Orders are generated based on the PM Schedules created for Equipments in <span class="header2">Settings: Work Order: PM Settings</span> menu. Once a PM Work Order is generated, it will be available for further review under <span class="header2">Current Tasks: PM Work Orders</span> for the next Action Point user and for all Administrators.(if further Action Points and Outcomes defined in the corresponding Workflow)</p>
+                <p>Only those Work Orders concerning the logged in user will be shown here. These are the PM Work Orders on which he/she has to take action. If the logged in user is an administrator or Module Administrator of Work Order module, all PM Work Orders to be reviewed by all other users also will be displayed. The PM Work Order will be displayed with all static fields. Action can be taken on these PM Work Orders by selecting the desired PM Work Order and clicking the <span class="header2">Review</span> icon. </p>
+                <p>On reviewing, the user can select one of the actions defined for the Action list and if the action point is of Specific User type, the Next Action Point User can also be selected. If the Action Point is associated with User Groups, only iDrawings Users belong to the group will be listed in the Select User combo. Once the action is confirmed by clicking the Save Changes button, the PM Work Order will move to the next Action Point as defined in the workflow.</p>
+                <p><span class="header1">Review</span>: User can select the required PM Work Orderto be reviewed from the list and click on <span class="header2">Review</span> <img class="helpicon" src="Content/Icons/Review.png" alt="Review request"> icon.</p>
+                <p>Review PM Work Order page is displayed with Review Comments, Previous Comments, Cost Details, Work Order details, additional data fields based on the settings made under <span class="header2">General Settings: Set Workflow: Workflow Settings: Editable fields</span> and Outcomes of current Action Point. If the Next Action Point is associated with more than one user then there is an option to select user(s) for the Next Action Point. For this, the 'Specify User at Previous Action Point' should have been set through <span class="header2">Administration: Action Points: Add/Edit</span>. If the Specify User option is not set, there will not be any option to select a User in the Review page. In this case, any one of the users associated with the selected Action Point can Review the work order and take necessary action.</p>
+                <p>The Previous Review Comments field is listed with all completed action points with corresponding User Name, Action (Outcome), Action Date and the Comments entered by the Reviewer. On reviewing, the user can enter his comments if any, and can add Costs and Invoices if required. At the end of the review, the user can submit the page by choosing the required Action and the next action point user (if the action point is of specific user type). Once the page is submitted, the work order will be moved to the next Action Point as defined in the workflow.</p>
+                <p>Additional Review Comments can be entered and updated anytime without selecting the Next Action Point User</p>
+                <p>Work Orders can be set to On Hold by entering the Hold details. When selecting the Work On Hold checkbox, a combo box under the Hold details will be enabled with reasons. The Reasons combo lists reasons such as Waiting for Building Engineer, Waiting for gathering information from Requester, Waiting for Government approval, Waiting for Materials, Waiting for Other Reasons and Waiting for Outside contractor. New reason can be added by clicking Add icon next to the Reasons combo box. A New Reason window will be popped up and New Reason can be added by clicking the Add button. On selecting the reason for On Hold, a date time control will be displayed for selecting the start time of the selected reason. On changing the Reason, the end time of the previous reason will be taken as the start time of the current reason and On Hold Time will be calculated based on that. </p>
+                <p>The particular Work Order can be completed by selecting the outcome 'Complete Work Order' and clicking Save Changes button. The Only Work orders which are moved to In Progress status can be completed (This is the case when Enable In Progress Outcome feature subscribed by the Customer) and only Completed Work Orders can be closed by selecting the outcome Close Work Order. </p>
+                <p>On selecting the outcome Complete Work Order, Date of Completion field will be enabled and populated with the Current Date. </p>
+                <p>Option to enter the Time Spent (Hours) will be displayed in the Review Request page only if the "Enable Time Spent Editing" option is enabled by Indus.</p>
+                <p>Permissions namely Manage Cost, Manage Invoices, Manage Cost and Manage Chargeback are provided in the Review Page. The options will be available only if the corresponding Permissions are provided for the current Action point of the selected Work Order.</p>
+                <p><span class="header3">Manage Cost</span>: This link will be enabled only if the permission 'Manage Cost' under <span class="header2">Settings: Work Order: General Settings: Set Workflow: Permissions</span>for the particular Action Point is set and mapped against Service Requests Workflow Entity. On clicking this link, Manage Cost page will be displayed with options to add Technicians, Parts, Tools & Other Costs. Technicians/Parts/Tools/Other Costs already added (if any) will be displayed with the cost details.</p>
+                <p><span class="header1">Technicians</span> </p>
+                <p><span class="header3">Add</span>: A new Technician can be added by clicking <span class="header2">Add</span> <img class="helpicon" src="Content/Icons/data_addN.png" alt="Add" /> icon. Enter hours spent in the text box against Technician. Total Cost will be displayed at the bottom.</p>
+                <p><span class="header3">Delete</span>: Delete a Technician by selecting it and then clicking <span class="header2">Delete</span> <img class="helpicon" src="Content/Layout/delete_button.png" alt="Delete" /> icon</p>
+                <p><span class="header1">Parts</span></p>
+                <p><span class="header3">Add</span>: A new Part can be added by clicking <span class="header2">Add</span> <img class="helpicon" src="Content/Icons/data_addN.png" alt="Add" /> icon. Option to select the equipment Category and Class is provided in New Part window so as to select the Parts associated with a particular Equipment Category or Class. Select the Part(s) and add them to the Parts grid in Manage Cost window, Enter Quantity in the text box against Part. Total Cost will be displayed at the bottom. </p>
+                <p><span class="header3">Delete</span>: Delete a Part by selecting it and then clicking <span class="header2">Delete</span> <img class="helpicon" src="Content/Layout/delete_button.png" alt="Delete" /> icon.</p>
+                <p><span class="header1">Tools</span></p>
+                <p><span class="header3">Add</span>: A new Tool can be added by clicking <span class="header2">Add</span> <img class="helpicon" src="Content/Icons/data_addN.png" alt="Add" /> icon. Enter hours used in the text box against Tool. Total Cost will be displayed at the bottom. </p>
+                <p><span class="header3">Delete</span>: Delete a Tool by selecting it and then clicking <span class="header2">Delete </span> <img class="helpicon" src="Content/Layout/delete_button.png" alt="Delete" /> icon.</p>
+                <p><span class="header1">Other Costs</span></p>
+                <p><span class="header3">Add</span>: Other Cost can be added by clicking <span class="header2">Add</span> <img class="helpicon" src="Content/Icons/data_addN.png" alt="Add" /> icon. On clicking <span class="header2">Add</span> <img class="helpicon" src="Content/Icons/data_addN.png" alt="Add" /> icon, New Cost window will be displayed with Cost Item field. Enter the Cost Item and click Save button. The Cost Item will be added and displayed in Other Cost grid. Cost can be entered against the Cost Item. Total Cost will be displayed at the bottom.</p>
+                <p><span class="header3">Delete</span>: Delete an Other Cost by selecting it and then clicking <span class="header2">Delete</span> <img class="helpicon" src="Content/Layout/delete_button.png" alt="Delete" /> icon.</p>
+                <p>Enter the required cost entries. Click the Save Changes button to save and close the cost details page. On deleting any Cost item, the cost already entered against the item will be deducted from the total cost.</p>
+                <p><span class="header1">Keyword Search</span></p>
+                <p>This option helps users to search for Service Requests or Work Orders using keywords. The keyword could belong to any data field of the Service Request. The user need not know or specify which field to look in. The Keyword could be any part of the Service Request viz. Work Type, Request Number, Requested Date, Previous Review Comments, Next Action Point etc. or the additional data fields.</p>
+                <p>On entering the keyword and clicking on the <span class="header2">Search</span> <img class="helpicon" src="Content/Icons/keyword-search.png" alt="Keyword Search" /> icon, the data grid will be filtered with Service Requests records having data matching the specified keyword.</p>
+                <p><span class="header1">Advanced Search</span></p>
+                <p>This option <img class="helpicon" src="Content/Icons/advanced-search.png" alt="Advanced Search" /> helps users to search for Service Requests or Work Order details with specific data in known datafields. The data being searched for can be selected from the list boxes or entered into text boxes provided against the data fields. The user can select one or more data fields viz. Work Type, Request Number, Requested Date, Previous Review Comments, Next Action Point etc. or the additional data fields. After entering the search criteria and click <span class="header2">Search</span> button, the data grid will be filtered with Service Requests or Work Orders which satisfy the selection criteria. </p>
+                <p>Fields to be displayed in the Search window can be set using the <span class="header2">Configure</span> <img src="Content/Icons/filter-config-icon.png" alt="Configure" class="config helpicon" /> icon, provided in the Search window. </p>
+                <p>Search criteria entered in the Search window can be cleared by clicking the <span class="header2">Clear</span> button provided in the Search window. After clearing the Search criteria and click <span class="header2">Search</span> button to clear the Search Results in the Service Requests grid.</p>
+            </div>
+        </section>
+        <section title="Closed Tasks" [isExpanded]="sectionExpansionStatus[1].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div *ngIf="sectionExpansionStatus[1].isExpanded">
+                <p>This option lists all the closed Tasks for the Customer. All Closed Requests will be shown in Service Requests tab and all closed PM Work Orders will be shown in PM Work Orders tab.</p>
+                <p>This option will be available for administrators only.</p>
+
+            </div>
+        </section>
+    </content>
+</page>
+<style type="text/css">
+    h3.Mainheader {
+        color: #178AE8;
+    }
+
+    .header1 {
+        font-weight: bold;
+        color: #178AE8;
+    }
+
+    .header2 {
+        font-weight: normal;
+        color: #178AE8;
+    }
+
+    p {
+        margin-left: 38px;
+        font-size: 13px;
+        margin-right: 3em;
+    }
+
+    .header3 {
+        font-weight: bold;
+        color: black;
+    }
+    /**/ h1 {
+        color: #178AE8;
+        font-size: 1.3em;
+        margin-left: 38px;
+    }
+
+    h2 {
+        color: #178AE8;
+        font-size: 1em;
+        margin-left: 38px;
+    }
+
+    .config {
+        background-color: #178AE8;
+    }
+
+    .helpicon {
+        vertical-align: baseline;
+        width: 20px;
+        height: 20px;
+    }
+</style>

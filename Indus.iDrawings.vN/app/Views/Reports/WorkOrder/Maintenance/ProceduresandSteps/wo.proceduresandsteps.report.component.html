@@ -1,0 +1,7 @@
+﻿<page [pagetitle]="pagePath">
+    <content>
+        <div style="width:100%;height:100%" *ngIf="ReportData != undefined">
+            <reportviewer [reportData]=ReportData> Loading ...</reportviewer>
+        </div>
+    </content>
+</page>

@@ -1,0 +1,35 @@
+﻿<submenu>
+    <sub-menu [selectedId]=selIds [source]=menuData [menuCard]=types [count]=gridcount [menuIds]=enableMenu (onSubMenuChange)="onSubMenuChange($event);"> </sub-menu>
+</submenu>
+<content>
+    <split-view [splitviewObject]="splitviewInput" [pageTitle]="pageTitle" style="height:calc(100% - 35px);">
+        <primary-view>
+            <div>
+                <div>
+                    <gridView [(dataSource)]="spacestandardsource" [ngClass]="totalItems > itemsPerPage ? 'pagewithPaging':'pagewithoutPaging'" [properties]="inputItems" [columns]="fields" [refreshgrid]="refreshgrid" (onSorting)="onSort($event)"></gridView>
+                </div>
+                <div>
+                    <paging *ngIf="totalItems >itemsPerPage ? 'true' : 'false'" [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="pageChanged($event);"></paging>
+                </div>
+            </div>
+
+        </primary-view>
+        <secondary-view>
+            <spacestandard-add-edit *ngIf="splitviewInput.showSecondaryView" (submitSuccess)="submitReturn($event)" [action]="action" [btnName]="btnName" [selectedId]="inputItems.selectedIds" [fieldDetailsAdd]="fieldDetailsAdd1"></spacestandard-add-edit>
+        </secondary-view>
+    </split-view>
+
+    <slide [width]= width [position]="Position" [type]="dialog" [show]=showSlide (closeDialog)="closeSlideDialog($event)">
+        <div>
+            <div>
+               {{message}}
+            </div>
+            <div>
+                <div style="width:100%">
+                    <button  class="Savebutton "type="button" (click)="okDelete($event)">Yes</button>
+                    <button  class="Savebutton "type="button" (click)="cancelClick($event)">No</button>
+                </div>
+            </div>
+        </div>
+    </slide>
+    </content>

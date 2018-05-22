@@ -1,0 +1,30 @@
+﻿<div>
+    <submenu *ngIf="isSiteAdmin==false">
+        <sub-menu [menuCard]=true [source]=menuData [count]=gridcount [menuIds]=enableMenu (onSubMenuChange)="onSubMenuChange($event);"> </sub-menu>
+    </submenu>
+    <split-view [splitviewObject]="splitviewInput" [pageTitle]="pageTitle" style="height: calc(75% - 35px);margin-top:5px;">
+        <primary-view style="height: calc(100% - 35px);">
+            <gridView [ngClass]="totalItems > itemsPerPage ? 'pagewithPaging':'pagewithoutPaging'" style="display:block;" [(dataSource)]="itemsSource" [properties]="inputItems" [columns]="fieldObject" [refreshgrid]="refreshgrid" (onSorting)="onSort($event)" (onRowDelete)="inlineDelete($event)"></gridView>
+            <paging [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="pageChanged($event);"></paging>
+        </primary-view>
+        <secondary-view *ngIf="target==1">
+            <defineworktype-addedit [workFlowCategoryId]="workFlowCategoryId" [moduleId]="moduleId" [fieldDetailsAddEdit]="fieldDetailsAddEdit" [action]="action" [btnName]="btnName" (submitSuccess)="OnSuccessfulSubmit($event)" [selectedId]="inputItems.selectedIds[0]"></defineworktype-addedit>
+        </secondary-view>
+        <secondary-view *ngIf="target==2 && fieldDetailsSetNotification != undefined && splitviewInput.showSecondaryView">
+            <set-notification style="display: block;width:450px;" [fieldDetailsSetNotification]="fieldDetailsSetNotification" [action]="action" [btnName]="btnName" (submitSuccess)="OnSuccessfulSubmit($event)" [selectedId]="inputItems.selectedIds[0]" [actionPointDetails]= "actionPointDetails" [notificationRecipientsDetails]= "notificationRecipientsDetails" (recipientsList)="getRecipientsList($event)"></set-notification>
+        </secondary-view>
+    </split-view>
+    <slide [width]="200" [position]="position" [type]="dialog" [show]="showSlide" (closeDialog)="closeSlideDialog($event)">
+        <div>
+            <div>
+                Are you sure you want to delete the selected Work Type?
+            </div>
+            <div>
+                <div style="width:100%">
+                    <button  class="Savebutton "type="button" (click)="okDelete($event)">Yes</button>
+                    <button  class="Savebutton "type="button" (click)="cancelClick($event)">No</button>
+                </div>
+            </div>
+        </div>
+    </slide>
+</div>

@@ -1,0 +1,71 @@
+﻿
+
+<div style="height: calc(100% - 35px);overflow: hidden;">
+    <div class="search-container">
+        <search *ngIf="fieldObject" [searchtype]="'Grid'" [keyWordLookup]=keyWordLookup  [disable]="disable" [advancesearch]=true [Key]=2 [datasource]=advancelookup [dataKey]="dataKey" [KeywordFields]=KeywordFieldObject (SaveAs)="SaveAs($event)" (Delete)="Delete($event)" (onloadSearch)="onloadSearch($event)" (loadAdvanceSearch)="advanceSearch()" (Clear)="Clear($event)" (Submit)="onAdvanceSearch($event)"></search>
+    </div>
+    <!--<div style="height:calc(100% - 150px);float:left;width:100%;">-->
+    <div style="height:100%;">
+        <div style="float:left;width:100%;display:block;"  [ngClass]="totalItems > itemsPerPage ? 'pagewithPaging':'pagewithoutPaging'">
+            <confirmation (onConfirm)="okDelete($event)"></confirmation>
+         <!--<export-to-excel  (click)="getDatasource($event)" (exportToExcelClick)="getExcel($event)" [exDatasource]="exportDataSource" [fieldObject]="fieldObject" [fileName]="fileName" ></export-to-excel>-->
+            <gridView [(dataSource)]="itemsSource" [properties]="inputItems" [(columns)]="fieldObject" (onSorting)="onSort($event)" (onRowUpdate)="RowUpdate($event)" (onRowDelete)="RowDelete($event)" (onRowAdd)="RowAdd($event)" (onColValClick)="onColValClick($event)" (ddlChangeFrmGrid)="ddlChangeFrmGrid($event)" [refreshgrid]="refreshgrid"></gridView>
+        </div>
+        <!--<div style="float:left;width:100%;display:block;height:100%;" *ngIf="totalItems < itemsPerPage">        
+            <gridView [(dataSource)]="itemsSource" [properties]="inputItems" [(columns)]="fieldObject" (onSorting)="onSort($event)" (onRowUpdate)="RowUpdate($event)" (onRowDelete)="RowDelete($event)" (onRowAdd)="RowAdd($event)" (onColValClick)="onColValClick($event)" (ddlChangeFrmGrid)="ddlChangeFrmGrid($event)"></gridView>
+        </div>-->
+        <div style="width:100%;float:left;display:block;"  [style.height]="totalItems >itemsPerPage ? '35px' : '0px'">
+            <paging *ngIf="totalItems >itemsPerPage ? 'true' : 'false'" [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="pageChanged($event);"></paging>
+        </div>
+    </div>
+    <slide [width]="300" [position]="position" [type]="dialog" [show]="showSlide" (closeDialog)="closeSlideDialog($event,1)">
+       
+        <div>
+            <div>
+                Are you sure you want to delete the selected Site?
+            </div>
+            <div>
+
+                <div style="width:100%">
+                    <button  class="Savebutton "type="button" (click)="okDelete($event)">Yes</button>
+                    <button  class="Savebutton "type="button" (click)="cancelClick($event,1)">No</button>
+                </div>
+            </div>
+        </div>
+    </slide>
+    <slide [width]="300" [position]="position" [type]="dialog" [show]="showCloseSlide" (closeDialog)="closeSlideDialog($event,2)">
+
+        <div>
+            <div>
+                Are you sure you want to close the selected Site?
+            </div>
+            <div>
+
+                <div style="width:100%">
+                    <button  class="Savebutton "type="button" (click)="okClose($event)">Yes</button>
+                    <button  class="Savebutton "type="button" (click)="cancelClick($event,2)">No</button>
+                </div>
+            </div>
+        </div>
+    </slide>
+    <slide [width]="300" [position]="position" [type]="dialog" [show]="showReopenSlide" (closeDialog)="closeSlideDialog($event,3)">
+
+
+        <div >
+            <div>
+                Are you sure you want to re-open the selected Site?                
+            </div>
+            <div>
+
+                <div style="width:100%">
+                    <button  class="Savebutton "type="button" (click)="okReopen($event)">Yes</button>
+                    <button  class="Savebutton "type="button" (click)="cancelClick($event,3)">No</button>
+                </div>
+            </div>
+        </div>
+    </slide>
+
+</div>
+
+
+

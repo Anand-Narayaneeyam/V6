@@ -1,0 +1,32 @@
+﻿<page [pagetitle]="pagePath">
+    <content>
+        <submenu>
+            <sub-menu [source]=menuData [count]=totalItems [menuIds]=enableMenu (onSubMenuChange)="onSubMenuChange($event);"> </sub-menu>
+        </submenu>
+        <split-view [splitviewObject]="splitviewInput" [pageTitle]="pageTitle">
+            <primary-view>
+                <div>
+                    <div [ngClass]="totalItems > itemsPerPage ? 'pagewithPaging':'pagewithoutPaging'">
+                        <gridView [(dataSource)]="itemsSource" [properties]="inputItems" [columns]="fieldObject" [refreshgrid]="refreshgrid"
+                                  (onSorting)="onSort($event)" (onRowAdd)="inlineAdd($event)" (onRowUpdate)="inlineEdit($event)" (onRowDelete)="inlineDelete($event)"></gridView>
+                    </div>
+                    <div [style.height]="totalItems >itemsPerPage ? '35px' : '0px'">
+                        <paging [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="pageChanged($event);"></paging>
+                    </div>
+                </div>
+            </primary-view>
+            <secondary-view *ngIf="action=='add' || action=='edit'">
+                <customer-addedit (submitSuccess)="submitReturn($event)" [action]="action" [btnName]="btnName" [selectedId]="inputItems.selectedIds" [fieldDetailsAdd]="fieldDetails"></customer-addedit>
+            </secondary-view>
+            <secondary-view *ngIf="action=='assigndwgcategory' && fieldDetails && splitviewInput.showSecondaryView==true">
+                <assign-drawingcategories [btnName]="btnName" [customerId]="inputItems.selectedIds" [fieldDetails]="fieldDetails" [ddlOrgName]="ddlOrgName" [ddlModule]="ddlModule"></assign-drawingcategories>
+            </secondary-view>
+            <secondary-view *ngIf="action=='allowedfiletypes' && splitviewInput.showSecondaryView==true">
+                <allowed-file-types [customerId]="inputItems.selectedIds[0]" [rowData]="inputItems.rowData" (submitSuccess)="submitReturn($event)"></allowed-file-types>
+            </secondary-view>
+            <secondary-view *ngIf="action=='licensesetup' && splitviewInput.showSecondaryView==true">
+                <user-licensing-setup [customerId]="inputItems.selectedIds[0]" [rowData]="inputItems.rowData" (submitSuccess)="submitReturn($event)" ></user-licensing-setup>
+            </secondary-view>
+        </split-view>
+    </content>
+</page>

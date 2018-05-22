@@ -1,0 +1,14 @@
+﻿
+<style>
+    :host .pagination li a
+    {
+        padding: 2px 8px!important;
+    }
+
+</style>
+
+<div *ngIf="totalItems > itemsPerPage" style="height:35px;display:block">
+    <pagination [totalItems]="totalItems" [(ngModel)]="currentPage" [itemsPerPage]="itemsPerPage" [maxSize]="5" 
+                [rotate]="false" (pageChanged)="pageChanged($event)">
+    </pagination>
+</div>

@@ -1,0 +1,56 @@
+﻿    <div control-group style="margin-top:6px;" *ngIf="fieldObject.FieldLabel != undefined ||  fieldObject.FieldLabel != null">
+        <label>
+            {{fieldObject.FieldLabel}}<span class="required" *ngIf="fieldObject.IsMandatory == undefined || fieldObject.IsMandatory === true"> * </span>
+        </label>
+    </div>
+    <div style="display:inline-block;margin-right:10px;" control-group *ngFor="let field of fieldObject.LookupDetails.LookupValues" [class]="'Radio-'+fieldObject.FieldId">
+        <span *ngIf="fieldObject.IsEnabled == true || fieldObject.IsEnabled == undefined" id={{fieldObject.FieldId}}>
+            <span *ngIf="fieldObject.ReadOnlyMode === true">
+                <span *ngIf="fieldObject.FieldValue == field.Id">
+                    <input role="radio" title="{{fieldObject.FieldLabel}} {{field.Value}}" *ngIf="field.IsDisabled == true" [id]="field.Id" style="width:auto;" type="radio" [value]="field.Id" (change)="onRbtnChange($event)" name="{{fieldObject.FieldLabel}}" checked="checked" disabled>
+                    <input role="radio" title="{{fieldObject.FieldLabel}} {{field.Value}}" *ngIf="field.IsDisabled == false || field.IsDisabled == undefined" [id]="field.Id" style="width:auto;" type="radio" [value]="field.Id" (change)="onRbtnChange($event)" name="{{fieldObject.FieldLabel}}" checked="checked" disabled>
+                </span>
+                <span *ngIf="fieldObject.FieldValue != field.Id">
+                    <input role="radio" title="{{fieldObject.FieldLabel}} {{field.Value}}" *ngIf="field.IsDisabled == true" [id]="field.Id" style="width:auto;" type="radio" [value]="field.Id" (change)="onRbtnChange($event)" name="{{fieldObject.FieldLabel}}" disabled>
+                    <input role="radio" title="{{fieldObject.FieldLabel}} {{field.Value}}" *ngIf="field.IsDisabled == false || field.IsDisabled == undefined" [id]="field.Id" style="width:auto;" type="radio" [value]="field.Id" (change)="onRbtnChange($event)" name="{{fieldObject.FieldLabel}}" disabled>
+                </span>
+                <span style="font-size:small">{{field.Value}}</span>
+            </span>
+            <span *ngIf="fieldObject.ReadOnlyMode == undefined || fieldObject.ReadOnlyMode === false">
+                <span *ngIf="fieldObject.FieldValue == field.Id">
+                    <input role="radio" title="{{fieldObject.FieldLabel}} {{field.Value}}" *ngIf="field.IsDisabled == true" [id]="field.Id" style="width:auto;" type="radio" [value]="field.Id" (change)="onRbtnChange($event)" name="{{fieldObject.FieldLabel}}" checked="checked" disabled>
+                    <input role="radio" title="{{fieldObject.FieldLabel}} {{field.Value}}" *ngIf="field.IsDisabled == false || field.IsDisabled == undefined" [id]="field.Id" style="width:auto;" type="radio" [value]="field.Id" (change)="onRbtnChange($event)" name="{{fieldObject.FieldLabel}}" checked="checked">
+                </span>
+                <span *ngIf="fieldObject.FieldValue != field.Id">
+                    <input role="radio" title="{{fieldObject.FieldLabel}} {{field.Value}}" *ngIf="field.IsDisabled == true" [id]="field.Id" style="width:auto;" type="radio" [value]="field.Id" (change)="onRbtnChange($event)" name="{{fieldObject.FieldLabel}}" disabled>
+                    <input role="radio" title="{{fieldObject.FieldLabel}} {{field.Value}}" *ngIf="field.IsDisabled == false || field.IsDisabled == undefined" [id]="field.Id" style="width:auto;" type="radio" [value]="field.Id" (change)="onRbtnChange($event)" name="{{fieldObject.FieldLabel}}">
+                </span>
+                <span style="font-size:small">{{field.Value}}</span>
+            </span>
+        </span>
+        <span *ngIf="fieldObject.IsEnabled == false">
+            <span *ngIf="fieldObject.ReadOnlyMode === true">
+                <span *ngIf="fieldObject.FieldValue == field.Id">
+                    <input role="radio" title="{{fieldObject.FieldLabel}} {{field.Value}}" *ngIf="field.IsDisabled == true" id={{field.Id}} style="width:auto;" type="radio" [value]="field.Id" (change)="onRbtnChange(field.Id)" name="{{fieldObject.FieldLabel}}" checked="checked" disabled>
+                    <input role="radio" title="{{fieldObject.FieldLabel}} {{field.Value}}" *ngIf="field.IsDisabled == false || field.IsDisabled == undefined" id={{field.Id}} style="width:auto;" type="radio" [value]="field.Id" (change)="onRbtnChange(field.Id)" name="{{fieldObject.FieldLabel}}" checked="checked" disabled>
+                </span>
+                <span *ngIf="fieldObject.FieldValue != field.Id">
+                    <input role="radio" title="{{fieldObject.FieldLabel}} {{field.Value}}" *ngIf="field.IsDisabled == true" id={{field.Id}} style="width:auto;" type="radio" [value]="field.Id" (change)="onRbtnChange(field.Id)" name="{{fieldObject.FieldLabel}}" disabled>
+                    <input role="radio" title="{{fieldObject.FieldLabel}} {{field.Value}}" *ngIf="field.IsDisabled == false || field.IsDisabled == undefined" id={{field.Id}} style="width:auto;" type="radio" [value]="field.Id" (change)="onRbtnChange(field.Id)" name="{{fieldObject.FieldLabel}}" disabled>
+                </span>
+                <span style="font-size:small">{{field.Value}}</span>
+            </span>
+            <span *ngIf="fieldObject.ReadOnlyMode == undefined || fieldObject.ReadOnlyMode === false">
+                <span *ngIf="fieldObject.FieldValue == field.Id">
+                    <input role="radio" title="{{fieldObject.FieldLabel}} {{field.Value}}" *ngIf="field.IsDisabled == true" id={{field.Id}} style="width:auto;" type="radio" [value]="field.Id" (change)="onRbtnChange(field.Id)" name="{{fieldObject.FieldLabel}}" checked="checked" disabled>
+                    <input role="radio" title="{{fieldObject.FieldLabel}} {{field.Value}}" *ngIf="field.IsDisabled == false || field.IsDisabled == undefined" id={{field.Id}} style="width:auto;" type="radio" [value]="field.Id" (change)="onRbtnChange(field.Id)" name="{{fieldObject.FieldLabel}}" checked="checked" disabled>
+                </span>
+                <span *ngIf="fieldObject.FieldValue != field.Id">
+                    <input role="radio" title="{{fieldObject.FieldLabel}} {{field.Value}}" *ngIf="field.IsDisabled == true" id={{field.Id}} style="width:auto;" type="radio" [value]="field.Id" (change)="onRbtnChange(field.Id)" name="{{fieldObject.FieldLabel}}" disabled>
+                    <input role="radio" title="{{fieldObject.FieldLabel}} {{field.Value}}" *ngIf="field.IsDisabled == false || field.IsDisabled == undefined" id={{field.Id}} style="width:auto;" type="radio" [value]="field.Id" (change)="onRbtnChange(field.Id)" name="{{fieldObject.FieldLabel}}" disabled>
+                </span>
+                <span style="font-size:small">{{field.Value}}</span>
+            </span>
+        </span>
+    </div>
+

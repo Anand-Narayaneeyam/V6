@@ -1,0 +1,48 @@
+﻿{
+  "data": [
+    {
+      "FieldId": 1,
+      "FieldName": "Gross Layer Name",
+      "FieldType": 1,
+      "FieldValue": "$POLYLINE_GR",
+      "IsMandatory": true,
+      "IsVisible": true,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false,
+      "NotificationType": "inline"
+    },
+    {
+      "FieldId": 2,
+      "FieldName": "External Wall Layer Name",
+      "FieldType": 1,
+      "FieldValue": "$POLYLINE_CN",
+      "IsVisible": true,
+      "IsMandatory": true,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false,
+      "NotificationType": "inline"
+    },
+    {
+      "FieldId": 3,
+      "FieldName": "Space Layer Name",
+      "FieldType": 1,
+      "FieldValue": "$POLYLINE_SP",
+      "IsVisible": true,
+      "IsMandatory": true,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false,
+      "NotificationType": "inline"
+    },
+    {
+      "FieldId": 4,
+      "FieldName": "Net Layer Name",
+      "FieldType": 1,
+      "FieldValue": "$POLYLINE_NT",
+      "IsVisible": true,
+      "IsMandatory": true,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false,
+      "NotificationType": "inline"
+    }
+  ]
+}

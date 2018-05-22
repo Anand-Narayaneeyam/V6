@@ -1,0 +1,328 @@
+﻿<page [pagetitle]="pagePath">
+    <pagepath>
+    </pagepath>
+    <content>
+        <section title="Drawings" [isExpanded]="true" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div>
+
+                <p>This option is available under Scheduling Module  icon. When selecting the Scheduling  icon, all the menu options for Scheduling Module will be displayed in the Left panel.</p>
+
+                <p>This section provides an option for the users to view the drawings enabled for Scheduling Management. List of all drawings will be displayed, organized by Site/Building/Floor, with the Drawing File Names and File Size. This list can be sorted on any column by clicking on the column header. </p>
+
+                <h1>View Drawing</h1>
+                <p>On selecting a drawing and clicking on the  <span class="header2">View </span> <img class="helpicon" src="Content/icons/view-drawingN.png" alt="View" /> icon, the drawing will be opened in a new window with a horizontal menu bar and data in the right side. The Space Data is fetched from the database and displayed in the drawing in dynamically created layers. Only the Space Polyline and Space Data layers will be turned on by default. </p>
+                <p>The data corresponding to the selected drawing also will be displayed on the right side of the Drawing. On bringing the mouse pointer over a space, a Tooltip will be displayed, showing the space data associated with the space.</p>
+                <p>The Right Click menu options provide an easier access to the frequently used functionalities of the Scheduling module for the users, in turn saving time and effort. </p>
+                <p>On right clicking the mouse inside a Space in the drawing, a pop-up menu will appear with the options Edit Space, Assign Space Standard, Select Multiple Spaces by Window, Pan, Zoom in, Zoom Out, Zoom Window, Zoom Extents and Layers</p>
+                <p>A brief description on the Right click options provided in Drawings of the Scheduling module is provided below. </p>
+                <p> <span class="header2">Edit Space: </span>This option is for editing the Space Data in the Drawings. </p>
+                <p> <span class="header2">Assign Space Standard: </span>This option is for assigning space standard and space assignment typeto any desired space. Space standard can be assigned/de-assigned by selecting the space, to which the space standards is to be assigned. Space Assignment Type can be set to Assignable, UnAssignable, and Scheduling Space. Scheduling Spaceoption will be available only if Scheduling option is enabled for the customer. </p>
+                <p> <span class="header2">Select Multiple Spaces by window: </span>This option is for selecting multiple spaces in the drawing by window</p>
+                <p> <span class="header2">Pan: </span>This option enables the user to pan the drawing. On selecting this option, the mouse pointer will change to a hand symbol. Now click the left mouse button, and without releasing it, move the mouse to pan the drawing.</p>
+                <p> <span class="header2">Zoom In: </span>This option enables the user to Zoom in the Drawing.</p>
+                <p> <span class="header2">Zoom Out: </span>This option enables the user to zoom out the Drawing.</p>
+                <p> <span class="header2">Zoom Window: </span>This option enables the user to zoom the Drawing to a Window selection.</p>
+                <p> <span class="header2">Zoom Extents: </span>This option enables the user to view the Drawing fully within the drawing display window by resetting any zoomed or panned states.</p>
+                <p> <span class="header2">Layers: </span>This option enables turning On and Off the layers in the base drawing. The dynamically generated layers are not available here. These have to be controlled through the Display Settings. Clicking on the Default button turns on the default space polyline layers.</p>
+
+                <p>The following menu options are available to work with the drawings. </p>
+
+                <h2>Distribution Map </h2>
+                <p>This option is available only after clicking the  <span class="header2">Distribution Map </span> <img class="helpicon" src="Content/Images/Drawings/distributionMap-menu-button.png" alt="Distribution Map" />  icon</p>
+                <p>This option allows users to get the distribution of space areas across different Organizational Units (Divisions, Departments, Cost Centers etc as defined in the Organizational structure) or based on the Validated Fields. The Spaces belonging to different Organizational Units or the Validated Fields are hatched in the drawing with different colors and hatch pattern. Users can select the Organizational Units or the validated fields for which the distribution is required.The color displayed according to the settings in  <span class="header2">Settings: Space: General Settings: Distribution Map Settings </span> and can be changed by the user if required. </p>
+
+                <h2>Space Tools</h2>
+                <p>All the Space related operations such as Move Legend, Select Multiple Spaces by Window, Totalize, Measure Distance, Measure Area, Reserve a Room, Reserve a Seat and Move a Seat are grouped under  <span class="header2">Space Tools</span> <img class="helpicon" src="Content/Images/Drawings/spaceMoreIcon.png" alt="Space Tools"> icon .</p>
+
+                <h2>Edit Space</h2>
+                <p>
+                    This option is to edit the Data of the selected Space. On selecting  <span class="header2">Edit Space</span> option from  <span class="header2">Space Tools</span> <img class="helpicon" src="Content/Images/Drawings/spaceMoreIcon.png" alt="Space Tools"> icon, user will be prompted to the select the space to be edited and the cursor turns to cross. Edit Space Data window will be displayed on clicking the required Space in the drawing. Make necessary changes and click the Save button. Space Data edit is possible only to users having Edit privilege.
+                </p>
+                <p>
+                    By default, Space Category is enabled. If the value selected is one of the Common Area space categories, like Building Common, Floor Common or Vertical Space it will not be possible to edit/set the Organizational Unit for this space, and all Organizational level combo boxes will be disabled. But if it is required to assign Organizational Units to Common Spaces also, Organizational Unit Assignment to Common Area can be enabled for the customer.
+                </p>
+
+                <p>
+                    Data for additional data fields can also be entered through this data entry window.
+                </p>
+
+                <h3>Share Space</h3>
+                <p>Provision for Sharing a Space between Multiple Organization Units is allowed. This is needed for sharing spaces like Consulting Rooms, Conference Halls, etc. between different departments.</p>
+                <p>If ‘Space Allocation to Multiple Departments’ option is enabled for the customer, a link   <span class="header2">Share Space</span>  will be displayed along with Organizational Unit in the Data Entry window. The Administrator can view/add/edit/delete the sharing of space using this option. The percentage sharing among different Organizational Units should sum up to 100%.</p>
+                <p>If the selected Space is already shared, it will be indicated with a caption ‘Shared’ next to the Organizational Unit name. Click  <span class="header2">View </span> link to view the existing sharing details.  Click  <span class="header2">View </span> link, the Space Sharing by Organizational Units window opens up with the percentages of already assigned Organizational Units.</p>
+                <p> <span class="header3">Add: </span>On clicking  <span class="header2">Add</span>  <img class="helpicon" src="Content/icons/data_addN.png" alt="Add" />  icon, Assign Shared Organizational Unit window will be displayed with Org. Units combo boxes and Percentage textbox. Select the required Organization Unit name from the required level and enter the percentage. The sharing details will be saved by clicking Add button. </p>
+                <p> <span class="header3">Edit: </span>Space sharing can be edited by clicking the <span class="header2">Edit</span>  <img class="helpicon" src="Content/Layout/edit_button.png" alt="Edit" />  icon. The Sharing among different Organizational Units should sum up to 100.</p>
+                <p> <span class="header3">Delete: </span>Remove an assigned Organizational Unit by selecting the same and clicking the <span class="header2">Delete</span> <img class="helpicon" src="Content/Layout/delete_button.png" alt="Delete" /> icon.</p>
+
+                <h2>Assign Space Standard</h2>
+                <p>This option is for assigning space standard and space assignment type to any desired space. On selecting  <span class="header2">Assign Space Standard</span> option from  <span class="header2">Space Tools</span> <img class="helpicon" src="Content/Images/Drawings/spaceMoreIcon.png" alt="Space Tools"> icon, user will be prompted to the select the space for assigning the Space standard and the cursor turns to cross. Assign Space Standard window will be displayed on clicking the required space in the Drawing. Space Standard can be assigned/de-assigned to the selected Space.  Space Assignment Type can be set to Assignable, Unassignable, and Scheduling Space. Scheduling Space option will be available only if Scheduling option is enabled for the customer.</p>
+                <p>By default “Approval Process: Not required” is selected in Room Booking or Seat Booking. So the Room / Seat booking request will be confirmed directly without any approval process.  </p>
+                <p>
+                    If Space Assignment Type is selected as Scheduling Space, an option to select the Amenities of the room and its count will be displayed.A room can be booked only if the Space Assignment type is assigned as Scheduling Space.
+                </p>
+
+                <p>If Seat Booking is enabled for the customer and the Space Assignment Type is selected as Assignable, a link named  <span class="header2">‘Seats’</span> will be displayed against Room Seating Capacity option to define seats for the selected space. On selecting this link, Seats window will be displayed listing all the available seats (if any). </p>
+                <p>User can add or delete single/multiple seat(s) to/from the selected space using the following options listed in the Seats page.   An option to set seats as Hoteling Seats also will be displayed in the Seats list page.</p>
+                <p> <span class="header1">Add Single Seat:</span> The user can add seats to the selected space, one at a time using this option. To add a single seat to the selected space, the user has to select  <span class="header2">Add</span>  <img class="helpicon" src="Content/icons/data_addN.png" alt="Add" />  icon and select ‘Single’ radio button. Then options to specify the Prefix and the Number of the specific seat will be displayed in the Add Seat window. The number of seats that can be added is limited to the Minimum Seating Capacity assigned to the selected space. </p>
+                <p> <span class="header1">Add Multiple Seats:</span> The user can add multiple seats at a time to the selected space using this option. To add multiple seats to the selected space, the user has to select  <span class="header2">Add</span>  <img class="helpicon" src="Content/icons/data_addN.png" alt="Add" />  icon and select ‘Multiple’ radio button. Then options specify the Prefix of the seats and the number range in which the seats are to be added in the Add Seat window. The number of seats that can be added is limited to the Minimum Seating Capacity assigned to the selected space. </p>
+
+                <h2>Move Legend</h2>
+                <p>This option is to move a legend from one point to another. Select  <span class="header2">Move Legend</span> option from  <span class="header2">Space Tools </span> <img class="helpicon" src="Content/Images/Drawings/spaceMoreIcon.png" alt="Space Tools"> icon , a toast message will be displayed, prompting 'Select an insertion point to add legend’. Then the mouse pointer turns to cross, and click on the location where the legend is to be moved.</p>
+
+                <h2>Select Multiple Spaces by Window</h2>
+                <p>This option is for selecting multiple spaces in the drawing by window, for viewing details of space data linked to those spaces.</p>
+                <p>Click on the  <span class="header2">Select Multiple Spaces by Window</span> option from  <span class="header2">Space Tools</span> <img class="helpicon" src="Content/Images/Drawings/spaceMoreIcon.png" alt="Space Tools"> icon , a toast message ‘Select a window, click to select/deselect space, Right Click to exit’ is shown. Then the mouse pointer becomes a cross. Select a window by clicking and dragging inside the drawing. The selected spaces will be hatched. Right Click when all required spaces are selected, the Data grid in the drawing page will be highlighted with the data of the selected spaces. </p>
+                <p>A selected space can be deselected if required, by clicking on the  <span class="header2">De-Hatch</span> option in the Right Click or by clicking  <span class="header2">Tools: De-Hatch</span> option.</p>
+
+                <h2>Totalize</h2>
+                <p>This option is to show the number of spaces selected, Gross Area Total & Net Area Total of the selected spaces.</p>
+                <p>Select the spaces to be totalized by Select Multiple Spaces by window and click  <span class="header2">Totalize</span> option from  <span class="header2">Space Tools</span> <img class="helpicon" src="Content/Images/Drawings/spaceMoreIcon.png" alt="Space Tools"> icon , a message box will be displayed with details like Number of Spaces selected, Gross Area Total, etc. of the selected spaces.</p>
+                <p>Apart from this, if any additional data fields of Space are set as Totalizable, the total value of such fields also will be shown.  </p>
+                <p>The details shown in Totalize window can be added as legend by clicking the  <span class="header2">Add Legend</span> button in the Totalize window.</p>
+
+                <h2>Measure Distance – Point to Point</h2>
+                <p>This option is used to measure the distance between two points. Select  <span class="header2">Measure Distance - Point to Point</span> option from  <span class="header2">Space Tools</span> <img class="helpicon" src="Content/Images/Drawings/spaceMoreIcon.png" alt="Space Tools"> icon  and the cursor will turn into a cross. Click on the first point from which the distance is to be measured and then click on the end point, the distance between the two points will be displayed. </p>
+                <p>Select the option first, and the system will prompt to select the points to Measure Distance. Click the starting point from which the distance is to be measured, and then click the end point. The distance between the two points will be displayed. This marked distance can be removed by clicking the De-hatch option.</p>
+
+                <h2>Measure Distance – Wall to Wall</h2>
+                <p>This option is used to measure distance between two Walls. Select  <span class="header2">Measure Distance - Wall to Wall</span> option from  <span class="header2">Space Tools</span> <img class="helpicon" src="Content/Images/Drawings/spaceMoreIcon.png" alt="Space Tools"> icon  and the cursor will turn into a cross. Click close to the wall from which the distance is to be measured. The starting point will snap to the nearest space polyline (Net Polyline for Net only Customers). Then click close to the other wall to which the measurement is to be taken. The end point will snap to the nearest point of the corresponding space polyline/net polyline.  The distance between the two walls will be displayed. </p>
+
+                <h2>Measure Area</h2>
+                <p>This option is used to measure the area of a polygon in a Drawing. To measure an area, Select Measure Area option from menu and the cursor will turn to a cross. Mark the area to be measured by clicking on any one vertex point, and then clicking on the remaining vertex points one after the other. After the last vertex, close the polygon by right clicking in the drawing. The polygon will be hatched and the area will be displayed. This marked distance can be removed by clicking the  <span class="header2">De-hatch</span> option.</p>
+
+                <h2>Reserve a Room</h2>
+                <p>New Room Scheduling Requests can be created directly from the drawing through this option. This option is available under  <span class="header2">Space Tools</span> <img class="helpicon" src="Content/Images/Drawings/spaceMoreIcon.png" alt="Space Tools"> icon .</p>
+
+                <p>On selecting this option, all the scheduling spaces will be shown hatched and a message ‘Select the Space for Scheduling’ will be displayed. Select one of the hatched spaces for scheduling by clicking on it. A Month/Time view of the Calendar will be displayed with all the days of the selected Month and time as half hour slots. The time slots with booking will be highlighted in red color. Tool tip is provided for the highlighted slots to show the Event Names and their time slots.</p>
+
+                <p>New Room Booking scheduling request can be added by clicking on the required time slot from the calendar view with date and time.</p>
+                <p>New Room Booking Request page will be displayed with Reserve Room title where the User can enter/select From (Date time), To (Date time), Event Name, Participants (Count), Booked for,Invitees, Amenities, Services, Catering and Comments.</p>
+
+                <p>Check Availability button will be displayed to check the availability of the Room in the selected time slot. </p>
+                <p>On clicking Location button, the details of the Location which includes the Site, Time Zone, Building, Floor, Space Function and Room No. will be displayed as read only.</p>    <p>The requester can specify the number of participants and also select Invitees for the meeting.</p>
+                <p>The user can add Invitees, Amenities, Services and Catering as required while reserving the room. Invitees can be selected from iDrawings Users and/or Employees present in the Employee module.</p>
+
+                <p> <span class="header2">Add Invitees:</span> Invitees can be added by clicking the  <span class="header2">Add</span>  <img class="helpicon" src="Content/icons/data_addN.png" alt="Add" />  icon placed at the right side of the Invitees list box. On clicking the  <span class="header2">Add</span>  <img class="helpicon" src="Content/icons/data_addN.png" alt="Add" />  icon, Invitees page will be displayed to select the invitees. User has to select the required User Category from the combo and all the Users of selected User Category will be listed. iDrawings Users and Employees will be listed in the User Category combo. Select the required Invitees and click Save button. Selected Invitees will be added. Invitees can be removed from the list by selecting the Invitee to be removed and then clicking the '-' button. </p>
+                <p> <span class="header2">Amenity/Service/Catering:</span> Amenity/Service/Catering requirements needed for the meeting while reserving a room can be added byclicking the  <span class="header2">Add</span>  <img class="helpicon" src="Content/icons/data_addN.png" alt="Add" />  icon placed at the right side of the Amenity/Service/Catering option. On clicking   <span class="header2">Add</span>  <img class="helpicon" src="Content/icons/data_addN.png" alt="Add" />  icon, a window where a list of available amenities, services and catering available for the selected room will be displayed. User can also add additional Amenities, Services or Catering by clicking the Add option displayed at the top right of this window. While adding Amenities/Catering the user can specify if the selected Amenities/Catering is mandatory or optional by selecting the required or Optional check box. The selected Amenity/Service/Catering will be listed in the corresponding options on clicking Save button. The added items can be deleted one by one by selecting the item and clicking the ‘-‘button.</p>
+
+                <p>Once all the requirements are entered, the request can be submitted by clicking the Reserve button. The newly submitted request will be confirmed directly without any approval process. Request can be created by any iDrawings Users irrespective of the drawing access set for different User roles.</p>
+
+
+                <h2>Reserve a Seat</h2>
+
+                <p>New Seat Booking Requests can be created directly from the drawing through this option. This option is available under  <span class="header2">Space Tools</span> <img class="helpicon" src="Content/Images/Drawings/spaceMoreIcon.png" alt="Space Tools"> icon .</p>
+
+                <p>On selecting Reserve a Seat option, all the Hoteling Seats in the floor will be shown blinking in the Drawing and a message ‘Select a HotelingSeat’ will be displayed.New Seat Booking Request page will be displayed on selecting the required hoteling Seat, where the user can select/enter Booked for, Resources and Comments details. Date,Time and Location details will be displayed as read only. The Seats can be booked for iDrawings Users, Employees defined in the Employee module. Booked for field will not be displayed if the logged in User is not an Administrator.</p>
+
+                <p> <span class="header2">Check Availability</span> button will be displayed to check the availability of the Seat in the selected time slot. </p>
+
+                <p> <span class="header2">Location</span> button is provided in the New Seat Booking Request window to view the details of the Location which includes the Site, Time Zone, Building, Floor, Space Function, Room No. and Seat No. will be displayed as read only.</p>
+
+                <p>Once all the requirements are entered, the request can be submitted by clicking the Reserve button. The request will be confirmed directly without any approval process.</p>
+
+                <h2>Move a Seat</h2>
+
+                <p>This option is available under  <span class="header2">Space Tools</span> <img class="helpicon" src="Content/Images/Drawings/spaceMoreIcon.png" alt="Space Tools"> icon , to move a Seat within the selected Space.  On selecting  <span class="header2">Move a Seat</span> option, User will be prompted to select a Seat and cursor will turn to cross. Select the Seat to be moved and click another point in the assigned Space (Space where the seat is already assigned). Selected Seat will be moved to specified position in the assigned Space.</p>
+
+                <p>Note: Seats cannot be moved to another Space.</p>
+
+                <h2>Tools</h2>
+                <p>All the Drawing related operations such as Display Settings, De-hatch and Stop Blink are grouped under  <span class="header2">Tools</span> <img class="helpicon" src="Content/Icons/more_menuN.png" alt="Tools"> icon</p>
+                <h2>Display Settings</h2>
+                <p>This option is for specifying the Space Data fields to be displayed in the drawing and the tooltip. Changes made here will be saved as user default settings and will be effective whenever the User opens any drawing. </p>
+                <p>For making permanent changes, an administrator has to click Yes to the confirmation message “Display Settings updated. Do you want to save this as System default?”</p>
+                <p>Display Settings option is available under  <span class="header2">Tools</span> icon.</p>
+
+                <h2>De-Hatch</h2>
+                <p>
+                    This option is to de-hatch the hatched Space (if any) in the Drawing. De-hatch option is available under  <span class="header2">Tools</span>  <img class="helpicon" src="Content/Icons/more_menuN.png" alt="Tools">icon.
+                </p>
+
+                <h2>Stop Blink</h2>
+                <p>This option is to stop the blinking of the hatched Space (if any) in the Drawing.  <span class="header2">Stop Blink</span> option is available under  <span class="header2">Tools</span>  <img class="helpicon" src="Content/Icons/more_menuN.png" alt="Tools"> icon.</p>
+                <h2>Maximize</h2>
+                <p>
+                    The width of the Drawing and Data tab sheet can be increased / decreased by clicking the  <span class="header2">Arrow</span> <img class="helpicon" src="Content/Images/Drawings/Maximize.png" alt="Maximize"> icon provided above the top right corner of the Drawing window. User can change the view mode to full screen by clicking the    icon provided above the top right corner of the drawing window. User can exit the full screen to normal view by clicking the  <span class="header2">Maximize</span> <img class="helpicon" src="Content/Images/Drawings/Maximize.png" alt="Maximize"> icon provided above the top right corner of the drawing
+                </p>
+
+                <h2>Export</h2>
+                <p>This option   is for exporting the current view of the drawing to the user’s computer in any of the following formats namely bmp, dwf, svg, pdf etc. The drawing may be exported with the Space data layers, dynamically generated distribution maps, and legends if any.</p>
+
+                <h2>Save As</h2>
+                <p>This option is for saving the Drawing into dwg format. Versions of the AutoCAD can be selected while saving the Drawing.</p>
+
+
+                <h1>Data</h1>
+
+                <p>Space Data corresponding to the view Drawing will be displayed at the right hand side of the Drawing. Options such as Edit, Show Drawing, Show Zoomed, Totalize, Assign Space Standard, Display Settings, Attachments and Search are provided in the Data grid.</p>
+
+                <h2>Edit</h2>
+
+                <p>Using this option, the administrator can edit the space details. Select the space to be edited and click on the Edit  icon. The details will be displayed in a new window. Make necessary changes and click the Save button. Save button is visible only to users having Edit privilege.</p>
+
+                <p>The Room Number field will be visible only if it is enabled for the customer and it can be set as Unique for the Organization/Site/Building/Floor. It is also possible to have the Site or Building Code or both as prefix to the Room Number. This is disabled by default, but can be turned on for the customer.</p>
+
+                <p>If the Room Number is set to be unique and the entered room number already exists, it will display a message “Room No. already exists for the Organization/Site/Building/Floor” corresponding to the set Uniqueness. If any prefix has been set for Room Number for the customer, then a read-only prefix will be displayed before the Room Number Text box. Only the Room Number need be entered, the prefix will be automatically inserted</p>
+
+
+                <p>By default,Space Category is enabled. If the value selected is one of the Common Area space categories, like Building Common, Floor Common or Vertical Space it will not be possible to edit/set the Organizational Unit for this space, and all Organizational level combo boxes will be disabled. But if it is required to assign Organizational Units to Common Spaces also, Organizational Unit Assignment to Common Area can be enabled for the customer.</p>
+
+                <p>Data for additional data fields can also be entered through this data entry window. </p>
+
+                <span class="header1">Share Space</span>
+
+                <p>Provision for sharing a space between multiple Organization Units is allowed. This is needed for sharing spaces like Consulting Rooms, Conference Halls, etc. between different departments.</p>
+
+                <p>If ‘Space Allocation to Multiple Departments’ option is enabled for the customer, a link  <span class="header2">‘Share Space’</span>  will be displayed along with Organizational Unit in the Data Entry window. The Administrator can view/add/edit/delete the sharing of space using this option. The Sharing among different Organizational Units should sum up 100.</p>
+
+
+                <p>If the selected Space is already shared, it will be indicated with a caption ‘Shared’ next to the Organizational Unit name. Click <span class="header2">‘View’</span> link to view the existing sharing details.  Click <span class="header2">View </span> <img class="helpicon" src="Content/icons/view-drawingN.png" title="View" /> link, the Space Sharing by Organizational Units window opens up with the percentages of already assigned Organizational Units.</p>
+
+                <p><span class="header3">Add:</span>On clicking <span class="header2">Add</span> <img class="helpicon" src="Content/Icons/data_addN.png" alt="Add" /> icon, Assign Shared Organizational Unit window will be displayed with Org. Units combo boxes and Percentage textbox. Select the required Organization Unit name from the required level and enter the percentage. The sharing details will be saved by clicking Add button. </p>
+
+                <p><span class="header3">Edit:</span> Space sharing can be edited by clicking the <span class="header2">Edit</span> <img class="helpicon" src="Content/Layout/edit_button.png" alt="Edit" /> icon. The Sharing among different Organizational Units should sum up to 100.</p>
+
+                <p><span class="header3">Delete:</span> Remove an assigned Organizational Unit by selecting the same and clicking the <span class="header2">Delete </span> <img class="helpicon" src="Content/Layout/delete_button.png" alt="Delete" /> icon</p>
+
+
+                <p><span class="header2">Multiple Edit</span></p>
+
+                <p>Multiple records can be edited by selecting the required spaces using the Shift or Ctrl keys, and then clicking on the Edit icon. A window will be displayed listing the fields that can be edited. Select the required field and enter or select the value to be updated to the selected Spaces and click Save Changes button. The changes have to be made by selecting one field at a time. </p>
+
+                <h2>Show Drawing</h2>
+
+                <p>This option is for showing the selected Space in the drawing. Select the Space record from the Data Grid and click on the <span class="header2">Show Drawing</span> icon. The drawing will be displayed with the selected Space hatched.</p>
+
+                <h2>Show Zoomed</h2>
+
+                <p>This option is for showing the selected Space in drawing in the zoomed in position. Select the Space record and click on the <span class="header2">Show Zoomed</span> icon. The drawing will be displayed in the zoomed in position with the selected space hatched.</p>
+
+                <h2>More</h2>
+
+                <p>Totalize, Assign Space Standard, Display Settings and Export to excel options are provided under the <span class="header2">More</span>  i.</p>
+
+                <h2>Totalize</h2>
+
+                <p>This option is to show the Total Count, Gross Area Total & Net Area Total of the selected spaces.</p>
+
+                <p>Select the spaces to be totalized by Select Multiple Spaces by window and click <span class="header2">Totalize</span> option from  <img src="Content/Icons/moreIconVertical.png" alt="More" class="helpicon" /> icon, a message box will be displayed with details like Number of Spaces selected, Gross Area Total, etc. of the selected spaces.</p>
+
+                <p>Apart from this, if any additional data fields of Space are set as Totalizable, the total value of such fields also will be shown.  </p>
+
+                <h2>Assign Space Standard</h2>
+
+                <p>This option is for assigning space standard and space assignment type to spaces. Select Assign Space Standard option from More  icon or from the right click menu.Space standard and Space Assignment Type can be assigned/de-assigned by invoking this option and then selecting the space for which space standard is to be assigned. Space Assignment Type can be set to Assignable, Scheduling Space and Unassignable.</p>
+
+                <p>If Space Assignment Type is selected as Scheduling Space, an option to select the Amenities of the room and its count will be displayed. A room can be booked only if the Space Assignment type is assigned as Scheduling Space.</p>
+
+                <p>By default “Approval Process: Not required” is selected in Room Booking or Seat Booking. So the Room / Seat booking request will be confirmed directly without any approval process.  </p>
+
+                <p>If Space Assignment Type is selected as Scheduling Space, an option to select the Amenities of the room and its count will be displayed. A room can be booked only if the Space Assignment type is assigned as Scheduling Space.</p>
+
+                <p><span class="header1">Seats Link:</span> If Seat Booking is enabled for the customer and the Space Assignment Type is selected as Assignable, a link named <span class="header2">‘Seats’</span> will be displayed against Room Seating Capacity option to define seats for the selected space. On selecting this link, Seats window will be displayed listing all the available seats (if any). </p>
+
+                <p>User can add or delete single/multiple seat(s) to/from the selected space using the followingoptions listed in the Seats page. An option to set seats as Hoteling Seats also will be displayed in the Seats list page.</p>
+
+                <p><span class="header1">Add Single Seat:</span> The user can add seats to the selected space, one at a time using this option. To add a single seat to the selected space, the user has to select <span class="header2">Add</span> <img class="helpicon" src="Content/Icons/data_addN.png" alt="Add" /> icon and select ‘Single’ radio button. Then options to specify the Prefix and the Number of the specific seat will be displayed in the Add Seat window. The number of seats that can be added is limited to the minimum Seating Capacity assigned to the selected space. </p>
+
+                <p><span class="header1">Add Multiple Seats:</span> The user can add multiple seats at a time to the selected space using this option. To add multiple seats to the selected space, the user has to select <span class="header2">Add</span> <img class="helpicon" src="Content/Icons/data_addN.png" alt="Add" /> icon and select ‘Multiple’ radio button. Then options specify the Prefix of the seats and the numberrange in which the seats are to be added in the New Seat window. The number of seats that can be added is limited to the Room Seating Capacity assigned to the selected space. </p>
+
+                <p><span class="header1">Delete Seat:</span> Seats added can be deleted by selecting the required seat and then clicking <span class="header2">Delete </span> <img class="helpicon" src="Content/Layout/delete_button.png" alt="Delete" /> icon</p>
+
+                <p><span class="header1">Update:</span> Seats can be set as Hotelling Seat by selecting the checkbox of the required Seat and then clicking <span class="header2">Update</span> <img src="Content/Icons/updatE.png" alt="Update" /> button.</p>
+
+                <h2>Display Settings</h2>
+
+                <p>This option <img src="Content/Icons/data_display-settingsN.png" alt="Display Settings" />  allows the user to change the visibility of the data fields displayed in the data grid. On selecting this option, all the available data fields are displayed in a window. Display settings can be modified by selecting the required fields from the list. Changes made here will be saved as user default settings and will be effective whenever the User takes the Space Data grid. </p>
+
+                <p>For making permanent changes, an administrator has to click Yes to the confirmation message “Display Settings updated. Do you want to save this as System default?”</p>
+
+                <h2>Attachments</h2>
+
+
+                <p> Administrators can add/edit/delete/view/download attachments to a Space using this option. Select the required row and click the Attachments option from More  icon. The files that can be attached will be restricted to data files like Word, Excel, pdf, jpg, gif, bmp etc. </p>
+                <p>The File attachments window opens up on selecting Attachments option, showing any files that are already attached to this site. Attachments can now be added to the selected site.</p>
+
+                <p><span class="header3">Add:</span> An attachment can be added by clicking on the <span class="header2">Add</span> <img class="helpicon" src="Content/Icons/data_addN.png" alt="Add" />  icon. The Upload Attachment window will be displayed. Select the Attachment Category and the file. The attachment has to be uploaded by clicking on the Save button</p>
+                <p><span class="header3">Edit:</span> Edit an Attachment by selecting it and clicking the <span class="header2">Edit</span> <img class="helpicon" src="Content/Layout/edit_button.png" alt="Edit" />  icon.</p>
+                <p>Select an attachment and click <span class="header2">Edit</span> <img class="helpicon" src="Content/Layout/edit_button.png" alt="Edit" />  icon. The Edit Attachment window will be displayed with the current file name. The user can select the Attachment Category and a new file. Changes can be saved by clicking Save Changes button. </p>
+
+                <p><span class="header3">Delete:</span>Delete an Attachment by selecting it and clicking the <span class="header2">Delete </span> <img class="helpicon" src="Content/Layout/delete_button.png" alt="Delete" />  icon.</p>
+
+                <p><span class="header3">View:</span> The attachment can be viewed by selecting the file and then clicking the <span class="header2">View </span> <img class="helpicon" src="Content/icons/view-drawingN.png" title="View" />  icon.</p>
+
+                <p><span class="header3">Download:</span> Attachment can be downloaded and saved in the user's computer by clicking the <span class="header2">Download</span>  <img src="Content/Layout/download_icon.png" alt="Download" /> icon. </p>
+
+                <h2>Export</h2>
+
+                <p>This option is to export the space to the Excel. On clicking <span class="header2">Export</span> <img src="Content/Icons/exportN.png" alt="Export" /> icon, a confirmation message, “Do you want to export the data along with Space Handle?” with Yes and No buttons will be displayed. On clicking Yes to the message, data will be exported with space handle. Else it will be exported to excel without space handle.</p>
+
+                <p>If any Shared Spaces exist, such spaces will be exported as separate rows for each organizational unit in the shared space. All space details except the area details and organizational units will be same for those rows</p>
+
+                <h2>Keyword Search</h2>
+
+                <p>This option helps users to search for space details using keywords. The keyword could belong to any data field of the space data. The user need not know or specify which field to look in. The Keyword could be any part of the space data viz. space category, space function, room number, cost category, area, etc. or the additional data fields.</p>
+
+                <p>On entering the keyword and clicking on the <span class="header2">Search </span>  <img src="Content/Icons/keyword-search.png" alt="Keyword Search" />   icon, the data grid will be filtered with space records having data matching the specified keyword.</p>
+
+                <p>A facility user would be able to view only those floors/divisions for which privileges are granted to him. </p>
+
+                <h2>Advanced Search</h2>
+
+                <p>This option <img src="Content/Icons/advanced-search.png" alt="Advanced Search" />   helps users to search for space details with specific data in known data fields. The data being searched for can be selected from the list boxes or entered into text boxes provided against the data fields. The user can select one or more data fields viz. space category, space function, room number, cost category, area, etc. or the additional data fields. After entering the search criteria and click Search button, the data grid will be filtered with space records which satisfy the selection criteria. </p>
+                <p>Fields to be displayed in the Search window can be set using the <span class="header2">Configure</span>  <img src="Content/Icons/filter-config-icon.png" alt="Configure" class="config" />  icon, provided in the Search window. </p>
+
+                <p>Search criteria entered in the Search window can be cleared by clicking the Clear button provided in the Search window. After clearing the Search criteria and click Search button to clear the Search Results in the Space Data grid.</p>
+
+
+            </div>
+        </section>
+    </content>
+</page>
+<style type="text/css">
+    h3.Mainheader {
+        color: #178AE8;
+    }
+
+    .header1 {
+        font-weight: bold;
+        color: #178AE8;
+    }
+
+    .header2 {
+        font-weight: normal;
+        color: #178AE8;
+    }
+
+    p {
+        margin-left: 38px;
+        font-size: 13px;
+        margin-right: 3em;
+    }
+
+    .header3 {
+        font-weight: bold;
+        color: black;
+    }
+    /**/ h1 {
+        color: #178AE8;
+        font-size: 1.3em;
+        margin-left: 38px;
+    }
+
+    h2 {
+        color: #178AE8;
+        font-size: 1em;
+        margin-left: 38px;
+    }
+
+    .config {
+        background-color: #178AE8;
+    }
+
+    .helpicon {
+        vertical-align: baseline;
+        width: 20px;
+        height: 20px;
+    }
+</style>

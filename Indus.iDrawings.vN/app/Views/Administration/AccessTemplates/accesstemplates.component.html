@@ -1,0 +1,49 @@
+﻿<page  [pagetitle]="pagePath">
+    <pagepath>
+        <sort *ngIf="fields" [fieldNames]="fields" [listItems]=sourceData (sortEvent)="onSorting($event)"></sort>
+
+    </pagepath>
+    <submenu>
+        <sub-menu [source]=menuData [count]=totalItems [menuIds]=enableMenu (onSubMenuChange)="onSubMenuChange($event);"> </sub-menu>
+    </submenu>
+    <content>
+        <confirmation (onConfirm)="okDelete($event)"></confirmation>
+        <split-view [splitviewObject]="splitviewInput">
+            <primary-view>
+                <list style="height:90%;overflow-y:scroll;" [source]=sourceData [(selectedIds)]="selectedIds" [datakey]="'Id'">
+                    <template let-item>
+                        <card (onSubmition)="onCardSubmit($event)" [datakeyValue]="item.Id" (inlineDelete)="onDelete($event)">
+                            <div *ngIf="fields">
+                                <field [fieldObject]="fields[1]" [fieldValue]="item.TemplateName"></field>
+                                <field [fieldObject]="fields[2]" [fieldValue]="item.Description"></field>
+                                <field [fieldObject]="fields[3]" [fieldValue]="item.UserRole"></field>
+                                <field [fieldObject]="fields[4]" [fieldValue]="item.Site"></field>
+                            </div>
+                        </card>
+                    </template>
+                </list>
+                <paging [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="onPageChanged($event);"></paging>
+            </primary-view>
+            <secondary-view *ngIf="!isUserList">
+                <section title="Module Access">
+                    <module-access [selectedIds]="selectedIds"></module-access>            
+                </section>
+                <section title="Floor Access">
+                    <floor-access [selectedIds]="selectedIds"></floor-access>
+                </section>
+                <section title="Division Access">
+                    <division-access [selectedIds]="selectedIds"></division-access>
+                </section>
+                <section title="Drawing Access">
+                    <drawing-access [selectedIds]="selectedIds"></drawing-access>
+                </section>
+            </secondary-view>
+            <secondary-view *ngIf="isUserList">
+                <section title="User Access">
+                    <template-user-access [selectedIds]="selectedIds" [userRole]="userRole"></template-user-access>
+                </section>
+            </secondary-view>
+        </split-view>
+    </content>
+</page>
+

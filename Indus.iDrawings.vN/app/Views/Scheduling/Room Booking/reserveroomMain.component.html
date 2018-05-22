@@ -1,0 +1,21 @@
+﻿<page [pagetitle]="pagePath" [withoutSubmenu]="true">
+    <content>
+        <tabs [(selectedTab)]="selectedTab" id="reserveroommain" (getSelectedTab)="getSelectedTab($event)" (onTabClose)="onTabClose($event)" [deleteIndex]="deleteIndex">
+            <tab tabTitle="Reserve {{roomtxt}}" closeButtonVisible="hidden" (onTabBeforeClose)="onTabBeforeClose($event)">
+                <reserveroom *ngIf="selectedTab==0" (floorCellOnClick)="floorCellOnClick($event)" (outSelectedData)="getSelectedData($event)"></reserveroom>
+            </tab>
+            <tab *ngIf="viewDrawing==true" tabTitle="Daily Reservation Summary" closeButtonVisible="visible">
+                <reserveroomshedulingdrawing *ngIf="IsOpenDrawingComponentActive==true" [drawingId]="drawingId" [isFromRoomClick]="isFromRoomClick" [selectedData]="selectedData" [pageTarget]="1"></reserveroomshedulingdrawing>
+            </tab>
+        </tabs>
+    </content>
+</page>
+<style>
+    #reserveroommain .navbar li:nth-child(2) {
+        width: 215px !important;
+
+    }
+    #reserveroommain .navbar li:nth-child(1) a {
+        width: 160px !important;
+    }
+</style>

@@ -1,0 +1,16 @@
+﻿<page [pagetitle]="pagePath">
+    <content>
+        <tabs [selectedTab]="selectedTab" (getSelectedTab)="getSelectedTab($event)">
+            <tab tabTitle="Select Floors" closeButtonVisible="hidden">
+                <div style="height:100%">
+                    <floorselectionreport [Criteria]="selectedCriteria" [ReportCategoryId]="ReportCategoryId" [objectCategoryId]="objectCategoryId" (selectedIds)="submit($event)"></floorselectionreport>
+                </div>
+            </tab>
+            <tab *ngIf="next != undefined" tabTitle="Report" closeButtonVisible="hidden">
+                <div *ngIf="next != undefined && isNextClicked" style="height:100%">
+                    <componentListByFloor-report [Ids]="next"> </componentListByFloor-report>
+                </div>
+            </tab>
+        </tabs>
+    </content>
+</page>

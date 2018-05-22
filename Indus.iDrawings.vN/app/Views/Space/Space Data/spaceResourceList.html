@@ -1,0 +1,51 @@
+﻿<div>
+    <div style="width:100%;padding-bottom:1%;float:left;">
+        Space Key: <LabelComponent [fieldObject]=fieldSpaceKey></LabelComponent>
+        Room No.: <LabelComponent [fieldObject]=fieldRoomNo></LabelComponent>
+    </div>
+    <tabs [selectedTab]="selectedTab" (getSelectedTab)="getSelectedTab($event)" (onTabClose)="onTabClose($event)" [deleteIndex]="deleteIndex">
+        <tab tabTitle="Resources" closeButtonVisible="hidden">
+            <div style="width:50%;padding-bottom:1%;float:left;">
+                <submenu>
+                    <sub-menu [menuCard]=true [source]=menuData [count]=gridcount [menuIds]=enableMenu (onSubMenuChange)="onSubMenuChange($event);"> </sub-menu>
+                </submenu>
+            </div>
+            <div style="width:50%;padding-bottom:1%;float:left;">
+                <div *ngIf="blnShowSort == true">
+                    <sort *ngIf="fields && sourceData" [fieldNames]="fields" [listItems]=sourceData (sortEvent)="onSorting($event)"></sort>
+                </div>
+            </div>
+            <div style="width:100%;padding-bottom:1%;float:left;">
+                <list style="height:85%;overflow-y:scroll;" [source]=sourceData [(selectedIds)]="selIds" [datakey]="'Id'">
+                    <template let-item>
+                        <card (onSubmition)="onCardSubmit($event)" [datakeyValue]="item.Id" (inlineDelete)="onDelete($event)" [enableDeleBtn]="isDeleteVisible" [enableEditBtn]="'false'">
+                            <div *ngIf="fields">
+                                <field [fieldObject]="fields[0]" [fieldValue]="item['Resource Type']"></field>
+                                <field [fieldObject]="fields[1]" [fieldValue]="item['Resource']"></field>
+                            </div>
+                        </card>
+                    </template>
+                </list>
+            </div>
+            <paging [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="pageChanged($event);"></paging>
+        </tab>
+        <tab tabTitle="New Resource" *ngIf="newResourceTab == true" closeButtonVisible="hidden">
+            <div><new-space_resources [spaceId]="selectedId" (submitSuccess)="submitSuccess($event)"></new-space_resources></div>
+        </tab>
+    </tabs>
+</div>
+<slide [width]="200" [position]="position" [type]="dialog" [show]="showSlide" (closeDialog)="closeSlideDialog($event)">
+
+    <div>
+        <div>
+            Are you sure you want to delete the selected Space Resource?
+        </div>
+        <div>
+
+            <div style="width:100%">
+                <button  class="Savebutton "type="button" (click)="okDelete($event)">Yes</button>
+                <button  class="Savebutton "type="button" (click)="cancelClick($event)">No</button>
+            </div>
+        </div>
+    </div>
+</slide>

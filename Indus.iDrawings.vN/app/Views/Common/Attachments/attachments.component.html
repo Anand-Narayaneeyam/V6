@@ -1,0 +1,67 @@
+﻿<div>
+    <split-view [splitviewObject]="splitviewInput" [pageTitle]="pageTitle">
+        <primary-view>
+            <div style="height:100%;">
+                <div style="height:35px;">
+                    <submenu>
+                        <sub-menu [source]=menuData [menuCard]=true [count]=totalItems [menuIds]=enableMenu (onSubMenuChange)="onSubMenuChange($event);"> </sub-menu>
+                    </submenu>
+                </div>
+                <div style="height:calc(100% - 35px);">
+                    <div>
+                        <slide [width]="width" [position]="positionImage" [type]="'dialog'" [show]="viewImage" [absolute]="'true'" (closeDialog)="closeSlideDialogPreview($event)">
+                            <div *ngIf="imgData1 != undefined">
+                                <img src={{imgData1}} class="imageView" />
+                            </div>
+                        </slide>
+                    </div>
+                    <div style="height:98%;display:block;">
+                        <gridView [(dataSource)]="itemsSource" [properties]="inputItems" [columns]="fieldObject" [refreshgrid]="refreshgrid" (onSorting)="onSort($event)" (onRowDelete)="inlineDelete($event)"></gridView>
+                    </div>
+                    <!--<div style="height:20%;">
+                <paging [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="pageChanged($event);"></paging>
+            </div>-->
+                </div>
+            </div>
+        </primary-view>
+        <secondary-view>
+            <attachment-add-edit (submitSuccess)="submitReturn($event)" [action]="action" [btnName]="btnName" [selectedId]="inputItems.selectedIds" [fieldDetailsAdd]="fieldDetailsAdd1" [attachmentCategoryId]="attachmentCategoryId" [customerAttachmentCategoryId]="customerAttachmentCategoryId"  [baseEnityIdSample]="baseEnityIdSample" [leaseRenewalCount]="leaseRenewalCount"></attachment-add-edit>
+        </secondary-view>
+    </split-view>
+    <slide [width]="200" [position]="position" [type]="dialog" [show]="showSlide" [absolute]="'true'" (closeDialog)="closeSlideDialog($event)">
+
+        <div>
+            <div tabindex="0">
+                {{message}}
+            </div>
+            <div>
+
+                <div style="width:100%">
+                    <button  class="Savebutton "type="button" (click)="okDelete($event)">Yes</button>
+                    <button  class="Savebutton "type="button" (click)="cancelClick($event)">No</button>
+                </div>
+            </div>
+        </div>
+    </slide>
+</div>  
+
+<style>
+    .imageView {
+        width: 590px;
+        height: 500px;
+    }
+
+    @media only screen and (min-device-width: 320px) and (max-device-width: 813px) and (orientation: portrait) {
+        .imageView {
+            width: 300px;
+            height: 320px;
+        }
+    }
+
+    @media only screen and (min-device-width: 320px) and (max-device-width: 812px) and (orientation: landscape) {
+        .imageView {
+            width: 320px;
+            height: 300px;
+        }
+    }
+</style>

@@ -1,0 +1,34 @@
+﻿
+<div style="height: calc(100% - 35px);overflow: hidden;">
+    <!--<div class="search-container">
+        <search *ngIf="fieldObject" [advancesearch]="true" [Key]=2 [datasource]="fieldObject" [dataKey]="dataKey" [keyWordLookup]=keyWordLookup (SaveAs)="SaveAs($event)" (Delete)="Delete($event)" (onloadSearch)="onloadSearch($event)" (Clear)="Clear($event)" (Submit)="Submit($event)"></search>
+    </div>-->
+     <div style="height:95%;width:100%;display:block">
+        <div  [ngClass]="totalItems > itemsPerPage ? 'pagewithPaging':'pagewithoutPaging'">
+            <confirmation (onConfirm)="okDelete($event)"></confirmation>
+            <gridView [dataSource]="itemsSource" [properties]="inputItems" [columns]="fieldObject" [refreshgrid]="refreshgrid" (onSorting)="onSort($event)" (onRowUpdate)="RowUpdate($event)" (onRowDelete)="RowDelete($event)" (onRowAdd)="RowAdd($event)" (onColValClick)="onColValClick($event)" (onSelectionChanging)="buildingSelectionChange($event)" (onContextMenuOnClick)="onContextMenuOnClick($event)"></gridView>
+            <analytics *ngIf="showAnalytics" [properties]="analyticsInput" (closeAnalytics)="closeAnalytics($event)"></analytics>
+        </div>
+        <div style="height:45px;width:100%;display:block">
+            <paging [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="pageChanged($event);"></paging>
+        </div>
+    </div>
+    <slide [width]="200" [position]="position" [type]="dialog" [show]="showSlide" (closeDialog)="closeSlideDialog($event)">
+
+        <div>
+            <div>
+                Are you sure you want to delete the selected Drawing?
+            </div>
+            <div>
+
+                <div style="width:100%">
+                    <button  class="Savebutton "type="button" (click)="okBuildingDelete($event)">Yes</button>
+                    <button  class="Savebutton "type="button" (click)="cancelClick($event)">No</button>
+                </div>
+            </div>
+        </div>
+    </slide>
+
+</div>
+
+

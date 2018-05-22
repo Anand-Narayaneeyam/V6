@@ -1,0 +1,40 @@
+﻿<div style="height:100%;overflow: hidden;">
+    <split-view [splitviewObject]="splitviewInput" [pageTitle]="pageTitle">
+        <primary-view>
+            <submenu>
+                <sub-menu [source]=menuData [count]=totalItems [menuIds]=enableMenu (onSubMenuChange)="onSubMenuChange($event);"> </sub-menu>
+            </submenu>
+            <div class="search-container">
+                <searchforschedule [Title]="'Search Equipment'" [searchtype]="'Grid'" [(showSearchFilter)]="showSearchFilter" [KeywordFields]=KeywordFieldObject [keyWordLookup]=keyWordLookup [disable]=disableSearch [Key]=2 [advancesearch]=true [Customsearch]=false [datasource]=advancelookup [Target]="3" (SaveAs)="SaveAs($event)" (Delete)="Delete($event)" (onloadSearch)="keywordSearchSubmit($event)" (loadAdvanceSearch)="AdvanceSearch()" (Clear)="Clear($event)" (Submit)="advanceSearchSubmit($event)" [smartSearch]=isSmartSearch [isShowConfigure]=false></searchforschedule>
+            </div>
+            <div style="width:100%;height:28px;padding:2px;"><input (click)="chkboxClick($event)" type="checkbox" id="inpChk" style="width:15px" checked /> <span style="padding-left:2px;font-size:small;color:black;"> Show active reservations</span></div>
+            <div style="overflow: hidden;height: calc(100% - 65px);">
+                <div style="height:100%;overflow: hidden;">
+                    <div style="width:100%;display:block" [ngClass]="totalItems > itemsPerPage ? 'pagewithPaging':'pagewithoutPaging'">
+                        <slide></slide>
+                        <gridView [dataSource]="itemSource" [properties]="inputItems" [columns]="fieldObject" [arrHighlightRowIds]="arrHighlightRowIds" [refreshgrid]="refreshgrid" (onSorting)="onSort($event)" (onRowUpdate)="RowUpdate($event)"></gridView>
+                    </div>
+                    <div style="height:45px;width:100%;float:left;display:block;">
+                        <paging [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="pageChanged($event);"></paging>
+                    </div>
+                </div>
+            </div>
+        </primary-view>
+        <secondary-view *ngIf="showBookEqpt==true && splitviewInput.showSecondaryView">
+            <book-equipment [Sitetime]="Sitetime" (reserveEquipmentReturn)="reserveEquipmtSubmitRet($event)" [requestId]="inputItems.selectedIds[0]" [selRowObj]="selRowData" [pageTarget]="'Edit'"></book-equipment>
+        </secondary-view>
+    </split-view>
+</div>
+<slide [width]="250" [position]="'top-right'" [type]="dialog" [show]=showConformation (closeDialog)="closeSlide($event)">
+    <div>
+        <div tabindex="0" [attr.aria-label]="''+confirmMessages.message">
+            {{confirmMessages.message}}
+        </div>
+        <div>
+            <div style="width:100%">
+                <button class="Savebutton" type="button" (click)="yesOnClick(confirmMessages.key)">Yes</button>
+                <button class="Savebutton" type="button" (click)="closeSlide($event)">No</button>
+            </div>
+        </div>
+    </div>
+</slide>

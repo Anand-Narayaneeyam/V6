@@ -1,0 +1,158 @@
+﻿:host {
+    position: relative;
+    display: block;
+    overflow: hidden;
+}
+
+@media screen and (max-height: 450px) {
+        .inline-secondary-view {
+           transition: none!important;
+        }     
+        .secondary-view-vertical {
+           transition: none!important;
+        }
+
+        .secondary-view {
+           transition: none!important;
+        }
+        .secondary-view.show-vertical {
+           transition: none!important;
+        }
+    }
+
+.primary-view {
+    width: 100%;
+    overflow:visible;
+    display:block;
+    height:100%;
+}
+
+.inline-primary-view{
+    overflow:auto;
+    float:left;
+    width:100%;
+}
+
+.inline-primary-view-show{
+    overflow:auto;
+    float:left;
+    width:60%;
+}
+
+.secondary-view {
+    position: fixed;
+    /*position:-ms-page;*/
+    background-color: white;
+    right: -100%;
+    border: 1px solid black;
+    -webkit-transition: right 1s ease; /* Safari */
+    z-index:100;
+
+}
+
+.inline-secondary-view {
+    float:right;
+     right: -40%;
+    /*-webkit-transition: right 1s ease; /* Safari */
+    transition: right 1s ease;
+        position: absolute;
+     border: 1px solid #8fb3cb;
+     border-left-width:10px;
+     border-bottom-left-radius:2px;
+     border-top-left-radius:2px;
+}
+
+.secondary-view-vertical {
+    top:100%;
+    position: absolute;
+    background-color: white;
+    width: 100%;
+    height: 100%;
+    border: 1px solid #b5b5b5;
+    /*-webkit-transition: all 1s ease; /* Safari */
+    transition: all 1s ease;
+    z-index:100;
+}
+
+.secondary-view.show {
+    top: 90px;
+    height: calc(100% - 140px);
+    height: -webkit-calc(100% - 140px);
+    height: -moz-calc(100% - 140px);
+    border-radius:2px;
+    overflow: visible;
+    right: 0px;    
+}
+
+.inline-secondary-view.show {
+    height: calc(100% - 5px);
+    height: -webkit-calc(100% - 5px);
+    height: -moz-calc(100% - 5px);
+    border-radius:2px;
+    overflow: hidden;
+    right: 0px; 
+    float:left; 
+    width:40%;  
+}
+
+.secondary-view.show-vertical {
+    border-radius:6px;
+    left:0;
+    -webkit-transition: all 1s ease; /* Safari */
+    transition: all 1s ease;
+    bottom:0;
+    overflow: hidden;
+    box-shadow: -15px 15px 25px -10px #8c8c8c;
+}
+
+.close-button {
+    width: 25px;
+    height: 25px;
+    z-index: 99;
+    margin-left: -10px;
+    margin-top: 4px;
+    margin-right: 4px;
+}
+
+.image-show {
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    bottom: 80px;
+    right: 50px;
+}
+.background-block{
+    position:-ms-device-fixed;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    z-index:50;
+    background-color: darkgray;
+    opacity: 0.3;
+}
+ /*::-webkit-scrollbar-track
+{
+ -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+ background-color: #F5F5F5;
+}
+::-webkit-scrollbar
+{
+ width: 20px;
+ background-color: #F5F5F5;
+}
+::-webkit-scrollbar-thumb
+{
+ background-color: #0ae;
+  background-image: -webkit-gradient(linear, 0 0, 0 100%,
+                    color-stop(.5, rgba(255, 255, 255, .2)),
+        color-stop(.5, transparent), to(transparent));
+}*/
+
+     @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+            .secondary-view.show {
+                position:-ms-page !important;
+   
+            }
+    }

@@ -1,0 +1,29 @@
+﻿<div style="height=100%">
+    <submenu>
+        <sub-menu [menuCard]=true [source]=menuData [count]=gridcount [menuIds]=enableMenu (onSubMenuChange)="onSubMenuChange($event);"> </sub-menu>
+    </submenu>
+    <split-view [splitviewObject]="splitviewInput" [pageTitle]="pageTitle" style="height:100%;">
+        <primary-view>
+            <gridView style="height:85%;display:block;" [(dataSource)]="itemsSource" [properties]="inputItems" [columns]="fieldObject" (onSorting)="onSort($event)" (onRowDelete)="inlineDelete($event)"></gridView>
+            <paging [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="pageChanged($event);"></paging>
+        </primary-view>
+        <secondary-view *ngIf="target == 1">
+            <DynamicFields [dataSource]="fieldDetailsAddEdit" (submitFieldObject)="onSubmit($event)" [btnName]="btnName" [dataKey]="dataKey"></DynamicFields>
+        </secondary-view>
+    </split-view>
+    
+
+    <slide [width]="200" [position]="position" [type]="dialog" [show]="showSlide" (closeDialog)="closeSlideDialog($event)">
+        <div>
+            <div>
+                Are you sure you want to delete the selected GL Account?
+            </div>
+            <div>
+                <div style="width:100%">
+                    <button  class="Savebutton "type="button" (click)="okDelete($event)">Yes</button>
+                    <button  class="Savebutton "type="button" (click)="cancelClick($event)">No</button>
+                </div>
+            </div>
+        </div>
+    </slide>
+</div>

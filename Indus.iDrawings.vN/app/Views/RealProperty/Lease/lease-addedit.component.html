@@ -1,0 +1,30 @@
+﻿<split-view [splitviewObject]="splitviewInput" [pageTitle]="pageTitle" (onSecondaryClose)="onSplitViewClose($event)">
+    <primary-view>
+        <div style="display:inline-block;height:100%;">
+            <DynamicFields [dataSource]="fieldDetailsAddEdit" (submitFieldObject)="onSubmitData($event)" [btnName]="btnName" [dataKey]="dataKey" (fieldChange)="fieldChange($event)" (rbnChange)="rbtnOnChange($event)" (chkChange)="checkBoxChange($event)" [blnPopupImage]=false [strPopupText]="strPopUpValue" (popupItemEmit)="popupItemEmit($event)"></DynamicFields>
+        </div>
+    </primary-view>
+    <secondary-view *ngIf="financialClause">
+        <financial-clauses style="display: block;width:800px;" *ngIf="splitviewInput.showSecondaryView == true" (selFinanceClauses)="onSubmitFinanceClause($event)" [leaseId]="selectedId" [leaseRenewalCount]="leaseRenewalCount" [leaseTypeId]="leaseTypeId" [financialClauseIds]="financialClauseIds" [action]="action"></financial-clauses>
+    </secondary-view>
+    <secondary-view *ngIf="cancellationClause">
+        <cancellation-clauses style="display: block;width:800px;height: 100%;" *ngIf="splitviewInput.showSecondaryView == true" (submitSuccess)="onSubmitCancelClause($event)" [leaseId]="selectedId" [leaseRenewalCount]="leaseRenewalCount" [leaseStatus]="leaseStatus"></cancellation-clauses>
+    </secondary-view>
+</split-view>
+
+<style>
+    :host .Div-984 {
+        /*display: flex !important;*/
+    }
+
+    :host .Div-979 {
+        display: flex !important;
+    }
+
+    :host .span-popup-text {
+        margin-left: 5px !important;
+        color: blue;
+        cursor: pointer;
+        text-decoration: underline;
+    }
+</style>

@@ -1,0 +1,88 @@
+﻿<split-view [splitviewObject]="splitviewDrawing" [pageTitle]="pageTitle">
+    <primary-view (contextmenu)="onContextMenu($event, item)" style="overflow:hidden" (onSecondaryClose)="onSplitViewClose($event)">
+        <div style="height:100%">
+            <div class="mainDiv">
+                <div *ngIf="dwgDetails!=''" [style.width]="detailsWidth" class="drawingDetails" title="{{dwgDetails}}">{{dwgDetails}}</div>
+                <div class="viweIconDiv">
+                    <div *ngIf="isViewIconShow" class="icon">
+                        <img src="Content/Icons/view-drawingN.png" class="viewIcon" title="{{drawingLabelShow}} " (click)="viewDrawingOnclick()" />
+                    </div>
+                    <div *ngIf="isViewIconShow==false && isOpenFinished" class="icon">
+                        <img src="Content/Images/Drawings/hideDrawing.png" class="viewIcon" title="{{drawingLabelHide}} " (click)="hideDrawingOnclick()" />
+                    </div>
+                </div>
+            </div>
+            <div [ngClass]="isViewDrawing==true ? 'dwgViewShow':'dwgViewHide'">
+                <drawingview style="height:100%" *ngIf="openDrawingOneTime==true" [drawingId]="drawingId" [revisionNo]="revisionNo" [moduleId]=moduleId [drawingType]="drawingType" [drawingCategoryId]="drawingCategoryId" (outiWhizObject)="getObject($event)" (afterOpen)="afterDrawingOpen($event)"></drawingview><!--*ngIf="menuClickValue == 4"-->
+                <drawing-tooltip *ngIf="isTooltipEnable" [xposition]="tooltipXPosition" [yposition]="tooltipYPosition" [visibility]="tooltipVisibility" [data]="tooltipData" [canvas]="canvasElement"></drawing-tooltip>
+                <context-menu [xposition]="contextMenuXPosition" [yposition]="contextMenuYPosition" [visibility]="contextMenuVisibility" [menuItems]="contextMenuData" [canvas]="canvasElement" (contextMenuOnClick)="contextMenuOnClick($event)"></context-menu>
+            </div>
+            <div *ngIf="pageTarget==1" [ngClass]="reserveRoomStyle">
+                <reserveroom [drawingId]="drawingId" [pageTarget]="2" (itemSourceData)="getSchedulingData($event)" [selectedData]="selectedData" [isViewDrawing]="isViewDrawing" (onSelChange)="onSelectionChange($event)" (roomNoLinkClick)="roomNoLinkOnClick($event.rowData)" (outSelectedData)="onSelectionChange($event)" (floorCellOnClick)="roomNoLinkOnClick($event.rowData)"></reserveroom>
+            </div>
+            <div *ngIf="pageTarget==3" [ngClass]="reserveRoomStyle">
+                <reserveseatwithscheduler [drawingId]="drawingId" [pageTarget]="0" [isSpecialRoom]="isSpecialRoom" [selectedData]="selectedData" (itemSourceData)="getSchedulingData($event)" (onSelChange)="onSelectionChangeforseat($event)" (outSelectedData)="onSelectionChangeforseat($event)" [isViewDrawing]="isViewDrawing" (roomNoLinkClick)="roomNoLinkOnClick($event)"></reserveseatwithscheduler>
+            </div>
+        </div>
+        <slide [width]="305" [position]="'center'" [type]="'dialog'" [show]="showLayer" [absolute]="'true'" [title]="'Layers'" (closeDialog)="closeShowLayer($event)">
+            <div style="height:240px;overflow-y:auto">
+                <span *ngIf="layerList[0] != undefined">
+                    <span *ngIf="moduleId!=1">
+                        <input #Default type="checkbox" name="Default" value="All" [checked]="defaultChkbxIsChecked" (change)="selectAllDefaultLayers($event,layerList[0])" style="width:10%;position:absolute;margin-left:150px" />
+                        <label style="display: inline;font-weight: bold;position: fixed;margin-left: 180px;color: darkslategrey;font-size: small;margin-top: 2px;">Default</label>
+                    </span>
+                    <ListBoxComponent *ngIf="showLayer==true" [fieldObject]=layerList[0] [blnSelectAllChecked]="IsSelectAllLayerChecked" (selAll)="layersSelectAllOnClick($event)" (lstBox)="singleLayerNameOnClick($event)"> </ListBoxComponent>
+                </span>
+            </div>
+            <div style="margin-left:90px;margin-bottom:10px">
+                <button class="Savebutton " type="button" (click)="OkLayersVisbility()">OK</button>
+                <button class="Savebutton " type="button" (click)="CancelLayersVisbility()">Cancel</button>
+            </div>
+        </slide>
+    </primary-view>
+    <secondary-view *ngIf="splitviewDrawing.showSecondaryView">
+        <secondary-view *ngIf="showSecondaryViewSpaceScheduleTarget==2">
+            <div>
+                <reserveroomfromdrawing [spaceDataItem]="spaceDataForReserveRoom"></reserveroomfromdrawing>
+            </div>
+        </secondary-view>
+        <secondary-view *ngIf="showSecondaryViewSpaceScheduleTarget==3">
+            <book-seat [selSeatId]="selectedSeatId" [fieldDetailsBook]="fieldsForSeatBooking" (reserveSeatReturn)="reserveSeatSubmitRet($event)"></book-seat>
+        </secondary-view>
+    </secondary-view>
+    <style>
+        .reserveRoomFullView {
+            display: block;
+            height: calc(100% - 35px);
+            height: -webkit-calc(100% - 35px);
+            height: -moz-calc(100% - 35px);
+        }
+
+        .reserveRoomHalfView {
+            display: block;
+            height: calc(50% - 35px);
+            height: -webkit-calc(50% - 35px);
+            height: -moz-calc(50% - 35px);
+        }
+
+        .viewIcon {
+            width: 24px;
+            height: 24px;
+        }
+
+        .viweIconDiv {
+            float: right;
+            position: relative;
+            right: 5px;
+        }
+
+        .dwgViewShow {
+            visibility: visible;
+            height: 50%;
+        }
+
+        .dwgViewHide {
+            visibility: hidden;
+            height: 1%;
+        }
+    </style>

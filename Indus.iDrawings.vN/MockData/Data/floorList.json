@@ -1,0 +1,158 @@
+﻿{
+  "data": [
+    {
+      "Site FieldId": 1,
+      "Building FieldId": 1,
+      "Floor FieldID": 1,
+      "Floor Name": "01",
+      "Attachments": "1",
+      "Gross Area": "25847.27",
+      "Net Area": "23015.69",
+      "Status": "Active"
+    },
+    {
+      "Site FieldId": 1,
+      "Building FieldId": 1,
+      "Floor FieldID": 2,
+      "Floor Name": "01 Tel  Rm-North",
+      "Attachments": "None",
+      "Gross Area": "243.33",
+      "Net Area": "211.17",
+      "Status": "Active"
+    },
+    {
+      "Site FieldId": 1,
+      "Building FieldId": 1,
+      "Floor FieldID": 3,
+      "Floor Name": "01 Tel  Rm-South",
+      "Attachments": "None",
+      "Gross Area": "243.33",
+      "Net Area": "211.17",
+      "Status": "Active"
+    },
+    {
+      "Site FieldId": 1,
+      "Building FieldId": 1,
+      "Floor FieldID": 4,
+      "Floor Name": "02",
+      "Attachments": "None",
+      "Gross Area": "1700.26",
+      "Net Area": "1497.96",
+      "Status": "Active"
+    },
+    {
+      "Site FieldId": 1,
+      "Building FieldId": 1,
+      "Floor FieldID": 5,
+      "Floor Name": "03",
+      "Attachments": "None",
+      "Gross Area": "25847.27",
+      "Net Area": "23015.69",
+      "Status": "Active"
+    }
+  ],
+
+  "alldata": [
+     {
+      "Site FieldId": 1,
+      "Building FieldId": 1,
+      "Floor FieldID": 1,
+      "Floor Name": "01",
+      "Attachments": "1",
+      "Gross Area": "25847.27",
+      "Net Area": "23015.69",
+      "Status": "Active"
+    },
+    {
+      "Site FieldId": 1,
+      "Building FieldId": 1,
+      "Floor FieldID": 2,
+      "Floor Name": "01 Tel  Rm-North",
+      "Attachments": "None",
+      "Gross Area": "243.33",
+      "Net Area": "211.17",
+      "Status": "Active"
+    },
+    {
+      "Site FieldId": 1,
+      "Building FieldId": 1,
+      "Floor FieldID": 3,
+      "Floor Name": "01 Tel  Rm-South",
+      "Attachments": "None",
+      "Gross Area": "243.33",
+      "Net Area": "211.17",
+      "Status": "Active"
+    },
+    {
+      "Site FieldId": 1,
+      "Building FieldId": 1,
+      "Floor FieldID": 4,
+      "Floor Name": "02",
+      "Attachments": "None",
+      "Gross Area": "1700.26",
+      "Net Area": "1497.96",
+      "Status": "Active"
+    },
+    {
+      "Site FieldId": 1,
+      "Building FieldId": 1,
+      "Floor FieldID": 5,
+      "Floor Name": "03",
+      "Attachments": "None",
+      "Gross Area": "25847.27",
+      "Net Area": "23015.69",
+      "Status": "Active"
+    },
+    {
+      "Site FieldId": 1,
+      "Building FieldId": 1,
+      "Floor FieldID": 6,
+      "Floor Name": "011",
+      "Attachments": "1",
+      "Gross Area": "25847.27",
+      "Net Area": "23015.69",
+      "Status": "Active"
+    },
+    {
+      "Site FieldId": 1,
+      "Building FieldId": 1,
+      "Floor FieldID": 7,
+      "Floor Name": "010 Tel  Rm-North",
+      "Attachments": "None",
+      "Gross Area": "243.33",
+      "Net Area": "211.17",
+      "Status": "Active"
+    },
+    {
+      "Site FieldId": 1,
+      "Building FieldId": 1,
+      "Floor FieldID": 8,
+      "Floor Name": "012 Tel",
+      "Attachments": "None",
+      "Gross Area": "243.33",
+      "Net Area": "211.17",
+      "Status": "Active"
+    },
+    {
+      "Site FieldId": 1,
+      "Building FieldId": 1,
+      "Floor FieldID": 9,
+      "Floor Name": "12",
+      "Attachments": "None",
+      "Gross Area": "1700.26",
+      "Net Area": "1497.96",
+      "Status": "Active"
+    },
+    {
+      "Site FieldId": 1,
+      "Building FieldId": 1,
+      "Floor FieldID": 10,
+      "Floor Name": "145",
+      "Attachments": "None",
+      "Gross Area": "25847.27",
+      "Net Area": "23015.69",
+      "Status": "Active"
+    }
+    
+  ]
+}

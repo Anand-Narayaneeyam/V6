@@ -1,0 +1,154 @@
+﻿
+:host{
+     padding:5px;
+}
+:host(.card) {
+    display:inline-block;
+    border:1px solid #c6c6c6;   
+    margin-left:10px; 
+    min-width:30%;
+    margin:7px;
+    border-radius:4px;
+  
+}
+
+:host(.card):hover {
+   border:1px solid #B2B2B2;
+   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  
+}
+
+:host(.list-item){
+    border-top: 1px solid #c6c6c6;
+    height:auto;
+    padding:1px 3px;
+    display:inline-block;width:100%;height:auto;      
+}
+:host(.list-item) .cardformStyle{
+    width: calc(100% - 3px);
+    width: -webkit-calc(100% - 3px);
+    width: -moz-calc(100% - 3px);  
+}
+
+:host(.list-item):hover {
+   
+    background-color:aliceblue;
+}
+:host(.selection){
+   /*background-color:#80adbf;*/ 
+   /*border:1px solid #B2B2B2;
+   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);*/
+    border: .5px solid #337ab7;
+    border-radius:4px;
+    box-shadow: 0 4px 8px 0 #337ab7, 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+   
+    
+}
+:host(.selection):hover {
+    /*border:1px solid #B2B2B2;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);*/
+    border: .5px solid #337ab7;
+    border-radius:4px;
+    box-shadow: 0 4px 8px 0 #337ab7, 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.cardformStyle {
+    display:inline-flex;
+    width:100%;
+    margin: 0;
+   
+   
+}
+:host(.list-item) [control-group]{
+    min-height: 30px !important;
+}
+:host(.list-item) input{
+    width:85%;
+    margin-top:1px;
+    background-color:none;
+    padding:0px 3px!important;
+    border-width:0;
+    height:auto!important;
+}
+
+
+:host(.card).one-column{
+    width:95%;
+}
+:host(.card).two-column{
+    width:45%;
+}
+
+:host(.card) label.readOnly{
+    overflow: hidden;
+    width: auto;
+    height: auto;
+    border-radius: 0px;
+    font-size: small;
+    /*border: none;*/
+    height: 30px;
+    width: 250px;
+    border-radius: 5px;
+    border: 1px solid darkgrey;
+}
+
+:host(.card) span.readOnly {
+    overflow: hidden;
+    /*width: auto;
+    height: auto;*/
+    border-radius: 0px;
+    font-size: small;
+    /*border: none;*/
+    height: 70px;
+    width: 250px !important;
+    border-radius: 5px;
+    border: 1px solid darkgrey;
+}
+
+:host(.list-item)  label.readOnly {
+    overflow: hidden;
+    width: auto;
+    height: 22px;
+    border-radius: 0px;
+    font-size: small;
+    border: none;
+    background-color:transparent;
+    /*height: 30px;
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid darkgrey;*/
+}
+
+:host(.list-item)  #txtDateTime.readOnly {
+    overflow: hidden;
+    width: auto;
+    height: 22px;
+    border-radius: 0px;
+    font-size: small;
+    border: none;
+    background-color:transparent;
+    /*height: 30px;
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid darkgrey;*/
+}
+
+:host(.list-item)  #txtDate.readOnly {
+    overflow: hidden;
+    width: auto;
+    height: 22px;
+    border-radius: 0px;
+    font-size: small;
+    border: none;
+    background-color:transparent;
+    /*height: 30px;
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid darkgrey;*/
+}
+
+:host input[name="StringTextBox"] {
+    height: auto !important;
+}
+
+

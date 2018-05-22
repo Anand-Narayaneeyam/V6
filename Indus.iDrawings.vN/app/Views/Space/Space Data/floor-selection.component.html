@@ -1,0 +1,21 @@
+﻿<div style="height:100%;overflow: hidden;">
+        <span *ngIf="btnEnabled == true">
+            <submenu>
+                <sub-menu [source]=menuData [menuCard]=iscard [menuIds]=enableMenu (onSubMenuChange)="onSubMenuChange($event);"> </sub-menu>
+            </submenu>
+            <!--<button  class="Savebutton "type="button" (click)="btnClick()" style="margin-top: 1px;float:left;background: #2980b9;color: #fff;border: 1px solid rgba(0, 0, 0, 0.2);width: auto;    ">{{btnName}}</button>-->
+        </span>
+        <span *ngIf="btnEnabled == false">
+            <button  class="Savebutton "type="button" (click)="btnClick()" style="cursor:not-allowed;float:left;    " disabled>{{btnName}}</button>
+        </span>   
+        <!--<button  class="Savebutton "(click)="btnClick()" style="float:left;">{{btnName}}</button>-->   
+        <search *ngIf="fieldObject" [advancesearch]="true" [Key]=2 [datasource]="fieldObject" [keyWordLookup]=keyWordLookup (SaveAs)="SaveAs($event)" (Delete)="Delete($event)" (onloadSearch)="onloadSearch($event)" (Clear)="Clear($event)" (Submit)="Submit($event)"></search>
+    <div style="height: calc(100% - 40px);">
+        <tree-view [FieldTable]=FieldTable (UpdateValues)="submitValues($event)" [FieldColumn]=clmFieldTable [checkedIds]="selectedFieldData" [DataKey]=DataKey [Fields]=Fields [selectionCriteria]="Criteria" [HideButton]="true" [isChanged]="isChanged"></tree-view>
+        <!--<gridView style="margin-top:5px" [dataSource]="itemsSource" [properties]="inputItems" [columns]="fieldObject" (onColValClick)="onColValClick($event)"></gridView>-->
+       
+    </div>
+    <!--<div style="height:15%">
+        <paging [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="pageChanged($event);"></paging>
+    </div>-->
+</div>

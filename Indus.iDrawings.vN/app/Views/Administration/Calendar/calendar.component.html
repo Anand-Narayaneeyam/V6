@@ -1,0 +1,80 @@
+﻿<div class="calendarcontainer">
+    <div class="headerDiv" align="center">
+        <div style="display:inline-block">
+            <span>
+                <input type="button" class="monthSelector" value="<" (click)="getPreviousMonth($event)">
+            </span>
+        </div>
+        <div style="margin-top:10px;width:40%;display:inline-block">
+            <div>{{selMonth}} {{selYear}}</div>
+        </div>
+        <div style="display:inline-block">
+            <input type="button" class="monthSelector" value=">" (click)="getNextMonth($event)">
+        </div>
+
+    </div>
+    <div class="calendarDiv">
+        <table class="tblRoombook">
+            <tr *ngFor="let trVal of dayArrayForDate;let i=index">
+                <td *ngFor="let col of dayArrayValues[i];let k=index" id="td{{i}}_{{j}}" innerText='{{col}}'>
+                    
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+<style>
+    .calendarContainer {
+        width:300px;
+        height:300px;
+        padding:2px;
+    }
+    .headerDiv {
+        width:100%;
+        height:50px;
+    }
+    .calendarDiv {
+        width:100%;
+        height:50px;
+    }
+
+        .tblRoombook {
+        border-collapse: collapse;
+        left: 5px;
+        border: 1px solid #c6c6c6;
+        height: 100%;
+        width: 100%;
+        overflow: auto;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 13px;
+        text-align:center;
+        font-weight:bold;
+    }
+
+        .tblRoombook tr {
+            height:30px;
+            
+            /*border-bottom: 1px solid #c6c6c6;*/
+        }
+       .tblRoombook td {
+           height:30px;
+            width:30px;
+            /*border-bottom: 1px solid #c6c6c6;*/
+        }
+         .tblRoombook tr:first-child {         
+            background-color:cornflowerblue;
+            /*position: fixed;
+             ;
+            padding-left:55px;*/
+            height:30px;
+
+        }
+        /*.tblRoombook tr td:first-child {
+               
+            background-color:cornflowerblue;
+        }*/
+        .tblRoombook tr td:not(:first-child){
+
+        }
+       
+</style>

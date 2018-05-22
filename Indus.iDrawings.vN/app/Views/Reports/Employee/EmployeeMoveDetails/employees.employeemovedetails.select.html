@@ -1,0 +1,30 @@
+﻿<page [pagetitle]="pagePath">
+    <content>
+        <tabs [selectedTab]="selectedTab" [deleteIndex]="tabDeleteIndex" (getSelectedTab)="getSelectedTab($event)">
+            <tab tabTitle="Select Criteria" closeButtonVisible="hidden">
+                <submenu>
+                    <sub-menu [source]=menuData [menuCard]=iscard [menuIds]=enableMenu (onSubMenuChange)="onSubMenuChange($event);"> </sub-menu>
+                </submenu>
+                <div style="width:100%">
+                    <div style="width:100%">
+                        <DateComponent *ngIf="dateSelectorField != undefined" [fieldObject]="dateSelectorField[0]"> </DateComponent>
+                    </div>
+                    <div style="width:100%">
+                        <DateComponent *ngIf="dateSelectorField != undefined" [fieldObject]="dateSelectorField[1]" (datepickerOut)="getDateData($event)"></DateComponent>
+                    </div>
+                    <div *ngIf="ddlmoveStatus != undefined" style="width:100%;">
+                        <DropDownListComponent [fieldObject]="ddlmoveStatus" (change)="onChangeStatus($event.target.value)" [SetAlignment]=alignContent></DropDownListComponent>
+                    </div>
+                    <div *ngIf="ddlemployee != undefined" style="width:100%;">
+                        <DropDownListComponent [fieldObject]="ddlemployee" (change)="onChangeEmployee($event.target.value)" [SetAlignment]=alignContent></DropDownListComponent>
+                    </div>
+                </div>
+            </tab>
+            <tab *ngIf="isnext != undefined" tabTitle="Report" closeButtonVisible="hidden">
+                <div style="height:100%" *ngIf="isNextClicked">
+                    <employee-MoveDetailsReport [StatusId]="StatusId" [EmployeeId]="EmployeeId" [ToDate]="ToDate" [FromDate]="FromDate" ></employee-MoveDetailsReport>
+                </div>
+            </tab>
+        </tabs>
+    </content>
+</page>

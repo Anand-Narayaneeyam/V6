@@ -1,0 +1,145 @@
+﻿<page [pagetitle]="pagePath">
+    <pagepath>
+    </pagepath>
+    <content>
+        <section title="Drawing Management" [isExpanded]="sectionExpansionStatus[0].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div *ngIf="sectionExpansionStatus[0].isExpanded==true">
+                <p>This option allows the administrator to select the floors for space management. All the floors defined by the administrator are displayed in the site-building-floor hierarchy with select boxes for each. Only those floors which are selected for Space Management through this option will be available in the Space Module for space data entry and tracking. Sites/Buildings/Floors can be selected by selecting the select boxes against each and then clicking <span class="header2"> Save Changes</span> button.</p>
+            </div>
+        </section>
+        <section title="Area Options" [isExpanded]="sectionExpansionStatus[1].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div *ngIf="sectionExpansionStatus[1].isExpanded">
+                <p>This option allows the Administrator to set Chargeable Area options for the cost and chargeback calculations, and enable Net Area option. Net Area option is available only if polyline standard for Drawings is set to BOMA (Centerline and Net).</p>
+                <p>For the cost and chargeback calculations, the external wall area or vertical area or both can be included or excluded as desired.  Net Area can be enabled or disabled as desired. </p>
+                <p> <span class="header1">Rate for Common Area: </span> This option is to set the Common Area Rate for chargeback. The user can enter a single rate which is used for calculating cost for the Common Area. Click the Save button to save the changes.</p>
+
+            </div>
+        </section>
+        <section title="Space Standards" [isExpanded]="sectionExpansionStatus[2].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div *ngIf="sectionExpansionStatus[2].isExpanded==true">
+                <p>Space Standard is an attribute that identifies the type of a space. Space Standards could be defined to specify different classes of rooms. Typical examples are Managers Cabin, Shared Executive Cabin, A/c Work Space, etc. </p>
+                <p>This menu will be available only if the Employee or Scheduling Module is enabled by Indus.</p>
+                <p>This option allows the administrator to add, edit or delete space standards.</p>
+                <p><span class="header1">Add: </span>Add a new Space Standard by clicking the <span class="header2">Add </span> <img class="helpicon" src="Content/Icons/data_addN.png" title="Add"> icon. A New Space Standard window will be displayed on clicking Add icon. Enter the Space Standard and Description and then click the Save button.</p>
+                <p><span class="header1">Edit: </span>A Space Standard can be edited by selecting the required Space Standard and clicking the <span class="header2">Edit </span> <img class="helpicon" src="Content/Icons/data_editN.png" title="Edit"> icon.</p>
+                <p><span class="header1">Delete: </span>A Space Standard can be deleted by selecting the required Space Standard and clicking the  <span class="header2">Delete </span><img class="helpicon" src="Content/Icons/data_deleteN.png" title="Delete"> icon.</p>
+            </div>
+        </section>
+        <section title="Cost Categories" [isExpanded]="sectionExpansionStatus[3].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div *ngIf="sectionExpansionStatus[3].isExpanded==true">
+                <p>Cost Categories facilitate categorization of spaces for charging (Chargeback). Typical cost categories could be Cat1, Cat2, Cat3, etc. where Cat1 is of high commercial value, Cat2 is of medium value, and Cat3 is of a lower value. Different rates can be defined for each cost category. Typical Rates could be Normal, Special, Very Special, etc. For e.g. the Normal rate for Cat1 spaces could be $20 per sq ft, Special could be $15 and Very Special could be $10. Each Organizational Unit can then be assigned one of these rates for each Cost Category. For eg. Division1 can be assigned Normal rate for Cat1 spaces, Special rate for Cat2 spaces and Very Special rate for Cat3 spaces. Chargeback for Division1 will then be calculated on the basis of this. Rate for Common Area can also be set here.   </p>
+                <p>This option allows the administrator to add, edit and delete cost categories. This option also allows adding Rates to the Cost Category.</p>
+                <p><span class="header1">Add: </span>Create a new cost category by clicking the <span class="header2">Add </span> <img class="helpicon" src="Content/Icons/data_addN.png" title="Add"> icon.</p>
+                <p><span class="header1">Edit: </span>Edit cost category by selecting it and then clicking the <span class="header2">Edit </span> <img class="helpicon" src="Content/Icons/data_editN.png" title="Edit"> icon.</p>
+                <p><span class="header1">Delete: </span> Delete a cost category by selecting it and then clicking the <span class="header2">Delete </span><img class="helpicon" src="content/Icons/data_deleteN.png" title="Delete"> icon.</p>
+                <p>This option allows the administrator to define different rates for each cost category.Select a Cost Category and click Cost Category Rates <span class="header2"></span> <img class="helpicon" src="Content/Icons/cost_category_ratE.png" title="Cost Category Rates" /> icon.Cost Category Rates page will be displayed with selected the Cost Category and listing the rates defined for the selected category.</p>
+                <p><span class="header1">Add: </span>Create a new cost category rate by clicking the <span class="header2">Add </span> <img class="helpicon" src="Content/Icons/data_addN.png" title="Add"> icon.</p>
+                <p><span class="header1">Edit: </span>Edit a cost category rate by selecting it and then clicking the <span class="header2">Edit </span> <img class="helpicon" src="Content/Icons/data_editN.png" title="Edit"> icon.</p>
+                <p><span class="header1">Delete: </span> Delete a cost category rate by selecting it and then clicking the <span class="header2"> Delete </span><img class="helpicon" src="Content/Icons/data_deleteN.png" title="Delete"> icon.</p>
+            </div>
+        </section>
+        <section title="Cost Category Rates for Units" [isExpanded]="sectionExpansionStatus[4].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div *ngIf="sectionExpansionStatus[4].isExpanded==true">
+                <p>This option allows the Administrator to assign cost category rates for various organizational units. One or more organizational units can be selected from the list first.The rate for each cost category can be set by selecting the rate code. Click Save button for setting the rates. </p>
+            </div>
+        </section>
+        <section title="Additional Data Fields" [isExpanded]="sectionExpansionStatus[5].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div *ngIf="sectionExpansionStatus[5].isExpanded==true">
+
+                <p>The Administrator can create Additional Data Fields for Space Data, in addition to the system defined data fields which are available by default. </p>
+                <p>The Data Field Name, Data Field Type (Single Line Text, Multi Line Text, Date, Date Time, Integer and Numeric), whether Mandatory or not, whether the field is Totalizable or not, whether the field is a Validated field or not, have to be specified. The Totalizable option is available only for data fields of type Numeric and Integer. If a data field is set as totalizable, the total value of that field will be displayed in reports (Subtotal and Total) as well as in Totalize window.</p>
+                <p>On selecting the Additional Data Fields section, any Additional Data Fields defined for the Space Data will be displayed in a list.</p>
+                <p><span class="header1">Add: </span>Create a new Data Field by clicking the <span class="header2">Add </span> <img class="helpicon" src="Content/Icons/data_addN.png" title="Add" /> icon.</p>
+                <p><span class="header1">Edit: </span>Edit a Data Field by selecting it and then clicking <span class="header2">Edit </span> <img class="helpicon" src="Content/Icons/data_editN.png" title="Edit" /> icon.</p>
+                <p><span class="header1">Delete: </span>Delete a Data Field by selecting it and then clicking the <span class="header2">Delete </span><img class="helpicon" src="Content/Icons/data_deleteN.png" title="Delete" /> icon.</p>
+                <p><span class="header1">Field Values:</span> For validated fields, a set of allowed values will also have to be specified through this option. For e.g. Floor Finish could be a validated field for Space Data with values Granite, Marble, Vinyl, etc. For Mandatory fields, it would be required to enter a value for it while entering Space data.</p>
+                <p>Select a Validated Field and click <span class="header2">Field Values</span>  <img class="helpicon" src="Content/Icons/field-valueN.png" title="Field Values" /> icon, all values defined for the validated field will be displayed in a list.</p>
+                <p><span class="header1">Add: </span>Create a new Value for the Data Field by clicking the <span class="header2">Add </span> <img class="helpicon" src="Content/Icons/data_addN.png" title="Add" /> icon.</p>
+                <p><span class="header1">Edit: </span>Edit a Data Field by selecting it and then clicking the <span class="header2">Edit </span> <img class="helpicon" src="Content/Icons/data_editN.png" title="Edit" /> icon.</p>
+                <p><span class="header1">Delete: </span>Delete a value by selecting it and then clicking the <span class="header2">Delete </span><img class="helpicon" src="Content/Icons/data_deleteN.png" title="Delete" /> icon.</p>
+            </div>
+        </section>
+
+        <section title="Distribution Map Settings" [isExpanded]="sectionExpansionStatus[6].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div *ngIf="sectionExpansionStatus[6].isExpanded==true">
+                <p>This section provides options for the Administrator to set and modify the default hatch pattern and colors for Organizational Units, Validated Fields, and Space Functions for creating the distribution map. Separate settings can be made for Organizational Units, Validated Fields, and Space Functions. Administrator can modify the default settings as and when required.</p>
+                <p> On selecting Distribution Map Settings, two drop downs namely Organizational Units and Validated Fields will be displayed.</p>
+                <p>Organizational Unit dropdown list all the Organizational levels and on selecting each level, corresponding values will be listed with the default color and hatch patterns. Modify the color and click <span class="header2"> Save Changes</span> button . Distribution Map Settings will be updated.</p>
+                <p> Likewise, Distribution Map Settings for validated Fields and Space Function/Space Standard can be updated by selecting the required validated Field from the Validated Fields drop down and then clicking Save Changes button after updating the color and hatch pattern for the validated field values listed.</p>
+                <p>Administrator can make this setting as System default settings by clicking Yes to the confirmation message “Distribution Map Settings updated. Do you want to save this as system default?”.</p>
+            </div>
+        </section>
+
+        <section title="Custom Reports" [isExpanded]="sectionExpansionStatus[7].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div *ngIf="sectionExpansionStatus[7].isExpanded==true">
+                <p>Custom Reports are reports created by the users according to their own requirements. Users can create and save reports with a suitable name through the Custom Reports option under <span class="header2"> Settings: Space: General Settings</span>. It is also possible to share these reports with other users of the system.</p>
+                <p> Users can view and print these reports whenever required by selecting them from the Custom Reports option under Reports. Reports created by other users and shared will be listed with the name of the owner displayed in parenthesis after the report name</p>
+                <p> The Custom Reports option under General Settings lists all the custom reports created by the user. </p>
+                <p><span class="header1">Add: </span>Create a new Custom Report by clicking the <span class="header2">Add </span> <img class="helpicon" src="Content/Icons/data_addN.png" title="Add" /> icon. </p>
+                <p>On clicking the <span class="header2"> Add </span> <img class="helpicon" src="Content/Icons/data_addN.png" title="Add" /> icon, a report column selection window pops up with buttons for Field Order, Preview and Save. All the Data fields that are available will be listed in alphabetic order with check boxes. Columns named Seating Capacity, Free Seats and Occupied Seats also will be displayed if Employees module is enabled by Indus </p>
+                <p>The required columns for the Report can be selected by checking the corresponding data fields. Fields once selected can be deselected by unchecking them. Group Fields can be specified for grouping the data rows of the report. Each group will be printed with a Sub heading showing the group field values of the group. Show Subtotal, Show Grand Total also can be set for Numeric/Integer type static fields like Area, Cost, etc. and Numeric/Integer type additional data fields which are set as totalizable in the setup.</p>
+                <p>Field properties like Column Heading and Column Width (in Inches) can also be set. By default, the Report Column Headings will be the same as the Data Field Names. Users can change a Report Column Heading by changing the Field Name in the Column Heading. The width of a Report Column is set as 1.5 inch by default. User can change the Report Column Width of the required Data Fields.  </p>
+                <p><span class="header1">Field Order: </span> The order of the Report Columns and Sub Header Fields can be set through this option. On clicking Field Order button, Field Order window pops up with all the Header and Sub Header fields. Each data field can be moved by selecting and dragging it to the required position.</p>
+                <p><span class="header1">Preview: </span> Users can view the report using this Preview option. After selecting the report fields and setting the Field Order the report can be previewed by clicking the Preview button. A Report Heading can also be given for viewing the report. The Paper orientation can be set to Landscape or Portrait by clicking on the corresponding radio button.</p>
+                <p> The report can be shared with other users by checking the corresponding check box.</p>
+                <p>User can go to the previous stages and edit the settings already specified using the corresponding buttons.</p>
+                <p><span class="header1">Save: </span> User can save the report by clicking the Save button. Once a new report is created and saved by a user, it will be listed in the Custom reports in Reports menu.  </p>
+                <p><span class="header1">Edit: </span>Edit a Custom Report by selecting it and then clicking the <span class="header2">Edit </span> <img class="helpicon" src="Content/Icons/data_editN.png" title="Edit" /> icon. The Report Columns, field order, report name, etc. can be modified through this option.  </p>
+                <p>Report column selection window pops up with buttons for Field Order and Preview, Save As and Save, on clicking Edit icon. All the Data fields that are available will be listed in alphabetic order with check boxes and all the data fields selected for the report will be displayed as checked.</p>
+                <p><span class="header1">Preview: </span> After making the modifications, Users can view the report using this Preview option.</p>
+                <p><span class="header1">Save: </span> User can save the changes in the report by clicking the Save button.</p>
+                <p><span class="header1">Save As: </span> User can make changes to an existing report and save it as a new report with a different name using this option, by clicking the Save As button. </p>
+                <p><span class="header1">Delete: </span> Delete a Custom Report by selecting it and then clicking the  <span class="header2">Delete </span><img class="helpicon" src="Content/Icons/data_deleteN.png" title="Delete" /> icon.</p>
+
+            </div>
+        </section>
+    </content>
+</page>
+
+<style type="text/css">
+    h3.Mainheader {
+        color: #178AE8;
+    }
+
+    .header1 {
+        font-weight: bold;
+        color: #178AE8;
+    }
+
+    .header2 {
+        font-weight: normal;
+        color: #178AE8;
+    }
+
+    p {
+        margin-left: 38px;
+        font-size: 13px;
+        margin-right: 3em;
+    }
+
+    .header3 {
+        font-weight: bold;
+        color: black;
+    }
+    /**/ h1 {
+        color: #178AE8;
+        font-size: 1.3em;
+        margin-left: 38px;
+    }
+
+    h2 {
+        color: #178AE8;
+        font-size: 1em;
+        margin-left: 38px;
+    }
+
+    .config {
+        background-color: #178AE8;
+    }
+
+    .helpicon {
+        vertical-align: baseline;
+        width: 20px;
+        height: 20px;
+    }
+</style>

@@ -1,0 +1,64 @@
+﻿{
+  "data": [
+    {
+      "FieldId": 1,
+      "FieldName": "Level1",
+      "FieldType": 1,
+      "FieldValue": "Division",
+      "IsMandatory": false,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false,
+      "IsVisible": true,
+      "MaxLength": 100,
+      "NotificationType": "inline"
+    },
+    {
+      "FieldId": 2,
+      "FieldName": "Level2",
+      "FieldType": 1,
+      "FieldValue": "Department",
+      "IsMandatory": false,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false,
+      "IsVisible": true,
+      "MaxLength": 100,
+      "NotificationType": "inline"
+    },
+    {
+      "FieldId": 3,
+      "FieldName": "Level3",
+      "FieldType": 1,
+      "FieldValue": "",
+      "IsMandatory": false,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false,
+      "IsVisible": true,
+      "MaxLength": 100,
+      "NotificationType": "inline"
+    },
+    {
+      "FieldId": 4,
+      "FieldName": "Level4",
+      "FieldType": 1,
+      "FieldValue": "",
+      "IsMandatory": false,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false,
+      "IsVisible": true,
+      "MaxLength": 100,
+      "NotificationType": "inline"
+    },
+    {
+      "FieldId": 5,
+      "FieldName": "Level5",
+      "FieldType": 1,
+      "FieldValue": "",
+      "IsMandatory": false,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false,
+      "IsVisible": true,
+      "MaxLength": 100,
+      "NotificationType": "inline"
+    }
+  ]
+}

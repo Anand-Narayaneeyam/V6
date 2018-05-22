@@ -1,0 +1,24 @@
+﻿<page [pagetitle]="pagePath">
+    <content>
+        <tabs [selectedTab]="selectedTab" [deleteIndex]="tabDeleteIndex" (getSelectedTab)="getSelectedTab($event)">
+            <tab tabTitle="Select Criteria" closeButtonVisible="hidden">
+                <submenu>
+                    <sub-menu [source]=menuData [menuCard]=iscard [menuIds]=enableMenu (onSubMenuChange)="onSubMenuChange($event);"> </sub-menu>
+                </submenu>
+                <div>
+                    <div style="width:100%">
+                        <DropDownListComponent *ngIf="ddlWorkType" [fieldObject]="ddlWorkType" (change)="onChangeWorkType($event.target.value)" [SetAlignment]=alignContent></DropDownListComponent>
+                    </div>
+                    <div style="width:100%">
+                        <DropDownListComponent *ngIf="ddlActionPoint" [fieldObject]="ddlActionPoint" (change)="onChangeActionPoint($event.target.value)" [SetAlignment]=alignContent></DropDownListComponent>
+                    </div>
+                </div>
+            </tab>
+            <tab *ngIf="isnext != undefined" tabTitle="Report" closeButtonVisible="hidden">
+                <div style="height:100%" *ngIf="isNextClicked">
+                    <woSRActionPointStatusComponent-report [ActionPointId]="ActionPointId" [WorkTypeId]="WorkTypeId" [WorkTypeName]="WorkTypeName"></woSRActionPointStatusComponent-report>
+                </div>
+            </tab>
+        </tabs>
+    </content>
+</page>

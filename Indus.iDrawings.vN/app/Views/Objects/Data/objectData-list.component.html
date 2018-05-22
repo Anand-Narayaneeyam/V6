@@ -1,0 +1,145 @@
+﻿<style>
+    .place-container {
+        width:98%;
+    }
+    @media screen and (min-width: 1080px) {
+        .place-container {
+            width: 1080px;
+        }
+    }
+ .Displaytab .navbar li {
+        width: 150px !important;
+    }
+      @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+
+        :host .background-block-slide{
+            position:-ms-page!important;
+        }
+    }
+</style>
+<div style="overflow: hidden;">
+    <split-view [splitviewObject]="splitviewInput" [pageTitle]="pageTitle" (onSecondaryClose)="onSplitViewClose($event)">
+        <primary-view>
+            <submenu>
+                <sub-menu [source]=menuData [menuCard]=true [count]=totalItems [menuIds]=enableMenu (onSubMenuChange)="onSubMenuChange($event);"> </sub-menu>
+            </submenu>
+            <div *ngIf="totalItems>0 || IsSearchmenuNeeded==true" class="search-container">
+                <search *ngIf="fieldObjectGrid" [searchtype]="'Grid'" [keyWordLookup]=keyWordLookup [disable]="disable" [Key]=2 [KeywordFields]=KeywordFieldObject [advancesearch]=true [datasource]=advancelookup (SaveAs)="SaveAs($event)" (Delete)="Delete($event)" (onloadSearch)="onloadSearch($event)" (loadAdvanceSearch)="advanceSearch()" (Clear)="Clear($event)" (Submit)="Submit($event)"></search>
+            </div>
+            <div style="height: calc(100% - 36px);">
+                <div  [ngClass]="totalItems > itemsPerPage ? 'pagewithPaging':'pagewithoutPaging'">
+                    <gridView [(dataSource)]="itemsSource" [properties]="inputItems" [columns]="fieldObjectGrid" [arrHighlightRowIds]="arrHighlightRowIds" [refreshgrid]="refreshgrid" (onSorting)="onSort($event)" (onContextMenuOnClick)="onContextMenuOnClick($event)"></gridView>
+                    <analytics *ngIf="showAnalytics" [properties]="analyticsInput" (closeAnalytics)="closeAnalytics($event)"></analytics>
+                </div>
+                <div>
+                    <paging [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="pageChanged($event);"></paging>
+                </div>
+            </div>
+        </primary-view>
+        <secondary-view *ngIf="allObjectAction == 'displaySettings' && secondaryTarget == 3">
+            <label></label>
+            <tabs [selectedTab]="dispTab" style="height:100%;display:block" (getSelectedTab)="getSelectedTab($event)" class="Displaytab">
+                <tab  style="height:95%;" tabTitle="Common Attributes" closeButtonVisible="hidden" *ngIf="objectCategoryId != undefined">
+                    <display-setting *ngIf="dispTab == 0 && splitviewInput.showSecondaryView== true" [IsGrid]="blnIsGrid" [DisplaySettingCategoryId]="commonDisplaySettingCategoryId" [AdditionalDataFieldCategoryId]="commonAdditionalDataFieldCategoryId" [ObjectCategoryId]="objectCategoryId" (emitdisplaySetting)="getUpdatedDisplaySettings($event)">></display-setting>
+                </tab>
+                <tab style="height:95%;" [tabTitle]="attributetitle" closeButtonVisible="hidden" *ngIf="objectCategoryId != undefined">
+                    <div style="width:50%;height:70px;padding-bottom:1%;float:left;" *ngIf="ddlObjectClassDisplaySettings !=undefined">
+                        <DropDownListComponent [fieldObject]="ddlObjectClassDisplaySettings" (change)="onChnageObjectClassDisplaySettings($event.target.value)"></DropDownListComponent>
+                    </div>
+                    <div style="width:100%;height:calc(100% - 70px);padding-bottom:1%;float:left;" *ngIf="selectedObjectClassDisplaySettingsId > 0">
+                        <display-setting *ngIf="dispTab == 1" [IsGrid]="blnIsGrid" [DisplaySettingCategoryId]="commonDisplaySettingCategoryId" [AdditionalDataFieldCategoryId]="commonAdditionalDataFieldCategoryId" [ObjectCategoryId]="objectCategoryId" [ObjectClassId]="selectedObjectClassDisplaySettingsId" (emitdisplaySetting)="getUpdatedDisplaySettings($event)">></display-setting>
+                    </div>
+                </tab>
+                <tab style="height:95%;" tabTitle="Space Data" closeButtonVisible="hidden" *ngIf="objectCategoryId != undefined && dataOption != 3">
+                    <display-setting *ngIf="dispTab == 2" [IsGrid]="blnIsGrid" [DisplaySettingCategoryId]="spaceDisplaySettingCategoryId" [AdditionalDataFieldCategoryId]="spaceAdditionalDataFieldCategoryId" (emitdisplaySetting)="getUpdatedDisplaySettings($event)"></display-setting>
+                </tab>
+            </tabs>
+        </secondary-view>
+        <secondary-view *ngIf="secondaryTarget == 0">
+            <objectData-addedit *ngIf="splitviewInput.showSecondaryView" [ObjectCategoryId]="objectCategoryId" [moduleId]="moduleId" [objectCategoryName]="objectCategoryName" (submitSuccess)="submitReturn($event)" [action]="action" [btnName]="btnName" [selectedId]="inputItems.selectedIds[0]" [fieldDetailsAdd]="fieldDetailsAdd" [dataOption]="dataOption" [drawingIds]="drawingIds" [selectedIddetails]="inputItems" [attributeoption]="attributeoption" [target]="1" [IsBarcodeSubscribed]="IsBarcodeSubscribed"></objectData-addedit>
+        </secondary-view>
+        <secondary-view *ngIf="secondaryTarget == 6 && splitviewInput.showSecondaryView==true">
+            <div style="height:100%;">
+                <div style="max-height:90%;overflow:auto">
+                    <ListBoxComponent *ngIf="fieldDetailsCheckBox != undefined" [fieldObject]="fieldDetailsCheckBox"></ListBoxComponent>
+                </div>
+                <div style="height:5%">
+                    <button  class="Savebutton "type="button" style="display: block;margin-top:10px;" (click)="onClassSelected($event)">Save</button>
+                </div>
+            </div>
+        </secondary-view>
+        <secondary-view *ngIf="secondaryTarget == 9">
+            <attachments *ngIf="splitviewInput.showSecondaryView && secondaryTarget == 9" [attachmentCategoryId]="7" [moduleId]="moduleId" [baseEntityId]="inputItems.selectedIds[0]" (attachmentSuccess)="attachmentSuccess($event)" [objectClassId]="tempObjectClassId" [isallattachmentmenuneeded]="Isallattachmentmenuneeded" class="attachment"></attachments>
+        </secondary-view>
+        <secondary-view *ngIf="secondaryTarget == 10">
+             <!--place-->
+                <objectDrawinglist *ngIf="splitviewInput.showSecondaryView && wanttoreload==false" style="display: block;" [style.width]="innerwidth" class="place-container" [pageTarget]="2" [selectedRowDetails]="inputItems" [objectCategoryId]="objectCategoryId" [moduleId]="moduleId"></objectDrawinglist>
+        </secondary-view>
+        <secondary-view *ngIf="secondaryTarget == 11">
+                <opendrawing *ngIf="splitviewInput.showSecondaryView && IsOpenDrawingComponentActive==true" [style.width]="innerwidth" style="display:block;" [extDrawingId]="selectedDrawingId" [extDrawingCategoryId]="selectDrawingCategoryId" [extIsBuildingDrawing]="IsBuildingDrawing"   [moduleId]="moduleId" [activeModuleIds]="moduleId" [pageTarget]="3" [extDrawingType]="drawingType" [selectedRow]="inputItems" [extDrawingDetails]="inputItems" (outDrawingobject)="outDrawingObject($event)" (outUnlockDrawingClicked)="unlockDrawing($event)" (outSpacedataClicked)="spacedataClicked($event)" ></opendrawing>
+        </secondary-view>
+        <secondary-view *ngIf="secondaryTarget == 12">
+            <warranty-list *ngIf="splitviewInput.showSecondaryView && secondaryTarget == 12" [objectCategoryName]="objectCategoryName" [isallattachmentmenuneeded]="Isallattachmentmenuneeded" [selectedId]="inputItems.selectedIds[0]" (SuccessReturn)="SuccessReturn($event)" style="width:750px;display:block;"></warranty-list>
+        </secondary-view>
+        <secondary-view *ngIf="secondaryTarget == 13">
+            <multiple-Edit *ngIf="splitviewInput.showSecondaryView" [datasource]="multipleEditFieldDetails" [applicationFormId]="objectsService.objectDataAddEditFormId" [objectCategoryId]="objectCategoryId" [moduleId]="moduleId" (onUpdate)="onMultipleEditUpdate($event)"> </multiple-Edit>
+        </secondary-view>
+    </split-view>
+    <slide [width]="slidewidth" [position]="position" [show]="showSlide" (closeDialog)="closeSlideDialog($event)">
+        <div>
+            <div>{{message}} </div>
+            <div style="width:100%">
+                <button  class="Savebutton "type="button" (click)="okDelete($event)">Yes</button>
+                <button  class="Savebutton "type="button" (click)="cancelClick($event)">No</button>
+            </div>
+        </div>
+    </slide>
+    <slide [width]="slidewidth" [position]="position" [show]="showSlidedelink" (closeDialog)="closeSlideDialogdelink($event)">
+        <div>
+            <div>{{message}} </div>
+            <div style="width:100%">
+                <button  class="Savebutton "type="button" (click)="okDelink($event)">Yes</button>
+                <button  class="Savebutton "type="button" (click)="cancelDelinClick($event)">No</button>
+            </div>
+        </div>
+    </slide>
+    <slide [width]="300" [position]="position" [type]="dialog" [show]="showMultipleAssign" (closeDialog)="closeMultipleAssign($event)">
+
+
+        <div>
+            <div>
+                <div>{{message}} </div>
+            </div>
+            <div>
+
+                <div style="width:100%">
+                    <button class="Savebutton " type="button" (click)="okMultipleAssign($event)">Yes</button>
+                    <button class="Savebutton " type="button" (click)="cancelMultipleAssign($event)">No</button>
+                </div>
+            </div>
+        </div>
+    </slide>
+</div>
+<style>
+    .employeeTab .navbar li {
+        width: 100px !important;
+    }
+
+    .attachment {
+        width: 750px;
+        display: block;
+    }
+
+    @media only screen and (min-device-width: 320px) and (max-device-width: 813px) and (orientation: portrait) {
+        .attachment {
+            width: 100%;
+        }
+    }
+
+    @media only screen and (min-device-width: 320px) and (max-device-width: 812px) and (orientation: landscape) {
+        .attachment {
+            width: 100%;
+        }
+    }
+</style>
+

@@ -1,0 +1,68 @@
+﻿
+<div style="padding-top: 5px;padding-left: 12px;">
+    <!--<button>Print</button>&nbsp;&nbsp;--><button  class="Savebutton "(click)="saveclick()"  [hidden]="spacePlaningPrjtStatusId >1">{{btnSave}}</button><!--&nbsp;&nbsp;<button>Restart</button>&nbsp;&nbsp;<button>Cancel</button>-->    
+</div>
+<div id="legendFloor" style="margin-left: 23%;">
+    <div style="font-size: 11px; letter-spacing: 1px; font-family: Arial">
+        Number inside the box represents Occupied 
+        <!--OrgNamefornew-->
+    </div>
+    <!--<div style="font-size: 11px; letter-spacing: 1px" id="divOrgName">
+        Right click on the box to Split/Remove/Freeze the Employee  
+    </div>-->
+</div>
+<split-view [splitviewObject]="splitviewInput"  [pageTitle]="pageTitle">
+    <primary-view >
+        <div style="overflow: auto; padding-left: 12px; padding-right: 12px;width:100%;position: absolute;height: 90%;overflow: scroll;">
+            <table #tbl class='table'>
+                <tbody *ngFor="let floorData of FloorwiseOrgData">
+                    <tr>
+                        <td class='stackinfo'>
+                            <div class='Names'> {{floorData.SiteName}}, {{floorData.BuildingName}}, {{floorData.FloorName}} </div>
+                            <div class='seatingcapacity'> Max. Capacity: {{floorData['Seating Capacity']}} </div>
+                            <!--<div class='newOrg'> <a (click)=NewOrgclick($event)>&#10010; Add {{OrgNamefornew}}</a> </div>-->
+                            <div class='newOrg'>
+                                <div [ngClass]="freeSeatsStyleClass(floorData['FreeSeat'])"></div>
+                                <div [ngClass]="freeSeatsStyleArrowClass(floorData['FreeSeat'])"></div>
+                                <div style="float:left;">{{getSeatingCapacity(floorData['FreeSeat'])}}</div>
+                            </div>
+                        </td>
+
+                        <td class='stacklist' #stackListtd dnd-sortable-container [sortableData]="floorData['OrgUnit']">
+                            <!--<div *ngIf="floorData['Seating Capacity'] == 0"  dnd-sortable [dragData]="OrgDetails" (onDropSuccess)="dropSuccess($event,floorData)" ></div>-->
+                            <div class="panel-body">
+                                <div *ngFor="let OrgDetails of floorData['OrgUnit'];trackBy:OrgDetails?.FloorId;let i=index; #last=last" dnd-sortable [sortableIndex]="i" [dragData]="OrgDetails" [dragEnabled]="!last" (onDragEnd)="ondragEnd(floorData,i,OrgDetails)" (onDropSuccess)="dropSuccess($event,floorData)">
+                                    <!--//-->
+                                    <div *ngIf="OrgDetails['Occupied Seats'] > 0 && !last" [ngClass]="gettileclass(OrgDetails['StatusId'],OrgDetails['HasSplit'],1,OrgDetails['Occupied Seats'])" (dblclick)="strdoubleclick($event,OrgDetails)"
+                                         id="{{OrgDetails['OrgUnitId']}}" [style.background]='setColor(OrgDetails["ColorId"],OrgDetails["OrgUnitId"])' [style.width.px]="calculateWidth(OrgDetails,floorData,0)" title='{{setDeptName(OrgDetails)}}'>
+                                        <p><a>{{OrgDetails["Occupied Seats"]}}</a></p><img *ngIf="OrgDetails['Occupied Seats'] > 0" [src]="gettileclass(OrgDetails['StatusId'],OrgDetails['HasSplit'],2)" />
+
+                                    </div>
+
+                                    <div *ngIf="last" [ngClass]="geVaccantclass(floorData['FreeSeat'])" title='' dnd-droppable draggable="false" [style.width.px]="calculateWidth(OrgDetails,floorData,1)" id="vac{{i}}"><a>{{floorData['FreeSeat']<0?0:floorData['FreeSeat']}}</a></div>
+                                </div>
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </primary-view>
+    <secondary-view *ngIf="sectarget == 1 && orgWiseEmpSrc!= undefined">
+        <orgwiseemp-grid [itemsSource]="orgWiseEmpSrc"  ></orgwiseemp-grid>
+    </secondary-view>
+    <secondary-view *ngIf="sectarget == 2  && fieldDtlsSave!= undefined">
+        <DynamicFields [dataSource]="fieldDtlsSave" (submitFieldObject)="onSubmitData($event)" [btnName]="btnSave" ></DynamicFields>
+    </secondary-view>
+</split-view>
+
+<!--(contextmenu)="rightclickdiv($event)"-->
+    <div *ngIf="isContextMenu" id="rmenu" style="position:absolute;display:block;">
+        <div id='divSplit'> <a href='#' onclick='Split()'> Split </a></div>
+        <div id='divRemove'> <a href='#' onclick='Remove(1)'> Remove </a></div>
+        <div id='divRemove'> <a href='#' onclick='Remove(2)'> Restore </a></div>
+        <div id='divFreeze'> <a href='#' onclick='Freeze(1)'> Freeze </a></div>
+        <div id='divFreeze'> <a href='#' onclick='Freeze(2)'> Defreeze </a></div>
+    </div>
+
+

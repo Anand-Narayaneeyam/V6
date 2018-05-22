@@ -1,0 +1,126 @@
+﻿<page [pagetitle]="pagePath" [withoutSubmenu]="true" [isEnableNotification]="isNotification">
+    <content>
+        <tabs *ngIf="isBuildingDrawing != undefined" [(selectedTab)]="selectedTab" (getSelectedTab)="getSelectedTab($event)" (onTabBeforeClose)="onTabBeforeClose($event)" [deleteIndex]="deleteIndex">
+            <tab *ngIf="moduleId != 3 && moduleId != 5  &&  moduleId != 7 &&  moduleId != 14 && isBuildingDrawing==true" tabTitle="Building Drawings" closeButtonVisible="hidden">
+
+                <split-view [splitviewObject]="splitviewBuilding" [pageTitle]="pageTitle">
+                    <primary-view>
+                        <submenu>
+                            <sub-menu [menuCard]=true [source]=menuData [count]=gridcount [menuIds]=enableMenu (onSubMenuChange)="onSubMenuChange($event);"> </sub-menu>
+                        </submenu>
+                        <building-drawing-list *ngIf="selectedTab ==buildingTabIndex" [action]="action" [pageTarget]="pageTarget" [moduleId]="moduleId" (targetTab)="ShiftTab($event)" (updateBuildingSelectedIds)="updateBuildingDrawingSelectedID($event)" [returnDataBuilding]="returnDataBuilding" (onBuildingSelectionChange)="buildingSelectionChange($event)" [revisions]="revisions" [buildingdrawingId]="drawingId" (onNoBuildingData)="onNoBuildingData($event)"  [buildingmarkups]="markups" ></building-drawing-list><!--(fieldobjectsBuilding)="getFieldObjectsBuilding($event)"-->
+                    </primary-view>
+                    <secondary-view *ngIf="isDisplaySetting == false">
+                        <drawing-addEdit *ngIf="splitviewBuilding.showSecondaryView && selectedTab ==buildingTabIndex  && (action!='markuplist' && action!='revisionlist' && action!='displaySettings')" [drawingType]="drawingType" (submitSuccess)="OnSuccessfulSubmi($event,1)" [action]="action" [selectedId]="selectedBuildingIds"></drawing-addEdit>
+                        <markup-list *ngIf="splitviewBuilding.showSecondaryView &&(action=='markuplist' && action!='displaySettings')" [drawingId]="drawingId" [pageTarget]="'1'" [revisionNo]="revisionNo" [drawingType]="drawingType" (onViewmarkupClick)="onMarkupViewOnClick($event)" (onMarkupCountChange)="onMarkupChange($event)"></markup-list>
+                        <revision-list *ngIf="splitviewBuilding.showSecondaryView && (action=='revisionlist' && action!='displaySettings')" [moduleId]="moduleId" [pageTarget]="pageTarget" [drawingId]="drawingId" [revisionNo]="revisionNo" [drawingType]="drawingType" (onViewDwgClick)="onDrawingView($event)" (onRevisionCountChange)="onRevisionChange($event)"></revision-list>
+
+                    </secondary-view>
+
+                </split-view>
+            </tab>
+            <tab *ngIf="moduleId" tabTitle={{floorTabName}} closeButtonVisible="hidden">
+                <split-view [splitviewObject]="splitviewFloor" [pageTitle]="pageTitle" >
+                    <primary-view>
+                        <submenu>
+                            <sub-menu [menuCard]=true  [source]=menuData [count]=gridcount [menuIds]=enableFloorMenu (onSubMenuChange)="onSubMenuChange($event);"> </sub-menu>
+                        </submenu>
+                        <floor-drawing-list *ngIf="selectedTab ==floorTabIndex" [connectivityListInputs]="connectivityListInputs" [action]="action" [pageTarget]="pageTarget" [selectedRowDetails]="selectedRowDetails" [moduleId]="moduleId" (targetTab)="ShiftTab($event)" (onFloorSelectionChange)="floorSelectionChange($event)" (updateFloorSelectedIds)="updateFloorDrawingSelectedID($event)" [returnData]="returnData" [revisions]="revisions" [floordrawingId]="drawingId" (fieldobjectsFloor)="getFieldObjectsFloor($event)" (onNoFloorData)="onNoFloorData($event)" [objectCategoryId]="objectCategoryId"  [markups]="markups"></floor-drawing-list>
+                    </primary-view>
+                    <secondary-view *ngIf="isDisplaySetting == false">
+                        <drawing-addEdit *ngIf="splitviewFloor.showSecondaryView && selectedTab ==floorTabIndex  && (action!='markuplist' && action!='revisionlist' && action!='displaySettings')" [drawingType]="drawingType" [pageTarget]="'1'" (submitSuccess)="OnSuccessfulSubmi($event,2)" [action]="action" [selectedId]="selectedFloorIds"></drawing-addEdit>
+                        <markup-list *ngIf="splitviewFloor.showSecondaryView &&(action=='markuplist' && action!='displaySettings')" [pageTarget]="'1'" [drawingId]="drawingId" [revisionNo]="revisionNo" [drawingType]="drawingType" (onViewmarkupClick)="onMarkupViewOnClick($event)" (onMarkupCountChange)="onMarkupChange($event)" ></markup-list>
+                        <revision-list *ngIf="splitviewFloor.showSecondaryView && (action=='revisionlist' && action!='displaySettings')" [moduleId]="moduleId" [pageTarget]="pageTarget" [drawingId]="drawingId" [revisionNo]="revisionNo" [drawingType]="drawingType" (onViewDwgClick)="onDrawingView($event)" (onRevisionCountChange)="onRevisionChange($event)"></revision-list>
+
+                    </secondary-view>
+                    <secondary-view *ngIf="isDisplaySetting == true && selectedTab ==floorTabIndex && action=='displaySettings' ">
+                        <display-setting *ngIf="dispSettingCategoryId > 0" [IsGrid]="blnIsGrid" [AdditionalDataFieldCategoryId]="0" [DisplaySettingCategoryId]="dispSettingCategoryId" (emitdisplaySetting)="getUpdatedDisplaySettingsFloor($event)"></display-setting>
+                    </secondary-view>
+                </split-view>
+            </tab>
+            <tab *ngIf="moduleId && viewDrawing==true && DWLdrawingtype!=3 && !showIFC" tabTitle={{viewTabName}} closeButtonVisible="visible">
+                <opendrawing *ngIf="IsOpenDrawingComponentActive==true" [isPlotInDrawing]="isPlotInDrawing" [spaceObjInUnlock]="spaceObjInUnlock" [isDrawingUnlocked]="isDrawingUnlocked" [extDrawingId]="drawingId" [isSchedulingOnlyUser]="isSchedulingUser" [extRevisionNo]="revisionNo" [moduleId]=moduleId [activeModuleIds]=moduleId [pageTarget]=pageTarget [extDrawingType]="drawingType" [extDrawingDetails]="drawingDetails" [markupEvent]="markupEvent" [selectedRow]="selectedRowDetails" [extDrawingCategoryId]="drawingCategoryId" (outDrawingobject)="outDrawingObject($event)" (outUnlockDrawingClicked)="unlockDrawing($event)" (outSpacedataClicked)="spacedataClicked($event)" (afterassetplace)="afterassetplaceclick($event)" (showDrawingAfterUnlock)="showDrawingAfterUnlockEvent($event)" (showZoomAfterUnlock)="showZoomAfterUnlockEvent($event)"></opendrawing>
+                <reserveroomshedulingdrawing *ngIf="IsOpenDrawingComponentActive==true && isSchedulingUser==true" [drawingId]="drawingId" [selectedData]="drawingDetails" [pageTarget]="2"></reserveroomshedulingdrawing>
+            </tab>
+            <tab *ngIf="moduleId && viewDrawing==true && DWLdrawingtype==3 && showIFC"  tabTitle={{viewTabName}} closeButtonVisible="visible">
+                <div style="position:relative;height: calc(100%);width:100%">
+                    <bimviewer [DrawingId]="drawingId" [RevisionNo]="revisionNo" [DrawingType]="drawingType" [selectedRow]="drawingDetails"></bimviewer>
+                </div>
+            </tab>
+        </tabs>
+        <div *ngIf="moduleId != 3 && moduleId != 5 && moduleId != 7 &&  moduleId != 14">
+            <slide [width]="200" [position]="position" [type]="dialog" [show]="showSlide" (closeDialog)="closeSlideDialog($event)">
+                <div>
+                    <div>
+                        While replacing drawing, the existing markups will be deleted. Do you want to continue?
+                    </div>
+                    <div>
+
+                        <div style="width:100%">
+                            <button  class="Savebutton "type="button" (click)="okReplace($event)">Yes</button>
+                            <button  class="Savebutton "type="button" (click)="cancelClick($event)">No</button>
+                        </div>
+                    </div>
+                </div>
+            </slide>
+            <slide [width]="300" [position]="'top-right'" [type]="'dialog'" [show]="showSlideDesc" (closeDialog)="closeSlideDescDialog($event)">
+                <div style="width:300px">
+                    <markup-description *ngIf="showSlideDesc" (submitSuccess)="onMarkupDesciptionSubmit($event)" [drawingType]="drawingType"></markup-description>
+                </div>
+            </slide>
+            <slide [width]="310" [position]="'top-right'" [type]="dialog" [show]="showSlideMarkup" (closeDialog)="closeSlideConfirmDialog($event)">
+
+                <div>
+                    <div>
+                        {{markupSaveMessage}}
+                    </div>
+                    <div>
+
+                        <div style="width:100%">
+                            <button  class="Savebutton "type="button" (click)="okMarkupSave($event)">Yes</button>
+                            <button  class="Savebutton "type="button" (click)="noMarkupSave($event)">No</button>
+                        </div>
+                    </div>
+                </div>
+            </slide>
+        </div>
+        <div *ngIf="moduleId ==3">
+
+            <slide [width]="300" [position]="position" [type]="dialog" [show]="showSlideDeleteSpaceData" (closeDialog)="closeSlideDeleteSpaceDataDialog($event)">
+
+                <div>
+                    <div>
+                        Are you sure you want to delete the space data for the selected floor(s)?
+                    </div>
+                    <div>
+
+                        <div style="width:100%">
+                            <button  class="Savebutton "type="button" (click)="okDeleteSpaceData($event)">Yes</button>
+                            <button  class="Savebutton "type="button" (click)="noDeleteSpaceData($event)">No</button>
+                        </div>
+                    </div>
+                </div>
+            </slide>
+            <slide [width]="300" [position]="position" [type]="dialog" [show]="showSlidelockDrawing" (closeDialog)="closeSlideLockDrawingDialog($event)">
+
+                <div>
+                    <div>
+                        Are you sure you want to lock the selected drawing(s)?
+                    </div>
+                    <div>
+
+                        <div style="width:100%">
+                            <button  class="Savebutton "type="button" (click)="okLockDrawing($event)">Yes</button>
+                            <button  class="Savebutton "type="button" (click)="noLockDrawing($event)">No</button>
+                        </div>
+                    </div>
+                </div>
+            </slide>
+        </div>
+    </content>
+</page>
+<style>
+    .navbar {
+        z-index:0!important;
+    }
+</style>

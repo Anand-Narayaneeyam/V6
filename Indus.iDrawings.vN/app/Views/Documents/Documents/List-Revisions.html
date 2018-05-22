@@ -1,0 +1,23 @@
+﻿<div>
+    <submenu>
+        <sub-menu [source]=menuData [menuCard]=types [count]=totalItems [menuIds]=enableMenu (onSubMenuChange)="onSubMenuChange($event);"> </sub-menu>
+    </submenu>
+    <split-view [splitviewObject]="splitviewInput" [pageTitle]="pageTitle" style="height: calc(100% - 35px);">
+        <primary-view>
+            <gridView [dataSource]="itemsSource" [properties]="inputItems" [columns]="fieldObject" [refreshgrid]="refreshgrid" (onSorting)="onSort($event)"></gridView>
+        </primary-view>
+    </split-view>
+        <slide [width]="200" [position]="position" [type]="dialog" [show]="showSlide" (closeDialog)="closeSlideDialog($event)">
+            <div>
+                <div tabindex="0">
+                    {{message}}
+                </div>
+                <div>
+                    <div style="width:100%">
+                        <button class="Savebutton " type="button" (click)="okDelete($event)">Yes</button>
+                        <button class="Savebutton " type="button" (click)="cancelClick($event)">No</button>
+                    </div>
+                </div>
+            </div>
+        </slide>
+</div>

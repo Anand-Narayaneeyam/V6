@@ -1,0 +1,34 @@
+﻿<div style="height:35px;">
+    <submenu>
+        <sub-menu [menuCard]=true [source]=menuData [count]=gridcount [menuIds]=enableMenu (onSubMenuChange)="onSubMenuChange($event);" [selectedId]=selIds> </sub-menu>
+    </submenu>
+</div>
+<!--<confirmation (onConfirm)="okDelete($event)"></confirmation>-->
+<div style="width: 100%;">
+    <sort style="width:100%;display:block;min-width:330px" *ngIf="fields" [fieldNames]="fields" [listItems]=sourceData (sortEvent)="onSorting($event)"  [disableSort]="disableSort"></sort>
+</div>
+<list style="width: 400px;max-height: 70%;overflow-y: auto;overflow-x:hidden" [source]=sourceData [(selectedIds)]="selIds" [datakey]="'Id'" [selectionMode]="'Single'">
+    <template let-item>
+        <card (onSubmition)="onCardSubmit($event)" [datakeyValue]="item.Id" [type]="'list'" (inlineDelete)="onDelete($event)" (onCancelClick)="onCancel($event)" [submitSuccess]="submitSuccess">
+            <div *ngIf="fields">
+                <field [fieldObject]="fields[1]" [fieldValue]="item['Field Value']"></field>
+            </div>
+        </card>
+    </template>
+</list>
+<slide [width]="200" [position]="position" [type]="dialog" [show]="showSlide" (closeDialog)="closeSlideDialog($event)">
+
+    <div>
+        <div>
+            {{message}}
+        </div>
+        <div>
+
+            <div style="width:100%">
+                <button  class="Savebutton "type="button" (click)="okDelete($event)">Yes</button>
+                <button  class="Savebutton "type="button" (click)="cancelClick($event)">No</button>
+            </div>
+        </div>
+    </div>
+</slide>
+<paging [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="pageChanged($event);"></paging>

@@ -1,0 +1,75 @@
+﻿<div>
+    <div style="width:100%;padding-bottom:1%;float:left;margin-top:5px;">
+        <div style="text-overflow:ellipsis;overflow:hidden;">Calendar Name:&nbsp;<b>{{calendarName}}</b></div>
+    </div>
+    <div style="width:450px">
+        <div style="width:350px;float:left;height:100px">
+            <gridView [(dataSource)]="itemsSource" [properties]="inputItems" [columns]="fieldObject" [refreshgrid]="refreshgrid" (onSorting)="onSort($event)"></gridView>
+        </div>
+        <div>
+            <button class="Savebutton Editbtn" type="button" (click)="EditClick()" [hidden]="enableButton">Edit</button>
+            <button class="Savebutton Deletebtn" type="button" (click)="DeleteClick()" [hidden]="enableButton">Delete</button>
+         
+        </div>
+        <div style="height:140px">&nbsp;</div>
+        <div style="width:300px;float:left;">
+            <TimeComponent *ngIf="fieldObjectFrom != undefined" [fieldObject]="fieldObjectFrom"></TimeComponent>
+        </div>
+        <div>                
+              <button class="Savebutton Addbtn" type="button" (click)="AddClick()" [hidden]="enableButton">{{addBtnName}} </button>
+        </div>
+        <div>
+            <TimeComponent *ngIf="fieldObjectTo != undefined" [fieldObject]="fieldObjectTo"></TimeComponent>
+        </div>
+    </div>
+    <div style="height:60px">&nbsp;</div>        
+    <div>
+        <button class="Savebutton Savebtn" type="button" (click)="SaveClick()"  [hidden]="enableButton">Save</button>
+    </div>
+    <slide [width]="200" [position]="position" [type]="dialog" [show]="showSlide"  (closeDialog)="closeSlideDialog($event)">
+
+        <div>
+            <div>
+                {{message}}
+            </div>
+            <div>
+
+                <div style="width:100%">
+                    <button class="Savebutton " type="button" (click)="okDelete($event)">Yes</button>
+                    <button class="Savebutton " type="button" (click)="cancelClick($event)">No</button>
+                </div>
+            </div>
+        </div>
+    </slide>
+</div>
+<style>
+    .Editbtn {
+        position: relative;
+        margin-top: 5px;
+        margin-left: 20px;
+        float: left;
+        width:70px !important;
+    }
+    .Deletebtn {
+        position: relative;
+        margin-top: 5px;
+        margin-left: 20px;
+        float: left;
+        width:70px !important;
+    }
+    .Addbtn {
+        position: relative;
+         margin-top: 30px;
+        margin-left: 20px;
+        float: left;
+         width:120px !important;
+         white-space:nowrap;
+    }
+    .Savebtn {
+        position: relative;
+        margin-top: 0px;
+        margin-left: 20px;
+        float: left;
+        width:70px !important;
+    }
+</style>

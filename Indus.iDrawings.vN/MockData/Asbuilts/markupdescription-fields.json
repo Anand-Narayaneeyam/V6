@@ -1,0 +1,17 @@
+﻿{
+  "data": [
+   
+    {
+      "FieldId": 1,
+      "FieldName": "Description",
+      "FieldType": 4,
+      "IsVisible": true,
+      "IsMandatory": true,
+      "IsDisabled": false,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false,
+       "MaxLength": 4000,
+      "NotificationType": "inline"
+    }
+  ]
+}

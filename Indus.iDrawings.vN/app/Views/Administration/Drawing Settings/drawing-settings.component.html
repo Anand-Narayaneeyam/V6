@@ -1,0 +1,25 @@
+﻿<page  [pagetitle]="pagepath">
+    <pagepath>
+    </pagepath>
+    <content>
+        <section  *ngIf="isAdmin==true" title="iDrawings Layer Names" [isExpanded]="sectionExpansionStatus[0].isExpanded" [height]="30" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <drawing-layer-names *ngIf="sectionExpansionStatus[0].isExpanded"></drawing-layer-names>
+        </section>
+        <section title="Plot Styles" [isExpanded]="sectionExpansionStatus[1].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <plot-style></plot-style>
+          </section>
+        <section title="Assign Style for Drawing Layers" [isExpanded]="sectionExpansionStatus[2].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <assignstyle-drawing-layer></assignstyle-drawing-layer>
+        </section>
+      
+        <section *ngIf="showLayer==true" title="Drawing Layers" [isExpanded]="sectionExpansionStatus[5].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <drawing-layer *ngIf="sectionExpansionStatus[5].isExpanded"></drawing-layer>
+        </section>
+        <section *ngIf="showLayer==true" title="Layer Function Mappings" [isExpanded]="sectionExpansionStatus[6].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <layer-function-mapping *ngIf="sectionExpansionStatus[6].isExpanded"></layer-function-mapping>
+        </section>
+    </content>
+</page>
+
+
+

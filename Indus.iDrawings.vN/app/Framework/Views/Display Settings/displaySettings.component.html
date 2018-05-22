@@ -1,0 +1,214 @@
+﻿<style>
+    #ColorPicker {
+        /*position:absolute !important;*/
+    }
+    :host .colorPickerDiv{
+        margin-left: -390% !important;
+        top: 40%;
+    }
+    #overlayColorPicker {
+        width:100% !important;
+    }
+    th,td {
+        font-size: 0.8em;
+        width:115px;
+        word-break: break-word;
+        word-wrap:break-word;
+        max-width:125px;
+    }
+
+    @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) { 
+    
+       th,td {
+            padding:10px 15px;
+         }   
+    } 
+
+    #783 {
+        text-align : center;
+    }
+    span.required {
+        display: none !important;
+    }
+    .displaySettingsheader {
+        text-align: center;
+        font-weight: bold;
+        background-color: #f0f0f1;
+        color: black;
+        width: 100%;
+    }
+    .dispSettingSelAll {
+        background-color:#fffdfd;
+        color:black;
+    }
+    .fontSize {
+        width: 80px;
+    }
+    .chkBoxes {
+       width: 75px; 
+    }
+    .colorPickers {
+        width: 75px;
+    }
+</style> 
+<div style="height:85%;overflow-y:auto">
+    <table style="display:block;">
+        <tr class="list-group-item displaySettingsheader">
+            <th>
+                Field Name
+            </th>
+            <th *ngIf="IsGrid == false" class="fontSize">
+                <center>Font Size</center>
+            </th>
+            <th *ngIf="IsGrid == false" style="text-align:center" class="chkBoxes">
+                Bold
+            </th>
+            <th *ngIf="IsGrid == false" style="text-align:center" class="chkBoxes">
+                Italics
+            </th>
+            <th *ngIf="IsGrid == false" style="text-align:center" class="colorPickers">
+                <center>Color</center>
+            </th>
+            <th *ngIf="IsGrid == false" style="text-align:center" class="chkBoxes">
+                Show in Drawing
+            </th>
+            <th *ngIf="IsGrid == false" style="text-align:center" class="chkBoxes">
+                Show in Tooltip
+            </th>
+            <th *ngIf="IsGrid == true" style="text-align:center" class="chkBoxes">
+                Show in Grid
+            </th>
+        </tr>
+    </table>
+    <table style="display:block;">
+        <tr class="list-group-item dispSettingSelAll">
+            <th>
+                Select All
+            </th>
+            <th *ngIf="IsGrid == false" class="fontSize">
+            </th>
+            <th *ngIf="IsGrid == false" style="text-align:center" class="chkBoxes">
+                <center>
+                    <input style="width: 20px;" type="checkbox" title="Select All" role="checkbox"  id="SelectAllBold" #SelectAllBold name="SelectAllBold" value="All" [checked]="IsBoldSelectAllChecked" (change)="selectAllOptionsBold($event)" />
+                </center>
+            </th>
+            <th *ngIf="IsGrid == false" style="text-align:center" class="chkBoxes">
+                <center>
+                    <input style="width: 20px;" type="checkbox" title="Select All" role="checkbox"  id="SelectAllItalics" #SelectAllItalics name="SelectAllItalics" value="All" [checked]="IsItalicsSelectAllChecked" (change)="selectAllOptionsItalics($event)" />
+                </center>
+            </th>
+            <th *ngIf="IsGrid == false" style="text-align:center" class="colorPickers">
+            </th>
+            <th *ngIf="IsGrid == false" style="text-align:center" class="chkBoxes">
+                <center>
+                    <input style="width: 20px;" type="checkbox" title="Select All" role="checkbox"  id="SelectAllDrawing " #SelectAllDrawing name="SelectAllDrawing" value="All" [checked]="IsDrawingSelectAllChecked" (change)="selectAllOptionsDrawing($event)" />
+                </center>
+            </th>
+            <th *ngIf="IsGrid == false" style="text-align:center" class="chkBoxes">
+                <center>
+                    <input style="width: 20px;" type="checkbox" title="Select All" role="checkbox"  id="SelectAllToolTip" #SelectAllToolTip name="SelectAllToolTip" value="All" [checked]="IsToolTipSelectAllChecked" (change)="selectAllOptionsToolTip($event)" />
+                </center>
+            </th>
+            <th *ngIf="IsGrid == true" style="text-align:center" class="chkBoxes">
+                <center>
+                    <input style="width: 20px;" type="checkbox" title="Select All" role="checkbox"  id="SelectAllGrid" #SelectAllGrid name="SelectAllGrid" value="All" [checked]="IsGridSelectAllChecked" (change)="selectAllOptionsGrid($event)" />
+                </center>
+            </th>
+        </tr>
+    </table>
+    <table id="displayDataTable" style="display:block;max-height:80%;min-height: 80%;overflow-y:auto" *ngIf="dispSettingObject" dnd-sortable-container [sortableData]="dispSettingObject">
+        <tr *ngFor="let field of (dispSettingObject);let i=index" class="list-group-item" dnd-sortable  [sortableIndex]="i" [dragEnabled]="dragEnable" (onDragEnd)="ondragEnd(dragEnable)">
+            <td >
+                {{field.FieldName}}
+            </td>
+            <td *ngIf="IsGrid == false" class="fontSize">
+                <center>
+                    <span *ngIf="strarrayList[i] != undefined">
+                        <StringTextBox [fieldObject]=strarrayList[i] (txtBoxChange)="onChangeInput($event)" [alignContent]=strAlign style="text-align:center" title="{{field.FieldName}}"  (keypress)="getKeyUp($event)"></StringTextBox>
+                    </span>
+                </center>
+            </td>
+            <td *ngIf="IsGrid == false" class="chkBoxes">
+                <center>
+                    <span *ngIf="dispSettingObject[i].ReportFieldId != 990001 && dispSettingObject[i].ReportFieldId != 990002">
+                        <input style="width: 20px;" id="{{field.ReportFieldId + 'chkBold'+i}}" title="{{field.FieldName}}" role="checkbox" name="chkBold" type="checkbox" #chk1 [(ngModel)]="field.IsBold" [checked]="checkedOptionIsBold(field) && IsChecked" (change)="updateCheckedOptionsIsBold(field, $event)">
+                    </span>
+                </center>
+            </td>
+            <td *ngIf="IsGrid == false" class="chkBoxes"> 
+                <center>
+                    <span *ngIf="dispSettingObject[i].ReportFieldId != 990001 && dispSettingObject[i].ReportFieldId != 990002">
+                        <input style="width: 20px;" id="{{field.ReportFieldId + 'chkItalic'+i}}" title="{{field.FieldName}}" role="checkbox" name="chkItalic" type="checkbox" #chk1 [(ngModel)]="field.IsItalic" [checked]="checkedOptionIsItalic(field) && IsChecked" (change)="updateCheckedOptionsIsItalic(field, $event)">
+                    </span>
+                </center>
+            </td>
+            <td *ngIf="IsGrid == false" class="colorPickers"> 
+                <center>
+                    <span *ngIf="arrayList[i] != undefined">
+                        <span *ngIf="dispSettingObject[i].ReportFieldId != 990001 && dispSettingObject[i].ReportFieldId != 990002">
+                            <ColorPicker id="ColorPicker" name="ColorPicker" [fieldObject]=arrayList[i] (colorPickerValueChange)="getColorChange($event)" title="{{field.FieldName}}"  style="margin-top:-15px"></ColorPicker>
+                        </span>
+                    </span>
+                </center>
+            </td>
+            <td *ngIf="IsGrid == false" class="chkBoxes"> 
+                <center>
+                    <span *ngIf="dispSettingObject[i].ReportFieldId != 990001 && dispSettingObject[i].ReportFieldId != 990002">
+                        <input style="width: 20px;" id="{{field.ReportFieldId}}" title="{{field.FieldName}}" role="checkbox" type="checkbox" #chk1 [(ngModel)]="field.ShowinDrawing" [checked]="checkedOptionDrawing(field) && IsChecked" (change)="updateCheckedOptionsDrawing(field, $event)">
+                    </span>
+                </center>
+            </td>
+            <td *ngIf="IsGrid == false" class="chkBoxes"> 
+                <center>
+                    <span *ngIf="dispSettingObject[i].ReportFieldId != 990001 && dispSettingObject[i].ReportFieldId != 990002">
+                        <input style="width: 20px;" id="{{field.ReportFieldId}}" title="{{field.FieldName}}" role="checkbox" type="checkbox" #chk1 [(ngModel)]="field.ShowinTooltip" [checked]="checkedOptionToolTip(field) && IsChecked" (change)="updateCheckedOptionsToolTip(field, $event)">
+                    </span>
+                </center>
+            </td>
+            <td *ngIf="IsGrid == true" class="chkBoxes"> 
+                <center>
+                    <span *ngIf="dispSettingObject[i].ReportFieldId != 990001 && dispSettingObject[i].ReportFieldId != 990002">
+                        <input style="width: 20px;" id="{{field.ReportFieldId}}" title="{{field.FieldName}}" role="checkbox" type="checkbox" #chk1 [(ngModel)]="field.ShowinGrid" [checked]="checkedOptionGrid(field) && IsChecked" (change)="updateCheckedOptionsGrid(field, $event)">
+                    </span>
+                </center>
+            </td>
+        </tr>
+    </table>
+    
+      
+</div>
+<div *ngIf="disableBtnSave == false">
+    <button type="button" style="margin-top:8px;" (click)="SaveClick()" class="Savebutton">Save Changes</button>
+</div>
+<div *ngIf="disableBtnSave == true">
+    <button type="button" style="margin-top:8px;" class="Savebutton">Save Changes</button>
+</div>
+<div *ngIf="dragEnable== true" style="color:#178ae8;">
+    Drag and drop the fields to change the field order
+</div>
+
+<slide style="position: fixed;top: 85px;height: 130px;right: 10px;visibility: visible;margin-top:12px;" [width]="400" [position]="Position" [type]="dialog" [inline]=false [show]=showDispSetSlide [absolute]=true (closeDialog)="closeSlideDialog($event)">
+    <div>
+        <div tabindex="0" aria-label="Display Settings updated. Do you want to set this as System Default" >
+            Display Settings updated. Do you want to set this as System Default?
+        </div>
+        <div>
+            <div style="width:100%">
+                <button  tabindex="0" role="button" type="button" (click)="DefaultSetting($event)" class="Savebutton">Yes</button>
+                <button  tabindex="0" role="button" type="button" (click)="cancelClick($event)" class="Savebutton">No</button>
+            </div>
+        </div>
+    </div>
+</slide>
+
+
+<style>
+    @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+        #displayDataTable 
+        {
+            min-height:0!important;
+        }
+    }
+
+
+</style>

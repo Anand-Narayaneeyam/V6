@@ -1,0 +1,29 @@
+﻿<div style="float: right; width: 50%;">
+    <slide [width]="slidewidth" [position]="position" [show]="showSlide" (closeDialog)="closeSlideDialog($event)">
+        <div>
+            <div>{{message}}  </div>
+            <div style="width:100%">
+                <button  class="Savebutton "type="button" (click)="okDelete($event)">Yes</button>
+                <button  class="Savebutton "type="button" (click)="cancelClick($event)">No</button>
+            </div>
+        </div>
+    </slide>
+</div>
+<submenu>
+    <sub-menu [source]=menuData [count]=totalItems [menuCard]=types [menuIds]=enableMenu (onSubMenuChange)="onSubMenuChange($event);"> </sub-menu>
+</submenu>
+<split-view [splitviewObject]="splitviewInput" [pageTitle]="pageTitle">
+    <primary-view>
+        <div>
+            <div>
+                <gridView [(dataSource)]="sourceData" [ngClass]="totalItems > itemsPerPage ? 'pagewithPaging':'pagewithoutPaging'" [properties]="inputItems" [columns]="fields" [refreshgrid]="refreshgrid" (onSorting)="onSort($event)"></gridView>
+            </div>
+            <div>
+                <paging *ngIf="totalItems >itemsPerPage ? 'true' : 'false'" [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="pageChanged($event);"></paging>
+            </div>
+        </div>        
+    </primary-view>
+    <secondary-view>
+        <jobtitle-add-edit *ngIf="splitviewInput.showSecondaryView == true" (submitSuccess)="submitReturn($event)" [action]="action" [btnName]="btnName" [selectedId]="inputItems.selectedIds" [fieldDetailsAdd]="fieldDetailsAdd1"></jobtitle-add-edit>
+    </secondary-view>
+</split-view>

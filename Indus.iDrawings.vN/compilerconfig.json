@@ -1,0 +1,18 @@
+﻿[
+  {
+    "outputFile": "app/Views/Shared/layout.css",
+    "inputFile": "app/Views/Shared/layout.less"
+  },
+  {
+    "outputFile": "app/Framework/Views/Page/Page.css",
+    "inputFile": "app/Framework/Views/Page/Page.less"
+  },
+  {
+    "outputFile": "app/Framework/Views/Submenu/SubMenu.css",
+    "inputFile": "app/Framework/Views/Submenu/SubMenu.less"
+  },
+  {
+    "outputFile": "app/Views/Shared/LoginPage.css",
+    "inputFile": "app/Views/Shared/LoginPage.less"
+  }
+]

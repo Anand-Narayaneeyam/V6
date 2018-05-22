@@ -1,0 +1,9 @@
+﻿
+    <ul class="navbar" [ngClass]="verticalTab !=true ? 'navbar':'navbarVertical'">
+        <li *ngFor="let tab of tabs" (click)="selectTab(tab,true)" [class.active]="tab.active">
+            <a style="float:left" role="menuitem" tabindex="0" (keypress)="onkeytabPress($event,tab,true)" [attr.aria-label]="tab.title+' tab'" title="{{tab.title}}">{{tab.title}}</a>
+            <!--<input type="image" src="Content/Layout/button_cancel.png" (click)="Onclick(tab,$event)" height="17" style="float:right;" [style.visibility]="tab.closeButtonVisible">-->
+            <img  src="Content/Layout/button_cancel.png" (click)="Onclick(tab,$event)" height="17" style="float:right;" [style.visibility]="tab.closeButtonVisible"  tabindex="0" [attr.aria-label]="tab.title+' Tab Close button'" (keypress)="closeonkeypress(tab,$event)" role="none"/>
+        </li>
+    </ul>
+    <ng-content></ng-content>

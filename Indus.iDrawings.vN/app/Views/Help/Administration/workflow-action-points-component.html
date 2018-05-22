@@ -1,0 +1,77 @@
+﻿<page [pagetitle]="pagePath">
+    <pagepath>
+    </pagepath>
+    <content>
+        <section title="Action Points" [isExpanded]="true" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div>
+
+
+                <p>In a typical organization, different types of Requests, corresponding to different Work Types could be there. The workflow for each Work Type could be different. For each Work Type, the Action Points in its workflow and the Actions associated with each Action Point could be different. Setting up a workflow involves the creation of these Action Points and the Outcomes, with the routing rules for automatic flow of work between the action points. iDrawings Workflow option offers a powerful platform for automated workflow management by providing the creation of user defined workflows and alerting mechanisms.</p>
+                <p>Workflow management provides approval of Requests for different Workflow Categories like, Space Planning Project and Work Orders etc.</p>
+                <p>Action Points are the different stages in a workflow, where Actions are to be taken. It is possible to associate one or more Actions with each Action Point, called Outcomes. It is also possible to specify one or more users or user groups as the persons for taking action for each Action Point. At each Action Point, one action will be taken by one of the Action Point users by selecting it from the possible actions.</p>
+
+                <p>Action Point while the actual workflow happens. For this, the ‘Specify User at Previous Action Point’ check box has to be checked. If this is set here, there will be an option to select one of the Action Point users from a combo box in the request Review Page at the previous Action Point. All users associated with the particular action point will be populated in the Users combo box. (If User Group is attached to the Action Point, only users of category iDrawings users in that group will be shown in the combo.) If the Specify User check box is not checked, there will not be any option to select a User in the request Review page at the previous Action Point. In this case, any one of the iDrawings users associated with the selected Action Point can Review the request and take necessary action.</p>
+
+                <p>On selecting this option all existing Action Points will be displayed with Users/User Groups attached to the particular Action Point and Work Types in which the Action Point is used, in Users/User Group and Work Types columns respectively. There will be provision to add, edit and delete Action Points. Also Users or User Groups can be added to the Action Point by clicking on Action Point <span class="header2">Users/User Groups</span> <img class="helpicon" src="Content/Icons/data_userN.png" alt="Users / User Groups" />  icon. Deletion can be done only if the Action Point is not part of any workflow, for which a Request has been created.  </p>
+                <p><span class="header1">Add:</span> New Action Point can be added by clicking <span class="header2">Add</span> <img class="helpicon" src="Content/Icons/data_addN.png" alt="Add" /> icon.</p>
+                <p><span class="header1">Edit:</span> Edit an Action Point by selecting it and then clicking the <span class="header2">Edit</span> <img class="helpicon" src="Content/Layout/edit_button.png" alt="Edit" /> icon.</p>
+                <p><span class="header1">Action Point Users/User Groups:</span> This option is to add Users/User Groups to the selected Action Point. On selecting this <span class="header2">option</span> <img class="helpicon" src="Content/Icons/data_userN.png" alt="Users / User Groups" />   , Action Point Users/User Groups window will be displayed listing all active iDrawings Users and User Groups in different sections. Select the required Users/User Groups and click Save Changes button. The selected Users/User Groups will be assigned to the selected Action Point.</p>
+                <p><span class="header1">Delete:</span> Delete an Action Point by selecting it and then clicking the <span class="header2">Delete </span> <img class="helpicon" src="Content/Layout/delete_button.png" alt="Delete" />   icon.</p>
+
+                <p><span class="header1">Set Workflow Category Action Points:</span></p>
+
+                <p>For each Workflow Category, the Action Points corresponding to the workflow Category has to be mapped. This option is to assign the necessary Action Points to the selected Workflow Category. The Action Points mapped to the particular category only will be available in respective modules for the creation of Workflow.</p>
+                <p>Select an Action Point and then click this icon <img class="helpicon" src="Content/Icons/set-workflow-action-point.png" alt="Delete" />  , Set Workflow Category page will be displayed listing different workflow categories related to different modules like Space Planning Project (Employee Module) and Work Orders (Work Order Module) based on the modules selected by the customer with checkboxes. Make necessary selections and click Save Changes button, the mapped Action Points only will be available in corresponding Workflow Category in respective modules.</p>
+
+
+            </div>
+        </section>
+    </content>
+</page>
+<style type="text/css">
+    h3.Mainheader {
+        color: #178AE8;
+    }
+
+    .header1 {
+        font-weight: bold;
+        color: #178AE8;
+    }
+
+    .header2 {
+        font-weight: normal;
+        color: #178AE8;
+    }
+
+    p {
+        margin-left: 38px;
+        font-size: 13px;
+        margin-right: 3em;
+    }
+
+    .header3 {
+        font-weight: bold;
+        color: black;
+    }
+    /**/ h1 {
+        color: #178AE8;
+        font-size: 1.3em;
+        margin-left: 38px;
+    }
+
+    h2 {
+        color: #178AE8;
+        font-size: 1em;
+        margin-left: 38px;
+    }
+
+    .config {
+        background-color: #178AE8;
+    }
+
+    .helpicon {
+        vertical-align: baseline;
+        width: 20px;
+        height: 20px;
+    }
+</style>

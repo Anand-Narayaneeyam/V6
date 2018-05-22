@@ -1,0 +1,29 @@
+﻿<split-view [splitviewObject]="splitViewDataGrid">
+    <primary-view>
+        <tabs [(selectedTab)]="selectedTab" (getSelectedTab)="getSelectedTab($event)" style="height:95%;display:block">
+            <tab tabTitle="Drawings" closeButtonVisible="hidden">
+                <div>
+                    <sub-menu [source]=menuData [count]=gridcount [menuIds]=enableMenu (onSubMenuChange)="onSubMenuChange($event);"></sub-menu>
+                </div>
+                <div style="height:100%">
+                    <label>Scenario: {{selctedRowData['Scenario Name']}}</label>
+                    <div style="height:80%;" *ngIf="fieldDetScenarioDrawing != undefined && selectedTab ==0">
+                        <gridView [dataSource]="itemSource" [properties]="inputItems" [columns]="fieldDetScenarioDrawing"  (onSorting)="onSort($event)"></gridView>
+                    </div>
+                    <div style="height:20%;">
+                        <paging [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="pageChanged($event);"></paging>
+                    </div>
+                </div>
+
+            </tab>
+            <tab *ngIf="viewDrawing==true" tabTitle="View Drawing" closeButtonVisible="visible">
+                <div  *ngIf="selectedTab ==1">
+                    <opendrawing *ngIf="IsOpenDrawingComponentActive==true && selectedTab ==1" [extDrawingId]="inputItems.rowData['DrawingId']" [extRevisionNo]=-1 [moduleId]=5 [pageTarget]=5 [extDrawingType]=1 [extDrawingDetails]="inputItems.rowData" ></opendrawing>
+                </div>
+            </tab>
+        </tabs>
+    </primary-view>
+    <secondary-view>
+       
+    </secondary-view>
+</split-view>

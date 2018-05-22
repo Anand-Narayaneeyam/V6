@@ -1,0 +1,92 @@
+﻿<page [pagetitle]="pagePath">
+    <pagepath>
+    </pagepath>
+    <content>
+        <section title="Reserve Seat" [isExpanded]="sectionExpansionStatus[0].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div *ngIf="sectionExpansionStatus[0].isExpanded==true">
+                <h1>Seat Booking</h1>
+                <p>This option is used to book Hotelling Seats. Through this option it is possible to check the availability of seats. This option will be available only if Seat Booking option is enabled for the customer. Requests can be submitted for scheduling the required Hotelling Seats.</p>
+                <p>Reserve Seat and Requests are provided under the Room Booking menu. Two tabs namely My Requests and Active Requests are provided in the Requests menu.</p>
+                <p>Reserve Seat option helps users to book hoteling Seats.</p>
+                <p>My Requests option is for creating and processing new Requests created by the logged in User. All Requests created by the logged in user will be displayed in the My Requests option. Options to Cancel, Check-in and Checkout are provided in the My Requests option.</p>
+                <p>Active Requests option is for Checking In, Checking Out, or Cancelling the scheduled requests by the Administrator. This option lists all the active Requests submitted by different Users.  Cancelled Requests or Requests with elapsed date will not be listed here. </p>
+
+                <h2>Reserve Seat</h2>
+                <p>The user can reserve hoteling seats through <span class="header2">Seat Booking: Reserve Seat</span> option.On selecting this option, all the seats available for Reservation for the current date will be displayed by default with status as Available.Seats available for Reservation are those seats which are defined as Hoteling Seats.</p>
+                <p>Users can search for available hoteling seats for a selected period. After entering required Date Range, select the checkbox "Show available Seats only" and click on Search button. Then all the available seats will be displayed below. </p>
+                <p>The details of a room can be viewed by clicking the Room No. link displayed along with the Search result. On clicking this link, Room Details window will be displayed with all the details of the selected room. Any photo added for the room will also be displayed. A Day view calendar with time slot is provided in the Room Details. A User can book the required Seat from the Room Details link, by clicking the required time slot. </p>
+                <p>The Booking of the required seat can be done by clicking the Book link displayed against each row of the seat. On selecting the link, New Seat Booking Request page will be displayed where the user can select/enter Booked for and Comments details. Date,Time and Location details will be displayed as read only. The Seats can be booked for iDrawings Users or Employees present in the Employee module. </p>
+                <p>Once all the requirements are entered, the request can be submitted by clicking the Reserve button. The newly submitted request will be confirmed directly without any approval process if the 'Approval Process - Not Required' option is selected by Customer. </p>
+
+            </div>
+        </section>
+        <section title="Requests" [isExpanded]="sectionExpansionStatus[1].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div *ngIf="sectionExpansionStatus[1].isExpanded==true">
+
+                <p>This options list the Seat booking Requests created for the Customer. Two tabs namely My Requests and Active Requests are provided in Requests menu.</p>
+
+                <h1>My Requests</h1>
+                <p>This option is to list all the Seat Booking Requests of the logged in user. Through this option the user can cancel his/her Requests. Options to Check In or Check Out are also provided in the My Requests page.</p>
+                <p>A checkbox "Show active requests" will be displayed to filter the My Requests page. On selecting the check box, only Requests with Confirmed and Checked In status will be listed in the My Requests page</p>
+                <p><span class="header1">Cancel Request:</span> A Request can be cancelled by clicking the <span class="header2">Cancel Request</span> <img class="helpicon" src="Content/Icons/cancel_RequestS.png" alt="Cancel Request" /> icon. While cancelling the request, status of the selected request will be changed to Cancelled.If a Confirmed Request is cancelled, Booking Cancelled mail will be sent to the Requester.</p>
+                <p><span class="header1">Check In:</span> This option is to Check In to the Scheduled Seat and to change the status of the request to Checked In. Select a confirmed request and click on <span class="header2">Check In</span> <img class="helpicon" src="Content/Icons/check-iN.png" alt="Check In" />, the status of the selected request will be changed to "Checked In". Only request with status "Confirmed" can be checked in. Check In is not allowed one hour before the scheduled Start Time and after the scheduled End Time.</p>
+                <p><span class="header1">Check Out:</span>This option is to change the status of the request to Checked Out after the usage. Select the request to be checked out by clicking the <span class="header2">Check Out</span> <img class="helpicon" src="Content/Icons/check_ouT.png" alt="Check Out" /> icon, the status of the selected request will be changed to "Checked Out". Only request with status "Checked In" can be checked out.</p>
+
+                <h1>Active Requests</h1>
+                <p>This option is used for viewing the Active Seat Booking Requests submitted by different users. The option is available only to Administrators. On selecting this option, all the existing Active Requests which are not already elapsed will be displayed with Request Token, Site, Building, Floor, Room No., Space Function, From and To Date, Seat Number, Requested by, Requested on  and Status etc. The list can be sorted on any column by clicking on the column header.</p>
+                <p>Options to Cancel Request Check In or Check Out are provided in Active Requests page.</p>
+                <p><span class="header1">Cancel Request:</span> A Request can be cancelled by clicking the <span class="header2">Cancel Request</span> <img class="helpicon" src="Content/Icons/cancel_RequestS.png" alt="Cancel Request" /> icon. While cancelling the request, status of the selected request will be changed to Cancelled.If a Confirmed Request is cancelled, Booking Cancelled mail will be sent to the Requester.</p>
+                <p><span class="header1">Check In:</span>This option is to Check In to the Scheduled Seat and to change the status of the request to Checked In. Select a confirmed request and click on <span class="header2">Check In</span> <img class="helpicon" src="Content/Icons/check-iN.png" alt="Check In" />, the status of the selected request will be changed to "Checked In". Only request with status "Confirmed" can be checked in. Check In is not allowed one hour before the scheduled Start Time and after the scheduled End Time.</p>
+                <p><span class="header1">Check Out:</span>This option is to change the status of the request to Checked Out after the usage. Select the request to be checked out by clicking the <span class="header2">Check Out</span> <img class="helpicon" src="Content/Icons/check_ouT.png" alt="Check Out" />  icon, the status of the selected request will be changed to "Checked Out". Only request with status "Checked In" can be checked out</p>
+
+            </div>
+        </section>
+    </content>
+</page>
+<style type="text/css">
+    h3.Mainheader {
+        color: #178AE8;
+    }
+
+    .header1 {
+        font-weight: bold;
+        color: #178AE8;
+    }
+
+    .header2 {
+        font-weight: normal;
+        color: #178AE8;
+    }
+
+    p {
+        margin-left: 38px;
+        font-size: 13px;
+        margin-right: 3em;
+    }
+
+    .header3 {
+        font-weight: bold;
+        color: black;
+    }
+    /**/ h1 {
+        color: #178AE8;
+        font-size: 1.3em;
+        margin-left: 38px;
+    }
+
+    h2 {
+        color: #178AE8;
+        font-size: 1em;
+        margin-left: 38px;
+    }
+
+    .config {
+        background-color: #178AE8;
+    }
+
+    .helpicon {
+        vertical-align: baseline;
+        width: 20px;
+        height: 20px;
+    }
+</style>

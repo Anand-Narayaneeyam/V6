@@ -1,0 +1,375 @@
+﻿{
+  "spaceplanningapprovalreview": [
+    {
+      "FieldId": 1,
+      "FieldName": "Select an Action",
+      "FieldType": 5,
+      "FieldValue": "0",
+      "HasRelation": false,
+      "IsVisible": true,
+      "IsMandatory": false,
+      "IsDisabled": false,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false,
+      "MaxLength": 100,
+      "IsMultiValued": true,
+      "MultiValuedDetails": {
+        "LookupValues": [
+
+          {
+            "Id": 1,
+            "Value": "Reject Request"
+          },
+          {
+            "Id": 2,
+            "Value": "Send for Review"
+          },
+          {
+            "Id": 3,
+            "Value": "Approve"
+          }
+        ],
+        "PopupComponentName": null
+      },
+      "NotificationType": "inline",
+      "Exclude": [ "--" ],
+      "Width": " ",
+      "Format": ""
+    },
+    {
+      "FieldId": 1,
+      "FieldName": "Send to",
+      "FieldType": 5,
+      "FieldValue": "0",
+      "HasRelation": false,
+      "IsVisible": true,
+      "IsMandatory": false,
+      "IsDisabled": true,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false,
+      "MaxLength": 100,
+      "IsMultiValued": true,
+      "MultiValuedDetails": {
+        "LookupValues": [
+
+
+        ],
+        "PopupComponentName": null
+      },
+      "NotificationType": "inline",
+      "Exclude": [ "--" ],
+      "Width": " ",
+      "Format": ""
+    }
+  ],
+  "stackplancolumn": [
+
+
+    {
+      "FieldId": 1,
+      "FieldName": "StackPlanId",
+      "FieldType": 1,
+      "IsVisible": false,
+      "IsMandatory": false,
+      "IsDisabled": false,
+      "ReadOnlyMode": false,
+      "IsHiddenLabel": true
+
+    },
+    {
+      "FieldId": 2,
+      "FieldName": "Name",
+      "FieldType": 1,
+      "IsMandatory": false,
+      "IsVisible": true,
+      "IsDisabled": false,
+      "ReadOnlyMode": false,
+      "IsHiddenLabel": true
+    },
+    {
+      "FieldId": 3,
+      "FieldName": "Description",
+      "FieldType": 1,
+      "IsMandatory": false,
+      "IsVisible": true,
+      "ReadOnlyMode": false,
+      "IsDisabled": false,
+      "IsHiddenLabel": true,
+      "Width": "2*"
+    },
+    {
+      "FieldId": 4,
+      "FieldName": "Created By",
+      "FieldType": 1,
+      "IsMandatory": true,
+      "IsVisible": true,
+      "ReadOnlyMode": false,
+      "IsDisabled": false,
+      "IsHiddenLabel": true
+    },
+    {
+      "FieldId": 5,
+      "FieldName": "Created On",
+      "FieldType": 1,
+      "IsMandatory": false,
+      "IsVisible": true,
+      "ReadOnlyMode": false,
+      "IsDisabled": false,
+      "IsHiddenLabel": true,
+      "Width": "*"
+
+    },
+    {
+      "FieldId": 6,
+      "FieldName": "Status",
+      "FieldType": 3,
+      "IsMandatory": false,
+      "IsVisible": true,
+      "ReadOnlyMode": false,
+      "IsDisabled": false,
+      "IsHiddenLabel": true,
+      "Width": "*"
+    }
+  ],
+  "stackplandata": [
+    {
+      "StackPlanId": "1",
+      "Name": "Stack Plan 1",
+      "Description": "",
+      "Created By": "Robinson,Aaron",
+      "Created On": "01 Jul 2016 06:16 AM",
+      "Status": "Planned"
+    },
+    {
+      "StackPlanId": "2",
+      "Name": "Stack Plan 1",
+      "Description": "",
+      "Created By": "Robinson,Aaron",
+      "Created On": "01 Jul 2016 06:16 AM",
+      "Status": "Planned"
+    }
+  ],
+  "requestDetails": [
+    {
+      "FieldId": 1,
+      "FieldName": "Building Name",
+      "FieldType": 1,
+      "FieldValue": "AD",
+      "IsMandatory": true,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false,
+      "IsVisible": true,
+      "MaxLength": 100,
+      "NotificationType": "inline"
+    },
+    {
+      "FieldId": 1,
+      "FieldName": "Building Code",
+      "FieldType": 1,
+      "FieldValue": "",
+      "IsMandatory": false,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false,
+      "IsVisible": true,
+      "MaxLength": 100,
+      "NotificationType": "inline"
+    },
+    {
+      "FieldId": 4,
+      "FieldName": "Description",
+      "FieldType": 4,
+      "FieldValue": "",
+      "IsMandatory": false,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false,
+      "IsVisible": true,
+      "MaxLength": 100,
+      "NotificationType": "inline"
+    }
+  ],
+
+  "requestnumberdetails": [
+    {
+      "FieldId": 1,
+      "FieldName": "Request Number",
+      "FieldType": 13,
+      "FieldValue": "CON/2016/99",
+      "IsHiddenLabel": false
+    },
+    {
+      "FieldId": 1,
+      "FieldName": "Request By",
+      "FieldType": 13,
+      "FieldValue": "Yung,Tom",
+      "IsHiddenLabel": false
+
+    },
+    {
+      "FieldId": 1,
+      "FieldName": "Time Spent",
+      "FieldType": 3,
+      "IsMandatory": true,
+      "FieldValue": "12.35",
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false,
+      "IsVisible": true,
+      "MaxLength": 100,
+      "NotificationType": "inline"
+    }
+  ],
+  "spaceplanningsubmenu": [
+    {
+      "id": 6,
+      "title": "Select Floors",
+      "image": "",
+      "path": null,
+      "subMenu": null
+    },
+    {
+      "id": 7,
+      "title": "View Floors",
+      "image": "",
+      "path": null,
+      "subMenu": null
+    },
+    {
+      "id": 5,
+      "title": "Stack Plans",
+      "image": "",
+      "path": null,
+      "subMenu": null
+    },
+    {
+      "id": 8,
+      "title": "View Employee Details",
+      "image": "",
+      "path": null,
+      "subMenu": null
+    },
+    {
+      "id": 0,
+      "title": "History",
+      "image": "",
+      "path": null,
+      "subMenu": null
+    }
+  ],
+  "historyField": [
+    {
+      "FieldId": 1,
+      "FieldName": "HistoryId",
+      "FieldType": 1,
+      "IsVisible": false,
+      "IsMandatory": false,
+      "IsDisabled": false,
+      "ReadOnlyMode": false,
+      "IsHiddenLabel": true
+
+    },
+    {
+      "FieldId": 2,
+      "FieldName": "Action Point",
+      "FieldType": 1,
+      "IsMandatory": false,
+      "IsVisible": true,
+      "IsDisabled": false,
+      "ReadOnlyMode": false,
+      "IsHiddenLabel": true
+    },
+    {
+      "FieldId": 3,
+      "FieldName": "User Name",
+      "FieldType": 1,
+      "IsMandatory": false,
+      "IsVisible": true,
+      "ReadOnlyMode": false,
+      "IsDisabled": false,
+      "IsHiddenLabel": true,
+      "Width": "2*"
+    },
+    {
+      "FieldId": 4,
+      "FieldName": "Action",
+      "FieldType": 1,
+      "IsMandatory": true,
+      "IsVisible": true,
+      "ReadOnlyMode": false,
+      "IsDisabled": false,
+      "IsHiddenLabel": true
+    },
+    {
+      "FieldId": 5,
+      "FieldName": "Action Date",
+      "FieldType": 1,
+      "IsMandatory": false,
+      "IsVisible": true,
+      "ReadOnlyMode": false,
+      "IsDisabled": false,
+      "IsHiddenLabel": true,
+      "Width": "*"
+
+    },
+    {
+      "FieldId": 6,
+      "FieldName": "Comments",
+      "FieldType": 1,
+      "IsMandatory": false,
+      "IsVisible": true,
+      "ReadOnlyMode": false,
+      "IsDisabled": false,
+      "IsHiddenLabel": true,
+      "Width": "*"
+    }
+  ],
+  "historyData": [
+    {
+      "HistoryId": "1",
+      "Action Point": "Requester",
+      "User Name": "Arthy H",
+      "Action": "New Request Submitted",
+      "Action Date": "01 Jul 2016 06:16 AM",
+      "Comments": ""
+    }
+  ],
+  "descriptionData": [
+    {
+      "FieldId": 4,
+      "FieldName": "Description",
+      "FieldType": 4,
+      "FieldValue": "",
+      "IsMandatory": false,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false,
+      "IsDisabled": true,
+      "IsVisible": true,
+      "MaxLength": 100,
+      "NotificationType": "inline"
+    },
+    {
+      "FieldId": 5,
+      "FieldName": "Previous comments",
+      "FieldType": 4,
+      "FieldValue": "",
+      "IsMandatory": false,
+      "IsDisabled": true,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false,
+      "IsVisible": true,
+      "MaxLength": 100,
+      "NotificationType": "inline"
+    },
+    {
+      "FieldId": 6,
+      "FieldName": "Comments",
+      "FieldType": 4,
+      "IsDisabled": false,
+      "FieldValue": "",
+      "IsMandatory": false,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false,
+      "IsVisible": true,
+      "MaxLength": 100,
+      "NotificationType": "inline"
+    }
+  ]
+}

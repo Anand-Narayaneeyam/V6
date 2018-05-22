@@ -1,0 +1,15 @@
+﻿<div *ngIf="menuItems" (contextmenu)="onContextMenu($event, item)" class="contextmenu" [ngStyle]=Styles [style.visibility]="display" style="min-height:125px !important">
+    <div *ngFor="let menuItem of menuItems;let i=index" class="contextmenuitem" (click)="menuOnClick(menuItem)">{{menuItem.menuName}}</div>
+</div>
+<div [style.visibility]="display" (contextmenu)="onContextMenu($event, item)"  class="background-block-grid-contextmenu" (click)="hideContextMenu()"></div>
+<style>
+    .background-block-grid-contextmenu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 50;
+    opacity: 0.3;
+}
+</style>

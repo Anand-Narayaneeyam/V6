@@ -1,0 +1,40 @@
+﻿
+<page [pagetitle]="pagePath">
+    <content>
+        <tabs [selectedTab]="selectedTab" [deleteIndex]="tabDeleteIndex" (getSelectedTab)="getSelectedTab($event)">
+            <tab tabTitle="Select Criteria" closeButtonVisible="hidden">
+                <submenu>
+                    <sub-menu [source]=menuData [menuCard]=iscard [menuIds]=enableMenu (onSubMenuChange)="onSubMenuChange($event);"> </sub-menu>
+                </submenu>
+                <div>
+                    <div style="width:100%">
+                        <DropDownListComponent *ngIf="ddlStatus" [fieldObject]="ddlStatus" (change)="onChangeStatus($event.target.value)" [SetAlignment]=alignContent></DropDownListComponent>
+                    </div>
+                    <div style="width:100%">
+                        <DropDownListComponent *ngIf="ddlWorkType" [fieldObject]="ddlWorkType" (change)="onChangeWorkType($event.target.value)" [SetAlignment]=alignContent></DropDownListComponent>
+                    </div>
+                    <div style="width:100%">
+                        <DropDownListComponent *ngIf="ddlEquipmentCategory" [fieldObject]="ddlEquipmentCategory" (change)="onChangeEquipmentCategory($event.target.value)" [SetAlignment]=alignContent></DropDownListComponent>
+                    </div>
+                    <div style="width:100%">
+                        <DropDownListComponent *ngIf="ddlEquipmentClass" [fieldObject]="ddlEquipmentClass" (change)="onChangeEquipmentClass($event.target.value)" [SetAlignment]=alignContent></DropDownListComponent>
+                    </div>
+                    <div style="width:100%">
+                        <DropDownListComponent *ngIf="ddlEquipmentNo" [fieldObject]="ddlEquipmentNo" (change)="onChangeEquipmentNo($event.target.value)" [SetAlignment]=alignContent></DropDownListComponent>
+                    </div>
+                    <div style="width:100%">
+                        <DateComponent *ngIf="dateSelectorField != undefined" [fieldObject]="dateSelectorField[0]" [showDateOnLoad]="true"></DateComponent>
+                    </div>
+                    <div style="width:100%">
+                        <DateComponent *ngIf="dateSelectorField != undefined" [fieldObject]="dateSelectorField[1]" [showDateOnLoad]="true"></DateComponent>
+                    </div>
+                </div>
+            </tab>
+            <tab *ngIf="isnext != undefined" tabTitle="Report" closeButtonVisible="hidden">
+                <div style="height:100%" *ngIf="isNextClicked">
+                    <wo-pmstatusbased-report *ngIf="isNextClicked" [ScheduledFromDate]="ScheduledFromDate" [ScheduledToDate]="ScheduledToDate" [DateRange]="DateRange" [WorkTypeId]="WorkTypeId" [EquipmentCategoryId]="EquipmentCategoryId" [EquipmentClassId]="EquipmentClassId" [EquipmentNoId]="EquipmentNoId" [WorkTypeName]="WorkTypeName" [StatusId]="StatusId" [StatusName]="StatusName"> </wo-pmstatusbased-report>
+                </div>
+            </tab>
+        </tabs>
+    </content>
+</page>

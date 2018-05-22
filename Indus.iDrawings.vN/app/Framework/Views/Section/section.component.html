@@ -1,0 +1,87 @@
+﻿<div id="sectiongroup">
+    <div [class]="className" style="" (keypress)="onExpandKeyPress($event)" (click)="onExpandClick()" tabIndex = 0 [attr.aria-label]="''+title" *ngIf='type == undefined || type == "page"'>
+        <div style="height:32px;width:32px;float:left;background-color:#dedede;padding:4px;">
+            <img class="image-view" [src]="isExpanded?hideIcon:expandIcon" style="height:24px;">
+        </div>
+        <div style="padding-top:6px;padding-bottom:6px;">
+            <span style="padding-left:6px;font-weight: 600;color: grey;">{{title}}</span>
+        </div>
+    </div>
+    <div [class]="className" style="cursor:pointer;" (keypress)="onExpandKeyPress($event)" (click)="onExpandClick()" tabIndex = 0 [attr.aria-label]="''+title" *ngIf='type == "menu"'>
+        <div style="padding:6px 0px 6px 0px;">
+            <span style="font-size:12px">{{title}}</span>
+            <img class="image-view-general" [src]="isExpanded?hideIcon:expandIcon">
+        </div>
+    </div>
+    <!--<!--<div [class]="contentView" *ngIf="isExpanded==true"  style="overflow:auto;width: 100%;">
+        <ng-content></ng-content>
+    </div>-->
+
+    <div [class]="contentView" *ngIf="isExpanded==true" [style.height]="height" style="overflow:auto;">
+        <ng-content></ng-content>
+    </div>
+
+    <!--<div [class]="contentView" *ngIf="isExpanded==true && type=='menu'" >
+        <ng-content></ng-content>
+    </div>-->
+</div>
+
+<style>
+
+    @media screen and (-webkit-min-device-pixel-ratio:0)
+        {
+            :host #sectiongroup .list-group {
+            max-height : 100% !important;
+            height: auto !important;
+            }
+
+            :host #secondarySplitview .list-group {
+                max-height: calc(100% - 45px) !important;
+            }
+        }
+
+     @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+        :host #sectiongroup .list-group {
+            max-height : 100% !important;
+            height: auto !important;
+        }
+
+        :host #secondarySplitview .list-group {
+            max-height: calc(100% - 45px) !important;
+        }
+
+        :host #sectiongroup #secondarySplitview .list-group {
+            height: 100% !important;
+        }
+
+        
+    }
+
+    @supports (-ms-ime-align:auto) {
+        :host #sectiongroup .list-group {
+            max-height : 100% !important;
+            height: auto !important;
+        }
+
+        :host #secondarySplitview .list-group {
+            max-height: calc(100% - 45px) !important;
+        }
+    }
+
+    @-moz-document url-prefix() {
+        #sectiongroup .list-group {
+            height: auto !important;
+        }
+        #secondarySplitview .list-group {
+            height: 100% !important;
+        }
+         #secondarySplitview .list-group {
+            max-height: calc(100% - 45px) !important;
+        }
+    }
+
+
+
+</style>
+         
+

@@ -1,0 +1,10 @@
+﻿
+        <tabs [selectedTab]="selectedTab" (getSelectedTab)="getSelectedTab($event)">
+            <tab tabTitle="Select Floors" closeButtonVisible="hidden">
+                <floorselectionreport *ngIf="selectedTab == 0" [Criteria]="selectedCriteria" [ReportCategoryId]="ReportCategoryId" (selectedIds)="submit($event)"></floorselectionreport>
+            </tab>
+            <tab *ngIf="next != undefined" tabTitle="Report" closeButtonVisible="hidden">
+                <spacegrossareadistribution-report *ngIf="isInitialised" [Ids]="next" [reportBy]="selectedCriteria"></spacegrossareadistribution-report>
+            </tab>
+        </tabs>
+

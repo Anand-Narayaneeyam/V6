@@ -1,0 +1,12 @@
+﻿<page [pagetitle]="pagePath">
+    <pagepath>
+    </pagepath>
+    <content>
+        <section *ngIf="(isSpacePlanEnabled == 1 || isEmployeeMoveEnabled == 1 || isEmployeeAssignEnabled == 1)" title="Define Work Types" [isExpanded]="sectionExpansionStatus[0].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <define-workType *ngIf="sectionExpansionStatus[0].isExpanded" [moduleId]="5" [workFlowCategoryId]="17"></define-workType>
+        </section>
+        <section *ngIf="isSpacePlanEnabled == 1 || isEmployeeMoveEnabled == 1 || isEmployeeAssignEnabled == 1" title="Set Workflow" [isExpanded]="sectionExpansionStatus[1].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <setworkflow *ngIf="sectionExpansionStatus[1].isExpanded" [moduleId]="5" [workFlowCategoryId]="17"></setworkflow>
+        </section>
+    </content>
+</page>

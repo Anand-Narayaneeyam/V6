@@ -1,0 +1,17 @@
+﻿<div [style.height]="formHeight">
+    <DynamicFields [dataSource]="fieldDetailsAdd" [holidaysDisabled]="true" (submitFieldObject)="onSubmitData($event)" [btnName]="'Reserve'" [dataKey]="dataKey" (fieldChange)="ddlChange($event)" (dateChange)="divClicked($event)" (btnItemEmit)="checkbtnClick($event)"></DynamicFields>
+</div>
+<slide [width]="slidewidth" [position]="position" [show]="showSlide" (closeDialog)="closeSlideDialog($event)">
+    <div>
+        <div tabindex="0" [attr.aria-label]="''+message">{{message}}</div>
+        <div style="width:100%">
+            <button class="Savebutton " type="button" (click)="okSubmit($event)">Yes</button>
+            <button class="Savebutton " type="button" (click)="cancelClick($event)">No</button>
+        </div>
+    </div>
+</slide>
+<style>
+    .MainContainer_915 {
+        padding-top: 5px;
+    }
+</style>

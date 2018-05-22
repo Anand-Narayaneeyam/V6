@@ -1,0 +1,64 @@
+﻿<page [pagetitle]="pagePath">
+    <pagepath>
+    </pagepath>
+    <content>
+        <section title="Dash Board" [isExpanded]="true" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div>
+                <p> On clicking the Employee Module icon the Home page of Employee module will be displayed with the following Pie Charts and Bar charts in its dashboard.  </p>
+                <p><span class="header2">Occupancy by Organizational Unit </span> pie chart shows the Occupancy of Employees by each Organizational Unit (Division, Cost Center, etc). It displays the Occupancy of Employees in individual Organizational Unit as %  and number of Employees in Tooltip. The details of the top 9 Organizational Units are displayed in the pie chart. All other Organizational Units are summed up and shown as a single item labeled as 'Others'. </p>
+                <p><span class="header2">Occupancy / Vacancy by Building </span> bar chart gives the Occupancy / Vacancy position in different Buildings of different sites. It will be displayed only if Space Standard is assigned to Spaces in that building. The Number of Occupied and Vacant Seats corresponding to each building will be displayed as tooltip in each bar. </p>
+                <p><span class="header2">Occupancy by Space Standard </span> pie chart shows the Occupancy of Employees by Space Standard. This will be displayed only if Space Standards are assigned to Spaces. It displays the Occupancy of Employees in each Space Standard as % and number of Employees in tooltip. The details of the top 9 Space Standards are displayed in the pie chart. All other Space Standards are summed up and shown as a single item labeled as 'Others'. </p>
+                <p><span class="header=2">Occupancy / Vacancy by Organizational Unit </span> bar chart give the number of Occupied / Vacant Seats in different Organizational Units. The Number of Occupied and Vacant Seats corresponding to Organizational Unit will be displayed as tooltip in each bar. The details of the Occupancy / Vacancy of top 9 Organizational Units are displayed in individual Bar chart. All other Organizational Units are summed up and shown as a single Bar labeled as 'Others'.</p>
+                <p>Dashboard is available for users with Administrator privilege only. </p>
+
+            </div>
+        </section>
+    </content>
+</page>
+<style type="text/css">
+    h3.Mainheader {
+        color: #178AE8;
+    }
+
+    .header1 {
+        font-weight: bold;
+        color: #178AE8;
+    }
+
+    .header2 {
+        font-weight: normal;
+        color: #178AE8;
+    }
+
+    p {
+        margin-left: 38px;
+        font-size: 13px;
+        margin-right: 3em;
+    }
+
+    .header3 {
+        font-weight: bold;
+        color: black;
+    }
+    /**/ h1 {
+        color: #178AE8;
+        font-size: 1.3em;
+        margin-left: 38px;
+    }
+
+    h2 {
+        color: #178AE8;
+        font-size: 1em;
+        margin-left: 38px;
+    }
+
+    .config {
+        background-color: #178AE8;
+    }
+
+    .helpicon {
+        vertical-align: baseline;
+        width: 20px;
+        height: 20px;
+    }
+</style>

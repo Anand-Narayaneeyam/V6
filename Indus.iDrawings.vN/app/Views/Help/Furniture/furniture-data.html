@@ -1,0 +1,204 @@
+﻿<page [pagetitle]="pagePath">
+    <pagepath>
+    </pagepath>
+    <content>
+        <section title="All" [isExpanded]="sectionExpansionStatus[0].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div *ngIf="sectionExpansionStatus[0].isExpanded">
+                <p>This option displays both assigned and warehoused Furniture. </p>
+                <p><span class="header1">Add</span> </p>
+                <p>This option is for adding a new Furniture. On selecting Add <img class="helpicon" src="Content/Icons/data_addN.png" title="Add" /> icon, the Furniture Data Entry window will be displayed, with the predefined data fields and any additional data fields defined by the user. The details of the Furniture can be entered there. On clicking Save button, the Furniture will be added.  </p>
+                <p> If Autonumbering option is not enabled for the Customer, option to enter Furniture Number will be displayed in New Furniture page.</p>
+                <p><span class="header1">Edit</span> </p>
+                <p>This option is for editing the details of a Furniture. Select the Furniture to be edited in the Data Grid and then click <span class="header2"> Edit </span> <img class="helpicon" src="Content/Icons/data_editN.png" title="Edit" /> icon. The details will be displayed. Make necessary changes and click on Save Changes button to save the changes. </p>
+                <p><span class="header1">Multiple Edit</span> </p>
+                <p>Multiple records can be edited by selecting the required Furniture using the Shift or Ctrl keys, and then clicking on the Edit icon. A window will be displayed listing the fields that can be edited. Select the required Field and enter or select the value to be updated to the selected Furniture and click Save Changes button. The changes have to be made selecting one field at a time.</p>
+                <p><span class="header1">Delete</span> </p>
+                <p>This option is for deleting Furniture. Select the Furniture to be deleted and click <span class="header2"> Delete </span> <img class="helpicon" src="Content/Layout/delete_button.png" alt="Delete" /> icon. A confirmation message will be displayed. On clicking Yes to the confirmation message, the selected Furniture will be deleted.</p>
+                <p><span class="header1">Display settings</span> </p>
+                <p>This option <img class="helpicon" src="Content/Icons/data_display-settingsN.png" alt="Display Settings" title="Display Settings" /> is for specifying the Common Attributes, Class Attributes and Space Data fields to be displayed in the data grid. Changes made here will be saved as user default settings.For making permanent changes, an administrator has to click Yes to the confirmation message "Display Settings updated. Do you want to save this as System default?". </p>
+                <p> Three tabs namely Common Attributes, Class Attributes and Space Data will be displayed. </p>
+                <p><span class="header3">Common Attributes </span></p>
+                <p>The Display Settings for Common Attributes of all Furniture that are shown in the Datagrid can be modified using this option. On selecting this option, the common attributes of all Furniture will be listed with check boxes for Data. The desired boxes can be checked and the changes become effective on clicking the Save Changes button. Changes made here will be saved as User default Settings. This can be set as System Default settings by clicking Yes to the confirmation message  "Display Settings updated. Do you want to set this as System Default?".</p>
+                <p><span class="header3">Class Atributes </span></p>
+                <p>The Display Settings for Class specific Attributes of each Furniture Class that are shown in the Datagrid can be modified using this option. On selecting the required Furniture Class, any class specific attributes defined for the Furniture Class will be listed with check boxes for Data. The desired boxes can be checked and the changes become effective on clicking the Save Changes button. Changes made here will be saved as User default Settings. This can be set as System Default settings by clicking Yes to the confirmation message  "Display Settings updated. Do you want to set this as System Default?".</p>
+                <p><span class="header3">Space Data </span></p>
+                <p>This option is for specifying the Space Data fields, to be displayed in the Datagrid. All Space fields will be listed with checkboxes. The desired boxes can be checked and the changes become effective on clicking the Save Changes button. Changes made here will be saved as User default Settings. This can be set as System Default settings by clicking Yes to the confirmation message  "Display Settings updated. Do you want to set this as System Default?".</p>
+                <p><span class="header1">Class Selection</span> </p>
+                <p>Class selection option provided under this <img class="helpicon" src="Content/Icons/settingS.png" title="Tools" /> icon is for flitering the Furniture Classes. Furniture Classes of all the Furniture will be listed with check boxes. Check the required Furniture classes to be displayed and click Save button. The Furniture with the selected Furniture Classes will be shown .</p>
+                <p><span class="header1">Place</span> </p>
+                <p>This option is to place an warehoused Furniture into a Drawing. Select the Warehoused Furniture from the data grid and click <span class="header2"> Place </span> option from  <img class="helpicon" src="Content/Icons/settingS.png" title="Tools" /> icon. The Drawing list will be displayed. Open the required drawing. The system will prompt to select a space to place the Furniture. Click on the exact location where the Furniture is to be placed.The Furniture will be placed there. Multiple Furniture can be placed in a single Place operation, if the drawing is the same. After placing each Furniture, the system will prompt for the location of the next Furniture till all the selected Furniture are placed. </p>
+                <p> Furniture having no Furniture Symbols cannot be placed in a drawing. </p>
+                <p><span class="header1">Warehouse</span> </p>
+                <p>This option is to de-link the assigned Furniture from the drawing. Select the Furniture to be de-linked from the data grid and click <span class="header2"> Warehouse</span> option from <img class="helpicon" src="Content/Icons/settingS.png" title="Tools" /> icon, a message prompting 'Are you sure you want to warehouse the selected Furniture?' will be displayed. On clicking Yes to the message, the selected Furniture will be de-linked from drawing. </p>
+                <p><span class="header1">Attachments</span> </p>
+                <p>Users can add/edit/delete/view/download attachments to a furniture using this option. Select the required Furniture and click the <span class="header2"> Attachments </span> <img class="helpicon" src="Content/Icons/attachmentN.png" alt="Attachments" title="Attachments" /> icon. The files that can be attached will be restricted to data files like Word, Excel, pdf, jpg, gif, bmp etc.  </p>
+                <p><span class="header3"> Add: </span> An Attachment can be added by clicking on the <span class="header2">Add</span> <img class="helpicon" src="Content/Icons/data_addN.png" title="Add" /> icon. The New Attachment window will be displayed. Select the Attachment Category first, and then select the required file. The attachment has to be uploaded by clicking on the Upload button. </p>
+                <p><span class="header3"> Edit: </span> An Attachment can be edited by clicking on the Edit <img class="helpicon" src="Content/Icons/data_editN.png" title="Edit" /> icon.</p>
+                <p>Select an attachment and click on the <span class="header2"> Edit </span> <img class="helpicon" src="Content/Icons/data_editN.png" title="Edit" /> icon. The Edit Attachment window will be displayed with the current file name. The user can select the attachment category and the required file. Changes can be saved by clicking the Save Changes button.</p>
+                <p><span class="header3"> Delete: </span> Delete an attachment by selecting the required file and clicking the <span class="header2"> Delete </span> <img class="helpicon" src="Content/Icons/data_deleteN.png" title="Delete" /> icon.</p>
+                <p><span class="header3"> View: </span> The attachment can be viewed by selecting the file and then clicking the  <span class="header2"> View </span> <img class="helpicon" src="Content/Icons/view-drawingN.png" alt="View" title="View" /> icon. The selected attachment will be opened in an attachment viewer. View is supported only for image files.</p>
+                <p><span class="header3"> Download: </span> Attachment can be downloaded and saved in the user's computer by clicking the <span class="header2"> Download</span> <img class="helpicon" src="Content/Layout/download_icon.png" alt="Download" title="Download" /> icon. </p>
+                <p><span class="header1">Show Drawing</span> </p>
+                <p>This option is for showing the selected Furniture in the drawing. Select the Furniture from the Data Grid and click on the <span class="header2"> Show Drawing </span> <img class="helpicon" src="Content/Images/Drawings/show_drawigs.png" alt="Show Drawing" title="Show Drawing" /> icon . The drawing will be displayed with the selected Furniture hatched and blinking. </p>
+                <p><span class="header1">Export</span> </p>
+                <p>This option is to export the Furniture data to the Excel. On clicking <span class="header2"> Export </span> <img class="helpicon" src="Content/Icons/exportN.png" alt="Export" title="Export" /> icon, data will be exported to Excel.</p>
+                <p><span class="header1">Warranty Details</span> </p>
+                <p>Users can add/edit/delete/ warranty details to the Furniture using <span class="header2">Warranty Details </span> <img class="helpicon" src="Content/Icons/warrantY.png" alt="Warranty Details" title="Warranty Details" /> option. Select the required Furniture and click the <span class="header2"> Warranty Details </span>  <img class="helpicon" src="Content/Icons/warrantY.png" alt="Warranty Details" title="Warranty Details" /> icon. </p>
+                <p><span class="header1">Add:</span> Warranty details can be added by clicking the <span class="header2"> Add </span> <img class="helpicon" src="Content/Icons/data_addN.png" title="Add" /> icon. New Warranty Details window will be displayed. Select a Warranty Type and Start Date, then enter Warranty Period In Months. User can also enter Warranty Certificate Number and Description if needed. The details can be saved by clicking on the Save button.</p>
+                <p><span class="header1">Edit:</span> Warranty Details can  be edited by selecting it and then clicking the <span class="header2"> Edit </span> <img class="helpicon" src="Content/Icons/data_editN.png" title="Edit" /> icon. The Edit Warranty Details window will be displayed with the saved details. The user can select Warranty Type and Start Date, then modify Warranty Period In Months. User can also enter Warranty Certificate Number and Description if needed. Changes can be saved by clicking the Save Changes button.</p>
+                <p><span class="header1">Delete:</span> Delete Warranty Details by selecting it and then clicking the <span class="header2">Delete</span> <img class="helpicon" src="Content/Icons/data_deleteN.png" title="Delete" /> icon.</p>
+                <p><span class="header1">Alert:</span> This option is used to set Warranty Alert against each Warranty details. Select a Warranty Detail and click <span class="header2">Alert </span> <img class="helpicon" src="Content/Icons/alerT.png" title="Alert" /> icon, then Warranty Alert page will be displayed. User can select a Notification Template and then the Email recipients can be selected from iDrawings Users or Contacts menu. Alert can be saved by clicking Save Alert button. </p>
+                <p><span class="header1">Keyword search</span> </p>
+                <p>This option helps users to search for Furniture details using keywords. The keyword could belong to any data field of the Furniture data. The user need not know or specify which field to look in. The Keyword could be any part of the Furniture data viz. Furniture No, Furniture Class Name etc. On entering the keyword and clicking on the <span class="header2">Search</span> <img class="helpicon" src="Content/Icons/keyword-search.png" style="border:hidden!important;" title="Keyword Search" type="image" /> icon the data grid will be filtered with Furniture records having data matching the specified keyword. </p>
+                <p><span class="header1">Advanced search</span> </p>
+                <p>This option <img class="helpicon" src="Content/Icons/advanced-search.png" title="Advanced Search" type="image" /> helps users to search for Furniture details with specific data in known data fields. The data being searched for can be selected from the list boxes or entered into text boxes provided against the data fields. The user can select one or more data fields viz. Furniture No, Furniture Class Name, Status etc or the additional data fields. After entering the search criteria and clicking <span class="header2"> Search </span> button, the data grid will be filtered with furniture records which satisfy the selection criteria.  </p>
+                <p>Fields to be displayed in the Search window can be set using the <span class="header2"> Configure </span> <img class="config helpicon" src="Content/Icons/filter-config-icon.png" alt="Configure" /> icon, provided in the Search window. Search criteria entered in the Search window can be cleared by clicking the Clear button provided in the Search window. After clearing the Search criteria and click Search button to clear the Search Results in the Operational Data grid. </p>
+
+            </div>
+        </section>
+
+        <section title="Operational" [isExpanded]="sectionExpansionStatus[1].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div *ngIf="sectionExpansionStatus[1].isExpanded">
+                <p>This option allows the user to view the details of assigned Furniture in a datagrid. Select the required floors first, and then click on <span class="header2"> Show Data </span> <img class="helpicon" src="Content/Icons/show_datA.png" alt="Show Data" title="Show Data" /> icon  the details of assigned Furniture can be viewed in a data grid. </p>
+                <p><span class="header1">Edit</span> </p>
+                <p>This option is for editing the details of a Furniture. Select the Furniture to be edited in the Data Grid and then click <span class="header2">Edit </span> <img class="helpicon" src="Content/Icons/data_editN.png" title="Edit" /> icon The details will be displayed. Make necessary changes and click on Save Changes button to save the changes. </p>
+                <p><span class="header1">Multiple Edit</span> </p>
+                <p>Multiple records can be edited by selecting the required Furniture using the Shift or Ctrl keys, and then clicking on the Edit icon. A window will be displayed listing the fields that can be edited. Select the required Field and enter or select the value to be updated to the selected Furniture and click Save Changes button. The changes have to be made selecting one field at a time.</p>
+                <p><span class="header1">Delete</span> </p>
+                <p>This option is for deleting Furniture. Select the Furniture to be deleted and click <span class="header2"> Delete </span> <img class="helpicon" src="Content/Icons/data_deleteN.png" title="Delete" /> icon. A confirmation message will be displayed. On clicking Yes to the confirmation message, the selected Furniture will be deleted.</p>
+                <p><span class="header1">Dispaly settings</span> </p>
+                <p>This option <img class="helpicon" src="Content/Icons/data_display-settingsN.png" alt="Display Settings" title="Display Settings" /> is for specifying the Common Attributes, Class Attributes and Space Data fields to be displayed in the data grid. Changes made here will be saved as user default settings.For making permanent changes, an administrator has to click Yes to the confirmation message "Display Settings updated. Do you want to save this as System default?".</p>
+                <p>Three tabs namely Common Attributes, Class Attributes and Space Data will be displayed.</p>
+                <p><span class="header3">Common Attributes</span></p>
+                <p>The Display Settings for Common Attributes of all Furniture that are shown in the Datagrid can be modified using this option. On selecting this option, the common attributes of all Furniture will be listed with check boxes for Data. The desired boxes can be checked and the changes become effective on clicking the Save Changes button. Changes made here will be saved as User default Settings. This can be set as System Default settings by clicking Yes to the confirmation message  "Display Settings updated. Do you want to set this as System Default?".</p>
+                <p><span class="header3">Class Attributes</span></p>
+                <p>The Display Settings for Class specific Attributes of each Furniture Class that are shown in the Datagrid can be modified using this option. On selecting the required Furniture Class, any class specific attributes defined for the Furniture Class will be listed with check boxes for Data. The desired boxes can be checked and the changes become effective on clicking the Save Changes button. Changes made here will be saved as User default Settings. This can be set as System Default settings by clicking Yes to the confirmation message  "Display Settings updated. Do you want to set this as System Default?".</p>
+                <p><span class="header3">Space Data</span></p>
+                <p>This option is for specifying the Space Data fields, to be displayed in the Datagrid. All Space fields will be listed with checkboxes. The desired boxes can be checked and the changes become effective on clicking the Save Changes button. Changes made here will be saved as User default Settings. This can be set as System Default settings by clicking Yes to the confirmation message  "Display Settings updated. Do you want to set this as System Default?".</p>
+                <p><span class="header1">Class Selection</span> </p>
+                <p>Class selection option provided under this <img class="helpicon" src="Content/Icons/settingS.png" title="Tools" /> icon is for flitering the Furniture Classes. Furniture Classes of all the Furniture will be listed with check boxes. Check the required Furniture classes to be displayed and click Save button. The Furniture with the selected Furniture Classes will be shown .</p>
+                <p><span class="header1">Warehouse</span> </p>
+                <p>This option is to de-link the assigned Furniture from the drawing. Select the Furniture to be de-linked from the data grid and click <span class="header2">Warehouse</span> option from <img class="helpicon" src="Content/Icons/settingS.png" title="Tools" /> icon, a message prompting 'Are you sure you want to warehouse the selected Furniture?' will be displayed. On clicking Yes to the message, the selected Furniture will be de-linked from drawing. </p>
+                <p><span class="header1">Attachments</span> </p>
+                <p>Users can add/edit/delete/view/download attachments to a furniture using this option. Select the required Furniture and click the <span class="header2"> Attachments </span> <img class="helpicon" src="Content/Icons/attachmentN.png" alt="Attachments" title="Attachments" /> icon. The files that can be attached will be restricted to data files like Word, Excel, pdf, jpg, gif, bmp etc.  </p>
+                <p><span class="header3"> Add: </span> An Attachment can be added by clicking on the <span class="header2">Add</span> <img class="helpicon" src="Content/Icons/data_addN.png" title="Add" /> icon. The New Attachment window will be displayed. Select the Attachment Category first, and then select the required file. The attachment has to be uploaded by clicking on the Upload button. </p>
+                <p><span class="header3"> Edit: </span> An Attachment can be edited by clicking on the Edit <img class="helpicon" src="Content/Icons/data_editN.png" title="Edit" /> icon.</p>
+                <p>Select an attachment and click on the <span class="header2"> Edit </span> <img class="helpicon" src="Content/Icons/data_editN.png" title="Edit" /> icon. The Edit Attachment window will be displayed with the current file name. The user can select the attachment category and the required file. Changes can be saved by clicking the Save Changes button.</p>
+                <p><span class="header3"> Delete: </span> Delete an attachment by selecting the required file and clicking the <span class="header2"> Delete </span> <img class="helpicon" src="Content/Icons/data_deleteN.png" title="Delete" /> icon.</p>
+                <p><span class="header3"> View: </span> The attachment can be viewed by selecting the file and then clicking the  <span class="header2"> View </span> <img class="helpicon" src="Content/Icons/view-drawingN.png" alt="View" title="View" /> icon. The selected attachment will be opened in an attachment viewer. View is supported only for image files.</p>
+                <p><span class="header3"> Download: </span> Attachment can be downloaded and saved in the user's computer by clicking the <span class="header2"> Download</span> <img class="helpicon" src="Content/Layout/download_icon.png" alt="Download" title="Download" /> icon. </p>
+                <p><span class="header1">Show Drawing</span> </p>
+                <p>This option is for showing the selected Furniture in the drawing. Select the Furniture from the Data Grid and click on the <span class="header2"> Show Drawing </span> <img class="helpicon" src="Content/Images/Drawings/show_drawigs.png" alt="Show Drawing" title="Show Drawing" /> icon . The drawing will be displayed with the selected Furniture hatched and blinking.</p>
+                <p><span class="header1">Export</span> </p>
+                <p>This option is to export the Furniture data to the Excel. On clicking <span class="header2">Export</span> <img class="helpicon" src="Content/Icons/exportN.png" alt="Export" title="Export" /> icon, data will be exported to Excel.</p>
+                <p><span class="header1">Warranty Details</span> </p>
+                <p>Users can add/edit/delete/ warranty details to the Furniture using <span class="header2">Warranty Details </span> <img class="helpicon" src="Content/Icons/warrantY.png" alt="Warranty Details" title="Warranty Details" /> option. Select the required Furniture and click the <span class="header2"> Warranty Details </span>  <img class="helpicon" src="Content/Icons/warrantY.png" alt="Warranty Details" title="Warranty Details" /> icon. </p>
+                <p><span class="header1">Add:</span> Warranty details can be added by clicking the <span class="header2"> Add </span> <img class="helpicon" src="Content/Icons/data_addN.png" title="Add" /> icon. New Warranty Details window will be displayed. Select a Warranty Type and Start Date, then enter Warranty Period In Months. User can also enter Warranty Certificate Number and Description if needed. The details can be saved by clicking on the Save button.</p>
+                <p><span class="header1">Edit:</span> Warranty Details can  be edited by selecting it and then clicking the <span class="header2"> Edit </span> <img class="helpicon" src="Content/Icons/data_editN.png" title="Edit" /> icon. The Edit Warranty Details window will be displayed with the saved details. The user can select Warranty Type and Start Date, then modify Warranty Period In Months. User can also enter Warranty Certificate Number and Description if needed. Changes can be saved by clicking the Save Changes button.</p>
+                <p><span class="header1">Delete:</span> Delete Warranty Details by selecting it and then clicking the <span class="header2">Delete</span> <img class="helpicon" src="Content/Icons/data_deleteN.png" title="Delete" /> icon.</p>
+                <p><span class="header1">Alert:</span> This option is used to set Warranty Alert against each Warranty details. Select a Warranty Detail and click <span class="header2">Alert </span> <img class="helpicon" src="Content/Icons/alerT.png" title="Alert" /> icon, then Warranty Alert page will be displayed. User can select a Notification Template and then the Email recipients can be selected from iDrawings Users or Contacts menu. Alert can be saved by clicking Save Alert button. </p>
+                <p><span class="header1">Keyword Search</span> </p>
+                <p>This option helps users to search for Furniture details using keywords. The keyword could belong to any data field of the Furniture data. The user need not know or specify which field to look in. The Keyword could be any part of the Furniture data viz. Furniture No, Furniture Class Name etc. On entering the keyword and clicking on the <span class="header2">Search</span> <img class="helpicon" src="Content/Icons/keyword-search.png" style="border:hidden!important;" title="Keyword Search" type="image" /> icon the data grid will be filtered with Furniture records having data matching the specified keyword. </p>
+                <p><span class="header1">Advanced Search</span> </p>
+                <p>This option <img class="helpicon" src="Content/Icons/advanced-search.png" title="Advanced Search" type="image" /> helps users to search for Furniture details with specific data in known data fields. The data being searched for can be selected from the list boxes or entered into text boxes provided against the data fields. The user can select one or more data fields viz. Furniture No, Furniture Class Name, Status etc or the additional data fields. After entering the search criteria and clicking <span class="header2"> Search </span> button, the data grid will be filtered with furniture records which satisfy the selection criteria.  </p>
+                <p>Fields to be displayed in the Search window can be set using the <span class="header2"> Configure </span> <img class="config helpicon" src="Content/Icons/filter-config-icon.png" alt="Configure" /> icon, provided in the Search window. Search criteria entered in the Search window can be cleared by clicking the Clear button provided in the Search window. After clearing the Search criteria and click Search button to clear the Search Results in the Operational Data grid. </p>
+
+            </div>
+        </section>
+        <section title="Warehoused" [isExpanded]="sectionExpansionStatus[2].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div *ngIf="sectionExpansionStatus[2].isExpanded">
+                <p>This option allows the user to get details of warehoused Furniture in the datagrid.</p>
+                <p><span class="header1">Add</span> </p>
+                <p>This option is for adding a new Furniture . On selecting <span class="header2">Add</span> <img class="helpicon" src="Content/Icons/data_addN.png" title="Add" /> icon, the Furniture Data Entry window will be displayed, with the predefined data fields and any additional data fields defined by the user. The details of the Furniture can be entered there. On clicking Save button, the Furniture will be added. </p>
+                <p><span class="header1">Edit</span> </p>
+                <p>This option is for editing the details of a Furniture. Select the Furniture to be edited in the Data Grid and then click <span class="header2">Edit</span> <img class="helpicon" src="Content/Icons/data_editN.png" title="Edit" /> icon. The details will be displayed. Make necessary changes and click on Save Changes button to save the changes. </p>
+                <p><span class="header1">Multiple Edit</span> </p>
+                <p>Multiple records can be edited by selecting the required Furniture using the Shift or Ctrl keys, and then clicking on the Edit icon. A window will be displayed listing the fields that can be edited. Select the required Field and enter or select the value to be updated to the selected Furniture and click Save Changes button. The changes have to be made selecting one field at a time.</p>
+                <p><span class="header1">Delete</span> </p>
+                <p>This option is for deleting Furniture.Select the Furniture to be deleted and click <span class="header2">Delete</span> <img class="helpicon" src="Content/Icons/data_deleteN.png" title="Delete" /> icon. A confirmation message will be displayed. On clicking Yes to the confirmation message, the selected Furniture will be deleted.</p>
+                <p><span class="header1">Display Settings</span> </p>
+                <p>This option <img class="helpicon" src="Content/Icons/data_display-settingsN.png" alt="Display Settings" title="Display Settings" /> is for specifying the Common Attributes, Class Attributes and Space Data fields to be displayed in the data grid. Changes made here will be saved as user default settings.For making permanent changes, an administrator has to click Yes to the confirmation message "Display Settings updated. Do you want to save this as System default?".</p>
+                <p>Three tabs namely Common Attributes, Class Attributes and Space Data will be displayed.</p>
+                <p><span class="header3">Common Attributes</span></p>
+                <p>The Display Settings for Common Attributes of all Furniture that are shown in the Datagrid can be modified using this option. On selecting this option, the common attributes of all Furniture will be listed with check boxes for Data. The desired boxes can be checked and the changes become effective on clicking the Save Changes button. Changes made here will be saved as User default Settings. This can be set as System Default settings by clicking Yes to the confirmation message  "Display Settings updated. Do you want to set this as System Default?".</p>
+                <p><span class="header3">Class Attributes</span></p>
+                <p>The Display Settings for Class specific Attributes of each Furniture Class that are shown in the Datagrid can be modified using this option. On selecting the required Furniture Class, any class specific attributes defined for the Furniture Class will be listed with check boxes for Data. The desired boxes can be checked and the changes become effective on clicking the Save Changes button. Changes made here will be saved as User default Settings. This can be set as System Default settings by clicking Yes to the confirmation message  "Display Settings updated. Do you want to set this as System Default?".</p>
+                <p><span class="header3">Space Data </span></p>
+                <p>This option is for specifying the Space Data fields, to be displayed in the Datagrid. All Space fields will be listed with checkboxes. The desired boxes can be checked and the changes become effective on clicking the Save Changes button. Changes made here will be saved as User default Settings. This can be set as System Default settings by clicking Yes to the confirmation message  "Display Settings updated. Do you want to set this as System Default?".</p>
+                <p><span class="header1">Class Selection</span> </p>
+                <p>Class selection option provided under this <img class="helpicon" src="Content/Icons/settingS.png" title="Tools" /> icon is for flitering the Furniture Classes. Furniture Classes of all the Furniture  will be listed with check boxes. Check the required Furniture classes to be displayed and click Save button. The Furniture with the selected Furniture Classes will be shown. </p>
+                <p><span class="header1">Place</span> </p>
+                <p>This option is to place a warehoused Furniture into a Drawing. Select the warehoused Furniture from the data grid and click <span class="header2">Place</span> option from <img class="helpicon" src="Content/Icons/settingS.png" title="Tools" /> icon. The Drawing list will be displayed. Open the required drawing. The system will prompt to select a space to place the Furniture. Click on the exact location where the Furniture is to be placed.The Furniture will be placed there. Multiple Furniture can be placed in a single Place operation, if the drawing is the same. After placing each Furniture, the system will prompt for the location of the next Furniture till all the selected Furniture are placed.  </p>
+                <p>Furniture having no Furniture Symbols cannot be placed in a drawing.</p>
+                <p><span class="header1">Attachments</span> </p>
+                <p>Users can add/edit/delete/view/download attachments to a furniture using this option. Select the required Furniture and click the <span class="header2"> Attachments </span> <img class="helpicon" src="Content/Icons/attachmentN.png" alt="Attachments" title="Attachments" /> icon. The files that can be attached will be restricted to data files like Word, Excel, pdf, jpg, gif, bmp etc.  </p>
+                <p><span class="header3"> Add: </span> An Attachment can be added by clicking on the <span class="header2">Add</span> <img class="helpicon" src="Content/Icons/data_addN.png" title="Add" /> icon. The New Attachment window will be displayed. Select the Attachment Category first, and then select the required file. The attachment has to be uploaded by clicking on the Upload button. </p>
+                <p><span class="header3"> Edit: </span> An Attachment can be edited by clicking on the Edit <img class="helpicon" src="Content/Icons/data_editN.png" title="Edit" /> icon.</p>
+                <p>Select an attachment and click on the <span class="header2"> Edit </span> <img class="helpicon" src="Content/Icons/data_editN.png" title="Edit" /> icon. The Edit Attachment window will be displayed with the current file name. The user can select the attachment category and the required file. Changes can be saved by clicking the Save Changes button.</p>
+                <p><span class="header3"> Delete: </span> Delete an attachment by selecting the required file and clicking the <span class="header2"> Delete </span> <img class="helpicon" src="Content/Icons/data_deleteN.png" title="Delete" /> icon.</p>
+                <p><span class="header3"> View: </span> The attachment can be viewed by selecting the file and then clicking the  <span class="header2"> View </span> <img class="helpicon" src="Content/Icons/view-drawingN.png" alt="View" title="View" /> icon. The selected attachment will be opened in an attachment viewer. View is supported only for image files.</p>
+                <p><span class="header3"> Download: </span> Attachment can be downloaded and saved in the user's computer by clicking the <span class="header2"> Download</span> <img class="helpicon" src="Content/Layout/download_icon.png" alt="Download" title="Download" /> icon. </p>
+                <p><span class="header1">Export </span> </p>
+                <p>This option is to export the Furniture data to the Excel. On clicking <span class="header2">Export</span> <img class="helpicon" src="Content/Icons/exportN.png" alt="Export" title="Export" /> icon, data will be exported to Excel.</p>
+                <p><span class="header1">Warranty Details</span> </p>
+                <p>Users can add/edit/delete/ warranty details to the Furniture using <span class="header2">Warranty Details </span> <img class="helpicon" src="Content/Icons/warrantY.png" alt="Warranty Details" title="Warranty Details" /> option. Select the required Furniture and click the <span class="header2"> Warranty Details </span>  <img class="helpicon" src="Content/Icons/warrantY.png" alt="Warranty Details" title="Warranty Details" /> icon. </p>
+                <p><span class="header1">Add:</span> Warranty details can be added by clicking the <span class="header2"> Add </span> <img class="helpicon" src="Content/Icons/data_addN.png" title="Add" /> icon. New Warranty Details window will be displayed. Select a Warranty Type and Start Date, then enter Warranty Period In Months. User can also enter Warranty Certificate Number and Description if needed. The details can be saved by clicking on the Save button.</p>
+                <p><span class="header1">Edit:</span> Warranty Details can  be edited by selecting it and then clicking the <span class="header2"> Edit </span> <img class="helpicon" src="Content/Icons/data_editN.png" title="Edit" /> icon. The Edit Warranty Details window will be displayed with the saved details. The user can select Warranty Type and Start Date, then modify Warranty Period In Months. User can also enter Warranty Certificate Number and Description if needed. Changes can be saved by clicking the Save Changes button.</p>
+                <p><span class="header1">Delete:</span> Delete Warranty Details by selecting it and then clicking the <span class="header2">Delete</span> <img class="helpicon" src="Content/Icons/data_deleteN.png" title="Delete" /> icon.</p>
+                <p><span class="header1">Alert:</span> This option is used to set Warranty Alert against each Warranty details. Select a Warranty Detail and click <span class="header2">Alert </span> <img class="helpicon" src="Content/Icons/alerT.png" title="Alert" /> icon, then Warranty Alert page will be displayed. User can select a Notification Template and then the Email recipients can be selected from iDrawings Users or Contacts menu. Alert can be saved by clicking Save Alert button. </p>
+                <p><span class="header1">Keyword Search</span> </p>
+                <p>This option helps users to search for Furniture details using keywords. The keyword could belong to any data field of the Furniture data. The user need not know or specify which field to look in. The Keyword could be any part of the Furniture data viz. Furniture No, Furniture Class Name etc. On entering the keyword and clicking on the <span class="header2"> Search </span> <img class="helpicon" src="Content/Icons/keyword-search.png" style="border:hidden!important;" title="Keyword Search" type="image" /> icon the data grid will be filtered with Furniture records having data matching the specified keyword.  </p>
+                <p><span class="header1">Advanced Search</span> </p>
+                <p>This option <img class="helpicon" src="Content/Icons/advanced-search.png" title="Advanced Search" type="image" /> helps users to search for Furniture details with specific data in known data fields. The data being searched for can be selected from the list boxes or entered into text boxes provided against the data fields. The user can select one or more data fields viz. Furniture  No, Furniture Class Name, Status etc or the additional data fields. After entering the search criteria and clicking <span class="header2">Search</span> button, the data grid will be filtered with furniture records which satisfy the selection criteria.  </p>
+                <p>Fields to be displayed in the Search window can be set using the <span class="header2">Configure</span> <img class="config helpicon" src="Content/Icons/filter-config-icon.png" alt="Configure" /> icon, provided in the Search window. Search criteria entered in the Search window can be cleared by clicking the Clear button provided in the Search window. After clearing the Search criteria and click Search button to clear the Search Results in the Operational Data grid.</p>
+            </div>
+        </section>
+    </content>
+</page>
+<style type="text/css">
+    h3.Mainheader {
+        color: #178AE8;
+    }
+
+    .header1 {
+        font-weight: bold;
+        color: #178AE8;
+    }
+
+    .header2 {
+        font-weight: normal;
+        color: #178AE8;
+    }
+
+    p {
+        margin-left: 38px;
+        font-size: 13px;
+        margin-right: 3em;
+    }
+
+    .header3 {
+        font-weight: bold;
+        color: black;
+    }
+    /**/ h1 {
+        color: #178AE8;
+        font-size: 1.3em;
+        margin-left: 38px;
+    }
+
+    h2 {
+        color: #178AE8;
+        font-size: 1em;
+        margin-left: 38px;
+    }
+
+    .config {
+        background-color: #178AE8;
+    }
+
+    .helpicon {
+        vertical-align: baseline;
+        width: 20px;
+        height: 20px;
+    }
+</style>

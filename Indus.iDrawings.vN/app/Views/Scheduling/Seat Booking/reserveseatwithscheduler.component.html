@@ -1,0 +1,54 @@
+﻿<split-view [splitviewObject]="splitviewInput" style="height:100%;overflow-y:auto;" [pageTitle]="pageTitle">
+    <primary-view style="overflow:hidden">
+        <div *ngIf="Fromdate[0] != undefined" class="date-picker-calendar" style="height:45px;display:inline-block;width:100%;">
+            <DateComponent [disableDates]="disableDates" id="fromDate" *ngIf="Fromdate[0]!=undefined" [showDateOnLoad]="true" [fieldObject]="Fromdate[0]" (datepickerOut)="divClicked($event,1)" [SetAlignment]="horizontal"></DateComponent>
+        </div>
+        <!--<div class="search-containerforschedule2">
+            <searchforschedule [Title]="searchTitle" [searchtype]="'Grid'" [keyWordLookup]=keyWordLookup [disable]="disable" [Key]=2 [KeywordFields]=KeywordFieldObject [advancesearch]=true [Customsearch]=true [datasource]=advancelookup [Target]="1" (SaveAs)="SaveAs($event)" (Delete)="Delete($event)" (onloadSearch)="onloadSearch($event)" (loadAdvanceSearch)="advanceSearch()" (Clear)="Clear($event)" (Submit)="Submit($event)" [(showSearchFilter)]="showSearchFilter" [isShowDefaultEndTime]=true></searchforschedule>
+        </div>-->
+        <div style="height: calc(100% - 70px);overflow:hidden;">
+            <div [ngClass]="isViewDrawing ?'gridViewFromDrawingShow':'gridViewFromDrawingHide'" style="overflow:hidden;">
+                <div [style.height]="getHeight()" style="display:block;">
+                    <gridView [arrHighlightRowIds]="arrHighlightRowIds" [refreshgrid]="refreshgrid" [(dataSource)]="itemsSource" [properties]="inputItems" [columns]="fieldObject" (onSorting)="onSort($event)" (onColValClick)="onHyperLinkClick($event)" (onSelectionChanging)="onSelectionChange($event)"></gridView>
+                </div>
+            </div>
+            <div [ngClass]="pageTarget!=0 ?'schedulerView':'schedulerViewFromDrawingSeat'">
+                <schedule-calendar style="height:100%;" [rowcount]="totalItems" [SelectedDate]="Dateforcalender" [bookedDateObj]="schedulerArrObj" [IsAddpageopened]="IsAddpageopened" [IsGridloaded]="IsGridloaded" [Sitedatetime]="SitedatetimeArrObj" (cellClick)="bookHotellingSeat($event)" [isRoom]="false"></schedule-calendar>
+            </div>
+        </div>
+    </primary-view>
+    <secondary-view *ngIf="showBookSeat==true && splitviewInput.showSecondaryView && secondaryTarget == 1">
+        <book-seat (submitSuccess)="submitReturn($event)" [selSeatId]="SeatIdarray" [fieldDetailsBook]="fieldDetailsBook" [Sitetime]="Sitetime" (reserveSeatReturn)="reserveSeatSubmitRet($event)"></book-seat>
+    </secondary-view>
+    <secondary-view id="roomdetails" *ngIf="SpaceIdforroom > 0 && splitviewInput.showSecondaryView && secondaryTarget == 2">
+        <roomdetails style="display:block;width:600px;" [selectedId]="SpaceIdforroom" [Todaydate]="Dateforcalender" [Target]="3" [selSeatId]="inputItems.selectedIds" [SeatNo]="SeatNo"></roomdetails>
+    </secondary-view>
+</split-view>
+<style>
+    .date-picker-calendar {
+        border-radius: 5px;
+        margin-left: 40%;
+        margin-top: 0%;
+        margin-bottom: 10px;
+        /*position: absolute;*/
+        display: block;
+        z-index: 1;
+        width: 100%;
+    }
+
+    /*:host.grid {
+        height: 100%;
+    }*/
+
+    #roomdetails {
+        height: 50%;
+    }
+    .search-containerforschedule2 {
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        padding-top: 6px;
+        margin-right: 10px;
+        z-index: 51;
+    }
+</style>

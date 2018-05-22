@@ -1,0 +1,61 @@
+﻿<page [pagetitle]="pagePath">
+    <pagepath>
+    </pagepath>
+    <content>
+        <section title="Logbook" [isExpanded]="true" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div>
+
+                <p>This option <img class="helpicon" src="Content/Layout/logbook.png" /> allows the Administrator to view log of user activities in the As Builts Module. The period for which the log is to be viewed can be specified, and the users, entities and activities can be selected. This helps to keep track of all the user activities in the module. This option will be available only if the ‘Logbook’ option is enabled by Indus.</p>
+                <p>To view the log activities in the As Builts Module, user has to select the As Builts Module from the Module list in the Log book Filter option. Log activities can also be filtered based on Users, Entities and Activities.</p>
+
+            </div>
+        </section>
+    </content>
+</page>
+<style type="text/css">
+    h3.Mainheader {
+        color: #178AE8;
+    }
+
+    .header1 {
+        font-weight: bold;
+        color: #178AE8;
+    }
+
+    .header2 {
+        font-weight: normal;
+        color: #178AE8;
+    }
+
+    p {
+        margin-left: 38px;
+        font-size: 13px;
+        margin-right: 3em;
+    }
+
+    .header3 {
+        font-weight: bold;
+        color: black;
+    }
+    /**/ h1 {
+        color: #178AE8;
+        font-size: 1.3em;
+        margin-left: 38px;
+    }
+
+    h2 {
+        color: #178AE8;
+        font-size: 1em;
+        margin-left: 38px;
+    }
+
+    .config {
+        background-color: #178AE8;
+    }
+
+    .helpicon {
+        vertical-align: baseline;
+        width: 20px;
+        height: 20px;
+    }
+</style>

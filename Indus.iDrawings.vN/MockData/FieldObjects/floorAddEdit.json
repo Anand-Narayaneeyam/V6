@@ -1,0 +1,110 @@
+﻿{
+  "data": [
+    {
+      "FieldId": 1,
+      "FieldName": "Site Name",
+      "FieldType": 5,
+      "FieldValue": "1",
+      "HasRelation": false,
+      "IsVisible": true,
+      "IsMandatory": false,
+      "IsDisabled": false,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false,
+      "MaxLength": 100,
+      "IsMultiValued": true,
+      "MultiValuedDetails": {
+        "LookupValues": [
+          
+          {
+            "Id": 1,
+            "Value": "Aberdeen"
+          },
+          {
+            "Id": 2,
+            "Value": "Concord"
+          },
+          {
+            "Id": 3,
+            "Value": "Arlington"
+          },
+          {
+            "Id": 4,
+            "Value": "Framingham"
+          },
+          {
+            "Id": 5,
+            "Value": "Greenwood"
+          },
+          {
+            "Id": 6,
+            "Value": "Manchester"
+          },
+          {
+            "Id": 7,
+            "Value": "Site 1"
+          },
+          {
+            "Id": 8,
+            "Value": "WhiteField"
+          }
+        ],
+        "PopupComponentName": null
+      },
+      "NotificationType": "inline",
+      "Exclude": [ "--" ],
+      "Width": " ",
+      "Format": ""
+    },
+    {
+      "FieldId": 1,
+      "FieldName": "Building Name",
+      "FieldType": 5,
+      "FieldValue": "1",
+      "HasRelation": false,
+      "IsVisible": true,
+      "IsMandatory": false,
+      "IsDisabled": false,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false,
+      "MaxLength": 100,
+      "IsMultiValued": true,
+      "MultiValuedDetails": {
+        "LookupValues": [
+         
+          {
+            "Id": 1,
+            "Value": "AD"
+          },
+          {
+            "Id": 2,
+            "Value": "Hawaii Towers"
+          },
+          {
+            "Id": 3,
+            "Value": "Miami Towers"
+          },
+          {
+            "Id": 4,
+            "Value": "Test Building"
+          }
+        ],
+        "PopupComponentName": null
+      },
+      "NotificationType": "inline",
+      "Exclude": [ "--" ],
+      "Width": " ",
+      "Format": ""
+    },
+    {  "FieldId": 1,
+      "FieldName": "Floor Name",
+      "FieldType": 1,
+      "FieldValue": "01",
+      "IsMandatory": true,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false,
+      "IsVisible": true,
+      "MaxLength": 100,
+      "NotificationType": "inline"}
+  ]
+}

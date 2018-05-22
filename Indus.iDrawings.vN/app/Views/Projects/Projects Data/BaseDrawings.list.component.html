@@ -1,0 +1,52 @@
+﻿
+   
+    <split-view [splitviewObject]="splitviewInput" [pageTitle]="pageTitle" (onSecondaryClose)="onSplitViewClose($event,basetarget)">
+        <primary-view>
+            <!--<div class="search-container">
+            <search *ngIf="fieldObject" [disable]="disable" [searchtype]="'Grid'" [keyWordLookup]=keyWordLookup [advancesearch]=true [Key]=2 [datasource]=advancelookup [dataKey]="dataKey" [KeywordFields]=KeywordFieldObject (SaveAs)="SaveAs($event)" (Delete)="Delete($event)" (onloadSearch)="onloadSearch($event)" (loadAdvanceSearch)="advanceSearch()" (Clear)="Clear($event)" (Submit)="Submit($event)"></search>
+        </div>-->
+            <tabs [selectedTab]="selectedTab"  (getSelectedTab)="getSelectedTab($event)" (onTabBeforeClose)="onTabBeforeClose($event)" style="height:95%;display:block" [deleteIndex]="deleteIndex">
+                <tab tabTitle="Base Drawings" closeButtonVisible="hidden">
+                    <submenu>
+                        <sub-menu [source]=menuData [menuCard]=true [count]=totalItems [menuIds]=enableMenu [textOnRightSide]="projectNameDetails" (onSubMenuChange)="onSubMenuChange($event);"> </sub-menu>
+                    </submenu>
+                    <div style="height:calc(100% - 35px);width:100%;display:block">
+                        <div style="height:calc(100% - 45px);" [ngClass]="totalItems > itemsPerPage ? 'pagewithPaging':'pagewithoutPaging'">
+                            <confirmation (onConfirm)="okDelete($event)"></confirmation>
+                            <gridView [dataSource]="itemsSource" [properties]="inputItems" [columns]="fieldObject" [refreshgrid]="refreshgrid" (onSorting)="onSort($event)"></gridView>
+                        </div>
+                        <div style="height:45px;width:100%;display:block">
+                            <paging [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="pageChanged($event);"></paging>
+                        </div>
+                    </div>
+                    </tab>
+                <tab tabTitle="View Drawings" *ngIf="moduleId && viewDrawing==true" closeButtonVisible="visible">
+                    <opendrawing *ngIf="IsOpenDrawingComponentActive==true" [extDrawingId]="drawingId" [extRevisionNo]="revisionNumber" [moduleId]=moduleId [activeModuleIds]=moduleId [pageTarget]=pageTarget [extDrawingType]="drawingType" [extDrawingDetails]="drawingDetails"  [extDrawingCategoryId]="drawingCategoryId" (outDrawingobject)="outDrawingObject($event)" ></opendrawing>
+                </tab>
+</tabs>
+        </primary-view>
+        <secondary-view>
+            <basedrawing-add-edit *ngIf="splitviewInput.showSecondaryView && basetarget == 1" [action]="action" [fieldDetailsAdd]="fieldDetailsAdd" [projectId]="projectId" [selectedId]="selectedId" [rowData]="rowData" (submitSuccess)="submitSuccess($event)" ></basedrawing-add-edit>
+            <base-drawingrevision-list *ngIf="splitviewInput.showSecondaryView && basetarget == 2" [projectName]="projectName" [projectId]="projectId" [rowData]="rowData" ></base-drawingrevision-list>
+            <base-drawingmarkup-list *ngIf="splitviewInput.showSecondaryView && basetarget == 3" [projectName]="projectName" [projectId]="projectId"  [rowData]="rowData"></base-drawingmarkup-list>
+        </secondary-view>
+    </split-view>
+    <slide [width]="200" [position]="position" [type]="dialog" [show]="showSlide" (closeDialog)="closeSlideDialog($event)">
+
+        <div>
+            <div>
+              
+                {{drawingDialogMessages.message}}
+            </div>
+            <div>
+
+                <div style="width:100%">
+                    <button class="Savebutton " type="button" (click)="okBaseDrawingDelete(drawingDialogMessages.key)">Yes</button>
+                    <button class="Savebutton " type="button" (click)="cancelClick(drawingDialogMessages.key)">No</button>
+                </div>
+            </div>
+        </div>
+    </slide>
+
+
+

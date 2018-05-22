@@ -1,0 +1,79 @@
+﻿<page [pagetitle]="pagePath">
+    <pagepath>
+    </pagepath>
+    <content>
+        <section title="Define Work Type" [isExpanded]="sectionExpansionStatus[0].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div *ngIf="sectionExpansionStatus[0].isExpanded">
+                <p>Define Work Types and Set Workflow menu are grouped under Workflow Settings.</p>
+                <p><span class="header1">Define Work Types</span>
+                <p>Administrators can create different Work Types for Move Project Work Orders for the execution of Space Planning Move Projects.</p>
+                <p>On clicking <span class="header2">Add </span> <img class="helpicon" src="Content/Icons/data_addN.png" title="Add" /> icon, New Work Type window will be displayed with Work Type Name, Work Type Code, and Workflow Category. Workflow Category combo will be listed with Workflow categories -‘Space Planning Project Approval’, ‘Move Project Execution’</p>
+                <p><span class="header1">Add: </span> New Work Type can be added by clicking the  <span class="header2">Add </span> <img class="helpicon" src="Content/Icons/data_addN.png" title="Add" /> icon. </p>
+                <p><span class="header1">Edit: </span> Edit a Work Type by selecting it and then clicking the <span class="header2">Edit </span> <img class="helpicon" src="Content/Icons/data_editN.png" title="Edit" /> icon.</p>
+                <p><span class="header1">Delete: </span> Delete a Work Type by selecting it and then clicking the  <span class="header2">Delete </span><img class="helpicon" src="Content/Icons/data_deleteN.png" title="Delete" /> icon.</p>
+
+            </div>
+        </section>
+        <section title="Set Workflow" [isExpanded]="sectionExpansionStatus[1].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div *ngIf="sectionExpansionStatus[1].isExpanded">
+                <p>For each Work Type, the Action Points in its workflow and the Outcomes (actions) associated with each Action Point have to be defined. Set Workflow option is used to define this. </p>
+                <p>On selecting a Work Type, any existing Workflow for the selected Work Type will be displayed. The Administrator can modify the Workflow for a Work Type at any time by adding, editing, or deleting new action points as required. </p>
+                <p><span class="header1"> Action Point </span>
+                <p><span class="header1">Add: </span> This option is used to add Action Points for a selected Work Type along with the Outcomes associated with the Action Point. If the selected Work Type is of the workflow category -Move Project Execution, the Action Point combo will be populated with the Action Points created and mapped for ‘Move Project Execution’ in Workflow Category <img class="helpicon" src="Content/Icons/set-workflow-action-point.png" title="Set Workflow Category" /> option in Action Points menu under Administration.</p>
+                <p>If the selected Work Type is of the workflow category, Move Project Execution, the Action Point combo will be populated with the Action Points created and mapped for ‘Move Project Execution’ in Workflow Category <img class="helpicon" src="Content/Icons/set-workflow-action-point.png" title="Set Workflow Category" /> option in Action Points menu under Administration. </p>
+                <p><span class="header1">Add: </span> New Action point can be added by clicking <span class="header2">Add </span> <img class="helpicon" src="Content/Icons/data_addN.png" title="Add" /> icon. </p>
+                <p><span class="header1">Edit: </span> Edit an Action point by selecting it and then clicking the  <span class="header2">Edit </span> <img class="helpicon" src="Content/Icons/data_editN.png" title="Edit" /> icon.</p>
+                <p><span class="header1">Delete: </span> Delete an Action Point by selecting it and then clicking the <span class="header2">Delete </span><img class="helpicon" src="Content/Icons/data_deleteN.png" title="Delete" /> icon. Deletion will be possible only if there is no outcome attached to the selected Action Point. </p>
+                <p>If there is any Work Order in the current Workflow, workflow will be modified when deleting an Action Point. A modification will be considered as revision. When a revision takes place, all existing work orders in that workflow will follow the workflow before the revision.</p>
+
+            </div>
+        </section>
+    </content>
+</page>
+<style type="text/css">
+    h3.Mainheader {
+        color: #178AE8;
+    }
+
+    .header1 {
+        font-weight: bold;
+        color: #178AE8;
+    }
+
+    .header2 {
+        font-weight: normal;
+        color: #178AE8;
+    }
+
+    p {
+        margin-left: 38px;
+        font-size: 13px;
+        margin-right: 3em;
+    }
+
+    .header3 {
+        font-weight: bold;
+        color: black;
+    }
+    /**/ h1 {
+        color: #178AE8;
+        font-size: 1.3em;
+        margin-left: 38px;
+    }
+
+    h2 {
+        color: #178AE8;
+        font-size: 1em;
+        margin-left: 38px;
+    }
+
+    .config {
+        background-color: #178AE8;
+    }
+
+    .helpicon {
+        vertical-align: baseline;
+        width: 20px;
+        height: 20px;
+    }
+</style>

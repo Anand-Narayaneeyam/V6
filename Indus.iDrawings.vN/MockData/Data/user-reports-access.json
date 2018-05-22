@@ -1,0 +1,78 @@
+﻿{
+    "data": [
+        {
+            "Id": 1,
+            "Select All": true,
+            "Module": "Exec Summary",
+            "Type": "Standard Reports",
+            "Reports": "Facility Occupancy Report"
+        },
+        {
+            "Id": 2,
+            "Select All": true,
+            "Module": "Exec Summary",
+            "Type": "Standard Reports",
+            "Reports": "Asset Summary By Building"
+        },
+        {
+            "Id": 3,
+            "Select All": true,
+            "Module": "Exec Summary",
+            "Type": "Standard Reports",
+            "Reports": "Asset List By Building"
+        },
+        {
+            "Id": 4,
+            "Select All": true,
+            "Module": "As-Builts",
+            "Type": "Standard Reports",
+            "Reports": "Sites"
+        },
+        {
+            "Id": 5,
+            "Select All": true,
+            "Module": "As-Builts",
+            "Type": "Standard Reports",
+            "Reports": "Buildings"
+        },
+        {
+            "Id": 6,
+            "Select All": true,
+            "Module": "As-Builts",
+            "Type": "Drawings",
+            "Reports": "All Drawings"
+        },
+        {
+            "Id": 7,
+            "Select All": true,
+            "Module": "Projects",
+            "Type": "Standard Reports",
+            "Reports": "Report By Query"
+        },
+        {
+            "Id": 8,
+            "Select All": true,
+            "Module": "Projects",
+            "Type": "Standard Reports",
+            "Reports": "Project Details"
+        },
+        {
+            "Id": 9,
+            "Select All": true,
+            "Module": "Projects",
+            "Type": "Standard Reports",
+            "Reports": "Pending Task Details"
+        },
+        {
+            "Id": 10,
+            "Select All": true,
+            "Module": "Space",
+            "Type": "Standard Reports",
+            "Reports": "Gross Area Distribution"
+        }
+    ],
+    "count": 
+    {
+        "TotalItems": "20"
+    }
+}

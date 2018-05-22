@@ -1,0 +1,720 @@
+﻿
+<div style="height:30px;width:30px;position:absolute;margin-right:0;right:0;top:50%;z-index:10" (click)="showSecondary()" class="rightSideIcon">
+    <img style="margin:0px;height:34px;width:34px;-ms-transform: rotate(180deg);-webkit-transform: rotate(180deg);transform: rotate(180deg);" src="Content/Layout/right-arrow.png" />
+</div>
+<split-view [splitviewObject]="splitviewDrawinggrid" [inlineSecondaryView]=inlineSecondaryView (afterResize)="onResize($event)">
+    <primary-view (contextmenu)="onContextMenu($event, item)" style="overflow:hidden">
+        <split-view [splitviewObject]="splitviewDrawing" [pageTitle]="pageTitle" (onSecondaryClose)="onSplitViewClose($event)">
+            <primary-view (contextmenu)="onContextMenu($event, item)" style="overflow:hidden">
+                <div id="textDiv" [ngStyle]="{'position':positionExpand}" style="top:51px;left:2px;right:2px;bottom:51px;z-index:40;overflow:hidden">
+                    <div class="mainDiv" style="">
+                        <div [ngStyle]="{'visibility':visibilityOfMenu}">
+                            <div *ngIf="isShowSecondaryDrawing==false" style="float:right;display:inline-block;">
+                                <!--<search *ngIf="moduleId!=1 &&(searchFieldObject)" [disable]="disable" [searchtype]="'Grid'" [keyWordLookup]=keyWordLookup [advancesearch]=true [Key]=2 [datasource]=advancelookup [dataKey]="inputItems.dataKey" [KeywordFields]=KeywordFieldObject (SaveAs)="SaveAs($event)" (Delete)="Delete($event)" (onloadSearch)="onloadSearch($event)" (loadAdvanceSearch)="advanceSearch()" (Clear)="Clear($event)" (Submit)="Submit($event)" [smartSearch]=isSmartSearch></search>-->
+                                <div *ngIf="moduleId!=1 && moduleId!=2  && !(moduleId==3 && pageTarget==2)&&!(moduleId==5 && pageTarget==5) &&!isSchedulingOnlyUser" class="icon" (mouseover)="toolsMenuMouseOver($event)" (mouseout)="toolsMenuMouseOut($event)">
+                                    <img src="Content/Icons/more_menuN.png" style="width:25px;height:25px" title="Tools" /><span>▾</span>
+                                    <div *ngIf="toolsMenu!=undefined" [ngStyle]="{'visibility':visibilityOfToolsMenu}" [style.right]="moreToolsMenuRight" style="width: auto;background:#ffffff;border:1px solid darkgrey;height:auto;position:absolute;z-index:10;top:30px;">
+                                        <div *ngFor="let menudata of toolsMenu;let i=index" class="distributionmenu" (click)="toolsMenuOnClick(menudata)">{{menudata.menuName}}</div>
+                                    </div>
+                                </div>
+                                <div *ngIf="displayMaximize=='initial'" class="icon">
+                                    <img src="Content/Images/Drawings/Maximize.png" class="markupicons" [style.display]="displayMaximize" (click)="maximizeOnClick($event)" title="Maximize" />
+                                </div>
+                                <div *ngIf="displayMinimize=='initial'" class="icon">
+                                    <img src="Content/Images/Drawings/Minimize.png" class="markupicons" [style.display]="displayMinimize" (click)="minimizeOnClick($event)" title="Minimize" />
+                                </div>
+                                <!--<div *ngIf="moduleId!=1 && !(moduleId==3 && pageTarget==2)&&!(moduleId==5 && pageTarget==5)"  class="icon">
+                                    <img src="Content/Icons/data_display-settingsN.png" class="markupicons"  (click)="displaySettingsOnClick()" title="Display Settings" />
+                                </div>-->
+                                <div *ngIf="moduleId!=14" class="icon" (mouseover)="exportBtnMouseOver($event)" (mouseout)="exportBtnMouseOut($event)">
+                                    <img src="Content/Images/Drawings/exportdwg.png" class="markupicons" title="Export" />
+                                    <div *ngIf="exportMenu!=undefined" [ngStyle]="{'visibility':visibilityOfExportMenu}" style="width: auto;background:#f2f2f2;border:1px solid darkgrey;height:auto;position:absolute;z-index:10;right:34px;">
+                                        <div *ngFor="let menudata of exportMenu;let i=index" class="exportnmenu" (click)="exportOnClick(menudata)">{{menudata.menuName}}</div>
+                                    </div>
+                                </div>
+                                <div *ngIf="moduleId!=14" class="icon" (mouseover)="saveAsBtnMouseOver($event)" (mouseout)="saveAsBtnMouseOut($event)">
+                                    <img src="Content/Images/Drawings/SaveAsDwg.png" class="markupicons" (click)='saveAsBtnOnClick($event)' title="Save As" />
+                                    <div *ngIf="saveAsMenu!=undefined" [ngStyle]="{'visibility':visibilityOfSaveAsMenu}" style="width: auto;background:#f2f2f2;border:1px solid darkgrey;height:auto;position:absolute;z-index:10;right:4px;">
+                                        <div *ngFor="let menudata of saveAsMenu;let i=index" class="saveasnmenu" (click)="saveAsOnClick(menudata)">{{menudata.menuName}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <img *ngIf="moduleId==1||moduleId==2" src="Content/Images/Drawings/DdrawingDetailsmarkups.png" class="markupicons" style="float:left;margin-left:3px;margin-top:2px;cursor:pointer" (click)="detailsOnClick()" title="Drawing Details and Markups" />
+                            <img *ngIf="islowResolution && (moduleId!=1&&moduleId!=2)" src="Content/Images/Drawings/DdrawingDetailsmarkups.png" class="markupicons" style="float:left;margin-left:3px;margin-top:2px;cursor:pointer" title="{{dwgDetails}}" />
+                            <div *ngIf="dwgDetails!='' && moduleId != 2 && islowResolution==false" [style.width]="detailsWidth" class="drawingDetails" title="{{dwgDetails}}">{{dwgDetails}}</div>
+
+                            <div *ngIf="(moduleId==1 && pageTarget!=3)" style="display:inline-block;float:right">
+                                <label style="color:black;">Comment</label>
+                                <div class="icon">
+                                    <img src="Content/Images/Drawings/text.png" class="markupicons" (click)="addcommentsOnClick()" title="Add Comment" />
+                                </div>
+                                <div class="icon">
+                                    <img src="Content/Icons/data_editN.png" class="markupicons" (click)="editOnClick()" title="Edit Comment" />
+                                </div>
+                                <div style="display:inline-block;margin-left:20px">
+                                    <label style="color:black;">Markup</label>
+                                    <div class="icon">
+                                        <img src="Content/Images/Drawings/Rectangle.png" class="markupicons" (click)="rectangleOnClick()" title="Rectangle" />
+                                    </div>
+                                    <div class="icon">
+                                        <img src="Content/Images/Drawings/ellipse.png" class="markupicons" (click)="ellipseOnClick()" title="Ellipse" />
+                                    </div>
+                                    <div class="icon">
+                                        <img src="Content/Images/Drawings/line.png" class="markupicons" (click)="lineOnClick()" title="Line" />
+                                    </div>
+                                    <div class="icon">
+                                        <img src="Content/Images/Drawings/cloud.png" class="markupicons" (click)="cloudOnClick()" title="Cloud" />
+                                    </div>
+                                    <div class="icon">
+                                        <img src="Content/Images/Drawings/draw.png" class="markupicons" (click)="freehandOnClick()" title="Free Hand" />
+                                    </div>
+                                    <select id=ddlFontSize title="Line Thickness" #items (change)="onChangeLineThickness(items.value)" style="width:40px;height:25px;" name=ddlFontSize [disabled]="lineSizeDisable">
+                                        <option selected value=1>1</option>
+                                        <option value=2>2</option>
+                                        <option value=3>3</option>
+                                        <option value=4>4</option>
+                                        <option value=5>5</option>
+                                        <option value=6>6</option>
+                                        <option value=7>7</option>
+                                        <option value=8>8</option>
+                                        <option value=9>9</option>
+                                        <option value=10>10</option>
+                                    </select>
+                                </div>
+                                <!--<ColorPicker [fieldObject]="colorFieldObj"  (colorPickerValueChange)="lineColorChange($event)"></ColorPicker>-->
+                                <div style="display:inline-block;float:right;margin-left: 5px;margin-right:5px">
+                                    <div class="icon">
+                                        <img src="Content/Images/Drawings/move.png" class="markupicons" (click)="moveOnClick()" title="Move" />.
+                                    </div>
+                                    <div class="icon">
+                                        <img src="Content/Icons/data_deleteN.png" class="markupicons" (click)="deleteOnClick()" title="Delete" />
+                                    </div>
+                                    <div class="icon">
+                                        <img src="Content/Images/Drawings/save.png" class="markupicons" (click)="saveOnClick()" title="Save" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div *ngIf="moduleId==3 && (pageTarget!=2) ||(moduleId==5)||(showObjectMenu)||(moduleId==8)||(moduleId==12)||(moduleId==14 && (pageTarget==1))" style="width:auto;margin:auto;margin-right:3px;display:inline-block;float:right;">
+                                <div *ngIf="isRoomBookingEnabled && moduleId==14" class="icon" style="margin-right: 4px;">
+                                    <img src="Content/Icons/reserve_rooM.png" class="markupicons" (click)='reserveRoomOnClick($event)' title="{{reserveroom}}" />
+                                </div>
+                                <div *ngIf="isSeatBookingEnabled && moduleId==14" class="icon" style="margin-right: 4px;">
+                                    <img src="Content/Icons/reserve_seaT.png" class="markupicons" (click)='reserveSeatOnClick($event)' title="{{reserveseat}}" />
+                                </div>
+                                <div *ngIf="isSeatBookingEnabled && moduleId==14 && sessionUserRoleId !=4 && !isSchedulingOnlyUser" class="icon" style="margin-right: 4px;">
+                                    <img src="Content/Images/Drawings/single-work-space.png" class="markupicons" (click)='assignSingleHotelingClickFromMenu($event)' title="{{setasseat}}" />
+                                </div>
+                                <div *ngIf="isSeatBookingEnabled && moduleId==14 && sessionUserRoleId !=4 && !isSchedulingOnlyUser" class="icon" style="margin-right: 4px;">
+                                    <img src="Content/Images/Drawings/multiple-work-space.png" class="markupicons" (click)='assignMultipleHotelingClick($event)' title="{{setmultipleroomsasseat}}" />
+                                </div>
+                                <div *ngIf="isSeatBookingEnabled && moduleId==14 && sessionUserRoleId !=4 && !isSchedulingOnlyUser" class="icon" style="margin-right: 4px;">
+                                    <img src="Content/Images/Drawings/move-seat.png" class="markupicons" (click)='moveSeatOnClick($event)' title="{{moveseat}}" />
+                                </div>
+                                <div *ngIf="!(moduleId==5 && pageTarget==5) && !isSchedulingOnlyUser && spaceDistMenuData && isShowSecondaryDrawing==false" class="icon" (mouseover)="distributionMouseOver($event)" (mouseout)="distributionMouseOut($event)">
+                                    <img src="Content/Images/Drawings/distributionMap-menu-button.png" style="width:25px;height:25px" [ngStyle]="{'visibility':visibilityOfDistributionImage}" title="Distribution Map" /><span>▾</span>
+                                    <div *ngIf="spaceDistMenuData!=undefined" [ngStyle]="{'visibility':visibilityOfDistributionMenu}" [style.right]="distributionMenuRight" style="width: auto;background:#f2f2f2;border:1px solid darkgrey; height:auto;position:absolute;z-index:10;top:30px;max-height:500px;overflow:auto">
+                                        <div *ngFor="let menudata of spaceDistMenuData;let i=index" style="height:26px;width:150px">
+                                            <div style="display:inline-block;width:128px;text-overflow:ellipsis;white-space:nowrap;overflow:hidden;" title="{{menudata.FieldName}}" class="distributionmenu" (click)="distributionMapOnClick(menudata)">
+                                                {{menudata.FieldName}}
+                                            </div>
+                                            <div *ngIf="menudata.FieldName != 'Occupancy'" style="display:inline;float:right;width:22px">
+                                                <img src="Content/Layout/settings_icon.png" style="display:inline;height:18px;width:18px;margin-top:4px" title="Customize" (click)="customisedistributionMapOnClick(menudata)" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div *ngIf="!(moduleId==5 && pageTarget==5) && !isSchedulingOnlyUser && isShowSecondaryDrawing==false" class="icon" (mouseover)="spaceMoreMenuMouseOver($event)" (mouseout)="spaceMoreMenuMouseOut($event)">
+                                    <img src="Content/Images/Drawings/spaceMoreIcon.png" style="width:25px;height:25px" title="Space Tools" /><span>▾</span>
+                                    <div *ngIf="spaceMoreMenu!=undefined" [ngStyle]="{'visibility':visibilityOfspaceMoreMenu}" [style.right]="spaceMoreMenuRight" style="width: auto;background:#ffffff;border:1px solid darkgrey;height:auto;position:absolute;z-index:10;right;top:30px;max-height:500px;overflow:auto">
+                                        <div *ngFor="let menudata of spaceMoreMenu;let i=index" class="distributionmenu" (click)="spaceMoreMenuOnClick(menudata)">{{menudata.menuName}}</div>
+                                    </div>
+                                </div>
+                                <div *ngIf="moduleId==5 && isModuleAdmin==true && showEmpMoreMenu== true && isShowSecondaryDrawing==false" class="icon" (mouseover)="empMoreMenuMouseOver($event)" (mouseout)="empMoreMenuMouseOut($event)">
+                                    <img src="Content/Images/Drawings/empMore.png" style="width:25px;height:25px" title="Employee Tools" /><span>▾</span>
+                                    <div *ngIf="empMoreMenu!=undefined" [ngStyle]="{'visibility':visibilityOfempMoreMenu}" [style.right]="empMoreMenuRight" style="width: auto;background:#ffffff;border:1px solid darkgrey;height:auto;position:absolute;z-index:10;top:30px;max-height:500px;overflow:auto">
+                                        <div *ngFor="let menudata of empMoreMenu;let i=index" class="distributionmenu" (click)="empMoreMenuOnClick(menudata)">{{menudata.menuName}}</div>
+                                    </div>
+                                </div>
+                                <div *ngIf="(showObjectMenu && isModuleAdmin==true && userrole != 4) && isShowSecondaryDrawing==false" class="icon" (mouseover)="objectsMoreMenuMouseOver($event)" (mouseout)="objectsMoreMenuMouseOut($event)">
+                                    <img src="Content/Images/Drawings/asset_tool.png" style="width:25px;height:25px" title="{{objtoolImageTitle}}" /><span>▾</span>
+                                    <div *ngIf="objectsMoreMenu!=undefined" [ngStyle]="{'visibility':visibilityOfobjectsMoreMenu}" style="width: auto;background:#ffffff;border:1px solid darkgrey;height:auto;position:absolute;z-index:10;right:140px;top:30px">
+                                        <div *ngFor="let menudata of objectsMoreMenu;let i=index" class="distributionmenu" (click)="objectsMoreMenuOnClick(menudata)">{{menudata.menuName}}</div>
+                                    </div>
+                                </div>
+                                <!--<div *ngIf="(moduleId==8 && isModuleAdmin==true && userrole != 4)" class="icon" (mouseover)="objectsMoreMenuMouseOver($event)" (mouseout)="objectsMoreMenuMouseOut($event)">
+                                    <img src="Content/Images/Drawings/asset_tool.png" style="width:25px;height:25px" title="Furniture Tools" /><span>▾</span>
+                                    <div *ngIf="objectsMoreMenu!=undefined" [ngStyle]="{'visibility':visibilityOfobjectsMoreMenu}" style="width: auto;background:#ffffff;border:1px solid darkgrey;height:auto;position:absolute;z-index:10;right:125px;top:30px">
+                                        <div *ngFor="let menudata of objectsMoreMenu;let i=index" class="distributionmenu" (click)="objectsMoreMenuOnClick(menudata)">{{menudata.menuName}}</div>
+                                    </div>
+                                </div>-->
+                                <!--************* Note that the below two functionalities are done in drawing Module Assets : multiple move : completed  -- delink : functionality perfectly working in drawing, but the changes will not reflect in grid: That part is pending-->
+                                <!--<img *ngIf="moduleId==7 && isModuleAdmin==true" src="Content/Images/Drawings/multiple_movE.png" style="width:24px;display:inline-block;" (click)="moveMultipleAssetOnClick()" title="Move Multiple Asset" />
+                                <img *ngIf="moduleId==7 && isModuleAdmin==true" src="Content/Images/Drawings/de-LinkAsset.png" style="width:24px;display:inline-block;" (click)="DelinkObjectOnClick()" title="De-Link" />-->
+                                <!-- *************************************** -->
+
+                            </div>
+
+                            <div *ngIf="moduleId==3 && (pageTarget==2)" style="float: right;margin-right: 5px;">
+                                <div class="icon">
+                                    <img src="Content/Icons/space_data_detailS.png" class="markupicons" (click)="spacedataClick()" title="Space Data" />
+                                </div>
+                                <div class="icon">
+                                    <img src="Content/Images/Drawings/unblockdwg.png" class="markupicons" (click)="unlockDrawingOnClick()" title="Unlock" />
+                                </div>
+                            </div>
+
+                            <!--<div *ngIf="moduleId==5 && (pageTarget==1)" style="width:25px;margin:auto;margin-right:60px;">
+
+                            </div>-->
+                        </div>
+                    </div>
+                    <drawingview *ngIf="drawingCategoryId==1 && isShowPrimaryDrawing" [canvasIdName]="canvasIdName" [loadingIndicatorIdName]="loadingIndicatorIdName" [drawingId]="drawingId" [revisionNo]="revisionNo" [moduleId]=moduleId [drawingType]="drawingType" [drawingCategoryId]="drawingCategoryId" (outiWhizObject)="getObject($event)" (afterOpen)="afterDrawingOpen($event)"></drawingview><!--*ngIf="menuClickValue == 4"-->
+                    <drawingview *ngIf="drawingCategoryId!=1 && xrefedDrawingId!=undefined && xrefedDrawing!=undefined && isShowPrimaryDrawing" [canvasIdName]="canvasIdName" [loadingIndicatorIdName]="loadingIndicatorIdName" [xrefDrawing]="xrefedDrawing" [drawingId]="drawingId" [revisionNo]="revisionNo" [moduleId]=moduleId [drawingType]="drawingType" [drawingCategoryId]="drawingCategoryId" (outiWhizObject)="getObject($event)" (afterOpen)="afterDrawingOpen($event)"></drawingview><!--*ngIf="menuClickValue == 4"-->
+
+                    <drawing-tooltip *ngIf="isTooltipEnable && isShowPrimaryDrawing" [xposition]="tooltipXPosition" [yposition]="tooltipYPosition" [visibility]="tooltipVisibility" [data]="tooltipData" [canvas]="canvasElement"></drawing-tooltip>
+                    <context-menu [xposition]="contextMenuXPosition" [yposition]="contextMenuYPosition" [visibility]="contextMenuVisibility" [menuItems]="contextMenuData" [canvas]="canvasElement" (contextMenuOnClick)="contextMenuOnClick($event)"></context-menu>
+                </div>
+
+
+
+            </primary-view>
+            <secondary-view *ngIf="splitviewDrawing.showSecondaryView">
+                <secondary-view *ngIf="showSecondaryViewAsbuiltsTarget==1">
+                    <div *ngIf="moduleId==1||moduleId==2" class="open-drawing-details-container">
+                        <div style="width:100%;margin-left:10px;height:auto;margin-bottom:5px;border-bottom:1px solid;">
+                            <div *ngIf="moduleId==1" class="dwgdetailsdiv"><label class="dwgdetailskeylabel">Site:</label><label class="dwgdetailsvaluelabel" title="{{drawingDetails.Site}}">&nbsp;{{drawingDetails.Site}}</label></div>
+                            <div *ngIf="moduleId==2" class="dwgdetailsdiv"><label class="dwgdetailskeylabel">Project Name:</label><label class="dwgdetailsvaluelabel" title="{{drawingDetails.ProjectName}}">&nbsp;{{drawingDetails.ProjectName}}</label></div>
+                            <div *ngIf="moduleId==1" class="dwgdetailsdiv"><label class="dwgdetailskeylabel">Building:</label><label class="dwgdetailsvaluelabel" title="{{drawingDetails.Building}}">&nbsp;{{drawingDetails.Building}}</label></div>
+                            <div *ngIf="moduleId==2" class="dwgdetailsdiv"><label class="dwgdetailskeylabel">Title</label><label class="dwgdetailsvaluelabel" title="{{drawingDetails.Title}}">&nbsp;{{drawingDetails.Title}}</label></div>
+                            <div *ngIf="!isBuildingDrawing && moduleId==1" class="dwgdetailsdiv"><label class="dwgdetailskeylabel">Floor:</label><label class="dwgdetailsvaluelabel" title="{{drawingDetails.Floor}}">&nbsp;{{drawingDetails.Floor}}</label></div>
+                            <div class="dwgdetailsdiv"><label class="dwgdetailskeylabel">Category:</label><label class="dwgdetailsvaluelabel" title="{{drawingDetails.Category}}">&nbsp;{{drawingDetails.Category}}</label></div>
+                            <div *ngIf="moduleId==1" class="dwgdetailsdiv"><label class="dwgdetailskeylabel">Revision No.:</label><label class="dwgdetailsvaluelabel" title="{{drawingDetails['Revision No.']}}({{uploadedDate}})">&nbsp;{{drawingDetails['Revision No.']}}&nbsp;({{uploadedDate}})</label></div>
+                            <div *ngIf="moduleId==2" class="dwgdetailsdiv"><label class="dwgdetailskeylabel">Revision No.:</label><label class="dwgdetailsvaluelabel" title="{{drawingDetails['Revisions']}}({{uploadedDate}})">&nbsp;{{drawingDetails['Revisions']}}&nbsp;({{uploadedDate}})</label></div>
+                            <div class="dwgdetailsdiv"><label class="dwgdetailskeylabel">DWG File Name:</label><label class="dwgdetailsvaluelabel" title="{{drawingDetails['DWG File']}}">&nbsp;{{drawingDetails['DWG File']}}</label></div>
+                            <div class="dwgdetailsdiv"><label class="dwgdetailskeylabel">Description:</label><label class="dwgdetailsvaluelabel" title="{{drawingDetails.Description}}">&nbsp;{{drawingDetails.Description}}</label></div>
+                            <!--</div>
+                            <div style="width:45%;margin-left:10px;height:auto;">-->
+
+                            <div class="dwgdetailsdiv" style="visibility:hidden !important"></div>
+                        </div>
+                        <div *ngIf="moduleId==1" style="height: 80%;">
+                            <section title="Markups" [isExpanded]="true">
+
+                                <markup-list *ngIf="splitviewDrawing.showSecondaryView" [drawingId]="drawingId" [revisionNo]="revisionNo" [drawingType]="drawingType" [visibleMarkupIds]="visibleMarkupIds" (onViewmarkupClick)="markupViewFromList($event)" (onDeletemarkupClick)="onDeletemarkupClick($event)" (onEditViewmarkupClick)="editMarkupOnClick($event)"></markup-list>
+
+                            </section>
+                        </div>
+                    </div>
+                </secondary-view>
+                <!--For scheduling-->
+                <secondary-view *ngIf="showSecondaryViewSpaceScheduleTarget==1">
+                    <div>
+                        <display-setting [IsGrid]="blnIsGrid" [DisplaySettingCategoryId]="29" [AdditionalDataFieldCategoryId]="7" (emitdisplaySetting)="onSpaceDisplaySettingsinScheduleChange()"></display-setting>
+                    </div>
+                </secondary-view>
+                <secondary-view *ngIf="showSecondaryViewSpaceScheduleTarget==2">
+                    <div>
+                        <reserveroomfromdrawing [spaceDataItem]="spaceDataForReserveRoom"></reserveroomfromdrawing>
+                    </div>
+                </secondary-view>
+                <secondary-view *ngIf="showSecondaryViewSpaceScheduleTarget==3">
+                    <book-seat [selSeatId]="selectedSeatId" [fieldDetailsBook]="fieldsForSeatBooking" (reserveSeatReturn)="reserveSeatSubmitRet($event)" [Sitetime]="siteTime"></book-seat>
+                </secondary-view>
+                <!--<secondary-view *ngIf="showSecondaryViewSpaceScheduleTarget==4">
+                    <seats-List [SelectedSpaceId]="spaceIdForEdit" [category]="assignmentTypeId" [RoomSeatCapacity]="maximusSeats" [RoomNumber]="selectedRoomNo" (seatSuccess)="seatSuccessout($event);"></seats-List>
+                </secondary-view>-->
+                <secondary-view *ngIf="showSecondaryViewSpaceTarget==0">
+                    <div>
+                        <display-setting [IsGrid]="blnIsGrid" [DisplaySettingCategoryId]="dispSettingCategoryId" [AdditionalDataFieldCategoryId]="additionalDataFieldCategoryId" [isArchive]="isArchive" (emitdisplaySetting)="getUpdatedSpaceDisplaySettings()"></display-setting>
+                    </div>
+                </secondary-view>
+                <!--<secondary-view *ngIf="showSecondaryViewSpaceTarget==1">
+                    <div style="width:600px;">
+                        <spaceDataGrid [(selectedDrwgIds)]="inputItems.selectedIds" [pageTarget]="3" (showInDrawingOnClick)="spShowInDrawingOnClick($event)" (showZoomOnClick)="spShowZoomOnClick($event)" (editedSpaceDataInDrawing)="spaceEditReturnData($event,2)"> </spaceDataGrid>
+                    </div>
+                </secondary-view>-->
+                <secondary-view *ngIf="showSecondaryViewSpaceTarget==2">
+                    <spacedata-addedit *ngIf="showSecondaryViewSpaceTarget==2" [moduleId]="moduleId" (submitSuccess)="spaceEditReturnData($event,1,true)" [action]="'edit'" [btnName]="'Save Changes'" [selectedId]="spaceIdForEdit" [seledrwgids]="drawingIdForSpace" [fieldDetailsAdd]="fieldDetailsSpace" [strPopupText]="strPopupText" [sessionUserRoleId]="sessionUserRoleId"></spacedata-addedit>
+                </secondary-view>
+                <secondary-view *ngIf="showSecondaryViewObjectTarget==2">
+                    <objectData-addedit *ngIf="splitviewDrawing.showSecondaryView" [selectedSpaceId]="editObjectSpaceId" [blockRefHandle]="selectedBlockRefHandle" [objectCategoryName]="objectname" [ObjectCategoryId]="objectCategoryId" [moduleId]="moduleId" (submitSuccess)="objectsAddEditSubmitReturn($event)" [action]="objectAddOrEdit" [btnName]="'Save Changes'" [selectedId]="editObjectSelectedId" [fieldDetailsAdd]="objectFieldDetailsAddEdit" [dataOption]="2" [drawingIds]="drawingId" [selectedIddetails]="objectInputItems" [attributeoption]="2" [target]="2" [SiteId]="SiteId" [xPosition]="objectXPosition" [yPosition]="objectYPosition" [objectAngle]="objectAngle"></objectData-addedit>
+                </secondary-view>
+                <secondary-view *ngIf="showSecondaryViewSpaceTarget==7">
+                    <attachments [attachmentCategoryId]="attachmentCategoryId" [moduleId]="moduleId" [baseEntityId]="baseEntityIdForattachment" (attachmentSuccess)="attachmentSuccess($event)" [objectClassId]="editObjectClassId" [isallattachmentmenuneeded]="Isallattachmentmenuneeded" class="attachment"></attachments>
+                </secondary-view>
+                <secondary-view *ngIf="showSecondaryViewSpaceTarget==4">
+                    <assign-spacestd [DrawingId]="drawingId" [moduleId]="moduleId" (assignDeassignSuccess)="spaceEditReturnData($event,1,false)" [selectedId]="spaceIdForEdit" [fieldDetails]="fieldDetailsSpace" [seledrwgids]="drawingIdForSpace" [showbtndeassign]="showbtndeassign"></assign-spacestd>
+                </secondary-view>
+                <secondary-view *ngIf="showSecondaryViewEmployeeTarget==0">
+                    <div>
+                        <tabs [selectedTab]="selectedTab" style="height:95%;display:block">
+                            <tab tabTitle="Employee" closeButtonVisible="hidden">
+                                <display-setting [IsGrid]="blnIsGrid" [DisplaySettingCategoryId]="6" [AdditionalDataFieldCategoryId]="8" (emitdisplaySetting)="onEmpDisplaySettingsChange()">></display-setting>
+                            </tab>
+                            <tab tabTitle="Space" closeButtonVisible="hidden">
+                                <display-setting [IsGrid]="blnIsGrid" [DisplaySettingCategoryId]="17" [AdditionalDataFieldCategoryId]="7" (emitdisplaySetting)="onSpaceDisplaySettingsChange()"></display-setting>
+                            </tab>
+                        </tabs>
+                    </div>
+                </secondary-view>
+                <!--<secondary-view *ngIf="showSecondaryViewEmployeeTarget==1">
+                    <div style="width:600px;">
+                        <assigned-emp-data [DrawingId]="drawingId" (showInDrawingOnClick)="empShowInDrawingOnClick($event)" (showZoomOnClick)="empShowZoomOnClick($event)" (assignSpaceOnClick)="assignEmployee($event)"></assigned-emp-data>
+                    </div>
+                </secondary-view>-->
+                <secondary-view *ngIf="showSecondaryViewEmployeeTarget==2">
+                    <assignedemployee-addedit [EmployeeData]="employeeData" [selectedId]="assignedEmployeeSelectedId" (submitSuccess)="employeeEditReturnData($event)" [addEdit]="'edit'"></assignedemployee-addedit>
+                </secondary-view>
+                <secondary-view *ngIf="showSecondaryViewEmployeeTarget==3&&splitviewDrawing.showSecondaryView">
+                    <SelectReocource-ForEmployeeMove style="width:750px;display:block;height:104%" [selectedId]="moveemployeeId" [employeemultiplemove]="selectedMultipleMoveEmpDetails" [IsApprovalneedforempmove]="ApprovalForEmpMoveInDrawing" (ResourceforApprovalprocess)="moveresourceListforapprovalprocess($event)"></SelectReocource-ForEmployeeMove>
+                </secondary-view>
+
+                <!--Employee Move-->
+                <secondary-view *ngIf="showSecondaryViewEmployeeTarget==4">
+                    <employeemoverequest *ngIf="splitviewDrawing.showSecondaryView" style="display:block;" [empData]="selectedEmployeeData" [SpaceDetails]="SpaceDetailsForRequest" [ObjectDetails]="ObjectDetailsForRequest" [DrawingId]="drawingId" [drawingDetails]="dwgDetails" [IsForAssign]="showEmployeeMoveRequestFromAssign" (sumbitSuccess)="sumbitSuccessSentForApprovalFromMove($event)"></employeemoverequest>
+                </secondary-view>
+                <secondary-view *ngIf="showSecondaryViewEmployeeTarget==6">
+                    <relinkEmployeeList *ngIf="splitviewDrawing.showSecondaryView && relinkempdata" [style.width]="innerwidth" style="display:block;" [InpItemsource]="relinkempdata" [count]=relinkempcount (relinkSubmit)="relinkSubmit($event)"></relinkEmployeeList>
+                </secondary-view>
+                <secondary-view *ngIf="showSecondaryViewEmployeeTarget==50">
+                    <Employee-Scale *ngIf="splitviewDrawing.showSecondaryView" [fieldDetailsAdd]="fieldDetailsAdd1" [btnName]="btnName" [dataKey]="dataKey" [selectedId]="inputItems.selectedIds" [action]="action" (submitSuccess)="ScaleEmployee($event)"></Employee-Scale>
+                </secondary-view>
+                <secondary-view *ngIf="showSecondaryViewEmployeeTarget==51">
+                    <Employee-Scale *ngIf="splitviewDrawing.showSecondaryView" [pageTarget]="1" [fieldDetailsAdd]="fieldDetailsAdd1" [btnName]="btnName" [dataKey]="dataKey" [selectedId]="inputItems.selectedIds" [action]="action" (submitSuccess)="ScaleEmployeeText($event)"></Employee-Scale>
+                </secondary-view>
+
+                <!--Connectivity-->
+
+                <secondary-view *ngIf="showSecondaryViewObjectTarget==53">
+                    <div>
+                        <connect-components *ngIf="splitviewDrawing.showSecondaryView" [pageTarget]="1" [fieldDetails]="fieldDetails" [btnName]="btnName" [dataKey]="dataKey" [selectedId]="inputItems.selectedIds" [action]="action" (submitSuccess)="ComponentConnectivity($event)" (dropChange)="ddlComponenType($event)" [drawingId]="drawingId" [isBuildingDrawing]="isBuildingDrawing" [primaryObjectId]="primaryObjectId" RemoveConnectionResult="RemoveConnectionResult"></connect-components>
+                    </div>
+                </secondary-view>
+                <secondary-view *ngIf="showSecondaryViewObjectTarget==54">
+                    <div>
+                        <Show-Connections *ngIf="splitviewDrawing.showSecondaryView" [fieldDetails]="fieldDetails" [btnName]="btnName" [dataKey]="dataKey" [selectedId]="inputItems.selectedIds" [action]="action" (submitSuccess)="ShowConnectivity($event)" [drawingId]="drawingId" (ShowConnectionBlink)="ShowConnectionBlink($event)"></Show-Connections>
+                    </div>
+                </secondary-view>
+                <secondary-view *ngIf="showSecondaryViewObjectTarget==55">
+                    <div>
+                        <ShowConnection-ToAnotherFloor *ngIf="splitviewDrawing.showSecondaryView" [style.width]="innerwidth" [connectivityListInputs]="ConnectivitydrawingDetails" [moduleId]="moduleId" [objectCategoryId]="objectCategoryId" style="display:block;" [BlinkOutSideDrawings]="BlinkOutSideDrawings" [PrimaryObjectId]="primaryObjectId" [AssociationId]="AssociationId" [fieldDetails]="fieldDetails"></ShowConnection-ToAnotherFloor>
+                    </div>
+                </secondary-view>
+                <secondary-view *ngIf="showSecondaryViewEmployeeTarget==52">
+                    <Employee-Scale *ngIf="splitviewDrawing.showSecondaryView" [pageTarget]="2" [fieldDetailsAdd]="fieldDetailsAdd1" [btnName]="btnName" [dataKey]="dataKey" [selectedId]="inputItems.selectedIds" [action]="action" (submitSuccess)="RotateAngle($event)"></Employee-Scale>
+                </secondary-view>
+                <secondary-view *ngIf="showSecondaryViewEmployeeTarget==56">
+                    <div>
+                        <MoveEmploye-ToAnotherFloor *ngIf="splitviewDrawing.showSecondaryView" [style.width]="innerwidth" [moveEmpDataForAnotherFloor]="selectedEmployeeData" [moveEmpDetailsForAnotherFloor]="selectedMultipleMoveEmpDetails" [moduleId]="moduleId" [objectCategoryId]="objectCategoryId" [previousDrawingId]="drawingId" (DrawingMoveEmployeesDetaills)="EmployeesDetailsSelectedForAfterMove($event)" style="display:block;"></MoveEmploye-ToAnotherFloor>
+                    </div>
+                </secondary-view>
+
+
+                <!--<secondary-view *ngIf="showSecondaryViewEmployeeTarget==54">
+                    <SearchFor-Space *ngIf="splitviewDrawing.showSecondaryView" [fieldDetails]="fieldDetails" [btnName]="btnName" [dataKey]="dataKey" [drawingId]="drawingId"></SearchFor-Space>
+                </secondary-view>-->
+                <!--<div *ngIf="showSearch" class="search-container">
+                    <search *ngIf="fieldObject" [disable]="disable" [searchtype]="'Grid'" [keyWordLookup]=keyWordLookup [advancesearch]=true [Key]=2 [datasource]=advancelookup [dataKey]="dataKey" [KeywordFields]=KeywordFieldObject (SaveAs)="SaveAs($event)" (Delete)="Delete($event)" (onloadSearch)="onloadSearch($event)" (loadAdvanceSearch)="advanceSearch()" (Clear)="Clear($event)" (Submit)="Submit($event)"></search>
+                </div>-->
+                <!--Asset Drawing -- Module id : 7  displaysettingscategoryid  common : 3 space :17-->
+                <secondary-view *ngIf="showSecondaryViewObjectTarget==0">
+                    <div style="min-width:620px">
+
+                        <tabs [selectedTab]="selectedTab" style="height:95%;display:block" class="Displaytab" (getSelectedTab)="getSelectedTab($event)">
+                            <tab tabTitle="Common Attributes" closeButtonVisible="hidden">
+                                <display-setting *ngIf="displaySettingAssettarget == 1" [IsGrid]="blnIsGrid" [DisplaySettingCategoryId]="displaySettingCategoryId" [AdditionalDataFieldCategoryId]="19" [ObjectCategoryId]="objectCategoryId" (emitdisplaySetting)="onAssetsDisplaySettingsChange($event)">></display-setting>
+                            </tab>
+                            <tab tabTitle="{{tabTitleClassAttribute}}" closeButtonVisible="hidden">
+                                <div style="padding-bottom:1%;" *ngIf="ddlObjectClassDisplaySettings !=undefined">
+                                    <DropDownListComponent [fieldObject]="ddlObjectClassDisplaySettings" (change)="onChnageObjectClassDisplaySettings($event.target.value)"></DropDownListComponent>
+                                </div>
+                                <div style="width:100%;padding-bottom:1%;float:left;" *ngIf="selectedObjectClassDisplaySettingsId > 0">
+                                    <display-setting *ngIf="displaySettingAssettarget == 2" [IsGrid]="blnIsGrid" [DisplaySettingCategoryId]="displaySettingCategoryId" [AdditionalDataFieldCategoryId]="19" [ObjectCategoryId]="objectCategoryId" [ObjectClassId]="selectedObjectClassDisplaySettingsId" (emitdisplaySetting)="onAssetsDisplaySettingsChange($event)"></display-setting>
+                                </div>
+                            </tab>
+                            <tab tabTitle="Space Data" closeButtonVisible="hidden" *ngIf="drawingCategoryId ==1">
+                                <display-setting *ngIf="displaySettingAssettarget == 3" [IsGrid]="blnIsGrid" [DisplaySettingCategoryId]="spacedisplaySettingCategoryId" [AdditionalDataFieldCategoryId]="7" (emitdisplaySetting)="onSpaceDisplaySettingsinAssetsChange($event)"></display-setting>
+                            </tab>
+                        </tabs>
+
+                    </div>
+                </secondary-view>
+                <secondary-view *ngIf="showSecondaryViewObjectTarget==4">
+                    <orphanobjectData-list [style.width]="innerwidth" style="display:block;" [objectCategoryId]="objectCategoryId" [orphanObjectData]="orphanObjectData" [orphanObjectcount]="orphanObjectcount" [moduleId]="moduleId" [dataOption]="1" (orphanHandleOut)="orphanHandleOut($event)"></orphanobjectData-list>
+                </secondary-view>
+                <secondary-view *ngIf="showSecondaryViewObjectTarget==5">
+                    <create-Request *ngIf="showSecondaryViewObjectTarget==5" (onChildRequestCreate)="onChildRequestCreated($event)" [objectId]="editObjectSelectedId" [isChildRequest]="false" [parentEntityId]="0"></create-Request>
+                </secondary-view>
+                <!--<secondary-view *ngIf="showSecondaryViewObjectTarget==6">
+                    <woWorkHistoryReportComponent-report *ngIf="showSecondaryViewObjectTarget==6" [selectedIds]="editObjectSelectedId"> </woWorkHistoryReportComponent-report>
+                </secondary-view>-->
+                <!--<secondary-view *ngIf="showSecondaryViewObjectTarget==7">
+                    <review-workorder-fromDrawing [style.width]="innerwidth" style="display:inline-block;" *ngIf="showSecondaryViewObjectTarget==7" [objectId]="editObjectSelectedId"> </review-workorder-fromDrawing>
+                </secondary-view>-->
+                <!--<secondary-view *ngIf="showSecondaryViewAssetTarget==1">
+                <div style="width:600px;">
+                         <assetDataindrawing [DrawingId]="drawingId" (showInDrawingOnClick)="objectShowInDrawingOnClick($event)" (showZoomOnClick)="assetShowZoomOnClick($event)" (AssetPlaceOnClick)="PlaceassetonDrawing($event)"></assetDataindrawing>
+                     </div>
+                 </secondary-view>-->
+                <secondary-view *ngIf="showSecondaryViewSpaceTarget==3">
+                    <file-viewer *ngIf="splitviewDrawing.showSecondaryView" style="display:block;height:100%;width:750px;" [attachmentCategoryId]="attachmentCategoryId" [moduleId]="moduleId" [baseEntityId]="baseEntityIdForattachment" [objectClassId]="editObjectClassId" [isVisible]="showAttachment" (attachmentViewerClose)="attachmentViewerClose()"></file-viewer>
+                </secondary-view>
+                <secondary-view *ngIf="splitviewDrawing.showSecondaryView == true && showSecondaryViewSpaceTarget == 5">
+                    <distributionmapsettingsondrawings *ngIf="distributionMapSettongonDrawing == true" style="display:block;height:100%;width:750px;" [value]="value" [fieldname]="fieldname" [drawingId]="drawingIdForDistMap" [moduleId]="moduleId" [archiveId]="archiveId" (submitSuccess)="submitSuccessDistMap($event)"></distributionmapsettingsondrawings>
+                </secondary-view>
+                <secondary-view *ngIf="showSecondaryViewSpaceTarget==6">
+                    <div *ngIf="splitviewDrawing.showSecondaryView" style="width:600px;">
+                        <spaceDataGrid *ngIf="splitviewDrawing.showSecondaryView" [(selectedDrwgIds)]="inputItems.selectedIds" [pageTarget]="2" (showInDrawingOnClick)="spShowInDrawingOnClick($event)" (showZoomOnClick)="spShowZoomOnClick($event)"> </spaceDataGrid>
+                    </div>
+                </secondary-view>
+            </secondary-view>
+        </split-view>
+    </primary-view>
+    <secondary-view *ngIf="splitviewDrawinggrid.showSecondaryView">
+        <spaceDataGrid [UpdateData]="updatedSpaceData" [changeEvent]="changeEvent" [Targetforstyle]="pageTarget" *ngIf="moduleId==3||moduleId==12" [moduleId]="moduleId" [(selectedDrwgIds)]="inputItems.selectedIds" [pageTarget]="3" [highlightRows]="highlightRowIds" (showInDrawingOnClick)="spShowInDrawingOnClick($event)" (showZoomOnClick)="spShowZoomOnClick($event)" (editedSpaceDataInDrawing)="spaceEditReturnData($event,2)" (setAttachmentCount)="setAttachmentCount($event)" (onSearchInDrawing)="onSearchInDrawing($event)" (onMultipleEditUpdateData)="onMultipleEditSpaceData($event)"> </spaceDataGrid>
+        <sheduling-workspace-data [UpdateData]="updateWorkSpaceData" *ngIf="moduleId==14" [DrawingId]="drawingId" [Target]="pageTarget" (showInDrawingOnClick)="spShowInDrawingOnClick($event)" (showZoomOnClick)="spShowZoomOnClick($event)" (onSearchInDrawing)="onSearchInDrawing($event)" (onSchedulingTabChangedClick)="onSchedulingTabChanged($event)"></sheduling-workspace-data>
+        <assigned-emp-data *ngIf="moduleId==5" [Targetforstyle]="pageTarget" [DrawingId]="drawingId" [IsAssignSpace]="isAssignSpace" [assignedEmpIds]="assignedEmpIds" [assignedEmpsData]="assignedEmpsData" [deAssignedEmpId]="deAssignedEmpId" [IsDeassignEmp]="IsDeassignEmp" [highlightRows]="highlightRowIds" (showInDrawingOnClick)="empShowInDrawingOnClick($event)" (showZoomOnClick)="empShowZoomOnClick($event)" (assignSpaceOnClick)="assignEmployee($event)" (onDeletedAssignedEmployee)="onDeletedAssignedEmployee($event)" (onEditSuccess)="employeeEditReturnData($event)" (onSearchInDrawing)="onSearchInDrawing($event)" (onDeleteEmployee)="onDeleteEmployee($event)" [EmployeMoveGridDetails]="DrawingGridUpdateForMoveEmployee" [UpdateDrawingGridMoveEmployee]="MoveDrawingEmployeesDetails"></assigned-emp-data>
+        <objectDataindrawing *ngIf="objectCategoryId > 0" [moduleId]="moduleId" [DrawingId]="drawingId" [Targetforstyle]="pageTarget" [IsObjectPlaced]="IsObjectPlaced" [IsObjectMoved]="IsObjectMoved" [ObjectDelinked]="ObjectDelinked" [selectedRow]="extDrawingDetails" [updateDataSource]="updateObjectDataSource" (showInDrawingOnClick)="objectShowInDrawingOnClick($event)" (showZoomOnClick)="objectShowZoomOnClick($event)" (ObjectPlaceOnClick)="PlaceassetonDrawing($event)" (ObjectDelinkOnClick)="deleteObjectsOnDrawingFromGrid($event)" (UpdatedSuccess)="UpdatedSuccessOnClick($event)" (onSearchInDrawing)="onSearchInDrawing($event)" (Attachmentcounts)="attachmentCount($event)" [isBuildingDrawing]="isBuildingDrawing"></objectDataindrawing>
+    </secondary-view>
+
+
+
+
+
+    <!--<secondary-view *ngIf="showSecondaryViewSpaceScheduleTarget==1">
+        <spaceDataGrid *ngIf="moduleId==14" [(selectedDrwgIds)]="inputItems.selectedIds" [pageTarget]="3" [highlightRows]="highlightRowIds" (showInDrawingOnClick)="spShowInDrawingOnClick($event)" (showZoomOnClick)="spShowZoomOnClick($event)" (editedSpaceDataInDrawing)="spaceEditReturnData($event,2)"> </spaceDataGrid>
+    </secondary-view>-->
+
+
+
+
+</split-view>
+
+<slide [width]="200" [position]="position" [type]="dialog" [show]="ShowScaleFactor" (closeDialog)="closeSlideDialog($event)">
+    <div style="">
+        Do you want to set the current Employee scaling as the default scaling?
+    </div>
+    <div>
+        <div style="width:100%">
+            <button class="Savebutton " type="button" (click)="okClick($event)">Yes</button>
+            <button class="Savebutton " type="button" (click)="cancelClick($event)">No</button>
+        </div>
+    </div>
+</slide>
+<slide [width]="200" [position]="position" [type]="dialog" [show]="ConnectAnotherDrawing" (closeDialog)="closeSlideDialog($event)">
+    <div style="">
+        Do you want to set connection to a Component in another drawing?
+    </div>
+    <div>
+        <div style="width:100%">
+            <button class="Savebutton " type="button" (click)="okClickAnotherDrawing($event)">Yes</button>
+            <button class="Savebutton " type="button" (click)="cancelClickAnotherDrawing($event)">No</button>
+        </div>
+    </div>
+</slide>
+<slide [width]="200" [position]="position" [type]="dialog" [show]="ShowConnectComponent" (closeDialog)="closeSlideDialog($event)">
+    <div style="">
+        Select Component(s) to set Connection
+    </div>
+    <div>
+        <div style="width:100%">
+            <button class="Savebutton " type="button" (click)="okClickConnectComponent($event)">Yes</button>
+            <button class="Savebutton " type="button" (click)="cancelClickConnectComponent($event)">No</button>
+        </div>
+    </div>
+</slide>
+<slide [width]="200" [position]="position" [type]="dialog" [show]="ShowConnectAgain" (closeDialog)="closeSlideDialog($event)">
+    <div style="">
+        Do you want to set connectivity with another Component?
+    </div>
+    <div>
+        <div style="width:100%">
+            <button class="Savebutton " type="button" (click)="okClickConnectAgain($event)">Yes</button>
+            <button class="Savebutton " type="button" (click)="cancelClickConnectAgain($event)">No</button>
+        </div>
+    </div>
+</slide>
+
+<slide [width]="200" [position]="position" [type]="dialog" [show]="ShowScaleFactor" (closeDialog)="closeSlideDialog($event)">
+    <div style="">
+        Do you want to set the current Employee scaling as the default scaling?
+    </div>
+    <div>
+        <div style="width:100%">
+            <button class="Savebutton " type="button" (click)="okClick($event)">Yes</button>
+            <button class="Savebutton " type="button" (click)="cancelClick($event)">No</button>
+        </div>
+    </div>
+</slide>
+<slide [width]="200" [position]="position" [type]="dialog" [show]="showObjectDrawingslide" (closeDialog)="closeSlideDialog($event)">
+    <div style="">
+        {{objectmessage.message}}
+    </div>
+    <div>
+        <div style="width:100%">
+            <button class="Savebutton " type="button" (click)="okObjectDraw(objectmessage.key)">Yes</button>
+            <button class="Savebutton " type="button" (click)="cancelObjectDraw(objectmessage.key)">No</button>
+        </div>
+    </div>
+</slide>
+
+<slide [width]="200" [position]="position" [type]="dialog" [show]="ShowTextHeight" (closeDialog)="closeSlideDialog($event)">
+    <div style="">
+        Do you want to set the Employee current Text Height as default Text Height?
+    </div>
+    <div>
+        <div style="width:100%">
+            <button class="Savebutton " type="button" (click)="okTextHeightClick($event)">Yes</button>
+            <button class="Savebutton " type="button" (click)="cancelTextHeightClick($event)">No</button>
+        </div>
+    </div>
+</slide>
+
+
+<slide [width]="305" [position]="position" [type]="'dialog'" [show]="showMarkupComment" style="max-height:400px;" (closeDialog)="closeSlideDialog($event)">
+    <div style="max-height:400px;display:inline-table;">
+        <div>
+            <input type="button" class="markupicons" (click)="boldOnClick()" title="Bold" value="B" style="font-weight:bold" [ngStyle]="{'background':boldBackground}" />
+            <input type="button" class="markupicons" (click)="italicsOnClick()" title="Italics" value="I" style="font-style:italic" [ngStyle]="{'background':italicBackground}" />
+            <!--<ColorPicker [fieldObject]="colorFieldObj"  (colorPickerValueChange)="fontColorChange($event)"></ColorPicker>-->
+        </div>
+        <DynamicFields [dataSource]="markupCommentData" (submitFieldObject)="okComment($event)" [btnName]="'Save'"></DynamicFields>
+    </div>
+</slide>
+<slide [width]="315" [position]="position" [type]="'dialog'" [show]="showSlide" [absolute]="'true'" (closeDialog)="closeSlideDialog($event)">
+    <markup-description *ngIf="showSlide" (submitSuccess)="onMarkupDesciptionSubmit($event)" [drawingType]="isBuildingDrawing"></markup-description>
+</slide>
+<slide [width]="305" [position]="position" [type]="'notification'" [show]="showSlideConfirm" [absolute]="'true'" (closeDialog)="closeSlideDialog($event)">
+    <div style="">
+        Are you sure you want to delete the selected Markup?
+    </div>
+    <div>
+        <button class="Savebutton " type="button" (click)="deleteMarkupYesClick()">Yes</button>
+        <button class="Savebutton " type="button" (click)="deleteMarkupNoClick()">No</button>
+    </div>
+</slide>
+<slide *ngIf="showLayer" [width]="305" [position]="'center'" [type]="'dialog'" [show]="showLayer" [absolute]="'true'" [title]="'Layers'" (closeDialog)="closeShowLayer($event)">
+    <div style="height:240px;overflow-y:auto">
+        <span *ngIf="layerList[0] != undefined">
+            <span *ngIf="moduleId!=1 && moduleId!=2&& drawingCategoryId==1 || (drawingCategoryId>1 && isXrefExists)">
+                <input #Default type="checkbox" name="Default" value="All" [checked]="defaultChkbxIsChecked" (change)="selectAllDefaultLayers($event,layerList[0])" style="width:10%;position:absolute;margin-left:150px" />
+                <label style="display: inline;font-weight: bold;position: fixed;margin-left: 180px;color: darkslategrey;font-size: small;margin-top: 2px;">Default</label>
+            </span>
+            <ListBoxComponent *ngIf="showLayer==true" [fieldObject]=layerList[0] [blnSelectAllChecked]="IsSelectAllLayerChecked" (selAll)="layersSelectAllOnClick($event)" (lstBox)="singleLayerNameOnClick($event)"> </ListBoxComponent>
+        </span>
+    </div>
+    <div style="margin-left:90px;margin-bottom:10px">
+        <button class="Savebutton " type="button" (click)="OkLayersVisbility()">OK</button>
+        <button class="Savebutton " type="button" (click)="CancelLayersVisbility()">Cancel</button>
+    </div>
+</slide>
+<slide [width]="255" [position]="position" [type]="'notification'" [show]="showSlideEmp" [absolute]="'true'" (closeDialog)="empMessageCloseClick($event,empDialogMessages.key)">
+    {{empDialogMessages.message}}
+    <div>
+        <button class="Savebutton " type="button" (click)="empMessageYesClick(empDialogMessages.key)">Yes</button>
+        <button class="Savebutton " type="button" (click)="empMessageNoClick(empDialogMessages.key)">No</button>
+    </div>
+</slide>
+<slide *ngIf="showSlideTotalize" [width]="250" type="'dialog'" [position]="totalizeSlidePos" [show]="showSlideTotalize" [absolute]="'true'" (closeDialog)="closeSlideDialog($event)">
+    <div>
+        <div style="padding:5px 5px 5px 5px; border:1px solid;display:block;overflow-y:auto;max-height:300px">
+            <table align="center" style="margin:5px 0px 5px 0px;">
+                <tr><td style="font-size:15px;"><b>Space Details</b><br><br></td></tr>
+                <tr><td style="font-size:12px;">No. of Spaces selected = <b>{{selectedCount}}</b> <br><br></td></tr>
+                <tr><td style="font-size:12px;" [innerHtml]="totalizeData"></td></tr>
+                <tr *ngIf="showObjectMenu"><td style="font-size:15px;"><b>{{objectDetailsText}}</b><br><br></td></tr>
+                <!--<tr *ngIf="moduleId==8"><td style="font-size:15px;"><b>Furniture Details</b><br><br></td></tr>-->
+                <tr *ngIf="showObjectMenu"><td style="font-size:12px;" [innerHtml]="totalizeAssetData"></td></tr>
+            </table>
+        </div>
+        <!--<div style="padding:5px 5px 5px 5px; border:1px solid;" *ngIf="moduleId==7" >
+            <table align="center" style="margin:5px 0px 5px 0px;">
+                <tr><td style="font-size:15px;"><b>Asset Details</b><br><br></td></tr>
+
+                <tr><td style="font-size:12px;" [innerHtml]="totalizeAssetData"></td></tr>
+            </table>
+        </div>-->
+
+        <div style="width:100%; text-align:center;margin-top:5px;">
+            <button class="Savebutton " type="button" (click)="closeTotalize($event)">OK</button>
+            <button class="Savebutton " type="button" (click)="addTotalizeLegendOnClick(totalizeData)">Add Legend</button>
+        </div>
+    </div>
+</slide>
+<!--<slide [width]="250" type="'dialog'" [position]="'center'" [show]="showSlideTotalize" [absolute]="'true'" (closeDialog)="closeSlideDialog($event)">
+    <div>
+        <div style="padding:5px 5px 5px 5px; border:1px solid;">
+            <table align="center" style="margin:5px 0px 5px 0px;">
+                <tr><td style="font-size:15px;"><b>Space Details</b><br><br></td></tr>
+                <tr><td style="font-size:15px;">No. of Spaces selected = <b>{{selectedCount}}</b> <br><br></td></tr>
+                <tr><td  style="font-size:15px;" [innerHtml]="totalizeData"></td></tr>
+            </table>
+        </div>
+        <div style="width:100%; text-align:center;margin-top:5px;">
+            <button  class="Savebutton "type="button" (click)="closeTotalize($event)">OK</button>
+            <button  class="Savebutton "type="button" (click)="addTotalizeLegendOnClick(totalizeData)">Add Legend</button>
+        </div>
+    </div>
+</slide>-->
+<slide [width]="400" [position]="'top-right'" [type]="dialog" [show]=showSearchSlide (closeDialog)="closeSlideDialog($event)">
+    <div>
+        <div>
+            Do you want to specify a search criteria?
+        </div>
+        <div>
+            <div style="width:100%">
+                <button class="Savebutton " type="button">Yes</button>
+                <button class="Savebutton " type="button" (click)="scheduleWithoutSearch()">No</button>
+            </div>
+        </div>
+    </div>
+</slide>
+
+<slide [width]="400" [position]="'top-right'" [type]="dialog" [show]=showdelinkconfirmationSlide (closeDialog)="closeSlideDialog($event)">
+    <div>
+        <div *ngIf="showObjectMenu">
+            {{objDelinkMessage}}
+        </div>
+        <!--<div *ngIf="moduleId==8">
+            Are you sure you want to warehouse the selected Furniture?
+        </div>-->
+        <div>
+            <div style="width:100%">
+                <button class="Savebutton " type="button" (click)="delinkAssetProgress()">Yes</button>
+                <button class="Savebutton " type="button" (click)="delinkAssetCancel()">No</button>
+            </div>
+        </div>
+    </div>
+</slide>
+
+
+<slide [width]="400" [position]="'top-right'" [type]="dialog" [show]=showMoveOutsideSpace (closeDialog)="closeSlideDialog($event)">
+    <div>
+        <div *ngIf="showObjectMenu">
+            {{objectPlaceMsgText}}
+        </div>
+        <!--<div *ngIf="moduleId==8">
+            Some of the Furniture are placed outside the selected space. Do you want to proceed?
+        </div>-->
+        <div>
+            <div style="width:100%">
+                <button class="Savebutton " type="button" (click)="YesMoveOutsideSpace()">Yes</button>
+                <button class="Savebutton " type="button" (click)="NoMoveOutsideSpace()">No</button>
+            </div>
+        </div>
+    </div>
+</slide>
+<slide [width]="310" [position]="'top-right'" [type]="dialog" [show]="showSlideMarkup" (closeDialog)="closeSlideConfirmDialog($event)">
+
+    <div>
+        <div>
+            {{markupSaveMessage}}
+        </div>
+        <div>
+
+            <div style="width:100%">
+                <button class="Savebutton " type="button" (click)="okMarkupSave($event)">Yes</button>
+                <button class="Savebutton " type="button" (click)="noMarkupSave($event)">No</button>
+            </div>
+        </div>
+    </div>
+</slide>
+<slide [width]="250" [position]="showEmpMoveResourcesposition" [type]="dialog" [show]=showEmpMoveResources (closeDialog)="closeSlideEmpMoveResourceDialog($event)">
+    <div>
+        <div>
+            Do you want to move the resources?
+        </div>
+        <div>
+            <div style="width:100%">
+                <button class="Savebutton " type="button" (click)="YesEmpMoveResources($event)">Yes</button>
+                <button class="Savebutton " type="button" (click)="NoEmpMoveResources($event)">No</button>
+            </div>
+        </div>
+    </div>
+</slide>
+
+<slide [width]="250" [position]="'top-right'" [type]="dialog" [absolute]="'true'" [show]=showMultipleHotelingSeats (closeDialog)="closeSlideDialog($event)">
+    <div>
+        <div>
+            {{dialogMessages.message}}
+        </div>
+        <div>
+            <div style="width:100%">
+                <button class="Savebutton " type="button" (click)="YesMultipleHotelingSeats($event,dialogMessages.key)">Yes</button>
+                <button class="Savebutton " type="button" (click)="NoMultipleHotelingSeats($event)">No</button>
+            </div>
+        </div>
+    </div>
+</slide>
+<slide [width]="305" [position]="positionApproval" [type]="'notification'" [show]="showEmployeeMoveRequest" [absolute]="'true'" (closeDialog)="ShowEmpMoveRequestCancel($event)">
+    <div style="">
+        {{moveassignRequestMessage}}
+    </div>
+    <div>
+        <button class="Savebutton " type="button" (click)="ShowEmpMoveRequestYesClick()">Yes</button>
+        <button class="Savebutton " type="button" (click)="ShowEmpMoveRequestNoClick()">No</button>
+    </div>
+</slide>
+<slide [width]="650" [position]="'center'" [type]="'dialog'" [show]="showSlidePlot" [absolute]="'true'" [isAnimate]="false" (closeDialog)="closePlot($event)">
+    <div style="">
+        For viewing Plot Settings, please copy the below link and open in IE 11 or above browser
+        <a style="display:inline-block;margin-top:5px;margin-bottom:5px;word-wrap:break-word!important;text-align:left;width:100%;">{{plotMessage}}</a>
+    </div>
+    <div style="display:inline-block;margin-left:160px:">
+        <button class="Savebutton " type="button" (click)="closePlot()">Close</button>
+    </div>
+</slide>
+<!--<slide [width]="200" [position]="position" [type]="dialog" [show]="ShowSearchForSpace" (closeDialog)="closeSlideDialog($event)">-->
+<div style="top:50px;right:0px;z-index: 100;position:absolute;" [ngStyle]="ShowSearchForSpace?{'display':'block'}:{'display':'none'}">
+    <Inlinesearch *ngIf="advancelookup && drawingId && toView" [datasource]="advancelookup" [drawingId]="drawingId" (divClose)="SearchForSpaceClose($event)" [ModuleId]="moduleId" (SaveAs)="SaveAs($event)" (Delete)="Delete($event)" (onloadSearch)="onloadSearch($event)" (loadAdvanceSearch)="advanceSearch()" (Clear)="searchForSpaceClear($event)" (closeSearch)="closeSlideDialog($event)" [IsShowStyle]="IsShowStyle" (Submit)="SearchForSpaceSubmit($event)"></Inlinesearch>
+</div>
+
+
+<style>
+    .Displaytab .navbar li {
+        width: 150px !important;
+    }
+
+    .rightSideIcon {
+        display: none !important;
+    }
+
+    @media only screen and (min-device-width: 320px) and (max-device-width: 812px) and (orientation: portrait) {
+        .rightSideIcon {
+            display: block !important;
+        }
+    }
+
+    @media only screen and (min-device-width: 320px) and (max-device-width: 812px) and (orientation: landscape) {
+        .rightSideIcon {
+            display: block !important;
+        }
+    }
+
+    }
+
+    .attachment {
+        width: 750px;
+        display: block;
+    }
+
+    @media only screen and (min-device-width: 320px) and (max-device-width: 813px) and (orientation: portrait) {
+        .attachment {
+            width: 100%;
+        }
+    }
+
+    @media only screen and (min-device-width: 320px) and (max-device-width: 812px) and (orientation: landscape) {
+        .attachment {
+            width: 100%;
+        }
+    }
+
+    @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+        .secondary-view.show {
+            position: -ms-page !important;
+            top: 101px !important;
+        }
+    }
+</style>
+

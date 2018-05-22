@@ -1,0 +1,21 @@
+﻿<page [pagetitle]="pagePath"  [withoutSubmenu]="true">
+    <content>
+        <tabs [(selectedTab)]="selectedTab" (getSelectedTab)="getSelectedTab($event)" (onTabClose)="onTabClose($event)" [deleteIndex]="deleteIndex" id="spacePlanning" >
+            <tab tabTitle="Space Planning Projects"  closeButtonVisible="hidden">
+                <planning-project *ngIf="selectedTab ==0"  (Action)="Action($event)" [success]="success" [selId]="id"  ></planning-project>
+            </tab>
+            <tab *ngIf="eventaction=='Flooraction'" tabTitle="Select Floors" closeButtonVisible="hidden">
+                <floor-selection *ngIf="id!=undefined" [selectedid]="id" [moduleId]="moduleId" [targetId]="targetId" (btnClickOut)="getSelectedIds($event)"></floor-selection>
+            </tab>
+            <tab *ngIf="eventaction=='StackPlans'" tabTitle="Stack Plans" closeButtonVisible="hidden">
+                <stack-plans [MoveProjectId]=moveProjectId [StackPlanId]=stackPlanId [prjstatusId]="prjStatusId" ></stack-plans>
+            </tab>
+        </tabs>
+        </content>
+</page>
+
+<style>
+    #spacePlanning .navbar li {
+      width:200px!important;
+    }
+</style>

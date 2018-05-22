@@ -1,0 +1,13 @@
+﻿
+<div >
+    <RadioComponent style="height:60px;" *ngIf="rdAccessLevel" [fieldObject]="rdAccessLevel" (rbtnClick)="rbtnChange($event)"></RadioComponent>
+</div>
+<div>
+    <DropDownListComponent style="height:60px;" *ngIf="ddlSite" [fieldObject]="ddlSite" (change)="ddlOnChange($event.target.value)" [SetAlignment]="'vertical'"></DropDownListComponent>
+</div>
+<div style="height:calc(60% - 50px);">
+    <gridView style="height:85%;width:100%;display:block;" [dataSource]="itemsSourceUserData" [properties]="inputItems" [columns]="fieldObjectUserData" (onSorting)="onSort($event)"></gridView>
+</div>
+<div style="height:50px;">
+    <button class="Savebutton " type="button"  (click)="updateActionPointUsers($event)">Save Changes</button>
+</div>

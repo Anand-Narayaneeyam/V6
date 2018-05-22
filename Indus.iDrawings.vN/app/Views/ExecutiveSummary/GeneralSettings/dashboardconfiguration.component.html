@@ -1,0 +1,117 @@
+﻿<!--<DynamicFields [dataSource]="fieldDetailsDashboardWidgets" (submitFieldObject)="onSubmitData($event)" [btnName]="btnName" [dataKey]="dataKey" ></DynamicFields>-->
+
+<style>
+    #ColorPicker {
+        /*position:absolute !important;*/
+    }
+
+    :host .colorPickerDiv {
+        margin-left: -390% !important;
+        top: 40%;
+    }
+
+    #overlayColorPicker {
+        width: 100% !important;
+    }
+
+    th, td {
+        font-size: 0.8em;
+        word-break: break-word;
+        word-wrap: break-word;
+        max-width: 300px;
+    }
+
+    @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+
+        th, td {
+            padding: 10px 15px;
+        }
+    }
+
+    #783 {
+        text-align: center;
+    }
+
+    span.required {
+        display: none !important;
+    }
+
+    .displaySettingsheader {
+        text-align: center;
+        font-weight: bold;
+        background-color: #f0f0f1;
+        color: black;
+        width: 100%;
+    }
+
+    .dispSettingSelAll {
+        background-color: #fffdfd;
+        color: black;
+    }
+
+    .fontSize {
+        width: 80px;
+    }
+
+    .chkBoxes {
+        width: 120px;
+    }
+    .Headings {
+        width: 300px;
+    }
+
+    .colorPickers {
+        width: 75px;
+    }
+</style>
+
+<div [ngClass]="'pagewithoutPaging'" style="text-align:left;display:none" *ngIf="itemsSourceWidgets != undefined">
+    <gridView *ngIf="fieldObjectWidgets" [(dataSource)]="itemsSourceWidgets" [properties]="inputItems" [columns]="fieldObjectWidgets"
+              (onSorting)="onSort($event)">
+    </gridView>
+</div>
+
+<div>
+    <button type="button" style="margin-bottom:8px;" (click)="SaveClick()" class="Savebutton">Save Changes</button>
+</div>
+<div style="height:90%;overflow-y:auto">
+    <table style="display:block;">
+        <tr class="list-group-item dispSettingSelAll">
+            <th style="text-align:center" class="chkBoxes">
+                Select All
+                <center>
+                    <input style="width: 20px;" type="checkbox" title="Select All" role="checkbox" id="SelectAll" name="SelectAll" value="All" [checked]="IsSelectAllChecked" (change)="selectAllOptions($event)" />
+                </center>
+            </th>
+            <th style="text-align:left" class="Headings">
+                Dashboard Widget
+            </th>
+            <th style="text-align:left" class="Headings">
+                Module
+            </th>
+        </tr>
+    </table>
+
+    <table id="widgetTable" style="display:block;max-height:80%;min-height:80%; overflow-y:auto" *ngIf="itemsSourceWidgets" dnd-sortable-container [sortableData]="itemsSourceWidgets">
+        <tr *ngFor="let widget of (itemsSourceWidgets);let i=index" class="list-group-item" dnd-sortable [sortableIndex]="i" (mouseover)="changecursorstyle($event)" (onDragEnd)="ondragEnd(dragEnable)">
+             
+            <td style="text-align:center" class="chkBoxes">
+                <center>
+                    <input style="width: 20px;" id="{{widget.Id}}" title="{{widget.Dashboardwidget}}" role="checkbox" [checked]="checkedOption(widget) && IsChecked" (change)="updateCheckedOptions(widget, $event)" type="checkbox" />
+                </center>
+            </td>
+            <td style="text-align:left" class="Headings">
+                <!--<center>-->
+                    {{widget.Dashboardwidget}}
+                <!--</center>-->
+            </td>
+            <td style="text-align:left" class="Headings">
+                <!--<center>-->
+                    {{widget.Module}}
+                <!--</center>-->
+            </td>
+        </tr>
+    </table>
+</div>
+
+

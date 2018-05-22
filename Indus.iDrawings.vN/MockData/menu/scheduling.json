@@ -1,0 +1,53 @@
+﻿[
+  {
+    "id": 2,
+    "title": "Settings",
+    "path": "/settings",
+    "subMenu": [
+      {
+        "id": 101,
+        "parentId": 8,
+        "title": "General Settings",
+        "path": "/scheduling-general-settings",
+        "subMenu": null
+      } 
+    ]
+  },
+  {
+    "id": 8,
+    "title": "main-menu",
+    "path": "",
+    "subMenu": [
+     {
+        "id": 102,
+        "parentId": 8,
+        "title": "Room Booking",
+        "path": "/spacedata",
+        "subMenu": null
+      },
+      {
+        "id": 103,
+        "parentId": 8,
+        "title": "Workspace Booking",
+        "path": "/space/drawings",
+        "subMenu": null
+      } 
+      ,
+      {
+        "id": 104,
+        "parentId": 8,
+        "title": "Drawings",
+        "path": "/scheduling/drawings",
+        "subMenu": null
+      } 
+      ,
+      {
+        "id": 105,
+        "parentId": 8,
+        "title": "Data",
+        "path": "/space/drawings",
+        "subMenu": null
+      }     
+    ]
+  }       
+]

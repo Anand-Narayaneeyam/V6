@@ -1,0 +1,61 @@
+﻿<split-view [splitviewObject]="splitviewInput" [pageTitle]="pageTitle">
+    <primary-view>
+        <div style="float: right; width: 50%;">
+            <slide [width]="slidewidth" [position]="position" [show]="showSlide" (closeDialog)="closeSlideDialog($event)">
+                <div>
+                    <div>{{message}}  </div>
+                    <div style="width:100%">
+                        <button  class="Savebutton "type="button" (click)="okDelete($event)">Yes</button>
+                        <button  class="Savebutton "type="button" (click)="cancelClick($event)">No</button>
+                    </div>
+                </div>
+            </slide>
+        </div>
+        <submenu>
+            <sub-menu [menuCard]=types [source]=menuData [count]=totalItems [menuIds]=enableMenu (onSubMenuChange)="onSubMenuChange($event);"></sub-menu>
+        </submenu>
+        <div>
+            <content>
+                <confirmation (onConfirm)="okDelete($event)"></confirmation>
+                <div *ngIf="GradeSource != undefined">
+                    <div>
+                        <div>
+                            <gridView [(dataSource)]="GradeSource" [ngClass]="totalItems > itemsPerPage ? 'pagewithPaging':'pagewithoutPaging'" [properties]="inputItems" [columns]="fields" [refreshgrid]="refreshgrid" (onSorting)="onSort($event)"></gridView>
+                        </div>
+                        <div>
+                            <paging *ngIf="totalItems >itemsPerPage ? 'true' : 'false'" [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="pageChanged($event);"></paging>
+                        </div>
+                    </div>
+                </div>
+
+                <paging [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="pageChanged($event);"></paging>
+            </content>
+        </div>
+    </primary-view>
+    <secondary-view *ngIf="menuEventValue == 4">
+        <div>
+            <label>Field Order</label>
+            <div *ngIf="fieldOrderObj != undefined" style="width:310px;height:85%;overflow-y:auto">
+                <div dnd-sortable-container [sortableData]="fieldOrderObj" style="width:290px;cursor:move;" class="div-draggable" title="Drag to change position">
+                    <div *ngFor="let field of (fieldOrderObj);let i=index" class="list-group-item " dnd-sortable [sortableIndex]="i" style="width:100%;box-shadow: 1px 1px 1px 1px #178AE8 !important;">
+                        <div draggable="true" style="width:100%;">
+                            {{field.Value}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button  class="Savebutton "style="margin-top:5px;" type="button" (click)="updateFieldOrder($event,fieldOrderObj)">Save changes</button>
+    </secondary-view>
+    <secondary-view *ngIf="menuEventValue == 1 || menuEventValue == 2">
+        <grades-add-edit *ngIf="splitviewInput.showSecondaryView == true" (submitSuccess)="submitReturn($event)" [action]="action" [btnName]="btnName" [selectedId]="inputItems.selectedIds" [fieldDetailsAdd]="fieldDetailsAdd1"></grades-add-edit>
+    </secondary-view>
+</split-view>
+
+<style>
+    .div-draggable :hover {
+        background-color: #178AE8 !important;
+        color: white;
+    }
+</style>
+

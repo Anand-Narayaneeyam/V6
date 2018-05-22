@@ -1,0 +1,126 @@
+﻿<page [pagetitle]="pagePath">
+    <pagepath>
+    </pagepath>
+    <content>
+        <section title="Define Work Types" [isExpanded]="sectionExpansionStatus[0].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div *ngIf="sectionExpansionStatus[0].isExpanded">
+                <p>Administrators can create different Work Types for different types of Service Requests/ Work Orders (workflow Entities). </p>
+                <p>On clicking <span class="header2">Add</span> <img class="helpicon" src="Content/Icons/data_addN.png" alt="Add" /> icon, New Work Type window will be displayed with Work Type Name, Work Type Code, Workflow Category and Workflow Entities. Workflow Category combo will be populated with ‘Work Orders’ by default. Workflow Entities list box will be displayed with entities like Service Requests and PM Work Orders </p>
+                <p><span class="header1">Add:</span> New Work Type can be added by clicking the <span class="header2">Add</span> <img class="helpicon" src="Content/Icons/data_addN.png" alt="Add" /> icon.</p>
+                <p><span class="header1">Edit:</span> Edit a Work Type by selecting it and then clicking the <span class="header2">Edit</span> <img class="helpicon" src="Content/Layout/edit_button.png" alt="Edit" /> icon.</p>
+                <p><span class="header1">Delete:</span> Delete a Work Type by selecting it and then clicking the <span class="header2">Delete </span> <img class="helpicon" src="Content/Layout/delete_button.png" alt="Delete" /> icon.</p>
+            </div>
+        </section>
+        <section title="Additional Data Fields" [isExpanded]="sectionExpansionStatus[1].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div *ngIf="sectionExpansionStatus[1].isExpanded">
+                <p>The Administrator can define Additional Data Fields for Work Types if required, in addition to the system defined data fields. These fields will be available in New Request page only if they are enabled through <span class="header2">Workflow Settings: Set Workflow: Workflow Settings</span>. The Additional data fields defined can be set to each Workflow Entity categories through the Set Workflow Entity Data Fields <img class="helpicon" src="Content/Icons/set_workflow_entity_data_fieldS.png" alt="Set Workflow Entity Data Fields"> icon.</p>
+                <p>The system defined data fields are Description, Requested by, Expected Date of Completion and Priority.  On selecting a Work Type from the combo box, any Additional Data Fields defined for Work Types will be displayed. </p>
+                <p>New fields can be created by clicking Add  icon. The Data Field Name, Data Field Type (Single Line Text, Multi Line Text, Date, Date Time, Integer or Numeric), whether Mandatory or not, and whether a Validated field or not, have to be specified. For Validated fields, the set of allowed values will also have to be specified through the Field Values <img class="helpicon" src="Content/Icons/field-valueN.png" alt="Field Values"> icon. For e.g. Funded By could be a validated field with values Project Funds, Maintenance Funds, and Other Funds. For Mandatory fields, it would be required to enter a value for it while entering Service Requests. </p>
+                <p><span class="header1">Add:</span> Create a new Data Field by clicking the <span class="header2">Add</span> <img class="helpicon" src="Content/Icons/data_addN.png" alt="Add" /> icon.</p>
+                <p><span class="header1">Edit:</span> Edit a Data Field by selecting it and then clicking the <span class="header2">Edit</span> <img class="helpicon" src="Content/Layout/edit_button.png" alt="Edit" /> icon. </p>
+                <p><span class="header1">Delete:</span> Delete a Data Field by selecting it and then clicking the <span class="header2">Delete </span> <img class="helpicon" src="Content/Layout/delete_button.png" alt="Delete" /> icon. </p>
+                <p><span class="header1">Set Workflow Entity Data Fields:</span></p>
+                <p>This option is to assign the Additional Data fields to the selected Workflow Entity. </p>
+                <p>On clicking this <img class="helpicon" src="Content/Icons/set_workflow_entity_data_fieldS.png" alt="Set Workflow Entity Data Fields">  icon, Workflow Entities like Service Requests, and PM Work Orders will be populated in the Workflow Entity combo. (The Workflow Entities which are handled by the selected Work Type only will be displayed in the Workflow Entity combo box). On selecting the Workflow Entity, all Additional Data fields created for the Work Type will be listed with check box. Make necessary selections and click Update button, the mapped Additional Data fields only will be available for setting the Editable Fields for each Action Points for the corresponding Workflow Entity.</p>
+                <p>Field Values: This option is for creating/viewing/editing/deleting values for validated Data Field. </p>
+                <p>Select a Validated Field and click Field Values <img class="helpicon" src="Content/Icons/field-valueN.png" alt="Field Values"> icon, all values defined for the validated field will be displayed in a list.</p>
+                <p><span class="header1">Add:</span> Create a new Value for the Data Field by clicking the <span class="header2">Add</span> <img class="helpicon" src="Content/Icons/data_addN.png" alt="Add" /> icon.</p>
+                <p><span class="header1">Edit:</span> Field Value can be edited by clicking the <span class="header2">Edit</span> <img class="helpicon" src="Content/Layout/edit_button.png" alt="Edit" /> icon. Edit icon will be displayed when the mouse points to a row or clicking the required row once or twice.</p>
+                <p><span class="header1">Delete:</span> Delete a value by selecting it and then clicking the <span class="header2">Delete </span> <img class="helpicon" src="Content/Layout/delete_button.png" alt="Delete" /> icon. Also delete is possible by clicking <span class="header2">Delete </span> <img class="helpicon" src="Content/Layout/delete_button.png" alt="Delete" /> icon which is displayed when clicking the required row once.</p>
+            </div>
+        </section>
+        <section title="Set Workflow" [isExpanded]="sectionExpansionStatus[2].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div *ngIf="sectionExpansionStatus[2].isExpanded">
+                <p>For each Work Type, the Action Points in its workflow and the Outcomes (actions) associated with each Action Point have to be defined. Set Workflow option is used to define this. </p>
+                <p>Before defining the Workflow, Action Points and Action Point Users for the Work Types have to be defined through the Action Points menu in the Administration Module. After creating the Action Points, associate these Action Points with work orders by selecting them for the predefined 'Work Orders' workflow category through the Set Workflow Category icon in the Action Points menu. All the Action points associated to Workflow Category 'Work Orders' will be listed for defining Action points through the Set workflow option</p>
+                <p>On selecting a Work Type, any existing Workflow defined for the selected Work Type will be displayed. The Administrator can modify the Workflow for a Work Type at any time by adding, editing, or deleting new action points as required. Once modified, all further Requests of this work type will follow this Workflow. The Administrator can modify a workflow by adding/deleting Action points. In case of deletion of Action Point, the Workflow will be revised and the revised Workflow will be used for subsequent Requests. A modification is considered as a Revision only if there are Requests in the current Workflow. When a revision takes place, all existing Requests will follow the workflow before the revision. Only the latest revision will be displayed when a work type is selected.</p>
+                <p>For a Work Type with Workflow entity – Service Requests, a default Action Point 'Requester' will be added automatically to the Work type. Other Action Points can be added by clicking <span class="header2">Add</span> <img class="helpicon" src="Content/Icons/data_addN.png" alt="Add" /> icon. New Action Point window will be displayed with the workflow entities selected for the particular work type. New Action Point can be added by clicking the Save button after making the required selections. Outcomes can be defined by selecting the Action Point first and then by selecting the <span class="header2">Outcomes</span> <img class="helpicon" src="Content/Icons/outcome.png" alt="Outcomes"> icon. Editable Fields also can be set for each Action Point, by selecting the Action Point first and by selecting Editable Fields option from the <span class="header2">Workflow Settings</span> <img class="helpicon" src="Content/Icons/workflow_settings.png" alt="Workflow Settings"> icon. Permissions can be set for each Action Point, by selecting the Action Point first and then by selecting the Permissions option from the <span class="header2">Workflow Settings</span> <img class="helpicon" src="Content/Icons/workflow_settings.png" alt="Workflow Settings"> icon. </p>
+                <p><span class="header1">Action Points</span></p>
+                <p><span class="header1">Add:</span> This option is used to add Action Points for a selected Work Type and Workflow Entity along with the Outcomes associated with the Action Point. </p>
+                <p>New Action point can be added by clicking <span class="header2">Add</span> <img class="helpicon" src="Content/Icons/data_addN.png" alt="Add" /> icon</p>
+                <p><span class="header1">Edit:</span> Edit an Action point by selecting it and then clicking the <span class="header2">Edit</span> <img class="helpicon" src="Content/Layout/edit_button.png" alt="Edit" /> icon. Requester Action Point cannot be edited.</p>
+                <p><span class="header1">Delete:</span> Delete an Action Point by selecting it and then clicking the <span class="header2">Delete</span> <img class="helpicon" src="Content/Layout/delete_button.png" alt="Delete" /> icon. It will be possible only if there is no outcome attached to the selected Action Point.</p>
+                <p>If there any Service Requests exist in the current Workflow, workflow will be modified when deleting an Action Point. A modification will be considered as revision. When a revision takes place, all the existing requests in that workflow will follow the previous workflow and all the new requests will follow the modified workflow.</p>
+                <p>Requester Action Point cannot be deleted</p>
+                <p><span class="header1">Workflow Settings: </span></p>
+                <p>Editable Fields and Permissions options are provided under <span class="header2">Workflow Settings</span> <img class="helpicon" src="Content/Icons/workflow_settings.png" alt="Workflow Settings"> icon.</p>
+                <p><span class="header3">Editable Fields:</span> Through this option, user can specify the fields which are editable and visible for each action point. Start Date, End Date, and all user defined fields which are mapped with the corresponding Workflow Entity will be listed for this. While reviewing a request, this field will be displayed according to the settings made here. </p>
+                <p><span class="header3">Permissions:</span> This option is to specify the access Permissions associated with the selected Action Point. Access permissions are required for accessing the Drawing, Documents, Equipment associated to each Action point. Cost details can be entered only if Permissions are set for the corresponding Action Points.</p>
+                <p>Permissions for managing Equipment, Documents and Costs for each Action Point can be set through the Permissions option. Different access Permissions will be available for different Workflow Entities. According to the Workflow Entities selection, the corresponding links will be available / enabled when the Request/Work Order displayed for Review. </p>
+                <p>Manage Equipment, Manage Documents, Manage Cost, Manage Invoices and Manage Chargeback are the Permissions available for the Workflow Entity - Service Requests. Manage Invoices and Chargeback will be available for Service Requests only after it is moved to Work Orders. Manage Cost, Manage Invoices and Manage Chargeback are the Permissions available for the Workflow Entity - PM Work Orders. </p>
+                <p><span class="header1">Outcomes:</span></p>
+                <p>Outcomes are actions to be carried out at each Action Point, specific to the workflow. </p>
+                <p>Outcomes added to an Action Point will be listed when selecting <span class="header2">Outcomes</span> <img class="helpicon" src="Content/Icons/outcome.png" alt="Outcomes"> icon. Any number of outcomes can be added to an Action Point. Timed Out is a default Outcome created automatically for all Action Points. Timed Out Outcome will be activated only if the Next Action Point is defined for it. If the Timeout period is elapsed then it will automatically move to the Next Action point, set in the Timed Out Outcome. </p>
+                <p>All Outcomes added will be listed with the Next Action Point and Description. </p>
+                <p>'Notify Requester' option is provided with checkbox in New Outcome and Edit Outcome window to send notification to the Requester when the particular Action has taken. </p>
+                <p>Note: For the static outcomes like Complete, Reject, Discard and Close the 'Notify Requester' check box will be selected by default and cannot be removed.</p>
+                <p><span class="header3">Add:</span> Add an outcome by clicking <span class="header2">Add</span> <img class="helpicon" src="Content/Icons/data_addN.png" alt="Add" /> icon.</p>
+                <p>Outcome Type combo in the New Outcome window is populated with static Outcome Types </p>
+                <p>Send back to Requester, Reject Request, Complete Service Request, Close Request, Generate Work Order, Complete Work Order, Close Work Order, Discard along with the Outcome Type Custom. </p>
+                <p>Outcome type combo will be filtered based on the Workflow entity of the selected Action Point for which the outcomes are defined. User defined Outcomes can be created by selecting the Outcome Type ‘Custom’.  On selecting the Outcome Type, the selected outcome will be displayed as outcome name in Outcome text box and can be edited as required for Static as well as Custom outcomes. This will allow the user to provide outcome names according to their requirements</p>
+                <p>The Outcome Types available for Service Requests Workflow entity are Send back to Requester, Reject Request, Complete Service Request, Close Request, Generate Work Order, Complete Work Order, Close Work Order, Discard and Custom</p>
+                <p>Next Action Point is mandatory for all outcomes other than the static Outcome Types like Send back to Requester, Reject Request, and Discard. On selecting the outcome types, Send back to Requester and Reject Request, the Request is directed back to the Requester. In the case of outcome type Discard, the Work Order will get discarded. </p>
+                <p>The notification to the Next Action Point users will be generated by default. </p>
+                <p><span class="header3">Edit:</span> Edit an outcome by selecting it and then clicking the <span class="header2">Edit</span> <img class="helpicon" src="Content/Layout/edit_button.png" alt="Edit" /> icon.</p>
+                <p><span class="header3">Delete:</span> Delete an outcome by selecting it and then clicking the <span class="header2">Delete</span> <img class="helpicon" src="Content/Layout/delete_button.png" alt="Delete" /> icon.</p>
+                <p><span class="header3">Show Workflow</span></p>
+                <p>Graphical representation of the flow of work in a process can be viewed by clicking this option. In the Workflow Diagram, New Action Points can be created by selecting the Action Point icon provided at the right hand corner and through click & drag operation. Outcomes can be created by selecting the Outcome <img class="helpicon" src="Content/Icons/outcome.png" alt="Outcomes"> icon and through click & drag operation from one Action point to another. New Outcome window will pop up and details can be entered / selected. Workflow diagram can be zoomed by selecting the Zoom Extents icon. On selecting the Pan icon, the mouse pointer changes to a hand symbol. Then click the left mouse button, and without releasing it, move the mouse to pan the diagram. </p>
+                <p>Action Points can be deleted by selecting Action Point using the Select icon and then pressing the Delete key in the keyboard. On deleting an Action Point, all the incoming and outgoing outcomes will get deleted. The modified workflow will be applicable for all subsequent Requests of this type. Workflow with at least one request cannot be edited via the Show Workflow option. All icons in the right hand corner will be shown as disabled for a workflow which is in use.</p>
+                <p>Workflow can be rearranged by clicking Arrange <span class="header2">Top to bottom</span>, Arrange <span class="header2">Bottom to Top</span>, Arrange <span class="header2">Left to right</span> and Arrange <span class="header2">Right to left</span> automatically</p>
+                <p>On selecting the<span class="header2"> Arrange Top to bottom</span>, the diagram will be arranged in such a way that all incoming outcomes of Action Points in top position and outgoing outcomes of Action points in bottom position. </p>
+                <p>On selecting the <span class="header2">Arrange Bottom to top</span>, the diagram will be arranged in such a way that all incoming outcomes of Action Points in bottom position and outgoing outcomes of Action points in top position. </p>
+                <p>On selecting the <span class="header2">Arrange Left to right</span>, the diagram will be arranged in such a way that all incoming outcomes of Action Points towards left and outgoing outcomes of Action points towards right.</p>
+                <p>On selecting the <span class="header2">Arrange Right to left</span>, the diagram will be arranged in such a way that all incoming outcomes of Action Points towards right and outgoing outcomes of Action points towards left.</p>
+                <p><span class="header2">Show/Hide Timed Out:</span> Shows/Hides all the Timed Out outcomes created by default from the Flowchart.</p>
+                <p><span class="header2">Export:</span> Workflow can be exported to selected file formats like BMP, JPG and GIF.</p>
+            </div>
+        </section>
+    </content>
+</page>
+<style type="text/css">
+    h3.Mainheader {
+        color: #178AE8;
+    }
+
+    .header1 {
+        font-weight: bold;
+        color: #178AE8;
+    }
+
+    .header2 {
+        font-weight: normal;
+        color: #178AE8;
+    }
+
+    p {
+        margin-left: 38px;
+        font-size: 13px;
+        margin-right: 3em;
+    }
+
+    .header3 {
+        font-weight: bold;
+        color: black;
+    }
+    /**/ h1 {
+        color: #178AE8;
+        font-size: 1.3em;
+        margin-left: 38px;
+    }
+
+    h2 {
+        color: #178AE8;
+        font-size: 1em;
+        margin-left: 38px;
+    }
+
+    .config {
+        background-color: #178AE8;
+    }
+
+    .helpicon {
+        vertical-align: baseline;
+        width: 20px;
+        height: 20px;
+    }
+</style>

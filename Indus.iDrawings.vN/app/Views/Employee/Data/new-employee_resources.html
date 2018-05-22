@@ -1,0 +1,20 @@
+﻿<div>    
+    <DropDownListComponent *ngIf="ddlResourceCategory" [fieldObject]="ddlResourceCategory" (change)="onChangeResourceCategory($event.target.value)" [SetAlignment]=alignContent></DropDownListComponent>
+    <DropDownListComponent *ngIf="ddlResourceType" [fieldObject]="ddlResourceType" (change)="onChangeResourceType($event.target.value)" [SetAlignment]=alignContent></DropDownListComponent>
+    <div style="width:100%;display: block;">
+        <div style="display: block;width:50%;" *ngIf="filterResourceChkbx && isSubscribed">
+            <CheckBoxComponent *ngIf="filterByEmployeeLocation" [fieldObject]=filterByEmployeeLocation (chkBoxClick)="filterByEmployeeLocationChange($event)"></CheckBoxComponent>
+        </div>
+    </div>   
+    <div style="display: block;">
+        <button  class="Savebutton " type="button" (click)="insertEmployeeResourcesList($event)">Save</button>
+    </div>
+    <div style="height:5px">&nbsp;</div>
+    <div style="height:60%;">
+        <gridView [dataSource]="itemsSource" [properties]="inputItems" [columns]="fieldObject" (onSorting)="onSort($event)"></gridView>
+    </div>
+    <div style="height:20%;">
+        <paging [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="pageChanged($event);"></paging>
+    </div>
+</div>
+

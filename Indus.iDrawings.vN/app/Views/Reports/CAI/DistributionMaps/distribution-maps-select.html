@@ -1,0 +1,40 @@
+﻿<page [pagetitle]="pagePath">
+    <content>
+        <tabs [selectedTab]="selectedTab" (getSelectedTab)="getSelectedTab($event)">
+            <tab tabTitle="Select Criteria" closeButtonVisible="hidden">
+                <split-view [splitviewObject]="splitviewInput" [pageTitle]="pageTitle" style="height: calc(100% - 35px);">
+                    <primary-view>
+                        <div style="height:100%;overflow-y:auto">
+                            <div>
+                                <submenu>
+                                    <sub-menu [source]=menuData [menuCard]=iscard [menuIds]=enableMenu (onSubMenuChange)="onSubMenuChange($event);"> </sub-menu>
+                                </submenu>
+                            </div>
+                            <div *ngIf="blnShowDate == true" style="margin-left:5%;margin-top:1%;display:inline;">
+                                <DateComponent *ngIf="dateSelectorField != undefined" [fieldObject]="dateSelectorField[0]"></DateComponent>
+                                <DateComponent *ngIf="dateSelectorField != undefined" [fieldObject]="dateSelectorField[1]"></DateComponent>
+                            </div>
+                            <div>
+                                <button class="Savebutton " style="margin-left:300px;margin-top:-30px;" type="button" (click)="onNextClick($event)">Next</button>
+                            </div>
+                            <div *ngIf="fieldObject != undefined && isEnableGrid" style="margin-top:9px;height:74%;">
+                                <div [ngClass]="totalItems > itemsPerPage ? 'pagewithPaging':'pagewithoutPaging'">
+                                    <gridView [(dataSource)]="itemsSource" [properties]="inputItems" [columns]="fieldObject" [refreshgrid]="refreshgrid" (onSorting)="onSort($event)"></gridView>
+                                </div>
+                                <div [style.height]="totalItems >itemsPerPage ? '35px' : '0px'">
+                                    <paging [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="pageChanged($event);"></paging>
+                                </div>
+                            </div>
+                        </div>
+                    </primary-view>
+                    <secondary-view>
+                        <distributionMapsArchive-edit (submitSuccess)="submitReturn($event)" [btnName]="btnName" [selectedId]="inputItems.selectedIds" [fieldDetailsAdd]="fieldDetailsEdit" [fromDate]="fromDateInput" [toDate]="toDateinput"></distributionMapsArchive-edit>
+                    </secondary-view>
+                </split-view>
+            </tab>
+            <!--<tab *ngIf="next != undefined" tabTitle="Report" closeButtonVisible="hidden">
+                
+            </tab>-->
+        </tabs>
+    </content>
+</page>

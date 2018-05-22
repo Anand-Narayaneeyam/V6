@@ -1,0 +1,257 @@
+﻿{
+  "data": [
+    {
+      "FieldId": 1,
+      "ReportFieldId": 1,
+      "FieldLabel": "Font",
+      "DataEntryControlId": 4,
+      "FieldValue": "2",
+      "Whitelist": {
+        "FormatString": "",
+        "RegularExpression": "^[a-zA-Z0-9!@#$%&*()+=\\s\\:.,/?[\\]_-]+$"
+      },
+      "IsVisible": true,
+      "IsMandatory": true,
+      "IsEnabled": true,
+      "ReadOnlyMode": false,
+      "MaxLength": 100,
+      "IsValidated": true,
+      "LookupDetails": {
+        "LookupValues": [
+          {
+            "Id": 2,
+            "Value": "Arial"
+          },
+          {
+            "Id": 3,
+            "Value": "Caliberi"
+          },
+          {
+            "Id": 4,
+            "Value": "Courier New"
+          },
+          {
+            "Id": 5,
+            "Value": "Times New Roman"
+          },
+          {
+            "Id": 6,
+            "Value": "Tahoma"
+          },
+          {
+            "Id": 7,
+            "Value": "Trebuchet MS"
+          },
+          {
+            "Id": 8,
+            "Value": "Verdana"
+          }
+        ],
+        "PopupComponentName": null
+      },
+      "NotificationType": "inline",
+      "Width": " ",
+      "Format": ""
+    },
+    {
+      "FieldId": 2,
+      "ReportFieldId": 2,
+      "FieldLabel": "Font Size",
+      "DataEntryControlId": 4,
+      "FieldValue": "2",
+      "Whitelist": {
+        "FormatString": "",
+        "RegularExpression": "^[a-zA-Z0-9!@#$%&*()+=\\s\\:.,/?[\\]_-]+$"
+      },
+      "IsVisible": true,
+      "IsMandatory": true,
+      "IsEnabled": true,
+      "ReadOnlyMode": false,
+      "MaxLength": 100,
+      "IsValidated": true,
+      "LookupDetails": {
+        "LookupValues": [
+          {
+            "Id": 2,
+            "Value": "2"
+          },
+          {
+            "Id": 3,
+            "Value": "4"
+          },
+          {
+            "Id": 4,
+            "Value": "5"
+          },
+          {
+            "Id": 5,
+            "Value": "6"
+          },
+          {
+            "Id": 6,
+            "Value": "8"
+          },
+          {
+            "Id": 7,
+            "Value": "10"
+          },
+          {
+            "Id": 8,
+            "Value": "12"
+          },
+          {
+            "Id": 9,
+            "Value": "14"
+          },
+          {
+            "Id": 10,
+            "Value": "16"
+          },
+          {
+            "Id": 11,
+            "Value": "18"
+          },
+          {
+            "Id": 12,
+            "Value": "20"
+          },
+          {
+            "Id": 13,
+            "Value": "22"
+          },
+          {
+            "Id": 14,
+            "Value": "24"
+          }
+        ],
+        "PopupComponentName": null
+      },
+      "NotificationType": "inline",
+      "Width": "",
+      "Format": ""
+    },
+    {
+      "FieldId": 3,
+      "ReportFieldId": 3,
+      "FieldLabel": "Comment",
+      "DataEntryControlId": 3,
+      "GenericDataTypeId": 6,
+      "IsMandatory": true,
+      "FieldValue": "",
+      "Whitelist": {
+        "FormatString": "",
+          "RegularExpression": "^[a-zA-Z0-9!@#$%&*()+=\\s\\:.,/?[\\]_-]+$"
+      },
+      "IsHiddenLabel": false,
+      "IsEnabled": true,
+      "IsGrouped": false,
+      "ReadOnlyMode": false,
+      "IsVisible": true,
+      "MaxLength": 4000,
+      "NotificationType": "inline",
+      "Format": ""
+    }
+  ],
+  "linewidth": [
+    {
+      "FieldId": 2,
+      "ReportFieldId": 2,
+      "FieldLabel": "Font Size",
+      "DataEntryControlId": 4,
+      "FieldValue": "2",
+      "Whitelist": {
+        "FormatString": "",
+        "RegularExpression": "^[a-zA-Z0-9!@#$%&*()+=\\s\\:.,/?[\\]_-]+$"
+      },
+      "IsVisible": true,
+      "IsMandatory": true,
+      "IsEnabled": true,
+      "ReadOnlyMode": false,
+      "MaxLength": 100,
+      "IsValidated": true,
+      "LookupDetails": {
+        "LookupValues": [
+          {
+            "Id": 2,
+            "Value": "2"
+          },
+          {
+            "Id": 3,
+            "Value": "4"
+          },
+          {
+            "Id": 4,
+            "Value": "5"
+          },
+          {
+            "Id": 5,
+            "Value": "6"
+          },
+          {
+            "Id": 6,
+            "Value": "8"
+          },
+          {
+            "Id": 7,
+            "Value": "10"
+          },
+          {
+            "Id": 8,
+            "Value": "12"
+          },
+          {
+            "Id": 9,
+            "Value": "14"
+          },
+          {
+            "Id": 10,
+            "Value": "16"
+          },
+          {
+            "Id": 11,
+            "Value": "18"
+          },
+          {
+            "Id": 12,
+            "Value": "20"
+          },
+          {
+            "Id": 13,
+            "Value": "22"
+          },
+          {
+            "Id": 14,
+            "Value": "24"
+          }
+        ],
+        "PopupComponentName": null
+      },
+      "NotificationType": "inline",
+      "Width": "",
+      "Format": ""
+    }
+  ],
+    "colorpicker": [
+    {
+      "FieldId": 1,
+      "ReportFieldId": 1,
+      "FieldLabel": "",
+      "DataEntryControlId": 11,
+            "GenericDataTypeId": 6,
+      "FieldValue": "",
+      "Whitelist": {
+        "FormatString": "",
+        "RegularExpression": "^[a-zA-Z0-9!@#$%&*()+=\\s\\:.,/?[\\]_-]+$"
+      },
+      "IsVisible": true,
+      "IsEnabled": true,
+      "IsMandatory": false,
+      "ReadOnlyMode": false,
+      "MaxLength": 100,
+      "IsValidated": true,
+      "NotificationType": "inline",
+      "Width": "",
+      "Format": ""
+    }
+  ]
+}

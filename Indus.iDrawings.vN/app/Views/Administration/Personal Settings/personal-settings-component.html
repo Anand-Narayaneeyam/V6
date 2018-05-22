@@ -1,0 +1,49 @@
+﻿<page [pagetitle]="pagePath">
+    <content>
+        <tabs [selectedTab]="selectedTab" (getSelectedTab)="getSelectedTab($event)" (onTabClose)="onTabClose($event)" [deleteIndex]="tabDeleteIndex">
+            <tab tabTitle="General" closeButtonVisible="hidden">
+                <split-view [splitviewObject]="splitviewInput" [pageTitle]="pageTitle">
+                    <primary-view>
+                        <div style="height:35px;">
+                            <submenu>
+                                <sub-menu [source]=menuData [menuCard]=iscard [menuIds]=enableMenu (onSubMenuChange)="onSubMenuChange($event);"> </sub-menu>
+                            </submenu>
+                        </div>
+                        <div *ngIf="fieldDetails != undefined" style="height:calc(100% - 35px)">
+                            <DynamicFields supportMultiColumnDispay="true" multiColumnNumber=2  [dataSource]="fieldDetails" (submitFieldObject)="onSubmitData($event)" [btnName]="btnName" (txtChange)="txtBoxChange($event);"></DynamicFields>
+                            <button class="Savebutton" style="margin-left: 159px;margin-top: -19px;" type="button" (click)="okSubmitCancel($event)">Cancel</button>
+                        </div>
+                    </primary-view>
+                    <secondary-view>
+                        <StringTextBox *ngIf="lognNameFieldObject != undefined" id="StringTextBox" name="StringTextBox" [fieldObject]=lognNameFieldObject [validationData]='validationData'></StringTextBox>
+                        <StringTextBox *ngIf="currentPassFieldObject != undefined" id="StringTextBox" name="StringTextBox" [fieldObject]=currentPassFieldObject [validationData]='validationData'></StringTextBox>
+
+                        <StringTextBox *ngIf="newPassFieldObject != undefined" id="StringTextBox" name="StringTextBox" [fieldObject]=newPassFieldObject (keyUpemit)="onKeyUp($event)" [validationData]='validationData'></StringTextBox>
+                        <!--<span style="color:red;font-family:Verdana;font-size:10px;font-weight:bold;" id="passstrength" ></span>-->
+                        <table *ngIf="splitviewInput.showSecondaryView == true" id="tblPasswordRating" style="border: 1px solid #E0D7CD; width: 80%; height: 10px;"
+                               bgcolor="#D1D1D1" border="0" cellpadding="0" cellspacing="0">
+                            <tr style="border-right-style: groove; border-right-width: 1px">
+                                <td id="pr0" style="font-size: 12px;width:70px;">&nbsp;</td>
+                                <td id="pr1" style="font-size: 12px;width:30px;">&nbsp;</td>
+                                <td id="pr2" style="font-size: 12px;width:30px;">&nbsp;</td>
+                                <td id="pr3" style="font-size: 12px;">&nbsp;</td>
+                                <td id="pr4" style="font-size: 12px;">&nbsp;</td>
+                                <td id="pr5" style="font-size: 12px;">&nbsp;</td>
+                                <td id="divText" style=" font-size xx-small; font-weight bold;"
+                                    align="center"></td>
+                            </tr>
+                        </table>
+
+                        <StringTextBox *ngIf="confirmPassFieldObject != undefined" id="StringTextBox" name="StringTextBox" [fieldObject]=confirmPassFieldObject [validationData]='validationData'></StringTextBox>
+                        <button class="Savebutton" style="margin-top:3px;" *ngIf="confirmPassFieldObject != undefined" type="button" (click)="okSubmit($event)">Save Changes</button>
+
+                        <!--<DynamicFields *ngIf="changePasswordField != undefined" [dataSource]="changePasswordField" (submitFieldObject)="onSubmitPassWord($event)" [btnName]="btnNamePass"></DynamicFields>-->
+                    </secondary-view>
+                </split-view>
+            </tab>
+            <!--<tab tabTitle="" closeButtonVisible="hidden">
+
+            </tab>-->
+        </tabs>
+    </content>
+</page>

@@ -1,0 +1,98 @@
+﻿<style>
+    table{
+       height:200px;
+        width:480px;
+    }
+    table, tr, th, td {
+        border: 1px solid white;
+    }
+    .colorPickerDiv {
+        border:double;
+        border-color:darkgrey;
+        width:500px;
+        box-shadow: 2px 2px 2px 2px lightgray;
+        background-color:white;
+        position:absolute;
+        z-index:1;
+        display:inline-block;
+    }
+    .ColorPickerStable:focus {
+        outline: 1px solid blue!important; 
+        outline-offset: 6px;
+    }
+</style>
+
+<div control-group>
+    <div *ngIf="showLabel == true">
+        <label *ngIf="fieldObject.FieldLabel != null || fieldObject.FieldLabel != undefined">
+            {{fieldObject.FieldLabel}}<span class="required" *ngIf="fieldObject.IsMandatory === true">  * </span>
+        </label>
+    </div>
+</div>
+<div  style="min-height:30px;" *ngIf="fieldObject.IsEnabled == true">
+    <span *ngIf="blnShowIcon == true">
+        <img src="Content/Images/color-swatches-icon.png" width="25" height="25" style="margin-top:-5px;" (click)="ColorPickerToggle()" (keydown)="KeyPressColorPickerToggle($event)" tabindex="0">
+    </span>
+    <div *ngIf="blnShowIcon == false">
+        <div class="ColorPickerStable" [style.background-color]="setBackgroundColor" style="width:25px;height:25px;border: 1px solid black;" (click)="ColorPickerToggle()" (keydown)="KeyPressColorPickerToggle($event)" tabindex="0"></div>
+    </div>
+</div>
+<div style="min-height:30px;" *ngIf="fieldObject.IsEnabled == false">
+    <span >
+        <img src="Content/Images/color-swatches-icon.png" width="25" height="25" style="margin-top:-5px;">
+    </span>
+</div>
+<div style="position:relative;display:block">
+    <div id="overlayColorPicker" [style.display]="displayStyle" style="position:fixed;height:100%;width:95%;left:0;top:0;opacity:0.99;z-index: 1" (click)="ColorPickerToggle()"></div>
+    <div id="ColorPickerDiv" class="colorPickerDiv" [style.display]="displayStyle">
+        <label style="background-color:lightgray;">&nbsp;&nbsp;Primary Colors</label>
+        <div>
+            <table style="height:20px;width:200px;box-shadow: 2px 2px 2px 2px lightgray;">
+                <tr>
+                    <td style="background-color:#FF0000" (click)="colorOnClick('10','#FF0000','255')" (keydown)="KeyPresscolorOnClick($event,'10','#FF0000','255')" tabindex="0"></td>
+                    <td style="background-color:#FFFF00" (click)="colorOnClick('50','#FFFF00','65535')" (keydown)="KeyPresscolorOnClick($event,'50','#FFFF00','65535')" tabindex="0"></td>
+                    <td style="background-color:#00FF00" (click)="colorOnClick('90','#00FF00','65280')" (keydown)="KeyPresscolorOnClick($event,'90','#00FF00','65280')" tabindex="0"></td>
+                    <td style="background-color:#00FFFF" (click)="colorOnClick('130','#00FFFF','16776960')" (keydown)="KeyPresscolorOnClick($event,'130','#00FFFF','16776960')" tabindex="0"></td>
+                    <td style="background-color:#0000FF" (click)="colorOnClick('170','#0000FF','16711680')" (keydown)="KeyPresscolorOnClick($event,'170','#0000FF','16711680')" tabindex="0"></td>
+                    <td style="background-color:#FF00FF" (click)="colorOnClick('210','#FF00FF','16711935')" (keydown)="KeyPresscolorOnClick($event,'210','#FF00FF','16711935')" tabindex="0"></td>
+                    <td style="background-color:#FFFFFF" (click)="colorOnClick('7','#FFFFFF','16777215')" (keydown)="KeyPresscolorOnClick($event,'7','#FFFFFF','16777215')" tabindex="0"></td>
+                    <td style="background-color:#808080" (click)="colorOnClick('8','#808080','8421504')" (keydown)="KeyPresscolorOnClick($event,'8','#808080','8421504')" tabindex="0"></td>
+                    <td style="background-color:#C0C0C0" (click)="colorOnClick('9','#C0C0C0','12632256')" (keydown)="KeyPresscolorOnClick($event,'9','#C0C0C0','12632256')" tabindex="0"></td>
+                    <td style="background-color:#000000" (click)="colorOnClick('250','#000000','0')" (keydown)="KeyPresscolorOnClick($event,'250','#000000','0')" tabindex="0"></td>
+                </tr>
+            </table>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <!--<label style="width:100px;">Selected Color</label>: &nbsp;<span id="txtColorBox" type="text" (click)="ColorPickerToggle()" [style.background-color]="setBackgroundColor" style="width:20px;height:20px;border:1px solid black;"> </span>-->
+        </div>
+        <label style="background-color:lightgray;">&nbsp;&nbsp;Full Color Pallete</label>
+        <div>
+            <table *ngIf="colorArray0 != undefined" style="margin-left:5px;margin-bottom:10px;height:200px;width:480px;border-color:white;box-shadow: 2px 2px 2px 2px lightgray;">
+                <tr>
+                    <td *ngFor="let arr0 of colorArray0" [style.background-color]="arr0.BackGroundColor" (click)="colorOnClick(arr0.AutocadColorId,arr0.RGB,arr0.AccessColorId)" (keydown)="KeyPresscolorOnClick($event,arr0.AutocadColorId,arr0.RGB,arr0.AccessColorId)" tabindex="0"></td>
+                </tr>
+                <tr>
+                    <td *ngFor="let arr1 of colorArray1" [style.background-color]="arr1.BackGroundColor" (click)="colorOnClick(arr1.AutocadColorId,arr1.RGB,arr1.AccessColorId)" (keydown)="KeyPresscolorOnClick($event,arr1.AutocadColorId,arr1.RGB,arr1.AccessColorId)" tabindex="0"></td>
+                </tr>
+                <tr>
+                    <td *ngFor="let arr2 of colorArray2" [style.background-color]="arr2.BackGroundColor" (click)="colorOnClick(arr2.AutocadColorId,arr2.RGB,arr2.AccessColorId)" (keydown)="KeyPresscolorOnClick($event,arr2.AutocadColorId,arr2.RGB,arr2.AccessColorId)" tabindex="0"></td>
+                </tr>
+                <tr>
+                    <td *ngFor="let arr3 of colorArray3" [style.background-color]="arr3.BackGroundColor" (click)="colorOnClick(arr3.AutocadColorId,arr3.RGB,arr3.AccessColorId)" (keydown)="KeyPresscolorOnClick($event,arr3.AutocadColorId,arr3.RGB,arr3.AccessColorId)" tabindex="0"></td>
+                </tr>
+                <tr>
+                    <td *ngFor="let arr4 of colorArray4" [style.background-color]="arr4.BackGroundColor" (click)="colorOnClick(arr4.AutocadColorId,arr4.RGB,arr4.AccessColorId)" (keydown)="KeyPresscolorOnClick($event,arr4.AutocadColorId,arr4.RGB,arr4.AccessColorId)" tabindex="0"></td>
+                </tr>
+                <tr>
+                    <td *ngFor="let arr5 of colorArray5" [style.background-color]="arr5.BackGroundColor" (click)="colorOnClick(arr5.AutocadColorId,arr5.RGB,arr5.AccessColorId)" (keydown)="KeyPresscolorOnClick($event,arr5.AutocadColorId,arr5.RGB,arr5.AccessColorId)" tabindex="0"></td>
+                </tr>
+                <tr>
+                    <td *ngFor="let arr6 of colorArray6" [style.background-color]="arr6.BackGroundColor" (click)="colorOnClick(arr6.AutocadColorId,arr6.RGB,arr6.AccessColorId)" (keydown)="KeyPresscolorOnClick($event,arr6.AutocadColorId,arr6.RGB,arr6.AccessColorId)" tabindex="0"></td>
+                </tr>
+                <tr>
+                    <td *ngFor="let arr7 of colorArray7;let c=index" [style.background-color]="arr7.BackGroundColor" (click)="colorOnClick(arr7.AutocadColorId,arr7.RGB,arr7.AccessColorId)" (keydown)="KeyPresscolorOnClick($event,arr7.AutocadColorId,arr7.RGB,arr7.AccessColorId)" tabindex="0" ></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+        

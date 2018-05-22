@@ -1,0 +1,32 @@
+﻿<div style="overflow:auto;height: calc(100% - 75px);">
+    <div [style.height]="actionPointUserNumber == false? '70px' : '210px'">
+        <div style="max-height:200px!important;height:auto">
+            <!--<DropDownListComponent *ngIf="ddlEmailRecipientActionPointUser !=undefined" [fieldObject]="ddlEmailRecipientActionPointUser" (change)="onChnageEmailRecipientActionPointUser($event.target.value)"></DropDownListComponent>-->
+            <div [style.max-height]="actionPointUserNumber == false? '0px' : '140px'" style="height:140px!important">
+                <ListBoxComponent *ngIf="actionPointUserNumber" [fieldObject]="ddlEmailRecipientActionPointUser" (lstBox)="selectAOneOptions($event)" (selAll)="selectAllOptions($event)"></ListBoxComponent>
+            </div>
+            <div style="height:50px; margin-top:30px;">
+                <DropDownListComponent *ngIf="ddlEmailRecipientNotificationTemplate !=undefined" [fieldObject]="ddlEmailRecipientNotificationTemplate" (change)="onChnageEmailRecipientNotificationTemplate($event.target.value)"></DropDownListComponent>
+            </div>
+        </div>
+    </div>
+    <div [style.height]="actionPointUserNumber == false? 'calc(100% - 70px)' : 'calc(100% - 210px)'" style="margin-top:10px;">
+        <section *ngIf="sectionEnable != -1" [isGrid]=true title="iDrawings Users" [isExpanded]="sectionExpansionStatus[0].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <gridView style="width:600px;display:block;" *ngIf="sectionExpansionStatus[0].isExpanded" [(dataSource)]="itemsSourceiDrawingsUser" [properties]="inputItemsiDrawingsUser" [columns]="fieldObjectiDrawingsUser" (onSorting)="onSortiDrawingsUser($event)"></gridView>
+        </section>
+        <section *ngIf="sectionEnable != -1" [isGrid]=true title="Contractors" [isExpanded]="sectionExpansionStatus[1].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <gridView style="width:600px;display:block;" *ngIf="sectionExpansionStatus[1].isExpanded" [(dataSource)]="itemsSourceContractors" [properties]="inputItemsContractors" [columns]="fieldObjectContractors" (onSorting)="onSortContractors($event)"></gridView>
+        </section>
+        <section *ngIf="sectionEnable != -1" [isGrid]=true title="Technicians" [isExpanded]="sectionExpansionStatus[2].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <gridView style="width:600px;display:block;" *ngIf="sectionExpansionStatus[2].isExpanded" [(dataSource)]="itemsSourceTechnicians" [properties]="inputItemsTechnicians" [columns]="fieldObjectTechnicians" (onSorting)="onSortTechnicians($event)"></gridView>
+        </section>
+    </div>
+</div>
+<div style="margin-top: 10px;">
+    <div *ngIf="btnEnable == false" style="width:10%;">
+        <button  class="Savebutton "type="button" (click)="Updateclick()">Generate</button>
+    </div>
+    <div *ngIf="btnEnable == true" style="width:10%;">
+        <button  class="Savebutton "type="button" style="cursor:not-allowed" (click)="Updateclick()" disabled>Generate</button>
+    </div>
+</div>

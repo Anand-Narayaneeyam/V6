@@ -1,0 +1,106 @@
+﻿{
+
+  "portfolio": [
+    {
+      "id": 0,
+      "title": "Add",
+      "image": "Add",
+      "path": null,
+      "subMenu": null,
+      "privilegeId": 57
+    },
+    {
+      "id": 1,
+      "title": "Edit",
+      "image": "Edit",
+      "path": null,
+      "subMenu": null,
+      "privilegeId": 58
+
+    },
+    {
+      "id": 2,
+      "title": "Delete",
+      "image": "Delete",
+      "path": null,
+      "subMenu": null,
+      "privilegeId": 59
+    },
+    {
+      "id": 3,
+      "title": "Close",
+      "image": "Report",
+      "path": null,
+      "subMenu": null,
+      "privilegeId": 60
+    },
+    {
+      "id": 4,
+      "title": "Reopen",
+      "image": "Print",
+      "path": null,
+      "subMenu": null,
+      "privilegeId": 61
+    },
+    {
+      "id": 6,
+      "title": "Attachments",
+      "image": "Attachments",
+      "path": null,
+      "subMenu": null,
+      "privilegeId": 62
+    },
+     {
+      "id": 7,
+      "title": "Export",
+      "image": "Export",
+      "path": null,
+      "subMenu": null,
+      "privilegeId": 57
+    }
+  ],
+  "buildingFloor": [
+    {
+      "id": 0,
+      "title": "Add",
+      "image": "Add",
+      "path": null,
+      "subMenu": null,
+      "privilegeId": 93
+    },
+    {
+      "id": 1,
+      "title": "Edit",
+      "image": "Edit",
+      "path": null,
+      "subMenu": null,
+      "privilegeId": 94
+
+    },
+    {
+      "id": 2,
+      "title": "Delete",
+      "image": "Delete",
+      "path": null,
+      "subMenu": null,
+      "privilegeId": 95
+    },
+
+    {
+      "id": 6,
+      "title": "Attachments",
+      "image": "Attachments",
+      "path": null,
+      "subMenu": null,
+      "privilegeId": 96
+    },
+     {
+      "id": 7,
+      "title": "Export",
+      "image": "Export",
+      "path": null,
+      "subMenu": null,
+      "privilegeId": 96
+    }
+  ]
+}

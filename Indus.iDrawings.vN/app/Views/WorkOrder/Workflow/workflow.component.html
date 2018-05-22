@@ -1,0 +1,150 @@
+﻿<!--Sample for using flowchart-->
+<submenu>
+    <sub-menu [source]=menuData [count]=totalItems [menuIds]=enableMenu (onSubMenuChange)="onSubMenuChange($event);"> </sub-menu>
+</submenu>
+<flowchart (flowchartBoxCreate)="onFlowchartBoxCreate($event)" (DrawingObjectInitialize)="onDrawingObjectInitialize($event)" (flowchartConnectorCreate)="onFlowchartConnectorCreate($event)" 
+           (flowchartActionPointDoubleClick)="onFlowchartActionPointDoubleClick($event)" (flowchartConnectorDoubleClick)="onFlowchartConnectorDoubleClick($event)" 
+           (flowchartConnectorChange)="onFlowchartConnectorChange($event)" (flowChartInvalidConnector)="onFlowchartInvalidConnector($event)"
+           (flowchartActionPointDeleteClick)="onFlowchartActionPointDeleteClick($event)" (flowchartOutcomeDeleteClick)="onFlowchartOutcomeDeleteClick($event)"></flowchart>
+<slide [width]="200" [position]="position" [type]="dialog" [show]="showActionSlide" (closeDialog)="closeActionSlideDialog($event)">
+    <div>
+        <div>
+            Action Name  ::  <input type="text" value="ActionPoint" id="actionName" />
+            Action Number  ::  <input type="text" value="ActionNumber" id="actionNo" />
+
+        </div>
+        <div>
+            <div style="width:100%">
+                <button  class="Savebutton "type="button" (click)="okActionClick($event)">Add</button>
+                <button  class="Savebutton "type="button" (click)="cancelActionClick($event)">Cancel</button>
+            </div>
+        </div>
+    </div>
+</slide>
+<slide [width]="500" [position]="position" [type]="dialog" [show]="showOutcomeSlide" (closeDialog)="closeOutcomeSlideDialog($event)">
+    <div>
+        <div>
+            Outcome  ::  <input type="text" value="Outcome" id="outcome" /><br /><br />
+            <span>
+                <input type="radio" value="false" name="outcometype" id="chktimeout" />Time out
+                <input type="radio" value="false" name="outcometype" id="chkendpoint" (click)="chkEndClick($event)" />End Point
+                <input type="radio" value="false" name="outcometype" id="chkactionpoint" (click)="chkActionClick($event)" />Action Point
+            </span>
+            <br /><br />
+            Id  ::  <input type="text" value="" id="txtId" style="width:30px" />
+            ActionPoint  ::  <input type="text" value="" style="width:80px" id="txtActPoint" />
+            Type  ::  <select id="actionType">
+                <option value="3">Full Move</option>
+                <option value="4">No Move</option>
+                <option value="1">Source Move</option>
+                <option value="2">Target Move</option>
+            </select>
+            Action Number  ::  <input type="text" value="0" id="outactionNo" />
+
+            <br /><br />
+        </div>
+        <div>
+            <div style="width:100%">
+                <button  class="Savebutton "type="button" (click)="okOutcomeClick($event)">Add/Update</button>
+                <button  class="Savebutton "type="button" (click)="cancelOutcomeClick($event)">Cancel</button>
+            </div>
+        </div>
+    </div>
+</slide>
+<slide [width]="100" [position]="position" [type]="dialog" [show]="showUpdateSlide" (closeDialog)="closeUpdateSlideDialog($event)">
+    <div>
+        <div>
+            Update Text  ::  <input type="text" value="" id="newtext" /><br /><br />
+        </div>
+        <div>
+            <div style="width:100%">
+                <button  class="Savebutton "type="button" (click)="okUpdate($event)">Add/Update</button>
+                <button  class="Savebutton "type="button" (click)="cancelUpdate($event)">Cancel</button>
+            </div>
+        </div>
+    </div> 
+</slide>
+<slide [width]="100" [position]="position" [type]="dialog" [show]="showIdsSlide" (closeDialog)="closeIdsSlideDialog($event)">
+    <div>
+        <div>
+            Ids  ::  <input type="text" value="" id="idtext" /><br /><br />
+        </div>
+        <div>
+            <div style="width:100%">
+                <button  class="Savebutton "type="button" (click)="okIdsShowHide($event)">Show/Hide</button>
+                <button  class="Savebutton "type="button" (click)="cancelIdsShowHide($event)">Cancel</button>
+            </div>
+        </div>
+    </div>
+</slide>
+<slide [width]="800" [position]="position" [type]="dialog" [show]="showOpenSlide" (closeDialog)="closeOpenSlideDialog($event)">
+    <div>
+        <div>
+            Flowchart XML  ::  <textarea id="workflowtext" style="width:700px;height:400px"></textarea><br /><br />
+
+        </div>
+        <div>
+            <div style="width:100%">
+                <button  class="Savebutton "type="button" (click)="okOpenFlow($event)">OK</button>
+                <button  class="Savebutton "type="button" (click)="cancelOpenFlow($event)">Cancel</button>
+            </div>
+        </div>
+    </div>
+</slide>
+<slide [width]="100" [position]="position" [type]="dialog" [show]="showOutcomeDetSlide" (closeDialog)="closeOutcomeDetSlideDialog($event)">
+    <div>
+        <div>
+            Outcome Id  ::  <input type="text" value="" id="outcomeid" /><br /><br />
+        </div>
+        <div>
+            <div style="width:100%">
+                <button  class="Savebutton "type="button" (click)="okOutcomeDet($event)">OK</button>
+                <button  class="Savebutton "type="button" (click)="cancelOutcomeDet($event)">Cancel</button>
+            </div>
+        </div>
+    </div>
+</slide>
+<slide [width]="500" [position]="position" [type]="dialog" [show]="showActionPointsSlide"  (closeDialog)="closeActionPointsSlideDialog($event)">
+    <div>
+        <div>
+            Action Name  ::  <input type="text" value="ActionPoint" id="tstactionName" /><br /><br />
+            Action Number  ::  <input type="text" value="ActionNumber" id="tstactionNo" /><br /><br />
+            <select size="5" id="lstAP" style="width:225px; height: 160px;">
+
+            </select><br /><br />
+        </div>
+        <div>
+            <div style="width:100%">
+                <button  class="Savebutton "type="button" (click)="loadActionPointsClick($event)">Load</button>
+                <button  class="Savebutton "type="button" (click)="okActionPointsClick($event)">Add</button>
+                <button  class="Savebutton "type="button" (click)="remActionPointsClick($event)">Remove</button>
+                <button  class="Savebutton "type="button" (click)="cancelActionPointsClick($event)">Cancel</button>
+
+            </div>
+        </div>
+    </div>
+</slide>
+<slide [width]="500" [position]="position" [type]="dialog" [show]="showtstOutcomesSlide" (closeDialog)="closetstOutcomesSlideDialog($event)">
+    <div>
+        <div>
+            From :: <select id="cmbFrom" style="width:150px;"></select>  To :: <select id="cmbTo" style="width:150px;"></select>
+            Outcome Text  ::  <input type="text" value="Outcome" id="tstoutcome" /><br /><br />         
+            Outcome Type  ::  <select id="tstconnectorType">
+                <option value="3">Full Move</option>
+                <option value="4">No Move</option>
+                <option value="1">Source Move</option>
+                <option value="2">Target Move</option>
+            </select>         
+            <br /><br />
+            <select size="5" id="lstOut" style="width:225px; height: 160px;"></select><br /><br />
+        </div>
+        <div>
+            <div style="width:100%">
+                <button  class="Savebutton "type="button" (click)="loadOutcomesClick($event)">Load</button>
+                <button  class="Savebutton "type="button" (click)="oktstOutcomesClick($event)">Add</button>
+                <button  class="Savebutton "type="button" (click)="remOutcomesClick($event)">Remove</button>
+                <button  class="Savebutton "type="button" (click)="canceltstOutcomesClick($event)">Cancel</button>
+            </div>
+        </div>
+    </div>
+</slide>

@@ -1,0 +1,209 @@
+﻿{
+
+  "data": [
+    {
+      "FieldId": 1,
+      "FieldName": "FloorId",
+      "FieldType": 1,
+      "IsVisible": false,
+      "ShowDropDown": false,
+      "IsDisabled": false,
+      "IsHiddenLabel": true,
+      "ReadOnlyMode": false
+
+    },
+    {
+      "FieldId": 2,
+      "FieldName": "Site",
+      "FieldType": 1,
+      "IsVisible": true,
+      "ShowDropDown": false,
+      "IsDisabled": false,
+      "IsHiddenLabel": true,
+      "ReadOnlyMode": false
+    },
+    {
+
+      "FieldId": 3,
+      "FieldName": "Building",
+      "FieldType": 1,
+      "IsVisible": true,
+      "ShowDropDown": false,
+      "IsDisabled": false,
+      "IsHiddenLabel": true,
+      "ReadOnlyMode": false
+    },
+    {
+      "FieldId": 4,
+      "FieldName": "Floor",
+      "FieldType": 1,
+      "IsVisible": true,
+      "ShowDropDown": false,
+      "IsDisabled": false,
+      "IsHiddenLabel": true,
+      "ReadOnlyMode": false
+    },
+    {
+      "FieldId": 5,
+      "FieldName": "Space Key",
+      "FieldType": 2,
+      "IsVisible": true,
+      "ShowDropDown": false,
+      "IsDisabled": false,
+      "IsHiddenLabel": true,
+      "ReadOnlyMode": false
+    },
+    {
+      "FieldId": 6,
+      "FieldName": "Room No.",
+      "FieldType": 1,
+      "IsVisible": true,
+      "ShowDropDown": false,
+      "IsDisabled": false,
+      "IsHiddenLabel": true,
+      "ReadOnlyMode": false
+    },
+    {
+      "FieldId": 5,
+      "FieldName": "Space Category",
+      "FieldType": 5,
+      "HasRelation": false,
+      "IsVisible": true,
+      "IsMandatory": false,
+      "IsDisabled": false,
+      "IsHiddenLabel": true,
+      "ReadOnlyMode": false,
+      "IsMultiValued": true,
+      "MultiValuedDetails": {
+        "LookupValues": [
+          {
+            "Id": 1,
+            "Value": "01-Usable"
+          },
+          {
+            "Id": 2,
+            "Value": "02-Building Common"
+          },
+          {
+            "Id": 3,
+            "Value": "03-Floor Common"
+          },
+          {
+            "Id": 4,
+            "Value": "04-Vertical Space"
+          }
+        ],
+        "PopupComponentName": null
+      },
+      "NotificationType": "inline"
+
+    },
+    {
+      "FieldId": 5,
+      "FieldName": "Space Function",
+      "FieldType": 5,
+      "HasRelation": false,
+      "IsVisible": true,
+      "IsMandatory": false,
+      "IsDisabled": false,
+      "IsHiddenLabel": true,
+      "ReadOnlyMode": false,
+      "IsMultiValued": true,
+      "MultiValuedDetails": {
+        "LookupValues": [
+
+          {
+            "Id": 1,
+            "Value": "Bed Isolation"
+          },
+          {
+            "Id": 2,
+            "Value": "Bed Room"
+          },
+          {
+            "Id": 3,
+            "Value": "Nursing"
+          },
+          {
+            "Id": 4,
+            "Value": "Office"
+          },
+          {
+            "Id": 5,
+            "Value": "Operating Room"
+          }
+        ],
+        "PopupComponentName": null
+      },
+      "NotificationType": "inline"
+    },
+    {
+      "FieldId": 6,
+      "FieldName": "Gross Area",
+      "FieldType": 3,
+      "IsVisible": true,
+      "ShowDropDown": false,
+      "IsDisabled": false,
+      "IsHiddenLabel": true,
+      "ReadOnlyMode": false
+    },
+    {
+      "FieldId": 7,
+      "FieldName": "Net Area",
+      "FieldType": 3,
+      "IsVisible": true,
+      "ShowDropDown": false,
+      "IsDisabled": false,
+      "IsHiddenLabel": true,
+      "ReadOnlyMode": false
+    },
+    {
+      "FieldId": 8,
+      "FieldId": 5,
+      "FieldName": "Cost Category",
+      "FieldType": 5,
+      "HasRelation": false,
+      "IsVisible": true,
+      "IsMandatory": false,
+      "IsDisabled": false,
+      "IsHiddenLabel": true,
+      "ReadOnlyMode": false,
+      "IsMultiValued": true,
+      "MultiValuedDetails": {
+        "LookupValues": [
+
+          {
+            "Id": 1,
+            "Value": "Category 1"
+          },
+          {
+            "Id": 2,
+            "Value": "Deluxe"
+          }
+        ],
+        "PopupComponentName": null
+      },
+      "NotificationType": "inline"
+    },
+    {
+      "FieldId": 9,
+      "FieldName": "Space Standard",
+      "FieldType": 1,
+      "IsVisible": true,
+      "ShowDropDown": false,
+      "IsDisabled": false,
+      "IsHiddenLabel": true,
+      "ReadOnlyMode": false
+    },
+    {
+      "FieldId": 10,
+      "FieldName": "Seating Capacity",
+      "FieldType": 2,
+      "IsVisible": true,
+      "ShowDropDown": false,
+      "IsDisabled": false,
+      "IsHiddenLabel": true,
+      "ReadOnlyMode": false
+    }
+  ]
+}

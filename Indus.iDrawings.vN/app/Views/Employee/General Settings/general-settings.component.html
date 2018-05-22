@@ -1,0 +1,55 @@
+﻿<page [pagetitle]="pagePath">
+    <pagepath>
+    </pagepath>
+    <content>
+        <!--<section title="Drawing Management">
+            Select Floors for Employee Management
+            <user-drawings-access [moduleId]="5"></user-drawings-access>
+        </section>-->
+        <section  *ngIf="isSiteAdmin==false && userRoleId != 4 && userRoleId != 7" title="Drawing Management" [isExpanded]="sectionExpansionStatus[0].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <drawingmanagement [module]=5 *ngIf="sectionExpansionStatus[0].isExpanded"></drawingmanagement>
+        </section>
+        <section *ngIf="isSiteAdmin==false && userRoleId != 4 && userRoleId != 7" title="Job Titles" [isExpanded]="sectionExpansionStatus[1].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <jobtitle *ngIf="sectionExpansionStatus[1].isExpanded"></jobtitle>
+        </section>
+        <section *ngIf="isSiteAdmin==false && userRoleId != 4 && userRoleId != 7" title="Grades" [isExpanded]="sectionExpansionStatus[2].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <grades *ngIf="sectionExpansionStatus[2].isExpanded"></grades>
+        </section>
+        <!--<section *ngIf="isSpacePlanEnabled==1" title="Define Work Types" [isExpanded]="sectionExpansionStatus[6].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <define-workType *ngIf="sectionExpansionStatus[6].isExpanded" [moduleId]="5" [workFlowCategoryId]="17"></define-workType>
+        </section>
+        <section *ngIf="isSpacePlanEnabled==1" title="Set Workflow" [isExpanded]="sectionExpansionStatus[7].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <setworkflow *ngIf="sectionExpansionStatus[7].isExpanded" [moduleId]="5" [workFlowCategoryId]="17"></setworkflow>
+        </section>-->
+
+        <section *ngIf="isSiteAdmin==false && userRoleId != 4 && userRoleId != 7" title="Additional Data Fields (Employee)" [isExpanded]="sectionExpansionStatus[3].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <additional-datafields [addlDataFieldCategoryId]="8" *ngIf="sectionExpansionStatus[3].isExpanded"></additional-datafields>
+        </section>
+        <section  *ngIf="isSpacePlanEnabled==1 && isSiteAdmin==false && userRoleId != 4 && userRoleId != 7"  title="Additional Data Fields (Move Projects)" [isExpanded]="sectionExpansionStatus[4].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <additional-datafields [addlDataFieldCategoryId]="9" *ngIf="sectionExpansionStatus[4].isExpanded"></additional-datafields>
+        </section>
+        <section *ngIf="showEmployeeToWOUser==true && isWOUserEnabled==true &&  userRoleId != 4 && userRoleId != 7" title="Employee to Work Order User" [isExpanded]="sectionExpansionStatus[5].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <employee-to-workOrderUser *ngIf="sectionExpansionStatus[5].isExpanded"></employee-to-workOrderUser>
+        </section>
+        <section *ngIf="showCustomRptSection==true && userRoleId != 4 && userRoleId != 7" title="Custom Reports" [isExpanded]="sectionExpansionStatus[6].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <customReportGrid *ngIf="sectionExpansionStatus[6].isExpanded==true" [moduleId]=5 ></customReportGrid>
+        </section>        
+        <section *ngIf="showCustomRptSection==true" title="Color Preferences" [isExpanded]="sectionExpansionStatus[7].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <color-preference *ngIf="sectionExpansionStatus[7].isExpanded==true" [moduleId]=5 [pageId]=127 [Previlages]="1510"></color-preference>
+        </section>
+        <section title="Default Display Layers" [isExpanded]="sectionExpansionStatus[8].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <default-display-layer *ngIf="sectionExpansionStatus[8].isExpanded==true" [ModuleId]=5></default-display-layer>
+        </section>
+        <section  *ngIf="isSpacePlanEnabled==1 && isSiteAdmin==false && userRoleId != 4 && userRoleId != 7" title="Space Type" [isExpanded]="sectionExpansionStatus[9].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <space-types *ngIf="sectionExpansionStatus[9].isExpanded==true" ></space-types>
+        </section>
+
+        <section  *ngIf="isSpacePlanEnabled==1 && isSiteAdmin==false && userRoleId != 4 && userRoleId != 7" title="Space Allocation Rules" [isExpanded]="sectionExpansionStatus[10].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <space-allocation-rule *ngIf="sectionExpansionStatus[10].isExpanded==true"></space-allocation-rule>
+        </section>
+        <section *ngIf="isSiteAdmin==false && userRoleId != 4 && userRoleId != 7" title="Optional Fields" [isExpanded]="sectionExpansionStatus[11].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <optionalfield *ngIf="sectionExpansionStatus[11].isExpanded==true"></optionalfield>
+    </section>
+
+    </content>
+</page>

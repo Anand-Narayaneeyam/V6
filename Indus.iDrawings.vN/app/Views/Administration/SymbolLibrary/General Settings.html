@@ -1,0 +1,11 @@
+﻿<page>
+    <content>
+        <section title="Add Symbol" [isExpanded]="sectionExpansionStatus[0].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+          <AddSymbol *ngIf="sectionExpansionStatus[0].isExpanded"></AddSymbol>
+        </section>
+
+        <section title="Assign Symbol" [isExpanded]="sectionExpansionStatus[1].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+         <AssignSymbol *ngIf="sectionExpansionStatus[1].isExpanded"></AssignSymbol>
+        </section>
+    </content>
+</page>

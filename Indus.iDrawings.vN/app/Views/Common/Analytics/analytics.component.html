@@ -1,0 +1,145 @@
+﻿<slide [width]="slidewidth" [position]="position" [type]="'dialog'" [show]="properties.menuId>0" (closeDialog)="closeSlideDialog($event)">
+    <div *ngIf="properties.menuId==1">
+        <div style="">
+            Total Rows: {{totalCount}}
+        </div>
+        <div class="buttonDiv">
+            <button style="float:right" class="Savebutton " type="button" (click)="okClick($event)">OK</button>
+        </div>
+    </div>
+    <div *ngIf="properties.menuId==2">
+        <div style="">
+            Total Selected Rows: {{properties.selectedRowCount}}
+        </div>
+        <div class="buttonDiv">
+            <button style="float:right" class="Savebutton " type="button" (click)="okClick($event)">OK</button>
+        </div>
+    </div>
+    <div *ngIf="properties.menuId==3">
+        <div>
+            Column Name:
+        </div>
+        <div style="">
+            <DropDownListComponent *ngIf="analyticDropdownField!=undefined" [labelWidth]=210 [fieldObject]="analyticDropdownField"></DropDownListComponent>
+        </div>
+        <div class="buttonDiv">
+            <button style="float:right" class="Savebutton " type="button" (click)="okClickDrop($event)">OK</button>
+        </div>
+    </div>
+    <div *ngIf="properties.menuId==4">
+        <div>
+            Column Name:
+        </div>
+        <div style="">
+            <DropDownListComponent *ngIf="analyticDropdownField!=undefined" [labelWidth]=210 [fieldObject]="analyticDropdownField"></DropDownListComponent>
+        </div>
+        <div class="buttonDiv">
+            <button style="float:right" class="Savebutton " type="button" (click)="okClickDrop($event)">OK</button>
+        </div>
+    </div>
+    <div *ngIf="properties.menuId==5">
+        <div>
+            Column Name:
+        </div>
+        <div style="">
+            <DropDownListComponent *ngIf="analyticDropdownField!=undefined" [labelWidth]=210 [fieldObject]="analyticDropdownField"></DropDownListComponent>
+        </div>
+        <div class="buttonDiv">
+            <button style="float:right" class="Savebutton " type="button" (click)="okClickDrop($event)">OK</button>
+        </div>
+    </div>
+</slide>
+<slide [width]="slidewidthResult" [position]="position" [type]="'dialog'" [show]="showResult" (closeDialog)="closeSlideResultDialog($event)">
+
+
+
+
+    <div *ngIf="isAggregate == true">
+        <div style="">
+            Sum of {{columnName}}: {{ aggregateValue }}
+        </div>
+        <div>
+            <div class="buttonDiv">
+                <button style="float:right" class="Savebutton " type="button" (click)="okClick($event)">OK</button>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="isAggregate == false">
+        <div style="display:grid;font-weight:bold;">
+            <span style="float: left;margin-top: 2px;font-size: small;">{{analyticName}} Items and their Count</span>
+            <span style="float: left;margin-top: 2px;font-size: small;"> Selected Column: {{columnName}}</span>
+        </div>
+        <table style="font-size:small;border:1px solid;width:96%">
+            <tbody>
+                <tr style="width:94.5%">
+                    <th class="tableHeader" style="text-align:left;width:75%">Item</th>
+                    <th class="tableHeader" style="text-align:right;">Count</th>
+                </tr>
+            </tbody>
+        </table>
+        <div class="secondtableDiv">
+            <table style="font-size:small;border:1px solid;width:100%">
+                <tbody>
+                    <tr *ngFor="let data of tableResult;let i=index">
+                        <td style="text-align:left;width:75%">
+                            <div style="width:210px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;text-decoration: none;" title={{data.Item}}>
+                                {{data.Item}}
+                            </div>
+                        </td>
+                        <td style="text-align:right;">
+                            <div style="width:65px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;text-decoration: none;" title={{data.Count}}>
+                                {{data.Count}}
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="buttonDiv">
+            <button style="float:right" class="Savebutton " type="button" (click)="okClick($event)">OK</button>
+        </div>
+    </div>
+</slide>
+<style>
+    table {
+        font-weight: normal;
+        font-size: 10pt;
+        word-spacing: normal;
+        text-transform: none;
+        font-family: Arial, Verdana;
+        letter-spacing: normal;
+    }
+
+    tr, th {
+        padding: 2px;
+        border: 1px solid;
+    }
+
+    td {
+        border: 1px solid;
+        padding: 2px;
+    }
+
+    .secondtableDiv {
+        display: inline-block;
+        margin-top: 2px;
+        height: 150px;
+        overflow-y: auto;
+        overflow-x: hidden;
+        font-size: small;
+    }
+
+    .tableHeader {
+        color: white;
+        background-color: #00A3E8;
+    }
+
+    .buttonDiv {
+        width: 100%;
+        display: inline-block;
+        margin-top: 3px;
+        float: right;
+        margin-right: 15px;
+        margin-bottom: 5px;
+    }
+</style>

@@ -1,0 +1,30 @@
+﻿<div style="height:100%;">
+    <div style="height:0.5%">&nbsp;</div>
+    <div style="width:100%;padding-bottom:1%;float:left;">
+    <div style="text-overflow:ellipsis;width:690px;overflow:hidden;" [title]=entityName>Employee Name:&nbsp;<b>{{employeename}}</b></div>
+    <div style="text-overflow:ellipsis;width:690px;overflow:hidden;" [title]=entityName>Employee code:&nbsp;<b>{{employeecode}}</b></div>
+</div>
+    <div style="height:70%;"><gridView [dataSource]="itemsSource" [properties]="inputItems" [columns]="fieldObject" (onSorting)="onSort($event)" (onCellEdit)="chkBoxClick($event)"></gridView></div>
+    <div style="height:20%;"><paging [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="pageChanged($event);"></paging></div>
+    <div style="width:100%;display: inline-flex;height:10%;">
+        <div *ngIf="Target == 2" style="display: block;width:7%;float:left;margin-left:25px;">
+            <button  class="Savebutton "id="Previous" style="float:right;" type="button" (click)="previous($event)" title="previous">Previous</button>           
+        </div>
+        <div *ngIf="Target == 2" style="display: block;width:5%;float:left;margin-left:32px;">
+            <button  class="Savebutton "id="Next" style="float:right;" type="button" (click)="Next($event)" title="Next">Next</button>
+        </div>
+        <div style="display: block;width:5%;float:left;margin-left:34px;">
+            <button  class="Savebutton "style="float:right;" type="button" (click)="moveresources($event)" title="Save">Save</button>
+        </div>
+    </div>
+</div>
+<style type="text/css">
+     .Disablebutton {
+        background: #afaeae !important;
+        padding: 5px 10px !important;
+        color: #fff !important;
+        border: 1px solid rgba(0, 0, 0, 0.2) !important;
+        width: auto !important;
+        border-radius: 6px !important;
+    }
+</style>

@@ -1,0 +1,95 @@
+﻿.background-block {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 50;
+    background-color: darkgray;
+    opacity: 0.3;
+}
+
+.viewContents {
+    height: 90%;
+    width: 99%;
+    display: block;
+    position: absolute;
+    z-index: 10;
+    background: White;
+    border: solid 1px #aeaeae !important;
+    -moz-border-radius: 6px 6px 4px 4px;
+    -webkit-border-radius: 6px 6px 4px 4px;
+    border-radius: 6px !important;
+    padding: 10px;
+}
+
+.close-button {
+    width: 25px;
+    height: 25px;
+    margin-right: 4px;
+    float: right;
+}
+
+.previewAttachment {
+   height: 80%;
+    background-color: #ffffff !important;
+    overflow: hidden;
+}
+
+.viewGrid {
+    position: absolute;
+    top: 70px;
+    left: 50px;
+    height: 35%;
+    /*-webkit-transition-property: height; 
+    -webkit-transition-duration: 5s; 
+    -webkit-transition-delay: 2s;
+    transition-property: height;
+    transition-duration: 5s;
+    transition-delay: 2s;*/
+}
+
+.hideGrid {
+    visibility: hidden;
+    height: 0%;
+}
+
+.previousButton {
+    width: 24px;
+    height: 24px;
+    top: 50%;
+    background-color: #b2c5d0;
+    color: white;
+    font-weight: bold;
+    align-content: center;
+    position: absolute;
+}
+
+.nextButton {
+    width: 24px;
+    height: 24px;
+    top: 50%;
+    background-color: #b2c5d0;
+    color: white;
+    font-weight: bold;
+    align-content: center;
+    right: 11px;
+    position: absolute;
+}
+
+.viewImage {
+    display: block;
+    height: 100%;
+    vertical-align: middle;
+}
+
+.gridViewIcon {
+    background-color: #b2c5d0;
+    color: white;
+    font-weight: bold;
+    align-content: center;
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    top: 10%;
+}

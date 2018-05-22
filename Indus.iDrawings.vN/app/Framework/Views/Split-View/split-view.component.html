@@ -1,0 +1,94 @@
+﻿<style>
+    #closeBtn {
+        color: white;
+        font-size: large;
+        /*margin-right: 5px;*/
+        font-weight: bold;
+        background-color: #178AE8;
+        border: #178AE8;
+    }
+    #closeBtn :hover{
+        color: red;
+    }
+    .inlineSecondaryviewheight {
+           height:100%;   
+           overflow:hidden;
+           margin-left:15px;
+    }
+    .Secondaryviewheight {
+            height:calc(100% - 32px);  
+            overflow:hidden;
+            margin-left:15px;
+    }
+    .closebtn:focus {
+     outline: 1px solid white!important; 
+     outline-offset: -5px;
+    }
+        
+    @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+        .Secondaryviewheight {
+            overflow-y:auto;
+            margin-left:15px;
+        }
+    }
+
+    @media only screen and (min-device-width: 320px) 
+                   and (max-device-width: 812px) 
+                   and (orientation: landscape) {
+
+        .Secondaryviewheight {
+            width:500px;
+    }
+
+   .secondary-view.show {
+    top: 5px!important;
+    height: calc(100% - 10px)!important;
+    height: -webkit-calc(100% - 10px)!important;
+    height: -moz-calc(100% - 10px)!important;
+     
+}
+}
+
+       @media only screen and (min-device-width: 320px) 
+                   and (max-device-width: 813px) 
+                   and (orientation: portrait) {
+
+   
+
+   .secondary-view  {
+    top:0px!important;
+    height:100%!important;
+    width:100%!important;
+    
+     
+}
+}
+
+</style>
+<div id="primarySplitview" [ngClass]="getPrimaryStyle()" [style.width]="inlineprimarywidth">
+    <div style="height:100% ;">
+        <ng-content select="primary-view"></ng-content>
+        <!--<div class="PrimarySplitEndfocus" tabindex="0"></div>-->
+    </div>
+</div>
+<div mwl-resizable [enableGhostResize]="resizeOption" (onResizeEnd)="onResizeEnd($event)" [resizeEdges]=edges [ngClass]="getSecondaryStyle()" [style.width]="inputSecondaryWidth" [attr.tabindex]="0" role="none">
+    <div style="width:100%;display:flex;overflow:hidden" *ngIf ="resizeOption != true">
+        <div  style="display: block;width: 90%;font-size: 15px;background-color: #178AE8;padding: 3px 0px 3px 10px;color: white;font-weight:bold">
+            {{pageTitle}}
+        </div>
+        <div style="text-align: right;display: block;width: 20%;background-color: #178AE8;">
+           <!--<label id="closeBtn" class="closebtn" (click)="onSecondaryViewClose(0)">X</label>-->
+           <button type="button" role="button" [attr.aria-label]="labeltitle+' close'" id="closeBtn" class="closebtn" (click)="onSecondaryViewClose(0)" [attr.tabindex]="blnSplitfocus<0?-1:0">X</button>
+            <!--<img class="close-button" (click)="splitviewObject.showSecondaryView = !splitviewObject.showSecondaryView" [src]="closeIconPath" *ngIf="inlineSecondaryView!=true" (click)="onSecondaryViewClose(0)">-->
+        </div>
+
+    </div>
+    <div id="secondarySplitview" [ngClass]="SecondaryViewheightClass" >
+        <ng-content select="secondary-view"></ng-content>
+        <div class="SplitEndfocus" [attr.tabindex]="blnSplitfocus<0?-1:0" style="height:0%;width:0%;"></div>
+    </div>
+</div>
+<div *ngIf="splitviewObject.showButton" style="padding-top:10px;">
+    <img class="image-show" (click)="splitviewObject.showSecondaryView = !splitviewObject.showSecondaryView" [src]="splitviewObject.showSecondaryView?hideIconPath:showIconPath">
+</div>
+<div *ngIf="splitviewObject.showSecondaryView && (inlineSecondaryView==false || inlineSecondaryView==undefined)" class="background-block" (click)="onSecondaryViewClose()"></div>

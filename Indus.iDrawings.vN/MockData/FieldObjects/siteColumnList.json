@@ -1,0 +1,176 @@
+﻿{
+  "data": [
+    {
+      "FieldId": 1,
+      "FieldName": "FieldId",
+      "FieldType": 1,
+      "IsVisible": false,
+      "IsMandatory": false,
+      "IsDisabled": false,
+      "IsHiddenLabel": true,
+      "ReadOnlyMode": false,
+      "NotificationType": "return"
+    },
+    {
+      "FieldId": 2,
+      "FieldName": "Site",
+      "FieldType": 1,
+      "IsVisible": true,
+      "IsMandatory": true,
+      "IsDisabled": false,
+      "IsHiddenLabel": true,
+      "ReadOnlyMode": false,
+      "NotificationType": "inline"
+    },
+    {
+      "FieldId": 3,
+      "FieldName": "Sitecode",
+      "FieldType": 1,
+      "IsVisible": true,
+      "IsMandatory": false,
+      "IsDisabled": false,
+      "IsHiddenLabel": true,
+      "ReadOnlyMode": false,
+      "NotificationType": "return"
+    },
+
+    {
+      "FieldId": 4,
+      "FieldName": "Description",
+      "FieldType": 1,
+      "IsVisible": true,
+      "IsMandatory": false,
+      "IsDisabled": false,
+      "IsHiddenLabel": true,
+      "ReadOnlyMode": false,
+      "NotificationType": "return"
+    },
+    {
+      "FieldId": 5,
+      "FieldName": "Site Area",
+      "FieldType": 3,
+      "IsVisible": true,
+      "IsMandatory": false,
+      "IsDisabled": false,
+      "IsHiddenLabel": true,
+      "ReadOnlyMode": false,
+      "NotificationType": "return"
+    },
+      {
+      "FieldId": 13,
+      "FieldName": "No.Of Buildings",
+      "FieldType": 2,
+      "IsVisible": true,
+      "IsMandatory": false,
+      "IsDisabled": false,
+      "IsHiddenLabel": true,
+      "ReadOnlyMode": false,
+      "NotificationType": "return",
+       "isContentHtml": "hyperlink"
+    },
+    {
+      "FieldId": 6,
+      "FieldName": "Country",
+      "FieldType": 1,
+      "IsVisible": true,
+      "IsMandatory": false,
+      "IsDisabled": false,
+      "IsHiddenLabel": true,
+      "ReadOnlyMode": false,
+      "NotificationType": "return"
+    },
+    {
+      "FieldId": 7,
+      "FieldName": "State",
+      "FieldType": 1,
+      "IsVisible": true,
+      "IsMandatory": false,
+      "IsDisabled": false,
+      "IsHiddenLabel": true,
+      "ReadOnlyMode": false,
+      "NotificationType": "return"
+    },
+
+
+    {
+      "FieldId": 8,
+      "FieldName": "Time Zone",
+      "FieldType": 1,
+      "IsVisible": true,
+      "IsMandatory": true,
+      "IsDisabled": false,
+      "IsHiddenLabel": true,
+      "ReadOnlyMode": false,
+      "NotificationType": "return"
+
+
+    },
+    {
+      "FieldId": 9,
+      "FieldName": "Sq.Ft.Cost",
+      "FieldType": 3,
+      "IsVisible": true,
+      "IsMandatory": true,
+      "IsDisabled": false,
+      "IsHiddenLabel": true,
+      "ReadOnlyMode": false,
+      "NotificationType": "return"
+
+
+    },
+   {
+      "FieldId": 5,
+      "FieldName": "Site Ownership",
+      "FieldType": 5,
+      "IsMultiValued": true,
+      "HasRelation": false,
+      "IsVisible": true,
+      "IsMandatory": false,
+      "IsDisabled": false,
+      "IsHiddenLabel": true,
+      "ReadOnlyMode": false,
+      "MultiValuedDetails": {
+        "LookupValues": [
+        
+          {
+            "Id": 1,
+            "Value": "Owned"
+          },
+          {
+            "Id":2,
+            "Value": "Leased"
+          },
+          {
+            "Id": 3,
+            "Value": "Purchased"
+          }
+        ],
+        "PopupComponentName": null
+      },
+      "NotificationType": "return"
+    },
+    {
+      "FieldId": 11,
+      "FieldName": "Construction Date",
+      "FieldType": 8,
+      "IsVisible": true,
+      "IsMandatory": false,
+      "IsDisabled": false,
+      "IsHiddenLabel": true,
+      "ReadOnlyMode": true,
+      "NotificationType": "return"
+    },
+    {
+      "FieldId": 12,
+      "FieldName": "Site Contact",
+      "FieldType": 2,
+      "IsVisible": true,
+      "IsMandatory": false,
+      "IsDisabled": false,
+      "IsHiddenLabel": true,
+      "ReadOnlyMode": false,
+      "NotificationType": "return"
+    }
+  
+  ]
+}

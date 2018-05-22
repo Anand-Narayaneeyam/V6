@@ -1,0 +1,61 @@
+﻿{
+  "data": [
+    {
+      "FieldId": 1,
+      "FieldName": "MarkupNo",
+      "FieldType": 2,
+      "FieldValue": "",
+      "IsVisible": false,
+      "IsDisabled": true,
+      "IsMultiValued": false,
+      "IsMandatory": false,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": true
+    },
+    {
+      "FieldId": 2,
+      "FieldName": "Uploaded By",
+      "FieldType": 1,
+      "IsVisible": true,
+      "IsMandatory": true,
+      "IsDisabled": true,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": true,
+      "NotificationType": "inline"
+    },
+    {
+      "FieldId": 3,
+      "FieldName": "Uploaded On",
+      "FieldType": 1,
+      "IsVisible": true,
+      "IsMandatory": true,
+      "IsDisabled": true,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": true,
+      "NotificationType": "inline"
+    },
+    {
+      "FieldId": 4,
+      "FieldName": "Description",
+      "FieldType": 4,
+      "IsVisible": true,
+      "IsMandatory": true,
+      "IsDisabled": false,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false,
+      "MaxLength": 4000,
+      "NotificationType": "inline"
+    },
+    {
+      "FieldId": 5,
+      "FieldName": "Color",
+      "FieldValue": "",
+      "FieldType": 14,
+      "IsHiddenLabel": true,
+      "IsVisible": true,
+      "IsMandatory": true,
+      "IsDisabled": false,
+      "NotificationType": "inline"
+    }
+  ]
+}

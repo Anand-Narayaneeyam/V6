@@ -1,0 +1,64 @@
+﻿<split-view [splitviewObject]="splitviewInput" [pageTitle]="pageTitle">
+    <primary-view>
+        <div>
+            <div style="width:100%;padding-bottom:1%;float:left;">
+                <div style="text-overflow:ellipsis;width:690px;overflow:hidden;" [title]=entityName>Procedure:&nbsp;<b>{{entityName}}</b></div>
+
+            </div>
+            <!--</div>-->
+            <tabs [selectedTab]="selectedTab" (getSelectedTab)="getSelectedTab($event)" (onTabClose)="onTabClose($event)" [deleteIndex]="deleteIndex">
+                <tab tabTitle="Safety Steps" closeButtonVisible="hidden">
+                    <div style="width:100%;padding-bottom:1%;float:left;">
+                        <submenu *ngIf="ShowMenuOption">
+                            <sub-menu [source]=menuData [count]=gridcount [menuIds]=enableMenu [menuCard]=types (onSubMenuChange)="onSubMenuChange($event);"> </sub-menu>
+                        </submenu>
+                    </div>
+                    <!--<div style="width:50%;padding-bottom:1%;float:left;">
+                        <sort *ngIf="fields && totalItems > 0" [fieldNames]="fields" [listItems]=sourceData (sortEvent)="onSorting($event)"></sort>
+                    </div>-->
+                    <div style="width:100%;padding-bottom:1%;float:left;">
+                        <!--<list style="height:85%;overflow-y:scroll;" [source]=sourceData [(selectedIds)]="selIds" [datakey]="'Id'" [selectionMode]="'Single'">
+                            <template let-item>
+                                <card (onSubmition)="onCardSubmit($event)" [datakeyValue]="item.Id" (inlineDelete)="onDelete($event)" (onCancelClick)="onCardCancel($event)">
+                                    <div *ngIf="fields">
+                                        <field [fieldObject]="fields[1]" [fieldValue]="item['Order']"></field>
+                                        <field [fieldObject]="fields[2]" [fieldValue]="item['Safety Step']"></field>
+                                    </div>
+                                </card>
+                            </template>
+                        </list>-->
+                        <div style="height:100%;">
+                            <div style="height:80%;">
+                                <gridView [(dataSource)]="sourceData" [properties]="inputItems" [columns]="fields" [refreshgrid]="refreshgrid" (onSorting)="onSort($event)"></gridView>
+                            </div>
+                            <div style="height:20%;">
+                                <paging [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="pageChanged($event);"></paging>
+                            </div>
+                        </div>
+                    </div>
+                </tab>
+                <tab [tabTitle]="tabTitle" closeButtonVisible="hidden" *ngIf="addeditSafetyStepTab == true">
+                    <div><add-edit-safety (submitSuccess2)="submitReturn2($event)" [action]="action" [btnName]="btnName" [selectedId]="inputItems.selectedIds" [procId]="selectedId" [fieldDetailsAdd]="fieldDetailsAdd1" [pageIndex]="pageIndex"></add-edit-safety></div>
+                </tab>
+            </tabs>
+        </div>
+    </primary-view>
+    <secondary-view *ngIf="splitviewInput.showSecondaryView== true">       
+        <fieldorder-common *ngIf="showFieldOrder == true" [rptFieldSource]="reportFieldSrc" [fieldOrderTitle]="fieldOrderTitle" (retFieldOrderUpdate)="handleCommonFieldOrderUpdate($event)"></fieldorder-common>
+    </secondary-view>
+    </split-view>
+<slide [width]="300" [position]="position" [type]="dialog" [show]="showSlide" (closeDialog)="closeSlideDialog($event)">
+
+    <div>
+        <div>
+            Are you sure you want to delete the selected Safety Step?
+        </div>
+        <div>
+
+            <div style="width:100%">
+                <button class="Savebutton " type="button" (click)="okDelete($event)">Yes</button>
+                <button class="Savebutton " type="button" (click)="cancelClick($event)">No</button>
+            </div>
+        </div>
+    </div>
+</slide>

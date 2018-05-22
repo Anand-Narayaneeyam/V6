@@ -1,0 +1,17 @@
+﻿<!--<div control-group *ngIf="fieldObject.FieldLabel != undefined ||  fieldObject.FieldLabel != null">
+    <label>
+       <span class="required" *ngIf="fieldObject.IsMandatory == undefined || fieldObject.IsMandatory === true">* </span>
+    </label>
+
+</div>-->
+<div control-group style="min-height:30px;">
+    <button name="{{fieldObject.FieldLabel}}" role="button" [attr.aria-label]="fieldObject.FieldLabel" [ngClass]='{disabled: !fieldObject.IsEnabled}' (click)="btnCompClick($event)" > {{fieldObject.FieldLabel}}</button>
+</div>
+
+
+<style>
+     button:focus {
+         outline: 1px solid #00a3e8!important; 
+         outline-offset: 1px;
+    }
+</style>

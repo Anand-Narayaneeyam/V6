@@ -1,0 +1,9 @@
+﻿<div style="height:95%;" tabindex="0" >
+    <div style="height:35px;">
+        <button role="button" aria-label="Save Changes" tabindex="0" class="Savebutton "type="button" (click)="updateWorkflowEditableFields($event)"> Save Changes </button>
+    </div>
+    <div style="height:calc(95% - 35px)" >
+        <gridView style="margin-top:5px" [dataSource]="itemsSource" [properties]="inputItems" [columns]="fieldObject" (onCellEdit)="checkBxClick($event)"></gridView>
+    </div>
+</div>
+

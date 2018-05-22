@@ -1,0 +1,164 @@
+﻿
+<style>
+    .diablemenu{
+        pointer-events: none;
+        cursor: default;
+        opacity:.5;
+    }
+
+    #slideout {
+      /*position: fixed;
+      top: 40px;
+      left: 0;*/
+      position: fixed;right:105px;z-index: 1000;text-align: center;margin: -20px;padding: 20px;
+      -webkit-transition-duration: 0.3s;
+      -moz-transition-duration: 0.3s;
+      -o-transition-duration: 0.3s;
+      transition-duration: 0.3s;
+    }
+    #slideout_inner {
+      position: fixed;
+      top: 40px;
+      left: -250px;
+      -webkit-transition-duration: 0.3s;
+      -moz-transition-duration: 0.3s;
+      -o-transition-duration: 0.3s;
+      transition-duration: 0.3s;
+    }
+    #slidekey:hover + #slideout {
+     display:block;
+    }
+    /*#slideout:hover #slideout_inner {
+      left: 0;
+    }*/
+
+    :host label{
+        font-weight:normal !important;
+        margin-bottom: 1px !important;
+    }
+
+    .classSearch {
+        display: -webkit-box; display: -ms-flexbox; display: -webkit-flex; display: flex;
+    }
+    .hideSearch {
+        display:none;
+    }
+    .configimg:focus {
+     outline: 1px solid white!important;
+     outline-offset: 0px;
+    }
+    .filterbtn:focus {
+     outline: 1px solid #178ae8!important;
+     outline-offset: 3px;
+    }
+</style>
+
+<div class="filter" style="max-height:400px;">
+    <div id="myfilter" class="filter-content" [style.display]="showStyle" style="overflow:hidden;max-height:400px;">
+        <split-view [splitviewObject]=splitviewInput [showButton]=false [pageTitle]="pageTitle">
+            <primary-view>
+                <div>
+                    <div style="height:25px;width:100%;background-color:#178AE8">
+                        <span style="margin-left:10px;font-weight:bold;line-height: 25px;color:white;font-size: 13px;">Search for Space</span>
+                        <span aria-label="X button close search window" tabindex="0" style="" class="closeSearch" (click)=onClose()>X</span>
+                        <img tabindex="0" *ngIf="isShowConfigure" class="configimg" (click)=showConfig($event) title="Configure" src="Content/Icons/filter-config-icon.png" style="height: 22px;width: 22px;margin: 1px 0px;text-align:right;float:right" />
+                    </div>
+                    <div style="max-height:375px;height:auto">
+                        <form #form="ngForm" (ngSubmit)="onSubmit(form,form.value)">
+                            <div style="margin-left:0px;overflow-y:auto;overflow-x:hidden;float:left;width:100%;" class="SearchControl">
+                                <!--<div *ngIf="isloadbit" style="margin-left: 18px;margin-top: 5px;">
+                                    <DropDownListComponent *ngIf="advancelookupSaveAs" SetAlignment="horizontal" [fieldObject]="advancelookupSaveAs" (change)="onChangeAdvanceSearchddl($event.target.value)"></DropDownListComponent>
+                                </div>-->
+                                <div *ngFor="let field of datasource2 && datasource2" class="MainContainer">
+                                    <div *ngIf="field.DataEntryControlId == '1' && field.IsVisible == true && field.GenericDataTypeId!=4 && field.GenericDataTypeId!=5" class="col-sm-6" style="margin-top:5px;">
+                                        <StringTextBoxSearch *ngIf="refresh" id="StringTextBox" name="StringTextBox" [fieldObject]=field [fieldValue]="field.FieldValue"></StringTextBoxSearch>
+                                        <StringTextBoxSearch *ngIf="!refresh" id="StringTextBox" name="StringTextBox" [fieldObject]=field [fieldValue]="field.FieldValue"></StringTextBoxSearch>
+                                    </div>
+                                    <div *ngIf="field.DataEntryControlId == '1' && field.IsVisible == true && field.GenericDataTypeId==4" class="col-sm-6" style="margin-top:5px;">
+                                        <NumericTextBoxSearch id="NumericTextBox" name="NumericTextBox" [fieldObject]=field [fieldValue]="field.FieldValue"></NumericTextBoxSearch>
+                                    </div>
+                                    <div *ngIf="field.DataEntryControlId == '1' && field.IsVisible == true && field.GenericDataTypeId==5" class="col-sm-6" style="margin-top:5px;">
+                                        <IntegerTextBoxSearch id="IntegerTextBox" name="IntegerTextBox" *ngIf="field.DataEntryControlId == '1'" [fieldObject]=field></IntegerTextBoxSearch>
+                                    </div>
+                                    <div *ngIf="field.DataEntryControlId == '3' && field.IsVisible == true" class="col-sm-6" style="margin-top:5px;">
+                                        <StringTextBoxSearch id="StringTextBox" name="StringTextBox" *ngIf="field.DataEntryControlId == '3' && refresh" [fieldObject]=field [fieldValue]="field.FieldValue"></StringTextBoxSearch>
+                                        <StringTextBoxSearch id="StringTextBox" name="StringTextBox" *ngIf="field.DataEntryControlId == '3' && !refresh" [fieldObject]=field [fieldValue]="field.FieldValue"></StringTextBoxSearch>
+                                    </div>
+                                    <div *ngIf="field.DataEntryControlId == '4' && field.IsVisible == true && field.FieldId != 2812" class="col-sm-6" style="margin-top:5px;">
+                                        <StringTextBoxSearch id="StringTextBox" name="StringTextBox" *ngIf="field.DataEntryControlId == '4' && refresh" [fieldObject]=field [fieldValue]="field.FieldValue"></StringTextBoxSearch>
+                                        <StringTextBoxSearch id="StringTextBox" name="StringTextBox" *ngIf="field.DataEntryControlId == '4' && !refresh" [fieldObject]=field [fieldValue]="field.FieldValue"></StringTextBoxSearch>
+                                    </div>
+                                    <div *ngIf="field.DataEntryControlId == '6' && field.IsVisible == true  && field.FieldId!= 2822  && field.FieldId!= 2823 && field.FieldId!= 2824 && field.FieldId!= 2825" class="col-sm-6" style="margin-top:5px;">
+                                        <StringTextBoxSearch id="StringTextBox" name="StringTextBox" *ngIf="field.DataEntryControlId == '6'" [fieldObject]=field [fieldValue]="field.FieldValue"></StringTextBoxSearch>
+                                    </div>
+                                    <div *ngIf="field.DataEntryControlId == '5' && field.IsVisible == true" class="col-sm-6" style="margin-top:5px;">
+                                        <StringTextBoxSearch id="StringTextBox" name="StringTextBox" *ngIf="field.DataEntryControlId == '5'" [fieldObject]=field [fieldValue]="field.FieldValue"></StringTextBoxSearch>
+                                    </div>
+                                    <div *ngIf="field.DataEntryControlId == '2' && field.IsVisible == true" class="col-sm-12" style="margin-top:5px;">
+                                        <DateSearchComponent id="Datecomponent" name="Datecomponent" *ngIf="field.DataEntryControlId == '2' && refresh" [fieldObject]=field></DateSearchComponent>
+                                        <DateSearchComponent id="Datecomponent" name="Datecomponent" *ngIf="field.DataEntryControlId == '2' && !refresh" [fieldObject]=field></DateSearchComponent>
+                                    </div>
+                                    <div *ngIf="field.DataEntryControlId == '8' && field.IsVisible == true" class="col-sm-12" style="margin-top:5px;display:block;">
+                                        <DateTimeSearchComponent id="DateTimeComponent" name="DateTimeComponent" *ngIf="field.DataEntryControlId == '8' && refresh" [fieldObject]=field></DateTimeSearchComponent>
+                                        <DateTimeSearchComponent id="DateTimeComponent" name="DateTimeComponent" *ngIf="field.DataEntryControlId == '8' && !refresh" [fieldObject]=field></DateTimeSearchComponent>
+                                    </div>
+                                    <div *ngIf="field.DataEntryControlId == '7' && field.IsVisible == true" class="col-sm-6" style="margin-top:5px;">
+                                        <StringTextBoxSearch id="StringTextBox" name="StringTextBox" *ngIf="field.DataEntryControlId == '7' && refresh" [fieldObject]=field [fieldValue]="field.FieldValue"></StringTextBoxSearch>
+                                        <StringTextBoxSearch id="StringTextBox" name="StringTextBox" *ngIf="field.DataEntryControlId == '7' && !refresh" [fieldObject]=field [fieldValue]="field.FieldValue"></StringTextBoxSearch>
+                                    </div>
+                                    <div *ngIf="field.DataEntryControlId == '9' && field.IsVisible == true" class="col-sm-6" style="margin-top:5px;">
+                                        <StringTextBoxSearch id="StringTextBox" name="StringTextBox" [fieldObject]=field [fieldValue]="field.FieldValue"></StringTextBoxSearch>
+                                    </div>
+                                    <div *ngIf="field.DataEntryControlId == '20' && field.IsVisible == true" class="col-sm-6" style="margin-top:5px;">
+                                        <RadioComponent id="RadioComponent" name="RadioComponent" *ngIf="field.DataEntryControlId == '20'" [fieldObject]=field></RadioComponent>
+                                    </div>
+                                    <div *ngIf="field && field.DataEntryControlId == '4' && field.IsVisible == true && field.FieldId == 2812" class="col-sm-6" style="margin-top:5px;width:100%!important">
+                                        <div style="width:100%;">
+                                            <DropDownListComponent id="DropdownComponent" name="DropdownComponent" *ngIf="field.DataEntryControlId == '4'" [fieldObject]=field (ddlChange)="onDropDownChange($event.ChildFieldObject)"></DropDownListComponent>
+                                        </div>
+                                       <div *ngIf="searchFor && isOccupancyVisible" style="width:100%;margin-top: 2.2%;">
+                                           <Label>Occupancy Type</Label>
+                                       </div>
+                                    </div>
+
+                                    <div *ngIf="field && field.DataEntryControlId == '6' && field.IsVisible == true" class="col-sm-6" style="margin-top:5px;">
+                                       <div></div>
+                                        <CheckBoxComponent id="CheckBoxComponent" name="CheckBoxComponent" *ngIf="field.DataEntryControlId == '6'" [fieldObject]="field"></CheckBoxComponent>
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="width:100%;float:right;display:block;height:20px;line-height:20px;margin:15px;">
+                                <ButtonComponent role="button" id="button-search" (click)="ISubmit($event)" (keypress)="getAnchorTagEnter(2,$event);" tabindex="0" class="Savebutton" style="margin-left:35px;float:left;width:80px;text-align:center;border-radius: 4px;padding: 3px;cursor: pointer;" title="Search">Show Space</ButtonComponent>
+                                <ButtonComponent role="button" id="button-cancel" (click)="onClear($event)" (keypress)="getAnchorTagEnter(3,$event);" tabindex="0" class="Savebutton" style="margin-left:10px;float:left;width:80px;text-align:center;border-radius: 4px;padding: 3px;cursor: pointer;" title="Clear">Clear</ButtonComponent>
+                                <!--<img *ngIf="searchtype!='Grid'" (click)="onSaveAs($event)" title="Save As" src="Content/Layout/add_data_button.png" style="height:24px;width:24px;margin-left:5px;" />
+                                <img *ngIf="searchtype!='Grid'" (click)="onDelete($event)" title="Delete" src="Content/Layout/delete_button.png" style="height:24px;width:24px;margin-left:5px;" />-->
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="PrimarySearchEndfocus" tabindex="0" style="height:0%;width:0%;"></div>
+            </primary-view>
+            <secondary-view>
+                <div *ngIf="splitviewInput.showSecondaryView && secondaryTarget != 5">
+                    <div style="height:20px;">{{message}}</div>
+                    <div style="height:80%;overflow-y: auto;border:1px solid #808080;">
+                        <table role="grid">
+                            <tr *ngFor="let field of (datasource2|displayPipe:dataKey)" style="height: 37px;border:1px solid #808080;width:300px;">
+                                <td scope="col" style="width: 25px!important;padding:0px 10px; align-self:center">
+                                    <input [disabled]=field.IsDisabled [checked]="field.IsVisible" id="fieldObject.FieldId" type="CheckBox" #chk1 (click)="onConfig(chk1,field)" [(ngModel)]="field.IsVisible">
+                                </td>
+                                <td scope="col" style="width: 290px;padding:0px 10px;font-family:sans-serif;font-size: 14px;">
+                                    <div style="margin-left 10px;">
+                                        {{field.FieldLabel}}
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </secondary-view>
+        </split-view>
+    </div>
+</div>
+
+<div  [style.display]="showStyle" class="background-block" (click)="showFilter()"></div>

@@ -1,0 +1,127 @@
+﻿<div>
+    <submenu>
+        <sub-menu [source]=menuData [count]=totalItems [menuIds]=enableMenu (onSubMenuChange)="onSubMenuChange($event);"> </sub-menu>
+    </submenu>
+    <split-view [splitviewObject]="splitviewInput" [pageTitle]="pageTitle" style="height:600px;min-width:815px">
+        <primary-view>
+            <div>
+                <div style="height:60px;">
+                    <DropDownListComponent *ngIf="ddlCalendar" [fieldObject]="ddlCalendar" (change)="onChangeCalendar($event.target.value)" [SetAlignment]=alignContent></DropDownListComponent>
+                </div>
+                <div style="overflow: hidden;height: 350px;">  
+                    <div style="width:400px;float:left;height:300px">
+                        <dynaCalenderControl *ngIf="enableCalendar == true" [CalendarObj]="CalendarObj" [WorkingDays]="WorkingDays" [StartWeekDay]="StartWeekDay" (prevMonClick)="prevMonClick($event)" (nextMonClick)="nextMonClick($event)" [blnBlockPrevClick]="blnBlockPrevClick" [blnBlockNextClick]="blnBlockNextClick" (btnClick)="btnClick($event)" [ExceptionDays]="ExceptionDays"></dynaCalenderControl>
+                    </div>                  
+                    <div style="width:400px;float:right;height:100px">
+                        <div style="font-size:16px"><b>Legend</b></div>
+                        <div>
+                            <div style="display:inline">
+                                <input id="btn0" type="button" class="btnWorkingDay" value="31" disabled>
+                            </div>
+                            <div style="color:black;display:inline">
+                                 Working Day
+                            </div>
+                        </div>
+                        <div>&nbsp;</div>
+                        <div>
+                            <div style="display:inline">
+                                <input id="btn1" type="button" class="btnNonworkingDay" value="31" disabled>
+                            </div>
+                            <div style="color:red;display:inline">
+                                Nonworking Day
+                            </div>
+                        </div>
+                        <div>&nbsp;</div>
+                        <div>
+                            <div style="display:inline">
+                                <input id="btn2" type="button" class="btnExceptionDay" value="31" disabled>
+                            </div>
+                            <div style="color:dodgerblue;display:inline">
+                                Exception Day
+                            </div>
+                         </div>
+                        <div>&nbsp;</div>
+                        <div>{{gridHead}}</div>
+                        <gridView [(dataSource)]="itemsSource" [properties]="inputItems" [columns]="fieldObject" [refreshgrid]="refreshgrid" (onSorting)="onSort($event)"></gridView>
+                    </div>
+                </div>
+                <div style="height:120px;width:800px">
+                    <div><b>{{exceptiongridHead}}</b></div>
+                    <div>&nbsp;</div>
+                    <div style="width:600px">
+                        <gridView [(dataSource)]="exceptionitemsSource" [properties]="exceptioninputItems" [columns]="exceptionfieldObject" [refreshgrid]="refreshgrid" (onSorting)="onSort($event)"></gridView>
+                    </div>
+                    <button class="Savebutton addbtn" type="button" (click)="AddExceptionClick(event)" >Add</button>
+                    <button class="Savebutton editbtn" type="button" (click)="EditExceptionClick(event)" [hidden]="enableButton">Edit</button>
+                    <button class="Savebutton deletebtn" type="button" (click)="DeleteExceptionClick(event)" [hidden]="enableButton">Delete</button>
+                </div>
+            </div>
+        </primary-view>
+        <secondary-view *ngIf="fieldDetailsAdd && IsNewCalendar == true">
+            <createNewCalendar (submitSuccess)="submitReturn($event)" [action]="action" [btnName]="btnName" [selectedId]="inputItems.selectedIds" [fieldDetailsAdd]="fieldDetailsAdd" [CalendarId]="CalendarId"></createNewCalendar>
+        </secondary-view>
+        <secondary-view *ngIf="exceptionAddEditfields && IsNewCalendar == false">
+            <CalendarException-addedit [exceptionAddEditfields]="exceptionAddEditfields" (submitSuccess)="submitCalExceReturn($event)" [action]="action" [btnName]="btnName" [fieldDetailsEdit]="fieldDetailsEdit" [CalendarId]="CalendarId"></CalendarException-addedit>
+        </secondary-view>
+    </split-view>
+    <slide [width]="slidewidth" [position]="position" [show]="showSlide" (closeDialog)="closeSlideDialog($event)">
+        <div>
+            <div>Are you sure you want to delete the selected Exception?  </div>
+            <div style="width:100%">
+                <button class="Savebutton " type="button" (click)="okDelete($event)">Yes</button>
+                <button class="Savebutton " type="button" (click)="cancelClick($event)">No</button>
+            </div>
+        </div>
+    </slide>
+</div>
+<style>
+
+    .btnWorkingDay {
+        background-color: white;
+        border-color:white;
+        width: 35px;
+        font-weight: normal;
+        text-align: center;
+        color: black;
+        height:25px;
+    }
+    .btnNonworkingDay {
+        background-color: red;
+        border-color: red;
+        width: 35px;
+        font-weight: normal;
+        text-align: center;
+        color: white;
+        height:25px;
+    }
+    .btnExceptionDay {
+        background-color: dodgerblue;
+        border-color: dodgerblue;
+        width: 35px;
+        font-weight: normal;
+        text-align: center;
+        color: white;
+        height:25px;
+    }
+     .addbtn {
+            position: relative;
+            margin-top: -120px;
+            margin-left: 630px;
+            float: left;
+            width:70px !important;
+        }
+     .editbtn {
+            position: relative;
+            margin-top: -75px;
+            margin-left: 630px;
+            float: left;
+             width:70px !important;
+        }
+     .deletebtn {
+            position: relative;
+            margin-top: -30px;
+            margin-left: 630px;
+            float: left;
+             width:70px !important;
+        }
+</style>

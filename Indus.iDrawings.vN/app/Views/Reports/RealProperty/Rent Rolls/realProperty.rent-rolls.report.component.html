@@ -1,0 +1,26 @@
+﻿<page [pagetitle]="pagePath">
+    <content>
+        <tabs [selectedTab]="selectedTab" (getSelectedTab)="getSelectedTab($event)" [deleteIndex]="tabDeleteIndex" >
+            <tab tabTitle="Select Period" closeButtonVisible="hidden">
+                <div style="height:100%">
+                    <div>
+                        <div>
+                            <submenu>
+                                <sub-menu [source]=menuData [menuCard]=iscard [menuIds]=enableMenu (onSubMenuChange)="onSubMenuChange($event);"> </sub-menu>
+                            </submenu>
+                        </div>
+                        <div *ngIf="blnShowDate == true" style="margin-left:5%;margin-top:1%;display:inline;">
+                            <DateComponent *ngIf="dateSelectorField != undefined" [fieldObject]="dateSelectorField[0]"></DateComponent>
+                            <DateComponent *ngIf="dateSelectorField != undefined" [fieldObject]="dateSelectorField[1]"></DateComponent>
+                        </div>
+                    </div>
+                </div>
+            </tab>
+            <tab *ngIf="isNextClicked == true"  tabTitle="Report" closeButtonVisible="hidden">
+                <div *ngIf="isNextClicked == true" style="height:100%">  
+                   <realProperty-rentRolls-report-list [FromRpDate]="fromDate" [ToRpDate]="toDate" ></realProperty-rentRolls-report-list>
+                </div>
+            </tab>
+        </tabs>
+    </content>
+</page>

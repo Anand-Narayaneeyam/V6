@@ -1,0 +1,100 @@
+﻿<style>
+    .slidenotificationcontainer,.slidenotificationcontainerntauto {
+        width: 0;
+        overflow: hidden;
+        position: fixed;
+        position:-ms-page!important;
+        z-index: 60;
+        overflow-x: hidden;
+        border-bottom-left-radius: 3px;
+        border-top-left-radius: 3px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        overflow:visible;
+    }
+        .transformAnimate {
+        -webkit-transition:0.7s;
+        -moz-transition:0.7s;
+    }
+    .slidenotificationcontainer a,slidenotificationcontainerntauto a {
+        text-decoration: none;      
+        width: 100%;
+        font-size: 25px;
+        display: block;
+        transition: 0.3s;
+    }
+
+    .closebtn:hover,.closebtndialog:hover, .offcanvas .closebtn:focus {
+        color: #ff0000;
+    }
+
+    .slidenotificationcontainer .closebtn,.slidenotificationcontainer .closebtndialog,.slidenotificationcontainerntauto .closebtn,.slidenotificationcontainerntauto .closebtndialog  {
+        /*padding: 0px 10px 0px 0px;*/
+        font-size: 28px;
+    }
+
+    .closebtn {
+        cursor: pointer;
+        color:#ffffff;
+    }
+
+    .closebtndialog {
+        cursor: pointer;
+        color:#000000;
+    }
+
+    @media screen and (max-height: 450px) {
+        .slidenotificationcontainer,slidenotificationcontainerntauto {
+             overflow: hidden;
+        /*padding-top: 15px;*/
+        }
+
+        .slidenotificationcontainer a,slidenotificationcontainerntauto a {
+            font-size: 18px;
+        }
+    }
+    .background-block-slide{
+        position:fixed;
+        /*position:-ms-page;*/
+        top:0;
+        left:0;
+        width:100%;
+        height:100%;
+        z-index:50;
+        background-color: darkgray;
+        opacity: 0.3;
+         /*sfsf*/
+    }
+    :host button{
+        background: #2980b9;
+        color: #fff;
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        width: auto;
+    }
+</style>
+
+<div [ngStyle]=Styles  [ngClass]="className"  [style.background-color]=background [style.width.px]="dialogwidth" [style.position]="divPosition" [style.visibility]="visible" style="overflow:visible" role="none">
+    <div style="width:100%;height:25px;background-color: #178AE8;" *ngIf="titlebar">
+        <div style="display:block;min-width:150px;">
+            <span style="font-size: 13px;font-weight:bold; margin-left:10px;line-height:25px;color:white">{{title}}</span>
+        </div>
+        <div style="text-align:right;margin-top:-32px;margin-right: 5px;" *ngIf="closeicon">
+            <a [ngClass]="type =='notification'? 'closebtn' : 'closebtndialog'" (click)="closeNav()" (keypress)="closeonkeypress($event)" role="none" [attr.aria-label]="title+' close Button '" tabindex="0">&times;</a>
+        </div>
+    </div>
+    <!--<div style="width:100%;float:left;padding: 5px;" [style.color]="type =='notification'? 'white' : '#000000'">
+        <ng-content></ng-content>
+    </div>-->
+    <div>
+        <div style="display: inline-block;position: fixed;margin-left: 5px;" [style.width.px]="imageWidth" *ngIf="type=='notification'">
+            <img  [src]=Imagepath style="margin-right: 5px;margin-top: 5px;height: 35px;" />
+        </div>
+        <div style="min-width: 220px;width: 220px;display: inline-block;" [style.width.px]="contentdialogwidth"  [style.margin-left.px]="type =='notification'? '45' : '0'">
+            <div style="margin:5px;color:black!important;">
+                <ng-content></ng-content>
+                <div class="SlideEndfocus" tabindex="0"></div>
+            </div>
+        </div>
+    </div> 
+</div>   
+
+<div *ngIf="show" class="background-block-slide" (click)="closeNav()"></div>

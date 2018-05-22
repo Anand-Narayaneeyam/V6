@@ -1,0 +1,46 @@
+﻿<div style="float: right; width: 50%;">
+    <slide [width]="slidewidth" [position]="position" [show]="showSlide" (closeDialog)="closeSlideDialog($event)">
+        <div>
+            <div>Are you sure you want to delete the selected Route?  </div>
+            <div style="width:100%">
+                <button  class="Savebutton "type="button" (click)="okDelete($event)">Yes</button>
+                <button  class="Savebutton "type="button" (click)="cancelClick($event)">No</button>
+            </div>
+        </div>
+    </slide>
+    <slide [width]="slidewidth" [position]="position" [show]="showSlideAdd" (closeDialog)="closeSlideDialog($event)">
+        <div>
+            <div>Do you want to add Equipment to this Route?  </div>
+            <div style="width:100%">
+                <button  class="Savebutton "type="button" (click)="okAddEquip($event)">Yes</button>
+                <button  class="Savebutton "type="button" (click)="cancelClick($event)">No</button>
+            </div>
+        </div>
+    </slide>
+</div>
+<submenu>
+    <sub-menu [menuCard]=types [source]=menuData [count]=totalItems [menuIds]=enableMenu (onSubMenuChange)="onSubMenuChange($event);"></sub-menu>
+</submenu>
+<div>
+    <content>
+        <split-view [splitviewObject]="splitviewInput" [pageTitle]="pageTitle">
+            <primary-view>
+                <div>
+                    <div>
+                        <gridView [(dataSource)]="RoutesSource" [ngClass]="totalItems > itemsPerPage ? 'pagewithPaging':'pagewithoutPaging'" [properties]="inputItems" [columns]="fields" [refreshgrid]="refreshgrid" (onSorting)="onSort($event)"></gridView>
+                    </div>
+                    <div>
+                        <paging *ngIf="totalItems >itemsPerPage ? 'true' : 'false'" [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="pageChanged($event);"></paging>
+                    </div>
+                </div>
+             </primary-view>
+            <secondary-view>
+                <routes-add-edit *ngIf="splitviewInput.showSecondaryView && (menuClickValue == 1 || menuClickValue == 2)" (submitSuccess)="submitReturn($event)" [action]="action" [btnName]="btnName" [selectedId]="inputItems.selectedIds" [fieldDetailsAdd]="fieldDetailsAdd"></routes-add-edit>                
+            </secondary-view>
+            <secondary-view>
+                <Equipment-list *ngIf="splitviewInput.showSecondaryView && menuClickValue == 4 && action == 'Equipment'" style="display: block;width:840px;" (submitSuccess)="submitReturn($event)" [btnName]="btnName" [selectedId]="inputItems.selectedIds" [fieldDetailsAdd]="fieldDetailsAdd1" [entityName]="routeName" [target]="target"></Equipment-list>
+            </secondary-view>
+        </split-view>
+    </content>
+</div>
+

@@ -1,0 +1,60 @@
+﻿<page [pagetitle]="pagePath">
+    <pagepath>
+    </pagepath>
+    <content>
+        <section title="Delete Space Data" [isExpanded]="true" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div>
+                <p>This option is available under <span class="header2"> Settings </span><img class="helpicon" src="Content/Layout/settings_icon.png" /> icon </p>
+                <p>This option allows the Administrator to delete all the Space Data for the selected drawing. On selecting this option, the floor list is displayed. From this list select the floor for which the space data is to be deleted. Click on the <span class="header2"> Delete </span><img class="helpicon" src="Content/Icons/data_deleteN.png" title="Delete" /> icon , the system prompts with a message ‘Are you sure you want to delete the Space data of the selected floor(s)?’ On clicking ‘Yes’ to this message, it will delete all the space data and save all object details for re-linking later.</p>
+                <p>The drawing is automatically locked after the Delete Space Data operation. </p>
+            </div>
+        </section>
+    </content>
+</page>
+<style type="text/css">
+    h3.Mainheader {
+        color: #178AE8;
+    }
+
+    .header1 {
+        font-weight: bold;
+        color: #178AE8;
+    }
+
+    .header2 {
+        font-weight: normal;
+        color: #178AE8;
+    }
+
+    p {
+        margin-left: 38px;
+        font-size: 13px;
+        margin-right: 3em;
+    }
+
+    .header3 {
+        font-weight: bold;
+        color: black;
+    }
+    /**/ h1 {
+        color: #178AE8;
+        font-size: 1.3em;
+        margin-left: 38px;
+    }
+
+    h2 {
+        color: #178AE8;
+        font-size: 1em;
+        margin-left: 38px;
+    }
+
+    .config {
+        background-color: #178AE8;
+    }
+
+    .helpicon {
+        vertical-align: baseline;
+        width: 20px;
+        height: 20px;
+    }
+</style>

@@ -1,0 +1,68 @@
+﻿
+<split-view [splitviewObject]="splitviewInput" [pageTitle]="pageTitle">
+    <primary-view>
+        <submenu>
+            <sub-menu [source]=menuData [count]=totalItems [menuIds]=enableMenu [menuCard]=types (onSubMenuChange)="onSubMenuChange($event);"> </sub-menu>
+        </submenu>
+        <div style="overflow: hidden;height: calc(100% - 135px);">
+            <div style="height:100%;overflow: hidden;">
+                <div style="width:100%;display:block" [ngClass]="totalItems > itemsPerPage ? 'pagewithPaging':'pagewithoutPaging'">
+                    <slide [width]= width [position]="position" [type]="dialog" [show]=showSlide (closeDialog)="closeSlideDialog($event)">
+                        <div>
+                            <div>
+                                {{message}}
+                            </div>
+                            <div>
+                                <div style="width:100%">
+                                    <button class="Savebutton " type="button" (click)="yesClick($event)">Yes</button>
+                                    <button class="Savebutton " type="button" (click)="cancelClick($event)">No</button>
+                                </div>
+                            </div>
+                        </div>
+                    </slide>
+                    <gridView [dataSource]="itemsSource" [properties]="inputItems" [columns]="fieldObject" [arrHighlightRowIds]="arrHighlightRowIds" [refreshgrid]="refreshgrid"  (onRowUpdate)="RowUpdate($event)"></gridView>
+                </div>
+            </div>           
+        </div>
+        <div style="float:left;">
+            <div style="width:60px;float:left;">
+                <button  class="Savebutton "style="margin-top: 3%;margin-right: 5%;margin-bottom:5px;" type="button"  (click)="onSubmitSave()" value="Save">Save</button>
+            </div>
+            <div style="width:80px;float:left;">
+                <button  class="Savebutton "style="margin-top: 3%;margin-right: 5%;margin-bottom:5px;" type="button" (click)="onCancelSpaceSharing()" value="Cancel">Cancel</button>
+            </div>
+        </div>
+    </primary-view>   
+    <secondary-view *ngIf="Target == 0">
+        <DynamicFields id="spacesharingform"[dataSource]="fieldDetailsAdd" (submitFieldObject)="onSubmitData($event)" [btnName]="btnName" (fieldChange)="editddlChange($event)"></DynamicFields>
+    </secondary-view>
+    <secondary-view *ngIf="Target == 1">
+        <DynamicFields [dataSource]="fieldDetailsAdd" (submitFieldObject)="onSubmitData($event)" [btnName]="btnName" (fieldChange)="editddlChange($event)"></DynamicFields>
+    </secondary-view>  
+</split-view>
+
+<style>
+    #spacesharingform #form
+    {
+     height: calc(100% - 40px); 
+     height: -webkit-calc(100% - 40px);
+     height: -moz-calc(100% - 40px);
+
+    }
+</style>
+
+<!--<slide [width]= width [position]="position" [type]="dialog" [show]=showSlide1 (closeDialog)="closeSlideDialog1($event)">
+    <div>
+        <div>
+            Do you want to save changes?
+        </div>
+        <div>
+            <div style="width:100%">
+                <button  class="Savebutton "type="button" (click)="yesSaveClick($event)">Yes</button>
+                <button  class="Savebutton "type="button" (click)="cancelSaveClick($event)">No</button>
+            </div>
+        </div>
+    </div>
+</slide>-->
+
+

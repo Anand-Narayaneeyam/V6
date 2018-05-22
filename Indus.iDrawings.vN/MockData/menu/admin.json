@@ -1,0 +1,72 @@
+﻿[
+  {
+      "id": 2,
+      "title": "Drawing list",
+      "path": "/Drawinglist",
+      "subMenu": [
+        {
+          "id": 81,
+          "parentId": 8,
+          "title": "Users",
+          "path": "/users",
+          "subMenu": null
+        }
+      ]
+  },
+  {
+    "id": 8,
+    "title": "Common-Settings",
+    "path": "",
+    "subMenu": [
+      {
+        "id": 80,
+        "parentId": 8,
+        "title": "General Settings",
+        "path": "/general-settings",
+        "subMenu": null
+      },
+      {
+        "id": 81,
+        "parentId": 8,
+        "title": "Drawing Settings",
+        "path": "/drawing-settings",
+        "subMenu": null
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "title": "common",
+    "path": "/addt",
+    "subMenu": [
+      {
+        "id": 80,
+        "parentId": 8,
+        "title": "Portfolio List",
+        "path": "/portfolio",
+        "subMenu": null
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "title": "workflow",
+    "path": "",
+    "subMenu": [
+      {
+        "id": 82,
+        "parentId": 8,
+        "title": "Action Points",
+        "path": "/WorkFlowActionPoints",
+        "subMenu": null
+      },
+      {
+        "id": 81,
+        "parentId": 8,
+        "title": "Set Workflow Category Action Points",
+        "path": "/SetWorkflowCategoryActionPoint",
+        "subMenu": null
+      }
+    ]
+  }
+]

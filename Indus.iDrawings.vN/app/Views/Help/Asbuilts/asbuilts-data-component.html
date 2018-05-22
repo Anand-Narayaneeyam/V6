@@ -1,0 +1,125 @@
+﻿<page [pagetitle]="pagePath">
+    <pagepath>
+    </pagepath>
+    <content>
+        <section title="Sites" [isExpanded]="sectionExpansionStatus[0].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div *ngIf="sectionExpansionStatus[0].isExpanded">
+                <p>This option allows the administrator to view/edit the sites that are added through Administration module.</p>
+                <p>All sites will be listed with the Site Name, Site Code, Site Status, Building Count, Gross Area etc. Any additional data fields added for sites will also be displayed. The list can be sorted by clicking the column headers. </p>
+
+                <p><span class="header1">Edit</span></p>
+                <p>This option is for editing the site details. </p>
+                <p>Select the site to be edited and click on the <span class="header2">Edit</span> <img class="helpicon" src="Content/Icons/data_editN.png" title="Edit" /> icon. The details will be displayed in a new window. Make necessary changes and click the Save Changes button.</p>
+
+                <p><span class="header1">Attachments </span></p>
+                <p>Administrators can view or download the attachments added to a site using this option. Select the required site and click on <span class="header2">Attachments</span> <img class="helpicon" src="Content/Icons/attachmentN.png" title="Attachments" /> icon. Any attachments added to the site will be listed. The attachment can be viewed or downloaded by clicking the <span class="header2">View</span> <img class="helpicon" src="Content/Icons/view-drawingN.png" title="View" /> or <span class="header2">Download</span> <img class="helpicon" src="Content/Layout/download_icon.png" title="Download" /> icon.</p>
+
+                <p><span class="header1">Keyword Search</span></p>
+                <p>This option helps users to search for Sites using keywords. The keyword can be part of Site name, Site Code, description etc. Enter the keyword in the text box provided and click on the <span class="header2">Search</span> <img class="helpicon" src="Content/Icons/keyword-search.png" title="Keyword Search" /> icon. All sites matching the keyword will be listed.</p>
+                <p>A facility user would be able to view those Sites and view/download the attachments of the selected site </p>
+
+                <p><span class="header1">Advanced Search</span></p>
+                <p>On clicking <span class="header2">Advanced Search</span> <img class="helpicon" src="Content/Icons/advanced-search.png" title="Advanced Search" /> icon, Advanced Search window will be displayed which allows the user to search for the Site details for specific data in known data fields. The data being searched for can be selected from the list boxes or entered into text boxes provided against the data fields. On clicking the Search button, all Sites meeting the search criteria will be listed.</p>
+                <p>Fields to be displayed in the Search window can be set using the <span class="header2">Configure</span> <img class="helpicon" src="Content/Icons/settings_icon.png" title="Configure" /> icon provided in the Search window. </p>
+                <p>Search criteria entered in the Advanced Search window can be cleared by clicking the Clear button provided in the Search window. After clearing the Search criteria and click Search button to clear the Search results in the Sites grid.</p>
+                <p>A facility user would be able to view those Sites and view/download the attachments of the selected site </p>
+            </div>
+        </section>
+
+        <section title="Buildings" [isExpanded]="sectionExpansionStatus[1].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div *ngIf="sectionExpansionStatus[1].isExpanded">
+                <p>This option allows the administrator to view/edit Buildings.</p>
+                <p>All buildings will be listed with their Building Name, Building Code, Floor Count, Gross Area etc. Any additional data fields added for buildings will also be displayed. The list can be sorted by clicking the column headers.</p>
+
+                <p><span class="header1">Edit</span></p>
+                <p>This option is for editing the building details.</p>
+                <p>Select the building to be edited and click on the <span class="header2">Edit</span> <img class="helpicon" src="Content/Icons/data_editN.png" title="Edit" /> icon. The details will be displayed in a new window. Make necessary changes and click the Save Changes button.</p>
+
+                <p><span class="header1">Attachments </span></p>
+                <p>Administrators can view or download the attachments added to a building. Select the required building and click on <span class="header2">Attachments</span> <img class="helpicon" src="Content/Icons/attachmentN.png" title="Attachments" /> icon. Any attachments added to the building will be listed. The attachment can be viewed or downloaded by clicking the <span class="header2">View</span> <img class="helpicon" src="Content/Icons/view-drawingN.png" title="View" /> or <span class="header2">Download</span> <img class="helpicon" src="Content/Layout/download_icon.png" title="Download" /> icon.</p>
+
+                <p><span class="header1">Keyword Search</span></p>
+                <p>This option helps users to search for Buildings using keywords. The keyword can be part of Site name, Building name, description, Status etc. Enter the keyword in the text box provided and click on the <span class="header2">Search</span> <img class="helpicon" src="Content/Icons/keyword-search.png" title="Keyword Search" /> icon. All buildings matching the keyword will be listed.</p>
+                <p>A facility user would be able to view those Buildings and view/download the attachments of the selected building.</p>
+
+                <p><span class="header1">Advanced Search</span></p>
+                <p>On clicking <span class="header2">Advanced Search</span> <img class="helpicon" src="Content/Icons/advanced-search.png" title="Advanced Search" /> icon, Advanced Search window will be displayed which allows the user to search for the Building details for specific data in known data fields. The data being searched for can be selected from the list boxes or entered into text boxes provided against the data fields. On clicking the Search button, all Buildings meeting the search criteria will be listed.</p>
+                <p>Fields to be displayed in the Search window can be set using the <span class="header2">Configure</span> <img class="helpicon" src="Content/Icons/settings_icon.png" title="Configure" /> icon provided in the Search window. </p>
+                <p>Search criteria entered in the Advanced Search window can be cleared by clicking the Clear button provided in the Search window. After clearing the Search criteria and click Search button to clear the Search results in the Buildings grid.</p>
+                <p>A facility user would be able to view those Buildings and view/download the attachments of the selected Building </p>
+            </div>
+        </section>
+
+        <section title="Floors" [isExpanded]="sectionExpansionStatus[2].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div *ngIf="sectionExpansionStatus[2].isExpanded">
+                <p>All floors will be listed with their Site, Building and Floor names. Any additional data fields added for floors will also be displayed. The list can be sorted by clicking the column headers.</p>
+
+                <p><span class="header1">Edit</span></p>
+                <p>This option is for editing the floor details.</p>
+                <p>Select the floor to be edited and click on the <span class="header2">Edit</span> <img class="helpicon" src="Content/Icons/data_editN.png" title="Edit" /> icon. The details will be displayed in a new window. Make necessary changes and click the Save Changes button.</p>
+
+                <p><span class="header1">Attachments </span></p>
+                <p>Administrators can view or download the attachments added to a floor. Select the required floor and click on <span class="header2">Attachments</span> <img class="helpicon" src="Content/Icons/attachmentN.png" title="Attachments" /> icon. Any attachments added to the floor will be listed. The attachment can be viewed or downloaded by clicking the <span class="header2">View</span> <img class="helpicon" src="Content/Icons/view-drawingN.png" title="View" /> or <span class="header2">Download</span> <img class="helpicon" src="Content/Layout/download_icon.png" title="Download" /> icon.</p>
+
+                <p><span class="header1">Keyword Search</span></p>
+                <p>This option helps users to search for Floors using keywords. The keyword can be part of Site name, Building name, Floor name, description, Status etc. Enter the keyword in the text box provided and click on the <span class="header2">Search</span> <img class="helpicon" src="Content/Icons/keyword-search.png" title="Keyword Search" /> icon. All floors matching the keyword will be listed.</p>
+                <p>A facility user would be able to view those Floors and view/download the attachments of the selected floor.</p>
+
+                <p><span class="header1">Advanced Search</span></p>
+                <p>On clicking <span class="header2">Advanced Search</span> <img class="helpicon" src="Content/Icons/advanced-search.png" title="Advanced Search" /> icon, Advanced Search window will be displayed which allows the user to search for the Floor details for specific data in known data fields. The data being searched for can be selected from the list boxes or entered into text boxes provided against the data fields. On clicking the Search button, all Floors meeting the search criteria will be listed.</p>
+                <p>Fields to be displayed in the Search window can be set using the <span class="header2">Configure</span> <img class="helpicon" src="Content/Icons/settings_icon.png" title="Configure" /> icon provided in the Search window. </p>
+                <p>Search criteria entered in the Advanced Search window can be cleared by clicking the Clear button provided in the Search window. After clearing the Search criteria and click Search button to clear the Search results in the Floors grid.</p>
+                <p>A facility user would be able to view those Floors and view/download the attachments of the selected Floor </p>
+            </div>
+        </section>
+
+    </content>
+</page>
+
+<style type="text/css">
+    h3.Mainheader {
+        color: #178AE8;
+    }
+
+    .header1 {
+        font-weight: bold;
+        color: #178AE8;
+    }
+
+    .header2 {
+        font-weight: normal;
+        color: #178AE8;
+    }
+
+    p {
+        margin-left: 38px;
+        font-size: 13px;
+        margin-right: 3em;
+    }
+
+    .header3 {
+        font-weight: bold;
+        color: black;
+    }
+    /**/ h1 {
+        color: #178AE8;
+        font-size: 1.3em;
+        margin-left: 38px;
+    }
+
+    h2 {
+        color: #178AE8;
+        font-size: 1em;
+        margin-left: 38px;
+    }
+
+    .config {
+        background-color: #178AE8;
+    }
+
+    .helpicon {
+        vertical-align: baseline;
+        width: 20px;
+        height: 20px;
+    }
+</style>

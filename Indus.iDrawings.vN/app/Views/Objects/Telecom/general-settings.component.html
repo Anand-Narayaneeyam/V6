@@ -1,0 +1,44 @@
+﻿<page [pagetitle]="pagePath">
+    <pagepath>
+    </pagepath>
+    <content>
+        <section *ngIf="isSiteAdmin==false && userRoleId != 4 && userRoleId != 7" title="Drawing Management" [isExpanded]="sectionExpansionStatus[0].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <drawingmanagement *ngIf="sectionExpansionStatus[0].isExpanded" [module]=6></drawingmanagement>
+        </section>
+        <section *ngIf="userRoleId != 4 && userRoleId != 7" title="Object Classes" [isExpanded]="sectionExpansionStatus[1].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <object-classes *ngIf="sectionExpansionStatus[1].isExpanded" [objectCategoryId]="3"></object-classes>
+        </section>
+        <section *ngIf="isSiteAdmin==false && userRoleId != 4 && userRoleId != 7" title="Common Attributes" [isExpanded]="sectionExpansionStatus[2].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <attributes *ngIf="sectionExpansionStatus[2].isExpanded" [objectCategoryId]="3"> </attributes>
+        </section>
+        <section *ngIf="userRoleId != 4 && userRoleId != 7" title="Class Attributes" [isExpanded]="sectionExpansionStatus[3].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <class-attributes *ngIf="sectionExpansionStatus[3].isExpanded" [objectCategoryId]="3"> </class-attributes>
+        </section>
+        <section *ngIf="showSymbolSection && userRoleId != 4 && userRoleId != 7" title="Object Class Symbol" [isExpanded]="sectionExpansionStatus[4].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div style="height:90%;overflow:hidden;position: relative;">
+                <create-symbol [objectCategoryId]="3" *ngIf="sectionExpansionStatus[4].isExpanded" style="overflow: scroll;"></create-symbol>
+            </div>
+        </section> 
+        <section *ngIf="userRoleId != 4 && userRoleId != 7" title="Connection Relationships" [isExpanded]="sectionExpansionStatus[5].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <connection-relationships *ngIf="sectionExpansionStatus[5].isExpanded" [objectCategoryId]="3"></connection-relationships>
+        </section>
+        <section *ngIf="userRoleId != 4 && userRoleId != 7" title="Connectivity Rules" [isExpanded]="sectionExpansionStatus[6].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <connectivity-rules *ngIf="sectionExpansionStatus[6].isExpanded" [objectCategoryId]="3"></connectivity-rules>
+        </section>
+        <section *ngIf="!isAsset && userRoleId != 4 && userRoleId != 7" title="Deficiency Categories" [isExpanded]="sectionExpansionStatus[7].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <ListDeficiencyCategories [objectCategoryId]="3" *ngIf="sectionExpansionStatus[7].isExpanded==true"></ListDeficiencyCategories>
+        </section>
+        <section *ngIf="!isAsset && userRoleId != 4 && userRoleId != 7" title="Deficiencies" [isExpanded]="sectionExpansionStatus[8].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <ListDeficiency [objectCategoryId]="3" *ngIf="sectionExpansionStatus[8].isExpanded==true"></ListDeficiency>
+        </section>        
+        <section title="Color Preferences" [isExpanded]="sectionExpansionStatus[9].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <color-preference *ngIf="sectionExpansionStatus[9].isExpanded==true" [objectCategoryId]="3" [moduleId]=6 [pageId]="1234" [Previlages]="5528"></color-preference>
+        </section>  
+        <section title="Default Display Layers" [isExpanded]="sectionExpansionStatus[10].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <default-display-layer *ngIf="sectionExpansionStatus[10].isExpanded==true" [ModuleId]=6></default-display-layer>
+        </section>
+        <section *ngIf="showCustomRptSection==true && userRoleId != 4 && userRoleId != 7" title="Custom Reports" [isExpanded]="sectionExpansionStatus[11].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <customReportGrid *ngIf="sectionExpansionStatus[11].isExpanded==true" [moduleId]=6></customReportGrid>
+        </section>
+    </content>
+</page>

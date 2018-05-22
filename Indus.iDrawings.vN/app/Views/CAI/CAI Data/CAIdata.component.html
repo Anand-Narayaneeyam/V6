@@ -1,0 +1,20 @@
+﻿<page [pagetitle]="pagePath" [withoutSubmenu]="true">
+    <content>
+        <split-view [splitviewObject]="splitview" [pageTitle]="" (onSecondaryClose)="onSecondaryClose($event)">
+            <primary-view>
+                <tabs [selectedTab]="selectedTab" [deleteIndex]="tabDeleteIndex" (getSelectedTab)="getSelectedTab($event)" (onTabClose)="onTabClose($event)">
+                    <tab tabTitle="Select Floors" closeButtonVisible="hidden">
+                        <floor-selection *ngIf="selectedTab ==0" [moduleId]="moduleId" (btnClickOut)="getSelectedIds($event)"></floor-selection>
+                    </tab>
+                    <tab tabTitle="CAI Data" *ngIf="spaceTabEnabled" closeButtonVisible="visible">
+                        <spaceDataGrid *ngIf="isSpaceDataTab" [moduleId]="moduleId"  [(selectedDrwgIds)]="selectedFloorIds" [pageTarget]="1" (showInDrawingOnClick)="spShowInDrawingOnClick($event)" (showZoomOnClick)="spShowZoomOnClick($event)"> </spaceDataGrid>
+                        <!--<display-setting *ngIf="splitviewInput.showSecondaryView &&(spaceDataAction == 'displaysettings')" [fieldObject]="fieldObject" [dataKey]="dataKey" [dragEnable]="true" (displaySetting)="displaySettingSpaceData($event)"></display-setting>-->
+                    </tab>
+                </tabs>
+            </primary-view>
+            <secondary-view>
+                <opendrawing [style.width]="innerwidthDwg" style="display:block" *ngIf="IsOpenDrawingComponentActive" [extDrawingId]="selectedDrawingId" [moduleId]="moduleId" [activeModuleIds]="moduleId" [pageTarget]="dwgPageTarget" [extDrawingType]="drawingType" [extDrawingDetails]="selectedSpaceIds" (outDrawingobject)="getDrawingObject($event)"></opendrawing>
+            </secondary-view>
+        </split-view>
+    </content>
+</page>

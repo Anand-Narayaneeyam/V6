@@ -1,0 +1,48 @@
+﻿<div>
+    <div>
+        <div style="text-overflow:ellipsis;width:690px;overflow:hidden;" [title]="'Document Number '+DocumetNumber" tabindex="0">Document Number:&nbsp;<b>{{DocumetNumber}}</b></div>
+        <div style="text-overflow:ellipsis;width:690px;overflow:hidden;" [title]="'Document Name '+DocumentName" tabindex="0">Document Name:&nbsp;<b>{{DocumentName}}</b></div>
+        <div style="text-overflow:ellipsis;width:690px;overflow:hidden;" tabindex="0">Check/Clear to add/remove User(s)</div>
+    </div>
+    <div>
+        <button class="Savebutton" type="button" (click)="insertUsersList($event)" title="Save" role="button" aria-label="Save">Save</button>
+    </div>
+    <div style="height:80%;">
+        <gridView [dataSource]="itemsSource" [properties]="inputItems" [columns]="fieldObject" (onSorting)="onSort($event)"></gridView>
+    </div>
+    <slide [width]="400" [position]="position" [type]="'dialog'" [show]="showSlide" [absolute]="'true'" (closeDialog)="closeSlide($event)">
+        <div>
+            <div tabindex="0" aria-label="Access privilege to this document will exist for the user" style="font-size: 15px;font-weight:400;">
+                Access privilege to this document will exist for the users
+            </div>
+            <div style="margin-top:5px">
+                <ul>
+                    <li role="none" tabindex="0" *ngFor="let array of userArrayList" [attr.aria-label]="''+array.Name">{{array.Name}}</li>
+                </ul>
+            </div>
+            <div tabindex="0" aria-label="as the user is already linked with a Document Groups" style="font-size: 15px;font-weight:400;">
+                as the user is already linked with a Document Group(s).
+            </div>
+        </div>
+    </slide>
+</div>
+<style type="text/css">
+    li {
+        list-style: none;
+    }
+
+        li:before {
+            /* For a round bullet */
+            /*content: '\2022';*/
+            /* For a square bullet */
+            content: '\25A0';
+            display: block;
+            position: relative;
+            max-width: 0px;
+            max-height: 6px;
+            left: -13px;
+            top: -0px;
+            color: black;
+            font-size: 20px;
+        }
+</style>

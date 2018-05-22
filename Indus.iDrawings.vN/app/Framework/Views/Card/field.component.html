@@ -1,0 +1,19 @@
+﻿<StringTextBox  *ngIf="fieldObject.DataEntryControlId == '1'"    [fieldObject]="updateField(fieldObject)"  title="{{fieldObject.FieldValue}}" (change)="onChangeInput($event)"  (dblclick)="onFieldDoubleClick($event)"></StringTextBox>
+<DropDownListComponent *ngIf="fieldObject.DataEntryControlId == '4'" [fieldObject]="updateField(fieldObject)" (dblclick)="onFieldDoubleClick($event)"    (change)="onChangeInput($event)" ></DropDownListComponent>
+<TextAreaComponent  *ngIf="fieldObject.DataEntryControlId == '3'" [fieldObject]="updateField(fieldObject)" title="{{fieldObject.FieldValue}}" (dblclick)="onFieldDoubleClick($event)" (change)="onChangeInput($event)" ></TextAreaComponent> 
+<DateComponent id="Datecomponent" name="Datecomponent" *ngIf="fieldObject.DataEntryControlId == '2'" [fieldObject]="updateField(fieldObject)" (change)="onChangeInput($event)" (datepickerOut)="changeEmit($event,2)" (dblclick)="onFieldDoubleClick($event)"></DateComponent>
+<DateTimeComponent id="DateTimeComponent" name="DateTimeComponent" *ngIf="fieldObject.DataEntryControlId == '8'" [fieldObject]="updateField(fieldObject)" (change)="onChangeInput($event)" (datetimepickerOut)="changeEmit($event,8)" [IsCard]="true" (dblclick)="onFieldDoubleClick($event)"></DateTimeComponent>
+<FileUploadComponent id="FileUpload" name="FileUpload" *ngIf="fieldObject.DataEntryControlId == '9'"  [fieldObject]="updateField(fieldObject)"  (fileData)="getFileData($event)"  ></FileUploadComponent>
+<ImageComponent id="ImageUpload"  name="ImageUpload" *ngIf="fieldObject.DataEntryControlId == '12'"  [fieldObject]="updateField(fieldObject)"  (imageData)="getImageData($event)"></ImageComponent>
+<CheckBoxComponent id="CheckBoxComponent" name="CheckBoxComponent" *ngIf="fieldObject.DataEntryControlId == '6'" [fieldObject]="updateField(fieldObject)" (click)="onChangeInput($event)" (dblclick)="onFieldDoubleClick($event)"  (chkBoxClick)="chkBoxOut($event)" ></CheckBoxComponent>
+<RadioComponent id="RadioComponent"  name="RadioComponent" *ngIf="fieldObject.DataEntryControlId == '5'" [fieldObject]="updateField(fieldObject)"   (click)="onChangeInput($event)" ></RadioComponent>
+
+<!--<StringTextBox *ngIf="fieldObject.FieldType == '1'" [fieldObject]="updateField(fieldObject)" (change)="onChangeInput($event)" (dblclick)="onFieldDoubleClick($event)"></StringTextBox>
+
+<IntegerTextBox id="IntegerTextBox" name="IntegerTextBox" *ngIf="fieldObject.FieldType == '2'" [fieldObject]="updateField(fieldObject)" (change)="onChangeInput($event)" (dblclick)="onFieldDoubleClick($event)"></IntegerTextBox>
+<NumericTextBox id="NumericTextBox" name="NumericTextBox" *ngIf="fieldObject.FieldType == '3'" [fieldObject]="updateField(fieldObject)" (change)="onChangeInput($event)" (dblclick)="onFieldDoubleClick($event)"></NumericTextBox>
+<DropDownListComponent *ngIf="fieldObject.FieldType == '5'" [fieldObject]="updateField(fieldObject)" (dblclick)="onFieldDoubleClick($event)" (change)="onChangeInput($event)"></DropDownListComponent>
+<TextAreaComponent *ngIf="fieldObject.FieldType == '4'" [fieldObject]="updateField(fieldObject)" (dblclick)="onFieldDoubleClick($event)" (change)="onChangeInput($event)"></TextAreaComponent>
+<DateComponent id="Datecomponent" name="Datecomponent" *ngIf="fieldObject.FieldType == '8'" [fieldObject]="updateField(fieldObject)" (change)="onChangeInput($event)" (dblclick)="onFieldDoubleClick($event)"></DateComponent>
+<DateTimeComponent id="DateTimeComponent" name="DateTimeComponent" *ngIf="fieldObject.FieldType == '9'" [fieldObject]="updateField(fieldObject)" (change)="onChangeInput($event)" (dblclick)="onFieldDoubleClick($event)"></DateTimeComponent>
+<FileUploadComponent id="FileUpload" name="FileUpload" *ngIf="fieldObject.FieldType == '11'" [fieldObject]="updateField(fieldObject)" (change)="onChangeInput($event)" ></FileUploadComponent>-->

@@ -1,0 +1,54 @@
+﻿<div [style.display]="setAlignment" style="margin-top:6px;min-height:48px;" *ngIf="fieldObject">
+    <div control-group *ngIf="!fieldObject.IsHiddenLabel && fieldObject.FieldLabel != undefined && fieldObject.FieldLabel != null" [style.max-width]="drplabelWidth" [style.min-width]="drplabelWidth">
+        <label  [style.width.px]="labelWidth" [class]="'ddllabel_'+fieldObject.FieldId">
+            {{fieldObject.FieldLabel}} <span class="required" *ngIf="fieldObject.IsMandatory == undefined || fieldObject.IsMandatory === true"> * &nbsp;</span>
+        </label>
+    </div>
+    <div control-group  *ngIf="fieldObject.IsValidated == true" [class]="'Div-'+fieldObject.FieldId" style="display:inline-flex;" [ngStyle]="fieldObject.LookupDetails && fieldObject.LookupDetails.PopupComponent && !fieldObject.LookupDetails.PopupComponent.showImage?{'flex-direction':'column','align-items': 'flex-end'}:{'flex-direction':'row'}" [style.width.px]="fieldObject.LookupDetails.PopupComponentName !=undefined ? drplabelWidthPopup:''">        
+           <span *ngIf="fieldObject != undefined">
+                <span *ngIf="fieldObject.IsEnabled == true || fieldObject.IsEnabled == undefined">
+                    <span style="width:250px;display:block;overflow:hidden" class="readOnly" *ngIf="fieldObject.ReadOnlyMode === true" tabindex="0" [attr.aria-label]="fieldObject.FieldLabel+''+selectedLabel">{{selectedLabel}}</span>
+                    <span *ngIf="fieldObject.ReadOnlyMode == undefined || fieldObject.ReadOnlyMode === false" [style.float]="fieldObject.LookupDetails.PopupComponentName !=undefined ? 'left':''">
+                        <select id="{{fieldObject.FieldId}}" class="ddl" validatetext [validationData]="validationData" [fieldObject]='fieldObject' (change)="onddlChange($event.target.value)" [(ngModel)]="fieldObject.FieldValue" [style.width]="fieldWidth" [style.height]="fieldHeight" (focusin)="ondropdownfocusin()">   
+                                <option *ngIf="ShowSelectOption == true && fieldObject.ShowSelect == undefined" text="--Select--" value="-1">--Select--</option>
+                                <option *ngFor="let field of fieldObject.LookupDetails.LookupValues" text={{field.Value}} value={{field.Id}} (ngModelChange)="field.Id = $event" attr.maxlength=10></option>                           
+                         </select>
+                    </span>
+                </span>
+                <span *ngIf="fieldObject.IsEnabled == false" tabindex="0" (focus)="getSelectedValueDDL()" [attr.aria-label]="fieldObject.FieldLabel+' '+ddlSelectedTitle+' Read Only'">
+                    <!--<select style="width:100%;background-color:lightgray" class="ddl" disabled [style.width]="fieldWidth" [style.height]="fieldHeight">
+                    <option text="--Select--" value="-1">--Select--</option>
+                </select>-->
+                    <select id="{{fieldObject.FieldId}}" class="ddl" validatetext [validationData]="validationData" [fieldObject]='fieldObject' style="width:100%;background-color:#EBEBE4" disabled (change)="onddlChange($event.target.value)" [(ngModel)]="fieldObject.FieldValue" [style.width]="fieldWidth" [style.height]="fieldHeight" tabindex="-1">
+                        <option *ngIf="ShowSelectOption == true && fieldObject.ShowSelect == undefined" text="--Select--" value="-1">--Select--</option>
+                        <option *ngFor="let field of fieldObject.LookupDetails.LookupValues" text={{field.Value}} value={{field.Id}} (ngModelChange)="field.Id = $event" attr.maxlength=10></option>
+                    </select>
+                </span>
+            </span>
+            <span *ngIf="fieldObject.LookupDetails.PopupComponent">
+                <span *ngIf="fieldObject.LookupDetails.PopupComponent.showImage" style="float:right;padding: 1px 0px 0px 5px">
+                    <img role="button" aria-label="Add" id="ddlPopup" src="Content/Layout/add_data_button.png" (click)="popupAdd($event)" tabindex="0" title="Add" (keypress)="onPopupKeyPress($event)">
+                </span>
+                <span *ngIf="!fieldObject.LookupDetails.PopupComponent.showImage" title="{{fieldObject.LookupDetails.PopupComponent.Name}}">
+                    <span role="none" [attr.aria-label]="fieldObject.LookupDetails.PopupComponent.Name+' Link'" class="span-popup-text" (click)="popupAdd($event)" tabindex="0"  (keypress)="onPopupKeyPress($event)">{{fieldObject.LookupDetails.PopupComponent.Name}}</span>
+                </span>
+            </span>
+        </div>
+    </div>
+<div [style.display]="setAlignment" *ngIf="fieldObject == undefined">
+    <select class="ddl" [style.width]="fieldWidth" [style.height]="fieldHeight"  (focusin)="ondropdownfocusin()">
+        <option text="--Select--" value="-1">--Select--</option>
+    </select>
+</div>
+<style>
+    .span-popup-text {
+        /*margin-left:5px !important;*/ 
+        margin-left: auto;
+        color: blue;
+        cursor: hand;
+        cursor: pointer;
+        text-decoration: underline;
+    }
+</style>
+
+

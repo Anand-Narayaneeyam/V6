@@ -1,0 +1,8 @@
+﻿<div style="margin-left:10px;" *ngIf="accessDrawingModulesList">
+    <ListBoxComponent *ngIf="!moduleId" [fieldObject]=accessDrawingModulesList></ListBoxComponent>
+        <div style="height:86%">
+            <gridView [dataSource]="itemsSource" [properties]="inputItems" [columns]="fieldObject"></gridView>
+        </div>
+        <paging [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="onPageChanged($event);"></paging>
+</div>
+<button  class="Savebutton "type="button" (click)="updateDrawingsAccessData($event)"> Save Changes </button>

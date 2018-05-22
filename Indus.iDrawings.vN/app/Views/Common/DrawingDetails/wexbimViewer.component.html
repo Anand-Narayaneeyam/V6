@@ -1,0 +1,218 @@
+﻿
+
+<!--<link href="~/Scripts/WexBimDrawing/Libs/jquery-ui-styles/jquery-ui.min.css" rel="stylesheet" />
+<link href="~/app/Views/Common/DrawingDetails/xbrowser-styles.css" rel="stylesheet" />
+<link href="~/app/Views/Common/DrawingDetails/Site.css" rel="stylesheet" type="text/css" />
+<link href="~/app/Views/Common/DrawingDetails/bootstrap.min.css" rel="stylesheet" />-->
+
+<div id="loadingScreen" style="background-repeat: no-repeat; background-image: url('Content/wexbimIcons/load.gif'); background-size: 30px; background-position: center center; text-align: center; z-index: 10000000; background-color: white; position: absolute; font-family: 'Times New Roman', Times, serif; font-size: 14px; opacity: 0.3;">
+    <!--  <p style="color:White;">Loading Geometry Manifest. Depending on file size, this may take a while.</p>-->
+</div>
+
+<div id="viewer-controls" style="display: none;">
+    <div id="viewer-container">
+        <!--<%--<div style="left: 5px; top: 5px; padding: 5px; width: 100%;" id="toolbar" class="ui-widget-header ui-corner-all">
+            <button id="btnExtents1">ZoomExtents</button>
+            <button id="btnWalls1">Show/Hide Walls</button>
+            <button id="btnSpaces1">Show/Hide Spaces</button>
+            <button id="btnGlass1">Toggle Transparency</button>
+            <button id="btnLocate1">Locate</button>
+            <select id="sel_proj">
+                <option value="1" selected="selected">Perspective</option>
+                <option value="2">Orthographic</option>
+            </select>
+            <select id="sel_view">
+                <option value="1">Top</option>
+                <option value="2">Bottom</option>
+                <option value="3">Front</option>
+                <option value="4">Back</option>
+                <option value="5">Left</option>
+                <option value="6">Right</option>
+            </select>
+        </div>--%>-->
+
+        <div id="modelIndicator">
+            <div class="loader"></div>
+            <span id="loadingText">Loading Model Properties...</span>
+        </div>
+
+        <canvas id="viewer-canvas"></canvas>
+    </div>
+    <div id="semantic-model-container" class="noselect">
+        <div id="semantic-model">
+
+            <h3 style="font-weight: bold;">Spatial structure</h3>
+
+            <div class="no-overflow">
+                <div id="structure" class="semantic-model-tree"></div>
+            </div>
+            <h3 style="font-weight: bold;">Asset types</h3>
+            <div class="no-overflow">
+                <div id="assetTypes" class="semantic-model-tree"></div>
+            </div>
+            <h3 style="font-weight: bold;">Systems</h3>
+            <div class="no-overflow">
+                <div id="systems" class="semantic-model-tree"></div>
+            </div>
+            <h3 style="font-weight: bold;">Zones</h3>
+            <div class="no-overflow">
+                <div id="zones" class="semantic-model-tree"></div>
+            </div>
+            <h3 style="font-weight: bold;">Contacts</h3>
+            <div class="no-overflow">
+                <div id="contacts" class="semantic-model-tree"></div>
+            </div>
+            <h3 style="font-weight: bold;">Documents</h3>
+            <div class="no-overflow">
+                <div id="facility-documents" class="semantic-model-tree"></div>
+            </div>
+        </div>
+    </div>
+    <div id="semantic-descriptive-info-container">
+        <div id="semantic-descriptive-info">
+            <h3 style="font-weight: bold;" id="attrprop-header">Properties and attributes </h3>
+            <div class="no-overflow-y">
+                <div id="attrprop"></div>
+            </div>
+            <h3 style="font-weight: bold;">Documents</h3>
+            <div class="no-overflow">
+                <div id="documents"></div>
+            </div>
+            <h3 style="font-weight: bold;">Tasks</h3>
+            <div class="no-overflow">
+                <div id="issues"></div>
+            </div>
+            <h3 style="font-weight: bold;">Assignments</h3>
+            <div class="no-overflow">
+                <div id="assignments"></div>
+            </div>
+        </div>
+    </div>
+    <div id="quickProperties" style="background-color: #edefcb; font-family: 'Times New Roman', Times, serif; font-size: 13.1px;">
+
+        <p>Loading...</p>
+    </div>
+    <div class="toolbar3D">
+        <div id="navTools" class="ifc-group">
+            <div id="toolbar-zoom" class="ifcButton">
+                <img id="btnExtents" class="ifcButton-icon" src="Content/wexbimIcons/zoomExtent.png" />
+                <div id="btnExtents-tool-tip" class="ifc-toolbar-tooltip">Zoom Extents</div>
+            </div>
+
+            <div id="toolbar-show-hide-wall" class="ifcButton">
+
+                <img id="btnWalls" class="ifcButton-icon" src="Content/wexbimIcons/wall.png" />
+
+                <div id="btnWalls-tool-tip" class="ifc-toolbar-tooltip">Show/Hide Wall</div>
+            </div>
+            <div id="toolbar-btnSpaces" class="ifcButton">
+
+                <img id="btnSpaces" class="ifcButton-icon" src="Content/wexbimIcons/showSpaces.png" />
+
+                <div id="btnSpaces-tool-tip" class="ifc-toolbar-tooltip">Show/Hide Spaces</div>
+            </div>
+            <div id="toolbar-btnGlass" class="ifcButton">
+
+                <img id="btnGlass" class="ifcButton-icon" src="Content/wexbimIcons/toggle_transparency.png" />
+
+                <div id="btnGlass-tool-tip" class="ifc-toolbar-tooltip">Toggle Transparency</div>
+            </div>
+            <div id="toolbar-btnLocate" class="ifcButton">
+
+                <img id="btnLocate" class="ifcButton-icon" src="Content/wexbimIcons/locate1.png" />
+
+                <div id="btnLocate-tool-tip" class="ifc-toolbar-tooltip">Locate</div>
+            </div>
+        </div>
+        <div id="Properties" class="ifc-group">
+            <div id="showModelView" class="ifcButton">
+                <img id="modelView" class="ifcButton-icon" src="Content/wexbimIcons/modelTree.png" />
+                <div id="modelView-tool-tip" class="ifc-toolbar-tooltip">Model View</div>
+            </div>
+            <div id="showProperties" class="ifcButton">
+                <img id="propertiesbtn" class="ifcButton-icon" src="Content/wexbimIcons/properties.png" />
+                <div id="properties-tool-tip" class="ifc-toolbar-tooltip">Properties</div>
+            </div>
+        </div>
+        <div id="viewTools" class="ifc-group">
+            <div id="toolbar-camera" class="ifcButton">
+                <img id="camView" class="ifcButton-icon" src="Content/wexbimIcons/camera.png" />
+                <div id="camView-tool-tip1" class="ifc-toolbar-tooltip">Zoom Extents</div>
+                <div id="camViewSubMenu" class="ifc-group toolbar-horizontal-group">
+                    <div id="top" class="ifcButton">
+                        <img id="topBtn" class="ifcButton-icon" src="Content/wexbimIcons/TopView.png" />
+                        <div id="top-toolTip" class="ifc-toolbar-tooltip">Top</div>
+                    </div>
+                    <div id="bottom" class="ifcButton">
+                        <img id="bottomBtn" class="ifcButton-icon" src="Content/wexbimIcons/BottomView.png" />
+                        <div id="bottom-toolTip" class="ifc-toolbar-tooltip">Bottom</div>
+                    </div>
+                    <div id="left" class="ifcButton">
+                        <img id="leftBtn" class="ifcButton-icon" src="Content/wexbimIcons/LeftView.png" />
+                        <div id="left-toolTip" class="ifc-toolbar-tooltip">Left</div>
+                    </div>
+                    <div id="right" class="ifcButton">
+                        <img id="rightBtn" class="ifcButton-icon" src="Content/wexbimIcons/RightView.png" />
+                        <div id="right-toolTip" class="ifc-toolbar-tooltip">Right</div>
+                    </div>
+                    <div id="front" class="ifcButton">
+                        <img id="frontBtn" class="ifcButton-icon" src="Content/wexbimIcons/FrontView.png" />
+                        <div id="front-toolTip" class="ifc-toolbar-tooltip">Front</div>
+                    </div>
+                    <div id="back" class="ifcButton">
+                        <img id="backBtn" class="ifcButton-icon" src="Content/wexbimIcons/BackView.png" />
+                        <div id="back-toolTip" class="ifc-toolbar-tooltip">Back</div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!--<div id="loadingScreen" style="background-repeat: no-repeat; background-image: url('Content/wexbimIcons/load.gif'); background-size: 30px; background-position: center center; text-align: center; z-index: 10000000; background-color: white; position: absolute; font-family: 'Times New Roman', Times, serif; font-size: 14px; opacity: 0.3;">
+          <p style="color:White;">Loading Geometry Manifest. Depending on file size, this may take a while.</p>
+    </div>-->
+    <!--<%--<span class="right" id="btnLocate"><span class="ui-icon ui-icon-pin-s left"></span> Locate</span>--%>-->
+    <button class="right" id="btnDescription" style="font-weight: bold"><span class="ui-icon ui-icon-pin-s left"></span>Description</button>
+    <button class="left" id="btnModel" style="font-weight: bold"><span class="ui-icon ui-icon-pin-s left"></span>Model View</button>
+
+    <!--<%-- <span class="right" id="btnDescription"><span class="ui-icon ui-icon-pin-s left"></span> Description</span>--%>
+    <%-- <span class="left" id="btnModel"><span class="ui-icon ui-icon-pin-s left"></span> Model View</span>--%>-->
+</div>
+
+
+ <!--commented for while not found time it shows modelmenu-->
+<!--<div id="modelmenu" style="display: none;" class="dragmenu unselectable">
+    <span class="resetBoundary"></span>
+    <div class="menuHeader">
+        Model Menu
+    </div>
+    <div id="menu" runat="server">
+    </div>
+</div>-->
+
+
+<div id="divInstrucDlg" class="dragmenu unselectable" style="display: none; width: 35em; left: 35em; top: 18em; height: 12em; border-radius: 4px; font-family: 'Times New Roman', Times, serif; font-size: 14px;">
+    <div class="menuHeader">
+        <b>IFC Viewer</b>
+    </div>
+    <table style="width: 35em; height: 10em;">
+        <tr>
+            <td align="center">
+                <label id="labelInstrcDlg" style="text-align: center; display: block;"></label>
+            </td>
+        </tr>
+        <tr>
+            <td align="center">
+                <button type="button" id="butt_InstrcDlgOk" style="width: 5em; height: 2em;">OK</button>
+            </td>
+        </tr>
+    </table>
+</div>
+<style>
+     #loadingScreen {
+        height: 100%!important;
+        width: 100%!important;
+     }
+</style>

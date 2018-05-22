@@ -1,0 +1,49 @@
+﻿{
+  "data": 
+    {
+      "FieldId": 1,
+      "FieldLabel": "Text Style",
+      "FieldType": 5,
+      "FieldValue": "0",
+      "IsMultiValued": true,
+      "HasRelation": false,
+      "LookupDetails": {
+        "LookupValues": [
+          {
+            "Id": 1,
+            "Value": "Arial"
+          },
+          {
+            "Id": 2,
+            "Value": "Caliberi"
+          },
+          {
+            "Id": 3,
+            "Value": "Courier New"
+          },
+          {
+            "Id": 4,
+            "Value": "Times New Roman"
+          },
+          {
+            "Id": 5,
+            "Value": "Tahoma"
+          },
+          {
+            "Id": 6,
+            "Value": "Trebuchet MS"
+          },
+           {
+            "Id": 7,
+            "Value": "Verdana"
+          }
+        ],
+        "PopupComponentName": null
+      },
+      "IsMandatory": false,
+      "IsVisible": true,
+      "IsHiddenLabel":  false,
+      "ReadOnlyMode": false,
+      "NotificationType": ""
+    }
+}

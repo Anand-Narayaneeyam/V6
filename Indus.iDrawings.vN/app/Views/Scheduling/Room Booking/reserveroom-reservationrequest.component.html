@@ -1,0 +1,29 @@
+﻿<div style="height:90%;">
+    <split-view [splitviewObject]="splitviewInput" [pageTitle]="pageTitle">
+        <primary-view>
+            <DynamicFields [holidaysDisabled]="true" [dataSource]="Roombookrequest" (fieldChange)="fieldChange($event)" (submitFieldObject)="onSubmitData($event)" (btnItemEmit)="checkAvailability($event)" (rbnChange)="bookedforchange($event)" [btnName]="btnName" [dataKey]="dataKey" (dynamicListAddEmit)="listbuttonadd($event)" (dynamicListRemoveEmit)="listbuttondelete($event)" (dateChange)="divClicked($event)"></DynamicFields>
+        </primary-view>
+        <secondary-view>
+            <Invitees-checkboxgrid *ngIf="splitviewInput.showSecondaryView &&secondaryTarget==1" (submitSuccess)="OnSuccessfulSubmit($event)"></Invitees-checkboxgrid>
+        </secondary-view>
+        <secondary-view>
+            <Amenities-listforCustomadd *ngIf="splitviewInput.showSecondaryView &&secondaryTarget==2" (submitSuccess)="OnSuccessfulAmenitiesSubmit($event)" [Amenietydata]="Ameniety" [SpaceId]="selectedId" [SelectedFloorId]="FloorId"></Amenities-listforCustomadd>
+        </secondary-view>
+        <secondary-view>
+            <CustomServiceAdd *ngIf="splitviewInput.showSecondaryView &&secondaryTarget==3" (submitSuccess)="OnSuccessfulServiceSubmit($event)" [Servicedata]="Service"></CustomServiceAdd>
+        </secondary-view>
+        <secondary-view>
+            <Catering-listCustomadd *ngIf="splitviewInput.showSecondaryView &&secondaryTarget==4" (submitSuccess)="OnSuccessfulCateringSubmit($event)" [Cateringdata]="Cateringarray"></Catering-listCustomadd>
+        </secondary-view>
+    </split-view>
+    <!--<button  class="Savebutton "type="button" (click)="ResrveClick($event)">Reserve Room</button> <button  class="Savebutton "type="button" (click)="CancelClick($event)">Cancel</button>-->
+    <slide [width]="slidewidth" [position]="position" [show]="showSlide" (closeDialog)="closeSlideDialog($event)">
+        <div>
+            <div tabindex="0" [attr.aria-label]="''+message">{{message}}</div>
+            <div style="width:100%">
+                <button class="Savebutton " type="button" (click)="okSubmit($event)">Yes</button>
+                <button class="Savebutton " type="button" (click)="cancelClick($event)">No</button>
+            </div>
+        </div>
+    </slide>
+</div>

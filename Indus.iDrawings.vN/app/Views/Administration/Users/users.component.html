@@ -1,0 +1,101 @@
+﻿<style>
+    .secdiv {
+        height: calc(100% - 50px);
+        height: -webkit-calc(100% - 50px);
+        height: -moz-calc(100% - 50px);
+        overflow-y: auto;
+
+        margin-top: 5px;
+        margin-right: 5px;
+        width:600px;
+    }
+</style>
+<page [pagetitle]="pagePath">
+    <pagepath style="line-height:15px !important;">
+        <search *ngIf="fieldObject" [advancesearch]="true" [Key]=2 [datasource]="fieldObject" [dataKey]="'Id'" [keyWordLookup]=keyWordLookup (SaveAs)="SaveAs($event)" (Delete)="Delete($event)" (onloadSearch)="onSearchSubmit($event)" (Clear)="Clear($event)" (Submit)="onAdvancedSearchSubmit($event);"></search>
+    </pagepath>
+    <content>
+        <split-view [splitviewObject]="splitviewInput" [pageTitle]="pageTitle" (onSecondaryClose)="onSplitViewClose($event)">
+            <primary-view>
+                <div style="height:100%;">
+                    <div style="height:35px;">
+                        <submenu>
+                            <sub-menu [source]=menuData [count]=totalItems [menuIds]=enableMenu (onSubMenuChange)="onSubMenuChange($event);"> </sub-menu>
+                        </submenu>
+                    </div>
+                    <div class="search-container">
+                        <search *ngIf="fieldObject" [disable]="disable" [searchtype]="'Grid'" [(showSearchFilter)]="showSearchFilter" [keyWordLookup]=keyWordLookup [advancesearch]=true [Key]=2 [datasource]=advancelookup [dataKey]="inputItems.dataKey" [KeywordFields]=KeywordFieldObject (onloadSearch)="onloadSearch($event)" (loadAdvanceSearch)="advanceSearch()" (Clear)="Clear($event)" (Submit)="Submit($event)"></search>
+                    </div>
+
+                    <div style="overflow: hidden;height: calc(100% - 35px);">
+
+                        <div style="height:100%;overflow: hidden;">
+
+                            <div style="width:100%;display:block" [ngClass]="totalItems > itemsPerPage ? 'pagewithPaging':'pagewithoutPaging'">
+                                <confirmation></confirmation>
+                                <gridView style="display:block;" [(dataSource)]="itemsSource" [properties]="inputItems" [columns]="fieldObject" [refreshgrid]="refreshgrid" (onSorting)="onSort($event)"
+                                          (onRowAdd)="onUserAdd($event)" (onRowUpdate)="onEdit($event)" (onRowDelete)="onDelete($event)" (onContextMenuOnClick)="onContextMenuOnClick($event)"></gridView>
+                                <analytics *ngIf="showAnalytics" [properties]="analyticsInput" (closeAnalytics)="closeAnalytics($event)"></analytics>
+                            </div>
+                            <div style="height:45px;width:100%;float:left;display:block;">
+                                <paging *ngIf="totalItems >itemsPerPage ? 'true' : 'false'" style="height:35px;display:block;" [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="onPageChanged($event);"></paging>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </primary-view>
+
+            <secondary-view *ngIf="splitViewTarget==3 && inputItems.selectedIds">
+                <div class="secdiv">
+                    <section [title]=sectionAccessExpansionStatus[0].title *ngIf="isModuleAccessPrivilege" [isExpanded]="sectionAccessExpansionStatus[0].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+                        <user-modules-access [selectedIds]="inputItems.selectedIds" [userRoleId]="selectedUserRoleId" (isModuleAccess)="isAnyModuleSelected($event)"></user-modules-access>
+                    </section>
+
+                    <!--<section title="Drawing Access">
+                        <user-drawings-access [selectedIds]="selectedUserIds"></user-drawings-access>
+                    </section>-->
+
+
+                    <section  [title]=sectionAccessExpansionStatus[1].title  *ngIf="isDrwgAccessPrivilege" [isExpanded]="sectionAccessExpansionStatus[1].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+                        <div style="overflow:auto;padding:10px;">
+                            <DropDownListComponent *ngIf="ddlModule" [fieldObject]="ddlModule" (ddlChange)="drwgAccessModuleChange($event)" [SetAlignment]=alignContent></DropDownListComponent>
+                            <drawingmanagement *ngIf="selectedModuleId > 0 && sectionAccessExpansionStatus[1].isExpanded" [module]=selectedModuleId [selectedUserId]="inputItems.selectedIds[0]"></drawingmanagement>
+                        </div>
+                    </section>
+                    <section  [title]=sectionAccessExpansionStatus[2].title  *ngIf="isDivisionAccessPrivilege" [isExpanded]="sectionAccessExpansionStatus[2].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+                        <user-divisions-access *ngIf="sectionAccessExpansionStatus[2].isExpanded" [team]="teamid" [selectedIds]="inputItems.selectedIds" [isDivisionAdmin]="isDivisionAdmin"></user-divisions-access>
+                    </section>
+                    <section *ngIf="isModuleAdmin" [title]=sectionAccessExpansionStatus[3].title [isExpanded]="sectionAccessExpansionStatus[3].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+                        <module-admin-settings *ngIf="sectionAccessExpansionStatus[3].isExpanded" [selectedIds]="inputItems.selectedIds"></module-admin-settings>
+                    </section>
+                    <section *ngIf="isDivisionAdmin"  [title]=sectionAccessExpansionStatus[4].title  [isExpanded]="sectionAccessExpansionStatus[4].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+                        <division-admin-settings *ngIf="sectionAccessExpansionStatus[4].isExpanded" [selectedIds]="inputItems.selectedIds"></division-admin-settings>
+                    </section>
+                    <section [height]=50 *ngIf="isDrwgAccessPrivilege" [title]=sectionAccessExpansionStatus[5].title [isExpanded]="sectionAccessExpansionStatus[5].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+                       <user-reports-access *ngIf="sectionAccessExpansionStatus[5].isExpanded" [selectedUserId]="inputItems.selectedIds[0]"></user-reports-access>
+                   </section>
+
+                </div>
+            </secondary-view>
+            <secondary-view *ngIf="splitViewTarget==1">
+                <user-add-edit *ngIf="splitviewInput.showSecondaryView" (submitSuccess)="submitReturn($event)" [action]="action" [btnName]="btnName" [selectedId]="inputItems.selectedIds" [fieldDetailsAdd]="fieldDetailsAddEdit" [selectedUserRole]="selectedUserRole"></user-add-edit>
+            </secondary-view>
+            <secondary-view *ngIf="splitViewTarget==2">
+                <user-reset-pwd [selectedId]="inputItems.selectedIds" [fieldDetailsReset]="fieldDetailsResetPwd" (resetPwdOut)="resetPasswordOut($event)"></user-reset-pwd>
+            </secondary-view>
+            <secondary-view *ngIf="splitViewTarget==4">
+                <multiple-Edit *ngIf="splitviewInput.showSecondaryView" [datasource]="multipleEditFieldDetails" [applicationFormId]="administrationService.UserAddEditFrmId" [moduleId]="0" (onUpdate)="onMultipleEditUpdate($event)"> </multiple-Edit>
+            </secondary-view>
+
+        </split-view>
+        <slide [width]="slidewidth" [position]="position" [show]="showSlide" (closeDialog)="closeSlideDialog($event)">
+            <div>
+                <div>{{slideMsg}}</div>
+                <div style="width:100%">
+                    <button  class="Savebutton "type="button" (click)="okDeleteRestore($event,slideAction)">Yes</button>
+                    <button  class="Savebutton "type="button" (click)="cancelClick($event)">No</button>
+                </div>
+            </div>
+        </slide>
+    </content>
+</page>

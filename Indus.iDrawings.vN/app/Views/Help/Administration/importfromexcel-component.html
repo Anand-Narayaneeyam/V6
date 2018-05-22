@@ -1,0 +1,115 @@
+﻿<page [pagetitle]="pagePath">
+    <pagepath>
+    </pagepath>
+    <content>
+        <section title="Import from Excel - Space Data" [isExpanded]="sectionExpansionStatus[0].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div *ngIf="sectionExpansionStatus[0].isExpanded">
+
+                <p>The Excel import tools facilitate importing Space, Employee and Asset data. It is possible to insert new records or update the existing ones using the insert or update mode for the import. (For space data, only update mode is possible, since all space records are inserted automatically when a drawing is unlocked) Separate links are provided for importing the data of each module, and its lookup tables.</p>
+                <p>This Space data import utility enables the Administrator to import the Space details from an Excel sheet into iDrawings<sup>®</sup> and link it to the Space data of Space module. The space records have to be available in the iDrawings<sup>®</sup> database by uploading and unlocking the corresponding drawings. The data import can be done based on linking the Space Key, Room Number or Space Handle. For linking based on Room No., the Room Nos. will have to be manually entered into the database through iDrawings<sup>®</sup> for all the spaces before importing. </p>
+                <p>The User can make use of the Excel sheets exported from the data grid of space for importing the space details with Room No. For doing this, first search the Space details by selecting the Site name. Space data of all floors will be displayed. Export this to an excel sheet through <span class="header2">Export</span> <img class="helpicon" src="Content/Icons/exportN.png" alt="Export" />   icon and enter all the required data including Room No with respect to the Space Key and Space Handle in this sheet. This sheet can be used for importing data again to floors with the same drawings.</p>
+                <p>The column type in the Excel sheet should be of the same type as the iDrawings<sup>®</sup> data field. e.g. Space key should be of Text type, Date fields should be of Date type and dd mmm yyyy (e.g. 10 Dec 1980) format. </p>
+                <p>The columns in the Excel sheet should be mapped to the data fields in the iDrawings<sup>®</sup> Space module. The main static fields in iDrawings<sup>®</sup> Space module are Site Name, Building Name, Floor Name, Room No, Space Key, Space Category Name, Space Function, Space Standard, Space Assignment Type , Seating Capacity and Organizational Units. Mapping of Site, Building, and Floor is mandatory. Additionally, the Space Key, the Room No or Space Handle has to be mapped based on which field is linked. </p>
+                <p>If field Space Assign Type is mapped, it is mandatory to map the field Seating Capacity.</p>
+                <p>Additional fields, if required, should be created using the Additional Data Fields setup option in the Space module first, and mapped to the columns in the Excel sheet.</p>
+                <p>For the data import, the Excel file that contains the Space details should be specified first. The Administrator can use the Browse button, to browse and pick up the file. The work sheets in the Excel file will be listed by name in the Work Sheet combo box automatically. Select the required sheet. A mapping table will now be displayed showing the Excel sheet columns and the iDrawings<sup>®</sup> columns. If any mapping was done earlier it will be shown, otherwise the iDrawings<sup>®</sup> column will be shown as Not Selected.</p>
+                <p><span class="header1">Configure:</span> Click the Configure button to map the Excel sheet columns to the Space data fields of iDrawings<sup>®</sup>. The columns can be mapped by selecting the corresponding field from the combo box and then saving it.</p>
+                <p><span class="header1">Import:</span> Click the Import button to import the spread sheet data to the iDrawings<sup>®</sup> database and link it to the corresponding Spaces. After the import operation all records in the excel sheet will be listed in the data grid with a comment in the Comment column.</p>
+                <p>If the file is linked correctly, the comment column will show ‘Data saved’. If any error occurs while importing, the details of the error will be shown in the comment column. All the error records will be shown highlighted. If any column is reported as ‘Required’, the data for that column has to be provided in the Excel sheet. If any column is reported as ‘does not exist’, a match for the value provided in the Excel sheet has not been found in iDrawings<sup>®</sup>.This could be due to spelling mistakes or due to such a record not being present in the iDrawings<sup>®</sup> database </p>
+                <p><span class="header1">Export:</span> Click <span class="header2">Export </span> <img class="helpicon" src="Content/Icons/exportN.png" alt="Export" /> icon to export all the details in the data grid into an Excel file. </p>
+
+            </div>
+        </section>
+        <section title="Import from Excel - Employee Data" [isExpanded]="sectionExpansionStatus[1].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div *ngIf="sectionExpansionStatus[1].isExpanded">
+
+                <p>This Employee data import utility enables the Administrator to import the Employee details from an Excel sheet into iDrawings<sup>®</sup> and link the Employee data of Employee module. The columns in the Excel sheet should be mapped to the data fields in the iDrawings<sup>®</sup> Employee module. The column type in the Excel sheet should be of the same type as the iDrawings<sup>®</sup> field type. E.g. Employee code should be of Text type, Date fields should be of Date type and dd mmm yyyy (e.g. 10 Dec 1980) format. </p>
+                <p>The linking can be done either related by Space Key or by Room No. For linking based on Room No., the Room Nos. will have to be manually entered into the database through iDrawings<sup>®</sup> for all the spaces before importing. </p>
+                <p>The main static fields in iDrawings<sup>®</sup> Employee module are Site Name, Building Name, Floor Name, Room No, Space Key, Employee Code, Employee Name (First Name, Middle Name, Last Name), Title, Supervisor and Organizational Units. Mapping of Site, Building, Floor, Employee First Name, Employee Last Name and Employee Code is mandatory for both Space Key based and Room No. based linking. Additionally, either the Space Key or the Room No has to be mapped based on which field is linked.</p>
+                <p>To map the Supervisor Name with a corresponding Employee Name in iDrawings<sup>®</sup>, the user has to enter the Employee Code of the Supervisor to be mapped in the Excel sheet.</p>
+                <p>Mapping of Site, Building, Floor and Room No/Space Key are mandatory if location has to be specified. For specifying the location, Site, Building, Floor, and Room No/Space key are required. If these fields are blank in the Excel sheet employees are imported and saved as unassigned employees. </p>
+                <p>Additional columns, if required, should be created using the Additional Data Fields in the Employee module first, and mapped to the columns in the Excel sheet.</p>
+                <p>For the data import, the Excel file that contains the Employee details should be specified first. The Administrator can use the Browse button, to browse and pick up the file. The work sheets in the excel file will be listed by name in the Work Sheet combo box automatically. On selecting the required sheet a mapping table will be displayed showing the Excel sheet columns and the iDrawings<sup>®</sup> data fields. If any mapping was done earlier it will be shown, otherwise the iDrawings<sup>®</sup> column will be shown as Not Selected.</p>
+                <p>Two import modes are provided to import the data. By default, the Insert option is enabled. For importing new employee data, this option has to be selected. For updating data of existing employees, the Update option has to be selected. If a new field has to be added, or if only the data in a few fields have to be updated, only the key field and the fields that are to be added or updated need be mapped, and the Update option selected. The other fields will remain unchanged. </p>
+                <p>Note: Site, Building, Floor, and Room No/Space Key fields will have to be specified if space is to be specified.</p>
+                <p>Note: It is not necessary to map the Site, Building, Floor and Room No./Space Key/Space Handle columns while updating Unassigned Employee details. If these columns are not mapped or if the employee is of the status Retired, Resigned, Transferred and Terminated then the Employees will be unassigned if any of the column have blank data after importing.</p>
+                <p><span class="header1">Configure:</span> Click the Configure button to map the Excel sheet columns to the Employee data fields of iDrawings<sup>®</sup>. The columns can be mapped by selecting the corresponding field from the combo box and then saving it.</p>
+                <p><span class="header1">Import:</span> Click the Import button to import the spread sheet data to the iDrawings<sup>®</sup> database and link it to the corresponding Employee details. After the import operation all records in the excel sheet will be listed in the data grid with a comment in the Comment column.If the file is linked correctly, the comment column will show ‘Data saved’/Data updated. If any error occurs while importing, the details of the error will be shown in the comment column. All the error records will be shown highlighted. If any column is reported as ‘Required’, the data for that column has to be provided in the Excel sheet. If any column is reported as ‘does not exist’, a match for the value provided in the Excel sheet has not been found in iDrawings<sup>®</sup>. This could be due to spelling mistakes or due to such a record not being present in the iDrawings<sup>®</sup> database</p>
+                <p><span class="header1">Export:</span> Click <span class="header2">Export</span> <img class="helpicon" src="Content/Icons/exportN.png" alt="Export" /> icon to export all the details in the data grid into an Excel file. </p>
+
+
+            </div>
+        </section>
+        <section title="Import from Excel - Asset Data" [isExpanded]="sectionExpansionStatus[2].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div *ngIf="sectionExpansionStatus[2].isExpanded">
+
+
+                <p>This Asset data import utility enables the Administrator to import the details of Assets from an Excel sheet into iDrawings<sup>®</sup> and link the data of Assets module. The columns in the Excel sheet should be mapped to the data fields in the iDrawings<sup>®</sup> Assets module. The column type in the Excel sheet should be of the same type as the iDrawings<sup>®</sup> field type. E.g. Space key should be of Text type, Date fields should be of Date type and dd mmm yyyy (e.g. 10 Dec 1980) format. </p>
+                <p>The main static fields in iDrawings<sup>®</sup> Assets module are Equipment Class Name, Equipment No, Equipment No Prefix, Site Name, Building Name, Floor Name, Room No and Space Key. Mapping of Equipment No, Equipment Class Name and Equipment No Prefix fields are mandatory for the import. Mapping of Site, Building, Floor and Room No/Space Key are mandatory if location has to be specified. </p>
+                <p>For specifying the location, Site, Building, Floor, and Room No/Space key are required. If these fields are blank in the Excel sheet, the imported Assets will be saved as unassigned Assets. </p>
+                <p>Common Attributes, if required, should be created using the Common Attributes setup option in the Assets module first, and mapped to the columns in the Excel sheet. Likewise Class Attributes, if required, should be created using the Class Attributes setup option. </p>
+                <p>For the data import, the excel file that contains the Asset details should be specified first. The Administrator can use the Browse button, to browse and pick up the file. The work sheets in the excel file will be listed by name in the Work Sheet combo box automatically. On selecting the required sheet a mapping table will be displayed showing the Excel sheet columns and the iDrawings<sup>®</sup> data fields. If any mapping was done earlier it will be shown, otherwise the iDrawings<sup>®</sup> column will be shown as Not Selected.</p>
+                <p>For importing only Common Attributes, user has to select the Option ‘Common’. In this case, all the Asset data can be in a single Excel sheet.  If both Class Attributes and Common attributes are required, user has to select the ‘Class Specific’ option and the specific Class from the Combo box. In this case, a separate Excel sheet is required for the data of each Asset class, and the data has to be imported one class at a time. The mapping of fields has to be done separately for each class and saved. </p>
+                <p>Two import modes are provided to import the data. By default, the Insert option is enabled. For importing new Assets data, this option has to be selected. For updating data of existing Assets, the Update option has to be selected. If a new field has to be added, or if only the data in a few fields have to be updated, only the key field and the fields that are to be added or updated need be mapped, and the Update option selected. The other fields will remain unchanged. </p>
+                <p>Note: Site, Building, Floor, and Room No/Space Key fields will have to be specified if space is to be specified.</p>
+                <p><span class="header1">Configure:</span> Click the Configure button to map the Excel sheet columns to the Assets data fields of iDrawings<sup>®</sup>. The columns can be mapped by selecting the corresponding field from the combo box and then saving it.</p>
+                <p><span class="header1">Import: </span>  Click the Import button to import the spread sheet data to the iDrawings<sup>®</sup> database and link it to the corresponding Assets. After the import operation all records in the excel sheet will be listed in the data grid with a comment in the Comment column. If the file is linked correctly, the comment column will show ‘Data saved’/Data updated. If any error occurs while importing, the details of the error will be shown in the comment column. All the error records will be shown highlighted. If any column is reported as ‘Required’, the data for that column has to be provided in the Excel sheet. If any column is reported as ‘does not exist’, a match for the value provided in the Excel sheet has not been found in iDrawings<sup>®</sup>. This could be due to spelling mistakes or due to such a record not being present in the iDrawings<sup>®</sup> database</p>
+                <p><span class="header1">Export: </span>  Click <span class="header2">Export</span> <img class="helpicon" src="Content/Icons/exportN.png" alt="Export" />  icon to export all the details in the data grid into an Excel file. </p>
+
+
+            </div>
+        </section>
+        <section title="Import from Excel - Furniture Data" [isExpanded]="sectionExpansionStatus[3].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div *ngIf="sectionExpansionStatus[3].isExpanded">
+
+            </div>
+        </section>
+    </content>
+</page>
+<style type="text/css">
+    h3.Mainheader {
+        color: #178AE8;
+    }
+
+    .header1 {
+        font-weight: bold;
+        color: #178AE8;
+    }
+
+    .header2 {
+        font-weight: normal;
+        color: #178AE8;
+    }
+
+    p {
+        margin-left: 38px;
+        font-size: 13px;
+        margin-right: 3em;
+    }
+
+    .header3 {
+        font-weight: bold;
+        color: black;
+    }
+    /**/ h1 {
+        color: #178AE8;
+        font-size: 1.3em;
+        margin-left: 38px;
+    }
+
+    h2 {
+        color: #178AE8;
+        font-size: 1em;
+        margin-left: 38px;
+    }
+
+    .config {
+        background-color: #178AE8;
+    }
+
+    .helpicon {
+        vertical-align: baseline;
+        width: 20px;
+        height: 20px;
+    }
+</style>

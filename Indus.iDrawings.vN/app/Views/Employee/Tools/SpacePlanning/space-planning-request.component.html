@@ -1,0 +1,29 @@
+﻿<page >
+
+    <div style="margin-top:10px">
+        <sort *ngIf="fields && sourceData" [fieldNames]="fields" [listItems]=sourceData (sortEvent)="onSorting($event)"></sort>
+    </div>
+    <submenu>
+        <sub-menu [menuCard]=types [source]=menuData [count]=gridcount [menuIds]=enableMenu (onSubMenuChange)="onSubMenuChange($event);"> </sub-menu>
+    </submenu>
+    <content>
+        <div style="width:100%;float:left;">
+
+        </div>
+        <list style="height:85%;overflow-y:scroll;" [source]=sourceData [(selectedIds)]="selIds" [datakey]="'Id'">
+            <template let-item>
+                <card [datakeyValue]="item['Id']" (onCancelClick)="onCancel($event)" [enableDeleBtn]="'false'">
+                    <div *ngIf="fields">
+                        <field [fieldObject]="fields[1]" [fieldValue]="item['Project Name']"></field>
+                        <field [fieldObject]="fields[2]" [fieldValue]="item['Description']"></field>
+                        <field [fieldObject]="fields[3]" [fieldValue]="item['Project Manager']"></field>
+                        <field [fieldObject]="fields[4]" [fieldValue]="item['Move Requested By']"></field>
+                        <field [fieldObject]="fields[5]" [fieldValue]="item['Date Requested']"></field>
+                        <field [fieldObject]="fields[6]" [fieldValue]="item['Date to Complete']"></field>
+                    </div>
+                </card>
+            </template>
+        </list>
+        <!--<paging [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="pageChanged($event);"></paging>-->
+    </content>
+</page>

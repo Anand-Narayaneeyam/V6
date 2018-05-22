@@ -1,0 +1,33 @@
+﻿<div>
+    <slide [width]="slidewidth" [position]="position" [show]="showSlide" (closeDialog)="closeSlideDialog($event)">
+        <div>
+            <div>Are you sure you want to delete the selected Priority?  </div>
+            <div style="width:100%">
+                <button  class="Savebutton "type="button" (click)="okDelete($event)">Yes</button>
+                <button  class="Savebutton "type="button" (click)="cancelClick($event)">No</button>
+            </div>
+        </div>
+    </slide>
+
+    <submenu>
+        <sub-menu [menuCard]=types [source]=menuData [count]=totalItems [menuIds]=enableMenu (onSubMenuChange)="onSubMenuChange($event);"></sub-menu>
+    </submenu>
+
+    <split-view [splitviewObject]="splitviewInput" [pageTitle]="pageTitle" style="height: calc(100% - 35px);">
+        <primary-view>
+
+            <div style="height:100%;">
+                <div [ngClass]="totalItems > itemsPerPage ? 'pagewithPaging':'pagewithoutPaging'">
+                    <gridView [(dataSource)]="prioritySource" [properties]="inputItems" [columns]="fields" [refreshgrid]="refreshgrid" (onSorting)="onSort($event)"></gridView>
+                </div>
+                <div [style.height]="totalItems >itemsPerPage ? '35px' : '0px'">
+                    <paging [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="pageChanged($event);"></paging>
+                </div>
+            </div>
+
+        </primary-view>
+        <secondary-view>
+            <priority-add-edit *ngIf="splitviewInput.showSecondaryView && (menuClickValue == 1 ||menuClickValue == 2)" (submitSuccess)="submitReturn($event)" [btnName]="btnName" [selectedId]="inputItems.selectedIds" [fieldDetailsAdd]="fieldDetailsAdd1" [action]="action"></priority-add-edit>
+        </secondary-view>
+    </split-view>
+</div>

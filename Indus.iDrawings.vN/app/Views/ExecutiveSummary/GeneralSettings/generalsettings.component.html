@@ -1,0 +1,37 @@
+﻿<page [pagetitle]="pagePath">
+    <content>
+        <section  title="Dashboard Configuration" [isExpanded]="sectionExpansionStatus[0].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <dashboard-config *ngIf="sectionExpansionStatus[0].isExpanded"></dashboard-config>
+        </section>
+        <!--<section *ngIf="isSiteAdmin==false" title="Customer Support" [isExpanded]="sectionExpansionStatus[1].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <customer-support *ngIf="sectionExpansionStatus[1].isExpanded"></customer-support>
+        </section>
+        <section *ngIf="isAdmin==true" title="Organizational Structure" [isExpanded]="sectionExpansionStatus[2].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <organizational-structure *ngIf="sectionExpansionStatus[2].isExpanded"></organizational-structure>
+        </section>
+        <section *ngIf="isSiteAdmin==false" title="Attachment Categories" [isExpanded]="sectionExpansionStatus[3].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <attachment-categories *ngIf="sectionExpansionStatus[3].isExpanded"></attachment-categories>
+        </section>
+        <section *ngIf="isMailDomain==true" title="Mail Domains" [isExpanded]="sectionExpansionStatus[4].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <mail-domain *ngIf="sectionExpansionStatus[4].isExpanded"></mail-domain>
+        </section>
+        <section *ngIf="isSiteAdmin==false" title="Report Setup" [isExpanded]="sectionExpansionStatus[5].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <report-setup *ngIf="sectionExpansionStatus[5].isExpanded"></report-setup>
+        </section>
+        <section *ngIf="isSiteAdmin==false" title="Contact Details & Logo" [isExpanded]="sectionExpansionStatus[6].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <contact-details *ngIf="sectionExpansionStatus[6].isExpanded"></contact-details>
+        </section>
+        <section *ngIf="isSiteAdmin==false" title="Additional Data Fields" [isGrid]=true [isExpanded]="sectionExpansionStatus[8].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <additional-datafields *ngIf="sectionExpansionStatus[8].isExpanded" [addlDataFieldCategoryId]="0"></additional-datafields>
+        </section>
+        <section title="Organizational Units" [isExpanded]="sectionExpansionStatus[7].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <organizational-units *ngIf="sectionExpansionStatus[7].isExpanded"></organizational-units>
+        </section>
+        <section *ngIf="enableGLAccount" title="GL Accounts" [isExpanded]="sectionExpansionStatus[9].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <gl-accounts *ngIf="sectionExpansionStatus[9].isExpanded && enableGLAccount"></gl-accounts>
+        </section>
+        <section title="User Groups" [isExpanded]="sectionExpansionStatus[10].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <user-groups *ngIf="sectionExpansionStatus[10].isExpanded"></user-groups>
+        </section>-->
+    </content>
+</page>

@@ -1,0 +1,44 @@
+﻿{
+  "spaceData": [
+        {
+            "id": 0,
+            "title": "Add",
+            "image": "Add",
+            "path": null,
+            "subMenu": null,
+            "privilegeId": 413
+        },
+        {
+            "id": 1,
+            "title": "Edit",
+            "image": "Edit",
+            "path": null,
+            "subMenu": null,
+            "privilegeId": 413           
+        },
+        {
+            "id": 2,
+            "title": "Display Settings",
+            "image": "DisplaySettings",
+            "path": null,
+            "subMenu": null,
+            "privilegeId": 425   
+        },
+        {
+          "id": 6,
+          "title": "Attachments",
+          "image": "Attachments",
+          "path": null,
+          "subMenu": null,
+          "privilegeId": 424
+        },
+         {
+        "id": 7,
+        "title": "Resources",
+        "image": "Resources",
+        "path": null,
+        "subMenu": null,
+        "privilegeId": 413
+      }
+    ]
+}

@@ -1,0 +1,108 @@
+﻿{
+  "data": [
+    {
+      "FieldId": 1,
+      "FieldName": "Id",
+      "FieldType": 1,
+      "IsVisible": false,
+      "IsMandatory": false,
+      "IsDisabled": true,
+      "IsHiddenLabel": true,
+      "ReadOnlyMode": false,
+      "NotificationType": "return"
+    },
+    {
+      "FieldId": 2,
+      "FieldName": "Field Name",
+      "FieldType": 1,
+      "IsVisible": true,
+      "IsMandatory": true,
+      "IsDisabled": true,
+      "IsHiddenLabel": true,
+      "ReadOnlyMode": false,
+      "NotificationType": "return"
+    },
+    {
+      "FieldId": 3,
+      "FieldName": "Field Type",
+      "FieldType": 5,
+      "FieldValue": "0",
+      "IsVisible": true,
+      "IsMandatory": true,
+      "IsDisabled": true,
+      "IsHiddenLabel": true,
+      "ReadOnlyMode": false,
+      "IsMultiValued": true,
+      "MultiValuedDetails": {
+        "LookupValues": [
+          {
+            "Id": 1,
+            "Value": "Numeric"
+          },
+          {
+            "Id": 2,
+            "Value": "Single Line Text"
+          },
+          {
+            "Id": 3,
+            "Value": "Multi Line Text"
+          },
+          {
+            "Id": 4,
+            "Value": "Date"
+          },
+          {
+            "Id": 5,
+            "Value": "Integer"
+          }
+        ],
+        "PopupComponentName": null
+      },
+      "NotificationType": "return"
+    },
+    {
+      "FieldId": 4,
+      "FieldName": "Max Characters Allowed",
+      "FieldType": 2,
+      "IsVisible": false,
+      "IsMandatory": true,
+      "IsDisabled": true,
+      "IsHiddenLabel": true,
+      "ReadOnlyMode": false,
+      "NotificationType": "return"
+    },
+    {
+      "FieldId": 5,
+      "FieldName": "Mandatory",
+      "FieldType": 6,
+      "FieldValue": "",
+      "IsMandatory": false,
+      "IsHiddenLabel": true,
+      "IsVisible": true,
+      "IsDisabled": true,
+      "ReadOnlyMode": false
+    },
+    {
+      "FieldId": 6,
+      "FieldName": "Totalizable",
+      "FieldType": 6,
+      "FieldValue": "",
+      "IsMandatory": false,
+      "IsHiddenLabel": true,
+      "IsVisible": false,
+      "IsDisabled": true,
+      "ReadOnlyMode": true
+    },
+     {
+      "FieldId": 7,
+      "FieldName": "Validated",
+      "FieldType": 6,
+      "FieldValue": "",
+      "IsMandatory": false,
+      "IsHiddenLabel": true,
+      "IsVisible": true,
+      "IsDisabled": true,
+      "ReadOnlyMode": false
+    }
+  ]
+}

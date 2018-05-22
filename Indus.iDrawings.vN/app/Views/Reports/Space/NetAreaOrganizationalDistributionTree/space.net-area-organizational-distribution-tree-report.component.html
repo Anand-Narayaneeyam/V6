@@ -1,0 +1,8 @@
+﻿<tabs [selectedTab]="selectedTab" (getSelectedTab)="getSelectedTab($event)">
+    <tab tabTitle="Select Floors" closeButtonVisible="hidden">
+        <floorselectionreport *ngIf="selectedTab == 0" [Criteria]="selectedCriteria" [ReportCategoryId]="ReportCategoryId" (selectedIds)="submit($event)"></floorselectionreport>
+    </tab>
+    <tab *ngIf="next != undefined" tabTitle="Report" closeButtonVisible="hidden">
+        <space-net-area-organizational-distribution-report *ngIf="isInitialised" [Ids]="next" [reportBy]="selectedCriteria"></space-net-area-organizational-distribution-report>
+    </tab>
+</tabs>

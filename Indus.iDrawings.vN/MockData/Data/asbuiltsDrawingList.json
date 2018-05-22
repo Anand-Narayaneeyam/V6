@@ -1,0 +1,100 @@
+﻿{
+  "data": [
+    {
+      "Id": "1",
+      "Site": "S_05",
+      "Building": "ETS",
+      "Floor": "F1",
+      "Category": "Architectural",
+      "Description": "GeneralGeneral",
+      "Type": "2D Drawing",
+      "DWG File Name": "Consumers Energy CadillacMP.dwg",
+      "DWG File Size(KB)": "135",
+      "Uploaded By":"System Administrator",
+      "Uploaded On" :"10 Aug 2015"  
+    },
+       {
+      "Id": "2",
+      "Site": "S_2",
+      "Building": "ETS",
+      "Floor": "F1",
+      "Category": "Architectural",
+      "Description": "GeneralGeneral",
+      "Type": "2D Drawing",
+      "DWG File Name": "Consumers Energy CadillacMP.dwg",
+      "DWG File Size(KB)": "147",
+      "Uploaded By":"System Administrator",
+      "Uploaded On" :"10 Aug 2015"  
+    },
+       {
+      "Id": "3",
+      "Site": "S_03",
+      "Building": "ETS",
+      "Floor": "F1",
+      "Category": "Architectural",
+      "Description": "GeneralGeneral",
+      "Type": "2D Drawing",
+      "DWG File Name": "Consumers Energy CadillacMP.dwg",
+      "DWG File Size(KB)": "187",
+      "Uploaded By":"System Administrator",
+      "Uploaded On" :"10 Aug 2015"  
+    },
+    {
+      "Id": "4",
+      "Site": "S_04",
+      "Building": "ETS",
+      "Floor": "F1",
+      "Category": "Architectural",
+      "Description": "GeneralGeneral",
+      "Type": "2D Drawing",
+      "DWG File Name": "Consumers Energy CadillacMP.dwg",
+      "DWG File Size(KB)": "128",
+      "Uploaded By": "System Administrator",
+      "Uploaded On": "10 Aug 2015"
+    },
+    {
+      "Id": "",
+      "Site": "S_05",
+      "Building": "ETS",
+      "Floor": "F1",
+      "Category": "Architectural",
+      "Description": "GeneralGeneral",
+      "Type": "2D Drawing",
+      "DWG File Name": "Consumers Energy CadillacMP.dwg",
+      "DWG File Size(KB)": "121",
+      "Uploaded By": "System Administrator",
+      "Uploaded On": "10 Aug 2015"
+    },
+    {
+      "Id": "6",
+      "Site": "S_06",
+      "Building": "ETS",
+      "Floor": "F6",
+      "Category": "Architectural",
+      "Description": "GeneralGeneral",
+      "Type": "2D Drawing",
+      "DWG File Name": "Consumers Energy CadillacMP.dwg",
+      "DWG File Size(KB)": "149",
+      "Uploaded By": "System Administrator",
+      "Uploaded On": "10 Aug 2015"
+    },
+        {
+      "Id": "7",
+      "Site": "S_07",
+      "Building": "ETS",
+      "Floor": "F1",
+      "Category": "Architectural",
+      "Description": "GeneralGeneral",
+      "Type": "2D Drawing",
+      "DWG File Name": "Consumers Energy CadillacMP.dwg",
+      "DWG File Size(KB)": "121",
+      "Uploaded By":"System Administrator",
+      "Uploaded On" :"10 Aug 2015"  
+    }
+  ],
+     "count": [
+        {
+            "TotalItems": "20"
+        }
+    ]
+}

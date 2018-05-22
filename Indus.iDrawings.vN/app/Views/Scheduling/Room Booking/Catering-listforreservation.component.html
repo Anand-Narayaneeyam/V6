@@ -1,0 +1,10 @@
+﻿<div>
+    <split-view [splitviewObject]="splitviewInput" [pageTitle]="pageTitle">
+        <primary-view>
+            <DynamicFields [dataSource]="CateringField" (dynamicListAddEmit)="listbuttonadd($event)" (dynamicListRemoveEmit)="listbuttondelete($event)"></DynamicFields>
+        </primary-view>
+        <secondary-view>
+            <Catering-listCustomadd *ngIf="splitviewInput.showSecondaryView" (submitSuccess)="OnSuccessfulSubmit($event)"></Catering-listCustomadd>
+        </secondary-view>
+    </split-view>
+</div>

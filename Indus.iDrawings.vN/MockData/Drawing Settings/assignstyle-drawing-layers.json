@@ -1,0 +1,146 @@
+﻿{
+  "data": [
+    {
+      "Id": 1,
+      "Select All": true,
+      "Drawing Layer": "WALLS",
+      "Module": "Exec Summary"
+
+    },
+    {
+      "Id": 2,
+      "Select All": true,
+      "Drawing Layer": "WALLS",
+      "Module": "Exec Summary"
+    },
+    {
+      "Id": 3,
+      "Select All": true,
+      "Drawing Layer": "WALLS",
+      "Module": "Exec Summary"
+    },
+    {
+      "Id": 4,
+      "Select All": true,
+      "Drawing Layer": "WALLS",
+      "Module": "As-Builts"
+    },
+    {
+      "Id": 5,
+      "Select All": true,
+      "Drawing Layer": "WALLS",
+      "Module": "As-Builts"
+
+    },
+    {
+      "Id": 6,
+      "Select All": true,
+      "Drawing Layer": "WALLS",
+      "Module": "As-Builts"
+
+    },
+    {
+      "Id": 7,
+      "Select All": true,
+      "Drawing Layer": "WALLS",
+      "Module": "Projects"
+
+    },
+    {
+      "Id": 8,
+      "Select All": true,
+      "Drawing Layer": "WALLS",
+      "Module": "Projects"
+
+    },
+    {
+      "Id": 9,
+      "Select All": true,
+      "Drawing Layer": "WALLS",
+      "Module": "Projects"
+
+    },
+    {
+      "Id": 10,
+      "Select All": true,
+      "Drawing Layer": "WALLS",
+      "Module": "Space"
+
+    }
+  ],
+  "count": [
+    {
+      "TotalItems": "20"
+    }
+  ],
+    "paging": [
+    {
+      "Id": 11,
+      "Select All": true,
+      "Drawing Layer": "FireWall",
+      "Module": "Fire and Safety"
+
+    },
+    {
+      "Id": 12,
+      "Select All": true,
+      "Drawing Layer": "FireWall",
+      "Module": "Fire and Safety"
+    },
+    {
+      "Id": 13,
+      "Select All": true,
+      "Drawing Layer": "WALLS",
+      "Module": "Fire and Safety"
+    },
+    {
+      "Id": 14,
+      "Select All": true,
+      "Drawing Layer": "CD",
+      "Module": "Fire and Safety"
+    },
+    {
+      "Id": 15,
+      "Select All": true,
+      "Drawing Layer": "CD",
+      "Module": "Fire and Safety"
+
+    },
+    {
+      "Id": 16,
+      "Select All": true,
+      "Drawing Layer": "FireWall",
+      "Module": "As-Builts"
+
+    },
+    {
+      "Id": 17,
+      "Select All": true,
+      "Drawing Layer": "WALLS",
+      "Module": "Projects"
+
+    },
+    {
+      "Id": 18,
+      "Select All": true,
+      "Drawing Layer": "CD",
+      "Module": "Projects"
+
+    },
+    {
+      "Id": 19,
+      "Select All": true,
+      "Drawing Layer": "WALLS",
+      "Module": "Projects"
+
+    },
+    {
+      "Id": 20,
+      "Select All": true,
+      "Drawing Layer": "WALLS",
+      "Module": "Space"
+
+    }
+  ]
+}
+

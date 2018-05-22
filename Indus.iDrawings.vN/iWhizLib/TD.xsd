@@ -1,0 +1,743 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="http://opendesign.com/xml/TeighaFormat.xsd"
+    elementFormDefault="qualified"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns="http://opendesign.com/xml/TeighaFormat.xsd"
+    xmlns:oda="http://opendesign.com/xml"
+    version="1.0">
+
+  <!-- xmlns:oda is a generic namespace for attributes like "version" -->
+
+  <xs:complexType name="OdDbHandle">
+    <xs:simpleContent>
+      <xs:extension base="xs:unsignedLong"/>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:complexType name="OdGePoint3d">
+    <xs:sequence>
+      <xs:element name="X" type="xs:double"/>
+      <xs:element name="Y" type="xs:double"/>
+      <xs:element name="Z" type="xs:double"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="OdGeVector3d">
+    <xs:sequence>
+      <xs:element name="X" type="xs:double"/>
+      <xs:element name="Y" type="xs:double"/>
+      <xs:element name="Z" type="xs:double"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="OdGePoint2d">
+    <xs:sequence>
+      <xs:element name="X" type="xs:double"/>
+      <xs:element name="Y" type="xs:double"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="OdGeVector2d">
+    <xs:sequence>
+      <xs:element name="X" type="xs:double"/>
+      <xs:element name="Y" type="xs:double"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="OdGeScale3d">
+    <xs:sequence>
+      <xs:element name="SX" type="xs:double"/>
+      <xs:element name="SY" type="xs:double"/>
+      <xs:element name="SZ" type="xs:double"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:simpleType name="OdDbObjectReferenceType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="SoftPointer"/>
+      <xs:enumeration value="HardPointer"/>
+      <xs:enumeration value="SoftOwnership"/>
+      <xs:enumeration value="HardOwnership"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="OdDbObjectReference">
+    <xs:simpleContent>
+      <xs:extension base="xs:unsignedLong">
+        <xs:attribute name="ReferenceType" type="OdDbObjectReferenceType"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:complexType name="OdDbSoftPointerId">
+    <xs:simpleContent>
+      <xs:restriction base="OdDbObjectReference">
+        <xs:attribute name="ReferenceType" type="OdDbObjectReferenceType" fixed="SoftPointer"/>
+      </xs:restriction>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:complexType name="OdDbHardPointerId">
+    <xs:simpleContent>
+      <xs:restriction base="OdDbObjectReference">
+        <xs:attribute name="ReferenceType" type="OdDbObjectReferenceType" fixed="HardPointer"/>
+      </xs:restriction>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:complexType name="OdDbSoftOwnershipId">
+    <xs:simpleContent>
+      <xs:restriction base="OdDbObjectReference">
+        <xs:attribute name="ReferenceType" type="OdDbObjectReferenceType" fixed="SoftOwnership"/>
+      </xs:restriction>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:complexType name="OdDbHardOwnershipId">
+    <xs:simpleContent>
+      <xs:restriction base="OdDbObjectReference">
+        <xs:attribute name="ReferenceType" type="OdDbObjectReferenceType" fixed="HardOwnership"/>
+      </xs:restriction>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:complexType name="OdCmColor.ColorName">
+    <xs:sequence>
+      <xs:element name="ColorName" type="xs:string"/>
+      <xs:element name="ColorBook" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="OdCmColor">
+    <xs:sequence>
+      <xs:element name="TrueColor" type="xs:int"/>
+      <xs:choice>
+        <xs:element name="NoColorName" type="OdDbEmptyData"/>
+        <xs:element name="ColorName" type="OdCmColor.ColorName"/>
+      </xs:choice>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:simpleType name="OdDbLineweight">
+    <xs:restriction base="xs:short">
+      <xs:enumeration value="0" id="kLnWt000"/>
+      <xs:enumeration value="5" id="kLnWt005"/>
+      <xs:enumeration value="9" id="kLnWt009"/>
+      <xs:enumeration value="13" id="kLnWt013"/>
+      <xs:enumeration value="15" id="kLnWt015"/>
+      <xs:enumeration value="18" id="kLnWt018"/>
+      <xs:enumeration value="20" id="kLnWt020"/>
+      <xs:enumeration value="25" id="kLnWt025"/>
+      <xs:enumeration value="30" id="kLnWt030"/>
+      <xs:enumeration value="35" id="kLnWt035"/>
+      <xs:enumeration value="40" id="kLnWt040"/>
+      <xs:enumeration value="50" id="kLnWt050"/>
+      <xs:enumeration value="53" id="kLnWt053"/>
+      <xs:enumeration value="60" id="kLnWt060"/>
+      <xs:enumeration value="70" id="kLnWt070"/>
+      <xs:enumeration value="80" id="kLnWt080"/>
+      <xs:enumeration value="90" id="kLnWt090"/>
+      <xs:enumeration value="100" id="kLnWt100"/>
+      <xs:enumeration value="106" id="kLnWt106"/>
+      <xs:enumeration value="120" id="kLnWt120"/>
+      <xs:enumeration value="140" id="kLnWt140"/>
+      <xs:enumeration value="158" id="kLnWt158"/>
+      <xs:enumeration value="200" id="kLnWt200"/>
+      <xs:enumeration value="211" id="kLnWt211"/>
+      <xs:enumeration value="-1" id="kLnWtByLayer"/>
+      <xs:enumeration value="-2" id="kLnWtByBlock"/>
+      <xs:enumeration value="-3" id="kLnWtByLwDefault"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="OdDbEndCaps">
+    <xs:restriction base="xs:short">
+      <xs:enumeration value="0" id="kEndCapNone"/>
+      <xs:enumeration value="1" id="kEndCapRound"/>
+      <xs:enumeration value="2" id="kEndCapAngle"/>
+      <xs:enumeration value="3" id="kEndCapSquare"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="OdDbJoinStyle">
+    <xs:restriction base="xs:short">
+      <xs:enumeration value="0" id="kJnStylNone"/>
+      <xs:enumeration value="1" id="kJnStylRound"/>
+      <xs:enumeration value="2" id="kJnStylAngle"/>
+      <xs:enumeration value="3" id="kJnStylFlat"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="OdDbPlotStyleNameType">
+    <xs:restriction base="xs:byte">
+      <xs:enumeration value="0" id="kPSNameByLayer"/>
+      <xs:enumeration value="1" id="kPSNameByBlock"/>
+      <xs:enumeration value="2" id="kPSNameIsDictDefault"/>
+      <xs:enumeration value="3" id="kPSNameById"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="OdDbUnitsValue">
+    <xs:restriction base="xs:short">
+      <xs:enumeration value="0" id="kUnitsUndefined"/>
+      <xs:enumeration value="1" id="kUnitsInches"/>
+      <xs:enumeration value="2" id="kUnitsFeet"/>
+      <xs:enumeration value="3" id="kUnitsMiles"/>
+      <xs:enumeration value="4" id="kUnitsMillimeters"/>
+      <xs:enumeration value="5" id="kUnitsCentimeters"/>
+      <xs:enumeration value="6" id="kUnitsMeters"/>
+      <xs:enumeration value="7" id="kUnitsKilometers"/>
+      <xs:enumeration value="8" id="kUnitsMicroinches"/>
+      <xs:enumeration value="9" id="kUnitsMils"/>
+      <xs:enumeration value="10" id="kUnitsYards"/>
+      <xs:enumeration value="11" id="kUnitsAngstroms"/>
+      <xs:enumeration value="12" id="kUnitsNanometers"/>
+      <xs:enumeration value="13" id="kUnitsMicrons"/>
+      <xs:enumeration value="14" id="kUnitsDecimeters"/>
+      <xs:enumeration value="15" id="kUnitsDekameters"/>
+      <xs:enumeration value="16" id="kUnitsHectometers"/>
+      <xs:enumeration value="17" id="kUnitsGigameters"/>
+      <xs:enumeration value="18" id="kUnitsAstronomical"/>
+      <xs:enumeration value="19" id="kUnitsLightYears"/>
+      <xs:enumeration value="20" id="kUnitsParsecs"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="OdDbDatabase" oda:version="1.0">
+    <xs:sequence>
+      <xs:element name="REQUIREDVERSIONS" type="xs:long"/>
+      <xs:element name="UnkDouble0" type="xs:double"/>
+      <xs:element name="UnkDouble1" type="xs:double"/>
+      <xs:element name="UnkDouble2" type="xs:double"/>
+      <xs:element name="UnkDouble3" type="xs:double"/>
+      <xs:element name="UnkString0" type="xs:string"/>
+      <xs:element name="UnkString1" type="xs:string"/>
+      <xs:element name="UnkString2" type="xs:string"/>
+      <xs:element name="UnkString3" type="xs:string"/>
+      <xs:element name="UnkLong0" type="xs:int"/>
+      <xs:element name="UnkLong1" type="xs:int"/>
+      <xs:element name="DIMASO" type="xs:boolean"/>
+      <xs:element name="DIMSHO" type="xs:boolean"/>
+      <xs:element name="PLINEGEN" type="xs:boolean"/>
+      <xs:element name="ORTHOMODE" type="xs:boolean"/>
+      <xs:element name="REGENMODE" type="xs:boolean"/>
+      <xs:element name="FILLMODE" type="xs:boolean"/>
+      <xs:element name="QTEXTMODE" type="xs:boolean"/>
+      <xs:element name="PSLTSCALE" type="xs:boolean"/>
+      <xs:element name="LIMCHECK" type="xs:boolean"/>
+      <xs:element name="USRTIMER" type="xs:boolean"/>
+      <xs:element name="SKPOLY" type="xs:boolean"/>
+      <xs:element name="ANGDIR" type="xs:boolean"/>
+      <xs:element name="SPLFRAME" type="xs:boolean"/>
+      <xs:element name="MIRRTEXT" type="xs:boolean"/>
+      <xs:element name="WORLDVIEW" type="xs:boolean"/>
+      <xs:element name="TILEMODE" type="xs:boolean"/>
+      <xs:element name="PLIMCHECK" type="xs:boolean"/>
+      <xs:element name="VISRETAIN" type="xs:boolean"/>
+      <xs:element name="DISPSILH" type="xs:boolean"/>
+      <xs:element name="PELLIPSE" type="xs:boolean"/>
+      <xs:element name="PROXYGRAPHICS" type="xs:short"/>
+      <xs:element name="TREEDEPTH" type="xs:short"/>
+      <xs:element name="LUNITS" type="xs:short"/>
+      <xs:element name="LUPREC" type="xs:short"/>
+      <xs:element name="AUNITS" type="xs:short"/>
+      <xs:element name="AUPREC" type="xs:short"/>
+      <xs:element name="ATTMODE" type="xs:short"/>
+      <xs:element name="PDMODE" type="xs:short"/>
+      <xs:element name="USERI1" type="xs:short"/>
+      <xs:element name="USERI2" type="xs:short"/>
+      <xs:element name="USERI3" type="xs:short"/>
+      <xs:element name="USERI4" type="xs:short"/>
+      <xs:element name="USERI5" type="xs:short"/>
+      <xs:element name="SPLINESEGS" type="xs:short"/>
+      <xs:element name="SURFU" type="xs:short"/>
+      <xs:element name="SURFV" type="xs:short"/>
+      <xs:element name="SURFTYPE" type="xs:short"/>
+      <xs:element name="SURFTAB1" type="xs:short"/>
+      <xs:element name="SURFTAB2" type="xs:short"/>
+      <xs:element name="SPLINETYPE" type="xs:short"/>
+      <xs:element name="SHADEDGE" type="xs:short"/>
+      <xs:element name="SHADEDIF" type="xs:short"/>
+      <xs:element name="UNITMODE" type="xs:short"/>
+      <xs:element name="MAXACTVP" type="xs:short"/>
+      <xs:element name="ISOLINES" type="xs:short"/>
+      <xs:element name="CMLJUST" type="xs:short"/>
+      <xs:element name="TEXTQLTY" type="xs:short"/>
+      <xs:element name="LTSCALE" type="xs:double"/>
+      <xs:element name="TEXTSIZE" type="xs:double"/>
+      <xs:element name="TRACEWID" type="xs:double"/>
+      <xs:element name="SKETCHINC" type="xs:double"/>
+      <xs:element name="FILLETRAD" type="xs:double"/>
+      <xs:element name="THICKNESS" type="xs:double"/>
+      <xs:element name="ANGBASE" type="xs:double"/>
+      <xs:element name="PDSIZE" type="xs:double"/>
+      <xs:element name="PLINEWID" type="xs:double"/>
+      <xs:element name="USERR1" type="xs:double"/>
+      <xs:element name="USERR2" type="xs:double"/>
+      <xs:element name="USERR3" type="xs:double"/>
+      <xs:element name="USERR4" type="xs:double"/>
+      <xs:element name="USERR5" type="xs:double"/>
+      <xs:element name="CHAMFERA" type="xs:double"/>
+      <xs:element name="CHAMFERB" type="xs:double"/>
+      <xs:element name="CHAMFERC" type="xs:double"/>
+      <xs:element name="CHAMFERD" type="xs:double"/>
+      <xs:element name="FACETRES" type="xs:double"/>
+      <xs:element name="CMLSCALE" type="xs:double"/>
+      <xs:element name="CELTSCALE" type="xs:double"/>
+      <xs:element name="MENUNAME" type="xs:string"/>
+      <xs:element name="TDUCREATE" type="xs:dateTime"/>
+      <xs:element name="TDUUPDATE" type="xs:dateTime"/>
+      <xs:element name="TDINDWG" type="xs:dateTime"/>
+      <xs:element name="TDUSRTIMER" type="xs:dateTime"/>
+      <xs:element name="CECOLOR" type="OdCmColor"/>
+      <xs:element name="HANDSEED" type="OdDbHandle"/>
+      <xs:element name="CLAYER" type="OdDbHardPointerId"/>
+      <xs:element name="TEXTSTYLE" type="OdDbHardPointerId"/>
+      <xs:element name="CELTYPE" type="OdDbHardPointerId"/>
+      <xs:element name="CMATERIAL" type="OdDbHardPointerId"/>
+      <xs:element name="DIMSTYLE" type="OdDbHardPointerId"/>
+      <xs:element name="CMLSTYLE" type="OdDbHardPointerId"/>
+      <xs:element name="PSVPSCALE" type="xs:double"/>
+      <xs:element name="PINSBASE" type="OdGePoint3d"/>
+      <xs:element name="PEXTMIN" type="OdGePoint3d"/>
+      <xs:element name="PEXTMAX" type="OdGePoint3d"/>
+      <xs:element name="PLIMMIN" type="OdGePoint2d"/>
+      <xs:element name="PLIMMAX" type="OdGePoint2d"/>
+      <xs:element name="PELEVATION" type="xs:double"/>
+      <xs:element name="PUCSORG" type="OdGePoint3d"/>
+      <xs:element name="PUCSXDIR" type="OdGeVector3d"/>
+      <xs:element name="PUCSYDIR" type="OdGeVector3d"/>
+      <xs:element name="PUCSNAME" type="OdDbHardPointerId"/>
+      <xs:element name="CurPUcsOrthoRefId" type="OdDbHardPointerId"/>
+      <xs:element name="PUCSORTHOVIEW" type="xs:short"/>
+      <xs:element name="PUCSBASE" type="OdDbHardPointerId"/>
+      <xs:element name="PUCSORGTOP" type="OdGePoint3d"/>
+      <xs:element name="PUCSORGBOTTOM" type="OdGePoint3d"/>
+      <xs:element name="PUCSORGLEFT" type="OdGePoint3d"/>
+      <xs:element name="PUCSORGRIGHT" type="OdGePoint3d"/>
+      <xs:element name="PUCSORGFRONT" type="OdGePoint3d"/>
+      <xs:element name="PUCSORGBACK" type="OdGePoint3d"/>
+      <xs:element name="INSBASE" type="OdGePoint3d"/>
+      <xs:element name="EXTMIN" type="OdGePoint3d"/>
+      <xs:element name="EXTMAX" type="OdGePoint3d"/>
+      <xs:element name="LIMMIN" type="OdGePoint2d"/>
+      <xs:element name="LIMMAX" type="OdGePoint2d"/>
+      <xs:element name="ELEVATION" type="xs:double"/>
+      <xs:element name="UCSORG" type="OdGePoint3d"/>
+      <xs:element name="UCSXDIR" type="OdGeVector3d"/>
+      <xs:element name="UCSYDIR" type="OdGeVector3d"/>
+      <xs:element name="UCSNAME" type="OdDbHardPointerId"/>
+      <xs:element name="CurUcsOrthoRefId" type="OdDbHardPointerId"/>
+      <xs:element name="UCSORTHOVIEW" type="xs:short"/>
+      <xs:element name="UCSBASE" type="OdDbHardPointerId"/>
+      <xs:element name="UCSORGTOP" type="OdGePoint3d"/>
+      <xs:element name="UCSORGBOTTOM" type="OdGePoint3d"/>
+      <xs:element name="UCSORGLEFT" type="OdGePoint3d"/>
+      <xs:element name="UCSORGRIGHT" type="OdGePoint3d"/>
+      <xs:element name="UCSORGFRONT" type="OdGePoint3d"/>
+      <xs:element name="UCSORGBACK" type="OdGePoint3d"/>
+
+      <xs:element name="Dimpost" type="xs:string"/>
+      <xs:element name="Dimapost" type="xs:string"/>
+      <xs:element name="Dimscale" type="xs:double"/>
+      <xs:element name="Dimasz" type="xs:double"/>
+      <xs:element name="Dimexo" type="xs:double"/>
+      <xs:element name="Dimdli" type="xs:double"/>
+      <xs:element name="Dimexe" type="xs:double"/>
+      <xs:element name="Dimrnd" type="xs:double"/>
+      <xs:element name="Dimdle" type="xs:double"/>
+      <xs:element name="Dimtp" type="xs:double"/>
+      <xs:element name="Dimtm" type="xs:double"/>
+      <xs:element name="Dimfxl" type="xs:double"/>
+      <xs:element name="Dimjogang" type="xs:double"/>
+      <xs:element name="Dimtfill" type="xs:short"/>
+      <xs:element name="Dimtfillclr" type="OdCmColor"/>
+      <xs:element name="Dimtol" type="xs:boolean"/>
+      <xs:element name="Dimlim" type="xs:boolean"/>
+      <xs:element name="Dimtih" type="xs:boolean"/>
+      <xs:element name="Dimtoh" type="xs:boolean"/>
+      <xs:element name="Dimse1" type="xs:boolean"/>
+      <xs:element name="Dimse2" type="xs:boolean"/>
+      <xs:element name="Dimtad" type="xs:short"/>
+      <xs:element name="Dimzin" type="xs:short"/>
+      <xs:element name="Dimazin" type="xs:short"/>
+      <xs:element name="Dimarcsym" type="xs:short"/>
+      <xs:element name="Dimtxt" type="xs:double"/>
+      <xs:element name="Dimcen" type="xs:double"/>
+      <xs:element name="Dimtsz" type="xs:double"/>
+      <xs:element name="Dimaltf" type="xs:double"/>
+      <xs:element name="Dimlfac" type="xs:double"/>
+      <xs:element name="Dimtvp" type="xs:double"/>
+      <xs:element name="Dimtfac" type="xs:double"/>
+      <xs:element name="Dimgap" type="xs:double"/>
+      <xs:element name="Dimaltrnd" type="xs:double"/>
+      <xs:element name="Dimalt" type="xs:boolean"/>
+      <xs:element name="Dimaltd" type="xs:short"/>
+      <xs:element name="Dimtofl" type="xs:boolean"/>
+      <xs:element name="Dimsah" type="xs:boolean"/>
+      <xs:element name="Dimtix" type="xs:boolean"/>
+      <xs:element name="Dimsoxd" type="xs:boolean"/>
+
+      <xs:element name="Dimclrd" type="OdCmColor"/>
+      <xs:element name="Dimclre" type="OdCmColor"/>
+      <xs:element name="Dimclrt" type="OdCmColor"/>
+      <xs:element name="Dimadec" type="xs:short"/>
+      <xs:element name="Dimdec" type="xs:short"/>
+      <xs:element name="Dimtdec" type="xs:short"/>
+      <xs:element name="Dimaltu" type="xs:short"/>
+      <xs:element name="Dimalttd" type="xs:short"/>
+      <xs:element name="Dimaunit" type="xs:short"/>
+      <xs:element name="Dimfrac" type="xs:short"/>
+      <xs:element name="Dimlunit" type="xs:short"/>
+      <xs:element name="Dimdsep" type="xs:short"/>
+      <xs:element name="Dimtmove" type="xs:short"/>
+      <xs:element name="Dimjust" type="xs:short"/>
+      <xs:element name="Dimsd1" type="xs:boolean"/>
+      <xs:element name="Dimsd2" type="xs:boolean"/>
+      <xs:element name="Dimtolj" type="xs:unsignedByte"/>
+      <xs:element name="Dimtzin" type="xs:unsignedByte"/>
+      <xs:element name="Dimaltz" type="xs:unsignedByte"/>
+      <xs:element name="Dimalttz" type="xs:unsignedByte"/>
+      <xs:element name="Dimupt" type="xs:boolean"/>
+      <xs:element name="Dimatfit" type="xs:short"/>
+      <xs:element name="Dimfxlon" type="xs:boolean"/>
+      <xs:element name="Dimtxtdirection" type="xs:boolean"/>
+      <xs:element name="Dimaltmzf" type="xs:double"/>
+      <xs:element name="Dimaltmzs" type="xs:string"/>
+      <xs:element name="Dimmzf" type="xs:double"/>
+      <xs:element name="Dimmzs" type="xs:string"/>
+      <xs:element name="Dimtxsty" type="OdDbHardPointerId"/>
+      <xs:element name="Dimldrblk" type="OdDbHardPointerId"/>
+      <xs:element name="Dimblk" type="OdDbHardPointerId"/>
+      <xs:element name="Dimblk1" type="OdDbHardPointerId"/>
+      <xs:element name="Dimblk2" type="OdDbHardPointerId"/>
+      <xs:element name="Dimltype" type="OdDbHardPointerId"/>
+      <xs:element name="Dimltex1" type="OdDbHardPointerId"/>
+      <xs:element name="Dimltex2" type="OdDbHardPointerId"/>
+      <xs:element name="Dimlwd" type="OdDbLineweight"/>
+      <xs:element name="Dimlwe" type="OdDbLineweight"/>
+      <xs:element name="BlockTable" type="OdDbHardOwnershipId"/>
+      <xs:element name="LayerTable" type="OdDbHardOwnershipId"/>
+      <xs:element name="StyleTable" type="OdDbHardOwnershipId"/>
+      <xs:element name="LinetypeTable" type="OdDbHardOwnershipId"/>
+      <xs:element name="ViewTable" type="OdDbHardOwnershipId"/>
+      <xs:element name="UcsTable" type="OdDbHardOwnershipId"/>
+      <xs:element name="VPortTable" type="OdDbHardOwnershipId"/>
+      <xs:element name="RegAppTable" type="OdDbHardOwnershipId"/>
+      <xs:element name="DimStyleTable" type="OdDbHardOwnershipId"/>
+      <xs:element name="GroupDicId" type="OdDbHardPointerId"/>
+      <xs:element name="MLineDicId" type="OdDbHardPointerId"/>
+      <xs:element name="NamedObjectsDict" type="OdDbHardOwnershipId"/>
+      <xs:element name="TSTACKALIGN" type="xs:short"/>
+      <xs:element name="TSTACKSIZE" type="xs:short"/>
+      <xs:element name="HYPERLINKBASE" type="xs:string"/>
+      <xs:element name="STYLESHEET" type="xs:string"/>
+      <xs:element name="LayoutDicId" type="OdDbHardPointerId"/>
+      <xs:element name="PlotsettingsDicId" type="OdDbHardPointerId"/>
+      <xs:element name="PlotstyleDicId" type="OdDbHardPointerId"/>
+      <xs:element name="MaterialDicId" type="OdDbHardPointerId"/>
+      <xs:element name="ColorDicId" type="OdDbHardPointerId"/>
+      <xs:element name="VisualStyleDicId" type="OdDbHardPointerId"/>
+      <xs:element name="UnknownAC27Id" type="OdDbHardPointerId"/>
+      <xs:element name="CELWEIGHT" type="OdDbLineweight"/>
+      <xs:element name="ENDCAPS" type="OdDbEndCaps"/>
+      <xs:element name="JOINSTYLE" type="OdDbJoinStyle"/>
+      <xs:element name="LWDISPLAY" type="xs:boolean"/>
+      <xs:element name="XEDIT" type="xs:boolean"/>
+      <xs:element name="EXTNAMES" type="xs:boolean"/>
+      <xs:element name="PSTYLEMODE" type="xs:boolean"/>
+      <xs:element name="OLESTARTUP" type="xs:boolean"/>
+      <xs:element name="INSUNITS" type="OdDbUnitsValue"/>
+      <xs:element name="CEPSNTYPE" type="OdDbPlotStyleNameType"/>
+      <xs:element name="CEPSNID" type="OdDbHardPointerId"/>
+      <xs:element name="FINGERPRINTGUID" type="xs:string"/>
+      <xs:element name="VERSIONGUID" type="xs:string"/>
+      <xs:element name="SORTENTS" type="xs:unsignedByte"/>
+      <xs:element name="INDEXCTL" type="xs:unsignedByte"/>
+      <xs:element name="HIDETEXT" type="xs:boolean"/>
+      <xs:element name="XCLIPFRAME" type="xs:byte"/>
+      <xs:element name="DIMASSOC" type="xs:unsignedByte"/>
+      <xs:element name="HALOGAP" type="xs:unsignedByte"/>
+      <xs:element name="OBSCUREDCOLOR" type="xs:short"/>
+      <xs:element name="INTERSECTIONCOLOR" type="xs:short"/>
+      <xs:element name="OBSCUREDLTYPE" type="xs:unsignedByte"/>
+      <xs:element name="INTERSECTIONDISPLAY" type="xs:boolean"/>
+      <xs:element name="PROJECTNAME" type="xs:string"/>
+      <xs:element name="CachedPaperSpaceId" type="OdDbHardPointerId"/>
+      <xs:element name="MSpaceId" type="OdDbHardPointerId"/>
+      <xs:element name="ByLayerLinetypeId" type="OdDbHardPointerId"/>
+      <xs:element name="ByBlockLinetypeId" type="OdDbHardPointerId"/>
+      <xs:element name="ContinuousLinetypeId" type="OdDbHardPointerId"/>
+      <xs:element name="CAMERADISPLAY" type="xs:boolean"/>
+      <xs:element name="STEPSPERSEC" type="xs:double"/>
+      <xs:element name="STEPSIZE" type="xs:double"/>
+      <xs:element name="_3DDWFPREC" type="xs:double"/>
+      <xs:element name="LENSLENGTH" type="xs:double"/>
+      <xs:element name="CAMERAHEIGHT" type="xs:double"/>
+      <xs:element name="SOLIDHIST" type="xs:byte"/>
+      <xs:element name="SHOWHIST" type="xs:byte"/>
+      <xs:element name="PSOLWIDTH" type="xs:double"/>
+      <xs:element name="PSOLHEIGHT" type="xs:double"/>
+      <xs:element name="LOFTANG1" type="xs:double"/>
+      <xs:element name="LOFTANG2" type="xs:double"/>
+      <xs:element name="LOFTMAG1" type="xs:double"/>
+      <xs:element name="LOFTMAG2" type="xs:double"/>
+      <xs:element name="LOFTPARAM" type="xs:short"/>
+      <xs:element name="LOFTNORMALS" type="xs:byte"/>
+      <xs:element name="LATITUDE" type="xs:double"/>
+      <xs:element name="LONGITUDE" type="xs:double"/>
+      <xs:element name="NORTHDIRECTION" type="xs:double"/>
+      <xs:element name="TIMEZONE" type="xs:int"/>
+      <xs:element name="LIGHTGLYPHDISPLAY" type="xs:byte"/>
+      <xs:element name="TILEMODELIGHTSYNCH" type="xs:byte"/>
+      <xs:element name="DWFFRAME" type="xs:byte"/>
+      <xs:element name="DGNFRAME" type="xs:byte"/>
+      <xs:element name="INTERFERECOLOR" type="OdCmColor"/>
+      <xs:element name="INTERFEREOBJVS" type="OdDbHardPointerId"/>
+      <xs:element name="INTERFEREVPVS" type="OdDbHardPointerId"/>
+      <xs:element name="DRAGVS" type="OdDbHardPointerId"/>
+      <xs:element name="CSHADOW" type="xs:byte"/>
+      <xs:element name="SHADOWPLANELOCATION" type="xs:double"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="AcDbObject" oda:version="1.0">
+    <xs:sequence>
+      <xs:element name="Handle" type="OdDbHandle"/>
+      <xs:element name="Owner" type="OdDbSoftPointerId"/>
+      <xs:element name="Reactor" type="OdDbSoftPointerId" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="ExtensionDictionary" type="OdDbHardOwnershipId" minOccurs="0"/>
+      <xs:element name="HasDsData" type="xs:boolean"/>
+      <xs:element name="HasXData" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="AcDbDictionary" oda:version="1.0">
+    <xs:complexContent>
+      <xs:extension base="AcDbObject">
+        <xs:sequence>
+          <xs:element name="MergeStyle" type="xs:short"/>
+          <xs:choice>
+            <xs:element name="HardContent" type="DbDictionary.HardContent"/>
+            <xs:element name="SoftContent" type="DbDictionary.SoftContent"/>
+          </xs:choice>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="DbDictionary.HardContent">
+    <xs:sequence>
+      <xs:element name="Item" minOccurs="0" maxOccurs="unbounded" type="DbDictionary.HardContent.Item"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="DbDictionary.SoftContent">
+    <xs:sequence>
+      <xs:element name="Item" minOccurs="0" maxOccurs="unbounded" type="DbDictionary.SoftContent.Item"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="DbDictionary.HardContent.Item">
+    <xs:sequence>
+      <xs:element name="Key" type="xs:string"/>
+      <xs:element name="Value" type="OdDbHardOwnershipId"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="DbDictionary.SoftContent.Item">
+    <xs:sequence>
+      <xs:element name="Key" type="xs:string"/>
+      <xs:element name="Value" type="OdDbSoftOwnershipId"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="AcDbSymbolTable" oda:version="1.0">
+    <xs:complexContent>
+      <xs:extension base="AcDbObject">
+        <xs:sequence>
+          <xs:element name="Record" type="OdDbSoftOwnershipId" maxOccurs="unbounded" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="AcDbBlockTable" oda:version="1.0">
+    <xs:complexContent>
+      <xs:extension base="AcDbSymbolTable">
+        <xs:sequence>
+          <xs:element name="ModelSpace" type="OdDbHardOwnershipId"/>
+          <xs:element name="PaperSpace" type="OdDbHardOwnershipId"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="AcDbSymbolTableRecord" oda:version="1.0">
+    <xs:complexContent>
+      <xs:extension base="AcDbObject">
+        <xs:sequence>
+          <xs:element name="Name" type="xs:string"/>
+          <xs:element name="XrefFlags" type="xs:unsignedByte"/>
+          <xs:element name="XrefBlock" type="OdDbHardPointerId"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="OdDbEmptyData"/>
+
+  <xs:complexType name="OdEntityContainer">
+    <xs:sequence>
+      <xs:element name="Item" type="OdDbHardOwnershipId" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="AcDbBlockTableRecord" oda:version="1.0">
+    <xs:complexContent>
+      <xs:extension base="AcDbSymbolTableRecord">
+        <xs:sequence>
+          <xs:element name="IsAnonymous" type="xs:boolean"/>
+          <xs:element name="HasAttributes" type="xs:boolean"/>
+          <xs:element name="IsXRef" type="xs:boolean"/>
+          <xs:element name="IsOverlaid" type="xs:boolean"/>
+          <xs:element name="IsXrefUnloaded" type="xs:boolean"/>
+          <xs:element name="BlockBeginId" type="OdDbHardOwnershipId"/>
+          <xs:element name="Entities" type="OdEntityContainer"/>
+          <xs:element name="BlockEndId" type="OdDbHardOwnershipId"/>
+          <xs:element name="BasePoint" type="OdGePoint3d"/>
+          <xs:element name="XRefPath" type="xs:string"/>
+          <xs:element name="BlkRefs" type="OdDbSoftPointerId" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="NestedXrefs" type="OdDbSoftPointerId" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="LayoutId" type="OdDbHardPointerId"/>
+          <xs:element name="Description" type="xs:string"/>
+	  <xs:element name="BitmapPreviewSize" type="xs:int"/>
+          <xs:element name="BitmapPreview" type="xs:hexBinary"/>
+          <xs:element name="InsertUnits" type="xs:short"/>
+          <xs:element name="Explodable" type="xs:boolean"/>
+          <xs:element name="BlockScaling" type="xs:unsignedByte"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:simpleType name="OdCmEntityColor.ColorMethod">
+    <xs:restriction base="xs:unsignedByte">
+      <xs:enumeration value="192" id="byLayer"/>
+      <xs:enumeration value="193" id="byBlock"/>
+      <xs:enumeration value="194" id="byColor"/>
+      <xs:enumeration value="195" id="byACI"/>
+      <xs:enumeration value="196" id="byPen"/>
+      <xs:enumeration value="197" id="byForeground"/>
+      <xs:enumeration value="199" id="byDgnIndex"/>
+      <xs:enumeration value="200" id="none"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="OdCmEntityColor.Value">
+    <xs:sequence>
+      <xs:element name="Color" type="xs:int"/>
+    </xs:sequence>
+  </xs:simpleType>
+
+  <xs:simpleType name="OdCmEntityColor.Index">
+    <xs:sequence>
+      <xs:element name="Index" type="xs:short"/>
+    </xs:sequence>
+  </xs:simpleType>
+
+  <xs:complexType name="OdCmEntityColor" oda:version="1.0">
+    <xs:sequence>
+      <xs:element name="ColorMethod" type="OdCmEntityColor.ColorMethod"/>
+      <xs:choice>
+        <xs:element name="Value" type="OdCmEntityColor.Value"/>
+        <xs:element name="Index" type="OdCmEntityColor.Index"/>
+      </xs:choice>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="AcDbEntity" oda:version="1.0">
+    <xs:complexContent>
+      <xs:extension base="AcDbObject">
+        <xs:sequence>
+          <xs:element name="ColorDefId" type="OdDbHardPointerId"/>
+          <xs:element name="Color" type="OdCmEntityColor"/>
+          <xs:element name="Transparency" type="xs:int"/>
+          <xs:element name="LinetypeScale" type="xs:double"/>
+          <xs:element name="Layer" type="OdDbHardPointerId"/>
+          <xs:element name="Linetype" type="OdDbHardPointerId"/>
+          <xs:element name="PlotstyleNameType" type="OdDbPlotStyleNameType"/>
+          <xs:element name="Plotstyle" type="OdDbHardPointerId"/>
+          <xs:element name="FullVisualStyle" type="OdDbHardPointerId"/>
+          <xs:element name="FaceVisualStyle" type="OdDbHardPointerId"/>
+          <xs:element name="EdgeVisualStyle" type="OdDbHardPointerId"/>
+          <xs:element name="Material" type="OdDbHardPointerId"/>
+          <xs:element name="ShadowFlags" type="xs:short"/>
+          <xs:element name="Lineweight" type="OdDbLineweight"/>
+          <!-- context data manager? -->
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="AcDbLine" oda:version="1.0">
+    <xs:complexContent>
+      <xs:extension base="AcDbEntity">
+        <xs:sequence>
+          <xs:element name="StartPoint" type="OdGePoint3d"/>
+          <xs:element name="EndPoint" type="OdGePoint3d"/>
+          <xs:element name="Thickness" type="xs:double"/>
+          <xs:element name="Normal" type="OdGeVector3d"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="AcDbBlockReference" oda:version="1.0">
+    <xs:complexContent>
+      <xs:extension base="AcDbEntity">
+        <xs:sequence>
+          <xs:element name="Position" type="OdGePoint3d"/>
+          <xs:element name="Scale" type="OdGeScale3d"/>
+          <xs:element name="Angle" type="xs:double"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="AcDb3dSolid" oda:version="1.0">
+    <xs:complexContent>
+      <xs:extension base="AcDbEntity">
+        <xs:sequence>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="AcDbLayout" oda:version="1.0">
+    <xs:complexContent>
+      <xs:extension base="AcDbObject">
+        <xs:sequence>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="AcDbLayerTableRecord" oda:version="1.0">
+    <xs:complexContent>
+      <xs:extension base="AcDbSymbolTableRecord">
+        <xs:sequence>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="AcDbViewportTableRecord" oda:version="1.0">
+    <xs:complexContent>
+      <xs:extension base="AcDbSymbolTableRecord">
+        <xs:sequence>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  
+</xs:schema>

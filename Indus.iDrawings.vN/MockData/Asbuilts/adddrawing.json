@@ -1,0 +1,184 @@
+﻿{
+  "add": [
+    {
+      "FieldId": 1,
+      "FieldName": "Id",
+      "FieldType": 2,
+      "IsVisible": false,
+      "IsMandatory": true,
+      "IsDisabled": true,
+      "IsHiddenLabel": true,
+      "ReadOnlyMode": false
+    },
+    {
+      "FieldId": 2,
+      "FieldName": "Site",
+      "FieldType": 5,
+      "FieldValue": "Aberdeen",
+      "IsHiddenLabel": false,
+      "IsMandatory": false,
+      "IsMultiValued": true,
+      "IsVisible": true,
+      "ReadOnlyMode": false,
+      "MultiValuedDetails": {
+        "LookupValues": [
+          {
+            "Id": 1,
+            "Value": "Aberdeen"
+          },
+          {
+            "Id": 2,
+            "Value": "Arlington"
+          },
+          {
+            "Id": 3,
+            "Value": "Concord"
+          },
+          {
+            "Id": 4,
+            "Value": "Farmingham"
+          }
+        ],
+        "PopupComponentName": null
+      },
+      "NotificationType": "inline"
+    },
+    {
+      "FieldId": 3,
+      "FieldName": "Building",
+      "FieldType": 1,
+      "IsMandatory": false,
+      "IsHiddenLabel": true,
+      "ReadOnlyMode": false,
+      "IsVisible": true
+    },
+    {
+      "FieldId": 4,
+      "FieldName": "Floor",
+      "FieldType": 1,
+      "IsMandatory": false,
+      "IsHiddenLabel": true,
+      "ReadOnlyMode": false,
+      "IsVisible": true
+    },
+    {
+      "FieldId": 5,
+      "FieldName": "Category",
+      "FieldType": 1,
+      "IsVisible": true,
+      "IsMandatory": false,
+      "IsDisabled": false,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false
+    },
+    {
+      "FieldId": 6,
+      "FieldName": "Type",
+      "FieldType": 1,
+      "IsVisible": true,
+      "IsMandatory": false,
+      "IsDisabled": false,
+      "IsHiddenLabel": true,
+      "ReadOnlyMode": false
+    },
+    {
+      "FieldId": 7,
+      "FieldName": "Description",
+      "FieldType": 4,
+      "FieldValue": "",
+      "IsMandatory": true,
+      "IsHiddenLabel": true,
+      "ReadOnlyMode": false,
+      "IsVisible": true,
+      "NotificationType": "return"
+    },    
+    {
+      "FieldId": 8,
+      "FieldName": "DWG File Name",
+      "FieldType": 1,
+      "HasRelation": false,
+      "IsVisible": true,
+      "IsMandatory": false,
+      "IsDisabled": false,
+      "IsHiddenLabel": true,
+      "ReadOnlyMode": true
+    },
+    {
+      "FieldId": 9,
+      "FieldName": "DWG File Size(KB)",
+      "FieldType": 2,
+      "HasRelation": false,
+      "IsVisible": true,
+      "IsMandatory": false,
+      "IsDisabled": false,
+      "IsHiddenLabel": true,
+      "ReadOnlyMode": true
+    },
+    {
+      "FieldId": 10,
+      "FieldName": "DWF File Name",
+      "FieldType": 1,
+      "HasRelation": false,
+      "IsVisible": true,
+      "IsMandatory": false,
+      "IsDisabled": false,
+      "IsHiddenLabel": true,
+      "ReadOnlyMode": true
+    },
+    {
+      "FieldId": 11,
+      "FieldName": "DWF File Size(KB)",
+      "FieldType": 2,
+      "HasRelation": false,
+      "IsVisible": true,
+      "IsMandatory": false,
+      "IsDisabled": false,
+      "IsHiddenLabel": true,
+      "ReadOnlyMode": true
+    },
+    {
+      "FieldId": 12,
+      "FieldName": "Uploaded By",
+      "FieldType": 1,
+      "HasRelation": false,
+      "IsVisible": true,
+      "IsMandatory": false,
+      "IsDisabled": false,
+      "IsHiddenLabel": true,
+      "ReadOnlyMode": true
+    },
+    {
+      "FieldId": 13,
+      "FieldName": "Uploaded On",
+      "FieldType": 1,
+      "HasRelation": false,
+      "IsVisible": true,
+      "IsMandatory": true,
+      "IsDisabled": false,
+      "IsHiddenLabel": true,
+      "ReadOnlyMode": true
+    },
+    {
+      "FieldId": 14,
+      "FieldName": "Revisions",
+      "FieldType": 2,
+      "HasRelation": false,
+      "IsVisible": true,
+      "IsMandatory": false,
+      "IsDisabled": false,
+      "IsHiddenLabel": true,
+      "ReadOnlyMode": true
+    },
+    {
+      "FieldId": 15,
+      "FieldName": "Markups",
+      "FieldType": 2,
+      "HasRelation": false,
+      "IsVisible": true,
+      "IsMandatory": false,
+      "IsDisabled": false,
+      "IsHiddenLabel": true,
+      "ReadOnlyMode": true
+    }
+  ]
+}

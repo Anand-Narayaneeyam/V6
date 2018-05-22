@@ -1,0 +1,32 @@
+﻿<div>
+    <split-view [splitviewObject]="splitviewInput" [pageTitle]="pageTitle" style="height: calc(75% - 35px);">
+        <primary-view>
+            <div *ngIf="projectId > 0">
+                <submenu>
+                    <sub-menu [source]=menuData [count]=totalItems [menuIds]=enableMenu [textOnRightSide]="projectNameDetails" (onSubMenuChange)="onSubMenuChange($event);"> </sub-menu>
+                </submenu>
+                <div style="height:calc(100% - 35px);width:100%;display:block">
+                    <div style="height:calc(100% - 45px);" [ngClass]="totalItems > itemsPerPage ? 'pagewithPaging':'pagewithoutPaging'">
+                        <gridView [dataSource]="itemsSource" [properties]="inputItems" [columns]="fieldObject" [refreshgrid]="refreshgrid" (onSorting)="onSort($event)"></gridView>
+                    </div>
+                    <div style="height:45px;width:100%;display:block">
+                        <paging [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="pageChanged($event);"></paging>
+                    </div>
+                </div>
+            </div>
+        </primary-view>
+        <secondary-view *ngIf="splitviewInput.showSecondaryView==true">
+            <notes-addedit [isReview]="isReview" [fieldNotesAddEdit]="fieldNotesAddEdit" [pageTitle]="pageTitle" [projectId]="projectId" [btnName]="btnName" [action]="action" [selectedId]="selectedId" (submitSuccess)="submitSuccess($event)"></notes-addedit>
+        </secondary-view>        
+
+    </split-view>
+    <slide [width]="300" [position]="'top-right'" [type]="slideType" [show]="showSlide" (closeDialog)="closeSlide($event)" [title]="slideTitle">
+        <div *ngIf="showSlide==true">
+            <div tabindex="0">{{slideMessage}}</div>
+            <div style="width:100%">
+                <button class="Savebutton" type="button" (click)="yesOnClick($event)">Yes</button>
+                <button class="Savebutton" type="button" (click)="closeSlide($event)">No</button>
+            </div>
+        </div>
+    </slide>
+</div>

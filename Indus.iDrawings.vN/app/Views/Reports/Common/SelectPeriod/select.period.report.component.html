@@ -1,0 +1,15 @@
+﻿<div>
+    <div style="width: 100%; float: left; font-size: 14px; font-weight: bold;  margin-bottom: 5%;">
+        Select a Period
+    </div>
+    <div>
+        <DateComponent *ngIf="dateSelectorField != undefined" [fieldObject]="dateSelectorField[0]" [showDateOnLoad]="true" > </DateComponent>
+    </div>
+    <div>
+        <DateComponent *ngIf="dateSelectorField != undefined" [fieldObject]="dateSelectorField[1]" [showDateOnLoad]="true" (datepickerOut)="getDateData($event)"></DateComponent>
+    </div>
+    <div style="width:100%">
+        <button  class="Savebutton " style="margin-top: 3%;" type="button"(click)="onSubmit($event)" class="Savebutton">OK</button>
+</div>
+
+</div>

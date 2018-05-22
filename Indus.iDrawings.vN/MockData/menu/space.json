@@ -1,0 +1,59 @@
+﻿ [
+  {
+    "id": 2,
+    "title": "Space",
+    "path": "/space-resources",
+    "subMenu": [
+      {
+        "id": 81,
+        "parentId": 8,
+        "title": "Space General Settings",
+        "path": "/space-general-settings",
+        "subMenu": null
+      }      
+    ]
+  },
+  {
+    "id": 8,
+    "title": "Common-Drawings",
+    "path": "",
+    "subMenu": [
+     {
+        "id": 82,
+        "parentId": 8,
+        "title": "Space Data",
+        "path": "/spacedata",
+        "subMenu": null
+      },
+      {
+        "id": 83,
+        "parentId": 8,
+        "title": "Drawings",
+        "path": "/space/drawings",
+        "subMenu": null
+      }     
+    ]
+  },
+  {
+    "id": 3,
+    "title": "common",
+    "path": "/addt",
+    "subMenu": [
+      {
+        "id": 83,
+        "parentId": 8,
+        "title": "Delete Space Data",
+        "path": "/delete-space-data",
+        "subMenu": null
+      },
+      {
+        "id": 84,
+        "parentId": 8,
+        "title": "Unlock Drawing",
+        "path": "/unlockdrawinglist",
+        "subMenu": null
+      }
+    ]
+  } 
+       
+]

@@ -1,0 +1,26 @@
+﻿{
+  "data": [
+    {
+      "Id":19341,
+      "DrawingId":364,
+      "SpaceKey":001,
+      "SpaceCategoryId":4,
+      "BOMAHandle":"16E7",
+      "CarpetHandle":"17A9",
+      "BOMAArea":391.61,
+      "CarpetArea":376.05,
+      "BOMAPerimeter":969.7,
+      "CarpetPerimeter":950.84,
+      "SpaceStandardId":"NULL",
+      "SpaceFunctionId":"NULL",
+      "OrgUnitId":"NULL",
+      "RoomNo":"NULL",
+      "TextInsertionX":284.449798029086,
+      "TextInsertionY":450.436090445609,
+      "HasDuplicates":0,
+      "BarCode":"NULL",
+      "IsShared":0
+    }
+    									
+  ]
+}

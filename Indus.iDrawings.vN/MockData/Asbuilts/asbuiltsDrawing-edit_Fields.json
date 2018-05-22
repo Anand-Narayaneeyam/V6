@@ -1,0 +1,661 @@
+﻿{
+  "data": [
+    {
+      "FieldId": 1,
+      "FieldName": "DrawingId",
+      "FieldType": 1,
+      "IsVisible": false,
+      "IsMandatory": false,
+      "IsDisabled": true,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false
+    },
+    {
+      "FieldId": 2,
+      "FieldName": "Site",
+      "FieldType": 1,
+      "FieldValue": "Aberdeen",
+      "IsVisible": true,
+      "IsMandatory": false,
+      "IsDisabled": false,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": true
+    },
+    {
+      "FieldId": 3,
+      "FieldName": "Building",
+      "FieldType": 1,
+      "FieldValue": "Hawaii Towers",
+      "IsVisible": true,
+      "IsMandatory": false,
+      "IsDisabled": false,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": true
+    },
+    {
+      "FieldId": 4,
+      "FieldName": "Floor",
+      "FieldType": 1,
+      "FieldValue": "01",
+      "IsVisible": true,
+      "IsMandatory": false,
+      "IsDisabled": false,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": true
+    },
+    {
+      "FieldId": 5,
+      "FieldName": "Drawing Category",
+      "FieldType": 1,
+      "FieldValue": "Architectural",
+      "IsVisible": true,
+      "IsMandatory": false,
+      "IsDisabled": false,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": true
+    },
+    {
+      "FieldId": 6,
+      "FieldName": "Drawing Type",
+      "FieldType": 1,
+      "FieldValue": "2D Drawing",
+      "IsVisible": true,
+      "IsMandatory": false,
+      "IsDisabled": false,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": true
+    },
+    {
+      "FieldId": 7,
+      "FieldName": "Description",
+      "FieldType": 4,
+      "FieldValue": "",
+      "IsVisible": true,
+      "IsMandatory": true,
+      "IsDisabled": false,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false
+    },
+    {
+      "FieldId": 8,
+      "FieldName": "DWG File Name",
+      "FieldType": 1,
+      "FieldValue": "DT-HW-03AR.dwg",
+      "HasRelation": false,
+      "IsVisible": true,
+      "IsMandatory": false,
+      "IsDisabled": false,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": true
+    },
+    {
+      "FieldId": 9,
+      "FieldName": "Revisions",
+      "FieldType": 2,
+      "FieldValue": "1",
+      "HasRelation": false,
+      "IsVisible": true,
+      "IsMandatory": false,
+      "IsDisabled": false,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": true
+    }
+  ],
+
+  "add": [
+
+    {
+      "FieldId": 1,
+      "FieldName": "DrawingId",
+      "FieldType": 1,
+      "IsVisible": false,
+      "IsMandatory": false,
+      "IsDisabled": true,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false
+    },
+     {
+      "FieldId": 2,
+      "FieldName": "Is Building Drawing?",
+      "FieldType": 6,
+      "FieldValue": "",
+      "IsVisible": true,
+      "IsMandatory": false,
+      "IsDisabled": false,
+      "IsHiddenLabel": false
+    },
+    {
+      "FieldId": 2,
+      "FieldName": "Site",
+      "FieldType": 5,
+      "FieldValue": "0",
+      "IsVisible": true,
+      "IsMandatory": true,
+      "IsDisabled": true,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false,
+      "IsMultiValued": true,
+      "MultiValuedDetails": {
+        "LookupValues": [
+
+          {
+            "Id": 1,
+            "Value": "Site1"
+          },
+          {
+            "Id": 2,
+            "Value": "Site2"
+          }
+        ],
+        "PopupComponentName": null
+      },
+      "NotificationType": "inline"
+    },
+    {
+      "FieldId": 3,
+      "FieldName": "Building",
+      "FieldType": 5,
+      "FieldValue": "",
+      "IsVisible": true,
+      "IsMandatory": true,
+      "IsDisabled": true,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false,
+      "IsMultiValued": true,
+      "MultiValuedDetails": {
+        "LookupValues": [
+
+          {
+            "Id": 1,
+            "Value": "Building1"
+          },
+          {
+            "Id": 2,
+            "Value": "Building2"
+          }
+        ],
+        "PopupComponentName": null
+      },
+      "NotificationType": "inline"
+    },
+    {
+      "FieldId": 4,
+      "FieldName": "Floor",
+      "FieldType": 5,
+      "FieldValue": "0",
+      "IsVisible": true,
+      "IsMandatory": true,
+      "IsDisabled": true,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false,
+      "IsMultiValued": true,
+      "MultiValuedDetails": {
+        "LookupValues": [
+
+          {
+            "Id": 1,
+            "Value": "Floor1"
+          },
+          {
+            "Id": 2,
+            "Value": "Floor2"
+          }
+        ],
+        "PopupComponentName": null
+      },
+      "NotificationType": "inline"
+    },
+    {
+      "FieldId": 5,
+      "FieldName": "Drawing Category",
+      "FieldType": 5,
+      "FieldValue": "0",
+      "IsVisible": true,
+      "IsMandatory": true,
+      "IsDisabled": true,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false,
+      "IsMultiValued": true,
+      "MultiValuedDetails": {
+        "LookupValues": [
+
+          {
+            "Id": 1,
+            "Value": "Category1"
+          },
+          {
+            "Id": 2,
+            "Value": "Category2"
+          }
+        ],
+        "PopupComponentName": null
+      },
+      "NotificationType": "inline"
+    },
+    {
+      "FieldId": 6,
+      "FieldName": "Drawing Type",
+      "FieldType": 5,
+      "FieldValue": "0",
+      "IsVisible": true,
+      "IsMandatory": true,
+      "IsDisabled": true,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false,
+      "IsMultiValued": true,
+      "MultiValuedDetails": {
+        "LookupValues": [
+
+          {
+            "Id": 1,
+            "Value": "2 D"
+          },
+          {
+            "Id": 2,
+            "Value": "3 D"
+          }
+        ],
+        "PopupComponentName": null
+      },
+      "NotificationType": "inline"
+    },
+    {
+      "FieldId": 7,
+      "FieldName": "Description",
+      "FieldType": 4,
+      "FieldValue": "",
+      "IsVisible": true,
+      "IsMandatory": true,
+      "IsDisabled": false,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false
+    },
+    {
+      "FieldId": 8,
+      "FieldName": "DWG File Name",
+      "FieldType": 1,
+      "FieldValue": "",
+      "HasRelation": false,
+      "IsVisible": true,
+      "IsMandatory": false,
+      "IsDisabled": false,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": true
+    }
+  ],
+  "revise": [
+     {
+      "FieldId": 2,
+      "FieldName": "Is Building Drawing?",
+      "FieldType": 6,
+      "FieldValue": "",
+      "IsVisible": true,
+      "IsMandatory": false,
+      "IsDisabled": true,
+      "IsHiddenLabel": false
+    },
+    {
+      "FieldId": 1,
+      "FieldName": "DrawingId",
+      "FieldType": 1,
+      "IsVisible": false,
+      "IsMandatory": false,
+      "IsDisabled": true,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false
+    },
+
+    {
+      "FieldId": 2,
+      "FieldName": "Site",
+      "FieldType": 5,
+      "FieldValue": "1",
+      "IsVisible": true,
+      "IsMandatory": true,
+      "IsDisabled": true,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": true,
+      "IsMultiValued": true,
+      "MultiValuedDetails": {
+        "LookupValues": [
+
+          {
+            "Id": 1,
+            "Value": "Site1"
+          },
+          {
+            "Id": 2,
+            "Value": "Site2"
+          }
+        ],
+        "PopupComponentName": null
+      },
+      "NotificationType": "inline"
+    },
+    {
+      "FieldId": 3,
+      "FieldName": "Building",
+      "FieldType": 5,
+      "FieldValue": "1",
+      "IsVisible": true,
+      "IsMandatory": true,
+      "IsDisabled": true,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": true,
+      "IsMultiValued": true,
+      "MultiValuedDetails": {
+        "LookupValues": [
+
+          {
+            "Id": 1,
+            "Value": "Building1"
+          },
+          {
+            "Id": 2,
+            "Value": "Building2"
+          }
+        ],
+        "PopupComponentName": null
+      },
+      "NotificationType": "inline"
+    },
+    {
+      "FieldId": 4,
+      "FieldName": "Floor",
+      "FieldType": 5,
+      "FieldValue": "1",
+      "IsVisible": true,
+      "IsMandatory": true,
+      "IsDisabled": true,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": true,
+      "IsMultiValued": true,
+      "MultiValuedDetails": {
+        "LookupValues": [
+
+          {
+            "Id": 1,
+            "Value": "Floor1"
+          },
+          {
+            "Id": 2,
+            "Value": "Floor2"
+          }
+        ],
+        "PopupComponentName": null
+      },
+      "NotificationType": "inline"
+    },
+    {
+      "FieldId": 5,
+      "FieldName": "Drawing Category",
+      "FieldType": 5,
+      "FieldValue": "1",
+      "IsVisible": true,
+      "IsMandatory": true,
+      "IsDisabled": true,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": true,
+      "IsMultiValued": true,
+      "MultiValuedDetails": {
+        "LookupValues": [
+
+          {
+            "Id": 1,
+            "Value": "Category1"
+          },
+          {
+            "Id": 2,
+            "Value": "Category2"
+          }
+        ],
+        "PopupComponentName": null
+      },
+      "NotificationType": "inline"
+    },
+    {
+      "FieldId": 6,
+      "FieldName": "Drawing Type",
+      "FieldType": 5,
+      "FieldValue": "1",
+      "IsVisible": true,
+      "IsMandatory": true,
+      "IsDisabled": true,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": true,
+      "IsMultiValued": true,
+      "MultiValuedDetails": {
+        "LookupValues": [
+
+          {
+            "Id": 1,
+            "Value": "2 D"
+          },
+          {
+            "Id": 2,
+            "Value": "3 D"
+          }
+        ],
+        "PopupComponentName": null
+      },
+      "NotificationType": "inline"
+    },
+    {
+      "FieldId": 7,
+      "FieldName": "Description",
+      "FieldType": 4,
+      "FieldValue": "Power Plan",
+      "IsVisible": true,
+      "IsMandatory": true,
+      "IsDisabled": false,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false
+    },
+    {
+      "FieldId": 8,
+      "FieldName": "DWG File Name",
+      "FieldType": 1,
+      "FieldValue": "",
+      "HasRelation": false,
+      "IsVisible": true,
+      "IsMandatory": false,
+      "IsDisabled": false,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false
+    }
+  ],
+   "replace": [
+      {
+      "FieldId": 2,
+      "FieldName": "Is Building Drawing?",
+      "FieldType": 6,
+      "FieldValue": "",
+      "IsVisible": true,
+      "IsMandatory": false,
+      "IsDisabled": false,
+      "IsHiddenLabel": false
+    },
+    {
+      "FieldId": 1,
+      "FieldName": "DrawingId",
+      "FieldType": 1,
+      "IsVisible": false,
+      "IsMandatory": false,
+      "IsDisabled": true,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false
+    },
+    
+    {
+      "FieldId": 2,
+      "FieldName": "Site",
+      "FieldType": 5,
+      "FieldValue": "1",
+      "IsVisible": true,
+      "IsMandatory": true,
+      "IsDisabled": true,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false,
+      "IsMultiValued": true,
+      "MultiValuedDetails": {
+        "LookupValues": [
+
+          {
+            "Id": 1,
+            "Value": "Site1"
+          },
+          {
+            "Id": 2,
+            "Value": "Site2"
+          }
+        ],
+        "PopupComponentName": null
+      },
+      "NotificationType": "inline"
+    },
+    {
+      "FieldId": 3,
+      "FieldName": "Building",
+      "FieldType": 5,
+      "FieldValue": "1",
+      "IsVisible": true,
+      "IsMandatory": true,
+      "IsDisabled": true,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false,
+      "IsMultiValued": true,
+      "MultiValuedDetails": {
+        "LookupValues": [
+
+          {
+            "Id": 1,
+            "Value": "Building1"
+          },
+          {
+            "Id": 2,
+            "Value": "Building2"
+          }
+        ],
+        "PopupComponentName": null
+      },
+      "NotificationType": "inline"
+    },
+    {
+      "FieldId": 4,
+      "FieldName": "Floor",
+      "FieldType": 5,
+      "FieldValue": "1",
+      "IsVisible": true,
+      "IsMandatory": true,
+      "IsDisabled": true,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false,
+      "IsMultiValued": true,
+      "MultiValuedDetails": {
+        "LookupValues": [
+
+          {
+            "Id": 1,
+            "Value": "Floor1"
+          },
+          {
+            "Id": 2,
+            "Value": "Floor2"
+          }
+        ],
+        "PopupComponentName": null
+      },
+      "NotificationType": "inline"
+    },
+    {
+      "FieldId": 5,
+      "FieldName": "Drawing Category",
+      "FieldType": 5,
+      "FieldValue": "1",
+      "IsVisible": true,
+      "IsMandatory": true,
+      "IsDisabled": true,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false,
+      "IsMultiValued": true,
+      "MultiValuedDetails": {
+        "LookupValues": [
+
+          {
+            "Id": 1,
+            "Value": "Category1"
+          },
+          {
+            "Id": 2,
+            "Value": "Category2"
+          }
+        ],
+        "PopupComponentName": null
+      },
+      "NotificationType": "inline"
+    },
+    {
+      "FieldId": 6,
+      "FieldName": "Drawing Type",
+      "FieldType": 5,
+      "FieldValue": "1",
+      "IsVisible": true,
+      "IsMandatory": true,
+      "IsDisabled": true,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": true,
+      "IsMultiValued": true,
+      "MultiValuedDetails": {
+        "LookupValues": [
+
+          {
+            "Id": 1,
+            "Value": "2 D"
+          },
+          {
+            "Id": 2,
+            "Value": "3 D"
+          }
+        ],
+        "PopupComponentName": null
+      },
+      "NotificationType": "inline"
+    },
+     {
+      "FieldId": 9,
+      "FieldName": "Revisions",
+      "FieldType": 2,
+      "FieldValue": "1",
+      "HasRelation": false,
+      "IsVisible": true,
+      "IsMandatory": false,
+      "IsDisabled": true,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": true
+    },
+    {
+      "FieldId": 7,
+      "FieldName": "Description",
+      "FieldType": 4,
+      "FieldValue": "Power Plan",
+      "IsVisible": true,
+      "IsMandatory": true,
+      "IsDisabled": false,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false
+    },
+    {
+      "FieldId": 8,
+      "FieldName": "DWG File Name",
+      "FieldType": 1,
+      "FieldValue": "",
+      "HasRelation": false,
+      "IsVisible": true,
+      "IsMandatory": false,
+      "IsDisabled": false,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": true
+    }
+  ]
+}
+

@@ -1,0 +1,27 @@
+﻿<page [pagetitle]="pagePath">
+    <content>
+        <tabs [selectedTab]="selectedTab" [deleteIndex]="tabDeleteIndex" (getSelectedTab)="getSelectedTab($event)">
+            <tab tabTitle="Select Criteria" closeButtonVisible="hidden">
+                <submenu>
+                    <sub-menu [source]=menuData [menuCard]=iscard [menuIds]=enableMenu (onSubMenuChange)="onSubMenuChange($event);"> </sub-menu>
+                </submenu>
+                <div>
+                    <div style="width:100%">
+                        <DropDownListComponent *ngIf="ddlEquipmentCategory" [fieldObject]="ddlEquipmentCategory" (change)="onChangeEquipmentCategory($event.target.value)" [SetAlignment]=alignContent></DropDownListComponent>
+                    </div>
+                    <div style="width:100%">
+                        <DropDownListComponent *ngIf="ddlEquipmentClass" [fieldObject]="ddlEquipmentClass" (change)="onChangeEquipmentClass($event.target.value)" [SetAlignment]=alignContent></DropDownListComponent>
+                    </div>
+                    <div style="width:100%">
+                        <DropDownListComponent *ngIf="ddlProcedure" [fieldObject]="ddlProcedure" (change)="onChangeProcedure($event.target.value)" [SetAlignment]=alignContent></DropDownListComponent>
+                    </div>
+                </div>
+            </tab>
+            <tab *ngIf="isnext != undefined" tabTitle="Report" closeButtonVisible="hidden">
+                <div style="height:100%" *ngIf="isNextClicked">
+                    <wo-proceduresandsteps-report *ngIf="isNextClicked" [EquipmentCategoryId]="EquipmentCategoryId" [EquipmentClassId]="EquipmentClassId" [ProcedureId]="ProcedureId"> </wo-proceduresandsteps-report>
+                </div>
+            </tab>
+        </tabs>
+    </content>
+</page>

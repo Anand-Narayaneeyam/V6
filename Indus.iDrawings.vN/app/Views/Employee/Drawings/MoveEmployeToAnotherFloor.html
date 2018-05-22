@@ -1,0 +1,14 @@
+﻿<split-view [splitviewObject]="splitViewDataGrid" [pageTitle]="pageTitle">
+    <primary-view>
+        <tabs [(selectedTab)]="selectedTab" (getSelectedTab)="getSelectedTab($event)" (onTabBeforeClose)="onTabBeforeClose($event)">
+            <tab *ngIf="moduleId" tabTitle={{floorTabName}} closeButtonVisible="hidden">
+                <submenu *ngIf="selectedTab ==0 && (IsOpenDrawingComponentActive==false)">
+                    <sub-menu [menuCard]=true [source]=menuData [menuIds]="enableMenu" (onSubMenuChange)="onSubMenuChange($event);"> </sub-menu>
+                </submenu>
+                <floor-drawing-list *ngIf="selectedTab ==0 && (IsOpenDrawingComponentActive==false)" [action]="action" [pageTarget]="6" [moduleId]="moduleId" (updateFloorSelectedIds)="updateFloorDrawingSelectedID($event)" [objectCategoryId]="objectCategoryId" [EmployeMovedrawingId]="previousDrawingId"></floor-drawing-list>
+                <opendrawing *ngIf="selectedTab ==0 && (IsOpenDrawingComponentActive==true)" [moveFullEmpDataForAnotherFloor]="moveEmpDataForAnotherFloor" [moveEmpDetailsForAnotherFloor]="moveEmpDetailsForAnotherFloor" [canvasIdName]="secondCanvasIdName" [loadingIndicatorIdName]="loadingIndicatorIdName" [extDrawingId]="drawingId" [extRevisionNo]="revisionNo" [moduleId]=moduleId [activeModuleIds]=moduleId [pageTarget]=pageTarget [extDrawingType]="drawingType" [extDrawingDetails]="dwgDetails" [extDrawingCategoryId]="drawingCategoryId" (outDrawingobject)="outDrawingObject($event)" (outAssignedEmpIds)="assignedEmpIds($event)" [BlinkSecondDrawings]="BlinkOutSideDrawings" [SecondAssociationId]="AssociationId" [SecondPrimaryObjectId]="PrimaryObjectId" [SecondfieldDetails]="fieldDetails" (DrawingMoveEmployeesDetaills)="EmployeesDetailsSelectedForMove($event)"></opendrawing>
+            </tab>
+        </tabs>
+    </primary-view>
+</split-view>
+

@@ -1,0 +1,44 @@
+﻿.pageLayout {
+  height: 100%;
+  width: 100%;
+  overflow-y: auto;
+}
+.pagesubmenu {
+  float: left;
+}
+.pagepath {
+  float: right;
+  height: 50px;
+  line-height: 50px;
+}
+.pageFilter {
+  float: right;
+}
+.pageHeader {
+  height: auto;
+  max-height: 35px;
+  width: 100%;
+  /*position: absolute;*/
+}
+.pageContent {
+  height: calc(100% - 0px);
+  width: 100%;
+  float: left;
+}
+.pageContentwithMenu {
+  height: calc(100% - 35px);
+  width: 100%;
+  float: left;
+}
+.pageContectLayout {
+  height: 100%;
+  width: 100%;
+  float: left;
+  /*padding:5px;*/
+}
+:host .pagewithPaging {
+  height: calc(100% - 35px);
+}
+:host .pagewithoutPaging {
+  height: 99%;
+}

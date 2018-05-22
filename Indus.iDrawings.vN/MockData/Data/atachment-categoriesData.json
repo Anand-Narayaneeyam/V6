@@ -1,0 +1,20 @@
+﻿{
+  "data": [
+    {
+      "Id": "1",
+      "categoryName": "General"
+    },
+    {
+      "Id": "2",
+      "categoryName": "Invoice"
+    },
+    {
+      "Id": "3",
+      "categoryName": "Photos"
+    },
+    {
+      "Id": "4",
+      "categoryName": "Manual"
+    }
+  ]
+}

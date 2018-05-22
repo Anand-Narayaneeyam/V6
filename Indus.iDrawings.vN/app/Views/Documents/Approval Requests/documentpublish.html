@@ -1,0 +1,21 @@
+﻿
+<page [pagetitle]="pagePath">
+    <pagepath>
+    </pagepath>
+    <content>
+        <tabs [selectedTab]="selectedTab" (getSelectedTab)="getSelectedTab($event)" (onTabClose)="onTabClose($event)" [deleteIndex]="deleteIndex" id="checkout">
+            <tab tabTitle="Publish Requests" closeButtonVisible="hidden">
+                <submenu>
+                    <sub-menu [source]=menuData [count]=totalItems [menuIds]=enableMenu (onSubMenuChange)="onSubMenuChange($event);"> </sub-menu>
+                </submenu>
+                <gridView [ngClass]="totalItems > itemsPerPage ? 'pagewithPaging':'pagewithoutPaging'" [(dataSource)]="itemsSource" [properties]="inputItems" [columns]="fieldObject" (onSorting)="onSort($event)"></gridView>
+                <paging *ngIf="totalItems >itemsPerPage ? 'true' : 'false'" style="height:35px;display:block;" [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="onPageChanged($event);"></paging>
+            </tab>
+            <tab tabTitle="Publish Review" *ngIf="isTabOpen == true" closeButtonVisible="hidden">
+                <div>
+                    <documentcheckoutreview [rowData]="inputItems.rowData" [fieldDetails]="fieldDetailsCheckout" (reviewSubmit)="reviewSubmitBack($event)"></documentcheckoutreview>
+                </div>
+            </tab>
+        </tabs>
+    </content>
+</page>

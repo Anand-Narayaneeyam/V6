@@ -1,0 +1,24 @@
+﻿
+<page [pagetitle]="pagePath" [withoutSubmenu]="true">
+    <content>
+                
+        <tabs [selectedTab]="selectedTab" (getSelectedTab)="getSelectedTab($event)">
+            <tab tabTitle="Service Requests" closeButtonVisible="hidden">
+                
+                <trackRequest-list *ngIf="initList" [itemsSource]="closedRequestListSource" [totalItems]="closedRequestListTotalItems" [target]="2"
+                                   [userDetails]="userDetails" [inputItems]="closedRequestInputItems" [itemsPerPage]="closedRequestListItemsPerPage" [isActive]=false></trackRequest-list>
+
+            </tab>
+            <tab tabTitle="PM Work Orders" closeButtonVisible="hidden">
+
+                <reviewPM-list *ngIf="selectedTab==1" [itemsSource]="closedRequestListSource" [totalItems]="closedRequestListTotalItems"
+                               [userDetails]="userDetails" [inputItems]="closedRequestInputItems" [itemsPerPage]="closedRequestListItemsPerPage" [isActive]=false></reviewPM-list>
+
+            </tab>
+      </tabs>
+
+</content>
+</page>
+
+
+    

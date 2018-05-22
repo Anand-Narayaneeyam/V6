@@ -1,0 +1,25 @@
+﻿<page [pagetitle]="pagePath">
+    <pagepath>
+    </pagepath>
+    <content>
+        <section title="Define Work Types" [isGrid]=true [isExpanded]="sectionExpansionStatus[0].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <define-workType *ngIf="sectionExpansionStatus[0].isExpanded" [moduleId]="9" [workFlowCategoryId]="1"></define-workType>
+        </section>
+        <section *ngIf="isSiteAdmin==false && isWorkflowWithSiteEnabled" title="Assign Work Types to Site" [isExpanded]="sectionExpansionStatus[1].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <assignworktype-tosite *ngIf="sectionExpansionStatus[1].isExpanded"></assignworktype-tosite>
+        </section>
+        <section *ngIf="isSiteAdmin==false" title="Additional Data Fields" [isExpanded]="sectionExpansionStatus[2].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <work-order-additional-datafields *ngIf="sectionExpansionStatus[2].isExpanded"></work-order-additional-datafields>
+        </section>
+        <section *ngIf="isSpaceEnabled==true" title="Set Work Type Space Fields" [isGrid]=true [isExpanded]="sectionExpansionStatus[3].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <set-worktype-spacefield *ngIf="sectionExpansionStatus[3].isExpanded"></set-worktype-spacefield>
+        </section>
+        <section title="Set Workflow" [isGrid]=true [isExpanded]="sectionExpansionStatus[4].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <!--<setworkflow *ngIf="sectionExpansionStatus[9].isExpanded" [moduleId]="9" [workFlowCategoryId]="1"></setworkflow>-->
+            <div style="height:90%;overflow:hidden">
+                <setworkflowmain *ngIf="sectionExpansionStatus[4].isExpanded" [moduleId]="9" [workFlowCategoryId]="1"></setworkflowmain>
+            </div>
+        </section>
+
+    </content>
+</page>

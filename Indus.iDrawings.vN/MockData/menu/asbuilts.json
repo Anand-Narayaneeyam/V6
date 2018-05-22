@@ -1,0 +1,30 @@
+﻿[
+ {
+  "id": 4,
+  "title": "Asbuilts",
+  "path": "/asbuilts",
+    "subMenu": [
+      {
+        "id": 30,
+        "parentId": 3,
+        "title": "Drawings",
+        "path": "/asbuilts-drawings",
+        "subMenu": null
+      },
+       {
+        "id": 31,
+        "parentId": 3,
+        "title": "Setup Drawings",
+        "path": "/setup-drawings",
+        "subMenu": null
+      },
+      {
+        "id": 32,
+        "parentId": 4,
+        "title": "Data",
+        "path": "/asbuilts-data",
+        "subMenu": null
+      }
+    ]
+  }   
+]   

@@ -1,0 +1,14 @@
+﻿<page [pagetitle]="pagePath">
+    <pagepath>
+    </pagepath>
+    <content>
+        <section title="Define Work Types" [isExpanded]="sectionExpansionStatus[0].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <define-workType *ngIf="sectionExpansionStatus[0].isExpanded" [moduleId]="4" [workFlowCategoryId]="6"></define-workType>
+        </section>
+        <section title="Set Workflow" [isGrid]=true [isExpanded]="sectionExpansionStatus[1].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div style="height:90%;overflow:hidden" tabindex="0" >
+                <setworkflowmain *ngIf="sectionExpansionStatus[1].isExpanded" [moduleId]="4" [workFlowCategoryId]="6"></setworkflowmain>
+            </div>
+        </section>
+    </content>
+</page>

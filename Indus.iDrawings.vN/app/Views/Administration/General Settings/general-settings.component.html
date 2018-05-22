@@ -1,0 +1,68 @@
+﻿<page [pagetitle]="pagePath">
+    <content>
+       <section *ngIf="isSiteAdmin==false"  title="Password Policy" [isExpanded]="sectionExpansionStatus[0].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <password-policy *ngIf="sectionExpansionStatus[0].isExpanded"></password-policy>
+        </section>
+       <section *ngIf="isSiteAdmin==false"  title="Customer Support" [isExpanded]="sectionExpansionStatus[1].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <customer-support *ngIf="sectionExpansionStatus[1].isExpanded" [isMailDomain]="isMailDomain"></customer-support>
+        </section>
+       <section *ngIf="isAdmin==true" title="Organizational Structure" [isExpanded]="sectionExpansionStatus[2].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <organizational-structure *ngIf="sectionExpansionStatus[2].isExpanded"></organizational-structure>
+        </section>
+        <section *ngIf="isSiteAdmin==false"  title="Attachment Categories" [isExpanded]="sectionExpansionStatus[3].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <attachment-categories *ngIf="sectionExpansionStatus[3].isExpanded"></attachment-categories>
+        </section>
+       <section *ngIf="isMailDomain==true" title="Mail Domains" [isExpanded]="sectionExpansionStatus[4].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+           <mail-domain *ngIf="sectionExpansionStatus[4].isExpanded"></mail-domain>
+        </section>
+        <section  *ngIf="isSiteAdmin==false" title="Report Setup" [isExpanded]="sectionExpansionStatus[5].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <report-setup *ngIf="sectionExpansionStatus[5].isExpanded"></report-setup>
+        </section>
+        <section *ngIf="isSiteAdmin==false"  title="Contact Details & Logo" [isExpanded]="sectionExpansionStatus[6].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+           <contact-details *ngIf="sectionExpansionStatus[6].isExpanded"></contact-details>
+        </section>
+        <section *ngIf="isSiteAdmin==false" title="Additional Data Fields" [isGrid]=true [isExpanded]="sectionExpansionStatus[8].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <additional-datafields *ngIf="sectionExpansionStatus[8].isExpanded" [addlDataFieldCategoryId]="0"></additional-datafields>
+        </section>
+        <section title="Organizational Units" [isExpanded]="sectionExpansionStatus[7].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <organizational-units *ngIf="sectionExpansionStatus[7].isExpanded"></organizational-units>
+        </section>
+        <section *ngIf="enableGLAccount" title="GL Accounts" [isExpanded]="sectionExpansionStatus[9].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <gl-accounts *ngIf="sectionExpansionStatus[9].isExpanded && enableGLAccount"></gl-accounts>
+        </section>
+        <section title="User Groups" [isExpanded]="sectionExpansionStatus[10].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <user-groups *ngIf="sectionExpansionStatus[10].isExpanded"></user-groups>
+        </section>
+        <section *ngIf="isScheduleReport==true" title="Scheduled Reports" [isExpanded]="sectionExpansionStatus[11].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <scheduledReport *ngIf="sectionExpansionStatus[11].isExpanded"></scheduledReport>
+        </section>
+        <section *ngIf="isScheduleReport==true" title="Manage Scheduled Reports" [isExpanded]="sectionExpansionStatus[12].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <manageReports *ngIf="sectionExpansionStatus[12].isExpanded" [moduleId]="0" [target]="0"></manageReports>
+        </section>
+        <section title="Message Templates" [isExpanded]="sectionExpansionStatus[13].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <message-templates *ngIf="sectionExpansionStatus[13].isExpanded"></message-templates>
+        </section>
+        <section title="Seasons" [isExpanded]="sectionExpansionStatus[14].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <seasons-component *ngIf="sectionExpansionStatus[14].isExpanded"></seasons-component>
+        </section>   
+        <section *ngIf="isRealPropModEnabled" title="Building Conditions" [isExpanded]="sectionExpansionStatus[15].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <building-condition *ngIf="sectionExpansionStatus[15].isExpanded"></building-condition>
+        </section>
+        <section title="Calendars" [isExpanded]="sectionExpansionStatus[16].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <dynamicCalendar *ngIf="sectionExpansionStatus[16].isExpanded"></dynamicCalendar>
+        </section>    
+        <section title="Clients" [isExpanded]="sectionExpansionStatus[17].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <client-list *ngIf="sectionExpansionStatus[17].isExpanded"></client-list>
+        </section>   
+        <section title="Contacts" [isExpanded]="sectionExpansionStatus[18].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <contact-list *ngIf="sectionExpansionStatus[18].isExpanded" [isAdministration]="true" [moduleId]="0"></contact-list>
+        </section> 
+        <section title="Prefix" [isExpanded]="sectionExpansionStatus[19].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <NumberFormat *ngIf="sectionExpansionStatus[19].isExpanded==true" [NumberFormatCategoryId]="0" [ModuleId]="-1" [target]="2"></NumberFormat>
+        </section> 
+    </content>
+</page>
+
+
+
+ 

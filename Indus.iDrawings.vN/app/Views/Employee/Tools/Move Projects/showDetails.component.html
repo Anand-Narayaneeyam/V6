@@ -1,0 +1,14 @@
+﻿<div style="height:100%;overflow: hidden;">
+    <sub-menu [menuCard]=true [source]=showDetailsMenu [count]=showDetailsMenuTotalItems [menuIds]=enableshowDetailsMenu (onSubMenuChange)="updateshowDetailsMenu($event);"> </sub-menu>
+
+    <!--<div class="search-container">
+        <search *ngIf="fieldObject" [searchtype]="'Grid'" [keyWordLookup]=keyWordLookup [advancesearch]=true [Key]=2 [datasource]=advancelookup [dataKey]="dataKey" [KeywordFields]=KeywordFieldObject (SaveAs)="SaveAs($event)" (Delete)="Delete($event)" (onloadSearch)="onloadSearch($event)" (loadAdvanceSearch)="advanceSearch()" (Clear)="Clear($event)" (Submit)="Submit($event)"></search>
+    </div>-->
+    <!--<div style="height:calc(100% - 150px);float:left;width:100%;">-->
+    <div style="height: calc(100% - 45px);height: -webkit-calc(100% - 45px);height: -moz-calc(100% - 45px);width:100%;">
+        <gridView [(dataSource)]="itemsSource" [properties]="inputItems" [(columns)]="fieldObject" (onSorting)="onSort($event)" (onRowUpdate)="RowUpdate($event)" (onRowDelete)="RowDelete($event)" (onRowAdd)="RowAdd($event)" (onColValClick)="onColValClick($event)" (ddlChangeFrmGrid)="ddlChangeFrmGrid($event)"></gridView>
+    </div>
+    <div style="height:45px;width:100%;float:left;">
+        <paging [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="pageChanged($event);"></paging>
+    </div>
+</div>

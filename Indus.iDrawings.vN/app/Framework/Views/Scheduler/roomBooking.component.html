@@ -1,0 +1,188 @@
+﻿<style>
+    .tblRoombook {
+        background-color: white;
+        z-index: 5;
+    }
+
+        .tblRoombook tr {
+            border-bottom: 1px solid #c6c6c6;
+        }
+
+            .tblRoombook tr:first-child {
+                display: none;
+            }
+
+            .tblRoombook tr td:first-child {
+                display: none;
+            }
+
+            .tblRoombook tr td:not(:first-child) {
+            }
+
+    .notFirstTd > div {
+        width: 50px !important;
+    }
+
+    .FirstTd > div {
+        width: 100px !important;
+    }
+
+    .tblRoombook tr td:nth-child(2) {
+        vertical-align: bottom;
+    }
+
+    .firstdiv {
+    }
+
+
+    .tblRoombook tr, td {
+        border-right: 1px solid #c6c6c6;
+    }
+
+
+    .divSunday {
+        background-color: darkgray;
+    }
+
+    .divSaturday {
+        background-color: lightgray;
+    }
+
+    .headerDiv {
+        width: 100%;
+        height: 40px;
+        background-color: #00A3E8;
+        color: whitesmoke;
+        font-weight: 900;
+        box-shadow: 1px 1px 1px 1px #00A3E8;
+        display: inline-flex;
+        min-width: 212px;
+        vertical-align: central;
+    }
+
+    .monthSelector {
+        margin-top: 7px;
+        background-color: #00A3E8;
+    }
+
+    .todayHighlight {
+        border-left: solid 2px blue;
+        border-right: solid 2px blue;
+    }
+
+    .stickyCol {
+        left: 0;
+        position: absolute;
+        top: auto;
+        width: 120px;
+    }
+
+    .bookedCell {
+        background-color: #FF8566;
+    }
+
+    .tblRoombook1 {
+        font-size: small;
+        border-collapse: inherit;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 13px;
+    }
+
+    .tblRoombook2 {
+        width: 100%;
+        font-size: medium;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 13px;
+    }
+
+    .tblRoombook1 tr {
+        border-bottom: 1px solid #c6c6c6;
+    }
+
+    .tblRoombook2 tr {
+        border-bottom: 1px solid #c6c6c6;
+        height: 25px;
+    }
+
+
+    .tblRoombook2 tr, td {
+        border-right: 1px solid #c6c6c6;
+    }
+
+    .tblRoombook1 tr, td {
+        border-right: 1px solid #c6c6c6;
+    }
+
+    .tblRoombook2 tr:first-child {
+        display: none;
+    }
+
+    .tblRoombook1 td:first-child {
+        display: none;
+    }
+</style>
+
+<split-view [splitviewObject]="splitviewInput" [pageTitle]="pageTitle">
+    <primary-view>
+        <div class="headerDiv" align="center">
+
+            <div style="width:30%;">
+                <span>
+                    <input type="button" class="monthSelector" value="<" (click)="getPreviousMonth($event)">
+                </span>
+            </div>
+            <div style="margin-top:10px;width:40%;">
+                <div>{{selMonth}} {{selYear}}</div>
+            </div>
+            <div style="width:30%;">
+                <input type="button" class="monthSelector" value=">" (click)="getNextMonth($event)">
+            </div>
+
+        </div>
+        <div style="overflow:hidden;height:92%;width:100%;overflow:hidden;position:relative;display:block;background-color:cornflowerblue;">
+            <div id="firstRowDiv" style="overflow:hidden;width:calc(98% - 100px);height:30px;background-color:cornflowerblue;position:absolute;z-index:9;margin-left:100px">
+                <table class="tblRoombook1">
+                    <tr>
+                        <td *ngFor="let col of tdCountArr;let j=index" [ngClass]="getClassNameTable1(0,j)" id="td0_{{j}}">
+                            <div style="height:25px;display:inline-flex;margin-top:5px" id="div0_{{j}}">
+                                <div *ngIf="j>0">{{datedayArr[j]}} </div>
+                            </div>
+
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div id="firstColDiv" style="overflow:hidden;display:block;position:absolute;width:100px!important;background-color:cornflowerblue;z-index:10;height:calc(92%);margin-top:30px;">
+                <table class="tblRoombook2">
+                    <tr *ngFor="let row of trCountArr;let i=index">
+                        <td>
+                            <div style="height:25px;display:inline-flex;margin-left:20px;padding-top:5px" id="div{{i}}_0">
+                                <div *ngIf="i>0 && timeObj!=undefined">{{timeObj[i-1]['Value']}} </div>
+                                <!--<div *ngIf="i==0 && j>0">{{datedayArr[j]}} </div>-->
+                            </div>
+
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div id="reserveMainDiv" style="display:block;position:relative;width:calc(100% - 100px);margin-left:100px;margin-top:30px;overflow:auto;height:calc(100% - 30px)">
+                <table class="tblRoombook" id="reserveRoomTable">
+                    <tr *ngFor="let row of trCountArr;let i=index">
+                        <td *ngFor="let col of tdCountArr;let j=index" [ngClass]="getClassName(i,j)" id="td{{i}}_{{j}}">
+                            <div style="height:25px;" title='{{getTitle(j,i)}}' (click)="divBlockClick($event,j,i)" id="div{{i}}_{{j}}">
+
+                            </div>
+
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </primary-view>
+    <secondary-view *ngIf="isDblClick == true && splitviewInput.showSecondaryView">
+        <reservation-request [Roombookrequest]="Roombookrequest" [action]="action" [btnName]="btnName"
+                             (submitSuccess)="OnSuccessfulSubmit($event)" [selectedId]="SpaceId" [RoomNo]="RoomNo" [FromTime]="FromTime" [Totime]="Totime" [Seats]="Seats" [FloorId]="FloorId" [messages]="messages"
+                             [SiteDate]="sitedatetimeforreservationrequest" (InviteesList)="getInviteesList($event)" (AmnietyList)="getAmnietyList($event)" (ServiceList)="getServiceList($event)" (CateringList)="getCateringList($event)"></reservation-request>
+
+    </secondary-view>
+</split-view>

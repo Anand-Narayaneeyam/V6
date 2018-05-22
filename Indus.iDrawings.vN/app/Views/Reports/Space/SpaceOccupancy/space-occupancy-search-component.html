@@ -1,0 +1,20 @@
+﻿<div>
+    <div *ngIf="ddlLevel1 != undefined">
+        <DropDownListComponent [fieldObject]="ddlLevel1" (change)="onChangeDdlLevel1($event.target.value,0)"></DropDownListComponent>
+    </div>
+    <div *ngIf="ddlLevel2 != undefined">
+        <DropDownListComponent [fieldObject]="ddlLevel2" (change)="onChangeDdlLevel2($event.target.value,0)"></DropDownListComponent>
+    </div>
+    <div *ngIf="ddlLevel3 != undefined">
+        <DropDownListComponent [fieldObject]="ddlLevel3" (change)="onChangeDdlLevel3($event.target.value,0)"></DropDownListComponent>
+    </div>
+    <div *ngIf="ddlLevel4 != undefined">
+        <DropDownListComponent [fieldObject]="ddlLevel4" (change)="onChangeDdlLevel4($event.target.value,0)"></DropDownListComponent>
+    </div>
+    <div *ngIf="ddlLevel5 != undefined">
+        <DropDownListComponent [fieldObject]="ddlLevel5" (change)="onChangeDdlLevel5($event.target.value,0)"></DropDownListComponent>
+    </div>
+    <div style="width:100%">
+        <button  class="Savebutton "style="margin-top: 3%;" type="button" (click)="onSubmit($event)">OK</button>
+    </div>
+</div>

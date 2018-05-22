@@ -1,0 +1,30 @@
+﻿<page [pagetitle]="pagePath">
+    <content>
+        <tabs [selectedTab]="selectedTab" id="furnituredetailreport" (getSelectedTab)="getSelectedTab($event)">
+            <tab tabTitle="Select Furniture Class" closeButtonVisible="hidden">
+                <div style="height:100%">
+                    <submenu>
+                        <sub-menu [source]=menuData [menuCard]=iscard [menuIds]=enableMenu (onSubMenuChange)="onSubMenuChange($event);"> </sub-menu>
+                    </submenu>
+                    <div *ngIf="ListboxData != undefined">
+                        <div style="display:inline;" *ngIf="ListboxData.LookupDetails.LookupValues !=undefined">
+                         
+                            <ListBoxComponent *ngIf="ListboxData.LookupDetails.LookupValues != undefined" (lstBox)="getListBoxData($event)" (selAll)="getListBoxData($event)" [fieldObject]=ListboxData></ListBoxComponent>
+
+                        </div>
+                    </div>
+                </div>
+            </tab>
+            <tab *ngIf="selectedIds != undefined" tabTitle="Report" closeButtonVisible="hidden">
+                <div style="height:100%" *ngIf="isNextClicked && selectedIds != undefined">
+                    <furnitureDetails-report [Ids]="selectedIds"> </furnitureDetails-report>
+                </div>
+            </tab>
+        </tabs>
+    </content>
+</page>
+<style>
+    #furnituredetailreport .navbar li {
+        width: 160px !important;
+    }
+</style>

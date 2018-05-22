@@ -1,0 +1,39 @@
+﻿
+<!--<div style="height:100%;overflow: hidden;">-->
+  
+        <split-view [splitviewObject]="splitviewInput" [pageTitle]="pageTitle">
+            <primary-view>
+                <submenu>
+                    <sub-menu [source]=menuData [count]=totalItems [menuIds]=enableMenu (onSubMenuChange)="onSubMenuChange($event);"> </sub-menu>
+                </submenu>
+                <div style="height: calc(100% - 50px);overflow: hidden;">                   
+                    <div style="height:100%;">
+                        <div style="height: calc(100% - 45px);height: -webkit-calc(100% - 45px);height: -moz-calc(100% - 45px);width:100%;display:block" [ngClass]="totalItems > itemsPerPage ? 'pagewithPaging':'pagewithoutPaging'">
+                            <gridView [dataSource]="itemsSource" [properties]="inputItems" [columns]="fieldObject" (onSorting)="onSort($event)" [refreshgrid]="refreshgrid"></gridView>
+                        </div>
+                        <div style="height:45px;width:100%;float:left;display:block;">
+                            <paging [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="pageChanged($event);"></paging>
+                        </div>
+                    </div>
+                </div>
+            </primary-view>
+            <secondary-view style="height:100%;" >
+                <div style="width:100%;display:block;height:100%;">
+                    <customrpt-addedit *ngIf="splitviewInput.showSecondaryView==true" [btnName]="btnName" [selectedId]="reportId" [fieldObject]="fieldObjectAddEdit" [itemSource]="itemsSourceAddEdit" (retSaveCustomRpt)="saveCustomRptRow($event)"  [moduleId]="moduleId"></customrpt-addedit>
+                </div>
+            </secondary-view>       
+        </split-view>      
+
+<!--</div>-->
+
+<slide [width]="slidewidth" [position]="position" [show]="showSlide" (closeDialog)="closeSlideDialog($event)">
+    <div>
+        <div>Are you sure you want to delete the selected Custom Report?  </div>
+        <div style="width:100%">
+            <button  class="Savebutton "type="button" (click)="okDelete($event)">Yes</button>
+            <button  class="Savebutton "type="button" (click)="cancelClick($event)">No</button>
+        </div>
+    </div>
+</slide>
+
+

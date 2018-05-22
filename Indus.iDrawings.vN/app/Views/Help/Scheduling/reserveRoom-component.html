@@ -1,0 +1,95 @@
+﻿<page [pagetitle]="pagePath">
+    <pagepath>
+    </pagepath>
+    <content>
+        <section title="Reserve Room" [isExpanded]="sectionExpansionStatus[0].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div *ngIf="sectionExpansionStatus[0].isExpanded==true">
+                <p>This option is used to create Room scheduling requests and book space for meetings or other events. Through this option it is possible to check the availability of space and ensure that there are no conflicting bookings. This option will be available only if Enable Room Booking option is enabled for the customer. Requests can be submitted for scheduling the required meeting rooms.</p>
+                <p>Reserve Room and Requests are provided under the Room Booking menu. Two tabs namely My Requests and Active Requests are provided in the Requests menu.</p>
+                <p>Reserve Room option helps users to book rooms for meetings or events. Requests can be submitted for booking the required rooms.</p>
+                <p>My Requests option is for creating and processing new Requests created by the logged in User. All Requests created by the logged in user will be displayed in the My Requests option.</p>
+                <p>Active Requests option is for Checking In, Checking Out, or Cancelling the scheduled requests by the Administrator. This option lists all the active Requests with status Confirmed and Send for Approval.  Cancelled Requests or Requests with elapsed date will not be listed here. </p>
+                <h1>Reserve Room</h1>
+                <p>The user can reserve a room through the option <span class="header2">Room Booking: Reserve Room</span>. On selecting this option, all the rooms available for Reservation for the current date will be displayed by default.Rooms available for booking are those for which the Space Assignment Type is selected as Scheduling Space. </p>
+                <p>User can change the date displayed as required.  By default the time slot chart with 12 half hour slots starting from the current time slot will be displayed for each room. Already booked time slots will be shown as highlighted and on pointing the mouse of the highlighted cell; its tool tip will display the booking details. The time slots that cannot be scheduled will be displayed as inactive and cannot be selected.</p>
+                <p>The user can view the location of a room in the floor drawing by clicking the Floor link displayed in the search result. On clicking this link, the drawing of the selected floor will be opened with the available rooms shown as hatched and its tool tip will show the space details. The selected room will be shown in green color and other rooms which can be scheduled will be shown in yellow color. The Room Availability Calendar with Room No. link and time slots representing the details of the highlighted room will be displayed below the drawing. </p>
+                <p>On clicking the Room No. link, selected Room will be shown as blinking in the Drawing and a Room Details window will be displayed with all the details of the selected room. Any photo added for the room will also be displayed in the Room Details window.</p>
+                <p>The reservation of the required room can be done by clicking the required time slot in the time slot chart displayed in the Reserve Room page as well as through the time slot chart in the Floor link. On clicking a time slot, New Room Booking Request page will be displayed where the User can enter/select From (Date time), To (Date time), Event Name, Participants (Count), Booked for, Invitees, Amenities,Services, Catering and Comments. </p>
+                <p>On clicking the Location button, the details of the Location which includes the Site, Building, Floor, Space Function and Room No. will be displayed as read only. </p>
+                <p>The requestor can specify the number of participants and also select Invitees for the meeting. Invitees can be selected from iDrawings Users and / or Employees present in the Employee module. </p>
+                <p>The user can add Invitees, Amenities, Services and Catering Items as required while reserving the room. </p>
+                <p><span class="header1">Add Invitees:</span> Invitees can be added by clicking the <span class="header2"> Add</span> <img src="Content/list_adD.png" alt="Add" class="helpicon" /> button placed at the right side of the Invitees list box. On clicking the <span class="header2"> Add</span> <img src="Content/list_adD.png" alt="Add" class="helpicon" /> button, Invitees page will be displayed to select the invitees. iDrawings Users and Employees are the options listed in the User Category combo. User has to select the required User Category from the combo and all the Users of selected User Category will be listed. Select the required Invitees and click Save button. Selected Invitees will be added. </p>
+                <p>Invitees can be removed from the list by clicking the <span class="header2"> Remove</span> <img src="Content/list_removE.png" alt="Remove" class="helpicon" /> button after selecting the Invitee to be deleted. </p>
+                <p><span class="header1">Amenities/Services/Catering:</span> Amenity/Service/Catering requirements needed for the meeting while reserving a room can be added byclicking the <span class="header2"> Add</span> <img src="Content/list_adD.png" alt="Add" class="helpicon" /> button placed at the right side of the Amenity/Service/Catering option. On clicking  <span class="header2"> Add</span> <img src="Content/list_adD.png" alt="Add" class="helpicon" /> button, a window where a list of available amenities, services and catering available for the selected room will be displayed. User can also add additional Amenities, Services or Catering by clicking the Add option displayed at the top right of this window. While adding Amenities/Catering the user can specify if the selected Amenities/Catering is mandatory or optional by selecting the "Required" or "Optional" check box. The selected Amenity/Service/Catering will be listed in the corresponding options on clicking Save button. </p>
+                <p>The added items can be deleted one by one by selecting the item and clicking the <span class="header2"> Remove</span> <img src="Content/list_removE.png" alt="Remove" class="helpicon" /> button.</p>
+                <p>Once all the requirements are entered, the request can be submitted by clicking the Reserve button. The newly submitted request will be confirmed directly without any approval process if the  'Approval Process - Not Required' option is selected by Customer. </p>
+                <p>Request can be created by any iDrawings Users irrespective of the drawing access set for different User roles.</p>
+            </div>
+        </section>
+        <section title="Requests" [isExpanded]="sectionExpansionStatus[1].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div *ngIf="sectionExpansionStatus[1].isExpanded==true">
+                <p>This options list the Room booking Requests created for the Customer. Two tabs namely My Requests and Active Requests are provided in Requests menu.</p>
+
+                <h1>My Requests</h1>
+                <p>This option is to list all the Room Booking Requests of the logged in user. Through this option the user can set reminder or cancel request. </p>
+                <p><span class="header1">Reminder:</span> This option is used to send reminder to the invitees in the selected scheduled request. Reminder can be set for a Request by clicking the <span class="header2">Reminder</span> <img class="helpicon" src="Content/Icons/remindeR.png" alt="Reminder" />  icon. User can send reminder to the invitees only if the selected request is in Confirmed status. </p>
+                <p><span class="header1">Cancel Request:</span> A Request can be cancelled by clicking the <span class="header2">Cancel Request</span> <img class="helpicon" src="Content/Icons/cancel_RequestS.png" alt="Cancel Request" />  icon. User can cancel the Requests in Sent for Approval and Confirmed status only. While cancelling the request, status of the selected request will be changed to Cancelled. If a Confirmed Request is cancelled, Meeting Cancelled mail will be sent to all invitees in the request and to the Requester.</p>
+                <p><span class="header1">Invitee Status</span></p>
+                <p>The user can view the status of the invitees using this option. On selecting this <img class="helpicon" src="Content/Icons/invitee_statuS.png" alt="Invitee Status" />  icon, an Invitee Status window will be displayed with the Event name as the caption and, other details like when, where and who all are attending the meeting will also be listed in the window. The text of each invitee's names will be displayed in Green, Red or Black color as per the response to the invitation mail send to each of them. If the invitee has accepted the invitation then the text color of the name will be displayed in Green color. If the invitee has declined the invitation then the text color of the name will be displayed in Red color and if the invitee has not taken any action in response to the invitation then the text color of  his/her name will be displayed in black color in the Invitee Status window.</p>
+
+                <h1>Active Requests</h1>
+                <p>This option is used for viewing the Active Room Booking Requests submitted by different users. Options to Cancel Request, Check In or Check Out are provided. The option is available only to Administrators. On selecting this option, all the existing Active Requests which are not already elapsed will be displayed with Request Token, Event Name, Site, Building, Floor, Room No., Space Function, From and To Date, Participants (Count), Requested by, Requested on  etc. The list can be sorted on any column by clicking the column header.</p>
+                <p><span class="header1">Cancel Request:</span> This option is to cancel the Requests which are in confirmed or Sent for Approval status.  Select the request to be cancelled and click <span class="header2">Cancel Request</span> <img class="helpicon" src="Content/Icons/cancel_RequestS.png" alt="Cancel Request" />  icon, the selected request will be cancelled. On Cancelling the Request, InvitationCancelled mail will be sent to all selected Invitees in the Request and to the Requester.</p>
+                <p><span class="header1">Check In:</span> This option is to Check In to the Scheduled Room and to change the status of the request to Checked In. Select a confirmed request and click on <span class="header2">Check In</span> <img class="helpicon" src="Content/Icons/check-iN.png" alt="Check In" />  icon, the status of the selected request will be changed to "Checked In". Only request with status "Confirmed" can be checked in. Check In is not allowed before the scheduled Start Time and after the scheduled End Time.</p>
+                <p><span class="header1">Check Out:</span> This option is to change the status of the request to Checked Out after the usage. Select the request to be checked out by clicking the <span class="header2">Check Out</span> <img class="helpicon" src="Content/Icons/check_ouT.png" alt="Check Out" />  icon, the status of the selected request will be changed to "Checked Out". Only request with status "Checked In" can be checked out.</p>
+            </div>
+        </section>
+    </content>
+</page>
+<style type="text/css">
+    h3.Mainheader {
+        color: #178AE8;
+    }
+
+    .header1 {
+        font-weight: bold;
+        color: #178AE8;
+    }
+
+    .header2 {
+        font-weight: normal;
+        color: #178AE8;
+    }
+
+    p {
+        margin-left: 38px;
+        font-size: 13px;
+        margin-right: 3em;
+    }
+
+    .header3 {
+        font-weight: bold;
+        color: black;
+    }
+    /**/ h1 {
+        color: #178AE8;
+        font-size: 1.3em;
+        margin-left: 38px;
+    }
+
+    h2 {
+        color: #178AE8;
+        font-size: 1em;
+        margin-left: 38px;
+    }
+
+    .config {
+        background-color: #178AE8;
+    }
+
+    .helpicon {
+        vertical-align: baseline;
+        width: 20px;
+        height: 20px;
+    }
+</style>

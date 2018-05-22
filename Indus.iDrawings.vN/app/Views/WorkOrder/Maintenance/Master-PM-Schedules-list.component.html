@@ -1,0 +1,40 @@
+﻿<div> 
+    <tabs [selectedTab]="selectedTab" (getSelectedTab)="getSelectedTab($event)" [deleteIndex]="deleteIndex">
+        <tab tabTitle="Master PMs" closeButtonVisible="hidden">
+                <submenu>
+                    <sub-menu [menuCard]=true [source]=menuData [count]=totalItems [menuIds]=enableMenu (onSubMenuChange)="onSubMenuChange($event);"> </sub-menu>
+                </submenu>
+                <div style="height:calc(100% - 35px);">
+                    <split-view [splitviewObject]="splitviewInput" [pageTitle]="pageTitle">
+
+                        <primary-view>
+                            <div>
+                                <div [ngClass]="totalItems > itemsPerPage ? 'pagewithPaging':'pagewithoutPaging'">
+                                    <gridView [(dataSource)]="itemsSource" [properties]="inputItems" [columns]="fieldObject" [refreshgrid]="refreshgrid" (onSorting)="onSort($event)" (onRowDelete)="inlineDelete($event)"></gridView>
+                                </div>
+                                <div *ngIf="totalItems >itemsPerPage ? 'true' : 'false'">
+                                    <paging [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="pageChanged($event);"></paging>
+                                </div>
+                            </div>
+                        </primary-view>
+
+                        <secondary-view *ngIf="target == 1">
+                            <masterpm-addedit *ngIf="splitviewInput.showSecondaryView==true && fieldDetailsAddEdit != undefined" style="display: block;width:375px;" [fieldDetailsAddEdit]="fieldDetailsAddEdit" [action]="action" [btnName]="btnName" (submitSuccess)="OnSuccessfulSubmit($event)" [selectedId]="inputItems.selectedIds[0]"></masterpm-addedit>
+                        </secondary-view>
+                    </split-view>
+                </div>
+                <slide [width]="slidewidth" [position]="position" [show]="showSlide" (closeDialog)="closeSlideDialog($event)">
+                    <div>
+                        <div>Are you sure you want to delete the selected Master PM Schedule?  </div>
+                        <div style="width:100%">
+                            <button  class="Savebutton "type="button" (click)="okDelete($event)">Yes</button>
+                            <button  class="Savebutton "type="button" (click)="cancelClick($event)">No</button>
+                        </div>
+                    </div>
+                </slide>
+        </tab>
+        <tab tabTitle="Procedures" *ngIf="masterPMProcedureTab" closeButtonVisible="hidden">
+            <pmProcedures-list *ngIf="masterPMProcedureTab" [equipmentClassName]="equipmentClassName" [equipmentCategoryName]="equipmentCategoryName" [pmId]="pmId" [equipmentClassIdfor]="equipmentClassId" [pagetarget]="2"></pmProcedures-list>
+        </tab>
+    </tabs>
+</div>  

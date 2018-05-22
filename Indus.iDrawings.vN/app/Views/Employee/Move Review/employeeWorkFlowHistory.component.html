@@ -1,0 +1,10 @@
+﻿
+    <div style="height:100%;overflow: hidden;">
+        <div style="width:100%;display:block" [ngClass]="totalItems > itemsPerPage ? 'pagewithPaging':'pagewithoutPaging'">
+            <gridView [dataSource]="itemSource" [properties]="inputItems" [columns]="fieldObject" (onSorting)="onSort($event)"></gridView>
+        </div>
+        <div style="height:45px;width:100%;float:left;display:block;">
+            <paging [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="pageChanged($event);"></paging>
+        </div>
+   </div>
+  

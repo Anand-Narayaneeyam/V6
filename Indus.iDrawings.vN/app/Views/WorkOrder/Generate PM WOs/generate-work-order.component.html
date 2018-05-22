@@ -1,0 +1,35 @@
+﻿<page [pagetitle]="pagePath" [withoutSubmenu]="true" class="pageGenerateWorkOrder">
+    <pagepath>
+    </pagepath>
+    <content>
+        <tabs [selectedTab]="selectedTab" (getSelectedTab)="getSelectedTab($event)" (onTabClose)="onTabClose($event)" [deleteIndex]="deleteIndex">
+            <tab tabTitle="Select Criteria" closeButtonVisible="hidden">
+                <div>
+                    <label>Calendar View </label>
+                    <input type="checkbox" (click)="checkBoxClick($event)" />
+                </div>
+                <div *ngIf="calenderFlagSet == true  && blnBlockPrevClick != undefined">
+                    <calenderControl [CalendarObj]="calendarObj" (prevMonClick)="prevMonClick($event)" (nextMonClick)="nextMonClick($event)" (btnClick)="btnClick($event)" [blnBlockPrevClick]="blnBlockPrevClick"></calenderControl>
+                </div>
+                <div class="wrkOrderDyn" *ngIf="dynamicFlagSet == true">
+                    <DynamicFields [dataSource]="fieldDetailsGenerateWorkOrder" (submitFieldObject)="onNextClick($event)" [btnName]="btnName" (fieldChange)="fieldChange($event)"></DynamicFields>
+                </div>
+            </tab>
+            <tab tabTitle="Generate Work Orders" *ngIf="generateWorkOrderListTab == true" closeButtonVisible="show">
+                <div>
+                    <generate-work-order-list [numberOfDays]="numberOfDays" [routeId]="routeId" [equipmentCategoryId]="equipmentCategoryId" [equipmentClassId]="equipmentClassId" [workTypeId]="workTypeId" [date]="date"></generate-work-order-list>
+                </div>
+            </tab>
+        </tabs>
+    </content>
+</page>
+
+<style>
+    .wrkOrderDyn form {
+        height: 80% !important;
+    }
+
+    .pageGenerateWorkOrder .pageContectLayout {
+        height: 97% !important;
+    }
+</style>

@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Indus.iDrawings.vN", "Indus.iDrawings.vN\Indus.iDrawings.vN.csproj", "{7AFBB2BC-2DFC-4CD9-962A-16FDB88F7F2E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Indus.iDrawings.vN.Tests", "Indus.iDrawings.vN.Tests\Indus.iDrawings.vN.Tests.csproj", "{A44F0C9E-7FA9-413D-9C77-7D4541D8E99F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7AFBB2BC-2DFC-4CD9-962A-16FDB88F7F2E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7AFBB2BC-2DFC-4CD9-962A-16FDB88F7F2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7AFBB2BC-2DFC-4CD9-962A-16FDB88F7F2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7AFBB2BC-2DFC-4CD9-962A-16FDB88F7F2E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A44F0C9E-7FA9-413D-9C77-7D4541D8E99F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A44F0C9E-7FA9-413D-9C77-7D4541D8E99F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A44F0C9E-7FA9-413D-9C77-7D4541D8E99F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A44F0C9E-7FA9-413D-9C77-7D4541D8E99F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 3
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://esofttfs:8080/tfs/scrum
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = Indus.iDrawings.vN.Tests\\Indus.iDrawings.vN.Tests.csproj
+		SccProjectName1 = Indus.iDrawings.vN.Tests
+		SccLocalPath1 = Indus.iDrawings.vN.Tests
+		SccProjectUniqueName2 = Indus.iDrawings.vN\\Indus.iDrawings.vN.csproj
+		SccProjectName2 = Indus.iDrawings.vN
+		SccLocalPath2 = Indus.iDrawings.vN
+	EndGlobalSection
+EndGlobal

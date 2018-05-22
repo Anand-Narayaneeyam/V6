@@ -1,0 +1,39 @@
+﻿<form #form="ngForm" (ngSubmit)="onSubmit(form)">
+    <div style="height:100%;">
+        <div style="max-height:calc(100% - 55px);display:block;position:relative;">
+            <div style="height:100%;overflow-y:auto;">
+                <div *ngIf="ddlField" style="display: block;margin-right: 25px;">
+                    <!--<label style="width: 250px;padding-left: 2px;">Field</label>
+                    <div style="width: 250px;">
+                        <select #t (change)="onChange(t.value)" class="ddl" style="height:30px;">
+                            <option text="--Select--" value="0">--Select--</option>
+                            <option *ngFor="let type of dropdownSource" [value]="type.Id">{{//type.Name}}</option>
+                        </select>
+                    </div>-->
+                    <DropDownListComponent *ngIf="ddlField != undefined" [fieldObject]="ddlField" (change)="onChange($event.target.value)"></DropDownListComponent>
+
+                </div>
+                <div *ngIf="fieldObjects" style="max-height:calc(100% - 50px)">
+                    <!--<div class="container" style="margin: 11px 7px 13px 2px;height: 8%;width: 100%" id="table1" *ngFor="let fieldItems of fieldObjects;let i=index">
+                        <div *ngIf="fieldItems != undefined" id="multEdit" style="display: block; margin-left:2%;height: 100%;">
+                            <StringTextBox id="StringTextBoxMulipleEdit" [style.display]="showComponent(fieldItems.IsVisible)" name="StringTextBox" *ngIf="fieldItems.DataEntryControlId == '1'" [validationData]='validationData' [fieldObject]=fieldItems [inttabIndex]="i"></StringTextBox>
+
+                            <DateComponent id="DatecomponentMulipleEdit" [style.display]="showComponent(fieldItems.IsVisible)" name="Datecomponent" *ngIf="fieldItems.DataEntryControlId == '2'" [validationData]='validationData' [fieldObject]=fieldItems></DateComponent>
+
+                            <TextAreaComponent id="TextAreaComponentMulipleEdit" [style.display]="showComponent(fieldItems.IsVisible)" name="TextAreaComponent" *ngIf="fieldItems.DataEntryControlId == '3'" [validationData]='validationData' [fieldObject]=fieldItems></TextAreaComponent>
+
+                            <DropDownListComponent id="DropDownListComponentMulipleEdit" [style.display]="showComponent(fieldItems.IsVisible)" name="DropDownListComponent" *ngIf="fieldItems.DataEntryControlId == '4'" [validationData]='validationData' [fieldObject]=fieldItems (ddlChange)="onDropdownChange($event)"></DropDownListComponent>
+
+                            <DateTimeComponent id="DateTimeComponentMulipleEdit" [style.display]="showComponent(fieldItems.IsVisible)" name="DateTimeComponent" *ngIf="fieldItems.DataEntryControlId == '8'" [validationData]='validationData' [fieldObject]=fieldItems></DateTimeComponent>
+                        </div>
+                    </div>-->
+                    <DynamicFields [dataSource]="fieldObjects"  [showButton]="false" (fieldChange)="onDropdownChange($event.ddlRelationShipEvent)"></DynamicFields>
+                </div>
+
+            </div>
+        </div>
+        <div style="height:30px;">
+            <button type="submit" class="save-button" style="position: absolute;left: 15px;bottom:5px;">Save Changes</button>
+        </div>
+    </div>
+</form>

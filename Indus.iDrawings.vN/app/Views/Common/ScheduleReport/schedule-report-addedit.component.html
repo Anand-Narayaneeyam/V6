@@ -1,0 +1,179 @@
+﻿<split-view [splitviewObject]="splitviewInput" [pageTitle]="pageTitle">
+    <primary-view>
+        <DynamicFields (ddlChange)="ddlChange($event)" (submitFieldObject)="onSubmitData($event)" [dataSource]="fieldDetails" (rbnChange)="radioBtnChange($event)" (popupItemEmit)="popUpEmailRecipients($event)" [btnName]="btnName"></DynamicFields>
+    </primary-view>
+    <secondary-view *ngIf="showEmailRecComp && emailRecFieldDetails!='' && splitviewInput.showSecondaryView==true">
+        <emailrecipients-schedulereport [emailRecCount]="emailRecCount" [emailRecEditCount]="emailRecEditCount" [fieldDetailsEdit]="fieldDetailsEdit"  (emailRecUpdated)="handleEmailRecUpdated($event,rowData)" [emailRecFieldDetails]="emailRecFieldDetails" [fieldUserCategory]="fieldUserCategory" [fieldTitle]="fieldTitle" [reportTitle]="reportTitle"></emailrecipients-schedulereport>        
+    </secondary-view>
+</split-view>
+
+
+
+<style>
+    .ddllabel_2607 {
+        width: 163px !important;
+    }
+
+    .MainContainer_2687 {
+        height: 28px !important;
+    }
+
+    .MainContainer_2682 {
+        height: 28px !important;
+    }
+
+    .MainContainer_2687 {
+        height: 28px !important;
+    }
+
+    .MainContainer_2649 {
+        height: 28px !important;
+    }
+
+    .MainContainer_2655 {
+        height: 28px !important;
+    }
+
+    .MainContainer_2651 {
+        height: 28px !important;
+    }
+
+    .MainContainer_2715 {
+        height: 28px !important;
+    }
+
+    .MainContainer_2667 {
+        height: 28px !important;
+    }
+
+    .MainContainer_2671 {
+        height: 28px !important;
+    }
+    .MainContainer_2644 {
+        display:inline-block !important;
+        width:265px !important;
+    }
+    .Radio-2644{
+        display:block !important;
+    }
+    .Radio-2648{
+        display:block !important;
+        margin-left:207px;
+        margin-top:29px;
+    }
+    .Radio-2666{
+        display:block !important;
+        margin-left:207px;
+        margin-top:29px;
+
+    }
+    .MainContainer_2666{
+
+        margin-left:-78px;
+        margin-top:-94px;
+    }
+    .MainContainer_2666{
+
+        
+        margin-top:-93px;
+    }
+    .MainContainer_2645{
+
+        margin-left:251px;
+        margin-top:-108px;
+    }
+    .MainContainer_2645{
+
+        margin-left:251px;
+        margin-top:-108px;
+    }
+    .MainContainer_2647{
+        margin-left:251px;
+    }
+    .MainContainer_2648{
+        margin-left:-91px;
+        margin-top:-61px;
+    }
+    .MainContainer_2649{
+        margin-left:246px;
+        margin-top:-100px;
+        
+    }
+    .MainContainer_2651{
+       margin-left:246px;
+       
+    }
+    .MainContainer_2652{
+       margin-left:246px;
+       
+    }
+    .MainContainer_2655{
+       margin-left:246px;
+       
+    }
+    .MainContainer_2656{
+       margin-left:246px;
+       
+    }
+    #2649{
+        width:auto;
+        max-width:250px;
+    }
+    #2652{
+        width:auto;
+        max-width:250px;
+    }
+    #2651{
+        width:auto;
+        max-width:250px;
+    }
+     #2656{
+        width:auto;
+        max-width:250px;
+    }
+     .MainContainer_2667{
+       margin-left:246px;
+       margin-top:-92px;
+       
+    }
+     .MainContainer_2671{
+       margin-left:246px;
+       
+    }
+     .MainContainer_2682{
+       margin-left:246px;
+       
+    }
+     .MainContainer_2687{
+       margin-left:246px;
+       
+    }
+     .MainContainer_2690{
+       margin-left:246px;
+       
+    }
+     #2667{
+         width:auto!important;
+     }
+     #2671{
+         width:auto!important;
+     }
+     #2682{
+         width:auto!important;
+     }
+     #2687{
+         width:auto!important;
+     }
+     #2690{
+         width:auto!important;
+     }
+     .MainContainer_2691{
+         margin-top:62px;
+     }
+     .MainContainer_2724{
+         margin-top:-28px;
+     }
+</style>
+
+
+

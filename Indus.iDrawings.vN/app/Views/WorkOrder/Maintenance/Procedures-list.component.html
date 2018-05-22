@@ -1,0 +1,61 @@
+﻿<div>
+    <submenu>
+        <sub-menu [menuCard]=types [source]=menuData [count]=totalItems [menuIds]=enableMenu (onSubMenuChange)="onSubMenuChange($event);"></sub-menu>
+    </submenu>
+        <split-view [splitviewObject]="splitviewInput" [pageTitle]="pageTitle" style="height:calc(100% - 35px);">
+            <primary-view >                                    
+                <div>
+                    <div>
+                        <gridView [(dataSource)]="ProceduresSource" [ngClass]="totalItems > itemsPerPage ? 'pagewithPaging':'pagewithoutPaging'" [properties]="inputItems" [columns]="fields" [refreshgrid]="refreshgrid" (onSorting)="onSort($event)"></gridView>
+                    </div>
+                    <div>
+                        <paging  *ngIf="totalItems >itemsPerPage ? 'true' : 'false'" [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="pageChanged($event);"></paging>
+                    </div>
+                </div>
+
+            </primary-view>
+            <secondary-view >
+                <procedure-AEC-list *ngIf="splitviewInput.showSecondaryView && menuClickValue == 5 && action == 'Equipment'" style="display: block;width:700px;" (submitSuccess1)="submitReturn($event)" [btnName]="btnName" [selectedId]="inputItems.selectedIds" [fieldDetailsAdd]="fieldDetailsAdd1" [entityName] ="procName" [target]="target"></procedure-AEC-list>
+                <job-steps-list *ngIf="splitviewInput.showSecondaryView && menuClickValue == 4 && action == 'JobStep'" style="display: block;width:700px;height:96%;" (submitSuccess)="submitReturn($event)" [btnName]="btnName" [selectedId]="inputItems.selectedIds" [fieldDetailsAdd]="fieldDetailsAdd1" [entityName] ="procName"></job-steps-list>
+                <safety-steps-list *ngIf="splitviewInput.showSecondaryView && menuClickValue == 6 && action == 'SafetyStep'" style="display: block;width:700px;height:96%;" (submitSuccess)="submitReturn($event)" [btnName]="btnName" [selectedId]="inputItems.selectedIds" [fieldDetailsAdd]="fieldDetailsAdd1" [entityName] ="procName"></safety-steps-list>          
+                <attachments *ngIf="splitviewInput.showSecondaryView && menuClickValue == 7 && action == 'Attachment'" class="attachment" (attachmentSuccess)="submitReturn($event)"  [attachmentCategoryId]="21" [baseEntityId]="inputItems.selectedIds[0]" ></attachments>
+                <procedures-add-edit *ngIf="splitviewInput.showSecondaryView && (menuClickValue == 1 || menuClickValue == 2)" (submitSuccess)="submitReturn($event)" [action]="action" [btnName]="btnName" [selectedId]="inputItems.selectedIds" [fieldDetailsAdd]="fieldDetailsAdd1"></procedures-add-edit>
+            </secondary-view>
+        </split-view>   
+</div>
+<slide [width]="slidewidth" [position]="position" [show]="showSlide" (closeDialog)="closeSlideDialog($event)">
+    <div>
+        <div>Are you sure you want to delete the selected Procedure?  </div>
+        <div style="width:100%">
+            <button  class="Savebutton "type="button" (click)="okDelete($event)">Yes</button>
+            <button  class="Savebutton "type="button" (click)="cancelClick($event)">No</button>
+        </div>
+    </div>
+</slide>
+<slide [width]="slidewidth" [position]="position" [show]="showSlideAdd" (closeDialog)="closeSlideDialog($event)">
+    <div>
+        <div>Do you want to associate Equipment Classes to this Procedure ?  </div>
+        <div style="width:100%">
+            <button  class="Savebutton "type="button" (click)="okAddEquip($event)">Yes</button>
+            <button  class="Savebutton "type="button" (click)="cancelClick($event)">No</button>
+        </div>
+    </div>
+</slide>
+<style>
+    .attachment {
+        width: 750px;
+        display: block;
+    }
+
+    @media only screen and (min-device-width: 320px) and (max-device-width: 813px) and (orientation: portrait) {
+        .attachment {
+            width: 100% !important;
+        }
+    }
+
+    @media only screen and (min-device-width: 320px) and (max-device-width: 812px) and (orientation: landscape) {
+        .attachment {
+            width: 100% !important;
+        }
+    }
+</style>

@@ -1,0 +1,61 @@
+﻿<style>
+    span.readOnly {
+        display: none !important;
+    }
+    /*#browseButton {
+        background-color: #2980b9;
+        color : white;
+        border-radius:8px;
+    }
+    #imagecontrol {
+        background-color: #2980b9;
+    }*/
+    .imaguploader {
+        border: transparent;
+        color: transparent;
+        background-color: transparent;
+    }
+        .imaguploader:focus, imaguploaderVisible:focus {
+         outline: 1px solid #00a3e8!important; 
+         outline-offset: 3px;
+    }
+
+            @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+        #ImageName {
+            display:none !important;
+        }
+    }
+</style>
+<div tabindex="0" title="{{fieldObject.FieldLabel}}" (keypress)="onKeyPressEvent($event,1)">
+    <div control-group *ngIf="!fieldObject.IsHiddenLabel && fieldObject.FieldLabel != undefined && fieldObject.FieldLabel != null">
+        <label tabindex="-1">
+            {{fieldObject.FieldLabel}}<span class="required" *ngIf="fieldObject.IsMandatory == undefined || fieldObject.IsMandatory === true">&nbsp; * </span>
+        </label>
+    </div>
+    <div id="contentDiv" control-group style="min-height:36px;">
+        <span *ngIf="fieldObject.IsEnabled == true || fieldObject.IsEnabled == undefined">
+            <span id="ImageName"style="width:250px;display:block;overflow:hidden" class="readOnly" *ngIf="fieldObject.ReadOnlyMode == undefined || fieldObject.ReadOnlyMode === true">{{fieldObject.FieldValue}}</span>
+            <output id="list"></output>
+            <span *ngIf="strImageSrc != null" style="width:100%;display:block;">
+                <img id="displayImage" src={{strImageSrc}} height="100" style="border: 1px solid;border-color:black">
+            </span>
+            <!--<span id="imagecontrol" *ngIf="strFileName != undefined" style="display:block" >
+                <!--<input type="text" value={{//strFileName}} style="width:200px;" readonly/>-->
+            <!--<input type="button" id="browseButton" value="Browse..." onclick="selectedFile.click()" style="width:90px;"
+                <input type="file" name="file" style="width:200px;" id="{{//fieldObject.FieldId}}" [fieldObject]='fieldObject' validatetext [validationData]="validationData" class="imaguploader"  (change)="handleFileSelect($event)" accept="image/x-png,image/jpeg" *ngIf="fieldObject.ReadOnlyMode == undefined || fieldObject.ReadOnlyMode === false"  (validateMessage)="validateMessage($event)"/>&nbsp;
+            </span>-->
+            <input tabindex="-1" type="text" value={{strFileName}} style="width:200px;" readonly />
+            <!--<input type="file" name="file" style="width:100px;" id="{{fieldObject.FieldId}}" [fieldObject]='fieldObject' validatetext [validationData]="validationData" class="imaguploader" (click)="onclick($event)" (change)="handleFileSelect($event)" accept="image/x-png,image/jpeg" *ngIf="fieldObject.ReadOnlyMode == undefined || fieldObject.ReadOnlyMode === false" (validateMessage)="validateMessage($event)" />-->
+
+            <input tabindex="-1" type="file"  name="file" style="width:100px;display: none;" id="{{fieldObject.FieldId}}" [fieldObject]='fieldObject' validatetext [validationData]="validationData" class="imaguploader" (click)="onclick($event)" (change)="handleFileSelect($event)" accept="image/x-png,image/jpeg" *ngIf="fieldObject.ReadOnlyMode == undefined || fieldObject.ReadOnlyMode === false" (validateMessage)="validateMessage($event)"  />
+            <input role="button" title="Browse" tabindex="-1" type="button" value="Browse" style="color:white !important;margin-top: 2px;width:auto !important" class="Savebutton imaguploaderVisible" (click)="onclickSelect($event)" />
+        </span>
+        <span *ngIf="fieldObject.IsEnabled == false">
+            <span id="ImageName" style="width:250px;display:block;overflow:hidden" class="readOnly" *ngIf="fieldObject.ReadOnlyMode == undefined || fieldObject.ReadOnlyMode === true">{{fieldObject.FieldValue}}</span>
+            <output id="list"></output>
+            <!--<input type="file" name="file" style="width:100px;" id="{{fieldObject.FieldId}}" [fieldObject]='fieldObject' validatetext [validationData]="validationData" class="" (click)="onclick($event)" (change)="handleFileSelect($event)" accept="image/x-png,image/jpeg" *ngIf="fieldObject.ReadOnlyMode == undefined || fieldObject.ReadOnlyMode === false" (validateMessage)="validateMessage($event)" disabled />-->
+            <input tabindex="-1" type="file" name="file" style="width:100px;display: none;" id="{{fieldObject.FieldId}}" [fieldObject]='fieldObject' validatetext [validationData]="validationData" class="imaguploader" (click)="onclick($event)" (change)="handleFileSelect($event)" accept="image/x-png,image/jpeg" *ngIf="fieldObject.ReadOnlyMode == undefined || fieldObject.ReadOnlyMode === false" (validateMessage)="validateMessage($event)" />
+            <input role="button" title="Browse" tabindex="-1" type="button" value="Browse" style="color:white !important;margin-top: 2px;width:auto !important" class="Savebutton" (click)="onclickSelect($event)" />
+        </span>
+    </div>
+</div>

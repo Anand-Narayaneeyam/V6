@@ -1,0 +1,34 @@
+﻿{ 
+    "data": { 
+        "FieldId": 1, 
+        "FieldLabel": "", 
+        "FieldType": 10,
+        "FieldValue": "",
+        "MultiFieldValues": ["1"],
+        "IsMandatory": false,
+        "IsVisible": true, 
+        "IsHiddenLabel":  false,
+        "IsMultiValued": true, 
+        "ReadOnlyMode": false, 
+        "LookupDetails": { 
+            "LookupValues": [ 
+                { 
+                    "Id": 1,
+                    "Value": "As-Builts",
+                    "IsDisabled":  true 
+                }, 
+                { 
+                    "Id": 2, 
+                    "Value": "Space" 
+                }, 
+                { 
+                    "Id": 3, 
+                    "Value": "Employee" 
+                }
+            ], 
+            "PopupComponentName": null 
+        }, 
+        "NotificationType": "" 
+    } 
+} 
+

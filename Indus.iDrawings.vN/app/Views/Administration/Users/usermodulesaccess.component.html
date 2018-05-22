@@ -1,0 +1,7 @@
+﻿<div style="width:100%;margin-left: 10px;">
+    <button class="Savebutton " type="button" style="margin:5px 5px 5px 0px;" (click)="updateModulesAccessData($event)"> Save Changes </button>
+</div>   
+<div style="margin-left:10px;width:100%;" *ngIf="accessModulesList">
+        <ListBoxComponent [fieldObject]=accessModulesList[0] (lstBox)="onChangeCheckBx($event)"></ListBoxComponent>         
+    </div>
+    

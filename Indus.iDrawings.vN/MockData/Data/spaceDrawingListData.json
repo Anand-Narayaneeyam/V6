@@ -1,0 +1,79 @@
+﻿{
+  "data": [
+    {
+      "DrawingId": "1",
+      "Site": "S_05",
+      "Building": "ETS",
+      "Floor": "F1",
+      "Floor Wing": "Complete Floor Plan",
+      "Category": "Architectural",
+      "File Name": "Consumers Energy CadillacMP.dwg",
+      "File Size": "135"
+    },
+       {
+      "DrawingId": "2",
+      "Site": "S_2",
+      "Building": "ETS",
+      "Floor": "F1",
+      "Floor Wing": "Complete Floor Plan",
+      "Category": "Architectural",
+      "File Name": "Consumers Energy CadillacMP.dwg",
+      "File Size": "135" 
+    },
+       {
+      "DrawingId": "3",
+      "Site": "S_03",
+      "Building": "ETS",
+      "Floor": "F1",
+      "Floor Wing": "Complete Floor Plan",
+      "Category": "Architectural",
+      "File Name": "Consumers Energy CadillacMP.dwg",
+      "File Size": "135"
+    },
+    {
+      "DrawingId": "4",
+      "Site": "S_04",
+      "Building": "ETS",
+      "Floor": "F1",
+      "Floor Wing": "Complete Floor Plan",
+      "Category": "Architectural",
+      "File Name": "Consumers Energy CadillacMP.dwg",
+      "File Size": "135"
+    },
+    {
+      "DrawingId": "",
+      "Site": "S_05",
+      "Building": "ETS",
+      "Floor": "F1",
+      "Floor Wing": "Complete Floor Plan",
+      "Category": "Architectural",
+      "File Name": "Consumers Energy CadillacMP.dwg",
+      "File Size": "135"
+    },
+    {
+      "DrawingId": "6",
+      "Site": "S_06",
+      "Building": "ETS",
+      "Floor": "F6",
+      "Floor Wing": "Complete Floor Plan",
+      "Category": "Architectural",
+      "File Name": "Consumers Energy CadillacMP.dwg",
+      "File Size": "135"
+    },
+        {
+      "DrawingId": "7",
+      "Site": "S_07",
+      "Building": "ETS",
+      "Floor": "F1",
+      "Floor Wing": "Complete Floor Plan",
+      "Category": "Architectural",
+      "File Name": "Consumers Energy CadillacMP.dwg",
+      "File Size": "135" 
+    }
+  ],
+     "count": [
+        {
+            "TotalItems": "20"
+        }
+    ]
+}

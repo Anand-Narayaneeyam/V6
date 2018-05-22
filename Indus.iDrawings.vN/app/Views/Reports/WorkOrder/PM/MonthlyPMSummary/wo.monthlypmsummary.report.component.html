@@ -1,0 +1,36 @@
+﻿<page [pagetitle]="pagePath">
+    <content>
+        <split-view [splitviewObject]="splitviewInput" [pageTitle]="pageTitle" (onSecondaryClose)="onSplitViewClose($event)">
+            <primary-view>
+                <div *ngIf="ddlRecurrencePattern != undefined" style="display:inline-flex;width:100%;height: 40px;margin-bottom:8px;">
+
+                    <div *ngIf="ddlRecurrencePattern != undefined" style="display:flex;margin-bottom: 6px;margin-left: 9px;">
+                        <DropDownListComponent [fieldObject]="ddlRecurrencePattern" [ShowSelectOption]="false" (change)="onChangeType($event.target.value)" [SetAlignment]=alignContent></DropDownListComponent>
+                    </div>
+                    <div style="display:flex;margin-top: 9px;margin-left: 1%;">
+                        <div *ngIf="!IsSummarybool">
+                            <button class="Savebutton " style="margin-right:5px;" type="button" (click)="onSubmit($event)">Details</button>
+                        </div>
+                        <div *ngIf="IsSummarybool">
+                            <button class="Savebutton " style="margin-right:5px;" type="button" (click)="onSubmit($event)">Summary</button>
+                        </div>
+                        <div *ngIf="IsSummarybool">
+                            <button   *ngIf="!IsMobile" class="Savebutton " style="margin-right:5px;" type="button" (click)="customizeClick($event)">Customize</button>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div style="width:100%;height: calc(100% - 45px)" *ngIf="ReportData != undefined">
+                    <reportviewer [reportData]=ReportData> Loading ...</reportviewer>
+                </div>
+            </primary-view>
+            <secondary-view style="height:100%;">
+                <div style="width:100%;display:block;height:100%;">
+                    <customrpt-addedit *ngIf="splitviewInput.showSecondaryView==true" [btnName]="btnName" [selectedId]="reportId" [fieldObject]="fieldObjectAddEdit" [itemSource]="itemsSourceAddEdit" [moduleId]="ModuleId" [pageTarget]="2" [listFieldDetails]="listFieldDetails" [showMyDef]="showMyDef" [showSetMyDef]="showSetMyDef" (applyCustomRptClick)="applyCustomRptClick($event)"></customrpt-addedit>
+                </div>
+            </secondary-view>
+        </split-view>
+
+    </content>
+</page>

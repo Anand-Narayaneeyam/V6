@@ -1,0 +1,22 @@
+﻿<page [pagetitle]="pagePath" [withoutSubmenu]="true">
+    <pagepath>
+    </pagepath>
+    <content>
+        <tabs [(selectedTab)]="selectedTab" id="reserveseatmain" (getSelectedTab)="getSelectedTab($event)" (onTabClose)="onTabClose($event)" [deleteIndex]="deleteIndex">
+            <tab tabTitle="Reserve {{seattxt}}" closeButtonVisible="hidden" (onTabBeforeClose)="onTabBeforeClose($event)">
+                <reserveseats *ngIf="selectedTab==0" (floorCellOnClick)="floorCellOnClick($event)"></reserveseats>
+            </tab>
+            <tab *ngIf="viewDrawing==true" tabTitle="Daily Reservation Summary" closeButtonVisible="visible">
+                <reserveroomshedulingdrawing *ngIf="IsOpenDrawingComponentActive==true" [drawingId]="drawingId" [isFromRoomClick]="isFromRoomClick" [selectedData]="selectedData" [pageTarget]="3" [isSpecialRoom]="isSpecialRoom"></reserveroomshedulingdrawing>
+            </tab>
+        </tabs>
+    </content>
+</page>
+<style>
+    #reserveseatmain .navbar li:nth-child(2) {
+        width: 215px !important;
+    }
+        #reserveseatmain .navbar li:nth-child(1) a {
+        width: 160px !important;
+    }
+</style>

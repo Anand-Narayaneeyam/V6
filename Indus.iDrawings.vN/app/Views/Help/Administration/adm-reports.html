@@ -1,0 +1,88 @@
+﻿<page [pagetitle]="pagePath">
+    <pagepath>
+    </pagepath>
+    <content>
+        <section title="Users" [isExpanded]="sectionExpansionStatus[0].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div *ngIf="sectionExpansionStatus[0].isExpanded">
+
+                <p>This report shows the list of all Users. The report can be filtered by selecting the required criteria, like Active, Blocked, Deleted, Expired etc., from the list. </p>
+
+            </div>
+        </section>
+        <section title="Sites" [isExpanded]="sectionExpansionStatus[1].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div *ngIf="sectionExpansionStatus[1].isExpanded">
+
+                <p>This report shows the list of all sites with the Site Name, Site Code, Building Count and Status. The reports can be filtered by the Status or any additional data field for a desired value.</p>
+
+            </div>
+        </section>
+        <section title="Buildings" [isExpanded]="sectionExpansionStatus[2].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div *ngIf="sectionExpansionStatus[2].isExpanded">
+
+                <p>This report shows the list of all buildings with their site name, building name, code and floor count etc. The reports can be filtered using the Status or additional data fields as required with their values.</p>
+
+            </div>
+        </section>
+        <section title="Floors" [isExpanded]="sectionExpansionStatus[3].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div *ngIf="sectionExpansionStatus[3].isExpanded">
+
+                <p>This report shows the list of all floors with their site name, building name and floor name. The reports can be filtered using additional data fields as required with their values. </p>
+
+            </div>
+        </section>
+        <section title="Drawings by Module" [isExpanded]="sectionExpansionStatus[4].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div *ngIf="sectionExpansionStatus[4].isExpanded">
+
+                <p>This report shows the list of all Drawings enabled for Floor management in each module.</p>
+
+            </div>
+        </section>
+    </content>
+</page>
+<style type="text/css">
+    h3.Mainheader {
+        color: #178AE8;
+    }
+
+    .header1 {
+        font-weight: bold;
+        color: #178AE8;
+    }
+
+    .header2 {
+        font-weight: normal;
+        color: #178AE8;
+    }
+
+    p {
+        margin-left: 38px;
+        font-size: 13px;
+        margin-right: 3em;
+    }
+
+    .header3 {
+        font-weight: bold;
+        color: black;
+    }
+    /**/ h1 {
+        color: #178AE8;
+        font-size: 1.3em;
+        margin-left: 38px;
+    }
+
+    h2 {
+        color: #178AE8;
+        font-size: 1em;
+        margin-left: 38px;
+    }
+
+    .config {
+        background-color: #178AE8;
+    }
+
+    .helpicon {
+        vertical-align: baseline;
+        width: 20px;
+        height: 20px;
+    }
+</style>

@@ -1,0 +1,47 @@
+﻿{
+    "data": [
+        {
+            "Id": 1,
+            "TemplateName": "Template 1",
+            "Description": "Template 1 Description",
+            "UserRole": "Module Administrator",
+            "Site": "Aberdeen"
+        },
+        {
+
+            "Id": 2,
+            "TemplateName": "Template 2",
+            "Description": "Template 2 Description",
+            "UserRole": "Division Administrator",
+            "Site": "Aberdeen"
+        },
+        {
+
+            "Id": 3,
+            "TemplateName": "Template 3",
+            "Description": "Template 3 Description",
+            "UserRole": "Facility Administrator",
+            "Site": "Aberdeen"
+        },
+        {
+
+            "Id": 4,
+            "TemplateName": "Template 4",
+            "Description": "Template 4 Description",
+            "UserRole": "Division Administrator",
+            "Site": "Aberdeen"
+        },
+        {
+
+            "Id": 5,
+            "TemplateName": "Template 5",
+            "Description": "Template 5 Description",
+            "UserRole": "Module Administrator",
+            "Site": "Aberdeen"
+        }
+    ],
+      "count": 
+    {
+        "TotalItems": "20"
+    }
+}

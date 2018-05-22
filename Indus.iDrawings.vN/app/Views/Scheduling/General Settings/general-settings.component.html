@@ -1,0 +1,39 @@
+﻿<page [pagetitle]="pagePath">
+    <pagepath>
+    </pagepath>
+    <content>
+        <section *ngIf="isSiteAdmin==false" title={{Drawinglabel}} [isExpanded]="sectionExpansionStatus[0].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <drawingmanagement [module]=14></drawingmanagement>
+        </section>
+        <section *ngIf="isroomresv==true && isamenities==true" title="Amenities" [isExpanded]="sectionExpansionStatus[1].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <amenities *ngIf="sectionExpansionStatus[1].isExpanded"></amenities>
+        </section>
+        <section *ngIf="isroomresv==true && isservice==true" title="Services" [isExpanded]="sectionExpansionStatus[2].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <services *ngIf="sectionExpansionStatus[2].isExpanded"></services>
+        </section>
+        <section *ngIf="isroomresv==true && iscatering==true" title="Catering" [isExpanded]="sectionExpansionStatus[3].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <catering *ngIf="sectionExpansionStatus[3].isExpanded"></catering>
+        </section>
+        <section title="Resources" [isExpanded]="sectionExpansionStatus[4].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <resource-scheduling *ngIf="sectionExpansionStatus[4].isExpanded"></resource-scheduling>
+        </section>
+        <!--<section title="Define Work Types" [isExpanded]="sectionExpansionStatus[5].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <define-workType *ngIf="sectionExpansionStatus[5].isExpanded" [moduleId]="14" [workFlowCategoryId]="8"></define-workType>
+        </section>
+        <section title="Set Workflow" [isExpanded]="sectionExpansionStatus[6].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <setworkflow *ngIf="sectionExpansionStatus[6].isExpanded" [moduleId]="14" [workFlowCategoryId]="8"></setworkflow>
+        </section>-->
+        <section *ngIf="iseqpresv==true" title="Equipment Types" [isExpanded]="sectionExpansionStatus[7].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <equipment-type *ngIf="sectionExpansionStatus[7].isExpanded"></equipment-type>
+        </section>
+        <section *ngIf="iseqpresv==true" title="Equipment Quantity" [isExpanded]="sectionExpansionStatus[8].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <equipment-quantity *ngIf="sectionExpansionStatus[8].isExpanded"></equipment-quantity>
+        </section>
+        <section title="User Role based Settings" [isExpanded]="sectionExpansionStatus[9].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <userrolebasedsettings *ngIf="sectionExpansionStatus[9].isExpanded"></userrolebasedsettings>
+        </section>
+        <section *ngIf="isroomresv==true || isseatresv==true || iseqpresv==true" title="Number Prefix" [isExpanded]="sectionExpansionStatus[10].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <NumberFormat *ngIf="sectionExpansionStatus[10].isExpanded==true" [NumberFormatCategoryId]="0" [ModuleId]="14" [target]="2"></NumberFormat>
+        </section>
+    </content>
+</page>

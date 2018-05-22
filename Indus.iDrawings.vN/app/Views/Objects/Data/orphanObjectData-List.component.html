@@ -1,0 +1,85 @@
+﻿<style>
+    .place-container {
+        width: 768px;
+    }
+
+    @media screen and (min-width: 1080px) {
+        .place-container {
+            width: 1080px;
+        }
+    }
+
+    .Displaytab .navbar li {
+        width: 150px !important;
+    }
+
+    @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+
+        :host .background-block-slide {
+            position: -ms-page !important;
+        }
+    }
+
+    
+    .employeeTab .navbar li {
+        width: 100px !important;
+    }
+    
+    .attachment {
+        width: 750px;
+        display: block;
+    }
+
+    @media only screen and (min-device-width: 320px) and (max-device-width: 813px) and (orientation: portrait) {
+        .attachment {
+            width: 100%;
+        }
+    }
+
+    @media only screen and (min-device-width: 320px) and (max-device-width: 812px) and (orientation: landscape) {
+        .attachment {
+            width: 100%;
+        }
+    }
+
+
+</style>
+<div style="overflow: hidden;">
+    <split-view [splitviewObject]="splitviewInput" [pageTitle]="pageTitle" (onSecondaryClose)="onSplitViewClose($event)">
+        <primary-view>
+            <submenu>
+                <sub-menu [source]=menuData [menuCard]=true [count]=totalItems [menuIds]=enableMenu (onSubMenuChange)="onSubMenuChange($event);"> </sub-menu>
+            </submenu>
+            <div *ngIf="totalItems>0 || IsSearchmenuNeeded==true" class="search-container">
+                <search *ngIf="fieldObjectGrid" [searchtype]="'Grid'" [keyWordLookup]=keyWordLookup [disable]="disable" [Key]=2 [KeywordFields]=KeywordFieldObject [advancesearch]=true [datasource]=advancelookup (SaveAs)="SaveAs($event)" (Delete)="Delete($event)" (onloadSearch)="onloadSearch($event)" (loadAdvanceSearch)="advanceSearch()" (Clear)="Clear($event)" (Submit)="Submit($event)"></search>
+            </div>
+            <div style="height: calc(100% - 36px);">
+                <div [ngClass]="totalItems > itemsPerPage ? 'pagewithPaging':'pagewithoutPaging'">
+                    <gridView [(dataSource)]="itemsSource" [properties]="inputItems" [columns]="fieldObjectGrid" [arrHighlightRowIds]="arrHighlightRowIds" [refreshgrid]="refreshgrid" (onSorting)="onSort($event)"></gridView>
+                </div>
+                <div>
+                    <paging [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="pageChanged($event);"></paging>
+                </div>
+            </div>
+        </primary-view>
+
+
+        <secondary-view *ngIf="secondaryTarget == 9">
+            <attachments *ngIf="splitviewInput.showSecondaryView && secondaryTarget == 9" [attachmentCategoryId]="7" [moduleId]="moduleId" [baseEntityId]="inputItems.selectedIds[0]" (attachmentSuccess)="attachmentSuccess($event)" [objectClassId]="tempObjectClassId" [isallattachmentmenuneeded]="Isallattachmentmenuneeded" class="attachment"></attachments>
+        </secondary-view>
+
+
+        <secondary-view *ngIf="secondaryTarget == 12">
+            <warranty-list *ngIf="splitviewInput.showSecondaryView && secondaryTarget == 12" [objectCategoryName]="objectCategoryName" [isallattachmentmenuneeded]="Isallattachmentmenuneeded" [selectedId]="inputItems.selectedIds[0]" (SuccessReturn)="SuccessReturn($event)" style="width:750px;display:block;"></warranty-list>
+        </secondary-view>
+
+    </split-view>
+    <slide [width]="slidewidth" [position]="position" [show]="showSlide" (closeDialog)="closeSlideDialog($event)">
+        <div>
+            <div>{{message}} </div>
+            <div style="width:100%">
+                <button class="Savebutton " type="button" (click)="okDelete($event)">Yes</button>
+                <button class="Savebutton " type="button" (click)="cancelClick($event)">No</button>
+            </div>
+        </div>
+    </slide>

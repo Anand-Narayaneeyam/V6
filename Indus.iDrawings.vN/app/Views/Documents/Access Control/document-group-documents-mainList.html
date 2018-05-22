@@ -1,0 +1,11 @@
+﻿<div>
+    <div>
+        <button class="Savebutton" type="button" (click)="insertDocumentList($event)" title="Save" role="button" aria-label="Save">Save</button>
+    </div>
+    <div style="height:80%;">
+        <gridView [dataSource]="itemsSource" [properties]="inputItems" [columns]="fieldObject" (onSorting)="onSort($event)"></gridView>
+    </div>
+    <!--<div style="height:20%;">
+        <paging [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="pageChanged($event);"></paging>
+    </div>-->
+</div>

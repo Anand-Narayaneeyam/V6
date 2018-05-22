@@ -1,0 +1,5 @@
+﻿<div> 
+    <DropDownListComponent *ngIf="ddlResourceType" [fieldObject]="ddlResourceType" (change)="onChangeResourceType($event.target.value)" [SetAlignment]=alignContent></DropDownListComponent>
+    <button  class="Savebutton "style="auto;float:right;margin-top:1%;" type="button" (click)="insertSpaceResourcesList($event)">Assign</button>
+    <gridView [dataSource]="itemsSource" [properties]="inputItems" [columns]="fieldObject" (onSorting)="onSort($event)"></gridView>
+</div>

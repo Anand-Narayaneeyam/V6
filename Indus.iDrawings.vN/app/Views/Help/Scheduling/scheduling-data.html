@@ -1,0 +1,148 @@
+﻿<page [pagetitle]="pagePath">
+    <pagepath>
+    </pagepath>
+    <content>
+        <section title="Data" [isExpanded]="true" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div>
+                <p>This section provides an option for the user to view and analyze the space data graphically. </p>
+                <p>Click on this, and the option for selecting the floor will be listed. Select the desired floors for which the data is to be viewed and click on the <span class="header2">Show Data</span>  <img class="helpicon" src="Content/Icons/show_datA.png" alt="Show Data" />  icon. The details will be listed in the Space data grid</p>
+
+                <h1>Edit</h1>
+                <p>Using this option, the administrator can edit the space details. Select the space to be edited and click on the <span class="header2">Edit</span>  <img class="helpicon" src="Content/Layout/edit_button.png" alt="Edit" />     icon. The details will be displayed in a new window. Make necessary changes and click the Save Changes button.</p>
+
+                <p>The Room Number field will be visible only if it is enabled for the customer and it can be set as Unique for the Organization/Site/Building/Floor. It is also possible to have the Site or Building Code or both as prefix to the Room Number. This is disabled by default, but can be turned on for the customer.</p>
+
+                <p>If the Room Number is set to be unique and the entered room number already exists, it will display a message “Room No. already exists for the Organization/Site/Building/Floor” corresponding to the set Uniqueness. If any prefix has been set for Room Number for the customer, then a read-only prefix will be displayed before the Room Number Text box. Only the Room Number need be entered, the prefix will be automatically inserted.</p>
+
+                <p>By default Space Category is enabled. If the value selected is one of the Common Area space categories, like Building Common, Floor Common or Vertical Space it will not be possible to edit/set the Organizational Unit for this space, and all Organizational level combo boxes will be disabled. But if it is required to assign Organizational Units toCommon Spacesalso, Organizational Unit Assignment to Common Area can be enabled for the customer.</p>
+
+                <p>Data for additional data fields can also be entered through this data entry window. </p>
+
+                <p><span class="header1">Share Space</span></p>
+
+                <p>Provision for Sharing a Space between Multiple Organization Units is allowed. This is needed for sharing spaces like Consulting Rooms, Conference Halls, etc. between different departments.</p>
+
+                <p>If ‘Space Allocation to Multiple Departments’ option is enabled for the customer, a link  ‘<span class="header2">Share Space</span>’  will be displayed along with Organizational Unit in the Data Entry window. The Administrator can view/add/edit/delete the sharing of space using this option. The Sharing among different Organizational Units should sum up 100.</p>
+
+
+                <p>If the selected Space is already shared, it will be indicated with a caption ‘Shared’ next to the Organizational Unit name. Click ‘<span class="header2">View</span>’ link to view the existing sharing details.  Click Viewlink, the Space Sharing by Organizational Units window opens up with the percentages of already assigned Organizational Units.</p>
+
+                <p><span class="header3">Add:</span> On clicking <span class="header2">Add</span>  <img class="helpicon" src="Content/Icons/data_addN.png" alt="Add" /> icon, Assign Shared Organizational Unit window will be displayed with Org. Units combo boxes and Percentage textbox. Select the required Organization Unit name from the required level and enter the percentage. The sharing details will be saved by clicking Add button. </p>
+
+                <p><span class="header3">Edit:</span> Space sharing can be edited by clicking the <span class="header2">Edit</span> <img class="helpicon" src="Content/Layout/edit_button.png" alt="Edit" /> icon. The Sharing among different Organizational Units should sum up to 100.</p>
+
+                <p><span class="header3">Delete:</span> Remove an assigned Organizational Unit by selecting the same and clicking the <span class="header2">Delete</span> <img class="helpicon" src="Content/Layout/delete_button.png" alt="Delete" /> icon.</p>
+
+                <p><span class="header2">Multiple Edit</span></p>
+
+                <p>Multiple records can be edited by selecting the required spaces using the Shift or Ctrl keys, and then clicking on the Edit icon. A window will be displayed listing the fields that can be edited. Select the required Field and enter or select the value to be updated to the selected Spaces and click Save Changes button. The changes have to be made selecting one field at a time. </p>
+
+                <h1>Assign Space Standard</h1>
+
+                <p>This option is for assigning space standard and space assignment type to spaces.Select <span class="header2">Assign Space Standard</span> <img class="helpicon" src="Content/Icons/assign_spacE.png" alt="Assign Space Standard" /> icon.Space standard and Space Assignment Type can be assigned/de-assigned by invoking this option and then selecting the space for which space standard is to be assigned. Space Assignment Type can be set to Assignable, Scheduling Space and Unassignable. Scheduling Space option will be available only if Scheduling module is enabled for the customer.</p>
+
+                <p>If “Approval Process: Not required” in Room Booking or Seat Booking is enabled for the customer, the request will be confirmed directly without any approval process.</p>
+
+                <p>If Space Assignment Type is selected as Scheduling Space, an option to select the Amenities of the room and its count will be displayed. A room can be booked only if the Space Assignment type is assigned as Scheduling Space.</p>
+
+                <p><span class="header2">Note:</span>  If any Room booking requests exist for the selected Space, then the Space Assignment Type option in Assign Space standard page cannot be edited and will be displayed as read only.</p>
+
+                <h1>Totalize</h1>
+
+                <p>This option is to show the Total Count, Gross Area Total & Net Area Total of the selected spaces.</p>
+                <p>Select the records to be totalized and click on <span class="header2">Totalize</span> <img class="helpicon" src="Content/Icons/totalize.png" alt="Totalize" /> icon. A message box will be displayed with the Number of Spaces selected, and the Gross and Net Areas of the selected spaces.</p>
+
+                <p>Apart from this, if any additional data fields of Space are set as Totalizable, the total value of such fields also will be shown.  </p>
+
+                <h1>Attachments</h1>
+                <p>Users can add/edit/delete/view/download attachments to a Space using this option. Select the required Asset and click the <span class="header2">Attachments</span>   icon. The files that can be attached will be restricted to data files like Word, Excel, pdf, jpg, gif, bmp etc.</p>
+                <p><span class="header3">Add</span> – An attachment can be added by selecting the Attachment Category, and the file. The attachment has to be uploaded by clicking on the Save button.</p>
+
+                <p><span class="header3">Edit</span> – An Attachment can be edited by clicking on the <span class="header2">Edit</span> <img class="helpicon" src="Content/Layout/edit_button.png" alt="Edit" />  icon The Edit Attachment window will be displayed with the current file name. The user can select the attachment category and the required file open. The attachment has to be updated by clicking on theSave Changes button</p>
+                <p><span class="header3">Delete</span> - Delete an attachment by selecting the required file and clicking the <span class="header2">Delete</span> <img class="helpicon" src="Content/Layout/delete_button.png" alt="Delete" />   icon.</p>
+                <p><span class="header3">View</span> – The attachment can be viewed by selecting the file and then clicking the <span class="header2">View</span>  <img class="helpicon" src="Content/Icons/view-drawingN.png" alt="View" />  icon.The selected attachment will be opened in an attachment viewer. View is supported only for image files</p>
+
+
+                <p><span class="header3">Download</span> – Attachment can be downloaded and saved in the user’s computer by clicking the <span class="header2">Download</span> <img class="helpicon" src="Content/Layout/download_icon.png" alt="Download" /> icon </p>
+
+                <h1>Show Drawing</h1>
+
+                <p>This option is for showing the selected Space in the drawing. Select the Space record from the Data Grid and click on the <span class="header2">Show Drawing</span> <img class="helpicon" src="Content/Images/Drawings/show_drawigs.png" alt="Show Drawing" title="Show Drawing" />. The drawing will be displayed with the selected Space hatched.</p>
+
+                <h1>Show Zoomed</h1>
+
+                <p>This option is for showing the selected Space in drawing in the zoomed in position. Select the Space record and click on the <span class="header2">Show Zoomed</span>  <img class="helpicon" src="Content/Images/Drawings/show_zoomed1.png" alt="Show Zoomed" />  icon. The drawing will be displayed in the zoomed in position with the selected space hatched.</p>
+
+                <h1>Export</h1>
+
+                <p>This option is to export the space to the Excel. On clicking Export icon, a confirmation message, “Do you want to export the data along with Space Handle?” with Yes and No buttons will be displayed. On clicking Yes to the message, data will be exported with space handle. Else it will be exported to excel without space handle.</p>
+
+                <p>If any Shared Spaces exist, such spaces will be exported as separate rows for each organizational unit in the shared space. All space details except the area details and organizational units will be same for those rows.</p>
+
+                <h1>Keyword Search</h1>
+
+                <p>This option helps users to search for space details using keywords. The keyword could belong to any data field of the space data. The user need not know or specify which field to look in. The Keyword could be any part of the space data viz. space category, space function, room number, cost category, area, etc. or the additional data fields.</p>
+
+                <p>On entering the keyword and clicking on the <span class="header2">Search </span>  <img class="helpicon" src="Content/Icons/keyword-search.png" alt="Keyword Search" />  icon, the data grid will be filtered with space records having data matching the specified keyword.</p>
+
+                <p>A facility user would be able to view only those floors/divisions for which privileges are granted to him. </p>
+
+                <h1>Advanced Search</h1>
+
+                <p>This option  <img class="helpicon" src="Content/Icons/advanced-search.png" alt="Advanced Search" />   helps users to search for space details with specific data in known data fields. The data being searched for can be selected from the list boxes or entered into text boxes provided against the data fields. The user can select one or more data fields viz. space category, space function, room number, cost category, area, etc. or the additional data fields. After entering the search criteria and click <span class="header2">Search</span> button, the data grid will be filtered with space records which satisfy the selection criteria. </p>
+
+                <p>Fields to be displayed in the Search window can be set using the <span class="header2">Configure</span> <img class="helpicon" src="Content/Icons/settings_icon.png" title="Configure" /> icon, provided in the Search window. </p>
+
+                <p>Search criteria entered in the Search window can be cleared by clicking the <span class="header2">Clear</span> button provided in the Search window. After clearing the <span class="header2">Search</span> criteria and click Search button to clear the Search Results in the Space Data grid.</p>
+
+            </div>
+        </section>
+    </content>
+</page>
+<style type="text/css">
+    h3.Mainheader {
+        color: #178AE8;
+    }
+
+    .header1 {
+        font-weight: bold;
+        color: #178AE8;
+    }
+
+    .header2 {
+        font-weight: normal;
+        color: #178AE8;
+    }
+
+    p {
+        margin-left: 38px;
+        font-size: 13px;
+        margin-right: 3em;
+    }
+
+    .header3 {
+        font-weight: bold;
+        color: black;
+    }
+    /**/ h1 {
+        color: #178AE8;
+        font-size: 1.3em;
+        margin-left: 38px;
+    }
+
+    h2 {
+        color: #178AE8;
+        font-size: 1em;
+        margin-left: 38px;
+    }
+
+    .config {
+        background-color: #178AE8;
+    }
+
+    .helpicon {
+        vertical-align: baseline;
+        width: 20px;
+        height: 20px;
+    }
+</style>

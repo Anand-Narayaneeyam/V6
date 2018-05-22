@@ -1,0 +1,59 @@
+﻿<div>
+    <div style="height:35px;">
+        <submenu>
+            <sub-menu [menuCard]=true [source]=menuData [count]=gridcount [menuIds]=enableMenu (onSubMenuChange)="onSubMenuChange($event);"> </sub-menu>
+        </submenu>
+    </div>
+    <div style="width:100%;height:40px;display:inline">
+        <div style="display:flex">
+            Equipment Category:&nbsp; <LabelComponent [fieldObject]=equipmentCategory></LabelComponent>
+        </div>
+        <div style="display:flex">
+            Equipment Class:&nbsp;  <LabelComponent [fieldObject]=equipmentClass></LabelComponent>
+        </div>
+    </div>
+    <div style="height:calc(100% - 75px);">
+        <split-view [splitviewObject]="splitviewInput" [pageTitle]="pageTitle">
+            <primary-view>
+                <gridView [ngClass]="totalItems > itemsPerPage ? 'pagewithPaging':'pagewithoutPaging'" style="display:block;" [(dataSource)]="itemsSource" [properties]="inputItems" [columns]="fieldObject" (onSorting)="onSort($event)" (onRowDelete)="inlineDelete($event)"></gridView>
+                <paging [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="pageChanged($event);"></paging>
+            </primary-view>
+            <secondary-view *ngIf="target == 1">
+                <DynamicFields [dataSource]="fieldDetailsAddEdit" (submitFieldObject)="onSubmit($event)" [btnName]="btnName" [dataKey]="dataKey"></DynamicFields>
+            </secondary-view>
+            <secondary-view *ngIf="target == 2">
+                <job-steps-list *ngIf="splitviewInput.showSecondaryView" style="display: block;width:550px;" [selectedId]="selectedId" [entityName]="procName" [ShowMenuOption]="false"></job-steps-list>
+            </secondary-view>
+            <secondary-view *ngIf="target == 3">
+                <safety-steps-list *ngIf="splitviewInput.showSecondaryView" style="display: block;width:550px;" [selectedId]="selectedId" [entityName]="procName" [ShowMenuOption]="false"></safety-steps-list>
+            </secondary-view>
+        </split-view>
+    </div>
+    <slide [width]="200" [position]="position" [type]="dialog" [show]="showSlide" (closeDialog)="closeSlideDialog($event)">
+        <div>
+            <div>
+                Are you sure you want to delete the selected Procedure?
+            </div>
+            <div>
+                <div style="width:100%">
+                    <button  class="Savebutton "type="button" (click)="okDelete($event)">Yes</button>
+                    <button  class="Savebutton "type="button" (click)="cancelClick($event)">No</button>
+                </div>
+            </div>
+        </div>
+    </slide>
+    <slide [width]="200" [position]="position" [type]="dialog" [show]="showDeleteConfirm" (closeDialog)="closeDeleteConfirm($event)">
+        <div>
+            <div>
+                Master PM of the selected Procedure is used in PM Schedule.
+                Are you sure you want to delete?
+            </div>
+            <div>
+                <div style="width:100%">
+                    <button  class="Savebutton "type="button" (click)="okDeleteConfirm($event)">Yes</button>
+                    <button  class="Savebutton "type="button" (click)="cancelDeleteConfirm($event)">No</button>
+                </div>
+            </div>
+        </div>
+    </slide>
+</div>

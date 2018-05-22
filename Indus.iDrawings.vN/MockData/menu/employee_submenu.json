@@ -1,0 +1,288 @@
+﻿{
+  "allemployee": [
+    {
+      "id": 8,
+      "title": "View Details",
+      "image": "View Details",
+      "path": "View Details",
+      "subMenu": null,
+      "privilegeId": null
+    },
+    {
+      "id": 0,
+      "title": "Add",
+      "image": "Add",
+      "path": null,
+      "subMenu": null,
+      "privilegeId": 1667
+    },
+    {
+      "id": 1,
+      "title": "Edit",
+      "image": "Edit",
+      "path": null,
+      "subMenu": null,
+      "privilegeId": 1668
+
+    },
+    {
+      "id": 2,
+      "title": "Delete",
+      "image": "Delete",
+      "path": null,
+      "subMenu": null,
+      "privilegeId": 1669
+    },
+    {
+      "id": 4,
+      "title": "Assign Space",
+      "image": "Assign Space",
+      "path": "Assign Space",
+      "subMenu": [
+        {
+          "id": 20,
+          "title": "In Drawing",
+          "image": "In Drawing",
+          "path": "In Drawing",
+          "subMenu": null
+        },
+        {
+          "id": 21,
+          "title": "In Data",
+          "image": "In Data",
+          "path": "In Data",
+          "subMenu": null
+        }
+      ],
+      "privilegeId": 1668
+    },
+         {
+      "id": 22,
+      "title": "Move Employee",
+      "image": "Move Employee",
+      "path": null,
+      "subMenu": null,
+      "privilegeId": 1668
+    },
+    {
+      "id": 3,
+      "title": "Resources",
+      "image": "Resources",
+      "path": null,
+      "subMenu": null,
+      "privilegeId": 1670
+    },
+    {
+      "id": 6,
+      "title": "Attachments",
+      "image": "Attachments",
+      "path": null,
+      "subMenu": null,
+      "privilegeId": 1671
+    },
+    {
+      "id": 7,
+      "title": "Display Settings",
+      "image": "DisplaySettings",
+      "path": "DisplaySettings",
+      "subMenu": null,
+      "privilegeId": 1681
+    },
+        {
+      "id": 12,
+      "title": "Show Drawing",
+      "image": "Show Drawing",
+      "path": "Show Drawing",
+      "submenu": null
+    },
+    {
+      "id": 13,
+      "title": "Show Zoomed",
+      "image": "Show Zoomed",
+      "path": "Show Zoomed",
+      "submenu": null
+    },
+    {
+      "id": 15,
+      "title": "Export",
+      "image": "Export",
+      "path": "Export",
+      "subMenu": null,
+      "privilegeId": 1671
+    }
+
+  ],
+
+  "assignedEmployee": [
+        {
+      "id": 8,
+      "title": "View Details",
+      "image": "View Details",
+      "path": "View Details",
+      "subMenu": null,
+      "privilegeId": null
+    },
+    {
+      "id": 1,
+      "title": "Edit",
+      "image": "Edit",
+      "path": null,
+      "subMenu": null,
+      "privilegeId": 1668
+
+    },
+    {
+      "id": 2,
+      "title": "Delete",
+      "image": "Delete",
+      "path": null,
+      "subMenu": null,
+      "privilegeId": 1669
+    },
+             {
+      "id": 22,
+      "title": "Move Employee",
+      "image": "Move Employee",
+      "path": null,
+      "subMenu": null,
+      "privilegeId": 1668
+    },
+    {
+      "id": 3,
+      "title": "Resources",
+      "image": "Resources",
+      "path": null,
+      "subMenu": null,
+      "privilegeId": 1670
+    },
+    {
+      "id": 6,
+      "title": "Attachments",
+      "image": "Attachments",
+      "path": null,
+      "subMenu": null,
+      "privilegeId": 1671
+    },
+    {
+      "id": 7,
+      "title": "Display Settings ",
+      "image": "DisplaySettings",
+      "path": "DisplaySettings",
+      "subMenu": null,
+      "privilegeId": 1681
+    },
+    {
+      "id": 12,
+      "title": "Show Drawing",
+      "image": "Show Drawing",
+      "path": "Show Drawing",
+      "submenu": null
+    },
+    {
+      "id": 13,
+      "title": "Show Zoomed",
+      "image": "Show Zoomed",
+      "path": "Show Zoomed",
+      "submenu": null
+    },
+    {
+      "id": 15,
+      "title": "Export",
+      "image": "Export",
+      "path": "Export",
+      "subMenu": null,
+      "privilegeId": 1671
+    }
+
+  ],
+  "unassignedEmployee": [
+        {
+      "id": 8,
+      "title": "View Details",
+      "image": "View Details",
+      "path": "View Details",
+      "subMenu": null,
+       "privilegeId": null      
+    },
+    {
+      "id": 0,
+      "title": "Add",
+      "image": "Add",
+      "path": null,
+      "subMenu": null,
+      "privilegeId": 1667
+    },
+    {
+      "id": 1,
+      "title": "Edit",
+      "image": "Edit",
+      "path": null,
+      "subMenu": null,
+      "privilegeId": 1668
+    },
+    {
+      "id": 2,
+      "title": "Delete",
+      "image": "Delete",
+      "path": null,
+      "subMenu": null,
+      "privilegeId": 1669
+    },
+    {
+      "id": 4,
+      "title": "Assign Space",
+      "image": "Assign Space",
+      "path": "Assign Space",
+      "subMenu": [
+        {
+          "id": 20,
+          "title": "In Drawing",
+          "image": "In Drawing",
+          "path": "In Drawing",
+          "subMenu": null
+        },
+        {
+          "id": 21,
+          "title": "In Data",
+          "image": "In Data",
+          "path": "In Data",
+          "subMenu": null
+        }
+      ],
+      "privilegeId": 1668
+    },
+    {
+      "id": 3,
+      "title": "Resources",
+      "image": "Resources",
+      "path": null,
+      "subMenu": null,
+      "privilegeId": 1670
+    },
+    {
+      "id": 6,
+      "title": "Attachments",
+      "image": "Attachments",
+      "path": null,
+      "subMenu": null,
+      "privilegeId": 1671
+    },
+    {
+      "id": 7,
+      "title": "Display Settings ",
+      "image": "DisplaySettings",
+      "path": "DisplaySettings",
+      "subMenu": null,
+      "privilegeId": 1681
+    },
+    {
+      "id": 15,
+      "title": "Export",
+      "image": "Export",
+      "path": "Export",
+      "subMenu": null,
+      "privilegeId": 1671
+    }
+  ]
+
+}

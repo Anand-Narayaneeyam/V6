@@ -1,0 +1,77 @@
+﻿<style type="text/css">
+    .ddl {
+        border: 1px solid #bbb;
+        border-radius: 5px;
+        border-width: 1px;
+        width: 70%;
+        text-align:center;
+        border-color: lightgray;
+    }
+</style>
+
+<div style="height:20px;width:50%;float:left;text-align:center;">
+    <!--<DropDownListComponent [fieldObject]="ddlParentName" (change)="onddlChange($event.target.value)" ></DropDownListComponent>-->
+    <select class="ddl" (change)="onddlChange($event.target.value)"  style="background-color:lightgray;border-color:transparent;border-width:0px;">
+        <option text="--Select--" value="0">--Select--</option>
+        <option *ngFor="let field of ddlParentName.MultiValuedDetails.LookupValues" text={{field.Value}} value={{field.Id}} (ngModelChange)="parentFieldValue" class="ddloption"></option>
+    </select>
+</div>
+<div style="height:20px;width:50%;float:left;text-align:center;">
+    <!--<DropDownListComponent [fieldObject]="ddlchildField[0]" (change)="onddlchildChange($event.target.value)" ></DropDownListComponent>-->
+    <select *ngIf="ddlchildField==undefined"  class="ddl" (change)="onddlchildChange($event.target.value)" style="background-color:lightgray;border-color:transparent;border-width:0px;">
+        <option text="--Select--" value="0">--Select--</option>
+    </select>
+    <select *ngIf="(ddlchildField)" class="ddl" (change)="onddlchildChange($event.target.value)" style="background-color:lightgray;border-color:transparent;border-width:0px;" [disabled]="selId.length==0?true:false">
+        <option text="--Select--" value="0">--Select--</option>
+        <option *ngFor="let field of ddlchildField[0].MultiValuedDetails.LookupValues" [hidden]="checkSelected(field.Id)" text={{field.Value}} value={{field.Id}} (ngModelChange)="childFieldValue" class="ddloption"></option>
+    </select>
+</div>
+
+<div style=" width:50%;float:left;">
+    <span>Parent Field Values</span>
+</div>
+<div style="margin-left:2%; width:48%;float:left;">
+    <span>Child Field Values</span>
+</div>
+
+<div style="width:50%;float:left;height:60%;overflow-y:auto;border: 1px solid #c6c6c6;">
+    <div style="margin:10px;" *ngIf="parentValueList!=undefined" >
+        <list [source]=parentValueList [(selectedIds)]="selId" [datakey]="'Id'" [selectionMode]="'Single'">
+            <template let-item>
+                <card [datakeyValue]="item.Id" [type]="'list'" [enableDeleBtn]="'false'"  (click)="cardClick(item.Id)">
+                    <div *ngIf="fieldobject">
+                        <field [(fieldObject)]="fieldobject[1]" [(fieldValue)]="item.Value"></field>
+                    </div>
+                </card>
+            </template>
+        </list>
+     </div>
+ </div>
+<div style="width:48%;margin-left:2%;float:left;height:60%;overflow-y:auto;border: 1px solid #c6c6c6;">
+    <div style="margin:10px;" *ngIf="childValueList!=undefined">
+        <ListBoxComponent [fieldObject]=childValueList [heading1]=header1 [heading2]=header2></ListBoxComponent>
+
+        <!--<ListBoxComponent [fieldObject]=childValueList></ListBoxComponent>-->
+    </div>
+</div>
+<div style="width:100%;float:left;margin-top:15px;">
+    <button  class="Savebutton "type="submit" (click)="Submit()" showButton="showButton">Set Relation</button>
+    <button  class="Savebutton "type="submit" (click)="removeRelation()" [disabled]="disable"  [style.background-color]="disable ? '#ababab' : '#2980b9'" >Remove Relation</button>
+    <button  class="Savebutton "type="submit" (click)="close()" showButton="showButton">close</button>
+</div>
+
+<slide [width]="300" [position]="position" [type]="'dialog'" [show]="showSlide"  [title]="'afaf'" (closeDialog)="closeSlideDialog($event)">
+    <div>
+        <div>
+            All value mappings between the Parent and Child fields will be lost.Proceed ?
+        </div>
+        <div>
+
+            <div style="width:100%">
+                <button  class="Savebutton "type="button" (click)="okDelete($event)">Yes</button>
+                <button  class="Savebutton "type="button" (click)="cancelClick($event)">No</button>
+            </div>
+        </div>
+    </div>
+</slide>
+

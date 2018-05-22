@@ -1,0 +1,8 @@
+﻿<div  style="position:fixed;overflow:hidden;background-color:rgb(255, 254, 203);padding:5px;z-index:20000" [ngStyle]=Styles [style.visibility]="display">
+    <div *ngIf="change">
+        <div style="color:black;font-size:small;width:100%;" *ngFor="let dataitem of tooltipData">
+            <span style="float:left;display:inline-block;height:15px;font-size:smaller">{{dataitem.Key}}:</span>
+            <span style="display:inline-block;color:blue;height:15px;font-size:smaller;white-space: nowrap;overflow: hidden;-ms-text-overflow: ellipsis;-o-text-overflow: ellipsis;text-overflow: ellipsis;max-width: 400px;">&nbsp;{{dataitem.Value}}</span>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,39 @@
+﻿<tabs [selectedTab]="selectedTab" (getSelectedTab)="getSelectedTab($event)" (onTabClose)="onTabClose($event)" [deleteIndex]="deleteIndex" id="CostCategoryRateTab">
+    <tab tabTitle="Cost Category Rates for Units" closeButtonVisible="hidden">
+        <div style="height:calc(100% - 35px)" *ngIf="selectedTab ==0 && isGridEnableFlag == false">
+            <div style="margin-top:5px;margin-bottom:5px;width:93%">
+                <label style="font-size:13px;font-weight:100;font-style:italic">Select the {{strLevel1OrgUnitName}} for setting Cost Category Rates</label>  
+            </div>
+            <div style="margin-top:5px;margin-bottom:5px;width:5%">
+                <button  class="Savebutton "type="button" (click)="updateCostCategoryRates($event)">Next</button>
+            </div>
+            <div style="height:calc(100% - 55px)">
+                <gridView style="width:100%;display:block;" [(dataSource)]="itemsSource" [properties]="inputItems" [columns]="fieldObject"></gridView>
+            </div>
+        </div>
+        <div *ngIf="isGridEnableFlag == true" style="margin-top:5px;margin-bottom:5px;width:93%">
+            <label style="font-size:13px;font-weight:100">Select the Org.Unit for setting Cost Category Rates</label>
+        </div>
+    </tab>
+    <tab tabTitle="Set {{strLevel1OrgUnitName}} Rates" *ngIf="isTabOpen == true" closeButtonVisible="hidden"> 
+        <div *ngIf="isDivisionLoaded == true" style="height:80%;">
+            <set-division-rates  *ngIf="strReportFields != undefined && strReportFields != '' " [FilteredIds]="strReportFields"></set-division-rates> <!-- isDivisionLoaded-->
+        </div>
+    </tab>
+</tabs>
+<style>
+    :host li.active {
+        width:auto !important
+     }
+    :host .pane{
+        height: calc(100% - 40px);
+        width: 100%;
+    }
+    :host li:not(:active)
+    {
+        width:auto !important;
+
+    }
+
+</style>
+

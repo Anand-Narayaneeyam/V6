@@ -1,0 +1,51 @@
+﻿<page [pagetitle]="pagePath">
+    <pagepath>
+    </pagepath>
+    <content>
+        <split-view [splitviewObject]="splitViewScenario" [pageTitle]="pageTitle">
+            <primary-view>
+                <div>
+                    <sub-menu [source]=menuData [count]=gridcount [menuIds]=enableMenu (onSubMenuChange)="onSubMenuChange($event);"></sub-menu>
+                </div>
+                <div style="height:calc(100% - 35px)">
+                    <div [ngClass]="totalItems > itemsPerPage ? 'pagewithPaging':'pagewithoutPaging'" style="display:block;">
+                        <gridView [dataSource]="itemSource" [properties]="inputItems" [columns]="fieldObject" (onSorting)="onSort($event)" [refreshgrid]="refreshgrid"></gridView>
+                    </div>
+                    <div *ngIf="totalItems >itemsPerPage ? 'true' : 'false'" style="height:35px;display:block;">
+                        <paging [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="pageChanged($event);"></paging>
+                    </div>
+                </div>
+                <slide [width]="400" [position]="Position" [type]="dialog" [show]=showSlide (closeDialog)="closeSlideDialog($event)">
+                    <div>
+                        <div>
+                            Are you sure you want to convert the Scenario to a Move Project?
+                        </div>
+                        <div>
+                            <div style="width:100%">
+                                <button  class="Savebutton "type="button" (click)="convertToMovePrjtClick($event)">Yes</button>
+                                <button  class="Savebutton "type="button" (click)="cancelClick($event)">No</button>
+                            </div>
+                        </div>
+                    </div>
+                </slide>
+
+            </primary-view>
+            <secondary-view >
+                <addedit-scenario *ngIf="fieldDetailsAddEdit != undefined && target == 1" [fieldDetailsAdd]="fieldDetailsAddEdit"  [selectedId]="inputItems.selectedIds"  (submitSuccess)="OnSuccessfulSubmit($event)"></addedit-scenario>
+                <scenario-drawings *ngIf="target == 2 && splitViewScenario.showSecondaryView == true" [selctedRowData]="inputItems.rowData"></scenario-drawings>
+            </secondary-view>
+            
+                <!--<scenario-drawings *ngIf="selectedScenarioId != undefined" [ScenarioId]="selectedScenarioId" [ScenarioName]="strScenarioName"></scenario-drawings>-->
+                <!--<tabs [selectedTab]="dispTab" style="height:95%;display:block">
+                    <tab tabTitle="Drawings" closeButtonVisible="hidden" *ngIf="selectedScenarioId != undefined">
+                       
+                    </tab>
+                    <tab tabTitle="Open Drawing" closeButtonVisible="hidden" >
+                        <opendrawing *ngIf="IsOpenDrawingComponentActive==true" [extDrawingId]="drawingId" [extRevisionNo]="revisionNo" [moduleId]=moduleId [activeModuleIds]=moduleId [pageTarget]=pageTarget [extDrawingType]="drawingType" [extDrawingDetails]="drawingDetails" [extDrawingCategoryId]="drawingCategoryId"></opendrawing>
+                    </tab>
+                </tabs>-->
+               
+           
+</split-view>
+</content>
+</page>

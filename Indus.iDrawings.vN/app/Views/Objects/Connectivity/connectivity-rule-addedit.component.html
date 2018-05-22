@@ -1,0 +1,16 @@
+﻿<DynamicFields [dataSource]="fieldDetailsAdd" (submitFieldObject)="onSubmitData($event)" (fieldChange)="dropDownChange($event)" [btnName]="btnName" ></DynamicFields>
+<div *ngIf="firstComponentType !='' && secondComponentType!='' && previewRelationship!='' && firstComponentType!=secondComponentType"><i>Rule</i>:</div>
+<div *ngIf="firstComponentType !='' && secondComponentType!='' && previewRelationship!='' && firstComponentType!=secondComponentType" style="display:inline-flex">{{firstComponentType}}&nbsp;<b>{{previewRelationship}}</b>&nbsp;{{secondComponentType}}&nbsp;</div>
+<br />
+<div id="rule-text" *ngIf="firstComponentType !='' && secondComponentType!='' && previewRelationship!='' && firstComponentType!=secondComponentType " style="display:inline-flex">{{secondComponentType}}&nbsp;<b>{{previewRevRelationship}}</b>&nbsp;{{firstComponentType}}&nbsp;</div>
+<style>
+    .ddllabel_2607{
+
+        width:163px !important;
+    }
+    .save-button{
+       position: absolute;
+       left: 21px;
+       top: calc(100% - 44px);
+    }
+</style>

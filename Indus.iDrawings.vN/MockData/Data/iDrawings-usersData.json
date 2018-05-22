@@ -1,0 +1,46 @@
+﻿{
+    "data": [
+        {
+          "User": false,
+          "Id": 1,
+          "User Name": "Aruldas, Paul",
+          "User Role": "Administrator",
+          "Email": ""
+        },
+        {
+          "User": false,
+          "Id": 2,
+          "User Name": "B,RRB",
+          "User Role": "Facility Use",
+          "Email": ""
+        },
+        {
+          "User": false,
+          "Id": 3,
+          "User Name": "23 Hour Observation/Care",
+          "User Role": "Administrator",
+          "Email": ""
+        },
+        {
+          "User": false,
+          "Id": 4,
+          "User Name": "Mathew, Pretty",
+          "User Role": "Administrator",
+          "Email": ""
+        },
+        {
+          "User": false,
+          "Id": 5,
+          "User Name": "PS, Deepthi",
+          "User Role": "Facility User",
+          "Email": ""
+        },
+        {
+          "User": false,
+          "Id": 6,
+          "User Name": "RK, Resmi",
+          "User Role": "",
+          "Email": ""
+        }
+    ]
+}

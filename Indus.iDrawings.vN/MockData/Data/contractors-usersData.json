@@ -1,0 +1,46 @@
+﻿{
+    "data": [
+        {
+          "User": false,
+          "Id": 1,
+          "Contractor Name": "Allen Johnston",
+          "Primary Trade": "Electrician",
+          "Email": "suguna@indus-systems.com"
+        },
+        {
+          "User": false,
+          "Id": 2,
+          "Contractor Name": "Artic Engineering",
+          "Primary Trade": "Mechanic",
+          "Email": "artic@indus.com"
+        },
+        {
+          "User": false,
+          "Id": 3,
+          "Contractor Name": "Bill Trane",
+          "Primary Trade": "Electrician",
+          "Email": "billtrane@indus.in"
+        },
+        {
+          "User": false,
+          "Id": 4,
+          "Contractor Name": "Bob Harvey",
+          "Primary Trade": "Contractor",
+          "Email": "bobharvey@indus.com"
+        },
+        {
+          "User": false,
+          "Id": 5,
+          "Contractor Name": "Contractor1",
+          "Primary Trade": "",
+          "Email": ""
+        },
+        {
+          "User": false,
+          "Id": 6,
+          "Contractor Name": "Steve Harris",
+          "Primary Trade": "Contractor",
+          "Email": "steveharris@indus.com"
+        }
+    ]
+}

@@ -1,0 +1,17 @@
+﻿<div>
+  <div *ngIf="ddlStyleName != undefined" style="height:56px;">
+    <DropDownListComponent *ngIf="ddlStyleName" [fieldObject]="ddlStyleName" [SetAlignment]=alignContent (change)="ddlStyleNameChange($event.target.value)"></DropDownListComponent>
+</div>
+<submenu>
+    <sub-menu [source]=menuData [menuCard]=true [count]=totalItems [menuIds]=enableMenu (onSubMenuChange)="onSubMenuChange($event);"> </sub-menu>
+</submenu>
+<div style="height:calc(100% - 90px);">
+    <div [ngClass]="totalItems > itemsPerPage ? 'pagewithPaging':'pagewithoutPaging'">
+        <gridView [dataSource]="itemsSource" [properties]="inputItems" [columns]="fieldObject"></gridView>
+    </div>
+    <div [style.height]="totalItems >itemsPerPage ? '35px' : '0px'">
+        <paging [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="pageChanged($event);"></paging>
+    </div>
+</div>
+</div>
+

@@ -1,0 +1,20 @@
+﻿{
+  "data": [
+    {
+      "Id": "1",
+      "MailDoamin": "gamil.com"
+    },
+    {
+      "Id": "2",
+      "MailDoamin": "ymail.com"
+    },
+    {
+      "Id": "3",
+      "MailDoamin": "indus-systems.com"
+    },
+    {
+      "Id": "4",
+      "MailDoamin": "hotmail.com"
+    }
+  ]
+}

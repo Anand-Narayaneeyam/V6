@@ -1,0 +1,51 @@
+﻿<style>
+    .dynamic-list-ul {
+        list-style-type: none;
+        border-color: darkgray;
+        border: 2px solid;
+        height: 130px;
+        overflow: auto;
+        width: 400px;
+        border-color: rgb(153, 204, 255) /*#178AE8*/;
+        border-radius: 5px;
+        box-shadow: 1px 1px 1px 1px lightgrey;
+    }
+
+    li {
+        margin-left: -11%;
+        font-size: 13px;
+        /*border:1px solid lightgrey;
+        height: 25px;*/
+        color: black;
+    }
+
+        li:hover {
+            border-color: #178AE8;
+            color: black;
+        }
+</style>
+<div control-group *ngIf="!fieldObject.IsHiddenLabel && fieldObject.FieldLabel != undefined && fieldObject.FieldLabel != null" style="margin-top:5px;">
+    <label style="font-size:14px;">
+        {{fieldObject.FieldLabel}}<span class="required" *ngIf="fieldObject.IsMandatory == undefined || fieldObject.IsMandatory === true"> * </span>
+    </label>
+</div>
+<div control-group>
+    <div style="margin-top: 10px;display:flex">
+        <div tabindex="0" [attr.aria-label]="fieldObject.FieldLabel+' Press Enter Key to Add a New Format'" (keydown)="keyForDeleteOrAdd($event,dlist,4)">
+            <ul #dlist *ngIf="fieldObject != undefined" id="dlist" class="dynamic-list-ul" (click)="dlistClick($event)">
+                <li *ngFor="let field of fieldObject.LookupDetails.LookupValues;" (focus)="dlistClick($event)" (keydown)="keyForDeleteOrAdd($event,dlist,3)" aria-label="Press Delete Key to Delete It or Press Enter Key to Add a New Format" title="{{field.Value}}" tabindex="0" id="{{field.Id + 'li' + fieldObject.ReportFieldId}}">{{field.Value}}</li>
+            </ul>
+        </div>
+        <div *ngIf="enableButton" style="display: block; margin-left:5px;margin-top:35px;">
+            <img src="{{imgsrc1}}" tabindex="0" alt="Add Invitee" (keydown)="keyForDeleteOrAdd($event,dlist,1)" (click)="addListItem($event,dlist)" style="cursor:pointer;" title="Edit">
+            <br>
+            <img src="{{imgsrc2}}" tabindex="0" alt="Delete Invitee" (keydown)="keyForDeleteOrAdd($event,dlist,2)" style="margin-top:2px;cursor:pointer;" (click)="removeListItem($event,dlist)" title="Delete">
+        </div>
+        <div *ngIf="!enableButton" style="display: block; margin-left:5px;margin-top:35px;">
+            <img src="{{imgsrc1}}" tabindex="0" alt="Add Invitee" (keydown)="keyForDeleteOrAdd($event,dlist,1)" (click)="addListItem($event,dlist)" style="pointer-events:none;cursor:default;opacity:0.5" title="Edit">
+            <br>
+            <img src="{{imgsrc2}}" tabindex="0" alt="Delete Invitee" (keydown)="keyForDeleteOrAdd($event,dlist,2)" style="margin-top:2px;pointer-events:none;cursor:default;opacity:0.5" (click)="removeListItem($event,dlist)" title="Delete">
+        </div>
+    </div>
+    <span *ngIf="blnHasValidationError == true" style="color:red;display:block;width:100%;overflow-x:hidden;word-wrap:break-word">{{strValidation}}</span>
+</div>

@@ -1,0 +1,11 @@
+﻿<div style="height:90%">
+    <div style="height:6%;">
+        <span style="font-weight:bolder">Employee Name: </span>{{employeeName}}
+    </div>
+    <div style="height:97%;overflow: hidden;">
+        <div style="width:100%;display:block" [ngClass]="totalItems > itemsPerPage ? 'pagewithPaging':'pagewithoutPaging'">
+            <gridView [dataSource]="itemsSource" [properties]="inputItems" [columns]="fieldObject" (onSorting)="onSort($event)"></gridView>
+            <paging *ngIf="totalItems > itemsPerPage" [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="pageChanged($event);"></paging>
+        </div>
+    </div>
+</div>

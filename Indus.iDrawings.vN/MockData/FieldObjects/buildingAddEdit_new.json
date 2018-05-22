@@ -1,0 +1,171 @@
+﻿{
+  "data": [
+    {
+      "FieldId": 1,
+      "FieldLabel": "Site Name",
+      "DataEntryControlId": 4,
+      "FieldValue": "2",
+      "IsVisible": true,
+      "IsMandatory": true,
+      "IsEnabled": true,
+      "ReadOnlyMode": false,
+      "MaxLength": 100,
+      "IsValidated": true,
+      "LookupDetails": {
+        "LookupValues": [
+          {
+            "Id": 1,
+            "Value": "--Select--"
+          },
+          {
+            "Id": 2,
+            "Value": "Aberdeen"
+          },
+          {
+            "Id": 3,
+            "Value": "Concord"
+          },
+          {
+            "Id": 4,
+            "Value": "Arlington"
+          },
+          {
+            "Id": 5,
+            "Value": "Framingham"
+          },
+          {
+            "Id": 6,
+            "Value": "Greenwood"
+          },
+          {
+            "Id": 7,
+            "Value": "Manchester"
+          },
+          {
+            "Id": 8,
+            "Value": "Site 1"
+          },
+          {
+            "Id": 9,
+            "Value": "WhiteField"
+          }
+        ],
+        "PopupComponentName": null
+      },
+      "NotificationType": "inline",
+      "Width": " ",
+      "Format": ""
+    },
+    {
+      "FieldId": 1,
+      "FieldLabel": "Building Name",
+      "DataEntryControlId": 1,
+      "GenericDataTypeId": 6,
+      "FieldValue": "AD",
+      "Whitelist": {
+        "FormatString": "",
+        "RegularExpression": "^[a-zA-Z0-9!@#$%&*()+=\\s\\:.,/?[\\]_-]+$"
+      },
+      "IsMandatory": true,
+      "ReadOnlyMode": false,
+      "IsVisible": true,
+      "MaxLength": 100,
+      "NotificationType": "inline",
+      "Format": {
+         "FormatString": "",
+        "RegularExpression": ""
+      }
+    },
+    {
+      "FieldId": 1,
+      "FieldLabel": "Building Code",
+      "DataEntryControlId": 1,
+      "GenericDataTypeId": 6,
+      "FieldValue": "",
+      "IsMandatory": false,
+      "ReadOnlyMode": false,
+      "IsVisible": true,
+      "MaxLength": 100,
+      "NotificationType": "inline"
+    },
+    {
+      "FieldId": 4,
+      "FieldLabel": "Description",
+      "DataEntryControlId": 3,
+      "GenericDataTypeId": 6,
+      "FieldValue": "",
+      "IsMandatory": false,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false,
+      "IsVisible": true,
+      "MaxLength": 100,
+      "NotificationType": "inline"
+    },
+    {
+      "FieldId": 5,
+      "FieldLabel": "Building Condition",
+      "DataEntryControlId": 4,
+      "FieldValue": "0",
+      "IsVisible": true,
+      "IsMandatory": false,
+      "IsEnabled": true,
+      "ReadOnlyMode": false,
+      "IsValidated": true,
+      "MaxLength": 100,
+      "LookupDetails": {
+        "LookupValues": [
+
+          {
+            "Id": 1,
+            "Value": "finished"
+          },
+          {
+            "Id": 2,
+            "Value": "Under Construction"
+          },
+          {
+            "Id": 3,
+            "Value": "Completed with defects"
+          }
+        ],
+        "PopupComponentName": null
+      },
+      "NotificationType": "inline",
+      "Width": " ",
+      "Format": ""
+    },
+    {
+      "FieldId": 5,
+      "FieldLabel": "Ownership Type",
+      "DataEntryControlId": 4,
+      "FieldValue": "0",
+      "IsVisible": true,
+      "IsMandatory": false,
+      "IsEnabled": true,
+      "ReadOnlyMode": false,
+      "IsValidated": true,
+      "MaxLength": 100,
+      "LookupDetails": {
+        "LookupValues": [
+
+          {
+            "Id": 1,
+            "Value": "Owned"
+          },
+          {
+            "Id": 2,
+            "Value": "Leased"
+          },
+          {
+            "Id": 3,
+            "Value": "Purchased"
+          }
+        ],
+        "PopupComponentName": null
+      },
+      "NotificationType": "inline",
+      "Width": " ",
+      "Format": ""
+    }
+  ]
+}

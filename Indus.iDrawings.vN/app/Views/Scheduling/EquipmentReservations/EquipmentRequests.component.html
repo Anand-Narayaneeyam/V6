@@ -1,0 +1,14 @@
+﻿<page [pagetitle]="pagePath" [withoutSubmenu]="true">
+    <pagepath>
+    </pagepath>
+    <content>
+        <tabs [(selectedTab)]="selectedTab" (getSelectedTab)="getSelectedTab($event)">
+            <tab tabTitle="My Reservations" closeButtonVisible="hidden">
+                <myequipmentrequest-list *ngIf="selectedTab==0" [sessionUserRoleId]="sessionUserRoleId"></myequipmentrequest-list>
+            </tab>
+            <tab *ngIf="isShowActiveRequest" tabTitle="Active Reservations" closeButtonVisible="hidden">
+                <activeequipmentrequest-list *ngIf="selectedTab==1" [sessionUserRoleId]="sessionUserRoleId"></activeequipmentrequest-list>
+            </tab>
+        </tabs>
+    </content>
+</page>

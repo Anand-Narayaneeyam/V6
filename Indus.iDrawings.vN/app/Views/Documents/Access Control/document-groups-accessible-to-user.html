@@ -1,0 +1,11 @@
+﻿<div style="height:60%">
+    <div style="height:15%">
+        <DropDownListComponent *ngIf="ddlUsers !=undefined" [fieldObject]="ddlUsers" (change)="onChangeddlUsers($event.target.value)"></DropDownListComponent>
+    </div>
+    <div *ngIf="sectionEnable != -1" style="height:70%">
+        <gridView [dataSource]="itemsSource" [properties]="inputItems" [columns]="fieldObject" (onSorting)="onSort($event)"></gridView>
+    </div>
+    <div *ngIf="sectionEnable != -1" style="height:15%">
+        <button class="Savebutton " type="button" style="margin:5px 5px 5px 0px;" (click)="updateData($event)" role="button" aria-label="Save Changes"> Save Changes </button>
+    </div>
+</div>

@@ -1,0 +1,20 @@
+﻿<div>
+    <submenu>
+        <sub-menu [source]=menuData [count]=totalItems [menuIds]=enableMenu (onSubMenuChange)="onSubMenuChange($event);"> </sub-menu>
+    </submenu>
+    <split-view [splitviewObject]="splitviewInput" [pageTitle]="pageTitle" style="height: calc(100% - 35px);">
+        <primary-view>
+            <div>
+                <div [ngClass]="totalItems > itemsPerPage ? 'pagewithPaging':'pagewithoutPaging'">
+                    <gridView [(dataSource)]="itemsSource" [properties]="inputItems" [columns]="fieldObject" [refreshgrid]="refreshgrid" (onSorting)="onSort($event)" (onRowDelete)="inlineDelete($event)"></gridView>
+                </div>
+                <div [style.height]="totalItems >itemsPerPage ? '35px' : '0px'">
+                    <paging [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="pageChanged($event);"></paging>
+                </div>
+            </div>
+        </primary-view>
+        <secondary-view *ngIf="splitviewInput.showSecondaryView == true">
+            <directAccesstoa-documentby-manyUsers-userList *ngIf="action == 'user'" [DocumentId]="inputItems.rowData.DocumentId" [DocumetNumber]="documetNumber" [DocumentName]="documentName"></directAccesstoa-documentby-manyUsers-userList>
+        </secondary-view>
+    </split-view>
+</div>

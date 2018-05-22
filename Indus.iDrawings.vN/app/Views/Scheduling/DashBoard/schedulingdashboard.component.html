@@ -1,0 +1,31 @@
+﻿<page [pagetitle]="pagePath" [withoutSubmenu]="true">
+    <content>       
+        <DropDownListComponent *ngIf="ddlPeriod" [fieldObject]="ddlPeriod" [ShowSelectOption]="false" (change)="onChangeddlPeriod($event.target.value)" [SetAlignment]=alignContent></DropDownListComponent>                
+        <dashboard style="height:95%;display:block;">
+            <widget>
+                <div style="font-weight:bold"> Room Reservation (Hrs) </div>
+                <multibarchart *ngIf="Barchart1Data != undefined" [sourceData]="Barchart1Data" [isSourceChanged]="ischanged"> </multibarchart>
+            </widget>  
+
+            <widget>
+                <div style="font-weight:bold"> Seat Reservation (Hrs) </div>
+                <multibarchart *ngIf="Barchart2Data != undefined" [sourceData]="Barchart2Data" [isSourceChanged]="ischanged"> </multibarchart>
+            </widget>            
+
+            <widget>
+                <div style="font-weight:bold"> Room Reservation Details </div>
+                <div style="width:500px;height:200px">
+                    <dashboardscheduler style="height:100%;" [rowcount]="totalItems1" [SelectedDate]="Dateforcalender" [bookedDateObj]="schedulerArrObj" [IsAddpageopened]="IsAddpageopened" [IsGridloaded]="IsGridloaded" [day]="roomday"></dashboardscheduler>
+                </div>
+            </widget>  
+
+            <widget>
+                <div style="font-weight:bold"> Seat Reservation Details </div>
+                <div style="width:500px;height:200px">
+                    <dashboardscheduler style="height:100%;" [rowcount]="totalItems2" [SelectedDate]="Dateforcalender" [bookedDateObj]="schedulerArrObj" [IsAddpageopened]="IsAddpageopened" [IsGridloaded]="IsGridloaded" [day]="seatday"></dashboardscheduler>
+                </div>
+            </widget>       
+                   
+        </dashboard>
+    </content>
+</page>

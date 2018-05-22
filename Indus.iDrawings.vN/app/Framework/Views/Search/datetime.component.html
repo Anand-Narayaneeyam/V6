@@ -1,0 +1,193 @@
+﻿<style>
+    @media screen and (max-width: 768px) {
+        .datepickerone {
+            width: 215px;
+            float: left;
+            margin-top: 4px;
+        }
+
+        .datepickertwo {
+            width: 215px;
+            float: left;
+        }
+
+        .datepicker1Container {
+            float: left;
+            width: 100%;
+        }
+
+        .datepicker2Container {
+            float: left;
+            width: 100%;
+        }
+
+        .datepicker2subContainer {
+            float: left;
+            width: 100%;
+        }
+
+        .datepicker1subContainer {
+            /*float:left;*/
+            margin-top: 5px;
+        }
+
+        .imgDateone {
+            margin: 4px 4px;
+        }
+        .imgDatetwo {
+            margin: 4px 4px;
+        }
+        .form-control {
+            float: none;
+        }
+           .spanDate2 {
+            padding-left:0px;
+        }
+    }
+
+    @media screen and (min-width: 768px) {
+        .imgDateone {
+            margin: 0px 4px;
+        }
+         .imgDatetwo {
+            margin: 0px 4px;
+        }
+        .spanDate2 {
+            padding-left:15px;
+        }
+        .datepickerone {
+            width: 100px;
+            margin-left: 10px;
+            float: left;
+        }
+
+        .datepickertwo {
+            margin-left: 15px;
+            width: 195px;
+            float: left;
+        }
+
+        .datepicker1Container {
+            float: left;
+            width: 50%;
+        }
+
+        .datepicker2Container {
+            float: left;
+            width: 50%;
+        }
+
+        .datepicker2subContainer {
+            float: left;
+            width: 100%;
+        }
+
+        .datepicker1subContainer {
+            float: none;
+        }
+
+        #txtDate {
+            /*margin-left:6%;*/
+        }
+
+        .form-control {
+            float: left;
+        }
+    }
+
+    .full button span {
+        background-color: limegreen;
+        border-radius: 32px;
+        color: black;
+    }
+
+    .partially button span {
+        background-color: orange;
+        border-radius: 32px;
+        color: black;
+    }
+
+    .diablemenu {
+        pointer-events: none;
+        cursor: default;
+        opacity: .5;
+    }
+    .datepicker-overlay {
+        position: absolute;
+        height: 250px;
+        width: 700px;
+        top: 0px;
+        left: 0px;
+        z-index: 99;
+    }
+    .datepicker-overlay2 {
+        position: absolute;
+        height: 250px;
+        width: 700px;
+        top: 0px;
+        left: -350px;
+        z-index: 99;
+    }
+        @media screen and (min-width: 768px) {
+    .datepicker-overlay {
+        width: 540px;
+    }
+        .datepicker-overlay2 {
+        width: 540px;
+    }
+}
+ 
+@media screen and (max-width: 768px) {
+    .datepicker-overlay {
+        width: 300px;
+    }
+        .datepicker-overlay2 {
+        width: 300px;
+    }
+}
+
+</style>
+
+
+<div style="float:left;width:100%;">
+    <div control-group class="floating-label" style="float:left;">
+        <label>
+            {{fieldObject.FieldLabel}}
+        </label>
+    </div>
+    <div control-group class="datepicker1Container">
+        <select class="form-control" #t (change)="drpDwnChange(t.value)" style="width:78px!important;font-size:12px; height:24px;padding:2px 4px;background-color: #f1f1f1;border: 1px solid #ababab;" [ngModel]="dropDownValue">
+            <option *ngFor="#type of dropdownForText" [value]="type.Id">{{type.Value}}</option>
+        </select>
+        <div class="datepicker1subContainer">
+            <img src="Content/Images/clock.png" style="height:20px;width:20px;margin:2px 2px;" (click)="datetimepickertoggle()" [class.diablemenu]="isdisable" class="imgDateone">
+            <input type="text" validatetext [fieldObject]='fieldObject' [validationData]="validationData" [value]=selectedDateValue class="datepickerone"   style="height:24px!important;width:130px!important;font-size:12px;margin-left:7px!important" [class.diablemenu]=true id="{{fieldObject.FieldId}}" />
+            <span></span>
+            <div [style.display]="displayStyle" style="position:relative;">
+                <div class="datepicker-overlay" (click)="datetimepickertoggle()"></div>
+                <div style="display:inline-block; min-height:270px;z-index:101;border:2px solid;border-color:darkgray;position:absolute;z-index:100;">
+                    <datepicker [disableDates]="disableDates" [(ngModel)]="dt" [minDate]="minDate" [showWeeks]="false" (click)="getSelectedValue(dt)"></datepicker>
+                    <div style="left:10%;background-color:white;">
+                        <timepicker [(ngModel)]="mytime" (change)="changed()" [hourStep]="hstep" [minuteStep]="mstep" (click)="getSelectedValue(dt)" [showMeridian]="true"></timepicker>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div control-group class="datepicker2Container">
+        <div [hidden]="show" class="datepicker2subContainer">
+            <img src="Content/Images/clock.png" style="height:20px;width:20px;margin:2px 2px;" (click)="datetimepickertoggle2()" class="imgDatetwo">
+            <input type="text" validatetext [fieldObject]='fieldObject' [validationData]="validationData" [value]=selectedDateValue2 [class.diablemenu]=true  style="height:24px!important;font-size:12px" class="datepickertwo" id="{{fieldObject2.FieldId}}"/>
+            <span class="spanDate2"></span>
+            <div [style.display]="displayStyle2" style="position:relative;">
+                <div class="datepicker-overlay2" (click)="datetimepickertoggle2()"></div>
+                <div style="display:inline-block; min-height:270px;z-index:101;border:2px solid;border-color:darkgray;position:absolute;z-index:100;">
+                    <datepicker [disableDates]="disableDates"  [(ngModel)]="dt2" [minDate]="minDate2" [showWeeks]="false" (click)="getSelectedValue2(dt2)"></datepicker>
+                    <div style="left:10%;background-color:white;">
+                        <timepicker [(ngModel)]="mytime" (change)="changed()" [hourStep]="hstep" [minuteStep]="mstep" (click)="getSelectedValue2(dt2)" [showMeridian]="true"></timepicker>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,38 @@
+﻿<div style="height:100%;overflow: hidden;">
+    <div>
+        <submenu>
+            <sub-menu [menuCard]=true [source]=stackplansMenu [count]=totalItems [menuIds]=enablePlansMenu (onSubMenuChange)="updatePlanningMenu($event);"> </sub-menu>
+        </submenu>
+    </div>
+    <div style="height:98%;">
+        <split-view [splitviewObject]="splitviewInput"  [pageTitle]="pageTitle">
+            <primary-view>
+                <div style="height: calc(100% - 45px);height:-webkit-calc(100% - 45px);height:-moz-calc(100% - 45px);float:left;width:100%;">
+                    <gridView [(dataSource)]="itemsSource" [properties]="inputItems" [(columns)]="fieldObject"   (onSorting)="onSort($event)"></gridView>
+                </div>
+                <div style="height:20%;">
+                    <paging [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="pageChanged($event);"></paging>
+                </div>
+                <slide [width]= width [position]="Position" [type]="dialog" [show]=showSlide (closeDialog)="closeSlideDialog($event)">
+                    <div>
+                        <div>
+                            Are you sure you want to delete the selected Stack Plan?
+                        </div>
+                        <div>
+                            <div style="width:100%">
+                                <button  class="Savebutton "type="button" (click)="okDelete($event)">Yes</button>
+                                <button  class="Savebutton "type="button" (click)="cancelClick($event)">No</button>
+                            </div>
+                        </div>
+                    </div>
+                </slide>
+            </primary-view>
+            <secondary-view *ngIf="showstack && splitviewInput.showSecondaryView == true">
+                <div style="width:100%;display:block;">
+                    <view-stack *ngIf="showstack" [spacePlaningPrjtStatusId]="prjstatusId"  [prjtId]="MoveProjectId" [stackPlanDetailsId]="selectedIdForStack" (retSaveStack)="saveStackRow($event)"></view-stack>
+                </div>
+
+            </secondary-view>
+        </split-view>
+    </div>
+</div>

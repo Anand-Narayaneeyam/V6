@@ -1,0 +1,5 @@
+﻿<div *ngIf="DropdownField!=undefined" style="width:100%;display:inline-block;">
+    <div style="width:100%;float:left;">
+        <tableDistMaponDrawing style="display:flex;" (Updatetable)="submit($event)" [fieldObject]="fields" [itemSource]="itemsSource" [DataKey]='"Id"' [disableButton]="disableButton" [buttonName]="buttonName"></tableDistMaponDrawing>
+    </div>
+</div>

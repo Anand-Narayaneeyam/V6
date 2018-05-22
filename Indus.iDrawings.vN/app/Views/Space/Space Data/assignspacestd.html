@@ -1,0 +1,85 @@
+﻿<split-view [splitviewObject]="splitview" [pageTitle]="pageTitle" (onSecondaryClose)="onSecondaryClose($event)">
+    <primary-view>
+        <div [style.height]="formHeight">
+            <DynamicFields [dataSource]="fieldDetails" (submitFieldObject)="onSubmitAssignData($event)" [btnName]="btnName" (fieldChange)="ddlChange($event)" [blnPopupImage]=false [strPopupText]="strPopupText" (popupItemEmit)="popupItemEmit($event)" (txtChange)="txtBoxChange($event);" id="assignSpaceStdForm"></DynamicFields>
+            <button  class="Savebutton deassignbtn "type="button" (click)="DeAssignSpaceStd(event)" [hidden]="!showbtndeassign">De-Assign</button>
+            </div>
+</primary-view>
+    <secondary-view>
+        <div *ngIf="blnShowAmenityList == true">
+            <Amenity-List [SelectedFloorId]="seledrwgids" [SelectedSpaceId]="selectedId" (emitAmenities)="getAmenities($event)"></Amenity-List>
+        </div>
+        <div *ngIf="blnShowSeatList == true && splitview.showSecondaryView == true">
+            <seats-List  [SelectedSpaceId]="selectedId" [category]="category"  [multiplespacerommnumber]="multiplespacerommnumber"  [RoomSeatCapacity]="roomSeats" [RoomNumber]="roomNumber" (seatSuccess)="seatSuccessout($event);"></seats-List>
+        </div>
+    </secondary-view>
+</split-view>
+<style>
+    .ddllabel_701 {
+        width: 160px !important;
+    }
+
+    :host .span-popup-text {
+        margin-left: 5px !important;
+        color: blue;
+        cursor: hand;
+        text-decoration: underline;
+    }
+
+    /*.Div-701 {
+        display: flex !important;
+    }*/
+
+    /*.deassignbtn {
+        margin-top: -29px;
+        margin-left: 80px;
+        float: left;
+    }*/
+
+    /*@-moz-document url-prefix() {*/
+        .deassignbtn {
+            position: relative;
+            margin-top: -29px;
+            margin-left: 80px;
+            float: left;
+        }
+    /*}*/
+
+    /*@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+        .deassignbtn {
+            position: relative;
+            margin-top: -29px;
+            margin-left: 80px;
+            float: left;
+        }
+    }
+
+    @supports (-ms-ime-align:auto) {
+        .deassignbtn {
+            position: relative;
+            margin-top: -29px;
+            margin-left: 80px;
+            float: left;
+        }
+    }*/
+
+    /*#assignSpaceStdForm #form {
+
+    height:inherit!important;
+    
+    }*/
+   
+    /*@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+        #assignSpaceStdForm .list-group {
+            height:auto !important;    
+        }
+    }*/
+
+
+
+    /*@media screen and ( max-height: 610px ){
+        .deassignbtn {
+            margin-top: -29px;
+        }
+    }*/
+</style>

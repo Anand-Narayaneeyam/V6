@@ -1,0 +1,83 @@
+﻿
+        <tabs [selectedTab]="selectedTab" [deleteIndex]="tabDeleteIndex" (getSelectedTab)="getSelectedTab($event)" (onTabClose)="onTabClose($event)">
+            <tab *ngIf="isObjectModule==true" tabTitle={{TabObjectTitle}}  closeButtonVisible="hidden">
+               <div style="height:100%;">
+                   <div style="margin-top:5px;">
+                   </div>
+                     <div style="max-height:90%;overflow:auto">
+                        <ListBoxComponent *ngIf="fieldDetailsCheckBox != undefined" [fieldObject]="fieldDetailsCheckBox"></ListBoxComponent>
+                         
+                    </div>
+                  
+                       <div>
+                           <button class="Savebutton " id="Next" type="button" (click)="Next($event)" title="Next">Next</button>
+                       </div>
+                   </div>
+          
+            </tab>
+             <tab *ngIf="isNextClicked==true|| isObjectModule==false" tabTitle="Query Builder" closeButtonVisible="hidden">
+                <split-view [splitviewObject]="splitviewInput"  [pageTitle]="'Save Search'" (onSecondaryClose)="onSplitViewClose($event,1)">
+                    <primary-view>
+                        <submenu >
+                            <sub-menu [source]=menuData [count]="'3'" [menuCard]=true [menuIds]=enableMenu (onSubMenuChange)="onSubMenuChange($event)"> </sub-menu>
+                        </submenu>
+                        <div style="height:100%;">
+                            <div style="padding-left:10px" *ngIf="Target!=1">
+                                <DropDownListComponent (change)="onchangeddlsearchNames($event.target.value)"  *ngIf="searchNamesObj" id="ddlsearchNames" [fieldObject]="searchNamesObj[0]"></DropDownListComponent>
+
+                            </div>
+                            <div style="overflow-y:auto;height:calc(100% - 35px);width:100%;overflow-x:hidden">
+                                <div class="container">
+                                    <div class="alert alert-info" style="margin-top:30px;margin-right:30px;padding-right:100px">
+                                        <qbsearchquery [datasource]="QueryBuilderObj" ></qbsearchquery>
+                                    </div>
+                                    <br />                                 
+                                </div>                              
+                                <qbgroup *ngIf="genericfieldobjects" [groupFields]="QueryBuilderObj" [(genericfieldobjects)]="genericfieldobjects" (groupAddClicked)="groupAddClicked($event)"></qbgroup>
+                                <!--<qbgroup *ngIf="genericfieldobjects" [groupFields]="QueryBuilderObj" [(genericfieldobjects)]="genericfieldobjects"></qbgroup>-->
+                            </div>
+                        </div>
+                        </primary-view>
+                    <secondary-view *ngIf="isSaveClicked==true">
+                        <div style="width:100%;">
+                            <DynamicFields *ngIf="splitviewInput.showSecondaryView==true && fieldDetailsAdd!=undefined && isSaveClicked==true" [btnName]="'Save'"  [dataSource]="fieldDetailsAdd" (submitFieldObject)="onSubmitData($event)" ></DynamicFields>
+                        </div>
+                    </secondary-view>
+                    </split-view>
+
+            </tab>
+            <tab tabTitle="Data" *ngIf="qResult" closeButtonVisible="visible">
+                <split-view  *ngIf="qResult"  [splitviewObject]="splitviewInput1" [pageTitle]="" (onSecondaryClose)="onSecondaryClose($event,2)">
+                    <primary-view>
+                        <div style="width:100%;">
+                            <spaceDataGrid *ngIf="qResult&& QueryCategryId=='2'" [buildarray]="buildarray" [QueryCategryId]="QueryCategryId" [qResult]="qResult" [pageTarget]="5" [moduleId]="3" [(selectedDrwgIds)]="selectedDrwgIds" (showInDrawingOnClick)="spShowInDrawingOnClick($event)" (showZoomOnClick)="spShowZoomOnClick($event)">  </spaceDataGrid>
+                            <employee_data *ngIf="qResult&& QueryCategryId=='5'" [qResult]="qResult"  [buildarray]="buildarray"   [isQuerybuilder]="true"></employee_data>                         
+                            <objectData-list [qResult]="qResult" [selectedClassIds]="selectedClassIds"   [buildarray]="buildarray" [attributeId]="attributeId" [QueryCategryId]="QueryCategryId"  *ngIf="qResult && isObjectModule==true" [moduleId]="moduleId" [dataOption]="1" [objectCategoryId]="objectCategoryId" (ChangePagepath)="pagepathchange($event)"></objectData-list>
+                            <document-list  *ngIf="qResult&& QueryCategryId=='7'" [qResult]="qResult" [buildarray]="buildarray"  [QueryCategryId]="QueryCategryId"  ></document-list>
+
+                          
+                      </div>
+                    </primary-view>
+                    <secondary-view *ngIf="qResult && splitviewInput1.showSecondaryView == true">
+                        <div style="width:100%;">
+                            <opendrawing *ngIf="IsOpenDrawingComponentActive  && splitviewInput1.showSecondaryView == true" [extDrawingId]="selectedDrawingId" [moduleId]="moduleId" [activeModuleIds]="moduleId" [pageTarget]="dwgPageTarget" [extDrawingType]="drawingType" [extDrawingDetails]="selectedSpaceIds" (outDrawingobject)="getDrawingObject($event)"></opendrawing>
+                      </div>
+                    </secondary-view>
+                </split-view>
+            </tab>
+        </tabs>
+        <slide [width]="300" [position]="position" [type]="dialog" [show]="showSlide" (closeDialog)="closeSlideDialog($event)">
+
+            <div>
+                <div>
+                    Are you sure you want to delete the selected search criteria?
+                </div>
+                <div>
+
+                    <div style="width:100%">
+                        <button class="Savebutton " type="button" (click)="okDeleteClick($event)">Yes</button>
+                        <button class="Savebutton " type="button" (click)="cancelClick($event)">No</button>
+                    </div>
+                </div>
+            </div>
+        </slide>

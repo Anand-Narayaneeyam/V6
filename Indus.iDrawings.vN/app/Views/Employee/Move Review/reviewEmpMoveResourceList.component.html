@@ -1,0 +1,29 @@
+﻿
+<div style="height:100%;overflow: hidden;">  
+    <submenu>
+        <sub-menu [source]=menuData [count]=totalItems [menuIds]=enableMenu (onSubMenuChange)="onSubMenuChange($event);"> </sub-menu>
+    </submenu>
+    <div style="overflow: hidden;height: calc(100% - 65px);">
+        <div style="height:100%;overflow: hidden;">
+            <div style="width:100%;display:block" [ngClass]="totalItems > itemsPerPage ? 'pagewithPaging':'pagewithoutPaging'">
+                <gridView [dataSource]="itemSource" [properties]="inputItems" [columns]="fieldObject"  (onSorting)="onSort($event)"></gridView>
+            </div>
+            <div style="height:45px;width:100%;float:left;display:block;">
+                <paging [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="pageChanged($event);"></paging>
+            </div>
+        </div>
+    </div>       
+</div>
+<slide [width]="300" [position]="'top-right'" [show]=showslide (closeDialog)="closeResourceOnClick($event)" >
+    <div *ngIf="showslide==true">     
+        <div>   
+            Are you sure you want to remove the selected Resource?  
+        </div> 
+        <div >
+            <div style="width:100%">
+                <button class="Savebutton" type="button" (click)="yesResourceOnClick($event)">Yes</button>
+                <button class="Savebutton" type="button" (click)="closeResourceOnClick($event)">No</button>
+            </div>
+        </div>
+    </div>
+</slide>

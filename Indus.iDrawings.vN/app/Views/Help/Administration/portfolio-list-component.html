@@ -1,0 +1,151 @@
+﻿<page [pagetitle]="pagePath">
+    <pagepath>
+    </pagepath>
+    <content>
+        <section title="Sites" [isExpanded]="sectionExpansionStatus[0].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div *ngIf="sectionExpansionStatus[0].isExpanded">
+
+                <p>All sites will be listed with the Site Name, Site details, Building Count, Attachments, Site Status and the Gross Area. The Gross Area will be the total Gross Area of all floors in all buildings in the site. Any additional data fields added for sites will also be displayed. The list can be sorted by clicking the column headers.</p>
+                <p><span class="header2">Note:</span> User can go to the Buildings list of a particular Site by clicking the hyper link provided at the Buildings count column of the required Site.</p>
+                <p><span class="header1">Add: </span>A new site can be created by clicking the <span class="header2">Add</span> <img class="helpicon" src="Content/Icons/data_addN.png" alt="Add" /> icon. Enter the Site Name and any additional data fields defined. By default the site is created with Active status. Only active sites will be available to users based on their access permissions. </p>
+                <p><span class="header1">Edit: </span>Edit a site by selecting it and clicking the <span class="header2">Edit</span> <img class="helpicon" src="Content/Layout/edit_button.png" alt="Edit" /> icon. Enter the Site Name and any additional data fields defined. By default the site is created with Active status. Only active sites will be available to users based on their access permissions. </p>
+                <p><span class="header1">Delete: </span>Delete a Site by selecting it and clicking the <span class="header2">Delete </span> <img class="helpicon" src="Content/Layout/delete_button.png" alt="Delete" />   icon. It is not possible to delete a site having one or more Buildings added to it.</p>
+                <p><span class="header1">Close: </span> Close a site by selecting the site from the list and then clicking the Close   icon. If a site is closed, it will not be possible to work with the site again until it is reopened.</p>
+                <p><span class="header1">Reopen:</span>  Reopen a closed site by selecting it and then clicking the Reopen   icon.</p>
+                <p><span class="header1">Attachments</span></p>
+                <p>
+                    Administrators can add/edit/delete/view/download attachments to a site using this option. Select the required site and click the <span class="header2">Attachments</span> <img class="helpicon" src="Content/Icons/attachmentN.png" alt="Attachments" />  icon. The files that can be attached will be restricted to file types like Word, Excel, pdf, jpg, gif, bmp etc.
+                    On selecting <span class="header2">Attachments</span> <img class="helpicon" src="Content/Icons/attachmentN.png" alt="Attachments" />  icon, the File attachments window opens up showing any files that are already attached to this site. Attachments can now be added to the selected site.
+                </p>
+                <p><span class="header3">Add: </span>   An attachment can be added by selecting the Attachment Category first, and then selecting the file through the file open dialog by clicking on the Browse button. The attachment has to be uploaded by clicking on the Upload button.</p>
+                <p> <span class="header3">Edit: </span> Edit an Attachment by selecting it and clicking the <span class="header2">Edit</span> <img class="helpicon" src="Content/Layout/edit_button.png" alt="Edit" />   icon.</p>
+                <p>Select an attachment and click <span class="header2">Edit</span> <img class="helpicon" src="Content/Layout/edit_button.png" alt="Edit" />  icon. The Edit Attachment window will be displayed with the current file name. The user can select the Attachment Category. There is an option to replace the selected attachment with a new file. (It is possible to browse the file location by clicking the Browse button). </p>
+                <p><span class="header3">Delete: </span> Delete an Attachment by selecting it and clicking the <span class="header2">Delete </span> <img class="helpicon" src="Content/Layout/delete_button.png" alt="Delete" />   icon</p>
+                <p><span class="header3">View: </span> The attachment can be viewed by selecting the file and then clicking the <span class="header2">View</span> <img class="helpicon" src="Content/Icons/view-drawingN.png" alt="View" />  icon.</p>
+                <p><span class="header3">Download: </span>  Attachment can be downloaded and saved in the user's computer by clicking the <span class="header2">Download</span> <img class="helpicon" src="Content/Layout/download_icon.png" alt="Download" />  icon. </p>
+                <p><span class="header1">Export</span></p>
+                <p>This option is to export the Site data to the Excel. On clicking <span class="header2">Export </span> <img class="config helpicon"src="Content/Icons/exportN.png" alt="Export" />  icon, data will be exported to Excel.</p>
+                <p><span class="header1">Keyword Search</span></p>
+                <p>This option helps users to search for Building details using keywords. The keyword could belong to any data field of the Building data. The user need not know or specify which field to look in. The Keyword could be any part of the Building data viz. Name, Code, Status, Floor Count, Area, etc. or the additional data fields.</p>
+                <p>On entering the keyword and clicking on the <span class="header2">Search </span> <img class="helpicon" src="Content/Icons/keyword-search.png" alt="Keyword Search" />  icon, the data grid will be opened with Building records having data matching the specified keyword.</p>
+                <p>This option   helps users to search for Site details with specific data in known data fields. The data being searched for can be selected from the list boxes or entered into text boxes provided against the data fields. The user can select one or more data fields viz. Name, Code, Status, Time Zone, Area, etc. or the additional data fields. After entering the search criteria and click Search button, the data of the sites which satisfy the selection criteria. When a search is done, the search criteria will be saved and available for subsequent searches in the current session until another search is done with new criteria.</p>
+                <p>Fields to be displayed in the Search window can be set using the <span class="header2">Configure</span> <img src="Content/Icons/filter-config-icon.png" alt="Configure" class="config helpicon" /> icon, provided in the Search window. </p>
+                <p>Search criteria entered in the Search window can be cleared by clicking the <span class="header2">Clear</span> button provided in the Search window. After clearing the Search criteria and click <span class="header2">Search</span> button to clear the Search Results in the Site Data grid.</p>
+                <p><span class="header1">Advanced Search</span></p>
+                <p>This option <img class="helpicon" src="Content/Icons/advanced-search.png" alt="Advanced Search" />   helps users to search for Site details with specific data in known data fields. The data being searched for can be selected from the list boxes or entered into text boxes provided against the data fields. The user can select one or more data fields viz. Name, Code, Status, Time Zone, Area, etc. or the additional data fields. After entering the search criteria and click Search button, the data of the sites which satisfy the selection criteria. When a search is done, the search criteria will be saved and available for subsequent searches in the current session until another search is done with new criteria.</p>
+                <p>Fields to be displayed in the Search window can be set using the Configure <img src="Content/Icons/filter-config-icon.png" alt="Configure" class="config helpicon" />  icon, provided in the Search window. </p>
+                <p>Search criteria entered in the Search window can be cleared by clicking the <span class="header2">Clear</span> button provided in the Search window. After clearing the Search criteria and click <span class="header2">Search</span> button to clear the Search Results in the Site Data grid.</p>
+
+
+            </div>
+        </section>
+        <section title="Buildings" [isExpanded]="sectionExpansionStatus[1].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div *ngIf="sectionExpansionStatus[1].isExpanded">
+
+
+                <p>All buildings will be listed with their site name, building name, building details, floor count, attachments and the gross area. The Gross Area will be the total Gross Area of all the floors in the building. List can be sorted by clicking the column headers. </p>
+                <p>Note: User can go to the Floors list of a particular building by clicking the hyper link provided at the Floors count column of the required building.</p>
+                <p><span class="header1">Add:</span> A new Building can be created by clicking the <span class="header2">Add</span> <img class="helpicon" src="Content/Icons/data_addN.png" alt="Add" /> icon. Select the site from the list to which the building is to be added. Enter Site Name, Building Name, Address and additional data fields if any. The Building Area, Common Area and Vertical Area are the Documented Areas of the corresponding items. These can also be entered. The Date of Construction, Estimated Useful Life of the building etc. also can be entered if needed. Click on Save to add a new building.</p>
+                <p><span class="header1">Edit:</span> The selected Building details can be edited by clicking on the <span class="header2">Edit</span> <img class="helpicon" src="Content/Layout/edit_button.png" alt="Edit" />  icon  icon.</p>
+                <p><span class="header1">Delete:</span> A Building can be deleted by selecting it and then clicking on the <span class="header2">Delete </span> <img class="helpicon" src="Content/Layout/delete_button.png" alt="Delete" />   icon.</p>
+                <p><span class="header1">Attachments</span></p>
+                <p>Administrators can add/edit/delete/view/download attachments to a building using this option. Select the required Building and click the <span class="header2">Attachments</span> <img class="helpicon" src="Content/Icons/attachmentN.png" alt="Attachments" />  icon. The files that can be attached will be restricted to data files like Word, Excel, pdf, jpg, gif, bmp etc. </p>
+                <p>The File attachments window opens up on selecting <span class="header2">Attachments</span> <img class="helpicon" src="Content/Icons/attachmentN.png" alt="Attachments" />  icon, showing any files that are already attached to this building. Attachments can now be added to the selected building.</p>
+                <p><span class="header3">Add:</span>   An attachment can be added by selecting the Attachment Category first, and then selecting the file through the file open dialog by clicking on the Browse button. The attachment has to be uploaded by clicking on the Upload button.  </p>
+                <p><span class="header3">Edit:</span> Edit an Attachment by selecting it and clicking the <span class="header2">Edit</span> <img class="helpicon" src="Content/Layout/edit_button.png" alt="Edit" /> icon.</p>
+                <p>Select an attachment and click Edit icon. The Edit Attachment window will be displayed with the current file name. The user can select the Attachment Category. There is an option to replace the selected attachment with a new file. (It is possible to browse the file location by clicking the Browse button). </p>
+                <p><span class="header3">Delete:</span> Delete an Attachment by selecting it and clicking the <span class="header2">Delete </span> <img class="helpicon" src="Content/Layout/delete_button.png" alt="Delete" />   icon.</p>
+                <p><span class="header3">View:</span> The attachment can be viewed by selecting the file and then clicking the <span class="header2">View</span> <img class="helpicon" src="Content/Icons/view-drawingN.png" alt="View" />  icon.</p>
+                <p><span class="header3">Download:</span>  Attachment can be downloaded and saved in the user's computer by clicking the <span class="header2">Download</span> <img class="helpicon" src="Content/Layout/download_icon.png" alt="Download" />  icon. </p>
+                <p><span class="header1">Export</span></p>
+                <p>This option is to export the Site data to the Excel. On clicking <span class="header2">Export</span> <img class="helpicon" src="Content/Icons/exportN.png" alt="Export" />  icon, data will be exported to Excel.</p>
+                <p><span class="header1">Keyword Search</span></p>
+                <p>This option helps users to search for Building details using keywords. The keyword could belong to any data field of the Building data. The user need not know or specify which field to look in. The Keyword could be any part of the Building data viz. Name, Code, Status, Floor Count, Area, etc. or the additional data fields.</p>
+                <p>On entering the keyword and clicking on the <span class="header2">Search</span> <img class="helpicon" src="Content/Icons/keyword-search.png" alt="Keyword Search" />   icon, the data grid will be opened with Building records having data matching the specified keyword.</p>
+                <p><span class="header1">Advanced Search</span></p>
+                <p>This <span class="header2">option</span> <img class="helpicon" src="Content/Icons/advanced-search.png" alt="Advanced Search" /> helps users to search for Building details with specific data in known data fields. The data being searched for can be selected from the list boxes or entered into text boxes provided against the data fields. The user can select one or more data fields viz. Name, Code, Status, Floor Count, Area, etc. or the additional data fields. After entering the search criteria and click Search button, the data of the Buildings which satisfy the selection criteria. When a search is done, the search criteria will be saved and available for subsequent searches in the current session until another search is done with new criteria.</p>
+                <p>Fields to be displayed in the Search window can be set using the <span class="header2">Configure</span> <img class="helpicon config" src="Content/Icons/filter-config-icon.png" alt="Configure" />  icon, provided in the Search window. </p>
+                <p>Search criteria entered in the Search window can be cleared by clicking the <span class="header2">Clear</span> button provided in the Search window. After clearing the Search criteria and click <span class="header2">Search</span> button to clear the Search Results in the building Data grid.</p>
+
+
+            </div>
+        </section>
+        <section title="Floors" [isExpanded]="sectionExpansionStatus[2].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div *ngIf="sectionExpansionStatus[2].isExpanded">
+
+
+                <p>All floors will be listed with their site name, building name and floor name. The list can be sorted by clicking the column headers. </p>
+                <p><span class="header1">Add:</span> A new floor can be added by clicking the <span class="header2">Add</span> <img class="helpicon" src="Content/Icons/data_addN.png" alt="Add" />   icon. Select the site from the list, and then select the building to which floors are to be added. Enter the floor name and additional data fields if any, then click <span class="header2">Add</span>  button to add new floor.</p>
+                <p><span class="header1">Edit:</span> A Floor can be edited by selecting it and then by clicking the <span class="header2">Edit</span> <img class="helpicon" src="Content/Layout/edit_button.png" alt="Edit" />   icon.</p>
+                <p><span class="header1">Delete:</span> A Floor can be deleted by selecting it and then by clicking the <span class="header2">Delete </span> <img class="helpicon" src="Content/Layout/delete_button.png" alt="Delete" />   icon.</p>
+                <p><span class="header1">Attachments</span></p>
+                <p>Administrators can add/edit/delete/view/download attachments to a floor using this option. Select the required floor and click the <span class="header2">Attachments</span> <img class="helpicon" src="Content/Icons/attachmentN.png" alt="Attachments" />   icon. The files that can be attached will be restricted to data files like Word, Excel, pdf, jpg, gif, bmp etc. </p>
+                <p>The File attachments window opens up on selecting <span class="header2">Attachments</span> <img class="helpicon" src="Content/Icons/attachmentN.png" alt="Attachments" />   icon, showing any files that are already attached to this Floor. Attachments can now be added to the selected floor. </p>
+                <p><span class="header3">Add:</span>An attachment can be added by selecting the File Type and Attachment Category first, and then selecting the file through the file open dialog by clicking on the <span class="header2">Upload</span>  button. The attachment has to be uploaded by clicking on the <span class="header2">Upload</span>  button.  </p>
+                <p><span class="header3">Edit:</span>Edit an Attachment by selecting it and clicking the <span class="header2">Edit</span> <img class="helpicon" src="Content/Layout/edit_button.png" alt="Edit" />   icon.</p>
+                <p>Select an attachment and click <span class="header2">Edit icon</span> . The Edit Attachment window will be displayed with the current file name. The user can select the Attachment Category. There is an option to replace the selected attachment with a new file. (It is possible to browse the file location by clicking the Browse button). </p>
+                <p><span class="header3">Delete:</span>Delete an Attachment by selecting it and clicking the <span class="header2">Delete </span> <img class="helpicon" src="Content/Layout/delete_button.png" alt="Delete" />   icon.</p>
+                <p><span class="header3">View:</span>The attachment can be viewed by selecting the file and then clicking the <span class="header2">View</span> <img class="helpicon" src="Content/Icons/view-drawingN.png" alt="View" />   icon.</p>
+                <p><span class="header3">Download:</span>The attachment can be viewed by selecting the file and then clicking the <span class="header2">Download</span> <img class="helpicon" src="Content/Layout/download_icon.png" alt="Download" /> icon .</p>
+                <p><span class="header1">Export</span></p>
+                <p>This option is to export the Floor data to the Excel. On clicking <span class="header2">Export</span> <img class="helpicon" src="Content/Icons/exportN.png" alt="Export" />  icon, data will be exported to Excel.</p>
+                <p><span class="header1">Keyword Search</span></p>
+                <p>This option helps users to search for Floor details using keywords. The keyword could belong to any data field of the Floor data. The user need not know or specify which field to look in. The Keyword could be any part of the Floor data viz. Name, Status, Area, etc. or the additional data fields.</p>
+                <p>On entering the keyword and clicking on the <span class="header2">Search</span> <img class="helpicon" src="Content/Icons/keyword-search.png" alt="Keyword Search" />   icon, the data grid will be opened with Floor records having data matching the specified keyword.</p>
+                <p><span class="header1">Advanced Search</span></p>
+                <p>This<span class="header2"> option</span> <img class="helpicon" src="Content/Icons/advanced-search.png" alt="Advanced Search" /> helps users to search for Floor details with specific data in known data fields. The data being searched for can be selected from the list boxes or entered into text boxes provided against the data fields. The user can select one or more data fields viz. Name, Status, Area, etc. or the additional data fields. After entering the search criteria and click Search button, the data of the Floors which satisfy the selection criteria. When a search is done, the search criteria will be saved and available for subsequent searches in the current session until another search is done with new criteria.</p>
+                <p>Fields to be displayed in the Search window can be set using the <span class="header2">Configure</span> <img class="helpicon config" src="Content/Icons/filter-config-icon.png" alt="Configure" />   icon, provided in the Search window. </p>
+                <p>Search criteria entered in the Search window can be cleared by clicking the <span class="header2">Clear</span>  button provided in the Search window. After clearing the Search criteria and click <span class="header2">Search</span>  button to clear the Search Results in the Floor Data grid.</p>
+
+
+            </div>
+        </section>
+    </content>
+</page>
+<style type="text/css">
+    h3.Mainheader {
+        color: #178AE8;
+    }
+
+    .header1 {
+        font-weight: bold;
+        color: #178AE8;
+    }
+
+    .header2 {
+        font-weight: normal;
+        color: #178AE8;
+    }
+
+    p {
+        margin-left: 38px;
+        font-size: 13px;
+        margin-right: 3em;
+    }
+
+    .header3 {
+        font-weight: bold;
+        color: black;
+    }
+    /**/ h1 {
+        color: #178AE8;
+        font-size: 1.3em;
+        margin-left: 38px;
+    }
+
+    h2 {
+        color: #178AE8;
+        font-size: 1em;
+        margin-left: 38px;
+    }
+
+    .config {
+        background-color: #178AE8;
+    }
+
+    .helpicon {
+        vertical-align: baseline;
+        width: 20px;
+        height: 20px;
+    }
+</style>

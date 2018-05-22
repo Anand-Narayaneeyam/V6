@@ -1,0 +1,79 @@
+﻿<page [pagetitle]="pagePath">
+    <pagepath>
+    </pagepath>
+    <content>
+        <section title="Trades" [isExpanded]="sectionExpansionStatus[0].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <trades *ngIf="sectionExpansionStatus[0].isExpanded"> </trades>
+        </section>
+        <section title="Technicians" [isExpanded]="sectionExpansionStatus[1].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <technicians-list *ngIf="sectionExpansionStatus[1].isExpanded"> </technicians-list>
+        </section>
+        <section title="Contractors" [isExpanded]="sectionExpansionStatus[2].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <contractors-list *ngIf="sectionExpansionStatus[2].isExpanded"> </contractors-list>
+        </section>
+        <section title="Manufacturers" [isExpanded]="sectionExpansionStatus[3].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <manufacturers-list *ngIf="sectionExpansionStatus[3].isExpanded"> </manufacturers-list>
+        </section>
+        <section title="Parts" [isExpanded]="sectionExpansionStatus[4].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <parts-list *ngIf="sectionExpansionStatus[4].isExpanded"> </parts-list>
+        </section>
+        <section title="Tools" [isExpanded]="sectionExpansionStatus[5].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <tools-list *ngIf="sectionExpansionStatus[5].isExpanded"> </tools-list>
+        </section>
+        <section title="Priorities" [isExpanded]="sectionExpansionStatus[6].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <priority-list *ngIf="sectionExpansionStatus[6].isExpanded"> </priority-list>
+        </section>
+        <section title="Reasons for Hold" [isExpanded]="sectionExpansionStatus[7].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <holdReason-list *ngIf="sectionExpansionStatus[7].isExpanded"> </holdReason-list>
+        </section>
+        <!--<section title="Define Work Types" [isGrid]=true [isExpanded]="sectionExpansionStatus[8].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <define-workType *ngIf="sectionExpansionStatus[8].isExpanded" [moduleId]="9" [workFlowCategoryId]="1"></define-workType>
+        </section>-->
+        <!--<section title="Set Workflow" [isGrid]=true [isExpanded]="sectionExpansionStatus[9].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">-->
+        <!--<setworkflow *ngIf="sectionExpansionStatus[9].isExpanded" [moduleId]="9" [workFlowCategoryId]="1"></setworkflow>-->
+        <!--<setworkflowmain *ngIf="sectionExpansionStatus[9].isExpanded" [moduleId]="9" [workFlowCategoryId]="1"></setworkflowmain>-->
+        <!--</section>-->
+        <!--<section title="Additional Data Fields" [isExpanded]="sectionExpansionStatus[10].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <work-order-additional-datafields *ngIf="sectionExpansionStatus[10].isExpanded"></work-order-additional-datafields>
+        </section>-->
+        <!--<section title="Show Workflow" [isExpanded]="sectionExpansionStatus[11].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <workflow *ngIf="sectionExpansionStatus[11].isExpanded"  ></workflow>
+        </section>-->
+        <section *ngIf="UserRoleId != 4 && UserRoleId != 7 && !isObject" title="Asset Classes" [isExpanded]="sectionExpansionStatus[8].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <object-classes *ngIf="sectionExpansionStatus[8].isExpanded" [objectCategoryId]="1" [moduleId]="9"></object-classes>
+        </section>
+        <section *ngIf="isSiteAdmin==false  && UserRoleId != 4 && UserRoleId != 7 && !isObject" title="Asset Common Attributes" [isExpanded]="sectionExpansionStatus[9].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <attributes *ngIf="sectionExpansionStatus[9].isExpanded" [objectCategoryId]="1" [moduleId]="9"> </attributes>
+        </section>
+        <section *ngIf="isSiteAdmin==false && UserRoleId != 4 && UserRoleId != 7 && !isObject" title="Asset Class Attributes" [isExpanded]="sectionExpansionStatus[10].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <class-attributes *ngIf="sectionExpansionStatus[10].isExpanded" [objectCategoryId]="1" [moduleId]="9"> </class-attributes>
+        </section>  
+        <section *ngIf="UserRoleId != 4 && UserRoleId != 7 && !isObject" title="Assets" [isExpanded]="sectionExpansionStatus[11].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <objectData-list *ngIf="sectionExpansionStatus[11].isExpanded==true" [objectCategoryId]="1" [moduleId]="9" [dataOption]="3"></objectData-list>
+        </section>  
+        <section *ngIf="!isObject" title="Deficiency Categories" [isExpanded]="sectionExpansionStatus[12].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <ListDeficiencyCategories [objectCategoryId]=1 *ngIf="sectionExpansionStatus[12].isExpanded==true" [moduleId]="9"></ListDeficiencyCategories>
+        </section>
+        <section *ngIf="!isObject" title="Deficiencies" [isExpanded]="sectionExpansionStatus[13].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <ListDeficiency [objectCategoryId]=1 *ngIf="sectionExpansionStatus[13].isExpanded==true" [moduleId]="9"></ListDeficiency>
+        </section>
+        <section title="Number Prefix" [isExpanded]="sectionExpansionStatus[14].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <NumberFormat *ngIf="sectionExpansionStatus[14].isExpanded==true" [NumberFormatCategoryId]="0" [ModuleId]="9" [target]="2"></NumberFormat>
+        </section>
+    </content>
+</page>
+
+<style>
+     :host .filter {
+            position: fixed !important;
+            right: 30px !important;
+            bottom:40px !important;
+        }
+
+     @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+        :host .filter {
+            bottom:40px !important;
+            position:-ms-page !important;
+        }
+    }
+</style>

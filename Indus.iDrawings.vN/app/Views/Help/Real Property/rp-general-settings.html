@@ -1,0 +1,154 @@
+﻿<page [pagetitle]="pagePath">
+    <pagepath>
+    </pagepath>
+    <content>
+        <section title="Landlords" [isExpanded]="sectionExpansionStatus[0].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div *ngIf="sectionExpansionStatus[0].isExpanded">
+                <p>This option lists all information about the Landlords. Landlord is the person who is granting the lease and has the legal obligations related to the lease contract. Sometimes Landlord is an owner, but it may also be a property management company or commercial leasing company. </p>
+                <p>User can add/edit/delete the details of Landlord. On clicking this option, all the existing Landlords will be displayed with name and address details. </p>
+                <p><span class="header1">Add:</span> A Landlord can be created by clicking the  <span class="header2">Add</span> <img class="helpicon" src="Content/Icons/data_addN.png" title="Add" /> icon.  </p>
+                <p><span class="header1">Edit:</span> A Landlord can be edited by selecting it and then clicking the <span class="header2">Edit</span> <img class="helpicon" src="Content/Icons/data_editN.png" title="Edit" /> icon.</p>
+                <p><span class="header1">Delete:</span> A Landlord can be deleted by selecting it and then clicking the <span class="header2"> Delete</span> <img class="helpicon" src="content/Icons/data_deleteN.png" title="Delete" /> icon.</p>
+            </div>
+        </section>
+        <section title="Tenants" [isExpanded]="sectionExpansionStatus[1].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div *ngIf="sectionExpansionStatus[1].isExpanded">
+                <p>This option lists all information about the Tenants. Tenant is a person or company who pays rent to use a building, floor or a space that is owned by someone else. User can add/edit/delete the details of Tenant. On clicking this option, all the existing Tenants will be displayed with name and address details. </p>
+                <p><span class="header1">Add:</span>A Tenant can be created by clicking the <span class="header2">Add</span> <img class="helpicon" src="Content/Icons/data_addN.png" title="Add" /> icon.  </p>
+                <p><span class="header1">Edit:</span> A Tenant can be edited by selecting it and then clicking the <span class="header2">Edit</span> <img class="helpicon" src="Content/Icons/data_editN.png" title="Edit" /> icon.</p>
+                <p><span class="header1">Delete:</span> A Tenant can be deleted by selecting it and then clicking the <span class="header2"> Delete</span> <img class="helpicon" src="content/Icons/data_deleteN.png" title="Delete" /> icon.</p>
+
+            </div>
+        </section>
+        <section title="Contacts" [isExpanded]="sectionExpansionStatus[2].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div *ngIf="sectionExpansionStatus[2].isExpanded">
+
+                <p>This option helps the user to add people to whom the alert needs to be send on critical lease dates. The information includes the Contact Type, Name, Address, Phone, Email and Landlord/Tenant name of the contact person. On setting an alert, the user should be able to select the respective people from this contact list.</p>
+                <p><span class="header1">Add:</span> A Contact can be added by clicking  <span class="header2">Add</span> <img class="helpicon" src="Content/Icons/data_addN.png" title="Add" /> icon.  </p>
+                <p><span class="header1">Edit:</span> A Contact can be edited by selecting it and then clicking <span class="header2">Edit</span> <img class="helpicon" src="Content/Icons/data_editN.png" title="Edit" /> icon.</p>
+                <p><span class="header1">Delete:</span> A Contact can be deleted by selecting it and then clicking <span class="header2"> Delete</span> <img class="helpicon" src="content/Icons/data_deleteN.png" title="Delete" /> icon.</p>
+
+            </div>
+        </section>
+        <section title="Additional Data Fields" [isExpanded]="sectionExpansionStatus[3].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div *ngIf="sectionExpansionStatus[3].isExpanded">
+                <p>This page lists all the additional data fields defined for Leases. The user can create Additional Data Fields for Lease Data, in addition to the system defined data fields which are available by default through this option.  The Data Field Name, Data Field Type (Single Line Text, Multi Line Text, Date Time, Integer and Numeric), whether Mandatory or not, whether the field is Totalizable or not, whether the field is a Validated field or not, have to be specified. The Totalizable option is available only for data fields of type Numeric and Integer. If a data field is set as totalizable, the total value of that field will be displayed in reports (Subtotal and Total) as well as in Totalize window.</p>
+                <p><span class="header1">Add:</span> Create a new Data Field by clicking the <span class="header2"> Add </span> <img class="helpicon" src="Content/Icons/data_addN.png" title="Add" /> icon .</p>
+                <p><span class="header1">Edit:</span> Edit a Data Field by selecting it and then clicking the <span class="header2">Edit</span> <img class="helpicon" src="Content/Icons/data_editN.png" title="Edit" /> icon. </p>
+                <p><span class="header1">Delete:</span> Delete a Data Field by selecting it and then clicking the <span class="header2"> Delete </span> <img class="helpicon" src="content/Icons/data_deleteN.png" title="Delete" /> icon.</p>
+                <p><span class="header1">Field Values:</span></p>
+                <p>This option is for creating/viewing/editing/deleting values for validated Data Fields. Select a Validated Field and click  <span class="header2"> Field Values </span> <img class="helpicon" src="Content/Icons/field-valueN.png" title="Field Values" /> icon, all values defined for the validated field will be displayed in a list. </p>
+                <p><span class="header1">Add:</span>Create a new Value for the Data Field by clicking the <span class="header2">Add</span> <img class="helpicon" src="Content/Icons/data_addN.png" title="Add" /> icon . </p>
+                <p><span class="header1">Edit:</span> Field Value can be edited by clicking the <span class="header2"> Edit </span> <img class="helpicon" src="Content/Icons/data_editN.png" title="Edit" /> icon. Edit icon will be displayed when the mouse points to a row or clicking the required row. </p>
+                <p><span class="header1">Delete:</span>Delete a value by selecting it and then clicking the <span class="header2"> Delete </span> <img class="helpicon" src="content/Icons/data_deleteN.png" title="Delete" /> icon. Delete icon will be displayed when clicking the required row.</p>
+
+
+            </div>
+        </section>
+        <section title="Additional Charges" [isExpanded]="sectionExpansionStatus[4].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div *ngIf="sectionExpansionStatus[4].isExpanded">
+                <p>This page lists all the Additional Charges that are defined for the Customer that needs to be added to a Lease. These are various charges which needs to be levied from the user. User can add, edit or delete the Additional Charges. Additional Charges will be displayed with Additional Charge Name, Tax or not, Additional Tax or not and Balance Sheet Impact Type Name etc.</p>
+                <p><span class="header1">Add:</span> An Additional Charge can be added by clicking the <span class="header2"> Add </span> <img class="helpicon" src="Content/Icons/data_addN.png" title="Add" /> icon .</p>
+                <p><span class="header1">Edit:</span> An Additional Charge can be edited by selecting it and then clicking the <span class="header2">Edit</span> <img class="helpicon" src="Content/Icons/data_editN.png" title="Edit" /> icon. </p>
+                <p><span class="header1">Delete:</span> Delete an Additional Charge by selecting it and then clicking the <span class="header2"> Delete </span> <img class="helpicon" src="content/Icons/data_deleteN.png" title="Delete" /> icon.</p>
+
+            </div>
+        </section>
+        <section title="Additional Charge Rates" [isExpanded]="sectionExpansionStatus[5].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div *ngIf="sectionExpansionStatus[5].isExpanded">
+
+                <p>This page lists all the Additional Charge Rates given for each Additional Charge defined in the application.  On selecting an Additional Charge from the drop down list, all Additional Charge Rates defined for the selected Additional Charge will be displayed in the grid. The information includes Additional Charge, Is Flat Rate or not, Effective Date, Rate, Amount From and Amount To. The rates can be either flat rates or percentage. If Flat Rate is not checked then the value can be entered in percentage. Users can add, edit or delete Additional Charge Rates by selecting this option.</p>
+                <p><span class="header1">Add:</span> An Additional Charge Rate can be added by clicking the <span class="header2"> Add </span> <img class="helpicon" src="Content/Icons/data_addN.png" title="Add" /> icon .</p>
+                <p><span class="header1">Edit:</span> An Additional Charge Rate can be edited by selecting it and then clicking <span class="header2">Edit</span> <img class="helpicon" src="Content/Icons/data_editN.png" title="Edit" /> icon. </p>
+                <p><span class="header1">Delete:</span>Additional Charge Rate can be deleted by selecting it and then clicking the  <span class="header2"> Delete </span> <img class="helpicon" src="content/Icons/data_deleteN.png" title="Delete" /> icon.</p>
+
+
+            </div>
+        </section>
+        <section title="Agreement Clauses" [isExpanded]="sectionExpansionStatus[6].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div *ngIf="sectionExpansionStatus[6].isExpanded">
+                <p>This page lists all the Agreement Clauses in Real Property module. User can add, edit or delete the Agreement Clause. The information includes Clause Name and Description.</p>
+                <p><span class="header1">Add:</span> An Agreement Clause can be created by clicking the <span class="header2"> Add </span> <img class="helpicon" src="Content/Icons/data_addN.png" title="Add" /> icon .</p>
+                <p><span class="header1">Edit:</span> An Agreement Clause can be edited by selecting it and then clicking the <span class="header2">Edit</span> <img class="helpicon" src="Content/Icons/data_editN.png" title="Edit" /> icon. </p>
+                <p><span class="header1">Delete:</span> An Agreement Clause can be deleted by selecting it and then clicking the <span class="header2"> Delete </span> <img class="helpicon" src="content/Icons/data_deleteN.png" title="Delete" /> icon.</p>
+
+            </div>
+        </section>
+        <section title="Custom Reports" [isExpanded]="sectionExpansionStatus[7].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div *ngIf="sectionExpansionStatus[7].isExpanded">
+                <p>Custom Reports are reports created by the users according to their own requirements. Users can create and save reports with a suitable name through the Custom Reports option under <span class="header2"> Settings: Real Property: General Settings </span> It is also possible to share these reports with other users of the system. </p>
+                <p>Users can view and print these reports whenever required by selecting them from the Custom Reports option under Reports. Reports created by other users and shared will be listed with the name of the owner displayed in parenthesis after the report name. </p>
+                <p>The Custom Reports option under General Settings lists all the custom reports created by the user. </p>
+                <p><span class="header1">Add: </span> Create a new Custom Report by clicking the <span class="header2">Add </span> <img class="helpicon" src="Content/Icons/data_addN.png" title="Add" /> icon. </p>
+                <p>On clicking the <span class="header2"> Add </span> <img class="helpicon" src="Content/Icons/data_addN.png" title="Add" /> icon, a report column selection window pops up with buttons for Field Order, Preview and Save. All the Data fields that are available will be listed in alphabetic order with check boxes.  </p>
+                <p>The required columns for the Report can be selected by checking the corresponding data fields. Fields once selected can be deselected by unchecking them. Group Fields can be specified for grouping the data rows of the report. Each group will be printed with a Sub heading showing the group field values of the group. Show Subtotal, Show Grand Total also can be set for Numeric/Integer type static fields and Numeric/Integer type additional data fields which are set as totalizable in the setup.</p>
+                <p>Field properties like Column Heading and Column Width (in Inches) can also be set. By default, the Report Column Headings will be the same as the Data Field Names. Users can change a Report Column Heading by changing the Field Name in the Column Heading. The width of a Report Column is set as 1.5 inch by default. User can change the Report Column Width of the required Data Fields. </p>
+                <p><span class="header3">Field Order </span></p>
+                <p>The order of the Report Columns and Sub Header Fields can be set through this option. On clicking Field Order button, Field Order window pops up with all the Header and Sub Header fields. Each data field can be moved by selecting and dragging it to the required position.</p>
+                <p><span class="header3"> Preview </span></p>
+                <p>Users can view the report using this Preview option. After selecting the report fields and setting the Field Order the report can be previewed by clicking the Preview button. A Report Heading can also be given for viewing the report. The Paper orientation can be set to Landscape or Portrait by clicking on the corresponding radio button. </p>
+                <p>The report can be shared with other users by checking the corresponding check box.</p>
+                <p>User can go to the previous stages and edit the settings already specified using the corresponding buttons.</p>
+                <p><span class="header3"> Save </span></p>
+                <p>User can save the report by clicking the Save button. Once a new report is created and saved by a user, it will be listed in the Custom reports in Reports menu. </p>
+                <p><span class="header1">Edit:</span> Edit a Custom Report by selecting it and then clicking the <span class="header2">Edit </span> <img class="helpicon" src="Content/Icons/data_editN.png" title="Edit" /> icon. The Report Columns, field order, report name, etc. can be modified through this option.</p>
+                <p>Report column selection window pops up with buttons for Field Order, Preview, Save As and Save on clicking Edit icon. All the Data fields that are available will be listed in alphabetic order with check boxes and all the data fields selected for the report will be displayed as checked.</p>
+                <p><span class="header3"> Preview </span></p>
+                <p>After making the modifications, Users can view the report using this Preview option.</p>
+                <p><span class="header3"> Save </span></p>
+                <p>User can save the changes in the report by clicking the Save button.</p>
+                <p><span class="header3"> Save As </span></p>
+                <p>User can make changes to an existing report and save it as a new report with a different name using this option, by clicking the Save As button.</p>
+                <p><span class="header1"> Delete: </span> Delete a Custom Report by selecting it and then clicking the <span class="header2">Delete </span> <img class="helpicon" src="Content/Icons/data_deleteN.png" title="Delete" /> icon.</p>
+
+            </div>
+        </section>
+    </content>
+</page>
+<style type="text/css">
+    h3.Mainheader {
+        color: #178AE8;
+    }
+
+    .header1 {
+        font-weight: bold;
+        color: #178AE8;
+    }
+
+    .header2 {
+        font-weight: normal;
+        color: #178AE8;
+    }
+
+    p {
+        margin-left: 38px;
+        font-size: 13px;
+        margin-right: 3em;
+    }
+
+    .header3 {
+        font-weight: bold;
+        color: black;
+    }
+    /**/ h1 {
+        color: #178AE8;
+        font-size: 1.3em;
+        margin-left: 38px;
+    }
+
+    h2 {
+        color: #178AE8;
+        font-size: 1em;
+        margin-left: 38px;
+    }
+
+    .config {
+        background-color: #178AE8;
+    }
+
+    .helpicon {
+        vertical-align: baseline;
+        width: 20px;
+        height: 20px;
+    }
+</style>

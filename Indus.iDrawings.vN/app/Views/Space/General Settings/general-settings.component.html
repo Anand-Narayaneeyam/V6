@@ -1,0 +1,49 @@
+﻿<page [pagetitle]="pagePath">
+    <pagepath> 
+    </pagepath>
+    <content>
+<!--<section title="Drawing Management">
+            Select Floors for Space Management
+            <user-drawings-access [moduleId]="2"></user-drawings-access>
+        </section>-->
+        <section *ngIf="isSiteAdmin==false && userRoleId != 4 && userRoleId != 7" title="Drawing Management" [isExpanded]="sectionExpansionStatus[0].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <drawingmanagement *ngIf="sectionExpansionStatus[0].isExpanded==true" [module]=3></drawingmanagement>
+        </section>
+        <section *ngIf="isSiteAdmin==false && userRoleId != 4 && userRoleId != 7" title="Area Options" [isExpanded]="sectionExpansionStatus[1].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <area-options *ngIf="sectionExpansionStatus[1].isExpanded"></area-options>
+        </section>
+        <section *ngIf="showSpaceFunction==true && userRoleId != 4 && userRoleId != 7"   title="{{sectionExpansionStatus[2].title}}" [isExpanded]="sectionExpansionStatus[2].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <space-functions *ngIf="sectionExpansionStatus[2].isExpanded==true" [customSpacefnName]="spaceFunText"></space-functions>
+        </section>
+        <section *ngIf="showSpaceStandared==true && userRoleId != 4 && userRoleId != 7" title="Space Standards" [isExpanded]="sectionExpansionStatus[3].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <space-standard *ngIf="sectionExpansionStatus[3].isExpanded==true"></space-standard>
+        </section>
+        <!--<section title="Mandatory Layers" [isExpanded]="sectionExpansionStatus[5].isExpanded">
+            <mandatory-layers></mandatory-layers>
+        </section>-->
+        <section *ngIf="showCostCategory==true && userRoleId != 4 && userRoleId != 7" title="Cost Categories" [isExpanded]="sectionExpansionStatus[4].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <Cost-Categories *ngIf="sectionExpansionStatus[4].isExpanded==true"></Cost-Categories>
+        </section>
+        <section *ngIf="showCostCategory==true && userRoleId != 4 && userRoleId != 7" title="Cost Category Rates for Units" [isExpanded]="sectionExpansionStatus[5].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+           <div style="height:80%;">
+               <cost-category-rates-for-units *ngIf="sectionExpansionStatus[5].isExpanded==true"></cost-category-rates-for-units>
+           </div>
+        </section>
+
+        <section *ngIf="isSiteAdmin==false && userRoleId != 4 && userRoleId != 7" title="Additional Data Fields" [height]="65"  [isExpanded]="sectionExpansionStatus[6].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)"> 
+            <additional-datafields *ngIf="sectionExpansionStatus[6].isExpanded==true"  [addlDataFieldCategoryId]="7"></additional-datafields>
+        </section>
+        <section *ngIf="isSiteAdmin==false" title="Distribution Map Settings" [isGrid]=true [isExpanded]="sectionExpansionStatus[7].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <distributionmapsettings *ngIf="sectionExpansionStatus[7].isExpanded==true"  [pageId]=18 [Previlages]="333"></distributionmapsettings>
+        </section>
+        <section *ngIf="isSiteAdmin==false" title="Color Preferences" [isGrid]=true [isExpanded]="sectionExpansionStatus[8].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <color-preference *ngIf="sectionExpansionStatus[8].isExpanded==true" [moduleId]="3" [pageId]=127 [Previlages]="372"></color-preference>
+        </section>
+        <section *ngIf="showCustomRptSection==true && userRoleId != 4 && userRoleId != 7"  title="Custom Reports" [isExpanded]="sectionExpansionStatus[9].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <customReportGrid *ngIf="sectionExpansionStatus[9].isExpanded==true" [moduleId]=3 ></customReportGrid>
+        </section>
+        <section title="Default Display Layers" [isExpanded]="sectionExpansionStatus[10].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <default-display-layer *ngIf="sectionExpansionStatus[10].isExpanded==true" [ModuleId]=3></default-display-layer>
+        </section>
+    </content>
+</page>

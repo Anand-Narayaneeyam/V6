@@ -1,0 +1,24 @@
+﻿<page [pagetitle]="pagePath">
+    <pagepath>
+    </pagepath>
+    <content>
+        <section title="Procedures" [isExpanded]="sectionExpansionStatus[0].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <Procedures-list *ngIf="sectionExpansionStatus[0].isExpanded"> </Procedures-list>
+        </section>
+        <section title="Routes" [isExpanded]="sectionExpansionStatus[1].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <Routes-list *ngIf="sectionExpansionStatus[1].isExpanded"> </Routes-list>
+        </section>
+        <section title="Assign Equipment Calendar" [isExpanded]="sectionExpansionStatus[2].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <assign-equipment-calendar  *ngIf="sectionExpansionStatus[2].isExpanded"></assign-equipment-calendar>
+        </section>
+        <section title="Master PM Schedules" [isGrid]=true [isExpanded]="sectionExpansionStatus[3].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <Master-PM-Schedules-list *ngIf="sectionExpansionStatus[3].isExpanded"> </Master-PM-Schedules-list>
+        </section>
+        <section title="PM Schedules" [isGrid]=true [isExpanded]="sectionExpansionStatus[4].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <pmschedule-types *ngIf="sectionExpansionStatus[4].isExpanded"> </pmschedule-types>
+        </section>
+        <!--<section *ngIf="showCustomRptSection==true" title="Custom Reports" [isExpanded]="sectionExpansionStatus[4].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <customReportGrid *ngIf="sectionExpansionStatus[4].isExpanded==true" [moduleId]=9></customReportGrid>
+        </section>-->
+    </content>
+</page>

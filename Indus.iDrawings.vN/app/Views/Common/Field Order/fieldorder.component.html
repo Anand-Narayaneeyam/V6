@@ -1,0 +1,50 @@
+﻿<style>
+    .btnok {
+        background: #2980b9;
+        color: #fff;
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        width: auto;
+        margin-top:10px;
+    }
+    .divHeader{
+        margin-top:10px;
+        font-family: Arial, Helvetica, sans-serif;     
+        font-size: 14px;  
+        font-weight:bold;
+    }
+    .divbody{
+        border:1px solid grey;      
+        height:37%;
+        font-size: 12px; 
+        overflow:auto;
+    }
+    /*.list-group-item:first-child{
+        background: rgb(116, 183, 241);
+    }
+    .list-group-item:hover{
+        background: rgb(116, 183, 241);
+    }*/
+</style>
+<div style="padding:5px;width:300px;height:100%;display:inline-block">
+    <div style="height:calc(100% - 50px);">
+        <div>
+            <div class="divHeader">Report Fields</div>
+            <div *ngIf="rptFieldSource" class="divbody">
+                <ul class="list-group" dnd-sortable-container [sortableData]="rptFieldSource" [dropZones]="['rptfield-zone']">
+                    <li *ngFor="let rptfield of rptFieldSource;let i=index" class="list-group-item" dnd-sortable [sortableIndex]="i">{{rptfield.ColmnName}}</li>
+                </ul>
+            </div>
+        </div>
+        <div>
+            <div class="divHeader">Sub Header Fields</div>
+            <div *ngIf="subHeaderFieldSrc" class="divbody">
+                <ul class="list-group" dnd-sortable-container [sortableData]="subHeaderFieldSrc" [dropZones]="['subfield-zone']">
+                    <li *ngFor="let subfield of subHeaderFieldSrc;let j=index" class="list-group-item" dnd-sortable [sortableIndex]="j">{{subfield.ColmnName}}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div style="height:40px;">
+        <button class="Savebutton " style=" margin-top:10px;" (click)="fieldOrderSaveClick()">Save Changes</button>
+    </div>
+</div>

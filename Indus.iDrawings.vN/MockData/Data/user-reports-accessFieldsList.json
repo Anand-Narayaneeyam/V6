@@ -1,0 +1,61 @@
+﻿{
+    "data": [
+        {
+            "FieldId": 1,
+            "FieldName": "Select All",
+            "FieldType": 7,
+            "FieldValue": "true",
+            "IsMandatory": false,
+            "IsHiddenLabel": true,
+            "IsVisible": true,
+            "IsDisabled": false,
+            "ReadOnlyMode": false,
+            "Width": "1*",
+            "NotificationType": "return"
+        },
+        {
+            "FieldId": 2,
+            "FieldName": "Id",
+            "FieldType": 1,
+            "IsMandatory": false,
+            "IsHiddenLabel": true,
+            "IsVisible": false,
+            "IsDisabled": true,
+            "ReadOnlyMode": true,
+            "NotificationType": "return"
+        },
+        {
+            "FieldId": 3,
+            "FieldName": "Module",
+            "FieldType": 1,
+            "IsMandatory": false,
+            "IsHiddenLabel": true,
+            "IsVisible": true,
+            "IsDisabled": true,
+            "ReadOnlyMode": true,
+            "Width": "3*"
+        },
+        {
+            "FieldId": 4,
+            "FieldName": "Type",
+            "FieldType": 1,
+            "IsMandatory": false,
+            "IsHiddenLabel": true,
+            "IsVisible": true,
+            "IsDisabled": true,
+            "ReadOnlyMode": true,
+            "Width": "3*"
+        },
+        {
+            "FieldId": 5,
+            "FieldName": "Reports",
+            "FieldType": 1,
+            "IsMandatory": false,
+            "IsHiddenLabel": true,
+            "IsVisible": true,
+            "IsDisabled": true,
+            "ReadOnlyMode": true,
+            "Width": "4*"
+        }
+    ]
+}

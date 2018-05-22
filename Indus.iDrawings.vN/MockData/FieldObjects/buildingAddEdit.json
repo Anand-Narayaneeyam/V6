@@ -1,0 +1,168 @@
+﻿{
+  "data": [
+    {
+      "FieldId": 1,
+      "FieldName": "Site Name",
+      "FieldType": 5,
+      "FieldValue": "2",
+      "HasRelation": false,
+      "IsVisible": true,
+      "IsMandatory": true,
+      "IsDisabled": false,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false,
+      "MaxLength": 100,
+      "IsMultiValued": true,
+      "MultiValuedDetails": {
+        "LookupValues": [
+          
+          {
+            "Id": 1,
+            "Value": "Aberdeen"
+          },
+          {
+            "Id": 2,
+            "Value": "Concord"
+          },
+          {
+            "Id": 3,
+            "Value": "Arlington"
+          },
+          {
+            "Id": 4,
+            "Value": "Framingham"
+          },
+          {
+            "Id": 5,
+            "Value": "Greenwood"
+          },
+          {
+            "Id": 6,
+            "Value": "Manchester"
+          },
+          {
+            "Id": 7,
+            "Value": "Site 1"
+          },
+          {
+            "Id": 8,
+            "Value": "WhiteField"
+          }
+        ],
+        "PopupComponentName": "site1"
+      },
+      "NotificationType": "inline",
+      "Exclude": [ "--" ],
+      "Width": " ",
+      "Format": ""
+    },
+    {
+      "FieldId": 1,
+      "FieldName": "Building Name",
+      "FieldType": 1,
+      "FieldValue": "AD",
+      "IsMandatory": true,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false,
+      "IsVisible": true,
+      "MaxLength": 100,
+      "NotificationType": "inline"
+    },
+    {
+      "FieldId": 1,
+      "FieldName": "Building Code",
+      "FieldType": 1,
+      "FieldValue": "",
+      "IsMandatory": false,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false,
+      "IsVisible": true,
+      "MaxLength": 100,
+      "NotificationType": "inline"
+    },
+    {
+      "FieldId": 4,
+      "FieldName": "Description",
+      "FieldType": 4,
+      "FieldValue": "",
+      "IsMandatory": false,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false,
+      "IsVisible": true,
+      "MaxLength": 100,
+      "NotificationType": "inline"
+    },
+    {
+      "FieldId": 5,
+      "FieldName": "Building Condition",
+      "FieldType": 5,
+      "FieldValue": "0",
+      "HasRelation": false,
+      "IsVisible": true,
+      "IsMandatory": false,
+      "IsDisabled": false,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false,
+      "IsMultiValued": true,
+      "MaxLength": 100,
+      "MultiValuedDetails": {
+        "LookupValues": [
+         
+          {
+            "Id": 1,
+            "Value": "finished"
+          },
+          {
+            "Id": 2,
+            "Value": "Under Construction"
+          },
+          {
+            "Id": 3,
+            "Value": "Completed with defects"
+          }
+        ],
+        "PopupComponentName": null
+      },
+      "NotificationType": "inline",
+      "Exclude": [ "--" ],
+      "Width": " ",
+      "Format": ""
+    },
+    {
+      "FieldId": 5,
+      "FieldName": "Ownership Type",
+      "FieldType": 5,
+      "FieldValue": "0",
+      "HasRelation": false,
+      "IsVisible": true,
+      "IsMandatory": false,
+      "IsDisabled": false,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false,
+      "IsMultiValued": true,
+      "MaxLength": 100,
+      "MultiValuedDetails": {
+        "LookupValues": [
+         
+          {
+            "Id": 1,
+            "Value": "Owned"
+          },
+          {
+            "Id": 2,
+            "Value": "Leased"
+          },
+          {
+            "Id": 3,
+            "Value": "Purchased"
+          }
+        ],
+        "PopupComponentName": null
+      },
+      "NotificationType": "inline",
+      "Exclude": [ "--" ],
+      "Width": " ",
+      "Format": ""
+    }
+  ]
+}

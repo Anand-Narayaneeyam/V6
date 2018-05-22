@@ -1,0 +1,16 @@
+﻿<page [pagetitle]="pagePath">
+    <content>
+        <section title="Project Type" [isExpanded]="sectionExpansionStatus[0].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+           <projectType-list></projectType-list>
+        </section>
+        <section *ngIf="isSiteAdmin==false" title="Additional Data Fields" [isGrid]=true [isExpanded]="sectionExpansionStatus[1].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <additional-datafields *ngIf="sectionExpansionStatus[1].isExpanded" [addlDataFieldCategoryId]="6"></additional-datafields>
+        </section>
+        <section *ngIf="showCustomRptSection==true && userRoleId != 4 && userRoleId != 7" title="Custom Reports" [isExpanded]="sectionExpansionStatus[2].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <customReportGrid *ngIf="sectionExpansionStatus[2].isExpanded==true" [moduleId]=2></customReportGrid>
+        </section>   
+    </content>
+</page>
+
+
+

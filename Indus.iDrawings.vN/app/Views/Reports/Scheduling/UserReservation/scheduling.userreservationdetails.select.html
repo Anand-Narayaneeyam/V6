@@ -1,0 +1,29 @@
+﻿        <tabs [selectedTab]="selectedTab" [deleteIndex]="tabDeleteIndex" (getSelectedTab)="getSelectedTab($event)">
+            <tab tabTitle="Select Period" closeButtonVisible="hidden">
+                <page [pagetitle]="pagePath">
+                    <content>
+                        <submenu>
+                            <sub-menu [source]=menuData [menuCard]=iscard [menuIds]=enableMenu (onSubMenuChange)="onSubMenuChange($event);"> </sub-menu>
+                        </submenu>
+                        <div style="margin-left:2%">
+                            <div id="dateDiv" style="width:100%" [style.height]="divDateHeight">
+
+                                <div *ngIf="blnShowDate == true" style="margin-left:5%;margin-top:1%">
+                                    <DateComponent *ngIf="dateSelectorField != undefined" [fieldObject]="dateSelectorField[0]" [showDateOnLoad]="true"></DateComponent>
+                                    <DateComponent *ngIf="dateSelectorField != undefined" [fieldObject]="dateSelectorField[1]" [showDateOnLoad]="true"></DateComponent>
+                                    <DropDownListComponent *ngIf="ddlSite != undefined" [fieldObject]="ddlSite" (change)="onChangeSite($event.target.value)"></DropDownListComponent>
+                                    <DropDownListComponent *ngIf="ddlBuilding != undefined" [fieldObject]="ddlBuilding" (change)="onChangeBuilding($event.target.value)"></DropDownListComponent>
+                                    <DropDownListComponent *ngIf="ddlFloor != undefined" [fieldObject]="ddlFloor" (change)="onChangeFloor($event.target.value)"></DropDownListComponent>
+
+                                </div>
+                            </div>
+                        </div>
+                    </content>
+                </page>
+            </tab>
+            <tab *ngIf="reportType != undefined" tabTitle="Report" closeButtonVisible="hidden">
+                <div style="height:100%" *ngIf="nextClicked">
+                    <SchedulingReport-UserReservationDetails [fromDate]="fromDate" [toDate]="toDate" [SiteId]="SiteId" [BuildingId]="BuildingId" [FloorId]="FloorId"></SchedulingReport-UserReservationDetails>
+                </div>
+            </tab>
+        </tabs>

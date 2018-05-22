@@ -1,0 +1,16 @@
+﻿<div *ngIf="(fieldNames|visibleFields).length == 1">
+    <div *ngIf="(fieldNames|visibleFields)" style="height:26px;border:1px solid #c6c6c6;border-bottom: 0px;background-color:#eaeaea;color: #444;
+    font-weight: bold;padding-left:5px;" (click)="sortSingleField(fieldNames[0].FieldLabel)">
+        {{(fieldNames|visibleFields)[0].FieldLabel}}       
+        <img *ngIf="sortIcon!=''" src="Content/Images/{{sortIcon}}">
+    </div>
+</div>
+<div *ngIf="(fieldNames|visibleFields).length> 1" style="width:100%;">
+    <div style="float:right;margin-right:6px;">
+        Sort by
+        <select style="padding: 3px 7px;box-shadow: none;border: 1px solid #bbb;border-radius: 5px;width: 220px;" (click)="sortMultipleField($event.target.value)">
+            <option *ngFor="let field of (fieldNames|visibleFields)" [value]="field.FieldLabel">{{field.FieldLabel}}</option>
+        </select> <img *ngIf="sortIcon!=''" src="Content/Images/{{sortIcon}}" (click)="sortOnChange(columnName)">
+    </div>
+   </div>       
+

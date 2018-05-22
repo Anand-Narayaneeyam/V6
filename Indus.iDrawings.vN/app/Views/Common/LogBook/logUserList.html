@@ -1,0 +1,12 @@
+﻿<div>
+    <div *ngIf="itemsSource != undefined" style="height:calc(100% - 50px);">
+        <gridView [dataSource]="itemsSource" [properties]="inputItems" [columns]="fieldObject" (onSorting)="onSort($event)" ></gridView>
+    </div>
+    <button  class="Savebutton "type="button" (click)="getUserSelection($event)">Next</button>
+</div>
+
+<style>
+:host button {
+        position: -ms-device-fixed;
+    }
+</style>

@@ -1,0 +1,104 @@
+﻿<page [pagetitle]="pagePath">
+    <pagepath>
+    </pagepath>
+    <content>
+        <section title="Reserve Workspace" [isExpanded]="sectionExpansionStatus[0].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div *ngIf="sectionExpansionStatus[0].isExpanded==true">
+
+
+                <p>This option is used to book Hoteling Workspaces. Through this option it is possible to check the availability of seats / Workspaces. This option will be available only if Workspace Booking option is enabled for the customer. </p>
+                <p>Reserve Workspace and Reservations are provided under the <span class="header2">Workspace Reservations</span> menu. Two tabs namely <span class="header2">My Reservations</span> and <span class="header2">Active Reservations</span> are provided in the <span class="header2">Reservations</span> menu.</p>
+                <p>Reservations can be submitted for reserving the required Hoteling Workspaces. Reserve Workspace option helps users to book hoteling Workspaces.</p>
+                <p>My Reservations option is for processing Reservations created for the logged in User. User can modify or cancel the Reservations through <span class="header2">My Reservations</span>.</p>
+                <p>Active Reservations tab will be available only for Administrators and Concierges (Division Administrators).  Active Reservations tab list all the Reservations made for the logged in Users Site and Division/Team and also list all the Reservations made by the logged in User. User can modify or cancel the Reservations in the Active Reservations.</p>
+
+                <h2>Reserve Workspace</h2>
+                <p>The user can reserve hoteling Workspace through <span class="header2">Workspace Reservation: Reserve Workspace</span> option. On selecting this option, all the Workspaces available for Reservation for the current date will be displayed by default with status as Available. Workspaces available for Reservation are those seats which are defined as Hoteling Seats.</p>
+                <p>Users can search for available hoteling Workspaces for a selected period. After entering the required Date Range, select the checkbox 'Show available Seats only' and click on Search button. Then all the available Workspaces will be displayed below. </p>
+                <p>A <span class="header2">Filter</span> link is provided to filter the workspaces based on Site, Building, Floor, Room Number and Space Function.</p>
+                <p>For a Concierge, radio buttons to choose Normal Workspaces and Special Use Rooms are provided. On selecting <span class="header2">Normal</span> radio button, all the Hoteling workspaces will be listed whereas on selecting <span class="header2">Special Use Room</span> radio button, all workspaces in the Room with Space Assignment Type – Special Use Room will be listed.</p>
+                <p>The details of a room can be viewed by clicking the <span class="header2">Room No.</span> link displayed in the Reserve Workspace page. On clicking this link, Room Details window will be displayed with all the details of the selected room. Any photo added for the room will also be displayed. A Day view calendar with time slot is provided in the Room Details. A User can book the required Workspace from the Room Details link, by clicking the required time slot. </p>
+                <p>The Reservation for the required workspace can be done by clicking the <span class="header2">Book</span> link displayed against each row of the Workspace. On selecting the link, Reserve Workspace page will be displayed where the user can select/enter Date and Time, Booked for and Comments details. A <span class="header2">Check Availability</span> button is provided in the Reserve Workspace window to check the availability of the selected Workspace in the selected Timeslot.</p>
+                <p>Booked for field will be displayed only if the logged in User is a Division Administrator (Concierge).  All the Users belong to the logged in User’s Team / Division will be listed in the Booked for drop down. Search textbox is provided to search the required User in the Booked for field.</p>
+                <p>Once all the requirements are entered, the Reservation can be submitted by clicking the Reserve button. The newly submitted Reservation will be listed in the My Reservations menu of the Booked for User.</p>
+
+            </div>
+        </section>
+        <section title="Reservations" [isExpanded]="sectionExpansionStatus[1].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div *ngIf="sectionExpansionStatus[1].isExpanded==true">
+
+                <p>This option list the Workspace Reservations created for the Customer. Two tabs namely <span class="header2">My Reservations</span> and <span class="header2">Active Reservations</span> are provided in <span class="header2"> Reservations</span> menu.</p>
+
+                <h1>My Reservations</h1>
+                <p>This option is to list all the Workspace Reservations booked for the logged in user. Through this option the user can modify, or cancel the reservations. Modification is possible for the reservations which are made in the accessible site.</p>
+                <p>All the active Reservations will be listed with 'Confirmed' status. A checkbox “Show active reservations” is provided in the My Reservations tab to show only Reservations in 'Confirmed' or 'Checked In' status. By default, the checkbox will be displayed as selected.</p>
+                <p>Reservation will be moved to 'Auto Bump' status if the Reservation time is lapsed and the user has not checked in the Reservation. If the User has checked in the Reservation from Hoteling App or KIOSK, and Reservation time is lapsed, the Reservation will be moved to 'Expired' status.</p>
+
+                <p><span class="header1">Modify Reservation: </span>This option  <img class="helpicon" src="Content/Icons/data_editN.png" alt="Modify Reservation" /> is to modify a Workspace Reservation. Modifications can be done for the Reservationscreated by the logged in User or reservations made in the accessible site for the logged in user. After modifying the Reservation, Workspace Reservation Modified Mail will be sent to the Requester and Booked for User</p>
+                <p><i>Note: </i>Reservations in Confirmed status only can be modified.</p>
+
+                <p><span class="header1">Cancel Reservation: </span>A Reservation can be cancelled by clicking the <span class="header2">Cancel Reservation</span> <img class="helpicon" src="Content/Icons/cancel_RequestS.png" alt="Cancel Reservation" /> icon. User can cancel the Reservations in Confirmed status only. While cancelling the Reservation, status of the selected Reservation will be changed to Cancelled and Workspace Reservation Cancelled mail will be sent to the User selected in 'Booked for' and to the Requester.</p>
+
+                <h1>Active Reservations</h1>
+                <p>This option is used for viewing all the Workspace Reservations submitted by different users. This tab will be available only for Administrators and Division Administrators (Concierges). For an Administrator, all the Reservations made by different Users will be listed.  All the Reservations made by the concierges or Reservations made in the accessible Site and Team will be listed for a Concierge.</p>
+                <p>A checkbox "Show active reservations" is provided in the Active Reservations tab to show only Reservations in 'Confirmed' or 'Checked In' status. By default, the checkbox will be displayed as selected.</p>
+                <p>Options to Modify and Cancel Reservations are provided in the Active Reservations tab.</p>
+                <p>By default, the Reservations will be listed in the ascending order of 'From' and 'To' dates of the Reservations. The list can be sorted on any column by clicking the column header.</p>
+
+                <p><span class="header1">Modify Reservation: </span>This option <img class="helpicon" src="Content/Icons/data_editN.png" alt="Modify Reservation" /> is to modify a Workspace Reservation. Modifications can be done for the Reservations created by the logged in User or any Reservations made in the accessible site. After modifying the Reservation, Workspace Reservation Modified Mail will be sent to the Booked for User.</p>
+                <p><i>Note: </i>Reservations in Confirmed status only can be modified.</p>
+
+                <p><span class="header1">Cancel Reservation: </span> A Reservation can be cancelled by clicking the <span class="header2">Cancel Reservation</span> <img class="helpicon" src="Content/Icons/cancel_RequestS.png" alt="Cancel Reservation" />icon. User can cancel the Reservations in Confirmed status only. While cancelling the Reservation, status of the selected Reservation will be changed to Cancelledand Workspace Reservation Cancelled mail will be sent to the User selected in 'Booked for' and to the Requester.</p>
+                <p>Check In and Check Out can be done by the Booked for Users and this option will be available in Mobile or KIOSK application.</p>
+
+            </div>
+        </section>
+    </content>
+</page>
+<style type="text/css">
+    h3.Mainheader {
+        color: #178AE8;
+    }
+
+    .header1 {
+        font-weight: bold;
+        color: #178AE8;
+    }
+
+    .header2 {
+        font-weight: normal;
+        color: #178AE8;
+    }
+
+    p {
+        margin-left: 38px;
+        font-size: 13px;
+        margin-right: 3em;
+    }
+
+    .header3 {
+        font-weight: bold;
+        color: black;
+    }
+    /**/ h1 {
+        color: #178AE8;
+        font-size: 1.3em;
+        margin-left: 38px;
+    }
+
+    h2 {
+        color: #178AE8;
+        font-size: 1em;
+        margin-left: 38px;
+    }
+
+    .config {
+        background-color: #178AE8;
+    }
+
+    .helpicon {
+        vertical-align: baseline;
+        width: 20px;
+        height: 20px;
+    }
+</style>

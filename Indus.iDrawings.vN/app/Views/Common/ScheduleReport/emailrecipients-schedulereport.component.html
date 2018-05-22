@@ -1,0 +1,15 @@
+﻿<div style="height:100%;">
+        <div *ngIf="emailRecFieldDetails" style="height:24%;overflow-y:auto;margin-top:1%">
+            <button [hidden]="!ddlSelectedVal" role="button" [attr.aria-label]="btnSave" class="Savebutton " (click)="Update()" [disabled]="enableBtn">{{btnSave}}</button>
+            <StringTextBox [fieldObject]="fieldTitle"></StringTextBox>
+            <DropDownListComponent [fieldObject]="fieldUserCategory" (ddlChange)="ddlChange($event)"></DropDownListComponent>            
+        </div>
+        <div style="height:75%;">
+            <div>
+                <gridView [(dataSource)]="itemsSource" [properties]="inputItems" [columns]="emailRecFieldDetails" [refreshgrid]="refreshgrid"
+                          (onSorting)="onSort($event)"></gridView>
+            </div>
+        </div>
+</div>
+
+

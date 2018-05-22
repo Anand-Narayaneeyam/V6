@@ -1,0 +1,23 @@
+﻿<div style="height:calc(100% - 35px)">
+    <submenu>
+        <sub-menu [menuCard]=true [source]=menuData [menuIds]=enableMenu (onSubMenuChange)="updateCalcellationClauses($event);"> </sub-menu>
+    </submenu>
+    <div style="height:calc(100% - 35px)">
+        <div style="height:calc(100% - 70px)">
+            <slide></slide>
+            <gridView [dataSource]="itemsSource" [properties]="inputItems" [columns]="fieldObject" (onSorting)="onSort($event)"></gridView>
+        </div>
+        <div style="height:70px">
+            Cost <StringTextBox *ngIf="txtItemSource != undefined " (txtBoxChange)="txtBoxChange($event)" [SetAlignment]="Alignment" [fieldObject]="txtItemSource"> </StringTextBox>
+        </div> 
+   </div>
+</div>
+
+
+<style>
+    :host Label  {
+        display: none !important;
+    }
+
+</style>
+

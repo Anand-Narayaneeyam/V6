@@ -1,0 +1,9 @@
+﻿
+<div *ngIf="fieldDetailsBookEqumt" style="width:100%;display:block;height:90%;">
+    <DynamicFields *ngIf="fieldDetailsBookEqumt" [holidaysDisabled]="true" [dataSource]="fieldDetailsBookEqumt" (submitFieldObject)="onReserve($event)" [btnName]="'Reserve'" (btnItemEmit)="checkbtnClick($event)" (rbnChange)="rdBtnchange($event)" (fieldChange)="ddlChange($event)" (dateChange)="datepickerChange($event)" (lookupSelectEmit)="lookupSelect($event)"></DynamicFields>
+</div>
+<style>
+    .MainContainer_915 {
+        padding-top: 5px;
+    }
+</style>

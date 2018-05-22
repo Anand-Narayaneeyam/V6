@@ -1,0 +1,26 @@
+﻿{
+    "data": [
+        {
+            "Id": 1,
+            "Division": "Administration",
+            "Department": "Cafeteria",
+            "Class": " 01 - Telecommunications"
+        },
+        {
+            "Id": 2,          
+            "Division": "Administration",
+            "Department": "HR",
+            "Class": "Office"
+        },
+        {
+            "Id": 3,         
+            "Division": "Cardiology ",
+            "Department": "ECG Block",
+            "Class": "Office"
+        }
+    ],
+    "count": 
+    {
+        "TotalItems": "20"
+    }
+}

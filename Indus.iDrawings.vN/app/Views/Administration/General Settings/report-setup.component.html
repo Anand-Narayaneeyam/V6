@@ -1,0 +1,78 @@
+﻿<!--<style>
+    .div.maincontainer [class ="313"] {
+        background-color: red !important;
+    }
+</style>-->
+
+    <!--<DynamicFields supportMultiColumnDispay="true"  draggable="false" class="two-column" [dataSource]="fieldDetailsReportSetup"  [FileExtDynamicFields]='strAllowedExtensions' (submitFieldObject)="onSubmitData($event)" (chkChange)="getCheckboxDetails($event)" (rbnChange)="getRadiobuttondetails($event)" (txtChange)="getTxtChangeDetails($event)" (txtkeyUpemitter)="getKeyUpData($event)" [btnName]="btnName"></DynamicFields>-->
+
+
+<style type="text/css">
+    .row {
+        padding: 10px 20px;
+        background-color: #f3f3f3;
+        border: 1px solid #f3f3f3;
+        border-radius: 3px;
+        margin: 0px !important;
+    }
+
+    .save-button {
+        background: #178ae8 !important;
+        padding: 5px 10px !important;
+        color: #fff;
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        width: auto;
+        margin-left: 15px;
+        float: left;
+        border-radius: 6px !important;
+    }
+</style>
+
+<div *ngIf="fieldDetailsReportSetup != undefined">
+    <form #form="ngForm" id="form" (ngSubmit)="onSubmit(form,form.value)">
+        <div class="row">
+            <div class="col-sm-6" style="display: flex;">
+                <StringTextBox style="width: 200px;" id="StringTextBox" [style.display]="showComponent(fieldDetailsReportSetup[0].FieldLabel,fieldDetailsReportSetup[0].IsVisible)" name="StringTextBox" [validationData]='validationData' [fieldObject]=fieldDetailsReportSetup[0] (txtBoxChange)="txtBoxChanges($event)" [inttabIndex]="i" (keyUpemit)="emitKeyUp($event)"></StringTextBox>
+                <CheckBoxComponent style="width: 50px;margin-left: 10px;margin-top: 5px;" id="CheckBoxComponent" [style.display]="showComponent(fieldDetailsReportSetup[1].FieldLabel,fieldDetailsReportSetup[1].IsVisible)" name="CheckBoxComponent" [validationData]='validationData' [fieldObject]=fieldDetailsReportSetup[1] (chkBoxClick)="chkBoxChange($event)"></CheckBoxComponent>
+                <CheckBoxComponent style="width: 50px;margin-left: 10px;margin-top: 5px;" id="CheckBoxComponent" [style.display]="showComponent(fieldDetailsReportSetup[2].FieldLabel,fieldDetailsReportSetup[2].IsVisible)" name="CheckBoxComponent" [validationData]='validationData' [fieldObject]=fieldDetailsReportSetup[2] (chkBoxClick)="chkBoxChange($event)"></CheckBoxComponent>
+            </div>
+            <div class="col-sm-6" style="display: flex;">
+                <StringTextBox style="width: 200px;" id="StringTextBox" [style.display]="showComponent(fieldDetailsReportSetup[3].FieldLabel,fieldDetailsReportSetup[3].IsVisible)" name="StringTextBox" [validationData]='validationData' [fieldObject]=fieldDetailsReportSetup[3] (txtBoxChange)="txtBoxChanges($event)" [inttabIndex]="i" (keyUpemit)="emitKeyUp($event)"></StringTextBox>
+                <CheckBoxComponent style="width: 50px;margin-left: 10px;margin-top: 5px;" id="CheckBoxComponent" [style.display]="showComponent(fieldDetailsReportSetup[4].FieldLabel,fieldDetailsReportSetup[4].IsVisible)" name="CheckBoxComponent" [validationData]='validationData' [fieldObject]=fieldDetailsReportSetup[4] (chkBoxClick)="chkBoxChange($event)"></CheckBoxComponent>
+                <CheckBoxComponent style="width: 50px;margin-left: 10px;margin-top: 5px;" id="CheckBoxComponent" [style.display]="showComponent(fieldDetailsReportSetup[5].FieldLabel,fieldDetailsReportSetup[5].IsVisible)" name="CheckBoxComponent" [validationData]='validationData' [fieldObject]=fieldDetailsReportSetup[5] (chkBoxClick)="chkBoxChange($event)"></CheckBoxComponent>
+            </div>
+        </div>
+
+
+        <div class="row" style="margin-top:10px!important;">
+            <div class="col-md-6">
+                <CheckBoxComponent id="CheckBoxComponent" [style.display]="showComponent(fieldDetailsReportSetup[6].FieldLabel,fieldDetailsReportSetup[6].IsVisible)" name="CheckBoxComponent" [validationData]='validationData' [fieldObject]=fieldDetailsReportSetup[6] (chkBoxClick)="chkBoxChange($event)"></CheckBoxComponent>
+                <ImageComponent id="ImageUpload" [style.display]="showComponent(fieldDetailsReportSetup[8].FieldLabel,fieldDetailsReportSetup[8].IsVisible)" name="ImageUpload" *ngIf="fieldDetailsReportSetup[8].DataEntryControlId == '12'" [validationData]='validationData' [fieldObject]=fieldDetailsReportSetup[8]  [fileExtensions]='strAllowedExtensions' (imageData)="getImageData($event)"></ImageComponent>
+            </div>
+            <div class="col-md-6">
+                <RadioComponent id="RadioComponent" [style.display]="showComponent(fieldDetailsReportSetup[7].FieldLabel,fieldDetailsReportSetup[7].IsVisible)" name="RadioComponent" [validationData]='validationData' [fieldObject]=fieldDetailsReportSetup[7] (rbtnClick)="rbtnChange($event)"></RadioComponent>
+                <StringTextBox  [style.display]="showComponent(fieldDetailsReportSetup[9].FieldLabel,fieldDetailsReportSetup[9].IsVisible)" name="StringTextBox" [validationData]='validationData' [fieldObject]=fieldDetailsReportSetup[9] (txtBoxChange)="txtBoxChanges($event)" [inttabIndex]="i" (keyUpemit)="emitKeyUp($event)"></StringTextBox>
+                <DropDownListComponent  id="DropDownListComponent" [style.display]="showComponent(fieldDetailsReportSetup[10].FieldLabel,fieldDetailsReportSetup[10].IsVisible)" name="DropDownListComponent" [validationData]='validationData' [fieldObject]=fieldDetailsReportSetup[10] ></DropDownListComponent>
+            </div>
+            <div class="col-sm-12">
+                <div style="text-align:left;padding:10px 0px;">
+                    <button type="submit" showButton="showButton" class="save-button" style="margin-left:0px!important;">{{btnName}}</button>
+                </div>
+            </div>
+        </div>
+
+        <!--<div class="row">
+            <div class="col-xs-6 col-md-4">
+                <RadioComponent id="RadioComponent" [style.display]="showComponent(fieldDetailsPasswordPolicy[13].FieldLabel,fieldDetailsPasswordPolicy[13].IsVisible)" name="RadioComponent" [validationData]='validationData' [fieldObject]=fieldDetailsPasswordPolicy[13] (rbtnClick)="rbtnChange($event)"></RadioComponent>
+                <StringTextBox style="padding:5px 0px;" id="StringTextBox" [SetAlignment]="horizontal" [style.display]="showComponent(fieldDetailsPasswordPolicy[14].FieldLabel,fieldDetailsPasswordPolicy[14].IsVisible)" name="StringTextBox" [validationData]='validationData' [fieldObject]=fieldDetailsPasswordPolicy[14] (txtBoxChange)="txtBoxChanges($event)" [inttabIndex]="i" (keyUpemit)="emitKeyUp($event)"></StringTextBox>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-8">
+
+            </div>
+
+        </div>-->
+
+       
+    </form>
+    <!--<ButtonComponent [style.display]="showComponent(field.FieldLabel,field.IsVisible)" [fieldObject]=field (btnChange)="getBtnChanges($event)"></ButtonComponent>-->
+</div>

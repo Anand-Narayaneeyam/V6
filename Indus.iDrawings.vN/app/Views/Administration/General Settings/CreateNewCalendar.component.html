@@ -1,0 +1,21 @@
+﻿<div>
+    <split-view [splitviewObject]="splitviewInput" [pageTitle]="pageTitle" style="height: calc(75% - 35px);">
+        <primary-view>
+            <div>
+                <DynamicFields [dataSource]="fieldDetailsAdd" (submitFieldObject)="onSubmitData($event)" [btnName]="btnName" [dataKey]="dataKey" (fieldChange)="fieldChange($event)" (rbnChange)="rbnChange($event)"></DynamicFields>
+                <button class="Savebutton settimebtn" type="button" (click)="SetWorkingTimeClick(event)" [hidden]="enableButton">Set Working Time</button>
+            </div>
+        </primary-view>
+        <secondary-view *ngIf="splitviewInput.showSecondaryView == true">
+            <setWorkingTime [calendarName]="calendarName" (submitSuccess)="submitWorkTime($event)" [workTimedata]="workTime"></setWorkingTime>
+        </secondary-view>
+    </split-view>
+</div>
+<style>
+    .settimebtn {
+            position: relative;
+            margin-top: -30px;
+            margin-left: 80px;
+            float: left;
+        }
+</style>

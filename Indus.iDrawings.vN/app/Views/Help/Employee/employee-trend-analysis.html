@@ -1,0 +1,76 @@
+﻿<page [pagetitle]="pagePath">
+    <pagepath>
+    </pagepath>
+    <content>
+        <section title="Trend Analysis" [isExpanded]="true" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div>
+                <p>Through this option Administrator can create Trends on different Entities of Seating capacity and Occupancy</p>
+                <p>The Trend Analysis shows the trends of Seating Capacities based on Organizational Unit, Seating Capacity based on Space Standard, Grade wise Occupancy by Time and Rate of Hiring by Time. This is available only to the Administrators if the option ‘Employee Trend Analysis’ is enabled by Indus.</p>
+                <p>The trends are based on data from the Snapshots saved by the user. Snapshots can be taken periodically or whenever there is a significant change in Space/Employee assignments. If Snapshot is created in different months during a year, the Trend details shown will be based on the Snapshot of the last month.</p>
+                <h2>Snapshots</h2>
+                <p>To see the Trends or track changes in the Organizational Unit wise Seating Capacity, Space Standard wise Seating Capacity and Grade wise Employee Occupancy in an Organization, users need to save Snapshots of data as and when changes happen. It should be a deliberate action taken by the user when he/she feels that a particular space/employee change is significant. </p>
+                <p>A Snapshot saved on a particular date, will have the Seating Capacity, Occupied Seats, Free Seats and Excess Seats details of all the Organizational Units. Snapshots will be created for spaces only if Organizational Unit is assigned to that space and at least one employee placed in it. Snapshots can be exported to selected file formats from the list. </p>
+                <p>On clicking <span class="header2">Trend Analysis:</span> Snapshots,a list of all available snapshots will be displayed. The details of a snapshot can be viewed by selecting the snapshot, and clicking <span class="header2"> View </span> <img class="helpicon" src="Content/Icons/view-drawingN.png" title="View Drawing" /> icon.</p>
+                <p><span class="header2">Add:</span> Snapshots can be created using <span class="header2">Add</span> <img class="helpicon" src="Content/Icons/data_addN.png" title="Add" /> icon and exported to Excel/pdf/txt/rtf files or saved in the database specifying a Snapshot date. </p>
+                <p><span class="header2"> Delete:</span>Snap shots can be deleted by selecting one snapshot from the list and then clicking the <span class="header2"> Delete </span> <img class="helpicon" src="Content/Icons/data_deleteN.png" title="Delete" /> icon.</p>
+                <p><span class="header2">View:</span> Snap shots can be viewed by selecting one snapshot from the list and then clicking the <span class="header2">View </span> <img class="helpicon" src="Content/Icons/view-drawingN.png" title="View Drawing" /> icon.</p>
+                <h2>Seating Capacities by Organizational Unit</h2>
+                <p>This Trend will display the Total Seating Capacity of an Organizational Unit based on the Snapshots created. On clicking <span class="header2">Seating Capacities by Organizational Unit </span> menu, a report page showing the trend details of all Organizational units based on the Snapshots created.</p>
+                <h2>Seating Capacities by Space Standard</h2>
+                <p>This Trend will display the Total Seating Capacity of a Space Standard based on the Snapshots created. On clicking <span class="header2">Seating Capacities by Space Standard </span> menu, a report page showing the trend details of all Space Standards and its Seating Capacities will be displayed with respect to the Snapshots created.</p>
+                <h2>Occupancy by Grade</h2>
+                <p>This trend will display the total number of employees in each grade during a year based on the snapshot created for a time period. On clicking <span class="header2"> Occupancy by Grade </span> menu, a report page showing the trend details of Employee Grades and Number of Employees will be displayed based on the Snapshots created. </p>
+                <h2>Hiring Rate</h2>
+                <p>This Trend will display the Total Employee hiring based on the Employee Organizational Unit. On clicking <span class="header2"> Hiring rate </span>Rate menu, a report page showing Number of Employees in each Organizational Units based on the Hiring Year will be displayed.</p>
+
+            </div>
+        </section>
+    </content>
+</page>
+<style type="text/css">
+    h3.Mainheader {
+        color: #178AE8;
+    }
+
+    .header1 {
+        font-weight: bold;
+        color: #178AE8;
+    }
+
+    .header2 {
+        font-weight: normal;
+        color: #178AE8;
+    }
+
+    p {
+        margin-left: 38px;
+        font-size: 13px;
+        margin-right: 3em;
+    }
+
+    .header3 {
+        font-weight: bold;
+        color: black;
+    }
+    /**/ h1 {
+        color: #178AE8;
+        font-size: 1.3em;
+        margin-left: 38px;
+    }
+
+    h2 {
+        color: #178AE8;
+        font-size: 1em;
+        margin-left: 38px;
+    }
+
+    .config {
+        background-color: #178AE8;
+    }
+
+    .helpicon {
+        vertical-align: baseline;
+        width: 20px;
+        height: 20px;
+    }
+</style>

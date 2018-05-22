@@ -1,0 +1,37 @@
+﻿<style>
+.ddllabel_946
+{
+width:250px !important;
+}
+</style>
+<div>
+    <submenu>
+        <sub-menu [menuCard]=types [source]=menuData [count]=totalItems [menuIds]=enableMenu (onSubMenuChange)="onSubMenuChange($event);"></sub-menu>
+    </submenu>
+    <split-view [splitviewObject]="splitviewInput" style="height: calc(100% - 35px);" [pageTitle]="pageTitle">
+        <primary-view>
+            <div [ngClass]="totalItems > itemsPerPage ? 'pagewithPaging':'pagewithoutPaging'">
+                <slide [width]="slidewidth" [position]="position" [show]="showSlide" (closeDialog)="closeSlideDialog($event)">
+                    <div>
+                        <div>Are you sure you want to delete the selected Additional Charge?  </div>
+                        <div style="width:100%">
+                            <button  class="Savebutton "type="button" (click)="okDelete($event)">Yes</button>
+                            <button  class="Savebutton "type="button" (click)="cancelClick($event)">No</button>
+                        </div>
+                    </div>
+                </slide>
+                <gridView style="display:block;" [(dataSource)]="additionalchargesSource" [properties]="inputItems" [columns]="fields" [refreshgrid]="refreshgrid"
+                          (onSorting)="onSort($event)"></gridView>
+            </div>
+            <div [style.height]="totalItems >itemsPerPage ? '35px' : '0px'">
+                <paging [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="pageChanged($event);"></paging>
+            </div>           
+
+        </primary-view>
+        <secondary-view *ngIf="menuClickValue == 1|| menuClickValue == 2">
+            <additionalcharge-addedit style="display: block;width:270px;"  [AdditionalChargeAddEdit]="AdditionalChargeAddEdit" [action]="action" [btnName]="btnName"
+                                (submitSuccess)="OnSuccessfulSubmit($event)" [selectedId]="inputItems.selectedIds[0]" [messages]="messages"></additionalcharge-addedit>
+
+        </secondary-view>
+    </split-view>
+</div>

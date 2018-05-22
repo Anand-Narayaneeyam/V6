@@ -1,0 +1,94 @@
+﻿<style>
+    table {
+        width: 100%;
+    }
+
+    .check-box-noheader {
+        width: 50px;
+    }
+
+    .td-item {
+        width: 300px;
+    }
+
+    .check-box-item {
+    }
+
+    .th-header {
+        width: 300px;
+        margin-left: 20px;
+    }
+
+    label {
+        font-size: 13px;
+    }
+    .buttons {
+        background: #2980b9;
+        color: #fff;
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        width: auto;
+    }
+    .wj-cell {
+        position: absolute;
+        box-sizing: border-box;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        padding: 3px;
+        border-right: 1px solid #c6c6c6;
+        border-bottom: 1px solid #c6c6c6;
+        outline: none;
+    }
+    .wj-header {
+        background-color: white;
+        color: #444;
+        font-weight: bold;
+    }
+</style>
+<div style="height:100%;width:400px;">
+    <div style="max-height:calc(100% - 45px);width:400px;margin-top:10px;overflow-y:auto">
+        <table style="height:45px;overflow:hidden">
+            <tr class="list-group-item" style="background-color:#178AE8;color:white">
+                <th class="check-box-noheader">
+                    <center>
+                        <input role="checkbox" title="Select All Amenity" #SelectAll type="checkbox" id="SelectAll" name="SelectAll" [checked]="IsSelectAllChecked" (change)="selectAllOptions($event)">
+                    </center>
+                </th>
+                <th class="th-header">
+                    <center>
+                        <span style="font-size:13px;font-weight:bold">Amenity</span>
+                    </center>
+                </th>
+                <th class="th-header">
+                    <center>
+                        <span style="font-size:13px;font-weight:bold">Count</span>
+                    </center>
+                </th>
+            </tr>
+        </table>
+        <table *ngIf="amenityObj != undefined && strarrayList != undefined" style="overflow-y:scroll;height:300px;display:block;">
+            <tr class="list-group-item" *ngFor="let item of amenityObj,let i=index " #tr>
+                <td class="check-box-noheader">
+                    <center>
+                        <input role="checkbox" title="{{item.Amenity}}" #chk type="checkbox" id="{{'amn'+item.Id}}" value="chk" style="width:35px" name="{{item.Id}}" [checked]="IsChecked" (change)="updateCheckedOptions($event)">
+                    </center>
+                </td>
+                <td class="td-item">
+                    <!--<center>-->
+                    <label style="font-size:13px;width:200px;word-wrap:break-word;margin-left:15px;font-weight:100">{{item.Amenity}}</label>
+                    <!--</center>-->
+                </td>
+                <td class="td-item">
+                    <center>
+                        <span *ngIf="strarrayList[i] != undefined">
+                            <StringTextBox [fieldObject]=strarrayList[i] (txtBoxChange)="onChangeInput($event)" style="text-align:left" (keypress)="getKeyUp($event)"></StringTextBox>
+                        </span>
+                    </center>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div>
+        <button class="Savebutton " (click)="submitData($event)">Save Changes</button>
+    </div>
+</div>

@@ -1,0 +1,23 @@
+﻿<!--<div style="height:90% !important">-->
+    <div [style.height]="formHeight">
+        <DynamicFields [dataSource]="fieldDetailsAddEdit" (submitFieldObject)="onSubmitData($event)" id="masterpmshdleaddedit" [btnName]="btnName" [dataKey]="dataKey" (fieldChange)="fieldChange($event)" (rbnChange)="rbtnOnChange($event)" (chkChange)="checkBoxChange($event)"></DynamicFields>
+    </div>
+<style>
+    @-moz-document url-prefix() {
+        #masterpmshdleaddedit .list-group {
+            height: 85% !important;
+        }
+    }
+
+    #sectiongroup .list-group {
+        height: 90% !important;
+        max-height: none !important;
+    }
+
+
+    #sectiongroup #secondarySplitview #masterpmshdleaddedit .list-group {
+     height: auto!important;
+    }
+
+
+</style>

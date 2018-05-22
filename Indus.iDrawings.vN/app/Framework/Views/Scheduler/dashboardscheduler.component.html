@@ -1,0 +1,81 @@
+﻿
+<style>
+    table {
+        /*height: 400px;
+        width: 400px;*/
+        overflow: hidden;
+        /*margin: 4em auto;*/
+        /* border-collapse: collapse;*/
+        /* min-width: 23em; width: 50%; max-width: 56em;*/
+        /* border-radius: .5em;*/
+        /*box-shadow: 0 0 .5em black;*/
+        /*margin-top:13%;*/
+        /*box-shadow: 0px 0px 0px black;*/
+        /*box-shadow: 0px 0px 4px 2px #004C7E;*/
+        border-right: 2px solid black;
+    }
+
+    th {
+        background-color: white;
+        color: #444;
+        font-weight: bold;
+        /*background-color: #ffffff;*/
+        text-align: center;
+        /*color: black;*/
+        min-width: 60px;
+        height: 28px;
+        font-size: .8em;
+    }
+
+    tr {
+        background-color: white;
+    }
+
+    td {
+        background-color: white;
+        text-align: center;
+        height: 22px;
+        /* border: 1px solid black;
+        border-color: black;*/
+        /* whitespace : nowrap;
+         overflow : hidden;*/
+    }
+
+    table,
+    tr,
+    th,
+    td {
+        border: 0.01em solid darkgray;
+        border-color: darkgray;
+        /*box-shadow: 0 0 .5em darkgray;*/
+    }
+
+        td:hover {
+            /*background-color: #D2004A;
+        color: white;*/
+        }
+
+    .tdDisabled {
+        background-color: lightgray;
+        cursor: no-drop;
+    }
+
+    .tdEnabled {
+        background-color: white;
+        cursor: hand;
+    }
+</style>
+
+<div id="scheduler" style="display:block;width:100%;overflow-x:scroll;margin-left:5px;height:100%;position:relative;max-width: inherit;max-height: inherit;">
+    <table title="Click the Required time slot to Reserve Workspace"  class="scheduler">
+        <tr>
+            <th>Seat No.</th><th style="text-align:left" *ngFor="let object of createTableHeader(24), let i=index"> {{object}}</th>
+        </tr>
+        <tr *ngFor="let object of createTableRows(rowcount), let i=index" #tr id={{object}}>
+            <td tabindex="0" *ngIf="SeatNo != undefined" style="font-size:small" [attr.aria-label]="'Seat Number '+SeatNo">{{SeatNo}}</td><td tabindex="0"  *ngFor="let object of createTableData(), let j=index" id="{{'r'+i+'c'+j}}" #td class="tdEnabled" [attr.aria-label]="''+timeArray[j]" (click)="onCellClick($event)" (keydown)="clickByEnterKey($event)" (mouseover)=changeCursorStyle($event)></td>
+        </tr>
+    </table>
+</div>
+
+
+

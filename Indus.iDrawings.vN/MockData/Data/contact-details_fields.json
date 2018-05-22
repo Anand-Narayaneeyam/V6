@@ -1,0 +1,191 @@
+﻿{
+  "data": [
+    {
+      "FieldId": 1,
+      "FieldName": "Organization Name",
+      "FieldType": 1,
+      "FieldValue": "Acadia Corporation",
+      "IsMandatory": false,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": true,
+      "IsVisible": true,
+      "MaxLength": 100,
+      "NotificationType": "inline"
+    },
+    {
+      "FieldId": 2,
+      "FieldName": "Address",
+      "FieldType": 1,
+      "FieldValue": "kera",
+      "IsMandatory": true,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false,
+      "IsVisible": true,
+      "MaxLength": 100,
+      "NotificationType": "inline"
+    },
+    {
+      "FieldId": 3,
+      "FieldName": "City",
+      "FieldType": 1,
+      "FieldValue": "dsa",
+      "IsMandatory": true,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false,
+      "IsVisible": true,
+      "MaxLength": 100,
+      "NotificationType": "inline"
+    },
+    {
+      "FieldId": 4,
+      "FieldName": "State",
+      "FieldType": 1,
+      "FieldValue": "dsasa",
+      "IsMandatory": true,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false,
+      "IsVisible": true,
+      "MaxLength": 100,
+      "NotificationType": "inline"
+    },
+    {
+      "FieldId": 5,
+      "FieldName": "Zip Code",
+      "FieldType": 1,
+      "FieldValue": "asass",
+      "IsMandatory": true,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false,
+      "IsVisible": true,
+      "MaxLength": 100,
+      "NotificationType": "inline"
+    },
+    {
+      "FieldId": 6,
+      "FieldName": "Country",
+      "FieldType": 5,
+      "FieldValue": "1",
+      "IsMultiValued": true,
+      "HasRelation": false,
+      "MultiValuedDetails": {
+        "LookupValues": [
+          {
+            "Id": 1,
+            "Value": "Albania"
+          },
+          {
+            "Id": 2,
+            "Value": "India"
+          },
+          {
+            "Id": 3,
+            "Value": "England"
+          },
+          {
+            "Id": 4,
+            "Value": "Bhutan"
+          },
+          {
+            "Id": 5,
+            "Value": "Canada"
+          }
+        ],
+        "PopupComponentName": null
+      },
+      "IsMandatory": true,
+      "IsVisible": true,
+      "IsHiddenLabel":  false,
+      "ReadOnlyMode": false,
+      "NotificationType": ""
+    },
+    {
+      "FieldId": 7,
+      "FieldName": "Phone",
+      "FieldType": 1,
+      "FieldValue": "3234",
+      "IsMandatory": true,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false,
+      "IsVisible": true,
+      "MaxLength": 100,
+      "NotificationType": "inline"
+    },
+    {
+      "FieldId": 8,
+      "FieldName": "Fax",
+      "FieldType": 1,
+      "FieldValue": "fdg",
+      "IsMandatory": true,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false,
+      "IsVisible": true,
+      "MaxLength": 100,
+      "NotificationType": "inline"
+    },
+    {
+      "FieldId": 9,
+      "FieldName": "Email",
+      "FieldType": 1,
+      "FieldValue": "dfgdfg@gmal.com",
+      "IsMandatory": true,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false,
+      "IsVisible": true,
+      "MaxLength": 100,
+      "NotificationType": "inline"
+    },
+    {
+      "FieldId": 10,
+      "FieldName": "URL",
+      "FieldType": 1,
+      "FieldValue": "http://asas.com",
+      "IsMandatory": true,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false,
+      "IsVisible": true,
+      "MaxLength": 100,
+      "NotificationType": "inline"
+    },
+    {
+      "FieldId": 11,
+      "FieldName": "Image Type",
+      "FieldType": 5,
+      "FieldValue": "0",
+      "IsMultiValued": true,
+      "HasRelation": false,
+      "MultiValuedDetails": {
+        "LookupValues": [
+          {
+            "Id": 1,
+            "Value": "Graphic Interchange Format(.gif))"
+          },
+          {
+            "Id": 2,
+            "Value": "JPEG File Interchange Format(.jpg,.jpeg)"
+          },
+          {
+            "Id": 3,
+            "Value": "Windows Bitmap File(.bmp)"
+          }
+        ],
+        "PopupComponentName": null
+      },
+      "IsMandatory": true,
+      "IsVisible": true,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false,
+      "NotificationType": ""
+    },
+    {
+      "FieldId": 12,
+      "FieldName": "Logo",
+      "FieldType": 11,
+      "FieldValue": "",
+      "IsMandatory": true,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false,
+      "IsVisible": true,
+      "MaxLength": 100
+    }
+  ]
+}

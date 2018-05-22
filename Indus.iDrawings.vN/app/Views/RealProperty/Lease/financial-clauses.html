@@ -1,0 +1,9 @@
+﻿<div style="height:calc(100% - 35px)">
+    <submenu>
+        <sub-menu [menuCard]=true [source]=menuData [menuIds]=enableMenu (onSubMenuChange)="okFinancialClauses($event);"> </sub-menu>
+    </submenu>
+    <div style="height:calc(100% - 35px)">
+        <slide></slide>
+        <gridView [dataSource]="itemsSource" [properties]="inputItems" [columns]="fieldObject" (onSorting)="onSort($event)"></gridView>
+    </div>
+</div>

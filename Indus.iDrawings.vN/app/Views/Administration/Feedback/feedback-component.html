@@ -1,0 +1,16 @@
+﻿<style>
+    :host .list-group {
+        height:auto !important;
+    }
+</style>
+
+<page [pagetitle]="pagePath">
+    <pagepath>
+    </pagepath>
+    <content>
+        <span style="color:cornflowerblue">Please provide us your Feedback.</span>
+            <div *ngIf="fieldDetails != undefined" style="height:100%;">
+                <DynamicFields upportMultiColumnDispay="true" multiColumnNumber=0 [dataSource]="fieldDetails" (submitFieldObject)="onSubmitData($event)" [btnName]="btnName"></DynamicFields>
+            </div>
+    </content>
+</page>

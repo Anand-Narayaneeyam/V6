@@ -1,0 +1,247 @@
+﻿{
+  "data": [
+    {
+      "FieldId": 1,
+      "FieldName": "Site FieldId",
+      "FieldType": 2,
+      "IsVisible": false,
+      "IsMandatory": false,
+      "IsDisabled": false,
+      "IsHiddenLabel": true,
+      "ReadOnlyMode": false,
+      "NotificationType": "return"
+    },
+    {
+
+      "FieldId": 2,
+      "FieldName": "Building FieldId",
+      "FieldType": 1,
+      "IsVisible": false,
+      "IsMandatory": false,
+      "IsDisabled": false,
+      "IsHiddenLabel": true,
+      "ReadOnlyMode": false,
+      "NotificationType": "return"
+    },
+    {
+      "FieldId": 3,
+      "FieldName": "Building Name",
+      "FieldType": 1,
+      "IsVisible": true,
+      "IsMandatory": true,
+      "IsDisabled": false,
+      "IsHiddenLabel": true,
+      "ReadOnlyMode": false,
+      "NotificationType": "return"
+    },
+    {
+      "FieldId": 4,
+      "FieldName": "Building Code",
+      "FieldType": 1,
+      "IsVisible": true,
+      "IsMandatory": false,
+      "IsDisabled": false,
+      "IsHiddenLabel": true,
+      "ReadOnlyMode": false,
+      "NotificationType": "return"
+    },
+    {
+      "FieldId": 5,
+      "FieldName": "Description",
+      "FieldType": 1,
+      "IsVisible": true,
+      "IsMandatory": false,
+      "IsDisabled": false,
+      "IsHiddenLabel": true,
+      "ReadOnlyMode": false,
+      "NotificationType": "return"
+    },
+    {
+      "FieldId": 18,
+      "FieldName": "No.Of Floors",
+      "FieldType": 2,
+      "IsVisible": true,
+      "IsMandatory": false,
+      "IsDisabled": false,
+      "IsHiddenLabel": true,
+      "ReadOnlyMode": false,
+      "NotificationType": "return",
+       "isContentHtml": "hyperlink"
+    },
+    {
+
+      "FieldId": 6,
+      "FieldName": "Address 1",
+      "FieldType": 1,
+      "IsVisible": true,
+      "IsMandatory": false,
+      "IsDisabled": false,
+      "IsHiddenLabel": true,
+      "ReadOnlyMode": false,
+      "NotificationType": "return"
+    },
+    {
+      "FieldId": 7,
+      "FieldName": "Address 2",
+      "FieldType": 1,
+      "IsVisible": true,
+      "IsMandatory": false,
+      "IsDisabled": false,
+      "IsHiddenLabel": true,
+      "ReadOnlyMode": false,
+      "NotificationType": "return"
+    },
+    {
+      "FieldId": 8,
+      "FieldName": "Building Area",
+      "FieldType": 3,
+      "IsVisible": true,
+      "ShowDropDown": false,
+      "IsDisabled": false,
+      "IsHiddenLabel": true,
+      "isReadOnly": false
+    },
+    {
+      "FieldId": 9,
+      "FieldName": "Common Area",
+      "FieldType": 3,
+      "IsVisible": true,
+      "IsMandatory": false,
+      "IsDisabled": false,
+      "IsHiddenLabel": true,
+      "ReadOnlyMode": false,
+      "NotificationType": "return"
+    },
+    {
+      "FieldId": 10,
+      "FieldName": "Vertical Area",
+      "FieldType": 3,
+      "IsVisible": true,
+      "IsMandatory": false,
+      "IsDisabled": false,
+      "IsHiddenLabel": true,
+      "ReadOnlyMode": false,
+      "NotificationType": "return"
+    },
+    {
+
+      "FieldId": 11,
+      "FieldName": "Cost",
+      "FieldType": 3,
+      "IsVisible": true,
+      "IsMandatory": false,
+      "IsDisabled": false,
+      "IsHiddenLabel": true,
+      "ReadOnlyMode": false,
+      "NotificationType": "return"
+    },
+    {
+      "FieldId": 12,
+      "FieldName": "construction Date",
+      "FieldType": 8,
+      "IsVisible": true,
+      "IsMandatory": false,
+      "IsDisabled": false,
+      "IsHiddenLabel": true,
+      "ReadOnlyMode": true,
+      "NotificationType": "return"
+    },
+    {
+      "FieldId": 13,
+      "FieldName": "Estimated Useful Life",
+      "FieldType": 3,
+      "IsVisible": true,
+      "IsMandatory": false,
+      "IsDisabled": false,
+      "IsHiddenLabel": true,
+      "ReadOnlyMode": false,
+      "NotificationType": "return"
+    },
+    {
+      "FieldId": 14,
+      "FieldName": "Salvage Value",
+      "FieldType": 3,
+      "IsVisible": true,
+      "IsMandatory": false,
+      "IsDisabled": false,
+      "IsHiddenLabel": true,
+      "ReadOnlyMode": false,
+      "NotificationType": "return"
+    },
+    {
+      "FieldId": 15,
+      "FieldName": "Purchased Date",
+      "FieldType": 8,
+      "IsVisible": true,
+      "IsMandatory": false,
+      "IsDisabled": false,
+      "IsHiddenLabel": true,
+      "ReadOnlyMode": true,
+      "NotificationType": "return"
+    },
+    {
+      "FieldId":16,
+      "FieldName": "Building Condition",
+      "FieldType": 5,
+      "HasRelation": false,
+      "IsVisible": true,
+      "IsMandatory": true,
+      "IsDisabled": false,
+      "IsHiddenLabel": true,
+      "ReadOnlyMode": false,
+      "IsMultiValued": true,
+      "MultiValuedDetails": {
+        "LookupValues": [
+
+          {
+            "Id": 1,
+            "Value": "finished"
+          },
+          {
+            "Id": 2,
+            "Value": "Under Construction"
+          },
+          {
+            "Id": 3,
+            "Value": "Completed with defects"
+          }
+        ],
+        "PopupComponentName": null
+      },
+      "NotificationType": "reyurn"
+    },
+    {
+      "FieldId": 17,
+      "FieldName": "Ownership",
+      "FieldType": 5,
+      "HasRelation": false,
+      "IsVisible": true,
+      "IsMandatory": true,
+      "IsDisabled": false,
+      "IsHiddenLabel": true,
+      "ReadOnlyMode": false,
+      "IsMultiValued": true,
+      "MultiValuedDetails": {
+        "LookupValues": [
+         
+          {
+            "Id": 1,
+            "Value": "Owned"
+          },
+          {
+            "Id": 2,
+            "Value": "Leased"
+          },
+          {
+            "Id": 3,
+            "Value": "Purchased"
+          }
+        ],
+        "PopupComponentName": null
+      },
+      "NotificationType": "return"
+
+    }
+
+  ]
+}

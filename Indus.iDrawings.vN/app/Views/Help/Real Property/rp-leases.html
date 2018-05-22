@@ -1,0 +1,196 @@
+﻿<page [pagetitle]="pagePath">
+    <pagepath>
+    </pagepath>
+    <content>
+        <section title="Leases" [isExpanded]="true" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div>
+                <p>This option is for adding, editing or deleting Leases, Area & Cost Details, Rent Information etc. Options for setting Agreement Clauses, Cancellation Clauses and Renewal of Leases are also available. Lease Documents if any can be attached.   </p>
+                <p>A lease can be added by clicking <span class="header2">Add</span> <img class="helpicon" src="Content/Icons/data_addN.png" title="Add" /> icon with basic lease information such as Landlord or Tenant Name, Lease Identifier, Lease Property Type as Whole Building or Part of Building, Lease Type, Lease Category, Can be Subleased or not, Can be Renewed or not, Lease Execution Date, Lease Commencement Date, Rent Commencement Date, Lease Expiry Date, Status and any additional data fields defined by the User. The added leases will be in Draft Status initially. </p>
+                <p>Lease Customer Type can be selected with different options like Lessee & Lessor, Lessee, Lessor, Brokerage Firm etc. by Indus. If Lease Customer Type is selected as Lessee & Lessor or Brokerage Firm by Indus, the Purpose option will be visible in the Add page of lease with options to select Lessor or Lessee. </p>
+                <p>If the Customer Type set by Indus is Lessee, then the Purpose option will not be displayed and the Landlord dropdown list will be displayed and loaded with existing Landlords and if the Customer Type is Lessor, then the Tenant dropdown list will be displayed and loaded with existing Tenants in the add page of Lease. </p>
+                <p>For Lessee & Lessor or Brokerage Firm type customer, an option to select the purpose of the lease will be provided. User can select Lessor or Lessee option based on the requirement. If the selected purpose is Lessor, then the Tenant dropdown list will be loaded and if the selected purpose is Lessee, then the Landlord dropdown list will be loaded.</p>
+                <p>User can enter/select Tenant/Landlord Name, Lease Identifier, Lease Property Type, Lease Type, Lease Category, Can be Subleased or not (enable only when the selected purpose is Lessee), Can be Renewed or not, Lease Execution Date, Lease Commencement Date, Rent Commencement Date, Lease Expiry Date, Status and any additional data fields defined by the User.</p>
+                <p>If Whole Building is selected as Lease Property Type, then only Building can be selected for Lease. If Part of Building is selected as Lease Property Type, then only Floor can be selected for Lease.</p>
+                <p>If Lessor is selected as Purpose of the lease, then Lease Types could be Direct Financing Lease, Leveraged Lease, Operating Lease or Sales Type Lease. If Lessee is selected as purpose, then the Lease Types could be Capital Lease or Operating Lease. </p>
+
+                <p><span class="header2">Direct Financing Lease:</span> Method used by lessors in capital leases when both of the following criteria for the lessor are satisfied: </p>
+                <p>(1) Collectability of minimum lease payments is predictable and </p>
+                <p>(2) No important uncertainties surround the amount of unreimbursable costs yet to be incurred. </p>
+                <p>In a direct financing lease, the lessor is not a manufacturer or dealer; the lessor purchases the property only for the purpose of leasing it.</p>
+
+                <p><span class="header2">Leveraged Lease:</span> Three-party lease contract under which a lessor borrows some or most of the funds to finance the asset to be leased to a lessee. </p>
+                <p>In this arrangement,</p>
+                <p>(1) financing provided by the lender is without recourse to the lessor, </p>
+                <p>(2) the lender holds the title to the leased asset, and </p>
+                <p>(3) the lessee's payments are assigned to the lender who can repossess the leased asset in case of a default. </p>
+                <p>Leveraged leases are true (tax oriented) leases because the lessor enjoys all the tax benefits of ownership (such as depreciation) whereas the lessee can claim the full amount of lease payment as expenses.</p>
+
+                <p><span class="header2">Sales Type Lease:</span> Accounting by lessor in which one or more of the four criteria required for a capital lease are met and both of the following criteria are satisfied:</p>
+                <p>(1) collectability of minimum lease payments is predictable and </p>
+                <p>(2) no important uncertainties surround the amount of unreimbursable costs yet to be incurred.</p>
+
+                <p><span class="header2">Capital Lease:</span> A lease is considered to have the economic characteristics of asset ownership. A capital lease would be considered a purchased asset for accounting purposes.</p>
+                <p>A lease falls into this category if any of the following requirements are met:</p>
+                <p>1. If the lease life exceeds 75% of the life of the asset. </p>
+                <p>2. If there is an option to purchase the asset at a "bargain price" at the end of the lease term.</p>
+                <p>3. If there is a transfer of ownership to the lessee at the end of the lease term.</p>
+                <p>4. If the present value of the lease payments, discounted at an appropriate discount rate, exceeds 90% of the fair market value of the asset.</p>
+
+                <p><span class="header2">Operating Lease:</span> A contract that allows for the use of an asset, but does not convey rights of ownership of the asset. An operating lease is not capitalized; it is accounted for as a rental expense in what is known as "off balance sheet financing". For the lessor, the asset being leased is accounted for as an asset and is depreciated as such. Operating leases have tax incentives and do not result in assets or liabilities being recorded on the lessee's balance sheet, which can improve the lessee's financial ratios.</p>
+                <p>If Lease Type is Direct Financing Lease, Sales Type Lease or Capital Lease, then a link <span class="header2">'Clauses'</span> will be visible to select the clauses based on the selected Lease Type. </p>
+                <p>For leasing commercial buildings various Lease Categories are available. They are </p>
+
+                <p><span class="header2">Gross Lease:</span> This lease category is also called the "Full Service Gross Lease" where the Landlord pays all of the operating expenses of the building (property taxes, insurance, common area maintenance, janitorial, etc.) for the duration of the term.</p>
+
+                <p><span class="header2">Modified Gross Lease:</span> This lease category is also referred to as an "Industrial Gross Lease" where the Landlord pay for one or more of the operating expenses. There is no standard for which expenses are the Landlord’s responsibility. Landlord and Tenant can agree as to who pays for what.</p>
+
+                <p><span class="header2">Net Lease:</span> In addition to rent, the Tenant pays for their pro rata share of operating expenses including property taxes, insurance and common area maintenance. In most cases, the Landlord is responsible for the roof, parking lot and possibly the foundation.</p>
+
+                <p><span class="header2">Triple Net Lease:</span> This lease category is also known as "NNN Absolute" lease where the Tenant is not only responsible for the operating expenses as in a Net Lease, tenant is obligated to pay for all repairs to the property. The Landlord simply collects rent which, unlike a Gross Lease, represents the Landlord's net operating income. Net leases are very popular with single tenant retail and industrial users. In the Metro Boston market, this is the most popular type of lease.</p>
+
+                <p><span class="header2">Percentage Lease:</span> This lease category is also known as "Shopping Center Lease". The Percentage Lease is additional rent due to the Landlord beyond just the base rent. The extra rent is based on sales over a specified amount, called the breakpoint. This type of lease used almost exclusively in retail settings of large shopping centers and malls. It is beneficial to both Tenant and Landlord because the Landlord has a financial stake in the success of the tenants which encourages owners to maintain the property and wisely choose a complementary mix of tenants.</p>
+
+                <p>When adding a lease, the status of the lease will be 'Draft'. User can change the status of Lease from 'Draft' to 'Active' by clicking on <span class="header2">Edit </span> <img class="helpicon" src="Content/Icons/data_editN.png" title="Edit" /> icon. The status of the lease will be changed by the system automatically as Expired based on the Lease Expiry Date. It will also show as 'Terminated' or 'Deleted' if it is terminated or deleted in between by the User. </p>
+                <p><span class="header1">Add</span></p>
+                <p>A Lease can be added by clicking<span class="header2">Add</span> <img class="helpicon" src="Content/Icons/data_addN.png" title="Add" /> icon. The added leases will be in Draft status. </p>
+                <p><span class="header1">Edit</span></p>
+                <p>A Lease can be edited by selecting it and then clicking the <span class="header2">Edit </span> <img class="helpicon" src="Content/Icons/data_editN.png" title="Edit" /> icon. User can edit all the fields if the selected lease is in Draft status. For Leases in Active status, only editable field is 'Status'. User cannot edit leases in Deleted, Expired and Terminated status.  </p>
+                <p><span class="header1">Delete</span></p>
+                <p>A Lease can be deleted by selecting it and then clicking the <span class="header2">Delete </span> <img class="helpicon" src="Content/Icons/data_deleteN.png" title="Delete" /> icon. User can delete Leases in Draft status only. </p>
+
+                <p><span class="header1">Area and Cost Details</span></p>
+                <p>This option provides users to Add/Edit Area and Cost details for a lease, only if the selected lease is in Draft status. User can view Area and Cost details of a lease if it is in Active, Deleted or Terminated status. User can Add/Edit or View Area and Cost Details through <span class="header2"> Area and Cost Details </span> menu from <img class="helpicon" src="Content/Icons/data_display-settingsN.png" alt="" title="" /> icon.</p>
+                <p>The area selected for the lease will be shown in the Calculated Area field of Area and Cost Details page. User can enter documented area in the Documented Area field. </p>
+                <p>If the Lease Type of the selected lease is Capital, then some extra fields like Bargain Value Market Value and Economic Life will be visible. Economic Life of a Building will be visible only if Lease Property Type of the selected lease is Building only. Payment Interval will be populated with intervals like Monthly and Yearly. User can enter Lease Amount also.</p>
+                <p><span class="header2">Economic Life- </span> This refers to the period over which a property is expected to be usable with normal repairs and maintenance. Here Economic Life is usually expressed in number of years.</p>
+                <p><span class="header2">Payment Interval – </span> User can select Monthly or Yearly as Payment Interval.  </p>
+                <p><span class="header2">Bargain Value – </span> The value that the leased property can be purchased by the lessee at the end of the lease term for an amount significantly less than the value of the property at that time. </p>
+                <p><span class="header2">Market Value – </span> The value of a property as currently priced in the market place. After entering all the required data, click on Save button to save area and cost details.</p>
+
+                <p><span class="header1">Rent Information</span></p>
+                <p>This option provides users to Add/Edit Rent Information and Additional Charges against a lease through <span class="header2">Rent Information </span> menu from <img class="helpicon" src="Content/Icons/data_display-settingsN.png" alt="" title="" /> icon, only if the selected lease is in Draft status. User can only view Rent Information of a lease if it is in Active, Deleted or Terminated status.</p>
+                <p>Annual Base Rent is the lease amount that the Tenant needs to be paid in a year. User can enter Security Deposit, To be paid at (Beginning or End), Interest Rate (%) and Due Date. Annual Base Rent will be displayed in the Grand Total field of the Rent Information. User can save the rent information by clicking on Save button. </p>
+
+                <p><span class="header1">Rent Payment</span></p>
+                <p>On selecting <span class="header2">Rent Payment </span> menu from  <img class="helpicon" src="Content/Icons/data_display-settingsN.png" alt="" title="" /> icon, the payment information of the selected lease which is in Active status will be displayed here. User can update the payment information by clicking on <span class="header2">Edit </span> <img class="helpicon" src="Content/Icons/data_editN.png" title="Edit" /> icon. Initially the status of the Rent Payment will be displayed as 'Past Due'. After updating the payment details, the status will be changed automatically to 'Paid'. The payment due alert mail will be sent to contacts set against the selected lease.  </p>
+                <p><span class="header1">Edit:</span> A payment can be edited by selecting it and then clicking the <span class="header2">Edit </span> <img class="helpicon" src="Content/Icons/data_editN.png" title="Edit" /> icon. After entering the paid amount click Save Changes button to update the payment details and the status will be changed automatically from 'Past Due' to 'Paid'.  </p>
+
+                <p><span class="header1">Lease Items</span></p>
+                <p>Building and Floor are grouped under <span class="header2">Lease Items</span> <img class="helpicon" src="Content/Icons/lease_itemS.png" alt="Lease Items" title="Lease Items" /> icon. </p>
+
+                <p><span class="header1">Building</span></p>
+                <p>This option is used to attach Buildings to a lease. Buildings can be attached to a lease by clicking on <span class="header2">Building</span> menu from <span class="header2"> Lease Items </span> <img class="helpicon" src="Content/Icons/lease_itemS.png" alt="Lease Items" title="Lease Items" /> icon. Then Select Lease Area page will be displayed to select the required Floors. Select required floors and click Save button. Once the floors are selected and saved, the gross area of selected floors will be displayed in the Calculated Area field in Area and Cost Details page.</p>
+
+                <p><span class="header1">Floor</span></p>
+                <p>Floors can be attached to a lease by clicking on <span class="header2">Floor</span> menu from <span class="header2">Lease Items</span> <img class="helpicon" src="Content/Icons/lease_itemS.png" alt="Lease Items" title="Lease Items" /> icon. Then Select Lease Area page will be displayed to select the required Floors. Select required floors and click Save button. Once the floors are selected and saved, the gross area of selected floors will be displayed in the Calculated Area field in Area and Cost Details page.</p>
+
+                <p><span class="header1">Clauses</span>
+                <p>Agreement Clauses and Cancellation Clauses are grouped under <span class="header2"> Clauses </span> <img class="helpicon" src="Content/Icons/ClauseS.png" alt="Clauses" title="Clauses" /> icon. </p>
+
+                <p><span class="header1">Agreement Clauses</span>
+                <p>When clicking on <span class="header2">Agreement Clauses </span> from <span class="header2">Clauses</span> <img class="helpicon" src="Content/Icons/ClauseS.png" alt="Clauses" title="Clauses" /> icon, all the Agreement Clauses added to the lease will be displayed here. User can add agreement clauses to the selected Lease by clicking on <span class="header2">Add</span> <img class="helpicon" src="Content/Icons/data_addN.png" title="Add" /> icon. User can select multiple Agreement Clauses from this list. </p>
+                <p><span class="header2">Add: </span> User can add Agreement Clauses by clicking on <span class="header2"> Add </span> <img class="helpicon" src="Content/Icons/data_addN.png" title="Add" /> When clicking on <span class="header2">Add </span> <img class="helpicon" src="Content/Icons/data_addN.png" title="Add" /> icon, all the Agreement Clauses will be listed in a new window with already added Agreement Clauses as checked. User can select the required Agreement Clauses and click on <span class="header2"> Save </span> <img class="helpicon" src="Content/Icons/save.png" alt="Save" title="Save" /> icon. All the selected Agreement Clauses will be added to the Agreement Clause list. </p>
+
+                <p><span class="header1">Cancellation Clauses </span>
+                <p>When clicking on <span class="header2">Cancellation Clauses</span> menu from <span class="header2">Clauses </span> <img class="helpicon" src="Content/Icons/ClauseS.png" alt="Clauses" title="Clauses" /> icon, all the Clauses which are not Service Clauses will be displayed here. User can select multiple Clauses from the list and can enter cost for the Cancellation Clauses. All the selected Clauses will be added against the lease by clicking on <span class="header2"> Save </span> <img class="helpicon" src="Content/Icons/save.png" alt="Save" title="Save" /> icon.  </p>
+
+                <p><span class="header1">Lease Documents </span>
+                <p>The Administrator can view/add/edit/delete documents to a Lease using this option. Select the required Lease, and then click the <span class="header2"> Lease Documents </span> <img class="helpicon" src="Content/Icons/lease_documentS.png" alt="Lease Documents" title="Lease Documents" /> icon. Lease Documents can be uploaded for leases in Draft or Active status. </p>
+                <p>Select a Lease and clicking <span class="header2"> Lease Documents </span> <img class="helpicon" src="Content/Icons/lease_documentS.png" alt="Lease Documents" title="Lease Documents" /> icon, any documents that are already attached to this lease will be listed. Documents can now be added to the selected lease.   </p>
+                <p><span class="header1">Add:</span> A document can be added by clicking on the <span class="header2">Add</span> <img class="helpicon" src="Content/Icons/data_addN.png" title="Add" /> icon. The New Document window will be displayed. Select the Document Category first, and then select the required file. The document has to be uploaded by clicking on the Save button. </p>
+                <p><span class="header1">Edit:</span> A document can be edited by clicking on the  <span class="header2"> Edit </span> <img class="helpicon" src="Content/Icons/data_editN.png" title="Edit" /> icon. Select a document and click on the <span class="header2"> Edit </span> <img class="helpicon" src="Content/Icons/data_editN.png" title="Edit" /> icon. The Edit Document window will be displayed with the current file name. The user can select the document category and the required file. Changes can be saved by clicking the Save Changes button. </p>
+                <p><span class="header1">Delete:</span> Delete a document by selecting the required file and clicking the <span class="header2">Delete </span> <img class="helpicon" src="Content/Icons/data_deleteN.png" title="Delete" /> icon. </p>
+                <p><span class="header1">View:</span> The document can be viewed by selecting the file and then clicking the <span class="header2"> View </span>  <img class="helpicon" src="Content/Icons/view-drawingN.png" alt="View" title="View" /> icon. The selected attachment will be opened in an attachment viewer. View is supported only for image files. </p>
+                <p><span class="header1">Download:</span> Document can be downloaded and saved in the user's computer by clicking the <span class="header2"> Download </span> <img class="helpicon" src="Content/Layout/download_icon.png" alt="Download" title="Download" /> icon. </p>
+
+                <p><span class="header1">Lease Renewal </span>
+                <p>When clicking on <span class="header2">Lease Renewal </span> <img class="helpicon" src="Content/Icons/reneW.png" alt="Lease Renewal" title="Lease Renewal" /> icon, all the renewed leases for the selected lease will be displayed. Only Active leases can be renewed. User can add or delete Lease Renewals. The newly added lease will be in Draft status. The status of the lease will be changed by the system automatically as Active when the previous lease expires. Then the expired lease will be displayed in the Lease Renewal page in Expired status. </p>
+                <p><span class="header1">Add:</span> A Lease Renewal can be added by clicking <span class="header2">Add</span> <img class="helpicon" src="Content/Icons/data_addN.png" title="Add" /> icon in Lease Renewal page. The added leases will be in Draft status. </p>
+                <p><span class="header1">Delete:</span> A Lease Renewal can be deleted by selecting it and then clicking the <span class="header2">Delete </span> <img class="helpicon" src="Content/Icons/data_deleteN.png" title="Delete" /> icon in Lease Renewal page. User can delete Leases in Draft status only. </p>
+
+                <p><span class="header1">Area and Cost Details:</span></p>
+                <p>This option provides users to Add/Edit Area and Cost details for a lease, only if the selected lease is in Draft status. User can view Area and Cost details of a lease if it is in Active, Deleted or Terminated status. User can Add/Edit or View Area and Cost Details through <span class="header2"> Area and Cost Details </span> from <img class="helpicon" src="Content/Icons/data_display-settingsN.png" alt="" title="" /> icon in Lease Renewal page. </p>
+                <p>The area selected for the lease will be shown in the Calculated Area field of Area and Cost Details page. User can enter documented area in the Documented Area field.</p>
+                <p>If the Lease Type of the selected lease is Capital, then some extra fields like Bargain Value Market Value and Economic Life will be visible. Economic Life of a Building will be visible only if Lease Property Type of the selected lease is Building only. Payment Interval will be populated with intervals like Monthly and Yearly. User can enter Lease Amount also.</p>
+                <p><span class="header2">Economic Life – </span> This refers to the period over which a property is expected to be usable with normal repairs and maintenance. Here Economic Life is usually expressed in number of years.</p>
+                <p><span class="header2">Payment Interval – </span> User can select Monthly or Yearly as Payment Interval. </p>
+                <p><span class="header2">Bargain Value – </span> The value that the leased property can be purchased by the lessee at the end of the lease term for an amount significantly less than the value of the property at that time. </p>
+                <p><span class="header2">Market Value – </span> The value of a property as currently priced in the marketplace. After entering all the required data, click on Save button to save area and cost details.
+
+                <p><span class="header1">Rent Information </span> </p>
+                <p>This option provides users to Add/Edit Rent Information and Additional Charges against a lease through <span class="header2"> Rent Information </span> menu from <img class="helpicon" src="Content/Icons/data_display-settingsN.png" alt="" title="" /> icon, only if the selected lease is in Draft status. User can only view Rent Information of a lease if it is in Active, Deleted or Terminated status.  </p>
+                <p>Annual Base Rent is the lease amount that the Tenant needs to be paid in a year. User can enter Security Deposit, To be paid at (Beginning or End), Interest Rate (%) and Due Date.  Annual Base Rent will be displayed in the Grand Total field of the Rent Information. User can save the rent information by clicking on Save button. </p>
+                <p><span class="header1"> Lease Items</span> </p>
+                <p> Building and Floor are grouped under <span class="header2">Lease Items</span> <img class="helpicon" src="Content/Icons/lease_itemS.png" alt="Lease Items" title="Lease Items" /> icon.  </p>
+                <p><span class="header1"> Building </span> </p>
+                <p>This option is used to attach Buildings to a lease. Buildings can be attached to a lease by clicking on <span class="header2"> Building </span> menu. Then Select Lease Area page will be displayed to select the required buildings. Select the required building and click Save button. Then the Gross area of the selected building will be displayed in the Calculated Area field in Area and Cost Details page. </p>
+                <p><span class="header1"> Floor </span> </p>
+                <p>Floors can be attached to a lease by clicking on <span class="header2"> Floor </span> menu. Then Select Lease Area page will be displayed to select the required Floors. Select required floors and click Save button. Once the floors are selected and saved, the gross area of selected floors will be displayed in the Calculated Area field in Area and Cost Details page. </p>
+
+                <p><span class="header1"> Clauses </span> </p>
+                <p>When clicking on <span class="header2"> Clauses </span> <img class="helpicon" src="Content/Icons/ClauseS.png" alt="Clauses" title="Clauses" /> icon, all the Agreement Clauses added to the lease will be displayed here. User can add agreement clauses to the selected Lease by clicking on <span class="header2">Add</span> <img class="helpicon" src="Content/Icons/data_addN.png" title="Add" /> icon. User can select multiple Agreement Clauses from this list.  </p>
+                <p><span class="header1">Add:</span> User can add Agreement Clauses by clicking on <span class="header2">Add </span> <img class="helpicon" src="Content/Icons/data_addN.png" title="Add" /> icon. When clicking on <span class="header2">Add</span> <img class="helpicon" src="Content/Icons/data_addN.png" title="Add" /> icon, all the Agreement Clauses will be listed in a new window with already added Agreement Clauses as checked. User can select the required Agreement Clauses and click on <span class="header2"> Save </span> <img class="helpicon" src="Content/Icons/save.png" alt="Save" title="Save" /> icon. All the selected Agreement Clauses will be added to the Agreement Clause list. </p>
+
+                <p><span class="header1">Lease Documents</span> </p>
+                <p>The Administrator can view/add/edit/delete documents to a Lease using this option. Select the required Lease, and then click the <span class="header2">Lease Documents </span> <img class="helpicon" src="Content/Icons/lease_documentS.png" alt="Lease Documents" title="Lease Documents" /> icon. Lease Documents can be uploaded for leases in Draft or Active status.</p>
+                <p>Select a Lease and clicking <span class="header2">Lease Documents </span> <img class="helpicon" src="Content/Icons/lease_documentS.png" alt="Lease Documents" title="Lease Documents" /> icon, any documents that are already attached to this lease will be listed. Documents can now be added to the selected lease.  </p>
+                <p><span class="header1">Add:</span> A document can be added by clicking on the  <span class="header2">Add</span> <img class="helpicon" src="Content/Icons/data_addN.png" title="Add" /> icon. The New Document window will be displayed. Select the Document Category first, and then select the required file. The document has to be uploaded by clicking on the Save button. </p>
+                <p><span class="header1">Edit:</span> A document can be added by clicking on the <span class="header2"> Edit </span> <img class="helpicon" src="Content/Icons/data_editN.png" title="Edit" /> icon. Select a document and click on the <span class="header2"> Edit </span> <img class="helpicon" src="Content/Icons/data_editN.png" title="Edit" /> The Edit Document window will be displayed with the current file name. The user can select the document category and the required file. Changes can be saved by clicking the Save Changes button.</p>
+                <p><span class="header1">Delete:</span>Delete a document by selecting the required file and clicking the  <span class="header2"> Delete </span> <img class="helpicon" src="Content/Icons/data_deleteN.png" title="Delete" /> icon. </p>
+                <p><span class="header1">View:</span>The document can be viewed by selecting the file and then clicking the  <span class="header2"> View </span> <img class="helpicon" src="Content/Icons/view-drawingN.png" alt="View" title="View" /> icon. The selected attachment will be opened in an attachment viewer. View is supported only for image files. </p>
+                <p><span class="header1">Download:</span> Document can be downloaded and saved in the user's computer by clicking the <span class="header2"> Download </span> <img class="helpicon" src="Content/Layout/download_icon.png" alt="Download" title="Download" /> icon. </p>
+
+                <p><span class="header1">Export</span> </p>
+                <p>This option is to export the Lease data to the Excel. On clicking <span class="header2"> Export </span> <img class="helpicon" src="Content/Icons/exportN.png" alt="Export" title="Export" /> icon, data will be exported to Excel.</p>
+
+            </div>
+        </section>
+    </content>
+</page>
+<style type="text/css">
+    h3.Mainheader {
+        color: #178AE8;
+    }
+
+    .header1 {
+        font-weight: bold;
+        color: #178AE8;
+    }
+
+    .header2 {
+        font-weight: normal;
+        color: #178AE8;
+    }
+
+    p {
+        margin-left: 38px;
+        font-size: 13px;
+        margin-right: 3em;
+    }
+
+    .header3 {
+        font-weight: bold;
+        color: black;
+    }
+    /**/ h1 {
+        color: #178AE8;
+        font-size: 1.3em;
+        margin-left: 38px;
+    }
+
+    h2 {
+        color: #178AE8;
+        font-size: 1em;
+        margin-left: 38px;
+    }
+
+    .config {
+        background-color: #178AE8;
+    }
+
+    .helpicon {
+        vertical-align: baseline;
+        width: 20px;
+        height: 20px;
+    }
+</style>

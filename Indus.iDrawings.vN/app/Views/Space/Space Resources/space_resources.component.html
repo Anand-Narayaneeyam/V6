@@ -1,0 +1,8 @@
+﻿<submenu>
+    <sub-menu [source]=menuData [count]=gridcount [menuIds]=enableMenu (onSubMenuChange)="deleteOnClick($event);"> </sub-menu>
+</submenu>
+<!--<confirmation (onConfirm)="okDelete($event)"></confirmation>-->
+<DropDownListComponent style="float:left; padding:15px;" *ngIf="ddlResourceType" [fieldObject]="ddlResourceType" (change)="ddlResourceTypeChange($event.target.value)" [SetAlignment]=alignContent></DropDownListComponent>
+<gridView [dataSource]="itemsSource" [properties]="inputItems" [columns]="fieldObject" (onSorting)="onSort($event)" (onRowAdd)="onAdd($event)" (onRowUpdate)="onEdit($event)" (onRowDelete)="onDelete($event)"></gridView>
+<paging [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="pageChanged($event);"></paging>
+

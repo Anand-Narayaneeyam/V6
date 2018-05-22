@@ -1,0 +1,87 @@
+﻿{
+  "data": [
+    {
+      "FieldId": 1,
+      "FieldName": "Site FieldId",
+      "FieldType": 1,
+      "IsVisible": false,
+      "IsMandatory": false,
+      "IsDisabled": false,
+      "ReadOnlyMode": false,
+      "IsHiddenLabel": true
+
+    },
+    {
+      "FieldId": 2,
+      "FieldName": "Building FieldId",
+      "FieldType": 1,
+      "IsMandatory": false,
+      "IsVisible": false,
+      "IsDisabled": false,
+      "ReadOnlyMode": false,
+      "IsHiddenLabel": true
+    },
+    {
+      "FieldId": 3,
+      "FieldName": "Floor FieldID",
+      "FieldType": 1,
+      "IsMandatory": false,
+      "IsVisible": false,
+      "ReadOnlyMode": false,
+      "IsDisabled": false,
+      "IsHiddenLabel": true
+    },
+    {
+      "FieldId": 4,
+      "FieldName": "Floor Name",
+      "FieldType": 1,
+      "IsMandatory": true,
+      "IsVisible": true,
+      "ReadOnlyMode": false,
+      "IsDisabled": false,
+      "IsHiddenLabel": true
+    },
+    {
+      "FieldId": 5,
+      "FieldName": "Attachments",
+      "FieldType": 1,
+      "IsMandatory": false,
+      "IsVisible": true,
+      "ReadOnlyMode": false,
+      "IsDisabled": false,
+      "IsHiddenLabel": true
+
+    },
+    {
+      "FieldId": 6,
+      "FieldName": "Gross Area",
+      "FieldType": 3,
+      "IsMandatory": false,
+      "IsVisible": true,
+      "ReadOnlyMode": false,
+      "IsDisabled": false,
+      "IsHiddenLabel": true
+    },
+    {
+      "FieldId": 7,
+      "FieldName": "Net Area",
+      "FieldType": 3,
+      "IsMandatory": false,
+      "IsVisible": true,
+      "ReadOnlyMode": false,
+      "IsDisabled": false,
+      "IsHiddenLabel": true
+    },
+    {
+      "FieldId": 8,
+      "FieldName": "Status",
+      "FieldType": 1,
+      "IsMandatory": false,
+      "IsVisible": true,
+      "ReadOnlyMode": false,
+      "IsDisabled": false,
+      "IsHiddenLabel": true,
+      "Width": "*"
+    }
+  ]
+}

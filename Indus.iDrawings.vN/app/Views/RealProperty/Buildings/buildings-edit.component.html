@@ -1,0 +1,9 @@
+﻿<split-view [splitviewObject]="splitview" [pageTitle]="pageTitle">
+    <primary-view>
+        <DynamicFields [dataSource]="fieldDetailsAdd" (submitFieldObject)="onSubmitData($event)" [btnName]="btnName" [dataKey]="dataKey" (popupItemEmit)="popupItemEmit($event)"></DynamicFields>
+    </primary-view>
+    <secondary-view *ngIf="flag">
+        <indus-map style="display:block;width:800px;" *ngIf="flag == true" [properties]="inputItems" (outDraggable)="outputDraggedValue($event)"></indus-map>
+    </secondary-view>
+</split-view>
+

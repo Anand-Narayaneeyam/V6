@@ -1,0 +1,29 @@
+﻿<div>
+    <submenu>
+        <sub-menu [menuCard]=true [source]=menuData [count]=gridcount [menuIds]=enableMenu (onSubMenuChange)="onSubMenuChange($event);"> </sub-menu>
+    </submenu>
+    <split-view [splitviewObject]="splitviewInput" style="height: calc(100% - 35px);" [pageTitle]="pageTitle">
+        <primary-view>
+            <div [ngClass]="totalItems > itemsPerPage ? 'pagewithPaging':'pagewithoutPaging'">
+                <gridView style="display:block;" [(dataSource)]="itemsSource" [properties]="inputItems" [columns]="fieldObject" [refreshgrid]="refreshgrid"
+                          (onSorting)="onSort($event)"></gridView>
+            </div>
+            <paging [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="pageChanged($event);"></paging>
+        </primary-view>
+        <secondary-view *ngIf="menuClickValue == 0|| menuClickValue == 1">
+            <deficiencycategories-addedit style="display: block;width:270px;" [AttributesAddEdit]="DeficiencyCategoryAddEdit" [action]="action" [btnName]="btnName"
+                                          (submitSuccess)="OnSuccessfulSubmit($event)" [selectedId]="inputItems.selectedIds[0]" [messages]="messages" [objectCategoryId]="objectCategoryId" [moduleId]="moduleId"></deficiencycategories-addedit>
+
+        </secondary-view>
+    </split-view>
+    <slide [width]="slidewidth" [position]="position" [show]="showSlide" (closeDialog)="closeSlideDialog($event)">
+        <div>
+            <div> {{message}}  </div>
+            <div style="width:100%">
+                <button class="Savebutton " type="button" (click)="okDelete($event)">Yes</button>
+                <button class="Savebutton " type="button" (click)="cancelClick($event)">No</button>
+            </div>
+        </div>
+    </slide>
+</div>
+

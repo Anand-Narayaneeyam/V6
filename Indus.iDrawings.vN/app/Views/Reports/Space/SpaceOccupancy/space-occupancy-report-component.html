@@ -1,0 +1,57 @@
+﻿<page [pagetitle]="pagePath">
+    <content>
+        <split-view [splitviewObject]="splitviewInput" [pageTitle]="pageTitle" (onSecondaryClose)="onSplitViewClose($event)">
+            <primary-view>
+                <!--<submenu>
+                    <sub-menu [source]=menuData [menuCard]=iscard [menuIds]=enableMenu (onSubMenuChange)="onSubMenuChange($event);"> </sub-menu>
+                </submenu>-->
+                <div class="btnstyle" style="display:inline-flex;width:100%;margin-bottom: 5px;height: 40px;margin-left: 9px;">
+                    <div *ngIf="ddlOrganizationUnit != undefined" style="height:8%;display:inline-block;margin-bottom: 6px;margin-left: 9px;">
+                        <DropDownListComponent [fieldObject]="ddlOrganizationUnit" [ShowSelectOption]="false" (change)="onChangeDdl($event.target.value)" [SetAlignment]=alignContent></DropDownListComponent>
+                    </div>
+                    <div style="padding-left: 1%;margin-top:9px;display: inline-flex; width: 100%;">
+                        <div>
+                            <button class="Savebutton " style="margin-right:5px;" type="button" (click)="onShowSearch($event)">Search</button>
+                        </div>
+                        <div>
+                            <button  *ngIf="!IsMobile" class="Savebutton " style="margin-right:5px;" type="button" (click)="customizeClick($event)">Customize</button>
+                        </div>
+                        <div *ngIf="hasScheduledReport">
+                            <button class="Savebutton " style="margin-right:5px;" type="button" (click)="showSheduleReport($event)">Schedule this report</button>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="ReportData != undefined" style="width:100%;height: calc(100% - 40px)">
+                    <reportviewer [reportData]=ReportData> Loading ...</reportviewer>
+                </div>
+            </primary-view>
+            <secondary-view *ngIf="!showCustomize && showSearch && !showSheduleReportAddEdit" >
+                <space-occupancy-search *ngIf="splitviewInput.showSecondaryView == true" (onSubmitClick)="searchClick($event)" [levelNumber]="levelNumber" [selectedDdlArrayInput]="selectedDdlArray" style="display: block;width:300px;"></space-occupancy-search>
+            </secondary-view>
+            <secondary-view *ngIf="!showSearch && !showCustomize && showSheduleReportAddEdit && splitviewInput.showSecondaryView == true && ReportData.ExportFileName!='' ">
+                <schedule-report-addedit [reportData]="ReportData" (insertSuccess)="handleInsertSuccess($event)"></schedule-report-addedit>
+            </secondary-view>
+            <secondary-view *ngIf="showCustomize && !showSearch && !showSheduleReportAddEdit" style="height:100%;">
+                <div style="width:100%;display:block;height:100%;">
+                    <customrpt-addedit *ngIf="splitviewInput.showSecondaryView==true" [btnName]="btnName" [selectedId]="reportId" [fieldObject]="fieldObjectAddEdit" [itemSource]="itemsSourceAddEdit" [moduleId]="ModuleId" [pageTarget]="2" [listFieldDetails]="listFieldDetails" [showMyDef]="showMyDef" [showSetMyDef]="showSetMyDef" (applyCustomRptClick)="applyCustomRptClick($event)"></customrpt-addedit>
+                </div>
+            </secondary-view>
+        </split-view>
+    </content>
+</page>
+
+
+<style>
+    :host .ddllabel_2025 {
+        width: 130px !important;
+        margin-top: 7px !important;
+    }
+
+                    @media only screen and (min-device-width: 320px) and (max-device-width: 812px) and (orientation: portrait) {
+
+        .btnstyle {
+            display: inline-block !important;
+            height: 80px !important;
+        }
+    }
+</style>

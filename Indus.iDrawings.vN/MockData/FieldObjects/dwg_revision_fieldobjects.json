@@ -1,0 +1,65 @@
+﻿{
+  "data": [
+    {
+      "FieldId": 1,
+      "FieldName": "Revision No",
+      "FieldType": 2,
+      "FieldValue": "",
+      "IsVisible": false,
+      "IsDisabled": true,
+      "IsMultiValued": false,
+      "IsMandatory": false,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": true
+    },
+    {
+      "FieldId": 2,
+      "FieldName": "DWG File Name",
+      "FieldType": 1,
+      "IsVisible": true,
+      "IsMandatory": true,
+      "IsDisabled": true,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": true,
+      "NotificationType": "inline"
+    },
+    {
+      "FieldId": 3,
+      "FieldName": "DWG File Size(KB)",
+      "FieldType": 2,
+      "FieldValue": "1",
+      "IsVisible": true,
+      "IsMandatory": true,
+      "IsDisabled": true,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": true,
+      "NotificationType": "inline"
+    },
+    {
+      "FieldId": 4,
+      "FieldName": "Description",
+      "FieldType": 4,
+      "FieldValue": "",
+      "IsVisible": true,
+      "IsMultiValued": false,
+      "IsMandatory": false,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false,
+      "MaxLength": 4000,
+      "NotificationType": "inline"
+    },
+
+    {
+      "FieldId": 3,
+      "FieldName": "Markups",
+      "FieldType": 2,
+      "FieldValue": "1",
+      "IsVisible": true,
+      "IsMandatory": true,
+      "IsDisabled": true,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": true,
+      "NotificationType": "inline"
+    }
+  ]
+}

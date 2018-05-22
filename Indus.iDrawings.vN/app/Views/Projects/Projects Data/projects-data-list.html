@@ -1,0 +1,50 @@
+﻿<page [pagetitle]="pagePath">
+    <pagepath>
+    </pagepath>
+    <content>
+        <div>
+            <submenu>
+                <sub-menu [source]=menuData [count]=totalItems [menuIds]=enableMenu (onSubMenuChange)="onSubMenuChange($event);"> </sub-menu>
+            </submenu>
+            <split-view [splitviewObject]="splitviewInput" [pageTitle]="pageTitle">
+                <primary-view>
+                    <div style="height: calc(100% - 65px);">
+                        <div style="width:50%;padding-bottom:1%;float:left;">
+                            <DropDownListComponent *ngIf="ddlAdditionalCharge !=undefined" [fieldObject]="ddlAdditionalCharge" (change)="onChangeProjectCategory($event.target.value)"></DropDownListComponent>
+                        </div>
+                        <div [ngClass]="totalItems > itemsPerPage ? 'pagewithPaging':'pagewithoutPaging'">
+                            <gridView style="display:block;" [(dataSource)]="itemsSource" [properties]="inputItems" [columns]="fieldObject" (onSorting)="onSort($event)" (onRowDelete)="inlineDelete($event)" [refreshgrid]="refreshgrid"></gridView>
+                        </div>
+                        <div [style.height]="totalItems >itemsPerPage ? '45px' : '0px'">
+                            <paging [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="pageChanged($event);"></paging>
+                        </div>
+                    </div>
+                </primary-view>
+                <secondary-view>
+                    <projects-add-edit *ngIf="splitviewInput.showSecondaryView && projectarget==0" (submitSuccess)="submitReturn($event)" [action]="action" [btnName]="btnName" [selectedId]="inputItems.selectedIds" [fieldDetailsAdd]="fieldDetailsAdd1"></projects-add-edit>
+                    <base-drawing-list *ngIf="splitviewInput.showSecondaryView && projectarget==1" [style.width]="innerwidth" style="display:block" [projectName]="projectName" [projectId]="projectId"></base-drawing-list>
+                    <base-document-list *ngIf="splitviewInput.showSecondaryView && projectarget==2" [style.width]="innerwidth" style="display:block" [projectName]="projectName" [projectId]="projectId"></base-document-list>
+                    <project-TeamMembers *ngIf="splitviewInput.showSecondaryView && projectarget==3" [style.width]="innerwidth*.75" style="display:block" [rowdata]="rowdata" [projectId]="projectId"></project-TeamMembers>
+                    <reviews-or-comments-list *ngIf="splitviewInput.showSecondaryView && projectarget==4" [style.width]="innerwidth" style="display:block" [projectName]="projectName" [projectId]="projectId" ></reviews-or-comments-list>
+                    <tasks-list *ngIf="splitviewInput.showSecondaryView && projectarget==5" [style.width]="innerwidth" style="display:block" [projectName]="projectName" [projectId]="projectId"></tasks-list>
+                    <notes-list *ngIf="splitviewInput.showSecondaryView && projectarget==6" [style.width]="innerwidth" style="display:block" [projectName]="projectName" [projectId]="projectId"></notes-list>
+                </secondary-view>
+            </split-view>
+        </div>
+        <slide [width]="200" [position]="position" [type]="dialog" [show]="showSlide" (closeDialog)="closeSlideDialog($event)">
+
+            <div>
+                <div>
+                    {{message}}
+                </div>
+                <div>
+
+                    <div style="width:100%">
+                        <button class="Savebutton " type="button" (click)="okDelete($event)">Yes</button>
+                        <button class="Savebutton " type="button" (click)="cancelClick($event)">No</button>
+                    </div>
+                </div>
+            </div>
+        </slide>
+    </content>
+</page>

@@ -1,0 +1,237 @@
+﻿<page [pagetitle]="pagePath">
+    <pagepath>
+    </pagepath>
+    <content>
+        <section title="Drawings" [isExpanded]="true" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div>
+                <p>This option is available under Employees Module icon. When selecting the Employees icon, all the menu options for Employee Module will be displayed in the Left panel.</p>
+                <p>This section provides an option for the users to view the drawings enabled for Employees Management, along with the Employee information. </p>
+                <p>List of all drawings will be displayed, organized by Site, Building and Floor, with the Drawing File Names and File Size. This list can be sorted by clicking on any column by clicking on the column header.</p>
+                <h2>Open Drawing</h2>
+                <p>On selecting a drawing and clicking on the  <span class="header2">View </span> <img class="helpicon" src="Content/icons/view-drawingN.png" alt="View" />icon, the drawing will be opened in a new window which is like a Tab sheet and by default it opens the drawing of the currently selected floor of the currently selected Module. All drawing related operations are provided with a horizontal menu bar.</p>
+                <p>The Space data and Employee data are fetched from the database and displayed in the drawing in dynamically created layers. Only the Space Polyline and Space Data layers and any predefined default display layers will be turned on by default.</p>
+                <p>The Employee data corresponding to the selected Floor drawing will be displayed on the right side of the Drawing in a tab sheet labeled as ‘Assigned’.  All unassigned Employees are displayed in tab sheet labeled as ‘Unassigned’. </p>
+                <p>If any Employees are scheduled for moving to this floor through Space Planning Move Project, those Employee details will be displayed in ‘Scheduled Moves’ tab.</p>
+                <p>If the user has no access permission to a Division, the Employees placed in spaces belonging to that Division will not be displayed and data of those Employees also will not be listed</p>
+                <p>The width of the Drawing can be increased by clicking the Arrow icon provided at the left side of the Drawing window. </p>
+                <p>On bringing the mouse pointer over an employee symbol, a Tooltip will be displayed showing the data associated with the employee. If the mouse pointer is brought over a blank space, a Tooltip will be displayed, showing the space data associated with the space.</p>
+                <p>If the user has no access to a Division, the employees in spaces assigned to that Division will not be displayed and data of those employees also will not be listed.</p>
+                <p> On right clicking the mouse inside the drawing display window, a popup menu will appear with the following options</p>
+                <p> <span class="header2">Edit Space: </span>This option is for editing the Space Data in the Drawings. </p>
+                <p> <span class="header2">Assign Space Standard: </span>This option is for assigning space standard and space assignment type to any desired space. Space standard can be assigned/de-assigned by selecting the space, to which the space standards is to be assigned. Space Assignment Type can be set to Assignable, UnAssignable, and Scheduling Space. Scheduling Space option will be available only if Scheduling option is enabled by Indus.</p>
+                <p> <span class="header2">Select Multiple Spaces by window: </span>This option is for selecting multiple spaces in the drawing by window. </p>
+                <p> <span class="header2">Pan: </span>This option enables the user to pan the drawing. While selecting this option, the mouse pointer changes to a hand symbol. Now click the left mouse button, and without releasing it, move the mouse to pan the drawing.</p>
+                <p> <span class="header2">Zoom In: </span>This option enables the user to zoom in the Drawing.</p>
+                <p> <span class="header2">Zoom Out: </span>This option enables the user to zoom out the Drawing.</p>
+                <p> <span class="header2">Zoom Window: </span>This option enables the user to zoom the Drawing to a Window selection.</p>
+                <p> <span class="header2">Zoom Extents: </span>This option enables the user to view the Drawing fully within the drawing display window by resetting any zoomed or panned states.</p>
+                <p> <span class="header2">Layers: </span>This option enables turning On and Off the layers in the base drawing. The dynamically generated layers are not available here. These have to be controlled through the Display Settings. Clicking on the Default button turns on the default space Polyline layers.</p>
+                <p>The following menu options are available to work with the drawings. </p>
+                <h2>Distribution Map </h2>
+                <p>This option <img class="helpicon" src="Content/Images/Drawings/distributionMap-menu-button.png" alt="Distribution Map" />  allows users to get the distribution of space areas across different organizational Units (Division/Department, Cost center, etc. as defined in the Organizational structure), or based on the Validated Fields. The Spaces belonging to different Organizational Units or the Validated Fields are hatched in the drawing with different colors. Users can select the Organizational Units or the validated fields for which the distribution is required.</p>
+                <p>The colors are displayed according to the default settings set in <span class="header2">General Settings: Distribution Map Settings</span>.User can be change the color by clicking the Settings icon provided against each Validated Field. Settings made here will be applicable for the current instance. A legend based on the distribution map also gets inserted automatically with Color of each Organizational Unit and its Area Sq. ft.</p>
+                <p><span class="header2"> Occupancy </span> </p>
+                <p>This option shows the distribution map based on the Occupancy (Vacant Rooms and Occupied Rooms). While showing this distribution map, the color settings will be based on the user’s Color Preferences. On clicking <span class="header2">Occupancy</span>,all the occupied and vacant rooms will be hatched and the corresponding legend showing the area of Occupied and Vacant rooms in Sq. Ft. with color and hatch patterns will be displayed.</p>
+                <h2>Space Tools</h2>
+                <p>All the Space related operations like Move Legend, Select Multiple Spaces by Window, Totalize, Measure Distance and Measure Area in Employee Drawing are grouped under Tools <img class="helpicon" src="Content/Images/Drawings/spaceMoreIcon.png" alt="Space Tools" /> icon .</p>
+                <h2>Edit Space</h2>
+                <p>This option is to edit the Data of the selected Space. On selecting Edit Space option from Space Tools icon, user will be prompted to the select the space to be edited and the cursor turns to cross. Edit Space Data window will be displayed on clicking the required Space in the drawing. Make necessary changes and click the Save button. Space Data edit is possible only to users having Edit privilege.</p>
+                <p>By default, Space Category is enabled. If the value selected is one of the Common Area space categories, like Building Common, Floor Common or Vertical Space it will not be possible to edit/set the Organizational Unit for this space, and all Organizational level combo boxes will be disabled. But if it is required to assign Organizational Units to Common Spaces also, Organizational Unit Assignment to Common Area can be enabled for the customer.</p>
+                <p>Data for additional data fields can also be entered through this data entry window.</p>
+                <h3>Share Space</h3>
+                <p>Provision for Sharing a Space between Multiple Organization Units is allowed. This is needed for sharing spaces like Consulting Rooms, Conference Halls, etc. between different departments.</p>
+                <p>If ‘Space Allocation to Multiple Departments’ option is enabled for the customer, a link  ‘Share Space’  will be displayed along with Organizational Unit in the Data Entry window. The Administrator can view/add/edit/delete the sharing of space using this option. The percentage sharing among different Organizational Units should sum up to 100%.</p>
+                <p>If the selected Space is already shared, it will be indicated with a caption ‘Shared’ next to the Organizational Unit name. Click ‘View’ link to view the existing sharing details.  Click View link, the Space Sharing by Organizational Units window opens up with the percentages of already assigned Organizational Units.</p>
+                <p> <span class="header3">Add: </span>On clicking Add <img class="helpicon" src="Content/icons/data_addN.png" alt="Add" />  icon,  Assign Shared Organizational Unit window will be displayed with Org. Units combo boxes and Percentage textbox. Select the required Organization Unit name from the required level and enter the percentage. The sharing details will be saved by clicking Add button.</p>
+                <p> <span class="header3">Edit: </span> Space sharing can be edited by clicking the Edit <img class="helpicon" src="Content/Layout/edit_button.png" alt="Edit" />  icon. The Sharing among different Organizational Units should sum up to 100.</p>
+                <p> <span class="header3">Delete: </span>Remove an assigned Organizational Unit by selecting the same and clicking the Delete <img class="helpicon" src="Content/Layout/delete_button.png" alt="Delete" /> icon.</p>
+                <h2>Assign Space Standard</h2>
+                <p>This option is for assigning space standard and space assignment type to any desired space. On selecting  <span class="header2">Assign Space Standard</span> option from  <span class="header2">Space Tools</span> <img class="helpicon" src="Content/Images/Drawings/spaceMoreIcon.png" alt="Space Tools" /> icon, user will be prompted to the select the space for assigning the Space standard and the cursor turns to cross. Assign Space Standard window will be displayed on clicking the required space in the Drawing. Space Standard can be assigned/de-assigned to the selected Space.  Space Assignment Type can be set to Assignable, Unassignable, and Scheduling Space. Scheduling Space option will be available only if Scheduling option is enabled for the customer.</p>
+                <p>By default “Approval Process: Not required” is selected in Room Booking or Seat Booking. So the Room / Seat booking request will be confirmed directly without any approval process.  </p>
+                <p>If Space Assignment Type is selected as Scheduling Space, an option to select the Amenities of the room and its count will be displayed.A room can be booked only if the Space Assignment type is assigned as Scheduling Space.</p>
+                <p>If Seat Booking is enabled for the customer and the Space Assignment Type is selected as Assignable, a link named  <span class="header2">‘Seats’</span> will be displayed against Room Seating Capacity option to define seats for the selected space. On selecting this link, Seats window will be displayed listing all the available seats (if any). </p>
+                <p>User can add or delete single/multiple seat(s) to/from the selected space using the following options listed in the Seats page.   An option to set seats as Hoteling Seats also will be displayed in the Seats list page.</p>
+                <p> <span class="header1">Add Single Seat:</span> The user can add seats to the selected space, one at a time using this option. To add a single seat to the selected space, the user has to select  <span class="header2">Add</span>  <img class="helpicon" src="Content/icons/data_addN.png" alt="Add" />  icon and select ‘Single’ radio button. Then options to specify the Prefix and the Number of the specific seat will be displayed in the Add Seat window. The number of seats that can be added is limited to the Minimum Seating Capacity assigned to the selected space. </p>
+                <p> <span class="header1">Add Multiple Seats:</span> The user can add multiple seats at a time to the selected space using this option. To add multiple seats to the selected space, the user has to select  <span class="header2">Add</span>  <img class="helpicon" src="Content/icons/data_addN.png" alt="Add" />  icon and select ‘Multiple’ radio button. Then options specify the Prefix of the seats and the number range in which the seats are to be added in the Add Seat window. The number of seats that can be added is limited to the Minimum Seating Capacity assigned to the selected space. </p>
+                <h2>Move Legend</h2>
+                <p>
+                    This option is to move the legend added after viewing the Distribution map or Totalize to a user specified location. To move the Legend, Select <span class="header2">Move Legend</span> option from  <span class="header2">Space Tools </span> <img class="helpicon" src="Content/Images/Drawings/spaceMoreIcon.png" alt="Space Tools" /> icon and then click to specify a new location.
+                    <h2>Select Multiple Spaces by Window</h2>
+                <p>This option is for selecting multiple spaces in the drawing by window, for viewing details of space data linked to those spaces.</p>
+                <p>Click on the multiple spaces by window option, from Space Tools <img class="helpicon" src="Content/Images/Drawings/spaceMoreIcon.png" alt="Space Tools" /> icon a toast message ‘Select a window, click to select/deselect Space. Right click to exit’ is shown. Then, the mouse pointer becomes a cross. Select a window by clicking and dragging inside the drawing. The selected spaces will be hatched. Right Click when all required spaces are selected. If any employee/space data linked to this space, the right hand side data grid will be displayed highlighting the data of the employees in the selected spaces. See <span class="header2">Data</span> for more details.</p>
+                <p> A selected space can be deselected if required, by clicking on the  <span class="header2">De-Hatch</span> option in the Right Click.</p>
+                <h2>Totalize</h2>
+                <p>This option is to display the sum total of Area, number of seats, employees, and any other totalizable data fields in the selected spaces. </p>
+                <p>Select the spaces for which the employee count and area is to be viewed, and click on the Totalize option from Space Tools  option from <img class="helpicon" src="Content/Images/Drawings/spaceMoreIcon.png" alt="Space Tools" /> icon, A window will be displayed with the Number of Spaces selected, Area of the Selected spaces, Maximum Occupancy, Number of Employees, Current Occupancy, Employees in spaces with no seating capacity defined, etc. </p>
+                <p>No. of Spaces selected – Total number of selected spaces.</p>
+                <p>Gross Area Total – Total area of the selected spaces.</p>
+                <p>Maximum Occupancy – The total seats in the selected spaces in which the Space Assignment Type is Assignable .</p>
+                <p>Current Occupancy – The number of employees in spaces in which the Space Assignment Type is Assignable </p>
+                <p>Open – This is the number of free seats. (i.e. Maximum Occupancy – Current Occupancy)</p>
+                <p>Apart from this, if any additional data fields of Space are set as Totalizable, the total value of such fields also will be shown.   </p>
+                <p> The details shown in Totalize window can be added as legend by clicking Add Legend button.</p>
+                <h2>Measure Distance – Point to Point</h2>
+                <p>This option is used to measure the distance between two points. Select  <span class="header2"> Measure Distance - Point to Point</span> option from  <span class="header2">Space Tools</span> <img class="helpicon" src="Content/Images/Drawings/spaceMoreIcon.png" alt="Space Tools" /> icon and the cursor will turn into a cross. Click on the first point from which the distance is to be measured and then click on the end point, the distance between the two points will be displayed. </p>
+                <p>Select the option first, and the system will prompt to select the points to Measure Distance. Click the starting point from which the distance is to be measured, and then click the end point. The distance between the two points will be displayed. This marked distance can be removed by clicking the De-hatch option.</p>
+                <h2>Measure Distance – Wall to Wall</h2>
+                <p>This option is used to measure distance between two Walls. Select  <span class="header2">Measure Distance - Wall to Wall</span> option from  <span class="header2">Space Tools</span> <img class="helpicon" src="Content/Images/Drawings/spaceMoreIcon.png" alt="Space Tools" /> icon and the cursor will turn into a cross. Click close to the wall from which the distance is to be measured. The starting point will snap to the nearest space polyline (Net Polyline for Net only Customers). Then click close to the other wall to which the measurement is to be taken. The end point will snap to the nearest point of the corresponding space polyline/net polyline.  The distance between the two walls will be displayed. </p>
+                <h2>Measure Area</h2>
+                <p>This option is used to measure the area of a polygon in a Drawing. To measure an area, Select Measure Area option from menu and the cursor will turn to a cross. Mark the area to be measured by clicking on any one vertex point, and then clicking on the remaining vertex points one after the other. After the last vertex, close the polygon by right clicking in the drawing. The polygon will be hatched and the area will be displayed. This marked distance can be removed by clicking the  <span class="header2">De-hatch</span> option.</p>
+                <h2>Employee Tools</h2>
+                <p>All the Employee related operations like De-Assign Employee, Move Single Employee, and Move Multiple Employees are provided in <span class="header2">Employee Tools</span> <img class="helpicon" src="Content/Icons/more_menuN.png" alt="Tools" /> icon </p>
+                <h2>De-Assign Employee</h2>
+                <p>This option de-links the selected Employee from the assigned Space. On clicking this option from Employee Tools menu, a toast message will be displayed, to select the employee to be de-assigned. Then the mouse pointer will turn to cross and select the employee by clicking on the employee. Click OK to the confirmation message then the selected employee will be de-assigned from the drawing. </p>
+                <h2>Move Single Employee</h2>
+                <p>This option is to move employee from one place to other within the same floor. On clicking this option from Employee Tools menu, a toast message will be displayed, to select the employee to be moved. Then the mouse pointer will turn to cross and select the employee by clicking on the employee. Then the selected employee will be hatched and a rubber band like line depicting the move will be displayed. Click on the exact location to which the employee is to be moved. </p>
+                <p>The Resources can also be moved with the Employee if necessary. For more details,<span class="header2">See Move Resources for Single Employee </span></p>
+                <h2>Move Multiple Employees</h2>
+                <p>This option is to move multiple Employees from one or more space(s) to other space(s) within the same floor. Moving of Employees to places outside the Polyline is not possible. Employees placed in the same or different spaces can be moved to other space(s). Only the Administrator can perform this move. Select <span class="header2"> Move Multiple Employees </span> option from Employee Tools menu, a toast message ‘Click to select/deselect Employee. Right click to Exit’ will be displayed. Then, the mouse pointer becomes a cross. Select the Employees to moveby clicking on the employee symbol in the drawing. On right clicking the mouse after selecting the required employees, a toast message ‘Select a point inside the space where the employee name is to be located’ appears. Select the exact location where the employee is to be placed (Location can be specified for each employee by clicking the desired location one by one).Selected Employees will be moved to the specified Location.  </p>
+                <h2>Move Resources for Single Employee</h2>
+                <p>After selecting the desired location for the employee, a message ‘Do you want to move the employee resources?’ will be prompted with Yes or No buttons to confirm whether the resources attached to the employees are to be moved or not. On clicking ‘No’ to the message, the move resource operation will get cancelled. </p>
+                <p>On clicking ‘Yes’ to the message, a Resource for Move window will be displayed with the Resources attached to each employee. Select the required resources and on clicking Update the selected resources will be attached with the employee to be moved.  After the Single Move operation, the Employee and the selected resources will be moved to the new location.</p>
+                <p>If the option ‘Allow Move Resources Based on Employee Location’ is enabled by Indus, a Select Resources page will be displayed with all the Resources (Asset/ Furniture) based on the Employee location. If any of the employee resources attached to Employee through Data: Resources menu is not selected while moving, such resources will get delinked from the Employee.</p>
+                <h2>Tools</h2>
+                <p>All the Drawing related operations such as Display Settings, De-hatch and Stop Blink are grouped under <span class="header2">Tools </span><img class="helpicon" src="Content/Icons/more_menuN.png" style="width:25px;height:25px" title="Tools" /> icon </p>
+                <h2>Display Settings</h2>
+                <p>This option is for specifying the Space and Employee Data fields to be displayed in the drawing and the tooltip. Changes made here will be saved as user default settings and will be effective whenever the User opens any drawing.</p>
+                <p>For making permanent changes, an administrator has to click Yes to the confirmation message “Display Settings updated. Do you want to save this as System default?”</p>
+                <h2>De-Hatch</h2>
+                <p>This option is to de-hatch the hatched Space (if any) in the Drawing. De-hatch option is available under  <span class="header2">Tools</span>  <img class="helpicon" src="Content/Icons/more_menuN.png" alt="Tools" /> icon.</p>
+                <h2>Stop Blink</h2>
+                <p>This option is to stop the blinking of the hatched Space (if any) in the Drawing.  <span class="header2">Stop Blink</span> option is available under  <span class="header2">Tools</span>  <img class="helpicon" src="Content/Icons/more_menuN.png" alt="Tools" /> icon.</p>
+                <h2>Maximize</h2>
+                <p>User can change the view mode to full screen by clicking the icon <img class="helpicon" src="Content/Images/Drawings/Maximize.png" alt="Maximize" /> provided above the top right corner of the drawing window. User can exit the full screen to normal view by clicking the icon <img class="helpicon" src="Content/Images/Drawings/Minimize.png" title="Minimize" /> provided in the drawing toolbar.</p>
+                <h2>Export</h2>
+                <p>This option <img class="helpicon" src="Content/Images/Drawings/exportdwg.png" title="Export" />  is for exporting the current view of the drawing to the user’s computer in any of the following formats namely bmp, dwf, svg, pdf etc. The drawing may be exported with the Space data layers, dynamically generated distribution maps, and legends if any.</p>
+                <h2>Save As</h2>
+                <p>This option <img class="helpicon" src="Content/Images/Drawings/SaveAsDwg.png" title="Save As" /> is for saving the Drawing into dwg format. Versions of the AutoCAD can be selected while saving the Drawing.</p>
+                <h2>Assigned</h2>
+                <p>This option (Data: Assigned Employees) allows the user to get the details of assigned employees in the data grid. Select the required floors, the details of assigned employees in the selected floor can be viewed in the data grid.</p>
+                <h2>Edit</h2>
+                <p>This option is for editing the details of an employee. Select the employee record to be edited and click <span class="header2"> Edit </span> <img class="helpicon" src="Content/Layout/edit_button.png" alt="Edit" />  icon. The details will be displayed. Make the necessary changes and click on Save Changes button.  </p>
+                <p>While editing the employee details the status can be changed from Active to Terminated/Resigned/Retired/Transferred. The Date of Relieving field will be displayed while changing the status to Terminated/Resigned/Retired/Transferred and corresponding date has to be entered. Such employees will get unassigned automatically.</p>
+                <h2>Delete</h2>
+                <p>This option is for deleting the details of an employee. Select the record to be deleted and click <span class="header2">Delete</span> <img class="helpicon" src="Content/Layout/delete_button.png" alt="Delete" /> icon. </p>
+                <h2>Show Drawing</h2>
+                <p>This option is for showing the selected employee in drawing. Select the employee record and click <span class="header2"> Show Drawing </span> option from the More icon.The drawing will be opened blinking the selected employee and space hatched.</p>
+                <h2>Show Zoomed</h2>
+                <p>This option is for showing the selected employee in drawing, in the zoomed in position. Select the employee record and click on the <span class="header2"> Show Zoomed </span> option from the More icon. The drawing will be displayed in the zoomed in position with the selected employee and space hatched.</p>
+                <h2>Resources</h2>
+                <p>This option is for associating Resources (Asset/ Furniture) with an employee. Select the employee record to which the resource is to be added/viewed or deleted, and click on <span class="header2">Resources</span> option from the More icon. The resources assigned if any will be displayed with Employee Name & Employee Code as read only. Resources cannot be assigned for unassigned employees if ‘Move Resources Based on Employee Location’ option is enabled by Indus.</p>
+                <p><span class="header2">Add : </span> New resource can be added by clicking the <span class="header2">Add</span> <img class="helpicon" src="Content/icons/data_addN.png" alt="Add" /> icon.
+                <p>Make required selections and click Save to associate the resource with the employee. Any number of resources can be associated with the employee.</p>
+                <p>
+                    <span class="header2"> Delete : </span>  One or more assigned Resources can be deleted by selecting it and clicking on the <span class="header2">Delete </span> <img class="helpicon" src="Content/Layout/delete_button.png" alt="Delete" /> icon.
+                    <h2>Display Settings</h2>
+                <p>This option   allows the user to change the visibility of the employee and space data fields displayed in the data grid. On selecting this option, all the available space and employee data fields are displayed in different tabs. Display settings can be modified by selecting the required fields from the list. Changes made here will be saved as user default settings and will be effective whenever the User takes the Employee Data grid.</p>
+                <p> For making permanent changes, an administrator has to click Yes to the confirmation message “Display Settings updated. Do you want to save this as System default?” </p>
+                <h2>Attachments</h2>
+                <p>Users can add/edit/delete/view/download attachments to an employee using this option.Select the required employee and click the <span class="header2">Attachments </span> option from the More icon.If any attachments that are already attached will be displayed in a list with Add, Edit, Delete, View and Download icons.</p>
+                <p><span class="header2"> Add: </span> An attachment can be added by selecting the Attachment Category first, and then selecting the file. The attachment has to be uploaded by clicking on the Upload button.</p>
+                <p><span class="header2">Edit: </span> Edit an Attachment by selecting it and clicking the <span class="header2">Edit</span> <img class="helpicon" src="Content/Layout/edit_button.png" alt="Edit" /> icon. </p>
+                <p>Select an attachment and click <span class="header2"> Edit </span><img class="helpicon" src="Content/Layout/edit_button.png" alt="Edit" /> icon. The Edit Attachment window will be displayed with the current file name. The user can select the Attachment Category and the corresponding file. Changes can be saved by clicking the Save Changes button.  </p>
+                <p><span class="header2">Delete: </span> Delete an attachment by selecting it and clicking the <span class="header2">Delete </span> <img class="helpicon" src="Content/Layout/delete_button.png" alt="Delete" /> icon.</p>
+                <p><span class="header2">View:</span> The attachment can be viewed by selecting the file and then clicking the <span class="header2"> View </span> <img class="helpicon" src="Content/Icons/view-drawingN.png" title="View" /> icon.The selected attachment will be opened in an attachment viewer. </p>
+                <p>View is supported only for image files.</p>
+                <p><span class="header2">Download:</span> Attachment can be downloaded and saved in the user's computer by clicking the <span class="header2"> Download</span> <img class="helpicon" src="Content/Layout/download_icon.png" title="Download" /> icon. </p>
+                <h2>Export</h2>
+                <p>This option is to export the employee records to the Excel. On clicking <span class="header2"> Export </span> option from More icon, data will be exported to an excel file.  </p>
+                <h2>Keyword Search</h2>
+                <p>This option is available only after clicking the <img class="helpicon" src="Content/Icons/keyword_searcH.png" title="Keyword Search" type="image" /> icon. </p>
+                <p>This option helps users to search for employee details using keywords. The keyword could belong to any data field of the employee. The user need not know or specify which field to look in. </p>
+                <p>On entering the keyword and clicking on the <span class="header2"> Search </span><img class="helpicon" src="Content/Icons/keyword-search.png" style="border:hidden!important;" title="Keyword Search" type="image" /> icon, the data grid will be filtered with employee records having data matching the specified keyword. The employees displaying in the grid as a result of search operation will blink in the drawing. </p>
+                <p>A facility user would be able to view only those floors/divisions for which privileges are granted to him. </p>
+                <h2>Advanced Search</h2>
+                <p>This option <img class="helpicon" src="Content/Icons/advanced-search.png" title="Advanced Search" type="image" /> helps users to search for employee details with specific data in known data fields. The data being searched for can be selected from the list boxes or entered into text boxes provided against the data fields. Click on the <span class="header2"> Search </span>button and the data grid will befilteredwith employee records having data matching the specified criteria.  </p>
+                <p>The Search criteria once created will be saved and will be available throughout the current session. For searching with First Name or Last Name, on entering the first character, all employee na.mes starting with that will be listed in the list box provided. User can select the required employee from the list </p>
+                <p>Fields to be displayed in the Search window can be set using the <span class="header2"> Configure </span> <img class="config helpicon" src="Content/Icons/filter-config-icon.png" alt="Configure" />icon, provided in the Search window. </p>
+                <p>Search criteria entered in the Search window can be cleared by clicking the Clear button provided in the Search window. After clearing the Search criteria and click Search button to clear the Search Results in the Data grid.</p>
+                <h2>Unassigned</h2>
+                <p>This option (Data: Unassigned Employees) allows the user to get details of unassigned employees. Unassigned Employees are the employees whose locations are yet to be assigned in the drawing.</p>
+                <h2>Add</h2>
+                <p>This option is for entering the details of a new employee into the system. On clicking <span class="header2"> Add </span> <img class="helpicon" src="Content/icons/data_addN.png" alt="Add" /> icon, the Employee Data Entry window is displayed, with the predefined data fields and the additional data fields defined by the user. The details of the employee can be entered. Employee photo can be uploaded by browsing and selecting the same. Email of employee is not mandatory, but if entered, it should be unique. No two employees can have the same email id.Also email of Employee should with Mail Domain added in <span class="header2">Settings: Administration: General Settings: Mail Domains.</span> While adding an Employee, the Status of the Employee will be set as ‘Active’ by default. On clicking the Save button, the data and the photograph will be saved in the system and a message ‘Employee added’ will be displayed. </p>
+                <h2>Edit</h2>
+                <p>This option is for editing the details of an employee. Select the employee record to be edited and click <span class="header2">Edit </span> <img class="helpicon" src="Content/Layout/edit_button.png" alt="Edit" /> icon. The details will be displayed. Make the necessary changes and click on Save Changes button.  </p>
+                <p>While editing the employee details the status can be changed from Active to Terminated/Resigned/Retired/Transferred. The Date of Relieving field will be displayed while changing the status to Terminated/Resigned/Retired/Transferred and corresponding date has to be entered. Such employees will get unassigned automatically.</p>
+                <h2>Delete</h2>
+                <p>This option is for deleting the details of an employee. Select the record to be deleted and click <span class="header2"> Delete </span> <img class="helpicon" src="Content/Layout/delete_button.png" alt="Delete" /> icon.A confirmation message will be displayed. Click Yes to delete the employee record from the system.</p>
+                <h2>Assign Space</h2>
+                <p>This option is to assign space for an employee in the drawing. On selecting an Employee and then selecting the <span class="header2">Assign Space </span> option from More icon.the drawing list is displayed. Select the Drawing to which the Employee has to be assigned, A message appears prompting the user to select the space where the employee is to be assigned .Click on the exact location where the employee is to be placed.</p>
+                <h2>Display Settings</h2>
+                <p>This option   allows the user to change the visibility of the employee and space data fields displayed in the data grid. On selecting this option, all the available space and employee data fields are displayed in different tabs. Display settings can be modified by selecting the required fields from the list. Changes made here will be saved as user default settings and will be effective whenever the User takes the Employee Data grid.</p>
+                <p> For making permanent changes, an administrator has to click Yes to the confirmation message “Display Settings updated. Do you want to save this as System default?” </p>
+                <h2>Attachments</h2>
+                <p>Users can add/edit/delete/view/download attachments to an employee using this option.Select the required employee and click the <span class="header2">Attachments </span> option from the More icon.If any attachments that are already attached will be displayed in a list with Add, Edit, Delete, View and Download icons.</p>
+                <p><span class="header2"> Add: </span> An attachment can be added by selecting the Attachment Category first, and then selecting the file. The attachment has to be uploaded by clicking on the Upload button.</p>
+                <p><span class="header2">Edit: </span> Edit an Attachment by selecting it and clicking the <span class="header2">Edit</span> <img class="helpicon" src="Content/Layout/edit_button.png" alt="Edit" /> icon. </p>
+                <p>Select an attachment and click <span class="header2"> Edit </span><img class="helpicon" src="Content/Layout/edit_button.png" alt="Edit" /> icon. The Edit Attachment window will be displayed with the current file name. The user can select the Attachment Category and the corresponding file. Changes can be saved by clicking the Save Changes button.  </p>
+                <p><span class="header2">Delete: </span> Delete an attachment by selecting it and clicking the <span class="header2">Delete </span> <img class="helpicon" src="Content/Layout/delete_button.png" alt="Delete" /> icon.</p>
+                <p><span class="header2">View:</span> The attachment can be viewed by selecting the file and then clicking the <span class="header2"> View </span> <img class="helpicon" src="Content/Icons/view-drawingN.png" title="View" /> icon.The selected attachment will be opened in an attachment viewer </p>
+                <p>View is supported only for image files.</p>
+                <p><span class="header2">Download:</span> Attachment can be downloaded and saved in the user's computer by clicking the <span class="header2"> Download</span> <img class="helpicon" src="Content/Layout/download_icon.png" title="Download" /> icon. </p>
+                <h2>Export</h2>
+                <p>This option is to export the employee records to the Excel. On clicking <span class="header2"> Export </span> option from More icon, data will be exported to an excel file.  </p>
+                <h2>Keyword Search</h2>
+                <p>This option is available only after clicking the <img class="helpicon" src="Content/Icons/keyword_searcH.png" title="Keyword Search" type="image" /> icon. </p>
+                <p>This option helps users to search for employee details using keywords. The keyword could belong to any data field of the employee. The user need not know or specify which field to look in. </p>
+                <p>On entering the keyword and clicking on the <span class="header2"> Search </span><img class="helpicon" src="Content/Icons/keyword-search.png" style="border:hidden!important;" title="Keyword Search" type="image" /> icon, the data grid will be filtered with employee records having data matching the specified keyword. The employees displaying in the grid as a result of search operation will blink in the drawing. </p>
+                <p>A facility user would be able to view only those floors/divisions for which privileges are granted to him. </p>
+                <h2>Advanced Search</h2>
+                <p>This option <img class="helpicon" src="Content/Icons/advanced-search.png" title="Advanced Search" type="image" /> helps users to search for employee details with specific data in known data fields. The data being searched for can be selected from the list boxes or entered into text boxes provided against the data fields. Click on the <span class="header2"> Search </span>button and the data grid will befilteredwith employee records having data matching the specified criteria.  </p>
+                <p>The Search criteria once created will be saved and will be available throughout the current session. For searching with First Name or Last Name, on entering the first character, all employee na.mes starting with that will be listed in the list box provided. User can select the required employee from the list </p>
+                <p>Fields to be displayed in the Search window can be set using the <span class="header2"> Configure </span> <img class="config helpicon" src="Content/Icons/filter-config-icon.png" alt="Configure" /> icon, provided in the Search window. </p>
+                <p>Search criteria entered in the Search window can be cleared by clicking the Clear button provided in the Search window. After clearing the Search criteria and click Search button to clear the Search Results in the Data grid.</p>
+                <h2>Show Scheduled Moves</h2>
+                <p>This option lists the Employees which are already scheduled for move (but not executed) to this floor through Space Planning.</p>
+
+            </div>
+        </section>
+    </content>
+</page>
+<style type="text/css">
+    h3.Mainheader {
+        color: #178AE8;
+    }
+
+    .header1 {
+        font-weight: bold;
+        color: #178AE8;
+    }
+
+    .header2 {
+        font-weight: normal;
+        color: #178AE8;
+    }
+
+    p {
+        margin-left: 38px;
+        font-size: 13px;
+        margin-right: 3em;
+    }
+
+    .header3 {
+        font-weight: bold;
+        color: black;
+    }
+    /**/ h1 {
+        color: #178AE8;
+        font-size: 1.3em;
+        margin-left: 38px;
+    }
+
+    h2 {
+        color: #178AE8;
+        font-size: 1em;
+        margin-left: 38px;
+    }
+
+    .config {
+        background-color: #178AE8;
+    }
+
+    .helpicon {
+        vertical-align: baseline;
+        width: 20px;
+        height: 20px;
+    }
+</style>

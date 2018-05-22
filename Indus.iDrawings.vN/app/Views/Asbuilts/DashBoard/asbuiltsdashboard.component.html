@@ -1,0 +1,181 @@
+﻿<page [pagetitle]="pagePath" [withoutSubmenu]="true">
+    <content>
+        <dashboard style="height:80%;">
+            <div *ngFor="let item of itemsSource" >
+                <widget style="text-align:left !important;padding:2px; width: 50%;float: left;height: 50%;display:block;">
+                    <div>
+                        <div style="font-weight:bold;float:left;width:100%;text-align:left;background-color:#c1c1c1"> Building: {{item.Building}} </div>
+                        <div>
+                            <div>
+                                <div style="float:left;width:50%;display:inline-flex">
+                                    <div style="min-width:110px">Site</div><div style="width:180px;text-overflow:ellipsis;overflow:hidden">:&nbsp;{{item.Site}}</div>
+                                </div>
+                                <div style="float:right;width:50%;display:inline-flex">
+                                    <div style="min-width:110px">Gross Area</div><div style="width:180px;text-overflow:ellipsis;overflow:hidden">:&nbsp;{{item["Gross Area"]}} {{AreaUnit}}</div>
+                                </div>
+                            </div>
+                            <div>
+                                <div style="float:left;width:50%;display:inline-flex">
+                                    <div style="min-width:110px">Floors</div><div style="width:180px;text-overflow:ellipsis;overflow:hidden">:&nbsp;{{item.Floors}}</div>
+                                </div>
+                                <div style="float:right;width:50%;display:inline-flex">
+                                    <div style="min-width:110px">Net Area</div><div style="width:180px;text-overflow:ellipsis;overflow:hidden">:&nbsp;{{item["Net Area"]}} {{AreaUnit}}</div>
+                                </div>
+                            </div>
+                            <div>
+                                <div style="float:left;width:50%;display:inline-flex">
+                                    <div style="min-width:110px">Code</div><div style="width:180px;text-overflow:ellipsis;overflow:hidden">:&nbsp;{{item.Code}}</div>
+                                </div>
+                                <div style="float:right;width:50%;display:inline-flex">
+                                    <div style="min-width:110px">Drawing Count</div><div style="width:180px;text-overflow:ellipsis;overflow:hidden">:&nbsp;{{item["Drawing Count"]}}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="font-weight:bold;float:left;width:100%;text-align:left"> Drawing Category </div>
+                        <div class="pieChartDiv">
+                            <piechart *ngIf="DrawingCategoryCountMap[item.BuildingId] != undefined" [sourceData]="DrawingCategoryCountMap[item.BuildingId]"> </piechart>
+                        </div>
+                        <div *ngIf="BuildingImageMap != undefined && BuildingImageMap[item.BuildingId] != undefined" class="imageViewDiv">
+                            <img src={{BuildingImageMap[item.BuildingId]}} class="imageView" />
+                        </div>
+                    </div>
+                 </widget>                                
+            </div>
+            <div *ngIf="sourceLength == 0">
+                <div style="text-align:center;vertical-align:middle;line-height:50">
+                    <div style="font-weight:bold;float:left;width:100%;"> No Buildings exist </div>
+                </div>
+            </div>
+        </dashboard>
+    </content>
+</page>
+
+<style>
+    @media only screen 
+    and (min-device-width: 320px) 
+    and (max-device-width: 812px) 
+    and (orientation: portrait) { 
+            widget 
+            {
+                width: 100%!important;float: left;height:unset!important;display:block;
+            }
+            /*.pieChartDiv{
+                width: 50%;
+                height: 70%;
+                left: -60%;
+                position: relative;
+            }
+            .imageViewDiv {
+                left: 50%;
+                top: -65px;
+                position: relative;
+                width: 50%;
+            }
+            .imageView {
+                width: 110px;
+                height: auto;
+                margin-left: 10%;
+                margin-top: 10%;
+             }*/
+
+    }
+
+    @media only screen and (min-device-width: 320px) 
+                    and (max-device-width: 812px) 
+                    and (orientation: landscape) 
+    {
+
+            widget 
+            {
+                width: 100%!important;float: left;height:unset!important;display:block;
+            }
+            /*.pieChartDiv{
+                width: 50%;
+                height: 70%;
+                left: -15%;
+                position: relative;
+            }
+
+           .imageViewDiv {
+                left: 50%;
+                top: -105px;
+                position: relative;
+                width: 50%;
+            }
+
+           .imageView {
+                width: 150px;
+                height: auto;
+                margin-left: 10%;
+                margin-top: 10%;
+            }*/
+    }
+
+
+    @media all and (max-width: 800px) {
+            .pieChartDiv{
+                width: 50%;
+                height: 70%;
+                left: -50%;
+                position: relative;
+            }
+            .imageViewDiv {
+                left: 50%;
+                top: -25px;
+                position: relative;
+                width: 50%;
+            }
+            .imageView {
+                /*width: 110px;*/
+                /*height: auto;*/
+                 height: 70px;
+                margin-left: 10%;
+                margin-top: 10%;
+             }
+    }
+
+     @media  (min-width:900px) {
+           .pieChartDiv{
+                width: 50%;
+                height: 70%;
+                left: -15%;
+                position: relative;
+           }
+
+           .imageViewDiv {
+                left: 70%;
+                top: -60px;
+                position: relative;
+                width: 50%;
+            }
+
+           .imageView {
+                /*width: 150px;*/
+                /*height: auto;*/
+                height: 110px;
+                margin-left: 10%;
+                margin-top: 10%;
+            }
+    }
+
+   /*.pieChartDiv{
+        width: 50%;
+        height: 70%;
+        left: -15%;
+        position: relative;
+   }
+
+   .imageViewDiv {
+        left: 50%;
+        top: -105px;
+        position: relative;
+        width: 50%;
+    }
+
+   .imageView {
+        width: 150px;
+        height: auto;
+        margin-left: 10%;
+        margin-top: 10%;
+    }*/
+</style>

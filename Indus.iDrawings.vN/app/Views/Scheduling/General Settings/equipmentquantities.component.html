@@ -1,0 +1,36 @@
+﻿<split-view [splitviewObject]="splitviewequipmentquantity" [pageTitle]="splitViewTitle" (onSecondaryClose)="onSplitViewClose($event)">
+    <primary-view>
+        <div style="height:80%">
+            <div style="height:35px;">
+                <submenu>
+                    <sub-menu [menuCard]=true [source]=equipmentquantityMenu [count]=equipmentquantityMenuTotalItems [menuIds]=enableaequipmentquantityMenu (onSubMenuChange)="updateequipmentquantityMenu($event);"> </sub-menu>
+                </submenu>
+            </div>
+            <div style="height:calc(100% - 70px)" [ngClass]="totalItems > itemsPerPage ? 'pagewithPaging':'pagewithoutPaging'">
+                <gridView [dataSource]="itemsSource" [properties]="inputItems" [columns]="fieldObject" [refreshgrid]="refreshgrid" [arrHighlightRowIds]="arrHighlightRowIds" (onSorting)="onSort($event)"></gridView>
+            </div>
+            <div style="height:35px">
+                <paging *ngIf="totalItems >itemsPerPage ? 'true' : 'false'" [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="onPageChanged($event);"></paging>
+            </div>
+        </div>
+    </primary-view>
+    <secondary-view *ngIf="splitviewequipmentquantity.showSecondaryView == true">
+        <DynamicFields [dataSource]="fieldDetailsSpaceEdit" (submitFieldObject)="onSubmitData($event)" [btnName]="btnName" (fieldChange)="fieldChange($event)"></DynamicFields>
+    </secondary-view>
+</split-view>
+
+<slide [width]="300" [position]="position" [type]="dialog" [show]="showSlide" (closeDialog)="closeSlideDialog($event,1)">
+
+    <div>
+        <div aria-label="Are you sure you want to delete the selected Equipment Quantity?" tabindex="0">
+            Are you sure you want to delete the selected Equipment Quantity?
+        </div>
+        <div>
+
+            <div style="width:100%">
+                <button class="Savebutton " type="button" (click)="okDelete($event)" aria-label="Yes">Yes</button>
+                <button class="Savebutton " type="button" (click)="cancelClick($event,1)" aria-label="No">No</button>
+            </div>
+        </div>
+    </div>
+</slide>

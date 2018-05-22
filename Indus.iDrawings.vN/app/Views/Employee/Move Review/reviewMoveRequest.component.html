@@ -1,0 +1,76 @@
+﻿<div style="height:100%;overflow: hidden;">
+    <split-view [splitviewObject]="splitviewInput" [pageTitle]="pageTitle">
+        <primary-view>
+            <div style="margin-top: 2px;height: 33px;">             
+              <button class="Savebutton " style="margin-right:5px;" type="button" (click)="onHistoryBtnClick($event)">History</button>
+            </div>
+            <div *ngIf="employeeDetailsinputItems != undefined && employeeitemsSource != undefined" style="height:100px;width:100%;padding-top:10px;">
+                <gridView *ngIf="employeeDetailsinputItems != undefined && employeeitemsSource != undefined" [(dataSource)]="employeeitemsSource" [properties]="employeeDetailsinputItems" [(columns)]="employeeDetailsfieldObject" (onSorting)="onEmployeeDetailsSort($event)" (onColValClick)="onHyperLinkClick($event)"></gridView>
+            </div>
+            <div *ngIf="linkArray == undefined" style="height: calc(100% - 145px)">
+                <DynamicFields *ngIf="fieldDetailsAdd != undefined" id="reviewEmployeeMoveRequest" [dataSource]="fieldDetailsAdd" (submitFieldObject)="onSubmitData($event)"
+                               [btnName]="btnName" [dataKey]="dataKey" (fieldChange)="onDropDownChange($event.ddlRelationShipEvent.ChildFieldObject)"></DynamicFields>
+            </div>
+        </primary-view>
+        <secondary-view *ngIf="splitviewInput.showSecondaryView">
+           <review-resource  *ngIf="secondaryViewTarget == 1" [selEmpId]="employeeDetailsinputItems.selectedIds[0]"  [moveReqId]="inputItems.rowData['MoveId']" (resoureDeleteEmit)="resoureDeleteEmit($event)"></review-resource>
+            <empreviewhistory *ngIf="secondaryViewTarget == 2"  [workflowCatId]="inputItems.rowData['WorkFlowEntityId']"></empreviewhistory>
+        </secondary-view>
+    </split-view>
+</div>
+<slide [width]="slidewidth" [position]="'top-right'" [show]="showSlide" (closeDialog)="closeSlideDialog($event)">
+    <div *ngIf="showSlide==true">
+        <div tabindex="0">
+            {{slideMsg}}
+        </div>
+        <div>
+            <button class="Savebutton " type="button" (click)="YesSlideClick($event)">Yes</button>
+            <button class="Savebutton " type="button" (click)="closeSlideDialog($event)">No</button>
+        </div>
+    </div>
+</slide>
+
+<style type="text/css">
+    @media only screen and (max-width: 768px) {
+        #TextAreaComponent:active ~ #reviewEmployeeMoveRequest #form {
+            margin-left: 6%;
+            height: 350% !important;
+            padding-top: 10px;
+        }
+    }
+
+    #moverequestpermissions-link {
+        text-decoration: none;
+        padding: 5px;
+        cursor: pointer;
+        border: 1px solid beige;
+        background-color: #178ae8;
+        color: white;
+        border-radius: 5px;
+        margin-right: 0.5%;
+    }
+
+    #reviewEmployeeMoveRequest #form .list-group div {
+        min-height: 0px !important;
+    }
+
+    #reviewEmployeeMoveRequest #form {
+        margin-left: 1.5%;
+        height: calc(100% - 40px);
+        padding-top: 5px;
+    }
+
+        #reviewEmployeeMoveRequest #form .list-group {
+            background-color: #ffffff;
+        }
+
+    #reviewEmployeeMoveRequest .MainContainer_1259 #TextAreaComponent div span textarea {
+        width: 100% !important;
+        height: 100px !important;
+    }
+
+    #reviewEmployeeMoveRequest .MainContainer_1260 #TextAreaComponent div span textarea {
+        width: 100% !important;
+        height: 100px !important;
+    }
+</style>

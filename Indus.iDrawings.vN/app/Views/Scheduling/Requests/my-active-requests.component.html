@@ -1,0 +1,191 @@
+﻿<page [pagetitle]="pagePath" [withoutSubmenu]="true">
+    <pagepath>
+    </pagepath>
+    <content>
+        <tabs [selectedTab]="selectedTab" (getSelectedTab)="getSelectedTab($event)" (onTabClose)="onTabClose($event)" [deleteIndex]="deleteIndex">
+            <tab tabTitle="My Reservations" closeButtonVisible="hidden">
+                <div>
+                    <split-view [splitviewObject]="splitviewInput" [pageTitle]="pageTitle">
+                        <primary-view>
+                            <div>
+                                <submenu>
+                                    <sub-menu [source]=menuData [count]=totalItems [menuIds]=enableMenu (onSubMenuChange)="onSubMenuChange($event);"> </sub-menu>
+                                </submenu>
+                            </div>
+                            <div class="search-containerInline" *ngIf="myRequestsFlag==true">
+                                <searchforschedule [searchtype]="'Grid'" [Title]="searchTitle" [(showSearchFilter)]="showSearchFilter" [KeywordFields]=KeywordFieldObject [keyWordLookup]=keyWordLookup [disable]="disable" [Key]=2 [advancesearch]=true [Customsearch]=false [datasource]=advancelookup [Target]="1" (SaveAs)="SaveAs($event)" (Delete)="Delete($event)" (onloadSearch)="keywordSearchSubmit($event,1)" (loadAdvanceSearch)="AdvanceSearch(1)" (Clear)="Clear($event,1)" (Submit)="advanceSearchSubmit($event,1)" [smartSearch]=isSmartSearch [isShowConfigure]=false></searchforschedule>
+
+                            </div>
+                            <div style="width:100%;height:28px;padding:2px;"><input (click)="chkboxClick($event,1)" type="checkbox" id="inpChk" style="width:15px" checked /> <span style="padding-left:2px;font-size:small;color:black;"> Show active reservations</span></div>
+                            <div style="overflow: hidden;height:calc(100% - 65px);">
+                                <div style="height:100%;overflow: hidden;">
+                                    <div [ngClass]="totalItems > itemsPerPage ? 'pagewithPaging':'pagewithoutPaging'">
+                                        <slide></slide>
+                                        <gridView [(dataSource)]="itemsSource" [properties]="inputItems" [columns]="fieldObject" [refreshgrid]="refreshgrid" (onSorting)="onSort($event)" (onRowDelete)="inlineDelete($event)"></gridView>
+                                    </div>
+                                    <div [style.height]="totalItems >itemsPerPage ? '45px' : '0px'">
+                                        <paging [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="pageChanged($event);"></paging>
+                                    </div>
+                                </div>
+                            </div>
+                        </primary-view>
+                        <secondary-view *ngIf="copyRequsetFlag == true">
+                            <reservation-request style="display: block;width:770px;" [fieldDetailsAdd]="fieldDetailsAdd" [target]="target"></reservation-request>
+                        </secondary-view>
+                        <secondary-view>
+                            <my-active-request-edit *ngIf="action == 'edit' && myreqedit == true " (submitSuccess)="submitReturn($event)" [btnName]="btnName" [selectedId]="inputItems.selectedIds[0]" [fieldDetailsAdd]="fieldDetailsAdd1" [action]="action" [SpaceTime]="SpaceTime" [ReservedUserId]="ReservedUserId" [SpaceId]="SpaceId" [RoomCapacity]="roomCapacity"></my-active-request-edit>
+                        </secondary-view>
+                    </split-view>
+                    <!--div [ngClass]="totalItems > itemsPerPage ? 'pagewithPaging':'pagewithoutPaging'">
+                        <gridView [(dataSource)]="itemsSource" [properties]="inputItems" [columns]="fieldObject" [refreshgrid]="refreshgrid" (onSorting)="onSort($event)" (onRowDelete)="inlineDelete($event)"></gridView>
+                    </div>
+                    <div [style.height]="totalItems >itemsPerPage ? '35px' : '0px'">
+                        <paging [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="pageChanged($event);"></paging>
+                    </div>-->
+                </div>
+            </tab>
+            <tab *ngIf="userRoleFlag == true" tabTitle="Active Reservations" closeButtonVisible="hidden">
+                <div>
+                    <split-view [splitviewObject]="splitviewInput" [pageTitle]="pageTitle">
+                        <primary-view>
+                            <div>
+                                <submenu>
+                                    <sub-menu [source]=menuDataActiveRequests [count]=totalItemsActiveRequests [menuIds]=enableMenuActiveRequests (onSubMenuChange)="onSubMenuChangeActiveRequests($event);"> </sub-menu>
+                                </submenu>
+                            </div>
+                            <div class="search-containerInline" *ngIf="activeRequestsFlag==true">
+                                <searchforschedule *ngIf="activeRequestsFlag==true" [Title]="searchTitle" [searchtype]="'Grid'" [(showSearchFilter)]="showSearchFilter" [KeywordFields]=KeywordFieldObject [keyWordLookup]=keyWordLookup [disable]="disable" [Key]=2 [advancesearch]=true [Customsearch]=false [datasource]=advancelookup [Target]="1" (SaveAs)="SaveAs($event)" (Delete)="Delete($event)" (onloadSearch)="keywordSearchSubmit($event,2)" (loadAdvanceSearch)="AdvanceSearch(2)" (Clear)="Clear($event,2)" (Submit)="advanceSearchSubmit($event,2)" [smartSearch]=isSmartSearch [isShowConfigure]=false></searchforschedule>
+                            </div>
+                            <div style="width:100%;height:28px;padding:2px;"><input (click)="chkboxClick($event,2)" type="checkbox" id="inpChk2" style="width:15px" checked /> <span style="padding-left:2px;font-size:small;color:black;"> Show active reservations</span></div>
+                            <div style="overflow: hidden;height:calc(100% - 65px);">
+                                <div style="height:100%;overflow: hidden;">
+                                    <div [ngClass]="totalItemsActiveRequests > itemsPerPageActiveRequests ? 'pagewithPaging':'pagewithoutPaging'">
+                                        <slide></slide>
+                                        <gridView [(dataSource)]="itemsSourceActiveRequests" [properties]="inputItemsActiveRequests" [columns]="fieldObjectActiveRequests" [refreshgrid]="refreshgrid" (onSorting)="onSortActiveRequests($event)" (onRowDelete)="inlineDeleteActiveRequests($event)"></gridView>
+                                    </div>
+                                    <div [style.height]="totalItemsActiveRequests >itemsPerPageActiveRequests ? '35px' : '0px'">
+                                        <paging [totalItems]="totalItemsActiveRequests" [itemsPerPage]="itemsPerPageActiveRequests" (onPageChanged)="pageChangedActiveRequests($event);"></paging>
+                                    </div>
+                                </div>
+                            </div>
+                        </primary-view>
+                        <secondary-view>
+                            <my-active-request-edit *ngIf="action == 'edit' && activereqedit == true" (submitSuccess)="submitReturn($event)" [btnName]="btnName" [selectedId]="inputItemsActiveRequests.selectedIds[0]" [fieldDetailsAdd]="fieldDetailsAdd1" [action]="action" [SpaceTime]="SpaceTime" [ReservedUserId]="ReservedUserId" [SpaceId]="SpaceId" [RoomCapacity]="roomCapacity"></my-active-request-edit>
+                        </secondary-view>
+                    </split-view>
+                </div>
+            </tab>
+        </tabs>
+        <slide [width]="200" [position]="position" [type]="dialog" [show]="showSlide" (closeDialog)="closeSlideDialog($event)">
+
+            <div>
+                <div tabindex="0" [attr.aria-label]="''+message">
+                    {{message}}
+                </div>
+                <div>
+
+                    <div style="width:100%">
+                        <button class="Savebutton " type="button" (click)="okDelete($event)">Yes</button>
+                        <button class="Savebutton " type="button" (click)="cancelClick($event)">No</button>
+                    </div>
+                </div>
+            </div>
+        </slide>
+        <slide [width]="200" [position]="positionCheckIn" [type]="dialogCheckIn" [show]="showSlideCheckIn" (closeDialog)="closeSlideDialogCheckIn($event)">
+
+            <div>
+                <div tabindex="0" [attr.aria-label]="''+messageCheckIn">
+                    {{messageCheckIn}}
+                </div>
+                <div>
+
+                    <div style="width:100%">
+                        <button class="Savebutton " type="button" (click)="okDeleteCheckIn($event)">Yes</button>
+                        <button class="Savebutton " type="button" (click)="cancelClickCheckIn($event)">No</button>
+                    </div>
+                </div>
+            </div>
+        </slide>
+        <slide [width]="200" [position]="positionCheckOut" [type]="dialogCheckOut" [show]="showSlideCheckOut" (closeDialog)="closeSlideDialogCheckOut($event)">
+
+            <div>
+                <div tabindex="0" [attr.aria-label]="''+messageCheckOut">
+                    {{messageCheckOut}}
+                </div>
+                <div>
+
+                    <div style="width:100%">
+                        <button class="Savebutton " type="button" (click)="okDeleteCheckOut($event)">Yes</button>
+                        <button class="Savebutton " type="button" (click)="cancelClickCheckOut($event)">No</button>
+                    </div>
+                </div>
+            </div>
+        </slide>
+        <slide [width]="600" [position]="positionInvitee" [type]="'dialog'" [show]="showSlideInvitee" [absolute]="'true'" (closeDialog)="closeSlideDialogInvitee($event)">
+            <div>
+                <div>
+                    <div tabindex="0" [attr.aria-label]="'Event Name ' +eventName" style="font-size: large;font-weight:700;">
+                        {{eventName}}
+                    </div>
+                    <div tabindex="0" [attr.aria-label]="'When '+when" style="margin-top:12px">
+                        When: {{when}}
+                    </div>
+                    <div tabindex="0" [attr.aria-label]="'Where '+where" style="margin-top:5px">
+                        Where: {{where}}
+                    </div>
+                    <div tabindex="0" [attr.aria-label]="'Who '" style="margin-top:5px">
+                        Who: <ul>
+                            <li role="none" tabindex="0" *ngFor="let array of whoArrayList" [attr.aria-label]="array.Name">{{array.Name}}</li>
+                        </ul>
+                    </div>
+                    <div tabindex="0" aria-label="Invitee availability status" style="margin-left:75px;color: brown">
+                        Invitee availability status   <span tabindex="0" aria-label="Green Yes" style="display:-webkit-inline-box;display:-ms-inline-flexbox; width:15px;height:10px;background-color:green;color:green;margin-left: 12px"></span> Yes   <span tabindex="0" aria-label="Red No" style="display:-webkit-inline-box;display:-ms-inline-flexbox;width:15px;height:10px;background-color:red;color:red;margin-left: 12px"></span> No   <span tabindex="0" aria-label="Black No Action Taken" style="display:-webkit-inline-box;display:-ms-inline-flexbox;width:15px;height:10px;background-color:black;color:black;margin-left: 12px"></span> No Action Taken
+                    </div>
+                </div>
+            </div>
+        </slide>
+    </content>
+</page>
+<style type="text/css">
+    li {
+        list-style: none;
+    }
+
+        li:before {
+            /* For a round bullet */
+            /*content: '\2022';*/
+            /* For a square bullet */
+            content: '\25A0';
+            display: block;
+            position: relative;
+            max-width: 0px;
+            max-height: 6px;
+            left: -13px;
+            top: -0px;
+            color: black;
+            font-size: 20px;
+        }
+
+    .search-containerInline {
+        position: fixed !important;
+        position: -ms-page !important;
+        overflow: visible;
+        right: 0;
+        top: 134px !important;
+        margin-right: 10px;
+        z-index: 10;
+    }
+     @media screen and (max-width: 480px) {
+        .search-containerInline 
+        {
+            display:none!important;
+        }
+    }
+
+    @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+
+        :host .background-block-slide {
+            position: -ms-page !important;
+        }
+    }
+</style>

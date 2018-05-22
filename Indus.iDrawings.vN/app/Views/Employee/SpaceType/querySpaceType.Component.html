@@ -1,0 +1,28 @@
+﻿
+<split-view [splitviewObject]="splitviewInput" [pageTitle]="'Save Search'" (onSecondaryClose)="onSplitViewClose($event,1)">
+    <primary-view>
+        <submenu>
+            <sub-menu [source]=menuData [count]="'3'" [menuCard]=true [menuIds]=enableMenu (onSubMenuChange)="onSubMenuChange($event)"> </sub-menu>
+        </submenu>
+        <div *ngIf="spaceTypeObj">
+            <StringTextBox id="ddlsearchNames"   [fieldObject]="spaceTypeObj[1]"></StringTextBox>
+        </div>
+        <div style="height:100%;">
+            <div style="overflow-y:auto;height:calc(100% - 35px);width:100%;overflow-x:hidden">
+                <div class="container">
+                    <div class="alert alert-info" style="margin-top:30px;margin-right:30px;padding-right:100px">
+                        <qbsearchquery [datasource]="QueryBuilderObj"></qbsearchquery>
+                    </div>
+                    <br />
+                </div>
+                <qbgroup *ngIf="genericfieldobjects" [groupFields]="QueryBuilderObj" [(genericfieldobjects)]="genericfieldobjects"></qbgroup>
+            </div>
+        </div>
+    </primary-view>
+    <secondary-view *ngIf="isSaveClicked==true">
+        <div style="width:100%;">
+            <DynamicFields *ngIf="splitviewInput.showSecondaryView==true && fieldDetailsAdd!=undefined && isSaveClicked==true" [btnName]="'Save'" [dataSource]="fieldDetailsAdd" (submitFieldObject)="onSubmitData($event)"></DynamicFields>
+        </div>
+    </secondary-view>
+</split-view>
+

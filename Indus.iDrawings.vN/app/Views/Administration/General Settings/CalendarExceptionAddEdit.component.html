@@ -1,0 +1,168 @@
+﻿<div style="height:100%">
+    <split-view [splitviewObject]="splitviewInput" [pageTitle]="pageTitle" style="height: 100%;">
+        <primary-view>
+            <div style="display: block;width:100%;height:100%">
+                <div style="width:100%">
+                    <DynamicFields id="calenderFields" style="display: inline-block;width:100%;" [dataSource]="exceptionAddEditfields" (submitFieldObject)="onSubmitData($event)" [btnName]="btnName" [dataKey]="dataKey" (rbnChange)="radioBtnChange($event)" (fieldChange)="fieldChange($event)"></DynamicFields>
+                </div>
+                <div style="display: inline-flex;margin-top: 25px;width:100%;margin-bottom: 25px;" id="changetime">
+                    <div style="width:350px;height:100px;display:inline-block">
+                        <gridView [(dataSource)]="itemsSourceGrid" [properties]="inputItems" [columns]="fieldObject" [refreshgrid]="refreshgrid" (onSorting)="onSort($event)"></gridView>
+                    </div>
+                    <div *ngIf="enableBtn" style="width:50px;display:inline;margin-left: 5px;white-space: nowrap;">
+                        <button class="Savebutton Savebtn" type="button" (click)="ChangeTimeClick()" [hidden]="enableButton">Change Time</button>
+                    </div>
+                    <div *ngIf="!enableBtn" style="width:50px;display:inline;margin-left: 5px;white-space: nowrap;">
+                        <button class="Savebutton Savebtn" type="button" [hidden]="enableButton" style="background-color:#bababa !important">Change Time</button>
+                    </div>
+                </div>
+            </div>
+        </primary-view>
+        <secondary-view *ngIf="splitviewInput.showSecondaryView == true">
+            <setWorkingTime [calendarName]="calendarName" (submitSuccess)="submitWorkTime($event)" [workTimedata]="workTime"></setWorkingTime>
+        </secondary-view>
+    </split-view>
+</div>
+<style>
+
+    /*:host #calenderFields .list-group
+    {
+      overflow:visible !important;
+      height:100% !important;
+    }*/
+
+    .MainContainer_2904 {
+        height: 28px !important;
+    }
+    .MainContainer_2907 {
+        height: 28px !important;
+    }
+    .MainContainer_2904 {
+        height: 28px !important;
+    }
+    .MainContainer_2893 {
+        height: 28px !important;
+    }
+    .MainContainer_2903 {
+        height: 28px !important;
+    }
+    .MainContainer_2892 {
+        height: 28px !important;
+    }
+    .MainContainer_2895 {
+        height: 28px !important;
+    }
+    .MainContainer_2906 {
+        height: 28px !important;
+    }
+    .MainContainer_2894 {
+        height: 28px !important;
+    }
+    .MainContainer_2886 {
+        display: inline-block !important;
+        width: 265px !important;
+    }
+    .Radio-2886 {
+        display: block !important;
+    }
+    .Radio-2888 {
+        display: block !important;
+        margin-left: 207px;
+        margin-top: 29px;
+    }
+    .Radio-2905 {
+        display: block !important;
+        margin-left: 207px;
+        margin-top: 29px;
+    }
+    .MainContainer_2905 {
+        margin-left: -78px;
+        margin-top: -94px;
+    }
+    .MainContainer_2905 {
+        margin-top: -93px;
+    }
+    .MainContainer_2887 {
+        margin-left: 251px;
+        margin-top: -108px;
+    }
+    .MainContainer_2887 {
+        margin-left: 251px;
+        margin-top: -108px;
+    }
+    .MainContainer_2889 {
+        margin-left: 251px;
+    }
+    .MainContainer_2888 {
+        margin-left: -91px;
+        margin-top: -61px;
+    }
+    .MainContainer_2893 {
+        margin-left: 246px;
+        margin-top: -100px;
+    }
+    .MainContainer_2892 {
+        margin-left: 246px;
+    }
+    .MainContainer_2901 {
+        margin-left: 246px;
+    }
+    .MainContainer_2903 {
+        margin-left: 246px;
+    }
+    .MainContainer_2902 {
+        margin-left: 246px;
+    }
+    #2893 {
+        width: auto;
+        max-width: 250px;
+    }
+    #2901 {
+        width: auto;
+        max-width: 250px;
+    }
+    #2892 {
+        width: auto;
+        max-width: 250px;
+    }
+    #2902 {
+        width: auto;
+        max-width: 250px;
+    }
+    .MainContainer_2906 {
+        margin-left: 246px;
+        margin-top: -92px;
+    }
+    .MainContainer_2894 {
+        margin-left: 246px;
+    }
+    .MainContainer_2907 {
+        margin-left: 246px;
+    }
+    .MainContainer_2904 {
+        margin-left: 246px;
+    }
+    .MainContainer_2908 {
+        margin-left: 246px;
+    }
+    #2906 {
+        width: auto !important;
+    }
+    #2894 {
+        width: auto !important;
+    }
+    #2907 {
+        width: auto !important;
+    }
+    #2904 {
+        width: auto !important;
+    }
+    #2908 {
+        width: auto !important;
+    }
+    .MainContainer_2890 {
+        margin-top: 62px;
+    }
+</style>
+
+

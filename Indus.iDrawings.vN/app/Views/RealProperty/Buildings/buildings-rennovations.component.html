@@ -1,0 +1,36 @@
+﻿<div>
+        <submenu>
+            <sub-menu [menuCard]=types [source]=menuData [count]=totalItems [menuIds]=enableMenu (onSubMenuChange)="onSubMenuChange($event);"></sub-menu>
+        </submenu>   
+    <div style="width:100%;padding-bottom:1%;float:left;margin-top:5px;">
+        <div style="text-overflow:ellipsis;width:690px;overflow:hidden;" [title]=BuildingName>Building:&nbsp;<b>{{BuildingName}}</b></div>
+    </div>
+    <div style="width:100%;padding-bottom:1%;float:left;">
+        <split-view [splitviewObject]="splitviewInput" [pageTitle]="pageTitle" style="height: calc(85% - 35px);">
+            <primary-view>
+                <div>
+                    <div [ngClass]="totalItems > itemsPerPage ? 'pagewithPaging':'pagewithoutPaging'">
+                        <slide [width]="slidewidth" [position]="position" [show]="showSlide" (closeDialog)="closeSlideDialog($event)">
+                            <div>
+                                <div>Are you sure you want to delete the selected Renovation?  </div>
+                                <div style="width:100%">
+                                    <button  class="Savebutton "type="button" (click)="okDelete($event)">Yes</button>
+                                    <button  class="Savebutton "type="button" (click)="cancelClick($event)">No</button>
+                                </div>
+                            </div>
+                        </slide>
+                        <gridView [(dataSource)]="buildingrennovationSource" [properties]="inputItems" [columns]="fields" [refreshgrid]="refreshgrid"
+                                  (onSorting)="onSort($event)"></gridView>
+                    </div>
+                    <div [style.height]="totalItems >itemsPerPage ? '35px' : '0px'">
+                        <paging [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="pageChanged($event);"></paging>
+                    </div>
+                </div>
+            </primary-view>
+            <secondary-view>
+                <renovation-add-edit (submitSuccess)="submitReturn($event)" [action]="action" [btnName]="btnName" [selectedId]="selectedId" [fieldDetailsAdd]="fieldDetailsAdd1" [BuildingConstructionDate]="BuildingConstructionDate"></renovation-add-edit>
+            </secondary-view>
+        </split-view>
+    </div>
+</div>
+

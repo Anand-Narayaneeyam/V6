@@ -1,0 +1,60 @@
+﻿<page [pagetitle]="pagePath">
+    <content>
+        <div style="height:100%">
+            <split-view [splitviewObject]="splitviewInput" style="height:100%;">
+                <primary-view>
+                    <div>
+                        <tabs [selectedTab]="selectedTab" [deleteIndex]="tabDeleteIndex" (getSelectedTab)="getSelectedTab($event)">
+                            <tab tabTitle="Snapshots" closeButtonVisible="hidden">
+                                <div style="height:100%;">
+                                    <div style="height:35px;">
+                                        <submenu>
+                                            <sub-menu [menuCard]=true [source]=menuData [count]=gridcount [menuIds]=enableMenu (onSubMenuChange)="onSubMenuChange($event);"> </sub-menu>
+                                        </submenu>
+                                        </div>
+                                    <div style="overflow: hidden;height: calc(100% - 35px);">
+                                        <div style="height:100%;overflow: hidden;">
+                                            <div style="width:100%;display:block" [ngClass]="totalItems > itemsPerPage ? 'pagewithPaging':'pagewithoutPaging'">
+                                                <gridView [(dataSource)]="itemsSource" [properties]="inputItems" [columns]="fieldObject" (onSorting)="onSort($event)"></gridView>
+                                            </div>
+                                            <div style="height:45px;width:100%;float:left;display:block;">
+                                                <paging [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="pageChanged($event);"></paging>
+                                            </div>
+                                        </div>
+                                        </div>
+                                    </div>
+</tab>
+                            <tab tabTitle={{tabTitle}} closeButtonVisible="hidden" *ngIf="isReportshown != undefined">
+                                <submenu *ngIf="isCreateClicked">
+                                    <sub-menu [menuCard]=true [source]=menuReport [menuIds]=enableReportMenu (onSubMenuChange)="onSaveClick($event);"> </sub-menu>
+                                </submenu>
+                                <space-trend-reportviewer *ngIf="isCreateClicked || isViewClicked " [snapshotId]="snapshotId" [reportType]="reportType" [reportTitle]="ReportTitle" [pagePath]="pagePath"> </space-trend-reportviewer>
+                            </tab>
+                        </tabs>
+                    </div>
+                </primary-view>
+                <secondary-view>
+                    <div *ngIf="isCreateClicked" style="display:inline;width:100%">
+                        <DateComponent *ngIf="dateSelectorField != undefined" [fieldObject]="dateSelectorField" [showDateOnLoad]="true" (dateIconClick)="divClicked($event)"></DateComponent>
+                        <button  class="Savebutton "type="button" style="margin-left:3%;margin-top:5%;" (click)="onSaveSnapshot($event)">Save Snapshot</button>
+                    </div>
+                </secondary-view>
+            </split-view>
+            <slide [width]="200" [position]="position" [type]="dialog" [show]="showSlide" (closeDialog)="closeSlideDialog($event)">
+                <div>
+                    <div>
+                        Are you sure you want to delete the selected Snapshot?
+                    </div>
+                    <div>
+                        <div style="width:100%">
+                            <button  class="Savebutton "type="button" (click)="okDelete($event)">Yes</button>
+                            <button  class="Savebutton "type="button" (click)="cancelClick($event)">No</button>
+                        </div>
+                    </div>
+                </div>
+            </slide>
+
+        </div>
+    </content>
+</page>
+

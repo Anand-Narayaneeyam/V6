@@ -1,0 +1,22 @@
+﻿
+<tabs [(selectedTab)]="selectedTab" (getSelectedTab)="getSelectedTab($event)" [deleteIndex]="deleteIndex">
+    <tab tabTitle="Set Workflow" closeButtonVisible="hidden">
+        <setworkflow *ngIf="selectedTab == 0" [moduleId]="moduleId" [workFlowCategoryId]="workFlowCategoryId" [workTypeId]="workTypeId" (openWorkflow)="openWorkflow($event)"></setworkflow>
+    </tab>
+    <tab *ngIf="viewWorkflow" tabTitle="View Workflow" closeButtonVisible="hidden">
+        <openworkflow *ngIf="isOpenWorkflowComponentActive" [moduleId]="moduleId" [isNotInuse]="isNotInuse" [isCloseOnClick]="isCloseOnClick" [workTypeName]="workTypeName" [workFlowCategoryId]="workFlowCategoryId" [workTypeId]="workTypeId" (outOpenWorkflowobject)="getOpenWorkflowobject($event)" (drawChanged)="drawChanged($event)"></openworkflow>
+    </tab>
+</tabs>
+<slide [width]="310" [position]="'center'" [type]="dialog" [show]="showSlide" (closeDialog)="closeSlideConfirmDialog($event)">
+    <div>
+        <div tabindex="0" aria-label="Do you want to save the changes?">
+            Do you want to save the changes?
+        </div>
+        <div>
+            <div style="width:100%">
+                <button role="button" aria-label="Yes" tabindex="0" class="Savebutton "type="button" (click)="okWorkFlowDiagramSave($event)">Yes</button>
+                <button role="button" aria-label="No" tabindex="0" class="Savebutton "type="button" (click)="closeSlideConfirmDialog($event)">No</button>
+            </div>
+        </div>
+    </div>
+</slide>

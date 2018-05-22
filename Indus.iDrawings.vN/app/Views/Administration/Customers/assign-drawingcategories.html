@@ -1,0 +1,17 @@
+﻿<div style="height:100%">
+
+    <div style="height:40px;margin-top:10px">
+        <button role="button" [attr.aria-label]="btnSave" class="Savebutton " (click)="Update()" [disabled]="disableBtn">{{btnSave}}</button>
+    </div>
+    <div style="height:50px">
+        <DropDownListComponent *ngIf="ddlOrgName" [fieldObject]="ddlOrgName" [SetAlignment]=alignContent></DropDownListComponent>
+    </div>
+    <div style="height:50px">
+        <DropDownListComponent *ngIf="ddlModule" [fieldObject]="ddlModule" (change)="onChangeModule($event.target.value)" [SetAlignment]=alignContent></DropDownListComponent>
+    </div>
+    <div style="height:calc(100% - 157px);overflow: hidden;">
+        <div [ngClass]="totalItems > itemsPerPage ? 'pagewithPaging':'pagewithoutPaging'">
+            <gridView  [(dataSource)]="itemsSource" [properties]="inputItems" [columns]="fieldDetails" [refreshgrid]="refreshgrid" (onSorting)="onSort($event)" (onCellEdit)="onCellEdit($event)"></gridView>
+        </div>
+    </div>
+</div>

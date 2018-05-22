@@ -1,0 +1,30 @@
+﻿<page [pagetitle]="pagePath">
+    <content>
+        <tabs [selectedTab]="selectedTab" id="componentlistbytypereport" (getSelectedTab)="getSelectedTab($event)">
+            <tab tabTitle="Select Component Type" closeButtonVisible="hidden">
+                <div style="height:100%">
+                    <submenu>
+                        <sub-menu [source]=menuData [menuCard]=iscard [menuIds]=enableMenu (onSubMenuChange)="onSubMenuChange($event);"> </sub-menu>
+                    </submenu>
+                    <div *ngIf="ListboxData != undefined">
+                        <div style="display:inline;" *ngIf="ListboxData.LookupDetails.LookupValues !=undefined">
+                            <ListBoxComponent *ngIf="ListboxData.LookupDetails.LookupValues != undefined" (lstBox)="getListBoxData($event)" (selAll)="getListBoxData($event)" [fieldObject]=ListboxData></ListBoxComponent>
+
+                        </div>
+                    </div>
+                </div>
+            </tab>
+            <tab *ngIf="selectedIds != undefined" tabTitle="Report" closeButtonVisible="hidden">
+                <div style="height:100%" *ngIf="isNextClicked && selectedIds != undefined">
+                    <componentListbyType-report [Ids]="selectedIds"> </componentListbyType-report>
+                </div>
+            </tab>
+        </tabs>
+    </content>
+</page>
+
+<style>
+    #componentlistbytypereport .navbar li {
+        width: 170px !important;
+    }
+</style>

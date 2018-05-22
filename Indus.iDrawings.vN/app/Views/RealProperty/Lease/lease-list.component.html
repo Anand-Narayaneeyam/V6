@@ -1,0 +1,87 @@
+﻿<page [pagetitle]="pagePath">
+    <content>
+        <tabs [selectedTab]="selectedTab" (getSelectedTab)="getSelectedTab($event)" (onTabClose)="onTabClose($event)" [deleteIndex]="deleteIndex">
+            <tab tabTitle="Leases" closeButtonVisible="hidden">
+                <submenu>
+                    <sub-menu [menuCard]=true [source]=menuData [count]=totalItems [menuIds]=enableMenu (onSubMenuChange)="onSubMenuChange($event);"> </sub-menu>
+                </submenu>
+                <split-view [splitviewObject]="splitviewInput" [pageTitle]="pageTitle">
+                    <primary-view>
+                        <div style="height:100%;">
+                            <div [ngClass]="totalItems > itemsPerPage ? 'pagewithPaging':'pagewithoutPaging'">
+                                <slide [width]="slidewidth" [position]="position" [show]="showSlide" (closeDialog)="closeSlideDialog($event)">
+                                    <div>
+                                        <div>
+                                            Are you sure you want to delete the selected lease?
+                                        </div>
+                                        <div style="width:100%">
+                                            <button  class="Savebutton "type="button" (click)="okDelete($event)">Yes</button>
+                                            <button  class="Savebutton "type="button" (click)="cancelClick($event)">No</button>
+                                        </div>
+                                    </div>
+                                </slide>
+                                <gridView [(dataSource)]="itemsSource" [properties]="inputItems" [columns]="fieldObject" [refreshgrid]="refreshgrid" (onSorting)="onSort($event)"  (onContextMenuOnClick)="onContextMenuOnClick($event)"></gridView>
+                                <analytics *ngIf="showAnalytics" [properties]="analyticsInput" (closeAnalytics)="closeAnalytics($event)"></analytics>
+                            </div>
+                            <div  [style.height]="totalItems >itemsPerPage ? '35px' : '0px'">
+                                <paging [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="pageChanged($event);"></paging>
+                            </div>
+                        </div>
+                    </primary-view>
+                    <secondary-view *ngIf="secondaryTarget == 0">
+                        <lease-addedit *ngIf="splitviewInput.showSecondaryView == true" (submitSuccess)="OnSuccessfulSubmit($event)" [action]="action" [btnName]="btnName" [selectedId]="inputItems.selectedIds" [fieldDetailsAddEdit]="fieldDetailsAddEdit" [setFeatureLookupId]="setFeatureLookupId" [leaseTypeDdl]="leaseTypeDdl" [IsCostDataEntered]="IsCostDataEntered" [IsRentDataEntered]="IsRentDataEntered" [leaseStatus]="leaseStatus"></lease-addedit>
+                    </secondary-view>
+                    <secondary-view *ngIf="secondaryTarget == 1">
+                        <areacost-details *ngIf="splitviewInput.showSecondaryView == true" (submitSuccess)="OnCostAreaSubmit($event)"[action]="action" [btnName]="btnName" [selectedId]="inputItems.selectedIds" [fieldDetailsAreaCost]="fieldDetailsAreaCost" [leaseRenewalCount]="leaseRenewalCount"[showButton]="showCostButton"></areacost-details>
+                    </secondary-view>
+                    <secondary-view *ngIf="secondaryTarget == 2">
+                        <alert-contacts style="display: block;width:700px;" *ngIf="splitviewInput.showSecondaryView == true" (submitSuccess)="onSubmitAlert($event)"[selectedId]="inputItems.selectedIds" [leaseIdentifier]="leaseIdentifier"></alert-contacts>
+                    </secondary-view>
+                    <secondary-view *ngIf="secondaryTarget == 3">
+                        <rent-information *ngIf="splitviewInput.showSecondaryView == true" (submitSuccess)="OnRentInfoSubmit($event)" [btnName]="btnName" [selectedId]="inputItems.selectedIds" [fieldDetailsRentInfo]="fieldDetailsRentInfo" [annualBaseRent]="annualBaseRent" [showButton]="showRentInfoButton"[leaseRenewalCount]="leaseRenewalCount" [rentCommenceDate]="rentCommenceDate"></rent-information>
+                    </secondary-view>
+                    <secondary-view *ngIf="secondaryTarget == 4">
+                        <rent-payment style="display: block;width:800px;" *ngIf="splitviewInput.showSecondaryView == true" [leaseId]="inputItems.selectedIds" [leaseRenewalCount]="leaseRenewalCount" [leaseIdentifier]="leaseIdentifier"></rent-payment>
+                    </secondary-view>  
+                    <secondary-view *ngIf="secondaryTarget == 5">
+                        <sublease-addedit *ngIf="splitviewInput.showSecondaryView == true" (submitSuccess)="OnSuccessfulSubmit($event)" [action]="action" [btnName]="btnName" [selectedId]="inputItems.selectedIds" [fieldDetailsAddEdit]="fieldDetailsAddEdit"></sublease-addedit>
+                    </secondary-view>                    
+                    <secondary-view *ngIf="secondaryTarget == 6">
+                        <agreement-clauses style="display: block;width:800px;" *ngIf="splitviewInput.showSecondaryView == true" [leaseId]="inputItems.selectedIds" [leaseRenewalCount]="leaseRenewalCount" [leaseIdentifier]="leaseIdentifier" [pageTarget]="2"></agreement-clauses>
+                    </secondary-view>
+                    <secondary-view *ngIf="secondaryTarget == 7" style="display:block;height:100%;">
+                        <cancellation-clauses style="display: block;width:800px;height:100%;" *ngIf="splitviewInput.showSecondaryView == true" (submitSuccess)="onSubmitCancelClause($event)" [leaseId]="inputItems.selectedIds" [leaseRenewalCount]="leaseRenewalCount" [leaseStatus]="leaseStatus"></cancellation-clauses>
+                    </secondary-view>
+                    <secondary-view *ngIf="secondaryTarget == 8">
+                        <attachments class="attachment" *ngIf="splitviewInput.showSecondaryView == true" [attachmentCategoryId]="18" [moduleId]="30" [baseEntityId]="inputItems.selectedIds[0]" (attachmentSuccess)="attachmentSuccess($event)" [leaseRenewalCount]="leaseRenewalCount"></attachments>
+                    </secondary-view>
+                    <secondary-view *ngIf="secondaryTarget == 9">
+                        <leaseItemUpdate *ngIf="splitviewInput.showSecondaryView == true" style="display: block;width:800px;" [leaseId]="inputItems.selectedIds" [leaseRenewalCount]="leaseRenewalCount" [target]="target" [Hidebutton]="Hidebutton" (successReturn)="successReturn($event)"></leaseItemUpdate>
+                    </secondary-view>
+                </split-view>
+            </tab>
+            <tab tabTitle="Lease Renewal" *ngIf="leaseRenewalTab == true" closeButtonVisible="hidden">
+                <leaseRenewal-list *ngIf="selectedTab == 1" [selectedId]="inputItems.selectedIds" [leaseData]="inputItems.rowData"></leaseRenewal-list>
+            </tab>
+        </tabs>
+    </content>
+</page>
+<style>
+    .attachment {
+        width: 750px;
+        display: block;
+    }
+
+    @media only screen and (min-device-width: 320px) and (max-device-width: 813px) and (orientation: portrait) {
+        .attachment {
+            width: 100%!important;
+        }
+    }
+
+    @media only screen and (min-device-width: 320px) and (max-device-width: 812px) and (orientation: landscape) {
+        .attachment {
+            width: 100%!important;
+        }
+    }
+</style>
+

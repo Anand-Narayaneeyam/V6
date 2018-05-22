@@ -1,0 +1,133 @@
+﻿[
+  {
+      "id": 1,
+      "title": "Administration",
+      "path": "/Drawinglist",
+      "subMenu": [
+        {
+          "id": 81,
+          "parentId": 8,
+          "title": "Users",
+          "path": "/users",
+          "subMenu": null
+        },
+        {
+            "id": 83,
+            "parentId": 8,
+            "title": "User Groups",
+            "path": "/user-groups",
+            "subMenu": null
+        },
+         {
+          "id": 84,
+          "parentId": 8,
+          "title": "Access Templates",
+          "path": "/access-templates",
+          "subMenu": null
+        }
+      ]
+  },
+  {
+    "id": 8,
+    "title": "As Builts",
+    "path": "",
+    "subMenu": [
+      {
+        "id": 80,
+        "parentId": 8,
+        "title": "General Settings",
+        "path": "/general-settings",
+        "subMenu": null
+      },
+      {
+        "id": 81,
+        "parentId": 8,
+        "title": "Drawing Settings",
+        "path": "/drawing-settings",
+        "subMenu": null
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "title": "Employee",
+    "path": "/addt",
+    "subMenu": [
+      {
+        "id": 80,
+        "parentId": 8,
+        "title": "Portfolio List",
+        "path": "/portfolio",
+        "subMenu": null
+      },
+      {
+        "id": 3,
+        "title": "Additional Data Fields",
+        "path": "/additional-datafields",
+        "subMenu": null
+      },
+      {
+        "id": 4,
+        "title": "Attachments",
+        "path": "/attachments",
+        "subMenu": null
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Space",
+    "path": "/space-resources",
+    "subMenu": [
+      {
+        "id": 80,
+        "parentId": 8,
+        "title": "Space Resources",
+        "path": "/space-resources",
+        "subMenu": null
+      },
+      {
+        "id": 81,
+        "parentId": 8,
+        "title": "Space General Settings",
+        "path": "/space-general-settings",
+        "subMenu": null
+      }      
+    ]
+  },
+  {
+    "id": 8,
+    "title": "Common-Drawings",
+    "path": "",
+    "subMenu": [
+     {
+        "id": 82,
+        "parentId": 8,
+        "title": "Space Data",
+        "path": "/spacedata",
+        "subMenu": null
+      },
+      {
+        "id": 83,
+        "parentId": 8,
+        "title": "Drawings",
+        "path": "/drawings",
+        "subMenu": null
+      }     
+    ]
+  },
+  {
+    "id": 3,
+    "title": "common",
+    "path": "/addt",
+    "subMenu": [
+       {
+        "id": 83,
+        "parentId": 8,
+        "title": "Delete Space Data",
+        "path": "/delete-space-data",
+        "subMenu": null
+      }
+    ]
+  } 
+]

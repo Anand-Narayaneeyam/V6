@@ -1,0 +1,57 @@
+﻿[
+  {
+    "id": 2,
+    "title": "Settings",
+    "path": "/settings",
+    "subMenu": [
+      {
+        "id": 101,
+        "parentId": 8,
+        "title": "General Settings",
+        "path": "/realproperty-generalsettings",
+        "subMenu": null
+      }
+    ]
+  },
+
+  {
+    "id": 8,
+    "title": "main-menu",
+    "path": "",
+    "subMenu": [
+
+      {
+        "id": 102,
+        "parentId": 8,
+        "title": "Lease",
+        "path": "/realproperty-lease",
+        "subMenu": null
+      },
+      {
+        "id": 103,
+        "parentId": 8,
+        "title": "Lease Planning",
+        "path": "/realproperty-lease",
+        "subMenu": null
+      } 
+    ]
+  },
+
+
+  {
+    "id": 8,
+    "title": "Buildings1",
+    "path": "/Buildings12",
+    "subMenu": [
+      {
+        "id": 102,
+        "parentId": 8,
+        "title": "Buildings",
+        "path": "/realproperty-buildings",
+        "subMenu": null
+      }
+    ]
+  } 
+  
+        
+]

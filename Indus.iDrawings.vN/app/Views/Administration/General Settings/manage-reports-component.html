@@ -1,0 +1,39 @@
+﻿<content>
+    <split-view [splitviewObject]="splitviewInput" [pageTitle]="pageTitle" (onSecondaryClose)="onSplitViewClose($event)">
+        <primary-view>
+            <div>
+                <div>
+                    <submenu>
+                        <sub-menu [menuCard]=types [source]=menuData [count]=totalItems [menuIds]=enableMenu (onSubMenuChange)="onSubMenuChange($event);"> </sub-menu>
+                    </submenu>
+                </div>
+                <div *ngIf="itemsSource != undefined" style="height:calc(100% - 75px)">
+                    <div [ngClass]="totalItems > itemsPerPage ? 'pagewithPaging':'pagewithoutPaging'">
+                        <gridView [(dataSource)]="itemsSource" [properties]="inputItems" [columns]="fields" (onSorting)="onSort($event)" [refreshgrid]="refreshgrid"></gridView>
+                    </div>
+                    <div [style.height]="totalItems >itemsPerPage ? '35px' : '0px'">
+                        <paging [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="pageChanged($event);"></paging>
+                    </div>
+                </div>
+            </div>
+            <slide [width]="200" [position]="position" [type]="dialog" [show]="showSlide" (closeDialog)="closeSlideDialog($event)">
+
+                <div style="width:200px">
+                    <div tabindex="0" aria-label="Are you sure you want to delete the selected Scheduled Report?">
+                        {{deleteMsg}}
+                    </div>
+                    <div>
+                        <div style="width:100%">
+                            <button class="Savebutton " type="button" (click)="okDelete($event)" role="button" aria-label="Yes">Yes</button>
+                            <button class="Savebutton " type="button" (click)="cancelClick($event)" role="button" aria-label="No">No</button>
+                        </div>
+                    </div>
+                </div>
+            </slide>
+        </primary-view>
+        <secondary-view *ngIf="showSheduleReportAddEdit && splitviewInput.showSecondaryView==true">
+            <schedule-report-addedit (updateSuccess)="handleUpdateSuccess($event)" [isEdit]="isEdit" [reportName]="reportName" [fieldDetailsEdit]="fieldDetailsEdit"></schedule-report-addedit>
+        </secondary-view>
+    </split-view>
+</content>
+

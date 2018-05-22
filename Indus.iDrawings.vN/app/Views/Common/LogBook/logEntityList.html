@@ -1,0 +1,10 @@
+﻿<div *ngIf="itemsSourceLogEntities != undefined" style="height:90%;">
+    <gridView [dataSource]="itemsSourceLogEntities" [properties]="inputItems" [columns]="fieldObject"></gridView>
+    <button  class="Savebutton "type="button" (click)="getEntitySelection($event)">Next</button>
+</div>
+
+<style>
+    :host button {
+        position: -ms-device-fixed;
+    }
+</style>

@@ -1,0 +1,182 @@
+﻿<style>
+    .mainmoduleimage:focus {
+       outline: 1px solid white!important; 
+       outline-offset: 6px;
+    }
+     .generallist:focus {
+       outline: 1px solid #00a3e8!important;
+       outline-offset: 3px;
+    }
+</style>
+<div class="layout">
+    <header>
+        <div class="main-bar">
+            <div  class="mainmoduleimage" id="modulemenu" role="menuitem"  aria-label="Module Menu" (click)="toggleMenu()" (keypress)="onKeyPressEvent($event,1)" (focus)="onmodulemenufocus($event)" tabindex=1>
+                <div>
+                    <img *ngIf="!mainMenuVisibility" src="Content/Layout/module_view.png" />
+                    <img *ngIf="mainMenuVisibility" src="Content/Layout/module_view.png" />
+                </div>
+                <div class="module-selection" *ngIf="mainMenuVisibility">
+                    <div class="title-main-menu" (click)="toggleListMenu($event)">
+                        <div *ngIf="edited" class="showMenu hidden">
+                            <img src="Content/Images/show_more.png" />
+                        </div>
+                        <div *ngIf="!edited" class="showMenu hidden">
+                            <img src="Content/Layout/module_view.png" />
+                        </div>
+                    </div>
+                    <ul class="icons" *ngIf="edited">
+                        <a [routerLink]="['']" *ngFor="let mdlnme of modulesource;let last=last;let i=index" (click)="onModuleClick(mdlnme.id,$event)" (keypress)="onmoduleiconKeyPress(mdlnme.id,$event)">
+                            <li *ngIf="!last" role="menuitem" tabindex="{{i+1}}" [attr.aria-label]="''+mdlnme.title">
+                                <img [src]=imagePath(mdlnme.image)>
+                                <div class="module-name">{{mdlnme.title}}</div>
+                            </li>
+                            <li *ngIf="last" role="menuitem" tabindex="{{i+1}}" (focusout)="onfocusfunction()" [attr.aria-label]="''+mdlnme.title">
+                                <img [src]=imagePath(mdlnme.image)>
+                                <div class="module-name">{{mdlnme.title}}</div>
+                             </li>
+                        </a>
+                    </ul>
+                    <div *ngIf="!edited">
+                        <main-menu [menusource]=allmenusource type="overall"></main-menu>
+                    </div>
+                </div>
+            </div>
+            <div class="titlebar">
+                <img src="Content/Icons/iDrawings.png" class="idrawingsImg" style="width:160px;margin-top:7.5px;" />                
+            </div>
+            <span *ngIf="loggedInUserDetails != undefined && loggedInUserDetails['userroleid'] <3"  class="versionDetails" style="display: inline-block;margin-top: 3px;margin-left: 50px;color: white;font-weight: 500;text-decoration:underline;cursor:pointer" (click)="versionDetailsOnClick()" onmouseout='this.style.textDecoration="none"' onmouseover='this.style.textDecoration="underline"'>{{minorVersion}}</span>
+            <!--<div class="profile" (click)="onProfileClick()">
+
+            </div>-->
+            <div class="dropdown"  role="menuitem" aria-label="User Menu" style="color: #555; float: right; width: 73px; position: relative; height: 50px; text-align: left;" tabindex=0 (keypress)="onKeyPressEvent($event,2)" (mouseover)='onDropdownMouseover()' (mouseout)='onDropdownMouseout()'>
+                <img class="dropbtn" src="Content/Layout/user_icon.png" />
+                <div class="dropdown-content">
+                    <span tabindex=0 role="menuitem" (click)="onProfileClick()" (keypress)="onKeyPressEvent($event,3)">Personal Settings</span>
+                    <span tabindex=0 role="menuitem" (click)="onFeedbackClick()" (keypress)="onKeyPressEvent($event,4)">Feedback</span>
+                    <!--<span tabindex=0 role="menuitem" (click)="onHelpClick()" (keypress)="onKeyPressEvent($event,5)">Help</span>-->
+                    <!--<span>
+                        <a routerLink="/Dashboard" routerLinkActive="active">Dashboard</a>
+                    </span>-->
+                    <div style="padding: 7px;text-align: right;" *ngIf="!ssoEnable">
+                        <button  role="menuitem" tabindex=0 type="button" (click)="onLogoutClick()" style="width: auto;background: #178ae8 !important;padding: 5px 10px !important;color: #fff;border: 1px solid rgba(0, 0, 0, 0.2);border-radius: 6px !important;" (focusout)="onfocusOutLogOut($event)">
+                            Sign Out
+                        </button>                        
+                    </div>
+                </div>
+            </div>
+            <div class="help" role="menuitem" (click)="onHelpClick()" aria-label="Help" style="border-radius: 50%;height: 30px;width: 30px;background: white;overflow: hidden;top: 2px;" tabindex=0 (keypress)="onKeyPressEvent($event,5)">
+                <img src="Content/Icons/helpIcon.png" style="height: 34px;width: 34px;margin-left: -2px;margin-top: -2px;" />
+            </div>
+
+            <div class="settingdropdown" role="menuitem" aria-label="User Menu" style="color: #555; float: right;position: relative; text-align: left;border-radius: 50%;height: 30px;width: 30px;background: white;margin: 10px;" tabindex=0 (keypress)="onKeyPressEvent($event,2)" (mouseover)='onDropdownMouseover()' (mouseout)='onDropdownMouseout()'>
+                <img class="dropbtn" src="Content/Layout/more-icon-layout.png" style="margin:0px;" />
+                <div class="dropdown-content">
+                    <div *ngFor="let gmenu of generalMenu" class="generallist" role="menu" tabindex="0" (keypress)="onKeyPressGeneralMenu($event,gmenu)" [attr.aria-label]="gmenu.title" style="">
+                        <a tabindex="-1" [routerLink]="[gmenu.path]" (click)="onGeneralMenuClick(gmenu.id,$event)"><img style="margin: 2px 10px 2px;height:20px;" alt={{gmenu.title}} title={{gmenu.title}} [src]=generalImagePath(gmenu.title) /></a>
+                        <span tabindex="-1" style="position:relative;font-size: smaller;float: left;">{{gmenu.title}}</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="user-details" *ngIf="loggedInUserDetails != undefined">
+                <div class="customer-details">
+                    <span style="cursor:pointer">{{loggedInUserDetails["username"]}}</span>
+                </div>
+                <div class="user-detail">
+                    <span  class="selectCustomer"  *ngIf="loggedInUserDetails['userroleid'] == 1" style="cursor:pointer;" aria-label="Select Customer" (click)="onChangeClick()">{{loggedInUserDetails["customername"]}}</span>
+                    <span *ngIf="loggedInUserDetails['userroleid'] !=1" style="cursor:default">{{loggedInUserDetails["customername"]}}</span>
+                </div>
+                <div class="selectArrow">
+                    <div class="personal-settings">
+                        <div class="logout" (click)="onLogoutClick()"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="sub-bar">
+            <div class="moduleName">
+                <div style="width:50px;float:left;">
+                    <img style="margin:3px;height:34px;width:34px; display:none;" src="Content/Layout/dashboard_page_icon.png" />
+                </div>
+                <div style="width:650px;float:left;height:50px; margin-left:5px;">
+                    <div style="vertical-align:central;">
+                        <a style="font-size:small;color:black;text-decoration:none;" *ngIf="pagepath == undefined">{{currentModuleName}}</a>
+                        <a style="font-size:small;color:black;text-decoration:none;" *ngIf="pagepath != undefined">{{pagepath}}</a>
+                        <a style="font-size:medium;color:black;text-decoration:none;font-weight:bold" *ngIf="lastpagepath != undefined">{{lastpagepath}}</a>
+                    </div>
+                </div>
+            </div>
+            <div class="menuImage" (click)="onMenuClick()">
+                <img style="margin:3px;height:34px;width:34px;" src="Content/Icons/show-menu-icon.png" />
+            </div>
+            <div class="generalmenu">
+                <div *ngFor="let gmenu of generalMenu" class="generallist" role="menu" tabindex="0" (keypress)="onKeyPressGeneralMenu($event,gmenu)" [attr.aria-label]="gmenu.title" style="">
+                    <a  tabindex="-1"  [routerLink]="[gmenu.path]" (click)="onGeneralMenuClick(gmenu.id,$event)" ><img style="margin: 2px 10px 2px;height:20px;" alt={{gmenu.title}} title={{gmenu.title}}  [src]=generalImagePath(gmenu.title)/></a>
+                    <span tabindex="-1"  style="position:relative;font-size: smaller;float: left;">{{gmenu.title}}</span>
+                </div>
+            </div>
+        
+        </div>
+        <slide [change]="change" [width]="width" [position]="Position" [show]="showSlide" type="'dialog'" (closeDialog)="closeSlideDialog($event)">
+            <div style="height:165px;">
+                <DynamicFields [dataSource]="fieldDetails" (submitFieldObject)="onSubmitData($event)" [btnName]="btnName"> </DynamicFields>
+            </div>
+        </slide>
+        <slide  *ngIf="emailFieldObject" [width]="width" [position]="Position" [show]="showUpdateEmailSlide" type="'dialog'" (closeDialog)="closeEmailSlideDialog($event)">
+         
+            <div style="font-size:80%;">* Please provide an e-mail address to receive notifications.</div>
+            <div style="height:160px;" *ngIf="emailFieldObject" >
+                <DynamicFields  [dataSource]="emailFieldObject" (submitFieldObject)="onSubmitEmailData($event)" [btnName]="'Save'"> </DynamicFields>
+            </div>
+           
+        </slide>
+        <slide class="releaseslide" [change]="changeVersion" [width]="releasenoteswidth" [position]="Position" [show]="showSlideVersionDetails" type="'dialog'" (closeDialog)="closeSlideDialog($event)">
+            <div>
+                <release-notes class="releasenotesdiv" style="overflow:auto;display:block;height:450px;width:600px"></release-notes>
+            </div>
+        </slide>
+    </header>
+    <main>
+        <div class="pageContainer">
+            <div class="mainMenu" [style.width]="mainMenuWidth" [ngStyle]=Styles>
+                <a class="closebtn" (click)="closeNav()">&times;</a>
+                <main-menu [menusource]=menusource type="context" [(menuName)]="menuName"  [generalmenu]="generalmenu" [currentModule]="currentModule" (hideMenu)="onClickHideMenu($event.value,$event.menuName)" [ishideMenu]="ishideMenu" [isReportFlag]="isReportFlag" [isHelpFlag]="isHelpFlag" [reportLoadDefaultURL]="reportLoadDefaultURL"></main-menu>
+            </div>
+            <div class="slidemainMenu" [style.width.px]="menuwidth">
+                <div style="width:100%;height:50px;">
+                    <a class="closebtn" (click)="closeNav()">&times;</a>
+                </div>
+                <div style="width:100%">
+                    <main-menu [menusource]=menusource type="mobile" [generalmenu]="generalmenu" [currentModule]="currentModule" [HideMenu]="isClicked" [isReportFlag]="isReportFlag" [isHelpFlag]="isHelpFlag" [reportLoadDefaultURL]="reportLoadDefaultURL"></main-menu>
+                </div>             
+            </div>
+            <div [class]="contentWidth ==''? 'pageContent' : 'pageContentNoSlide'" >
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+    </main>
+    <footer *ngIf = "isMobile">
+        <div style="width:100%;text-align:right;height:35px">
+            <img style="height:35px;" src="Content/Icons/powered.png" />
+            <img style="height:22px;width: 110px;margin-right: 10px;" src="Content/Icons/indusLogo.png" />
+        </div>
+    </footer>
+</div>
+<div class="request-loading-view" *ngIf="reqloading">
+    <div class="load-bar">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+    </div>
+</div>
+
+<div class="floatingmenuImage" (click)="onMenuClick()" style="left:0;top:49%;width:30px;height:30px;position:absolute">
+    <img style="margin:0px;height:34px;width:34px;" src="Content/Layout/right-arrow.png" />
+</div>
+
+<div class="loading-view" *ngIf="loading">
+    <img src="Content/Images/progress.gif" />
+</div>
+<div class="overlay-view" *ngIf="overlayEnabled" (click)="overlayClick()">
+</div>

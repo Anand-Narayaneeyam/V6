@@ -1,0 +1,28 @@
+﻿<RadioComponent id="setRuleRadioBtn" *ngIf="noRuleRadio != undefined" [fieldObject]="noRuleRadio" (rbtnClick)="onRadiobtnChange($event)"></RadioComponent>
+
+<ListBoxComponent id="actionPointListbox" *ngIf="actionPointListboxData != undefined && IsActionPoint" [fieldObject]="actionPointListboxData"></ListBoxComponent>
+
+<CheckBoxComponent id="discardCheckbox" *ngIf="discardcheckbox != undefined" [fieldObject]="discardcheckbox" (chkBoxClick)="discardchecked($event)"></CheckBoxComponent>
+
+<button role="button" aria-label="Set Rule" class="Savebutton " style="margin-right:5px;margin-top: 10px;" type="button" (click)="onSubmitSet($event)">Set Rule</button>
+
+
+
+<style type="text/css">
+    #setRuleRadioBtn .Radio-2339 {
+        display: block !important;
+        margin-top: 20px;
+    }
+
+    #discardCheckbox {
+        white-space: nowrap;
+    }
+
+    #actionPointListbox > div:first-child {
+        margin-left: 12px;
+    }
+
+    #discardCheckbox > div:first-child {
+        margin-top: 12px;
+    }
+</style>

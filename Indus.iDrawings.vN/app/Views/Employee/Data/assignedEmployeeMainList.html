@@ -1,0 +1,12 @@
+﻿<div style="height:100%;overflow: hidden;">
+    <div style="height:5%;">
+        <button  class="Savebutton "(click)="NextClick()">Next</button>
+        <search *ngIf="fieldObject" [advancesearch]="true" [Key]=2 [datasource]="fieldObject" [keyWordLookup]=keyWordLookup (SaveAs)="SaveAs($event)" (Delete)="Delete($event)" (onloadSearch)="onloadSearch($event)" (Clear)="Clear($event)" (Submit)="Submit($event)"></search>
+    </div>
+    <div style="height:80%">
+        <gridView style="margin-top:5px" [dataSource]="itemsSource" [properties]="inputItems" [columns]="fieldObject"></gridView>
+    </div>
+    <div style="height:15%">
+        <paging [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="pageChanged($event);"></paging>
+    </div>
+</div>

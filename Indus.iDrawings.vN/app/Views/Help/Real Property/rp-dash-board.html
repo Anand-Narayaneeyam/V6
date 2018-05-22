@@ -1,0 +1,63 @@
+﻿<page [pagetitle]="pagePath">
+    <pagepath>
+    </pagepath>
+    <content>
+        <section title="Dash Board" [isExpanded]="true" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div>
+                <p>On clicking the module icon a Dashboard page will be displayed with a visual indication of the Lease Expiry by Year (Sq. Ft.), Utilization (%) and Lease Area by a graphical representation of Bar Charts and Pie chart respectively. </p>
+                <p><span class="header2">Lease Expiry by Year (Sq. Ft.)</span> is displayed as a bar chart which represents the total area of lease expired in each Year.</p>
+                <p><span class="header2">Utilization (%)</span> bar chart represents the building area utilization of each Building.</p>
+                <p><span class="header2">Lease Area</span> Pie chart shows the Area wise distribution of all the Leases. The pie chart tooltip shows the leased area and its percentage. Legends are also provided in each chart. The details of the top 9 Leases are displayed in the pie chart. Lease Area of all other Leases are summed up and shown as a single item labeled as 'Others'.</p>
+                <p>A List of <span class="header2">Critical Dates</span> is also provided in the Dashboard which lists the critical dates of all the Leases.</p>
+
+            </div>
+        </section>
+    </content>
+</page>
+<style type="text/css">
+    h3.Mainheader {
+        color: #178AE8;
+    }
+
+    .header1 {
+        font-weight: bold;
+        color: #178AE8;
+    }
+
+    .header2 {
+        font-weight: normal;
+        color: #178AE8;
+    }
+
+    p {
+        margin-left: 38px;
+        font-size: 13px;
+        margin-right: 3em;
+    }
+
+    .header3 {
+        font-weight: bold;
+        color: black;
+    }
+    /**/ h1 {
+        color: #178AE8;
+        font-size: 1.3em;
+        margin-left: 38px;
+    }
+
+    h2 {
+        color: #178AE8;
+        font-size: 1em;
+        margin-left: 38px;
+    }
+
+    .config {
+        background-color: #178AE8;
+    }
+
+    .helpicon {
+        vertical-align: baseline;
+        width: 20px;
+        height: 20px;
+    }
+</style>

@@ -1,0 +1,17 @@
+﻿<page [pagetitle]="pagePath">
+    <content>
+        <split-view [splitviewObject]="splitview" [pageTitle]="pageTitle">
+            <primary-view style="overflow:hidden" (contextmenu)="onContextMenu($event, item)">
+                <DropDownListComponent *ngIf="OwnershipCategory" [labelWidth]=210 [fieldObject]="OwnershipCategory" (change)="onChangeDataFieldCategory($event.target.value)" [SetAlignment]=alignContent ShowSelectOption="false"></DropDownListComponent>
+                <indus-map style="height:84%;overflow:hidden;display:block;" *ngIf="flag == true" [properties]="inputItems" (outIds)="outputItems($event)" (outLeftClick)="onLeftClick($event)"></indus-map>
+                <div *ngIf="sessionflag == true" style="text-align:right;font-weight:normal">Right click on the pushpin to edit building details</div>
+            </primary-view>
+            <secondary-view>
+                <building-Edit *ngIf="!target" (submitSuccess)="submitReturn($event)" [btnName]="btnName" [selectedId]="selectedId" [fieldDetailsAdd]="fieldDetailsBuildingEdit"></building-Edit>
+            </secondary-view>
+            <!--<secondary-view *ngIf="target && splitview.showSecondaryView">
+                <drawings></drawings>
+            </secondary-view>-->
+         </split-view>
+    </content>
+</page>

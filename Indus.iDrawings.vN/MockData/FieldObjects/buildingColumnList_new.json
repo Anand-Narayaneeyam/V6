@@ -1,0 +1,95 @@
+﻿{
+  "data": [
+    {
+      "FieldId": 1,
+      "FieldLabel": "Site FieldId",
+      "DataEntryControlId": 1,
+      "GenericDataTypeId": 5,
+      "IsVisible": false,
+      "IsMandatory": false,
+      "IsEnabled": true,
+      "ReadOnlyMode": false,
+      "NotificationType": "return"
+    },
+    {
+
+      "FieldId": 2,
+      "FieldLabel": "Building FieldId",
+      "DataEntryControlId": 1,
+      "GenericDataTypeId": 6,
+      "IsVisible": false,
+      "IsMandatory": false,
+      "IsEnabled": true,
+      "ReadOnlyMode": false,
+      "NotificationType": "return",
+       "Whitelist": { 
+        "FormatString": "", 
+        "RegularExpression": "^[a-zA-Z0-9!@#$%&*()+=\\s\\:.,/?[\\]_-]+$" 
+      },
+     "Format": { 
+         "FormatString": "", 
+        "RegularExpression": "" 
+      }
+
+    },
+    {
+      "FieldId": 3,
+      "FieldLabel": "Building Name",
+      "DataEntryControlId": 1,
+      "GenericDataTypeId": 6,
+      "IsVisible": true,
+      "IsMandatory": true,
+      "IsEnabled": true,
+      "ReadOnlyMode": false,
+      "NotificationType": "return",
+       "Whitelist": { 
+        "FormatString": "", 
+        "RegularExpression": "^[a-zA-Z0-9!@#$%&*()+=\\s\\:.,/?[\\]_-]+$" 
+      },
+     "Format": { 
+         "FormatString": "", 
+        "RegularExpression": "" 
+      }
+    },
+    {
+      "FieldId": 4,
+      "FieldLabel": "Building Code",
+      "DataEntryControlId": 1,
+      "GenericDataTypeId": 6,      
+      "IsVisible": true,
+      "IsMandatory": false,
+      "IsEnabled": true,
+      "ReadOnlyMode": false,
+      "NotificationType": "return",
+       "Whitelist": { 
+        "FormatString": "", 
+        "RegularExpression": "^[a-zA-Z0-9!@#$%&*()+=\\s\\:.,/?[\\]_-]+$" 
+      },
+     "Format": { 
+         "FormatString": "", 
+        "RegularExpression": "" 
+      }
+    },
+    {
+      "FieldId": 5,
+      "FieldLabel": "Description",
+      "DataEntryControlId": 1,
+      "GenericDataTypeId": 6,
+      "IsVisible": true,
+      "IsMandatory": false,
+      "IsEnabled": true,
+      "ReadOnlyMode": false,
+      "NotificationType": "return",
+      "Whitelist": {
+        "FormatString": "",
+        "RegularExpression": "^[a-zA-Z0-9!@#$%&*()+=\\s\\:.,/?[\\]_-]+$"
+      },
+      "Format": {
+        "FormatString": "",
+        "RegularExpression": ""
+      }
+    }
+    
+
+  ]
+}

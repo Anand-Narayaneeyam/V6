@@ -1,0 +1,48 @@
+﻿<style>    
+    .all-item {
+      list-style-type: none;
+      display:inline;
+    }
+    .folderitem:hover {
+        cursor:pointer;
+    }
+    .folderarrow {
+        cursor:default;
+    }
+    .childitem {
+      padding-left: 25px;
+      margin-right:5px;
+    }
+    img{
+
+        cursor:pointer;
+    }
+    ul, li {
+         list-style: none; margin: 0; padding: 0;
+
+    }
+</style>    
+    <ul>
+        <li class="all-item" *ngIf="node">
+            <div class="folderitem">
+                <div tabindex="0" style="display:inline; white-space:nowrap;">
+                    <span *ngIf="isExpandable()" class="folderarrow" (click)="expandFolder(node)">
+                        <img class="image-view-arrow" [src]="isExpanded()?downarrowIcon:uparrowIcon">
+                    </span>
+                    <span *ngIf="!isExpandable()" class="folderarrow">
+                        <img class="image-view-arrow" [src]="noIcon">
+                    </span>
+                    <span (click)="clickItem(node)">
+                        <img class="image-view-folder" [src]="isExpanded()?expandIcon:hideIcon" height="20">
+                        <i>{{node.label}}</i>
+                    </span>
+                </div>
+            </div>
+            <ul *ngIf="isExpanded()" class="childitem">
+                <node *ngFor="let n of node.children" [node]=n (clicked)="propagate($event)" (folderexpand)="propagateexpand($event)"></node>
+            </ul>
+        </li>
+    </ul>
+
+ 
+

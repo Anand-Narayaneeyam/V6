@@ -1,0 +1,35 @@
+﻿<page [pagetitle]="pagePath">
+    <content>
+        <split-view [splitviewObject]="splitviewInput" [pageTitle]="pageTitle">
+            <primary-view>
+                <tabs [selectedTab]="selectedTab" [deleteIndex]="tabDeleteIndex" (getSelectedTab)="getSelectedTab($event)">
+                    <tab tabTitle="Select Period" closeButtonVisible="hidden">
+                        <div style="height:100%">
+                            <div>
+                                <div>
+                                    <submenu>
+                                        <sub-menu [source]=menuData [menuCard]=iscard [menuIds]=enableMenu (onSubMenuChange)="onSubMenuChange($event);"> </sub-menu>
+                                    </submenu>
+                                </div>
+                                <div style="margin-left:5%;margin-top:1%;display:inline;">
+                                    <DateComponent *ngIf="dateSelectorField != undefined" [fieldObject]="dateSelectorField[0]" [showDateOnLoad]="true"></DateComponent>
+                                    <DateComponent *ngIf="dateSelectorField != undefined" [fieldObject]="dateSelectorField[1]" [showDateOnLoad]="true"></DateComponent>
+                                    <div style="display:inline;" *ngIf="ListboxData !=undefined">
+                                        <ListBoxComponent *ngIf="ListboxData != undefined" (lstBox)="getListBoxData($event)" (selAll)="getListBoxData($event)" [fieldObject]=ListboxData></ListBoxComponent>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </tab>
+                    <tab *ngIf="isTabClicked == true" tabTitle="{{tabname}}" closeButtonVisible="hidden">
+                        <gradeTrendAnalysis-chartview *ngIf="isNextClicked == true" [chartData]="chartData"></gradeTrendAnalysis-chartview>
+                    </tab>
+                </tabs>
+            </primary-view>
+            <secondary-view>
+                <StringTextBox *ngIf="foreCastFieldObject != undefined && forecastFlag == true" id="StringTextBox" name="StringTextBox" [fieldObject]=foreCastFieldObject [validationData]='validationData'></StringTextBox>
+                <button class="Savebutton" style="margin-top:3px;" *ngIf="foreCastFieldObject != undefined && forecastFlag == true" type="button" (click)="okSubmit($event)">OK</button>
+            </secondary-view>
+        </split-view>
+    </content>
+</page>

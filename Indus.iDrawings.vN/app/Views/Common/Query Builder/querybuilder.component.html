@@ -1,0 +1,86 @@
+﻿<style>
+   .tblQuery{
+        border: 1px solid #c6c6c6;
+       
+    }
+    .tblQuery tr td {
+         border-right: 1px solid #c6c6c6;
+         font-family: Arial, Helvetica, sans-serif;     
+        font-size: 13px;  
+    }
+    .btncustom {
+        margin-top:15px;     
+    }
+     .divHeader{
+        margin-top:10px;
+        font-family: Arial, Helvetica, sans-serif;     
+        font-size: 14px;  
+        font-weight:bold;
+    }
+     .queryRowHead{          
+        font-size: 13px;  
+        font-weight:bold;                    
+        text-wrap:normal;            
+        background-color: #7E9DB2;
+        color: #FDFDFD;
+        height:22px;
+        text-indent:2px;
+     }
+     .queryList{
+         background-color:cornflowerblue;
+     }
+    
+    
+</style>
+<div *ngIf="queryFieldObj" style="margin:10px;">
+    <div class="divHeader">Conditions</div>
+    <div style="height:200px;width:80%;border: 1px solid #c6c6c6;">
+        <ul  style="list-style-type:none">
+            <li *ngFor="let query of queryConditionArray;let i=index" id="{{i}}" (click)="quryCondClick(i)">
+                <div *ngIf="i%2== 0">{{query.selFld}} {{query.oprtr}} {{query.selValue}}</div>
+                <div *ngIf="i%2 != 0">{{query}}</div>
+            </li>
+        </ul>
+        <!--<TextAreaComponent id="TextAreaComponent"  name="TextAreaComponent"  [validationData]='validationData' [fieldObject]=queryFieldObj[0]></TextAreaComponent>-->
+    </div>
+    <div>        
+        <button  class="Savebutton btncustom "(click)="btnDeleteClick()">Delete</button>
+    </div>
+    <div class="divHeader">Condition Builder</div>
+    <div style="margin-top:10px;">
+       <table class="tblQuery">
+           <tr class="queryRowHead">
+              <td>Condition</td>
+              <td>Field Name</td>
+              <td>Operator</td>
+              <td>Value</td>
+           </tr>
+           <tr style="height:25px !important;">
+               <td>
+                 <DropDownListComponent #ddlCustom  [validationData]='validationData' [fieldObject]=queryFieldObj[1] (ddlChange)="ddlChange($event)"></DropDownListComponent>
+               </td>
+               <td>
+                 <DropDownListComponent #ddlCustom  [validationData]='validationData' [fieldObject]=queryFieldObj[2] (ddlChange)="ddlChange($event)"></DropDownListComponent>
+               </td>
+               <td>
+                 <DropDownListComponent  #ddlCustom [validationData]='validationData' [fieldObject]=queryFieldObj[3] (ddlChange)="ddlChange($event)"></DropDownListComponent>
+               </td>
+               <td>
+                 <StringTextBox  #txtCustom   [validationData]='validationData' [fieldObject]=queryFieldObj[4] (keyup)="valueKeyUpEvent($event)" ></StringTextBox>   
+                   <div *ngIf="selectedFldLookUp.length > 0 && showEasyLookup== true" style="line-height:25px;border:1px solid #eeeded;overflow:auto;height:100px;z-index: 3;">
+                       <ul style="list-style-type:none">
+                           <li *ngFor="let item of selectedFldLookUp" (click)="selectlookupValue(item)">
+                               <a>{{item}}</a>
+                           </li>
+                       </ul>
+                   </div>           
+                   <div>
+                       <button  class="Savebutton btncustom "(click)="btnAddClick()" >btnAdd</button>
+                       <button  class="Savebutton btncustom"(click)="btnCancelClick()" >Cancel</button>
+                   </div>
+               </td>
+           </tr>
+        </table> 
+    </div>
+    <button  class="Savebutton btncustom" (click)="btnSearchClick()">OK</button>
+</div>

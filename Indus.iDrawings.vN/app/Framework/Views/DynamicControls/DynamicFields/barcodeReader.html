@@ -1,0 +1,5 @@
+﻿
+<!--<ImageComponent  [fieldObject]="fieldObject" (imageData)="getImageData($event)"></ImageComponent>-->
+<div style="">
+    <FileUploadComponent [fieldObject]="fieldObject" title="{{fieldObject.FieldLabel}}" (fileData)="getImageData($event)" [commonFileExtensions]=validFileExt></FileUploadComponent>
+</div>

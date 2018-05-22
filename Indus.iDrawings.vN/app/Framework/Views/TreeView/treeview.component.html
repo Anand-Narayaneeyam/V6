@@ -1,0 +1,112 @@
+﻿<ul *ngIf="directories!=undefined"  style="border: 1px solid #b3b2b2;list-style: none;-webkit-padding-start: 0px;">
+
+    <li *ngFor="let dir of directories">
+        <div style="background-color:#d2d2d2;padding:0px 3px;border: .5px solid #b3b2b2;">
+            <span><input type="radio" [checked]="dir.checked" (click)="dir.check();selected(dir.Id,dir.level)" [id]="dir.Id" name="singleSelection" /></span>
+            <span (click)="dir.toggle()" style="width:90%;margin-left:10px;cursor:pointer;display:inline-block">{{ dir.root }}</span>
+        </div>
+        <div *ngIf="dir.expanded">
+            <ul style="list-style:none;-webkit-padding-start:80px;" *ngIf="dir.children.length>0">
+                <li *ngFor="let child of dir.children" style="padding:3px;border: 1px solid #b3b2b2;">
+                    <span><input type="radio" (click)="onSelectedChildIds(child.Id,child.level)" [id]="child.Id" name="singleSelection" /></span>
+                    <span>{{child.Value}}</span>
+                </li>
+            </ul>
+
+            <div style="list-style: none;-webkit-padding-start:80px;" *ngIf="dir.directories.length>0">
+                <tree-view [directories]="dir.directories" (onselection)="onSelectedIds($event)"></tree-view>
+            </div>
+        </div>
+    </li>
+</ul>
+
+
+<div>
+    <style>
+
+.tree{
+  
+    list-style: none;
+    -webkit-padding-start: 0px;
+}
+
+.tree ul {margin-left: 5em;} 
+
+.tree:before,
+
+
+.tree li {
+  /*margin:0;
+  padding:0 1.5em; 
+  line-height:2em; 
+  position:relative;*/
+}
+
+ .LevelList li {
+     background:#f9f8f8;
+ }
+.LevelList li:nth-child(odd) { 
+    background: white; 
+}
+
+    </style>
+
+
+    <div style="text-align:left;width:100%;"  *ngIf="FieldTable!=undefined">       
+        <div *ngIf="selectionCriteria == 0 && HideButton == false" >
+            <button  class="Savebutton " id="savetreebutton" type="button" style="margin-right:5px;margin-bottom:5px;" (click)="onSubmit()" value="Save Changes" [disabled]="dsbleSaveBtn">Save Changes</button>
+        </div>
+        <div *ngIf="selectionCriteria != 0 && HideButton == false && CustomButtonNameForTreeView == undefined">
+            <button  class="Savebutton " id="savetreebutton" style="margin-top: 3%;margin-right: 5%;margin-bottom:5px;" type="button" (click)="onSubmit()" value="Save Changes">Next</button>
+        </div>   
+        <div *ngIf="selectionCriteria != 0 && HideButton == false && CustomButtonNameForTreeView != undefined">
+            <button class="Savebutton " id="savetreebutton" style="margin-top: 3%;margin-right: 5%;margin-bottom:5px;" type="button" (click)="onSubmit()" value="Save Changes">Show</button>
+        </div>     
+    </div>
+
+    <div *ngIf="FieldTable!=undefined && isShowSelectAll==true" style="order: 1;border:1px solid #b3b2b2;height: 30px;line-height: 30px;color:white; background: #178ae8;">
+        <ul style="list-style-type: none; margin-left: -35px;" *ngIf="FieldTable!=undefined">
+            <li>
+                <div>
+                    <span><input id="input" type="checkbox" class="selectAllChk" [checked]=checkSelectAllstate()  (click)="oncheck('',$event,0)" aria-label="Select All"/></span>
+                    <span aria-hidden="true">Select All</span>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <div style="display:flex; flex-direction: column;height:100%" *ngIf="FieldTable!=undefined">
+        <div style="width:100%;overflow-y:auto;order: 2;border: 1px solid #b3b2b2;list-style: none;-webkit-padding-start: 0px;height: calc(100% - 30px);height: -webkit-calc(100% - 35px);height: -moz-calc(100% - 35px);" *ngIf="FieldTable!=undefined">
+
+            <ul *ngIf="FieldTable!=undefined" class="tree">
+                <li *ngFor="let dir of FieldTable[0].Table1;let i=index;">
+                    <div style="background-color: #d2d2d2;padding:1px 2px;border:.5px solid #d2d2d2;display: flex;">
+                        <span><input id="input" [name]=dir[FieldColumn.clmn1[0]] type="checkbox" [checked]=checkSelectAll(dir[FieldColumn.clmn1[0]],1) (change)="oncheckboxchange($event)" (click)="oncheck(dir[FieldColumn.clmn1[0]],$event,1)" class="Level1Chk" title="{{level1Label}} {{dir[FieldColumn.clmn1[1]]}}"/></span>
+                        <span aria-hidden="true" (click)="toggle(dir[FieldColumn.clmn1[0]])" style="cursor:pointer;font-size: small;margin-left: 5px;">{{level1Label}} {{dir[FieldColumn.clmn1[1]]}}</span>
+                    </div>
+                    <div [style.display]="showDivBuilding" [class]="'Div-'+dir[FieldColumn.clmn1[0]]" style="display:block;">
+                        <ul style="list-style: none;">
+                            <li style="border-left: 0.5px solid #b3b2b2;"  *ngFor="let child of filterTable(FieldTable[0].Table2,FieldColumn.clmn1[0],dir[FieldColumn.clmn1[0]])">
+                                <div style="border: 0.5px solid #b3b2b2;padding:1px 2px;background: #e4e4e4;">
+                                    <span><input id="input" [name]=child[FieldColumn.clmn2[0]] type="checkbox" [checked]=checkSelectAll(child[FieldColumn.clmn2[0]],2) [class]="'2nd-'+child[FieldColumn.clmn1[0]]" (change)="oncheckboxchange($event)" (click)="oncheck(child[FieldColumn.clmn2[0]],$event,2)" title="{{level2Label}} {{child[FieldColumn.clmn2[1]]}}"/></span>
+                                    <span aria-hidden="true" (click)="toggle(child[FieldColumn.clmn2[0]])" style="cursor:pointer;font-size: small;margin-left: 5px;">{{level2Label}} {{child[FieldColumn.clmn2[1]]}}</span>
+                                </div>
+                                <div [style.display]="showDivFloor" [class]="'Div-'+child[FieldColumn.clmn2[0]]" style="display:block;border-left: 0.5px solid #b3b2b2;">
+                                    <ul style="list-style: none;"  class="LevelList">
+                                        <li style="border:0.5px solid #b3b2b2;"  *ngFor="let child2 of filterTable(FieldTable[0].Table3,FieldColumn.clmn2[0],child[FieldColumn.clmn2[0]])">
+                                            <div style="padding:1px 2px;">
+                                                <span><input type="checkbox" id="input" [name]=child2[FieldColumn.clmn3[0]] [class]="'3rd-'+child[FieldColumn.clmn2[0]]" [checked]=isChecked(child2) (change)="oncheckboxchange($event)" (click)="oncheck(child2[FieldColumn.clmn3[0]],$event,3)" title="{{child2[FieldColumn.clmn3[1]]}}"/></span>
+                                                <span aria-hidden="true" style="font-size:small">{{child2[FieldColumn.clmn3[1]]}}</span>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+</div>

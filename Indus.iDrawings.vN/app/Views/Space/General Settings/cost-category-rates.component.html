@@ -1,0 +1,39 @@
+﻿<div>
+   
+    <split-view [splitviewObject]="splitviewCostCategoryInput" [pageTitle]="pageTitle" style="height: calc(100% - 35px);">
+        <primary-view>
+            <div style="display: block;overflow: hidden;">
+                <div *ngIf="ddlFieldObject != undefined" style="">
+                    <DropDownListComponent  *ngIf="ddlFieldObject" [fieldObject]="ddlFieldObject" [SetAlignment]=alignContent (change)="ddlStyleNameChange($event.target.value)"></DropDownListComponent>
+                </div>
+                <div>
+                    <submenu>
+                        <sub-menu [source]=menuData [menuCard]=true [count]=totalItems [menuIds]=enableMenu (onSubMenuChange)="onSubMenuChange($event);"> </sub-menu>
+                    </submenu>
+                </div>
+                <div [ngClass]="totalItems > itemsPerPage ? 'pagewithPaging':'pagewithoutPaging'" style="height:calc(100% - 95px)!important">
+                    <slide [width]="200" [position]="position" [type]="dialog" [show]="showSlide" (closeDialog)="closeSlideDialog($event)">
+                        <div>
+                            <div>
+                                {{message}}
+                            </div>
+                            <div>
+                                <div style="width:100%">
+                                    <button  class="Savebutton "type="button" (click)="okDelete($event)">Yes</button>
+                                    <button  class="Savebutton "type="button" (click)="cancelClick($event)">No</button>
+                                </div>
+                            </div>
+                        </div>
+                    </slide>
+                    <gridView  style="height:100%;" [dataSource]="itemsSource" [properties]="inputItems" [columns]="fieldObject" (onSorting)="onSort($event)" [refreshgrid]="refreshgrid"></gridView>
+                </div>
+                <div>
+                    <!--<paging [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="pageChanged($event);"></paging>-->
+                </div>
+            </div>
+        </primary-view>
+        <secondary-view >
+            <add-edit-cost-category-rates (submitSuccess)="submitReturnData($event)" [fieldDetailsAdd]="fieldDetailsAddEdit" [btnName]="btnName" [dataKey]="dataKey" [selectedId]="inputItems.selectedIds" [ddlSelectedId]="SelectedCostCategoryId" [action]="action"></add-edit-cost-category-rates>
+        </secondary-view>
+    </split-view>
+</div>

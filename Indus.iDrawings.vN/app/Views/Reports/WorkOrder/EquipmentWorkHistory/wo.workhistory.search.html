@@ -1,0 +1,39 @@
+﻿<page [pagetitle]="pagePath">
+    <content>
+        <tabs [selectedTab]="selectedTab" (getSelectedTab)="getSelectedTab($event)">
+            <tab tabTitle="Search Equipment" closeButtonVisible="hidden">
+                <submenu>
+                    <sub-menu [source]=menuData [menuCard]=iscard [menuIds]=enableMenu (onSubMenuChange)="onSubMenuChange($event);"> </sub-menu>
+                </submenu>
+                <div>                    
+                    <div  style="width:100%;margin-bottom: 8px;">
+                        <DropDownListComponent *ngIf="ddlEquipmentCategory" [fieldObject]="ddlEquipmentCategory" (change)="onChangeEquipmentCategory($event.target.value)" [SetAlignment]=alignContent></DropDownListComponent>
+                        <DropDownListComponent *ngIf="ddlEquipmentType" [fieldObject]="ddlEquipmentType" (change)="onChangeEquipmentType($event.target.value)" [SetAlignment]=alignContent></DropDownListComponent>
+                    </div>
+                    <div>
+                        <gridView [dataSource]="itemsSource" [properties]="inputItems" [columns]="fieldObject"></gridView>
+                    </div>
+                    <div>
+                        <paging [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="pageChanged($event);"></paging>
+                    </div>
+                </div>
+            </tab>
+            <tab *ngIf="selectedIds != undefined" tabTitle="Report" closeButtonVisible="hidden">
+                <div style="height:100%" *ngIf="isNextClicked">
+                    <woWorkHistoryReportComponent-report *ngIf="isNextClicked" [selectedIds]="selectedIds" [equipmentCategoryId]="equipmentCategoryId"> </woWorkHistoryReportComponent-report>
+                </div>
+            </tab>
+        </tabs>
+    </content>
+</page>
+
+
+<style>
+    :host .ddllabel_1535 {
+        margin-top: 5px !important;
+    }
+        :host .ddllabel_1536 {
+        margin-top: 5px !important;
+    }
+</style>
+

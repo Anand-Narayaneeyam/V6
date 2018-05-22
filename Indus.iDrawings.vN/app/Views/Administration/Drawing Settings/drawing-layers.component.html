@@ -1,0 +1,24 @@
+﻿<div style="width: 100%;display:inline-table;">
+    <div style="width: 100%;height: 100%;float: left;line-height: 100%;">
+        <submenu>
+            <sub-menu  [menuCard]=types [source]=menuData [count]=totalItems [menuIds]=enableMenu (onSubMenuChange)="onSubMenuChange($event);"> </sub-menu>
+        </submenu>
+    </div>
+    <div style="float: right; width: 50%;height: 100%;line-height: 100%;">
+        <!--<sort *ngIf="fields" [fieldNames]="fields" [listItems]=drawingLayersSource (sortEvent)="onSorting($event)"></sort>-->
+    </div>
+</div>
+<confirmation (onConfirm)="okDelete($event)"></confirmation>
+<list [source]=drawingLayersSource [(selectedIds)]="selIds" [datakey]="'Id'" [selectionMode]="'Single'">
+    <template let-item>
+        <card  (onCancelClick)="onCardCancelClick()" (onSubmition)="onCardSubmit($event)" [datakeyValue]="item.Id" (inlineDelete)="onDelete($event)"  [submitSuccess]="submitSuccess">
+            <div *ngIf="fields">
+
+                <field [(fieldObject)]="fields[1]" [(fieldValue)]="item['Layer Name']"></field>
+                <field [(fieldObject)]="fields[2]" [(fieldValue)]="item.Module"></field>
+                <field [(fieldObject)]="fields[3]" [(fieldValue)]="item.Description"></field>
+            </div>
+        </card>
+    </template>
+</list>
+<!--<paging [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="pageChanged($event);"></paging>-->

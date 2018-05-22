@@ -1,0 +1,63 @@
+﻿<div style="height:100%;float:left;width:100%;position: relative;">
+    <split-view [splitviewObject]="splitviewReview">
+        <primary-view>
+            <div style="height:10%;float:left;width:100%;display: flex">
+                <!--section for request number-->
+                <LabelComponent *ngIf="workflowCatId=='1'&& fieldrequestnumber" [fieldObject]=fieldrequestnumber></LabelComponent> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <LabelComponent *ngIf="workflowCatId=='1' && fieldrequestby" [fieldObject]=fieldrequestby></LabelComponent>
+            </div>
+            <div style="height:10%;float:left;width:100%;position: relative;margin-top: -21px; display:flex">
+                <!--section for send action-->
+                <DropDownListComponent *ngIf="fieldaction&&(workflowCatId=='4' && entityCatId=='5' ||(workflowCatId=='1'))" [fieldObject]=fieldaction [SetAlignment]=alignContent></DropDownListComponent><!--(ddlChange)="ddlRelationChange($event)"-->&nbsp;&nbsp;&nbsp;
+                <StringTextBox *ngIf="workflowCatId=='1' && fieldtimespent" [SetAlignment]=alignContent [fieldObject]=fieldtimespent></StringTextBox>&nbsp;&nbsp;&nbsp;
+                <DropDownListComponent *ngIf="fieldsendto&&(workflowCatId=='4' && entityCatId=='5'||(workflowCatId=='1'))" [fieldObject]=fieldsendto [SetAlignment]=alignContent></DropDownListComponent>
+            </div>
+            <!-- section for submenu-->
+            <div style="position: relative;height: 10%;float: left;width: 100%;">
+                <submenu>
+                    <sub-menu [source]=reviewMenu [count]=siteTotalItems [menuIds]=enableSiteMenu (onSubMenuChange)="updateReviewMenu($event);"> </sub-menu>
+                </submenu>
+            </div>
+            <!-- section for description or stack plans-->
+            <div style="height:30%;float:left;width:100%;position:relative;">
+                <span>{{getdescription()}}</span>
+                <gridView *ngIf="workflowCatId=='4' && entityCatId=='5'" [dataSource]="itemsSource" [properties]="inputItems" [columns]="fieldObject" (onSorting)="onSort($event)"></gridView>
+                <TextAreaComponent *ngIf="fieldDescription && workflowCatId == '1'" [fieldObject]=fieldDescription></TextAreaComponent>
+                <TextAreaComponent *ngIf="fieldPreviousComments && workflowCatId == '1'" [fieldObject]=fieldPreviousComments></TextAreaComponent>
+                <TextAreaComponent *ngIf="fieldComments && workflowCatId == '1'" [fieldObject]=fieldComments></TextAreaComponent>
+
+            </div>
+
+            <!--section for Request Details-->
+            <div style="height:40%;float:left;width:100%;position:relative;margin-top:40px">
+                <span style="">{{getRequestDetails()}}</span>
+                <table *ngIf="workflowCatId == '1' && entityCatId=='2'" style="border:1px solid black">
+                    <tr style="border:1px solid black">
+                        <td>Cost of Technicians</td>
+                        <td>Cost of Parts</td>
+                        <td>Cost of Tools</td>
+                        <td>Other Cost(Amount)</td>
+                        <td>Total Cost</td>
+                    </tr>
+                    <tr style="border:1px solid black">
+                        <td>0.0</td>
+                        <td>0.0</td>
+                        <td>0.0</td>
+                        <td>0.0</td>
+                        <td>0.0</td>
+                    </tr>
+                </table>
+                <DynamicFields [dataSource]="fieldDetailsSpaceEdit" (submitFieldObject)="onSubmitData($event)" [showButton]="false"></DynamicFields>
+            </div>
+            <div style="text-align:center">
+                <button  class="Savebutton "(click)="submitClick()" style="background-color:lightblue">Submit</button>
+            </div>
+        </primary-view>
+        <secondary-view>
+            <floor-selection *ngIf="activemenu==6" [showButton]=true (doneClick)="doneClick($event)"></floor-selection>
+            <drawingdetails *ngIf="activemenu==7" [moduleId]=moduleId [pageTarget]=pageTarget></drawingdetails>
+            <reviewHistory *ngIf="activemenu==0 && selectedid" [workflowCatId]="workflowCatId" [entityCatId]="entityCatId" [selectedid]="selectedid" (ClickEvent)="ClickEvent($event)"></reviewHistory>
+        </secondary-view>
+    </split-view>
+    <!--<DropDownListComponent id="DropDownListComponent" name="DropDownListComponent" *ngIf="field.DataEntryControlId == '4'" [validationData]='validationData' [fieldObject]=field (ddlChange)="ddlRelationChange($event)"></DropDownListComponent>-->
+</div>

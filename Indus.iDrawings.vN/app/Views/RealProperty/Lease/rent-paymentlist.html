@@ -1,0 +1,26 @@
+﻿<div>
+    <div style="width:100%;padding-bottom:1%;display:inline-flex">
+    Lease Identifier: <div style="margin-top:2px;margin-left:2px;"><LabelComponent [fieldObject]=fieldLeaseIdentifier></LabelComponent></div>
+    </div>
+    <div style="width:100%;padding-bottom:1%;display:inline-flex">
+    Renewal Count: <div style="margin-top:2px;margin-left:2px;"><LabelComponent [fieldObject]=fieldRenewalCount></LabelComponent></div>
+    </div>
+    <submenu>
+        <sub-menu [menuCard]=true [source]=menuData [count]=gridcount [menuIds]=enableMenu (onSubMenuChange)="onSubMenuChange($event);"> </sub-menu>
+    </submenu>
+    <split-view [splitviewObject]="splitviewInput" [pageTitle]="pageTitle" style="height:100%;">
+        <primary-view>
+            <div style="height:calc(100% - 130px);">
+                <div [ngClass]="totalItems > itemsPerPage ? 'pagewithPaging':'pagewithoutPaging'">
+                    <gridView [(dataSource)]="itemsSource" [properties]="inputItems" [columns]="fieldObject"  [refreshgrid]="refreshgrid" (onSorting)="onSort($event)"></gridView>
+                </div>
+                <div [style.height]="totalItems >itemsPerPage ? '35px' : '0px'">
+                    <paging [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="pageChanged($event);"></paging>
+                </div>
+            </div>                
+        </primary-view>
+        <secondary-view >
+            <DynamicFields [dataSource]="fieldDetailsAddEdit" (submitFieldObject)="onSubmit($event)" [btnName]="btnName" [dataKey]="dataKey"></DynamicFields>
+        </secondary-view>
+    </split-view>   
+</div>

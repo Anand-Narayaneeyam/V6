@@ -1,0 +1,48 @@
+﻿{
+    "data": [
+       
+        {
+            "FieldId": 2,
+            "FieldName": "Id",
+            "FieldType": 1,
+            "IsVisible": false,
+            "IsDisabled": true,
+            "ReadOnlyMode": true,
+            "IsMandatory": false,
+            "IsHiddenLabel": true,
+            "NotificationType": "return"
+        },
+        {
+            "FieldId": 3,
+            "FieldName": "Division",
+            "FieldType": 1,
+            "IsVisible": false,
+            "IsDisabled": true,           
+            "IsMandatory": true,
+            "IsHiddenLabel": true,
+            "NotificationType": "return",
+            "Width": "2*"
+        },
+        {
+            "FieldId": 4,
+            "FieldName": "Department",
+            "FieldType": 1,
+            "IsVisible": false,
+            "IsDisabled": true,       
+            "IsMandatory": true,
+            "IsHiddenLabel": true,
+            "NotificationType": "return"
+        },
+        {
+            "FieldId": 5,
+            "FieldName": "Class",
+            "FieldType": 1,
+            "IsVisible": true,
+            "IsDisabled": true,         
+            "IsMandatory": true,
+            "IsHiddenLabel": true,
+            "NotificationType": "return",
+            "Width": "*"
+        }
+    ]
+}

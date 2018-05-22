@@ -1,0 +1,152 @@
+﻿<div>
+    <!--<page [pagetitle]="pagePath" [withoutSubmenu]="true">
+        <pagepath>
+        </pagepath>
+        <content>-->
+    <split-view [splitviewObject]="splitviewInput" style="height:100%;" [pageTitle]="pageTitle">
+        <primary-view style="overflow:hidden">
+            <div *ngIf="Fromdate[0] != undefined" class="FromToDateScheduling" style="height:65px;display:flex;width:100%;padding-top:4px">
+                <!--<div style="width:50%;float:left">-->
+                <!--<div>-->
+                <div class="FromDateScheduling" style="display:inline-flex;">
+                    <DateComponent [disableDates]="disableDates" id="fromDate" *ngIf="Fromdate[0]!=undefined" [showDateOnLoad]="true" [fieldObject]="Fromdate[0]" (datepickerOut)="divClicked($event,1)" [SetAlignment]="horizontal" [isClearDateValue]=false>></DateComponent>
+                    <!--</div>-->
+                    <!--<div>-->
+                    &nbsp;&nbsp;<DropDownListComponent id="fromtimeseat" *ngIf="FromTime[0]!=undefined" [fieldObject]="FromTime[0]" (change)="onChangefrom($event.target.value)" ShowSelectOption="false"></DropDownListComponent>
+                    <!--</div>-->
+                    <!--</div>-->
+                    <!--<div style="width:50%;float:Right">-->
+                    <!--<div>-->
+                    &nbsp;&nbsp;&nbsp; to &nbsp;&nbsp;&nbsp;
+                </div>
+                <div class="ToDateScheduling" style="display:inline-flex;">
+                    <DropDownListComponent id="totimeseat" *ngIf="ToTime[0]!=undefined" [fieldObject]="ToTime[0]" ShowSelectOption="false"></DropDownListComponent>
+                    <!--</div>-->
+                    <!--<div>-->
+                    &nbsp;&nbsp;<DateComponent [disableDates]="disableDates" *ngIf="Todate[0]!=undefined" [showDateOnLoad]="true" [fieldObject]="Todate[0]" (datepickerOut)="divClicked($event,2)" [SetAlignment]="horizontal" [isClearDateValue]=false>></DateComponent>
+                    <!--</div>-->
+                    <!--<div>
+            <DropDownListComponent [ngClass]="test" *ngIf="ToTime[0]!=undefined" [fieldObject]="ToTime[0]" (change)="onChangeto($event.target.value)"></DropDownListComponent>
+        </div>-->
+                    <!--</div>-->
+
+                    <button class="Savebutton" type="button" style="display:block;height:30px; margin-left: 10px;" aria-label="Search" (click)="OnSearchClick($event)">Search</button>
+                </div>
+                <!--<search *ngIf="fieldObject&&totalItems>0" [searchtype]="'Grid'" [disable]="disable" [Key]=2  [advancesearch]=true [datasource]=advancelookup (SaveAs)="SaveAs($event)" (Delete)="Delete($event)" (onloadSearch)="onloadSearch($event)" (loadAdvanceSearch)="advanceSearch()" (Clear)="Clear($event)" (Submit)="Submit($event)"></search>-->
+                <div class="DisplaySettingsImg" style="width:41%">
+                    <img src="Content/Icons/data_display-settingsN.png" role="button" tabindex="0" aria-label="Display Settings" title="Display Settings" (click)="displaySettingsClick()" [hidden]=false style="width:30px;height:30px;float:right" />
+                </div>
+            </div>
+            <div *ngIf="Fromdate[0] != undefined" class="search-containerforschedule">
+                <searchforschedule [fromDateInput]="Fromdate[0].FieldValue" [fromTimeInput]="FromTime[0].FieldValue" [toDateInput]="Todate[0].FieldValue" [toTimeInput]="ToTime[0].FieldValue"  [Title]="searchTitle" [searchtype]="'Grid'" [keyWordLookup]=keyWordLookup [disable]="disable" [Key]=2 [KeywordFields]=KeywordFieldObject [advancesearch]=true [Customsearch]=true [datasource]=advancelookup [Target]="1" (SaveAs)="SaveAs($event)" (Delete)="Delete($event)" (onloadSearch)="onloadSearch($event)" (loadAdvanceSearch)="advanceSearch()" (Clear)="Clear($event)" (Submit)="Submit($event)" [(showSearchFilter)]="showSearchFilter" [isShowDefaultEndTime]=true></searchforschedule>
+            </div>
+            <div *ngIf="IsProxyReservationEnabled == true" style="display:inline-flex;flex-direction:row;position:absolute;left:45px;top:43px">
+                <input role="radio" aria-label="Normal" type="radio" id="1" name="1" value="" (click)="onNormalClick($event)" checked />&nbsp;<div>Normal</div>&nbsp;&nbsp;&nbsp;
+                <input role="radio" aria-label="Special Use Rooms" type="radio" id="2" name="1" value="" (click)="onSURoomClick($event)" />&nbsp;<div>Special Use Rooms</div>
+            </div>
+            <div class="CheckboxScheduling" *ngIf="Availablity[0] != undefined">
+                <CheckBoxComponent id="showavailablechkbox" [fieldObject]="Availablity[0]" (chkBoxClick)="selectedAvailability($event)" (focusout)="onfocusOut($event)" (focusin)="onfocusIn($event)"></CheckBoxComponent>
+            </div>
+
+            <div class="mainGridScheduling" style="overflow: hidden;height: calc(100% - 80px);">
+                <div style="height:100%;overflow: hidden;">
+                    <div [ngClass]="totalItems > itemsPerPage ? 'pagewithPaging':'pagewithoutPaging'">
+                        <slide></slide>
+                        <gridView style="height:100%;" [(dataSource)]="itemsSource" [properties]="inputItems" [columns]="fieldObject"
+                                  (onSorting)="onSort($event)" (onColValClick)="onHyperLinkClick($event)" [refreshgrid]="refreshgrid"></gridView>
+                    </div>
+                    <div [style.height]="totalItems >itemsPerPage ? '35px' : '0px'">
+                        <paging [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="pageChanged($event);"></paging>
+                    </div>
+                </div>
+            </div>
+        </primary-view>
+        <secondary-view *ngIf="showBookSeat==true && splitviewInput.showSecondaryView && secondaryTarget == 1">
+            <book-seat (submitSuccess)="submitReturn($event)" [selSeatId]="inputItems.selectedIds" [fieldDetailsBook]="fieldDetailsBook" [Sitetime]="Sitetime" (reserveSeatReturn)="reserveSeatSubmitRet($event)"></book-seat>
+        </secondary-view>
+        <secondary-view id="roomdetails" *ngIf="SpaceIdforroom > 0 && splitviewInput.showSecondaryView && secondaryTarget == 2">
+            <roomdetails style="display:block;width:600px;" [selectedId]="SpaceIdforroom" [Todaydate]="Dateforcalender" [Target]="2" [selSeatId]="inputItems.selectedIds" [SeatNo]="SeatNo" [site]="site" [building]="building" [floor]="floor"></roomdetails>
+        </secondary-view>
+        <secondary-view id="dispsettings" *ngIf="splitviewInput.showSecondaryView && secondaryTarget == 3">
+            <display-setting [IsGrid]=true [DisplaySettingCategoryId]=47 [AdditionalDataFieldCategoryId]=7 (emitdisplaySetting)="getUpdatedDisplaySettings($event)"></display-setting>
+        </secondary-view>
+    </split-view>
+    <!--</content>
+    </page>-->
+</div>
+<style>
+    #fromtimeseat div {
+        margin-top: 0px !important;
+    }
+
+    #totimeseat div {
+        margin-top: 0px !important;
+    }
+  /*.Div-1688 div div span input{
+     width:150px!important;
+    }
+    .Div-1687 div div span input
+    {
+        width:150px!important;
+    }*/
+    .search-containerforschedule {
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        padding-top: 40px;
+        margin-right: 10px;
+        z-index: 51;
+    }
+
+    .Div-1687 #dateContainerDiv {
+        position: absolute;
+    }
+
+    .Div-1688 #dateContainerDiv {
+        position: absolute;
+    }
+
+    @media only screen and (min-device-width: 320px) and (max-device-width: 812px) and (orientation: portrait) {
+
+        .FromDateScheduling {
+            display: inline-flex;
+            width: 100%;
+            height: 35px;
+        }
+
+        .ToDateScheduling {
+            display: inline-flex;
+            width: 100%;
+            height: 35px;
+        }
+
+        .FromToDateScheduling {
+            height: 70px !important;
+            display: inline-block !important;
+            width: 100% !important;
+            padding-top: 4px !important;
+        }
+
+        .search-containerforschedule {
+            position: absolute;
+            top: 42px;
+            z-index: 51;
+            right: 5px;
+            padding-top: 0px !important;
+            margin-right: 0px !important;
+            left: auto !important;
+        }
+
+        .mainGridScheduling {
+            overflow: hidden;
+            height: calc(100% - 100px) !important;
+        }
+
+        .CheckboxScheduling {
+            height: 35px;
+        }
+        .DisplaySettingsImg {
+            width:100% !important;
+        }
+    }        
+</style>

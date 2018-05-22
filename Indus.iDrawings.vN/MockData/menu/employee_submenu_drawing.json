@@ -1,0 +1,166 @@
+﻿{
+  "assignedEmployeeMenu": [
+    {
+      "id": 1,
+      "image": "Edit",
+      "path": null,
+      "privilegeId": 1668,
+      "subMenu": null,
+      "title": "Edit"
+    },
+    {
+      "id": 2,
+      "title": "Delete",
+      "image": "Delete",
+      "path": null,
+      "subMenu": null,
+      "privilegeId": 1669
+    },
+    {
+      "id": 11,
+      "title": "More",
+      "image": "More",
+      "path": "More",
+      "subMenu": [
+        {
+          "id": 9,
+          "title": "Show Drawing",
+          "image": "Show Drawing",
+          "path": "Show Drawing",
+          "submenu": null
+        },
+        {
+          "id": 10,
+          "title": "Show Zoomed",
+          "image": "Show Zoomed",
+          "path": "Show Zoomed",
+          "submenu": null
+        },
+        {
+          "id": 3,
+          "title": "Resources",
+          "image": "Resources",
+          "path": null,
+          "subMenu": null,
+          "privilegeId": 1670
+        },
+        {
+          "id": 7,
+          "title": "Display Settings ",
+          "image": "DisplaySettings",
+          "path": "DisplaySettings",
+          "subMenu": null,
+          "privilegeId": 1681
+        },
+        {
+          "id": 6,
+          "title": "Attachments",
+          "image": "Attachments",
+          "path": null,
+          "subMenu": null,
+          "privilegeId": 1671
+        },
+        {
+          "id": 15,
+          "title": "Export",
+          "image": "Export",
+          "path": "Export",
+          "subMenu": null,
+          "privilegeId": 1671
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "title": "View Details",
+      "image": "View Details",
+      "path": "View Details",
+      "subMenu": null,
+      "privilegeId": null
+    }
+
+  ],
+  "unassignedEmployeeMenu": [
+    {
+      "id": 0,
+      "title": "Add",
+      "image": "Add",
+      "path": null,
+      "subMenu": null,
+      "privilegeId": 1667
+    },
+    {
+      "id": 1,
+      "title": "Edit",
+      "image": "Edit",
+      "path": null,
+      "subMenu": null,
+      "privilegeId": 1668
+    },
+    {
+      "id": 2,
+      "title": "Delete",
+      "image": "Delete",
+      "path": null,
+      "subMenu": null,
+      "privilegeId": 1669
+    },
+    {
+      "id": 11,
+      "title": "More",
+      "image": "More",
+      "path": "More",
+      "subMenu": [
+        {
+          "id": 4,
+          "title": "Assign Space",
+          "image": "Assign Space",
+          "path": null,
+          "subMenu": null,
+          "privilegeId": 1668
+        },
+        {
+          "id": 3,
+          "title": "Resources",
+          "image": "Resources",
+          "path": null,
+          "subMenu": null,
+          "privilegeId": 1670
+        },
+        {
+          "id": 7,
+          "title": "Display Settings ",
+          "image": "DisplaySettings",
+          "path": "DisplaySettings",
+          "subMenu": null,
+          "privilegeId": 1681
+        },
+        {
+          "id": 6,
+          "title": "Attachments",
+          "image": "Attachments",
+          "path": null,
+          "subMenu": null,
+          "privilegeId": 1671
+        },
+        {
+          "id": 15,
+          "title": "Export",
+          "image": "Export",
+          "path": "Export",
+          "subMenu": null,
+          "privilegeId": 1671
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "title": "View Details",
+      "image": "View Details",
+      "path": "View Details",
+      "subMenu": null,
+      "privilegeId": null
+    }
+  ]
+
+}

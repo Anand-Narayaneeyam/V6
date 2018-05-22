@@ -1,0 +1,64 @@
+﻿<page [pagetitle]="pagePath">
+    <pagepath>
+    </pagepath>
+    <content>
+        <section title="Dashboard" [isExpanded]="true" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div>
+
+                <p>A List of <span class="header2">Asset Distribution by Floor</span> and <span class="header2">Asset List by Floor</span> are also provided in the Dashboard which lists the distribution of all the assets assigned in the floor.</p>
+                <p><span class="header2">Asset Distribution by Asset Class</span> pie chart shows the Class wise distribution of all the Assets. The pie chart tooltip shows the percentage and number of Assets in  each Asset Class. The legend shows the  top 9 Asset Classes. All other Assets in various Asset Classes are summed up and shown as a single item labeled as 'Others'. </p>
+                <p><span class="header2">Asset Distribution by Organizational Unit</span> pie chart shows the Organizational Unit (Division, Cost Center, etc) wise distribution of the Assets. The pie chart tooltip shows the percentage of and number of Assets in each Organizational Unit. The legend displays the top 9 Organizational Units according to the distribution. All other Assets in the remaining Organizational Units are summed up and shown as a single item labeled as 'Others'. </p>
+                <p><span class="header2">Asset Distribution by Floor</span> displays the total number of assets located in each floor, and Asset List by floor displays the class wise total number of assets located in each floor.</p>
+                <p>Dashboard is available only for users with Administrator privilege.</p>
+            </div>
+        </section>
+    </content>
+</page>
+
+<style type="text/css">
+    h3.Mainheader {
+        color: #178AE8;
+    }
+
+    .header1 {
+        font-weight: bold;
+        color: #178AE8;
+    }
+
+    .header2 {
+        font-weight: normal;
+        color: #178AE8;
+    }
+
+    p {
+        margin-left: 38px;
+        font-size: 13px;
+        margin-right: 3em;
+    }
+
+    .header3 {
+        font-weight: bold;
+        color: black;
+    }
+    /**/ h1 {
+        color: #178AE8;
+        font-size: 1.3em;
+        margin-left: 38px;
+    }
+
+    h2 {
+        color: #178AE8;
+        font-size: 1em;
+        margin-left: 38px;
+    }
+
+    .config {
+        background-color: #178AE8;
+    }
+
+    .helpicon {
+        vertical-align: baseline;
+        width: 20px;
+        height: 20px;
+    }
+</style>

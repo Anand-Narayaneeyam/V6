@@ -1,0 +1,35 @@
+﻿{
+  "data": [
+    {
+      "Id": "1",
+      "FileName": "lighthouse.jpg",
+      "FileSize": "59",
+      "Description": "",
+      "AttachmentCategory": "Photos",
+      "Uploadedon": "20 Feb 2013 11:43:05",
+      "Uploadedby": "Indus Administrator"
+    },
+    {
+      "Id": "2",
+      "FileName": "floordetails.xml",
+      "FileSize": "5",
+      "Description": "",
+      "AttachmentCategory": "General",
+      "Uploadedon": "20 Feb 2016 12:53:05",
+      "Uploadedby": "Indus Administrator"
+    },
+    {
+      "Id": "3",
+      "FileName": "floor.pdf",
+      "FileSize": "10",
+      "Description": "",
+      "AttachmentCategory": "Invoice",
+      "Uploadedon": "20 Feb 2015 01:43:05",
+      "Uploadedby": "Indus Administrator"
+    }
+  ],
+  "count": 
+    {
+      "TotalItems": "15"
+    }
+}

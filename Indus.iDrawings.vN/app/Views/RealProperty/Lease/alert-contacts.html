@@ -1,0 +1,14 @@
+﻿<div>
+    <div style="width:50%;padding-bottom:1%;">
+        Lease Identifier: <LabelComponent [fieldObject]=fieldLeaseIdentifier></LabelComponent>
+    </div>
+    <submenu>
+        <sub-menu [menuCard]=true [source]=menuData [menuIds]=enableMenu (onSubMenuChange)="updateContactsForAlert($event);"> </sub-menu>
+    </submenu>
+    <div style="height:100%;">
+        <div style="height:80%;display:block;">
+            <gridView [dataSource]="itemsSource" [properties]="inputItems" [columns]="fieldObject" (onSorting)="onSort($event)"></gridView>
+        </div>
+    </div>
+</div>
+

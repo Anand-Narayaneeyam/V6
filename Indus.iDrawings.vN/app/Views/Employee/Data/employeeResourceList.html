@@ -1,0 +1,50 @@
+﻿<!--<div style="width:100%;float:left;">-->
+<div>
+    <div style="width:100%;padding-bottom:1%;float:left;">
+        Employee Code: <LabelComponent [fieldObject]=fieldEmployeeCode></LabelComponent>
+        Employee Name: <LabelComponent [fieldObject]=fieldEmployeeName></LabelComponent>
+    </div>
+    <!--</div>-->
+    <tabs [selectedTab]="selectedTab" (getSelectedTab)="getSelectedTab($event)" (onTabClose)="onTabClose($event)" [deleteIndex]="deleteIndex" class="resourcelist">
+        <tab tabTitle="Resources" closeButtonVisible="hidden">
+            <div style="width:50%;padding-bottom:1%;float:left;">
+                <submenu *ngIf="target!= 4">
+                    <sub-menu [menuCard]=true [source]=menuData [count]=gridcount [menuIds]=enableMenu (onSubMenuChange)="onSubMenuChange($event);"> </sub-menu>
+                </submenu>
+            </div>
+            <div style="width:100%;padding-bottom:1%;float:left;height:95%;">
+                <div style="height:100%;">
+                    <div style="height:75%;">
+                        <gridView [(dataSource)]="sourceData" [ngClass]="totalItems > itemsPerPage ? 'pagewithPaging':'pagewithoutPaging'" [properties]="inputItems" [columns]="fields" (onSorting)="onSort($event)"></gridView>
+                    </div>
+                    <div style="height:10%;">
+                        <paging [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="pageChanged($event);"></paging>
+                    </div>
+                </div>
+            </div> 
+        </tab>
+        <tab tabTitle="New Resource" *ngIf="newResourceTab == true" closeButtonVisible="hidden">
+            <div><new-employee_resources [filterResourceChkbx]="filterResourceChkbx" [assigned]="assigned" [target]="target" [employeeId]="selectedId" (submitSuccess)="submitSuccess($event)"></new-employee_resources></div>
+        </tab>
+    </tabs>
+</div>
+<slide [width]="200" [position]="position" [type]="dialog" [show]="showSlide" [absolute]="'true'" (closeDialog)="closeSlideDialog($event)">
+
+<div>
+    <div>
+        Are you sure you want to delete the selected Employee Resource(s)?
+    </div>
+    <div>
+
+        <div style="width:100%">
+            <button  class="Savebutton "type="button" (click)="okDelete($event)">Yes</button>
+            <button  class="Savebutton "type="button" (click)="cancelClick($event)">No</button>
+        </div>
+    </div>
+</div>
+</slide>
+<style>
+    .resourcelist .navbar li {
+        width: 150px !important;
+    }
+</style>

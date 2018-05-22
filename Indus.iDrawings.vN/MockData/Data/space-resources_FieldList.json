@@ -1,0 +1,122 @@
+﻿{
+  "data": [
+    {
+      "FieldId": 1,
+      "FieldName": "ResourceId",
+      "FieldType": 1,
+      "IsVisible": false,
+      "IsMandatory": false,
+      "IsDisabled": true,
+      "IsHiddenLabel": true,
+      "ReadOnlyMode": false,
+      "NotificationType": "return"
+    },
+    {
+      "FieldId": 2,
+      "FieldName": "Resource",
+      "FieldType": 1,
+      "IsVisible": true,
+      "IsMandatory": true,
+      "IsDisabled": false,
+      "IsHiddenLabel": true,
+      "ReadOnlyMode": false,
+      "NotificationType": "return"
+    },
+    {
+      "FieldId": 3,
+      "FieldName": "Site",
+      "FieldType": 5,
+      "IsVisible": true,
+      "IsMandatory": true,
+      "IsDisabled": false,
+      "IsHiddenLabel": true,
+      "ReadOnlyMode": false,
+      "IsMultiValued": true,
+      "MultiValuedDetails": {
+        "LookupValues": [
+          {
+            "Id": 1,
+            "Value": "Aberdeen"
+          },
+          {
+            "Id": 2,
+            "Value": "Arlington"
+          },
+          {
+            "Id": 3,
+            "Value": "Concord"
+          },
+          {
+            "Id": 4,
+            "Value": "Farmingham"
+          }
+        ],
+        "PopupComponentName": null
+      },
+      "NotificationType": "return"
+    },
+    {
+      "FieldId": 4,
+      "FieldName": "Background",
+      "FieldType": 5,
+      "FieldValue": "0",
+      "IsVisible": true,
+      "IsMandatory": false,
+      "IsDisabled": false,
+      "IsHiddenLabel": true,
+      "ReadOnlyMode": false,
+      "IsMultiValued": true,
+      "MultiValuedDetails": {
+        "LookupValues": [
+          {
+            "Id": 1,
+            "Value": "Black"
+          },
+          {
+            "Id": 2,
+            "Value": "White"
+          },
+          {
+            "Id": 3,
+            "Value": "Blue"
+          }
+        ],
+        "PopupComponentName": null
+      },
+      "NotificationType": "return"
+    },
+    {
+      "FieldId": 5,
+      "FieldName": "Material",
+      "FieldType": 5,
+      "IsVisible": true,
+      "IsMandatory": false,
+      "IsDisabled": false,
+      "IsHiddenLabel": true,
+      "ReadOnlyMode": false,
+      "IsMultiValued": true,
+      "MultiValuedDetails": {
+        "LookupValues": [
+          {
+            "Id": 1,
+            "Value": "Aluminium"
+          },
+          {
+            "Id": 2,
+            "Value": "Cardboard"
+          },
+          {
+            "Id": 3,
+            "Value": "Metal"
+          },
+          {
+            "Id": 4,
+            "Value": "Tin"
+          }
+        ],
+        "PopupComponentName": null
+      },
+      "NotificationType": "return"
+    }
+  ]
+}

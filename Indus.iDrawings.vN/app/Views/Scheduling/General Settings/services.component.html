@@ -1,0 +1,31 @@
+﻿<div style="float: right; width: 50%;">
+    <slide [width]="slidewidth" [position]="position" [show]="showSlide" (closeDialog)="closeSlideDialog($event)">
+    <div>
+        <div tabindex ="0">Are you sure you want to delete the selected Service?  </div>
+        <div style="width:100%">
+            <button  class="Savebutton "type="button" (click)="okDelete($event)">Yes</button>
+            <button  class="Savebutton "type="button" (click)="cancelClick($event)">No</button>
+        </div>
+    </div>
+</slide>
+</div>
+<submenu>
+    <sub-menu [menuCard]=types [source]=menuData [count]=totalItems [menuIds]=enableMenu (onSubMenuChange)="onSubMenuChange($event);"></sub-menu>
+</submenu>
+<div>
+    <split-view [splitviewObject]="splitviewInput" [pageTitle]="pageTitle" style="height: calc(75% - 35px);">
+        <primary-view>
+            <div>
+                <div [ngClass]="totalItems > itemsPerPage ? 'pagewithPaging':'pagewithoutPaging'">
+                    <gridView [(dataSource)]="serviceSource" [properties]="inputItems" [columns]="fields" [refreshgrid]="refreshgrid" (onSorting)="onSort($event)"></gridView>
+                </div>
+                <div [style.height]="totalItems >itemsPerPage ? '35px' : '0px'">
+                    <paging [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="pageChanged($event);"></paging>
+                </div>
+            </div>
+        </primary-view>
+        <secondary-view *ngIf="splitviewInput.showSecondaryView == true">
+            <services-add-edit (submitSuccess)="submitReturn($event)" [action]="action" [btnName]="btnName" [selectedId]="inputItems.selectedIds" [fieldDetailsAdd]="fieldDetailsAdd1"></services-add-edit>
+        </secondary-view>
+    </split-view>
+</div>

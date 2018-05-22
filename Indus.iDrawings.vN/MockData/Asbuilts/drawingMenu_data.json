@@ -1,0 +1,332 @@
+﻿{
+  "settingsbuilding": [
+    {
+      "id": 1,
+      "title": "Edit Description",
+      "image": "Edit",
+      "path": "Edit",
+      "submenu": null,
+      "privilegeId": 206
+    },
+    {
+      "id": 4,
+      "title": "View",
+      "image": "View",
+      "path": "View",
+      "submenu": null,
+      "privilegeId": 210
+    },
+    {
+      "id": 8,
+      "title": "List Revisions",
+      "image": "Revisions",
+      "path": "Revisions",
+      "submenu": null,
+      "privilegeId": 212
+    },
+
+    {
+      "id": 9,
+      "title": "List Markups",
+      "image": "Markups",
+      "path": "Markups",
+      "submenu": null,
+      "privilegeId": 213
+    },
+    {
+      "id":12,
+      "title": "Use shift/ctrl key to select multiple drawings for download",
+      "image": "Download",
+      "path": "Download",
+      "submenu": null
+      
+    }
+   
+  ],
+  "settingsfloor": [
+    {
+      "id": 1,
+      "title": "Edit Description",
+      "image": "Edit",
+      "path": "Edit",
+      "submenu": null,
+       "privilegeId": 206
+    },
+    {
+      "id": 4,
+      "title": "View",
+      "image": "View",
+      "path": "View",
+      "submenu": null,
+       "privilegeId": 210
+    },
+      {
+      "id":8 ,
+      "title": "List Revisions",
+      "image": "Revisions",
+      "path": "Revisions",
+      "submenu": null,
+       "privilegeId": 212
+    },
+
+    {
+      "id": 9,
+      "title": "List Markups",
+      "image": "Markups",
+      "path": "Markups",
+      "submenu": null,
+       "privilegeId": 213
+    }, {
+      "id": 10,
+      "title": "Display Settings",
+      "image": "DisplaySettings",
+      "path": "DisplaySettings",
+      "subMenu": null,
+       "privilegeId": 216
+    },{
+      "id":11,
+      "title": "Use shift/ctrl key to select multiple drawings for download",
+      "image": "Download",
+      "path": "Download",
+      "submenu": null,
+       "privilegeId": 210
+    }
+  ],
+  "buildingdrawing": [
+    {
+      "id": 2,
+      "title": "Add",
+      "image": "Add",
+      "path": "Add",
+      "submenu": null,
+       "privilegeId": 205
+    },
+    {
+      "id": 1,
+      "title": "Edit Description",
+      "image": "Edit",
+      "path": "Edit",
+      "submenu": null,
+       "privilegeId": 206
+    },
+   
+    {
+      "id": 3,
+      "title": "Delete",
+      "image": "Delete",
+      "path": "Delete",
+      "submenu": null,
+       "privilegeId": 207
+    },
+    {
+      "id": 4,
+      "title": "View",
+      "image": "View",
+      "path": "View",
+      "submenu": null,
+       "privilegeId": 210
+    },
+     {
+      "id": 6,
+      "title": "Revise",
+      "image": "Revise",
+      "path": "Revise",
+      "submenu": null,
+       "privilegeId": 208
+    },
+    {
+      "id": 7,
+      "title": "Replace",
+      "image": "Replace",
+      "path": "Replace",
+      "submenu": null,
+       "privilegeId": 209
+    },
+        {
+      "id":8 ,
+      "title": "List Revisions",
+      "image": "Revisions",
+      "path": "Revisions",
+      "submenu": null,
+       "privilegeId": 212
+    },
+    {
+      "id": 9,
+      "title": "List Markups",
+      "image": "Markups",
+      "path": "Markups",
+      "submenu": null,
+      "privilegeId": 213
+    },
+    {
+      "id":12,
+      "title": "Use shift/ctrl key to select multiple drawings for download",
+      "image": "Download",
+      "path": "Download",
+      "submenu": null
+      
+    }
+
+  ],
+  "floordrawing": [
+    {
+      "id": 2,
+      "title": "Add",
+      "image": "Add",
+      "path": "Add",
+      "submenu": null,
+      "privilegeId": 205
+    },
+    {
+      "id": 1,
+      "title": "Edit Description",
+      "image": "Edit",
+      "path": "Edit",
+      "submenu": null,
+      "privilegeId": 206
+    },
+
+    {
+      "id": 3,
+      "title": "Delete",
+      "image": "Delete",
+      "path": "Delete",
+      "submenu": null,
+      "privilegeId": 207
+    },
+    {
+      "id": 4,
+      "title": "View",
+      "image": "View",
+      "path": "View",
+      "submenu": null,
+      "privilegeId": 210
+    },
+    {
+      "id": 6,
+      "title": "Revise",
+      "image": "Revise",
+      "path": "Revise",
+      "submenu": null,
+      "privilegeId": 208
+    },
+    {
+      "id": 7,
+      "title": "Replace",
+      "image": "Replace",
+      "path": "Replace",
+      "submenu": null,
+      "privilegeId": 209
+    },
+    {
+      "id": 8,
+      "title": "List Revisions",
+      "image": "Revisions",
+      "path": "Revisions",
+      "submenu": null,
+      "privilegeId": 212
+    },
+
+
+
+    {
+      "id": 9,
+      "title": "List Markups",
+      "image": "Markups",
+      "path": "Markups",
+      "submenu": null,
+      "privilegeId": 213
+    },
+    {
+      "id": 10,
+      "title": "Display Settings",
+      "image": "DisplaySettings",
+      "path": "DisplaySettings",
+      "subMenu": null,
+      "privilegeId": 216
+    },
+    {
+      "id": 11,
+      "title": "Download",
+      "image": "Download",
+      "path": "Download",
+      "submenu": null,
+      "privilegeId": 210
+    }
+  ],
+  "floordrawingsiteadmin": [
+    {
+      "id": 4,
+      "title": "View",
+      "image": "View",
+      "path": "View",
+      "submenu": null,
+       "privilegeId": 210
+    },
+    {
+      "id": 11,
+      "title": "Download",
+      "image": "Download",
+      "path": "Download",
+      "submenu": null,
+      "privilegeId": 210
+    }
+  ],
+  "space": [
+
+    {
+      "id": 4,
+      "title": "View",
+      "image": "View",
+      "path": "View",
+      "submenu": null
+    }
+  ],
+  "employee": [
+
+    {
+      "id": 4,
+      "title": "View",
+      "image": "View",
+      "path": "View",
+      "submenu": null
+    }
+  ],
+  "assets": [
+    {
+      "id": 4,
+      "title": "View",
+      "image": "View",
+      "path": "View",
+      "submenu": null
+    }
+  ],
+  "scheduling": [
+    {
+      "id": 4,
+      "title": "View",
+      "image": "View",
+      "path": "View",
+      "submenu": null
+    }
+
+  ],
+  "deletespacedata": [
+    {
+      "id": 11,
+      "title": "Delete",
+      "image": "Delete",
+      "path": "Delete",
+      "submenu": null
+    }
+  ],
+   "lockdrawing": [
+    {
+      "id": 12,
+      "title": "Lock Drawings",
+      "image": "lockdrawings",
+      "path": "Lock Drawings",
+      "submenu": null
+    }
+  ]
+}

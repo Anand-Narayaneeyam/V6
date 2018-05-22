@@ -1,0 +1,42 @@
+﻿<div style="height:100%;overflow: hidden;">
+    <split-view [splitviewObject]="splitviewInput" [pageTitle]="pageTitle">
+        <primary-view>
+            <submenu>
+                <sub-menu [source]=menuData [count]=totalItems [menuIds]=enableMenu (onSubMenuChange)="onSubMenuChange($event);"> </sub-menu>
+            </submenu>
+            <div style="overflow: hidden;height: calc(100% - 35px);">
+                <div style="height:100%;overflow: hidden;">
+                    <div style="width:100%;display:block" [ngClass]="totalItems > itemsPerPage ? 'pagewithPaging':'pagewithoutPaging'">
+                        <slide></slide>
+                        <gridView [dataSource]="itemSource" [properties]="inputItems" [columns]="fieldObject" [arrHighlightRowIds]="arrHighlightRowIds" [refreshgrid]="refreshgrid" (onSorting)="onSort($event)" ></gridView>
+                    </div>
+                    <div style="height:45px;width:100%;float:left;display:block;">
+                        <paging [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="pageChanged($event);"></paging>
+                    </div>
+                </div>
+            </div>
+        </primary-view>
+        <secondary-view style="height:100%;">
+            <div *ngIf="target == 1 && fieldDetailsAdd!=undefined" style="width:100%;display:block;height:90%;">
+
+                <DynamicFields [dataSource]="fieldDetailsAdd" (submitFieldObject)="onSubmitData($event)" [btnName]="'Save'" (rbnChange)="rdBtnChange($event);" ></DynamicFields>
+
+            </div>
+            <div *ngIf="target == 2 && splitviewInput.showSecondaryView == true" style="width:100%;display:block;height:90%;">
+
+                <hotellingresource [selSeatIds]="inputItems.selectedIds"  [pageTarget]="'1'" (seatResourceAdd)="seatResourceAdd($event)" ></hotellingresource>
+
+            </div>
+
+        </secondary-view>
+       </split-view>
+</div>
+<slide [width]="slidewidth" [position]="position" [show]="showSlide" (closeDialog)="closeSlideDialog($event)">
+    <div>
+        <div  tabindex="0" [attr.aria-label]="slideMSg">{{slideMSg}}</div>
+        <div style="width:100%">
+            <button  class="Savebutton "type="button" role="button" aria-label="Yes" (click)="okSlideClick($event)">Yes</button>
+            <button  class="Savebutton "type="button" role="button" aria-label="No" (click)="cancelClick($event)">No</button>
+        </div>
+    </div>
+</slide>

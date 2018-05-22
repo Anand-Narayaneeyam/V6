@@ -1,0 +1,56 @@
+﻿
+<split-view [splitviewObject]="splitviewPlanning" [pageTitle]="pageTitle">
+    <primary-view>
+        <submenu>
+            <sub-menu [menuCard]=true [source]=planningMenu [count]=planningTotalItems [menuIds]=enablePlanningMenu (onSubMenuChange)="updatePlanningMenu($event);"> </sub-menu>
+        </submenu>
+        <div style="height:100%;overflow: hidden;">
+            <!--<div class="search-container">
+                <search *ngIf="fieldObject" [searchtype]="'Grid'" [keyWordLookup]=keyWordLookup [advancesearch]=true [Key]=2 [datasource]=advancelookup [dataKey]="dataKey" [KeywordFields]=KeywordFieldObject (SaveAs)="SaveAs($event)" (Delete)="Delete($event)" (onloadSearch)="onloadSearch($event)" (loadAdvanceSearch)="advanceSearch()" (Clear)="Clear($event)" (Submit)="Submit($event)"></search>
+            </div>-->  
+            <!--<div style="height:calc(100% - 150px);float:left;width:100%;">-->
+            <div style="height: calc(100% - 45px);height: -webkit-calc(100% - 45px);height: -moz-calc(100% - 45px);width:100%;">
+                <slide>
+                </slide>
+                <gridView [(dataSource)]="itemsSource" [properties]="inputItems" [(columns)]="fieldObject" [refreshgrid]="refreshgrid" (onSorting)="onSort($event)" (onRowUpdate)="RowUpdate($event)" (onRowDelete)="RowDelete($event)" (onRowAdd)="RowAdd($event)" (onColValClick)="onColValClick($event)" (ddlChangeFrmGrid)="ddlChangeFrmGrid($event)" [arrHighlightRowIds]="arrHighlightRowIds"></gridView>
+            </div>
+            <div style="height:45px;width:100%;float:left;">
+                <paging [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="pageChanged($event);"></paging>
+            </div>
+        </div>
+    </primary-view>
+    <secondary-view>
+        <spacePlanning-addedit *ngIf="sendforapproval==false && splitviewPlanning.showSecondaryView == true" [addEdit]="addEdit" [selectedId]="selectedId" (submitSuccess)="submitSuccess($event)"></spacePlanning-addedit>
+        <send-for-approval *ngIf="sendforapproval==true && splitviewPlanning.showSecondaryView == true" [moduleid]="5" [selectedid]="selectedId" [workflowcategoryId]="4" [entityWorkflowCategoryId]="5"></send-for-approval>
+    </secondary-view>
+</split-view>
+<slide [width]="200" [position]="position" [type]="dialog" [show]="showSlide" (closeDialog)="closeSlideDialog($event,1)">
+
+    <div>
+        <div>
+            Are you sure you want to delete the selected Space Planning Project?
+        </div>
+        <div>
+
+            <div style="width:100%">
+                <button  class="Savebutton "type="button" (click)="okDelete($event)">Yes</button>
+                <button  class="Savebutton "type="button" (click)="cancelClick($event,1)">No</button>
+            </div>
+        </div>
+    </div>
+</slide>
+<slide [width]="200" [position]="position" [type]="dialog" [show]="showDiscardSlide" (closeDialog)="closeSlideDialog($event,2)">
+
+    <div>
+        <div>
+            Are you sure you want to discard the selected Space Planning Project?
+        </div>
+        <div>
+
+            <div style="width:100%">
+                <button  class="Savebutton "type="button" (click)="okDiscard($event)">Yes</button>
+                <button  class="Savebutton "type="button" (click)="cancelClick($event,2)">No</button>
+            </div>
+        </div>
+    </div>
+</slide>

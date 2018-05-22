@@ -1,0 +1,27 @@
+﻿<page [pagetitle]="">
+    <content>
+        <div *ngIf="DropdownField!=undefined" style="width:100%;display:inline">
+            <div style="width:50%;float:left;">
+                <DropDownListComponent [fieldObject]="DropdownField[0]" (change)="onChangeDataFieldCategory($event.target.value)"></DropDownListComponent>
+            </div>
+            <div style="width:50%;float:left;">
+                <DropDownListComponent [fieldObject]="ValidatedDropDown[0]" (change)="onChangeValidatedValues($event.target.value)"></DropDownListComponent>
+            </div>           
+            <table style="display:block;" (Updatetable)="submit($event)"  [fieldObject]="fields" [itemSource]="itemsSource" [DataKey]='"Id"'></table>
+        </div>
+    </content>
+</page>
+
+<slide [width]= width [position]="Position" [type]="dialog" [show]=showSlide (closeDialog)="closeSlideDialog($event)">
+    <div style="width:300px">
+        <div>
+            Distribution Map Settings updated. Do you want to save this as Default Settings?
+        </div>
+        <div>
+            <div style="width:100%">
+                <button type="button" (click)="DefaultSetting($event)">Yes</button>
+                <button type="button" (click)="cancelClick($event)">No</button>
+            </div>
+        </div>
+    </div>
+</slide>

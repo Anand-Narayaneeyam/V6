@@ -1,0 +1,15 @@
+﻿<div class="form-inline" style="margin-left:25px;margin-bottom:50px; padding:5px; border:1px solid brown; display:block;">
+    <!--<select class="form-control input-sm"></select>-->
+    <button title="Add Condition" style="margin-left: 5px" id=btncn{{groupFields.GroupId}} (click)="addCondition(groupFields)" class="btn btn-sm btn-success"><span class="glyphicon glyphicon-plus-sign"></span> Add Condition</button>
+    <button  title="Add Group"  style="margin-left: 5px" id=btngp{{groupFields.GroupId}} (click)="addGroup(groupFields)" class="btn btn-sm btn-success"><span class="glyphicon glyphicon-plus-sign"></span> Add Group</button>
+    <button  *ngIf="removeGpVisible==false || groupFields.GroupId!=1" title="Remove Group"  style="margin-left: 5px;"  id=btnrm{{groupFields.GroupId}} (click)="removeGroup(groupFields)" class="btn btn-sm btn-danger"><span class="glyphicon glyphicon-minus-sign"></span> Remove Group</button>
+    <DropDownListComponent *ngIf="groupFields.OperatorFieldObj" [ShowSelectOption]="false" id=ddl{{groupFields.GroupId}} [fieldObject]="groupFields.OperatorFieldObj" (ddlChange)="ddlChange($event,groupFields)"></DropDownListComponent>
+
+    <div class="condition-container" id="{{objconditon.ConditionId}}" *ngFor='let objconditon of groupFields.Conditions;let j=index'>
+        <!--<qbcondition [conditionFields]="objconditon" id="{{objconditon.ConditionId}}" (eliminateParentGroup)="removeGroup($event)" [groupFields]="groupFields"></qbcondition>-->
+        <qbcondition [conditionFields]="objconditon" id="{{objconditon.ConditionId}}"  [groupFields]="groupFields"></qbcondition>
+    </div><div class="group-conditions" id="divgp{{groupFields.GroupId}}" *ngFor='let objgroup of groupFields.SubGroups; let i=index'>
+        <qbgroup *ngIf="genericfieldobjects" id="gp{{groupFields.GroupId}}" [groupFields]="objgroup" [totgroupFields]="groupFields"   [genericfieldobjects]="genericfieldobjects"></qbgroup>
+    </div>
+</div>
+

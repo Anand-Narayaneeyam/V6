@@ -1,0 +1,84 @@
+﻿{
+  "data": [
+    {
+      "FieldId": 0,
+      "FieldName": "DrawingId",
+      "FieldType": 2,
+      "IsVisible": false,
+      "IsMandatory": true,
+      "IsDisabled": true,
+      "IsHiddenLabel": true,
+      "ReadOnlyMode": false
+    },
+    {
+      "FieldId": 1,
+      "FieldName": "Site",
+      "FieldType": 1,
+      "IsVisible": true,
+      "IsMandatory": true,
+      "IsDisabled": false,
+      "IsHiddenLabel": true,
+      "ReadOnlyMode": false
+    },
+    {
+      "FieldId": 2,
+      "FieldName": "Building",
+      "FieldType": 1,
+      "IsMandatory": true,
+      "IsHiddenLabel": true,
+      "ReadOnlyMode": false,
+      "IsVisible": true
+    },
+    {
+      "FieldId": 3,
+      "FieldName": "Floor",
+      "FieldType": 1,
+      "IsMandatory": true,
+      "IsHiddenLabel": true,
+      "ReadOnlyMode": false,
+      "IsVisible": true
+    },
+    {
+      "FieldId": 4,
+      "FieldName": "Floor Wing",
+      "FieldType": 1,
+      "IsVisible": true,
+      "IsMandatory": true,
+      "IsDisabled": false,
+      "IsHiddenLabel": false,
+      "ReadOnlyMode": false
+    },
+    {
+      "FieldId": 5,
+      "FieldName": "Category",
+      "FieldType": 4,
+      "FieldValue": "",
+      "IsMandatory": true,
+      "IsHiddenLabel": true,
+      "ReadOnlyMode": false,
+      "IsVisible": true
+    },
+    {
+      "FieldId": 7,
+      "FieldName": "File Name",
+      "FieldType": 1,
+      "HasRelation": false,
+      "IsVisible": true,
+      "IsMandatory": true,
+      "IsDisabled": false,
+      "IsHiddenLabel": true,
+      "ReadOnlyMode": true
+    },
+    {
+      "FieldId": 8,
+      "FieldName": "File Size",
+      "FieldType": 2,
+      "HasRelation": false,
+      "IsVisible": true,
+      "IsMandatory": true,
+      "IsDisabled": false,
+      "IsHiddenLabel": true,
+      "ReadOnlyMode": true
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+﻿<div style="height:60%;">
+    <split-view [splitviewObject]="splitviewInput" [pageTitle]="pageTitle">
+        <primary-view>
+            <submenu>
+                <sub-menu [menuCard]=types [source]=menuData [count]=totalItems [menuIds]=enableMenu (onSubMenuChange)="onSubMenuChange($event);"></sub-menu>
+            </submenu>
+
+            <div style="float: right; width: 50%;">
+                <slide [width]="slidewidth" [position]="position" [show]="showSlide" (closeDialog)="closeSlideDialog($event)">
+                    <div>
+                        <div>{{message}}  </div>
+                        <div style="width:100%">
+                            <button class="Savebutton " type="button" (click)="okDelete($event)">Yes</button>
+                            <button class="Savebutton " type="button" (click)="cancelClick($event)">No</button>
+                        </div>
+                    </div>
+                </slide>
+            </div>
+
+            <div>
+                <content>
+                    <div *ngIf="SpaceTypeSource != undefined" style="height: calc(100% - 35px);">
+                        <div>
+                            <div>
+                                <gridView [(dataSource)]="SpaceTypeSource" [ngClass]="totalItems > itemsPerPage ? 'pagewithPaging':'pagewithoutPaging'" [properties]="inputItems" [columns]="fields" [refreshgrid]="refreshgrid" (onSorting)="onSort($event)"></gridView>
+                            </div>
+                            <div>
+                                <paging *ngIf="totalItems >itemsPerPage ? 'true' : 'false'" [totalItems]="totalItems" [itemsPerPage]="itemsPerPage"></paging>
+                            </div>
+                        </div>
+                    </div>
+
+                    <paging [totalItems]="totalItems" [itemsPerPage]="itemsPerPage"></paging>
+                </content>
+            </div>
+        </primary-view>
+        <secondary-view *ngIf="menuEventValue == 1">
+            <querySpaceType *ngIf="splitviewInput.showSecondaryView == true" [moduleId]="moduleId" [QueryCategryId]="QueryCategryId" (submitSuccess)="submitReturn($event)"></querySpaceType>
+        </secondary-view>
+        <secondary-view *ngIf="menuEventValue == 2">
+            <querySpaceType *ngIf="splitviewInput.showSecondaryView == true" [moduleId]="moduleId" [QueryCategryId]="QueryCategryId" [rowData]="inputItems.rowData" (submitSuccess)="submitReturn($event)"></querySpaceType>
+        </secondary-view>
+    </split-view>
+</div>

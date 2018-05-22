@@ -1,0 +1,22 @@
+﻿{
+  "data": [
+    {
+      "DrawingId": 1,
+      "Site": "Frahmingam",
+      "Building": "CBOC",
+      "Floor": "1",
+      "Category": "Architectural",
+      "File Name": "Ccc.dwg",
+      "File Size": "171 KB"
+    },
+    {
+      "DrawingId": 2,
+      "Site": "Aberdeen",
+      "Building": "Hawaii Towers",
+      "Floor": "1",
+      "Category": "Architectural",
+      "File Name": "Ccd.dwg",
+      "File Size": "180 KB"
+    }
+  ]
+}

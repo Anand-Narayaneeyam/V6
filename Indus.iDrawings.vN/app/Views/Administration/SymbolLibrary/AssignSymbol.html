@@ -1,0 +1,32 @@
+﻿<div  style="height:80%">
+    
+            <div style="height:40px;margin-top:10px;cursor: pointer;">
+                <button tabindex="0" class="Savebutton"  [disabled]="disableBtn" (click)="onSubmit($event)">Save Changes</button>
+            </div>
+            <div style="height:50px">
+                <DropDownListComponent *ngIf="ddlField1 != undefined" [fieldObject]="ddlField1" (change)="onChange($event.target.value,1)" [SetAlignment]=alignContent></DropDownListComponent>
+            </div>
+            <div style="height:57px">
+                <DropDownListComponent *ngIf="ddlField2 != undefined" [fieldObject]="ddlField2" (change)="onChange($event.target.value,2)" [SetAlignment]=alignContent></DropDownListComponent>
+            </div>
+        
+            <div *ngIf="ShowCheckbox"  style="height:calc(80% - 157px)">
+                <div [ngClass]="totalItems > itemsPerPage ? 'pagewithPaging':'pagewithoutPaging'">
+                    <gridView *ngIf ="fieldObject != undefined" style="width:100%" [(dataSource)]="itemsSource" [properties]="inputItems" [columns]="fieldObject" [refreshgrid]="refreshgrid" (onSorting)="onSort($event)"></gridView>
+                </div>
+            </div>
+    <slide [width]="200" [position]="position" [type]="dialog" [show]="showSlide" (closeDialog)="closeSlideDialog($event)">
+        <div>
+            <div tabindex="0" style="max-height:300px;overflow:auto;width: 243px;">
+                {{message}}
+            </div>
+            <div>
+                <div style="width:100%">
+                    <button class="Savebutton " type="button" (click)="ok($event)">Yes</button>
+                    <button class="Savebutton " type="button" (click)="cancel($event)">No</button>
+                </div>
+            </div>
+        </div>
+    </slide>
+</div>
+

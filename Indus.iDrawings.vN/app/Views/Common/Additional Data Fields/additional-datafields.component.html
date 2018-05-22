@@ -1,0 +1,60 @@
+﻿
+    <submenu>
+        <sub-menu [menuCard]=true [source]=menuData [count]=gridcount [menuIds]=enableMenu (onSubMenuChange)="onSubMenuChange($event);"> </sub-menu>
+    </submenu>
+
+        <split-view [splitviewObject]="splitviewInput" [pageTitle]="pageTitle" style="height:calc(100% - 35px);">
+
+            <primary-view>
+                <div style="width:100%;height:100%;display:block;overflow:visible">
+                    <!--<confirmation (onConfirm)="okDelete($event)"></confirmation>-->
+                    <div *ngIf="addlDataFieldCategoryId==0" style="height:56px;">
+                        <DropDownListComponent *ngIf="ddlAdditionalDataFieldCategory" [labelWidth]=210 [fieldObject]="ddlAdditionalDataFieldCategory" (change)="onChangeDataFieldCategory($event.target.value)" [SetAlignment]=alignContent></DropDownListComponent>
+                    </div>
+                    <div style="height:calc(100% - 56px);">
+                        <div [ngClass]="totalItems > itemsPerPage ? 'pagewithPaging':'pagewithoutPaging'">
+                            <gridView style="height:98%;display:block;" [dataSource]="itemsSource" [properties]="inputItems" [columns]="fieldObject" [refreshgrid]="refreshgrid" (onSorting)="onSort($event)" (onSelectionChanging)="showDrawingDetails($event)"></gridView>
+                       </div>
+                        <div [style.height]="totalItems >itemsPerPage ? '35px' : '0px'">
+                            <paging [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="pageChanged($event);"></paging>
+                        </div>
+                    </div>
+                </div>
+                <slide [width]="slideWidth" [position]="position" [type]="dialog" [show]="showSlide" (closeDialog)="closeSlideDialog($event)">
+
+                    <div>
+                        <div tabindex="0" [attr.aria-label]="''+message" *ngIf="slideView==1">
+                            {{message}}
+                           
+                        </div>
+                        <div tabindex="0"   *ngIf="slideView==2"  [innerHtml]="CustomReportData">
+                        </div>
+                        <div>
+                            <div style="width:100%" *ngIf="slideView==1">
+                                <button  class="Savebutton "type="button" (click)="okDelete($event)" aria-label="Yes">Yes</button>
+                                <button  class="Savebutton "type="button" (click)="cancelClick($event)" aria-label="No">No</button>
+                            </div>
+                            <div style="width:100%" *ngIf="slideView==2">
+                                <button class="Savebutton " type="button" (click)="cancelClick($event)" aria-label="Yes">Ok</button>
+                            </div>
+                        </div>
+                    </div>
+                </slide>
+            </primary-view>
+            <secondary-view *ngIf="menuClickValue == 0 || menuClickValue == 1">
+                <addldatafield-addEdit *ngIf="CategoryId !=-1 && (splitviewInput.showSecondaryView)" [selectedId]="addlDataField" [CategoryId]="CategoryId" (submitSuccess)="OnSuccessfulSubmi($event)" [addEdit]="action"></addldatafield-addEdit>
+                <!--addlDataField &&-->
+            </secondary-view>
+            <secondary-view *ngIf="menuClickValue == 3|| menuClickValue == 4">
+                <field-values *ngIf="CategoryId &&(addlDataField && (splitviewInput.showSecondaryView && (action == 'fieldvalues'))) " [addlDataField]="addlDataField" [CategoryId]="CategoryId" [fieldType]="fieldType"></field-values>
+                <display-setting *ngIf="splitviewInput.showSecondaryView &&(action =='displaySettings')" [fieldObject]="fieldObject" [dataKey]="dataKey" (displaySetting)="displaySettingUpdate($event)"></display-setting>
+            </secondary-view>
+            <secondary-view *ngIf="menuClickValue == 5">
+                <Field-Order [fieldData]="itemsSource" [colmntoOdr]="'Field Name'" [dataKey]="'Id'" (fieldorder)="fieldorderUpdate($event)"></Field-Order>
+            </secondary-view>field-relation
+            <secondary-view *ngIf="menuClickValue == 6">
+                <field-relation [fieldobject]="fieldObject" [ddlParentName]="ddlParent" [category]="" (closerelation)="OnCloseRelation()"></field-relation>
+            </secondary-view>
+        </split-view>
+
+

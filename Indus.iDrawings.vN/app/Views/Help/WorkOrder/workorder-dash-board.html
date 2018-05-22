@@ -1,0 +1,62 @@
+﻿<page [pagetitle]="pagePath">
+    <pagepath>
+    </pagepath>
+    <content>
+        <section title="Dashboard" [isExpanded]="true" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div>
+                <p><span class="header2">PM Work Orders Status - This Month</span> and <span class="header2">Service Requests Status - This Month</span> are represented as Pie charts. Open PM Work Orders Aging and Service Requests Aging are represented as Bar Charts.</p>
+                <p><span class="header2">Pie chart of PM Work Orders Status - This Month</span> shows the number of PM Work Orders in different status like Work in Progress, On Hold, Completed & Others with legends. The Pie chart tooltip shows the percentage of PM Work Orders in each status. </p>
+                <p><span class="header2">Pie chart of Service Requests Status - This Month</span> shows the number of Service Requests in different status like Work in Progress, On Hold, Completed & Others with legends. The Pie chart tooltip shows the percentage of Service Requests in each status. </p>
+                <p>Open PM Work Orders Aging chart shows the number of Open PM Work Orders (Work in Progress, On Hold, Completed but not Closed) due for 0-30 days, 31-60 days, 61-90 days and > 90 days</p>
+                <p>Open Service Requests Aging chart shows the number of Open Non PM Work Orders (from Work in Progress status to Completed status) and Service Requests (from Accepted till Completed status) due for 0-30 days, 31-60 days, 61-90 days and > 90 days.</p>
+            </div>
+        </section>
+    </content>
+</page>
+<style type="text/css">
+    h3.Mainheader {
+        color: #178AE8;
+    }
+
+    .header1 {
+        font-weight: bold;
+        color: #178AE8;
+    }
+
+    .header2 {
+        font-weight: normal;
+        color: #178AE8;
+    }
+
+    p {
+        margin-left: 38px;
+        font-size: 13px;
+        margin-right: 3em;
+    }
+
+    .header3 {
+        font-weight: bold;
+        color: black;
+    }
+    /**/ h1 {
+        color: #178AE8;
+        font-size: 1.3em;
+        margin-left: 38px;
+    }
+
+    h2 {
+        color: #178AE8;
+        font-size: 1em;
+        margin-left: 38px;
+    }
+
+    .config {
+        background-color: #178AE8;
+    }
+
+    .helpicon {
+        vertical-align: baseline;
+        width: 20px;
+        height: 20px;
+    }
+</style>

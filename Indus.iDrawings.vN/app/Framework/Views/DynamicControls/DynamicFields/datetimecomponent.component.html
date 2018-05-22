@@ -1,0 +1,67 @@
+﻿<div [style.display]="setAlignment">
+    <div control-group style="margin-top:6px;" *ngIf="!fieldObject.IsHiddenLabel && fieldObject.FieldLabel != undefined && fieldObject.FieldLabel != null" [style.max-width]="labelWidth" [style.min-width]="labelWidth">
+        <label style="display:inline-flex">
+            {{fieldObject.FieldLabel}}<span class="required" *ngIf="fieldObject.IsMandatory == undefined || fieldObject.IsMandatory === true">&nbsp;* </span>
+        </label>
+    </div>
+    <div control-group style="min-height:36px;">
+        <div *ngIf="fieldObject.IsEnabled == true || fieldObject.IsEnabled == null">
+            <input *ngIf="fieldObject.ReadOnlyMode === true" type="text" #txtDateTime id="{{fieldObject.ReportFieldId}}" [value]=selectedDateValue [style.width]="fieldWidth" style="width:250px;height:30px;" disabled />
+            <div *ngIf="fieldObject.ReadOnlyMode == undefined || fieldObject.ReadOnlyMode === false" style="border-radius:5px;">
+                <input type="text"  (keydown)="getKeyPress($event)"  #txtDateTime [attr.aria-label]="fieldObject.FieldLabel" id="{{fieldObject.ReportFieldId}}" [value]=selectedDateValue validatetext [validationData]="validationData" [fieldObject]='fieldObject' (click)="datetimepickertoggle()" (change)="getChangedVal($event)" (keypress)="getKeyPress($event)" (blur)="getBlurEvent($event)" class="date-time-picker" [style.width]="fieldWidth" style="height:30px;" autocomplete="off" title="Date time" />
+                <span></span>
+                <div [style.display]="displayStyle" style="position:relative;">
+                    <div style="position:fixed;height:100%;width:90%;top:0px;left:0px;z-index:99;" (click)="datetimepickertoggle()"></div>
+                    <div id="dateTimeContainerDiv" class="date-time-container-div">
+                        <datepicker tabindex=0 [(ngModel)]="dt" [minDate]="minDate" [showWeeks]="false" (click)="getSelectedValue(dt)"></datepicker>
+                        <div style="background-color:white" tabindex=0>
+                            <timepicker tabindex=0  [(ngModel)]="mytime" (change)="changed()" [hourStep]="hstep" [minuteStep]="mstep" (click)="getSelectedValue(dt)" [showMeridian]="true"></timepicker>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="fieldObject.IsEnabled == undefined || fieldObject.IsEnabled == false">
+            <div *ngIf="fieldObject.ReadOnlyMode == true">
+                <span>
+                    <input type="text" #txtDateTime id="{{fieldObject.ReportFieldId}}" [attr.aria-label]="fieldObject.FieldLabel" [value]=selectedDateValue validatetext [validationData]="validationData" [fieldObject]='fieldObject' (keydown)="getKeyPress($event)" (keypress)="getKeyPress($event)" (blur)="getBlurEvent($event)" [style.width]="fieldWidth"  class="" style="height:30px;margin-left:8px" disabled />
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .date-time-picker {
+        background-image: url("Content/Images/clock.png");
+        background-size: 20px 20px;
+        background-repeat: no-repeat;
+        background-position: right;
+    }
+    .date-time-container-div {
+        opacity:0.99;
+        z-index:100;
+        display:block;
+        position:absolute;
+        border:1px solid;
+        border-radius:5px;
+        min-height:330px;
+        box-shadow :2px 2px 3px 2px lightgray;
+    }
+    
+    @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+
+
+    .date-time-container-div {
+        opacity: 0.99;
+        z-index: 100;
+        display: block;
+        width:312px;
+        position: relative;
+        border: 1px solid;
+        border-radius: 5px;
+        min-height: 250px;
+        box-shadow: 2px 2px 3px 2px lightgray;
+    }
+    }
+</style>

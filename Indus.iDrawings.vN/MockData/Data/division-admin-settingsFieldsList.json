@@ -1,0 +1,49 @@
+﻿{
+    "data": [
+        {
+            "FieldId": 1,
+            "FieldName": "Id",
+            "FieldType": 1,
+            "IsVisible": false,
+            "ReadOnlyMode": true,
+            "IsMandatory": false,
+            "IsDisabled": true,
+            "IsHiddenLabel": true
+        },
+        {
+            "FieldId": 2,
+            "FieldName": "Division",
+            "FieldType": 1,
+            "IsVisible": true,
+            "ReadOnlyMode": true,
+            "IsMandatory": false,
+            "IsDisabled": true,
+            "IsHiddenLabel": true,
+            "Width": "3*"
+        },
+        {
+            "FieldId": 3,
+            "FieldName": "View",
+            "FieldType": 7,
+            "FieldValue": "true",
+            "IsMandatory": false,
+            "IsHiddenLabel": true,
+            "IsVisible": true,
+            "ReadOnlyMode": false,
+            "IsDisabled": false,
+            "Width": "*"
+        },
+        {
+            "FieldId": 4,
+            "FieldName": "Edit",
+            "FieldType": 7,
+            "FieldValue": "true",
+            "IsMandatory": false,
+            "IsHiddenLabel": true,
+            "IsVisible": true,
+            "ReadOnlyMode": false,
+            "IsDisabled": false,
+            "Width": "*"
+        }
+    ]
+}

@@ -1,0 +1,10 @@
+﻿<div>
+    <split-view [splitviewObject]="splitviewInput" [pageTitle]="pageTitle">
+        <primary-view>
+            <DynamicFields [dataSource]="InviteesField" (submitFieldObject)="onSubmitData($event)" (dynamicListAddEmit)="listbuttonadd($event)" (dynamicListRemoveEmit)="listbuttondelete($event)"></DynamicFields>
+            </primary-view>
+            <secondary-view>
+                <Invitees-checkboxgrid *ngIf="splitviewInput.showSecondaryView" (submitSuccess)="OnSuccessfulSubmit($event)"></Invitees-checkboxgrid>
+            </secondary-view>
+</split-view>
+</div>

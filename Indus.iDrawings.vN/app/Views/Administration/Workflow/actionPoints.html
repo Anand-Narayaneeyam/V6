@@ -1,0 +1,74 @@
+﻿<style>
+    :host button.save-btn{
+        background: #2980b9;
+        color: #fff;
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        width: auto;
+    }
+</style>
+<page [pagetitle]="pagePath">
+    <pagepath>
+    </pagepath>
+    <submenu>
+        <sub-menu [source]=menuData [count]=totalItems [menuIds]=enableMenu (onSubMenuChange)="onSubMenuChange($event);"></sub-menu>
+    </submenu>
+    <content>
+        <split-view [splitviewObject]="splitViewActionPoint" [pageTitle]="pageTitle" (onSecondaryClose)="onSplitViewClose($event)">
+            <primary-view>
+                <div style="height:99%;">
+                    <div style="float:left;width:100%;display:block;" [ngClass]="totalItems > itemsPerPage ? 'pagewithPaging':'pagewithoutPaging'">
+                        <slide [width]="400" [position]="Position" [type]="dialog" [show]=showSlide (closeDialog)="closeSlideDialog($event)">
+                            <div>
+                                <div>
+                                    Are you sure you want to delete the selected Action Point?
+                                </div>
+                                <div>
+                                    <div style="width:100%">
+                                        <button  class="Savebutton "type="button" (click)="DefaultSetting($event)">Yes</button>
+                                        <button  class="Savebutton "type="button" (click)="cancelClick($event)">No</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </slide>
+                        <slide [width]="400" [position]="Position" [type]="dialog" [show]=showUserSlide (closeDialog)="closeSlideDialog($event)">
+                            <div>
+                                <div>
+                                    Do you want to add Users / User Groups to this Action Point?
+                                </div>
+                                <div>
+                                    <div style="width:100%">
+                                        <button  class="Savebutton "type="button" (click)="APDefaultSetting($event)">Yes</button>
+                                        <button  class="Savebutton "type="button" (click)="cancelAPClick($event)">No</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </slide>
+                        <gridView [dataSource]="itemsSource" [properties]="inputItems" [columns]="fieldObject" [refreshgrid]="refreshgrid" (onSorting)="onSort($event)"></gridView>
+                    </div>
+                    <div [style.height]="totalItems >itemsPerPage ? '35px' : '0px'">
+                        <paging [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="pageChanged($event);"></paging>
+                    </div>
+                </div>              
+            </primary-view>
+            <secondary-view *ngIf="splitViewActionPoint.showSecondaryView == true">
+                <div *ngIf="target == 1 || target == 2">
+                    <actionpoints-add-edit [fieldDetailsAdd]="fieldDetailsAddEdit" [action]="action" [btnName]="btnName" (submitSuccess)="OnSuccessfulSubmit($event)" [selectedId]="inputItems.selectedIds[0]"></actionpoints-add-edit>
+                </div>
+            </secondary-view>
+            <secondary-view *ngIf="target == 3" style="width:400px;">
+                <div style="width:400px;margin-top:5px;margin-right:5px;">
+                    <!--<action-point-users *ngIf="splitViewActionPoint.showSecondaryView == true" [fieldDetailsUser]="fieldDetailsUser" [selectedGridCellId]="selectedCellId" [fieldDetailsUserData]="fieldDetailsUserData" (ActPointUsrSuccess)="getActionPointResult($event)"></action-point-users>-->
+                    <section title="Action Point Users"  *ngIf="splitViewActionPoint.showSecondaryView == true" [isExpanded]="sectionAccessExpansionStatus[0].isExpanded" (onSectionExpandChange) = "onSectionExpandChange($event)">
+                        <action-point-users *ngIf="sectionAccessExpansionStatus[0].isExpanded" [rowData]="inputItems.rowData" [selectedGridCellId]="selectedCellId" (ActPointUsrSuccess)="getActionPointResult($event)"></action-point-users>
+                    </section>
+                    <section title="Action Point User Groups" *ngIf="splitViewActionPoint.showSecondaryView == true" [isExpanded]="sectionAccessExpansionStatus[1].isExpanded" (onSectionExpandChange) = "onSectionExpandChange($event)">
+                        <action-point-user-group *ngIf="sectionAccessExpansionStatus[1].isExpanded"  [rowData]="inputItems.rowData" [selectedGridCellId]="selectedCellId" (ActPointUsrgroupSuccess)="getActionPointGroupResult($event)"></action-point-user-group>
+                    </section>
+                </div>
+            </secondary-view>
+            <secondary-view *ngIf="target == 4">
+                <setworkflowcategory [selectedId]="inputItems.selectedIds[0]" [fieldDetailsSetWorkflowCategory]="fieldDetailsSetWorkflowCategory" (submitSuccess)="OnSuccessfulSubmit($event)"></setworkflowcategory>
+            </secondary-view>
+        </split-view>
+    </content>
+</page>

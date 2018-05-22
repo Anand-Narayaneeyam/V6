@@ -1,0 +1,34 @@
+﻿<page [pagetitle]="pagePath" [withoutSubmenu]="true">
+    <content>
+        <dashboard style="height:90%;">
+
+                        <widget>
+                            <div style="font-weight:bold"> {{ObjectCategory}} Distribution by {{ObjectClass}} </div>
+                            <piechart *ngIf="PieChart1Data != undefined" [sourceData]="PieChart1Data"> </piechart>
+                        </widget>
+                        <widget>
+                            <div style="font-weight:bold"> {{ObjectCategory}} Distribution by {{Division}} </div>
+                            <piechart *ngIf="PieChart2Data != undefined" [sourceData]="PieChart2Data"> </piechart>
+                        </widget>
+
+                        <widget style="height:250px;">
+                            <div style="font-weight:bold"> {{ObjectCategory}} Distribution by Floor </div>
+                            <div [ngClass]="'pagewithPaging'" style="text-align:left!important">
+                                <gridView *ngIf="fieldObject1" [(dataSource)]="itemsSource1" [properties]="inputItems" [columns]="fieldObject1"
+                                          (onSorting)="onSort1($event)">
+                                </gridView>
+                            </div>
+                        </widget>
+                      
+                        <widget style="height:250px">
+                            <div style="font-weight:bold"> {{ObjectCategory}} List by Floor  </div>
+                            <div [ngClass]="'pagewithPaging'" style="text-align:left!important">
+                                <gridView *ngIf="fieldObject2" [(dataSource)]="itemsSource2" [properties]="inputItems" [columns]="fieldObject2"
+                                          (onSorting)="onSort2($event)">
+                                </gridView>
+                            </div>
+                        </widget>
+                    
+</dashboard>
+    </content>
+</page>

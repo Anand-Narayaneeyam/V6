@@ -1,0 +1,121 @@
+﻿<style>
+    span.readOnly {
+        display: none !important;
+    }
+
+    @media {
+        span .readOnly {
+            display: none !important;
+        }
+
+        .fileuploader {
+            border: transparent !important;
+            color: transparent !important;
+            background-color: transparent !important;
+        }
+    }
+
+    .fileuploader {
+        border: transparent;
+        color: transparent;
+        background-color: transparent;
+    }
+</style>
+<div tabindex="0" [attr.aria-label]="fieldObject.FieldLabel +' Press Enter to select a file'" (keypress)="onKeyPressEvent($event,1)">
+    <div tabindex="-1" control-group *ngIf="!fieldObject.IsHiddenLabel && fieldObject.FieldLabel != undefined && fieldObject.FieldLabel != null">
+        <label tabindex="-1">
+            {{fieldObject.FieldLabel}} <span class="required" *ngIf="fieldObject.IsMandatory == undefined || fieldObject.IsMandatory === true">&nbsp;* </span>
+        </label>
+    </div>
+    <div id="contentDiv" control-group style="min-height:36px;">
+        <div *ngIf="fieldObject.IsEnabled == true || fieldObject.IsEnabled == undefined">
+            <div id="imagecontrol" *ngIf="strFileName != undefined" style="display:block">
+                <div style="width:250px;display:block;overflow:hidden;background-color:transparent" class="readOnly" *ngIf="fieldObject.ReadOnlyMode == undefined || fieldObject.ReadOnlyMode === true">
+                    <input type="text" value={{strFileName}} style="width:200px;border-color:transparent" readonly />
+                </div>
+                <div *ngIf="fieldObject.ReadOnlyMode === false">
+                    <input type="text" value={{strFileName}} style="width:200px;border-color:transparent" readonly />
+                </div>
+                <!--<input style="width:100px;margin-left:0px;" type="file" name="file"  attr.maxlength={{fieldObject.MaxLength}} id="{{fieldObject.FieldId}}" class="fileuploader" validatetext [validationData]="validationData" [fieldObject]='fieldObject' (click)="onclick($event)" (change)="onChange($event)" *ngIf="fieldObject.ReadOnlyMode == undefined || fieldObject.ReadOnlyMode === false" (validateMessage)="validateMessage($event)">-->
+
+                <div class="file-input-wrapper">
+                    <button tabindex="-1" class="saveButton">Browse</button>
+                    <input tabindex="-1" type="file" name="file" title="{{fieldObject.FieldLabel}}" attr.maxlength={{fieldObject.MaxLength}} id="{{fieldObject.FieldId}}" class="fileuploader" validatetext [validationData]="validationData" [fieldObject]='fieldObject' (click)="onclick($event)" (change)="onChange($event)" *ngIf="fieldObject.ReadOnlyMode == undefined || fieldObject.ReadOnlyMode === false" (validateMessage)="validateMessage($event)" />
+                </div>
+
+            </div>
+        </div>
+        <div *ngIf="fieldObject.IsEnabled == false">
+            <div id="imagecontrol" *ngIf="strFileName != undefined" style="display:block">
+                <div style="width:250px;display:block;overflow:hidden;background-color:transparent" class="readOnly" *ngIf="fieldObject.ReadOnlyMode == undefined || fieldObject.ReadOnlyMode === true">
+                    <input type="text" value={{strFileName}} disabled style="width:250px;border-color:transparent;height: 30px;display: block;margin-top: -5px;margin-left: -5px;" readonly />
+                </div>
+                <div *ngIf="fieldObject.ReadOnlyMode === false">
+                    <input type="text" value={{strFileName}} disabled style="width:250px;border-color:transparent;margin-left:1px" readonly />
+                </div>
+                <!--<input style="width:100px;margin-left:0px;" type="file" name="file" attr.maxlength={{fieldObject.MaxLength}} id="{{fieldObject.FieldId}}" class="fileuploader" validatetext [validationData]="validationData" [fieldObject]='fieldObject' (click)="onclick($event)" (change)="onChange($event)" *ngIf="fieldObject.ReadOnlyMode == undefined || fieldObject.ReadOnlyMode === false" (validateMessage)="validateMessage($event)" disabled>-->
+
+                <div class="file-input-wrapper">
+                    <button tabindex="-1" class="disablebutton" disabled>Browse</button>
+                    <input tabindex="-1" type="file" title="{{fieldObject.FieldLabel}}" name="file" attr.maxlength={{fieldObject.MaxLength}} id="{{fieldObject.FieldId}}" class="fileuploader" validatetext [validationData]="validationData" [fieldObject]='fieldObject' (click)="onclick($event)" (change)="onChange($event)" *ngIf="fieldObject.ReadOnlyMode == undefined || fieldObject.ReadOnlyMode === false" (validateMessage)="validateMessage($event)" disabled />
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .file-input-wrapper {
+        width: auto;
+        height: auto;
+        overflow: hidden;
+        position: relative;
+    }
+
+        .file-input-wrapper > input[type="file"] {
+            font-size: 200px;
+            position: absolute;
+            top: 0;
+            right: 0;
+            opacity: 0;
+        }
+
+        .file-input-wrapper > .saveButton {
+            display: inline-block;
+            width: auto;
+            height: 30px;
+        }
+
+        .file-input-wrapper:hover > .saveButton {
+            background-color: #aaa;
+        }
+
+    .saveButton {
+        background: #178ae8 !important;
+        padding: 5px 10px !important;
+        color: #fff !important;
+        border: 1px solid rgba(0, 0, 0, 0.2) !important;
+        width: auto !important;
+        border-radius: 6px !important;
+        margin-top: 2px;
+        display: block;
+        overflow-x: hidden;
+        word-wrap: break-word;
+        font-size: small;
+    }
+
+    .disablebutton {
+        background: #c4c7ca !important;
+        padding: 5px 10px !important;
+        color: #fff !important;
+        border: 1px solid rgba(0, 0, 0, 0.2) !important;
+        width: auto !important;
+        border-radius: 6px !important;
+        margin-top: 2px;
+        display: block;
+        overflow-x: hidden;
+        word-wrap: break-word;
+        font-size: small;
+    }
+</style>

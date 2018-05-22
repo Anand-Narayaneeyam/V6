@@ -1,0 +1,50 @@
+﻿<style>
+    #form {
+        height:390px;
+    }
+</style>
+
+<page [pagetitle]="pagePath" [withoutSubmenu]="true">
+    <pagepath>
+    </pagepath>
+    <content>
+        <split-view [splitviewObject]="splitViewLogBook" [pageTitle]="pageTitle">
+            <primary-view>
+                <div style="height:35px;">
+                    <sub-menu [source]=menuData [menuIds]=enableMenu (onSubMenuChange)="onSubMenuChange($event);"> </sub-menu>
+                </div>
+                <div style="height:calc(100% - 35px);">
+                    <div [ngClass]="totalItems > itemsPerPage ? 'pagewithPaging':'pagewithoutPaging'">
+                        <gridView [dataSource]="itemsSourceLog" [properties]="inputItems" [columns]="fieldObjectLog" (onSorting)="onSort($event)"></gridView>
+                    </div>
+                    <div [style.height]="totalItems >itemsPerPage ? '35px' : '0px'">
+                        <paging [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="pageChanged($event);"></paging>
+                    </div>
+                </div>
+            </primary-view>
+            <secondary-view>
+                <!--<button type="button" (click)="getLogGenerateClick()" style="background-color:#2980b9;color:white;">Generate log</button>-->
+                <section title="Select Criteria" style="width:600px;" [isExpanded]="sectionAccessExpansionStatus[0].isExpanded" (onSectionExpandChange) = "onSectionExpandChange($event)">
+                    <div style="width:100%;height:70%;overflow-y:scroll" *ngIf="logbookParameterFieldData  != undefined">
+                        <DynamicFields [dataSource]="logbookParameterFieldData" (submitFieldObject)="onSubmitData($event)" (lstBoxChange)="getListBoxChanges($event)" [btnName]="btnName" [showDateOnLoad]="true"></DynamicFields>
+                    </div>
+                </section>
+                <section title="Select User" *ngIf="blnUserSection && logUserDataInput!=undefined"  style="width:600px;" [isExpanded]="sectionAccessExpansionStatus[1].isExpanded" (onSectionExpandChange) = "onSectionExpandChange($event)">
+                    <div style="width:100%;height:63%;overflow-y:scroll" *ngIf="blnUserSection && logUserDataInput!=undefined && sectionAccessExpansionStatus[1].isExpanded == true">
+                        <log-user-list *ngIf="logUserDataInput != undefined" [logUser]="logUserDataInput" [RptFields]="logParameterListRptFields" (sendUserOutput)="getDataForEntities($event)"></log-user-list>
+                    </div>
+                </section>
+                <section title="Select Entities" *ngIf="blnUserSection && logEntitiesInput!=undefined"  style="width:600px;" [isExpanded]="sectionAccessExpansionStatus[2].isExpanded" (onSectionExpandChange) = "onSectionExpandChange($event)">
+                    <div style="width:100%;height:63%;overflow-y:scroll" *ngIf="blnUserSection && logEntitiesInput!=undefined && sectionAccessExpansionStatus[2].isExpanded == true">
+                        <log-entity-list *ngIf="logEntitiesInput != undefined" [logEntities]="logEntitiesInput" [RptFields]="logParamDataforEntities" [getlogUser]="logUserDataforEntities" (sendEntityOutput)="getDataForActivities($event)"></log-entity-list>
+                    </div>
+                </section>
+                <section title="Select Activities" *ngIf="blnUserSection && logActivityInput!=undefined"  style="width:600px;" [isExpanded]="sectionAccessExpansionStatus[3].isExpanded" (onSectionExpandChange) = "onSectionExpandChange($event)">
+                    <div style="width:100%;height:63%;overflow-y:scroll" *ngIf="blnUserSection && logActivityInput!=undefined && sectionAccessExpansionStatus[3].isExpanded == true">
+                        <log-activity-list *ngIf="logActivityInput != undefined" [logActivity]="logActivityInput" [RptFields]="logParamDataforActivity" [getlogUser]="logUserDataforActivity" [getLogEntity]="logEntitiesDataforActivity" (sendActivityOutput)="getDataForLog($event)" logActivityInput></log-activity-list>
+                    </div>
+                </section>
+            </secondary-view>
+        </split-view>
+    </content>
+</page>

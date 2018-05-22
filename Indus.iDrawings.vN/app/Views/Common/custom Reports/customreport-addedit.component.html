@@ -1,0 +1,145 @@
+﻿
+<style>
+  
+    .rptTbl {      
+         border-collapse: collapse;
+         left:5px;
+         border: 1px solid #c6c6c6;
+         height:100%;
+         /*width:100%;*/
+    }
+    .rptTbl th:last-child {
+        border-right:none;
+    }
+    .rptTbl tbody  tr:last-child {
+        border-bottom:none;
+    }
+    .rptTbl thead {
+        font-family: Arial, Helvetica, sans-serif;     
+        font-size: 13px;  
+        font-weight:bold;                    
+        text-wrap:normal; 
+        color: #747474;           
+        /*background-color: #7E9DB2;
+        color: #FDFDFD;*/
+      
+    }
+    .rptTbl thead tr {
+        height:30px;
+        display: block;
+        position: relative;
+        border-bottom: 1px solid #c6c6c6;
+        
+    }
+    .colheader{
+        height:30px;
+        text-indent:2px;
+        border-right: 1px solid #c6c6c6;
+        top:0px;
+        left:0px;
+    }
+    .rptTbl tbody tr {            
+        border-bottom: 1px solid #c6c6c6;
+    }
+   
+    /*#head_col6{
+        text-align:center;
+    }*/
+    .rptTbl tbody {
+        font-family: Arial, Helvetica, sans-serif;     
+        font-size: 13px;  
+        display: block;
+        overflow-y: auto;
+        overflow-x :hidden;
+        width: 100%;
+        height:100%;     
+    }
+    .btncustom {
+        background: #2980b9;
+        color: #fff;
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        width: auto;
+    }
+    .customTxtBox_1625 div span span input {       
+        margin:2px 0px 2px 2px;
+        width:245px !important;
+        height:23px !important;
+        /*border:none;
+        background-color:#fff;
+        height:22px !important;*/
+    }
+    .customTxtBox_1626 div span span input {
+        margin: 2px 0px 2px 2px;
+        height:23px !important;
+        width: 73px !important;
+    }
+
+    @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+        #customrReporttbldiv {
+        overflow:auto;
+        }
+    }  
+</style>
+
+
+<split-view [splitviewObject]="splitviewInput" [pageTitle]="pageTitle">
+    <primary-view>
+        <div style="height: 100%;">
+            <div style="padding-top: 5px;padding-left: 12px; height:7.5%;">
+                <button *ngIf="pageTarget==2" class="Savebutton " (click)="btnActionClick(6)" (keypress)="btnActionKeypress($event,6)" type="button">Apply</button>
+                <button *ngIf="pageTarget==2 && showMyDef" class="Savebutton " (click)="btnActionClick(7)" (keypress)="btnActionKeypress($event,7)" type="button">Load My Default</button>
+                <button *ngIf="pageTarget==2 && showSetMyDef" class="Savebutton " (click)="btnActionClick(8)" (keypress)="btnActionKeypress($event,8)" type="button">Set as My Default</button>
+                <button *ngIf="pageTarget==2" class="Savebutton " (click)="btnActionClick(9)" (keypress)="btnActionKeypress($event,9)" type="button">Load System Default</button>
+                <button  *ngIf="moduleId == 3 && pageTarget!=2" class="Savebutton "(click)="btnActionClick(1)" (keypress)="btnActionKeypress($event,1)" type="button">Filter</button>
+                <button  class="Savebutton "(click)="btnActionClick(2)" (keypress)="btnActionKeypress($event,2)" type="button">Field Order</button>
+                <button  *ngIf="pageTarget!=2" class="Savebutton "(click)="btnActionClick(3)" (keypress)="btnActionKeypress($event,3)" type="button">Preview</button>
+                <button  *ngIf="pageTarget!=2" class="Savebutton "(click)="btnActionClick(4)" [hidden]="selectedId==0" (keypress)="btnActionKeypress($event,4)" type="button">Save As</button>
+                <button  *ngIf="pageTarget!=2" class="Savebutton "(click)="btnActionClick(5)" (keypress)="btnActionKeypress($event,5)" type="button">Save</button>
+            </div>
+            <div *ngIf="pageTarget==2" style="padding-left: 12px;height:7.5%;">
+                <div style="display: inline-flex;">
+                    <div>
+                        <RadioComponent *ngIf="rbtnOrientation" id="RadioComponent" name="RadioComponent" style="white-space: nowrap;" [fieldObject]=rbtnOrientation (rbtnClick)="rbtnChange($event)"></RadioComponent>
+                    </div>
+                    <div>
+                        <CheckBoxComponent *ngIf="chkbxSerialNo" [fieldObject]="chkbxSerialNo" (chkBoxClick)="SlNochecked($event)"></CheckBoxComponent>
+                    </div>          
+                 </div>
+
+            </div>
+            <div id="customrReporttbldiv"style="height:82%;margin:10px;overflow:auto;">
+                <table class="rptTbl">
+                    <thead>
+                        <tr class="tablerow">
+                            <th class="colheader" *ngFor="let column of fieldObject" [style.width.px]="column.Width">
+                                <div *ngIf="column.IsVisible" id="head_col{{column.DataEntryControlId}}">
+                                    {{column.FieldLabel}}
+                                </div>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr   class="tablerow" *ngFor="let item of itemSource;let i=index">
+                            <td  *ngFor="let col of sourceFieldObj[i]" id="colum_{{i}}">
+                                <div *ngIf="col.IsVisible"  [style.width.px]="col.Width" style="overflow:hidden;">
+                                    <span style="padding-left:2px;" id="{{col.FieldId}}_{{i}}" *ngIf="col.DataEntryControlId == '1' && col.ReportFieldId==352" >{{col.FieldValue}} </span>
+                                    <StringTextBox id="{{col.FieldId}}_{{i}}" class="customTxtBox_{{col.FieldId}}" *ngIf="col.DataEntryControlId == '1'&& col.ReportFieldId!=352" [fieldObject]="col"></StringTextBox>
+                                    <CheckBoxComponent id="{{col.FieldId}}_{{i}}" *ngIf="col.DataEntryControlId == '6' && col.ReportFieldId!=2170 && col.ReportFieldId!=2171" [fieldObject]="col" (chkBoxClick)="chkBoxChange($event, sourceFieldObj[i],i,item.TypeName)"></CheckBoxComponent>
+                                    <CheckBoxComponent id="{{col.FieldId}}_{{i}}" *ngIf="((col.DataEntryControlId == '6')&&(col.ReportFieldId==2170||col.ReportFieldId==2171)&&(item.TypeName=='Integer'||item.TypeName=='Float'))" [fieldObject]="col" (chkBoxClick)="chkBoxChange($event, sourceFieldObj[i],i,item.TypeName)"></CheckBoxComponent>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        </primary-view>
+        <secondary-view *ngIf="splitviewInput.showSecondaryView== true" >
+            <DynamicFields *ngIf="secondTarget == 0 && fieldDtlsSave!= undefined && showSaveWindow == true" [dataSource]="fieldDtlsSave" (submitFieldObject)="onSaveCustomRptDetails($event)" [btnName]="btnSave" (txtChange)="txtBoxChange($event);"></DynamicFields>
+            <custom-reportviewer *ngIf="secondTarget == 1" [moduleId]="moduleId" [fieldData]="dataToReport" [customReportFields]="reportFieldsToReport" [isPreview]="true" [filterQuery]="queryCondition" [reportId]="selectedId" ></custom-reportviewer>          
+            <custom-fieldOrder *ngIf="showFieldOrder == true"  [rptFieldSource]="reportFieldSrc" [subHeaderFieldSrc]="subhdrFieldSrc" (retFieldOrderUpdate)="retFieldOrderUpdate($event)"></custom-fieldOrder>
+            <querybuildersearch *ngIf="showFilter == true && queryCategryId>0" [moduleId]="moduleId"  [QueryCategryId]="queryCategryId" [objectCategoryId]="objectCategoryId" [Target]="1" (onQueryBuilderSearch)="generateQueryOut($event)" [customRptObj]="customRPTQueryObj" ></querybuildersearch>
+
+        </secondary-view>     
+    </split-view>
+

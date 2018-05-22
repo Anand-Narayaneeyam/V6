@@ -1,0 +1,16 @@
+﻿{
+  "data": [
+    {
+      "Id": 1,
+      "Value": "ISSA"
+    },
+    {
+     "Id": 2,
+      "Value": "Lease"
+    },
+    {
+      "Id": 3,
+      "Value": "English"
+    }
+  ]
+}

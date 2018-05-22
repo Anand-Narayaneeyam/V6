@@ -1,0 +1,44 @@
+﻿<page [pagetitle]="pagePath">
+    <content>
+        <split-view [splitviewObject]="splitviewInput" [pageTitle]="pageTitle" (onSecondaryClose)="onSplitViewClose($event)">
+            <primary-view>
+                <div class="btnstyle" style="display:inline-flex;width:100%;margin-bottom: 5px;height:8%;margin-left: 9px;">
+                    <div *ngIf="ddlspacegrossareareport != undefined" style="display:block;">
+                        <DropDownListComponent [fieldObject]="ddlspacegrossareareport" [ShowSelectOption]="false" (change)="onChangeType($event.target.value)" [SetAlignment]=alignContent></DropDownListComponent>
+                    </div>
+                    <div *ngIf="!IsTextType" style="padding-left: 1%;margin-top:9px;display:inline-flex;">
+                        <div *ngIf="IsFloor == 0">
+                            <button class="Savebutton " style="margin-right:5px;" type="button" (click)="onSubmit($event)">By Floor</button>
+                        </div>
+                        <div *ngIf="IsFloor != 0">
+                            <button class="Savebutton " style="margin-right:5px;" type="button" (click)="onSubmit($event)">Summary</button>
+                        </div>
+                        <div *ngIf="hasScheduledReport">
+                            <button class="Savebutton " style="margin-right:5px;" type="button" (click)="showSheduleReport($event)">Schedule this report</button>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="ReportData != undefined" style="height:94%;">
+                    <reportviewer [reportData]=ReportData> Loading ...</reportviewer>
+                </div>
+            </primary-view>
+            <secondary-view *ngIf="showSheduleReportAddEdit && splitviewInput.showSecondaryView == true && ReportData.ExportFileName!='' ">
+                <schedule-report-addedit [reportData]="ReportData" (insertSuccess)="handleInsertSuccess($event)"></schedule-report-addedit>
+            </secondary-view>
+        </split-view>
+    </content>
+</page>
+
+<style>
+    :host .ddllabel_1418 {
+        width: 100px !important;
+        margin-top: 7px !important;
+    }
+                @media only screen and (min-device-width: 320px) and (max-device-width: 812px) and (orientation: portrait) {
+
+        .btnstyle {
+            display: inline-block !important;
+            height: 16% !important;
+        }
+    }
+</style>

@@ -1,0 +1,21 @@
+﻿
+<page [pagetitle]="pagePath">
+    <content>
+        <tabs [selectedTab]="selectedTab" (getSelectedTab)="getSelectedTab($event)">
+            <tab tabTitle="Select a Work Order" closeButtonVisible="hidden">
+                <submenu>
+                    <sub-menu [source]=menuData [menuCard]=iscard [menuIds]=enableMenu (onSubMenuChange)="onSubMenuChange($event);"> </sub-menu>
+                </submenu>  
+                <div style="height:93%;">
+                    <gridView [(dataSource)]="itemsSource" [properties]="inputItems" [columns]="fieldObject" (onSorting)="onSort($event)"></gridView>
+                    <paging [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="pageChanged($event);"></paging>
+                </div>
+            </tab>
+            <tab *ngIf="selectedIds != undefined" tabTitle="Report" closeButtonVisible="hidden">
+                <div style="height:100%" *ngIf="isNextClicked && selectedIds != undefined">
+                    <woPMCompletedWorkFlowHistoryComponent-report *ngIf="isNextClicked" [selectedIds]="selectedIds" [selectedworkTypeId]="selectedworkTypeId"> </woPMCompletedWorkFlowHistoryComponent-report>
+                </div>
+            </tab>
+        </tabs>
+    </content>
+</page>

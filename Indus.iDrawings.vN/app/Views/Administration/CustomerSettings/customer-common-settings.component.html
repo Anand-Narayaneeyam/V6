@@ -1,0 +1,15 @@
+﻿<div style="display:inline-flex;flex-direction:row;margin-left: 40px;margin-top: 5px;margin-bottom:5px;">
+    <span *ngIf="Moduleenabled"><input #check type="checkbox" id="0" name="check" value="All" [checked]=ModuleSelect (change)="SelectAll($event)" enabled /></span>
+    <span *ngIf="!Moduleenabled"><input #check type="checkbox" id="0" name="check" value="All" [checked]=ModuleSelect (change)="SelectAll($event)" disabled /></span>
+    <span style="margin-left:3px">{{Modulename}}</span>
+</div>
+<div *ngFor="let field of fieldDetails;let i=index">
+    <div *ngIf="field && field.FieldLabel" style="display:inline-flex;flex-direction:row;margin-bottom:5px;margin-top: 5px;" [ngStyle]="fieldDetails[i-1] && !fieldDetails[i-1].FieldLabel?{'margin-left':ChangeMargin(fieldDetails[i-1].FieldId)}:{'margin-left':ChangeMargin(field.FieldId)}">
+        <CheckBoxComponent *ngIf="fieldDetails[i-1] && !fieldDetails[i-1].FieldLabel && fieldDetails[i-1].DataEntryControlId=='6'" IsSelectAllChecked="true" class="CheckBoxFeature" style="white-space: nowrap;width:20px;margin-top:3px" id="CheckBoxComponent" [style.display]="showComponent(fieldDetails[i-1].FieldLabel,fieldDetails[i-1].IsVisible)" name="CheckBoxComponent" [validationData]='validationData' [fieldObject]=fieldDetails[i-1] (chkBoxClick)="chkBoxChange($event)"></CheckBoxComponent>
+        <CheckBoxComponent *ngIf="field.DataEntryControlId=='6'" IsSelectAllChecked="true" class="CheckBoxFeature" style="white-space: nowrap;" id="CheckBoxComponent" [style.display]="showComponent(field.FieldLabel,field.IsVisible)" name="CheckBoxComponent" [validationData]='validationData' [fieldObject]=field (chkBoxClick)="chkBoxChange($event)"></CheckBoxComponent>
+        <StringTextBox *ngIf="field.DataEntryControlId == '1'" style="white-space: nowrap;" [style.display]="showComponent(field.FieldLabel,field.IsVisible)" [fieldObject]=field SetAlignment="horizontal" [validationData]='validationData'></StringTextBox>
+        <DropDownListComponent *ngIf="field.DataEntryControlId == '4'" style="height:25px;white-space: nowrap;" [style.display]="showComponent(field.FieldLabel,field.IsVisible)" [fieldObject]=field (change)="onChangeDataFieldCategory($event.target.value)" SetAlignment="horizontal" ShowSelectOption="false"></DropDownListComponent>
+        <RadioComponent *ngIf="field.DataEntryControlId == '5'" id="RadioComponent" name="RadioComponent" style="white-space: nowrap;" [style.display]="showComponent(field.FieldLabel,field.IsVisible)" [fieldObject]=field (rbtnClick)="rbtnChange($event)" [validationData]='validationData'></RadioComponent>
+    </div>
+</div>
+<button style="margin-left: 80px;margin-top: 5px;" class="Savebutton " type="button" (click)="updateSubscribedFeature($event)"> Save Changes </button>

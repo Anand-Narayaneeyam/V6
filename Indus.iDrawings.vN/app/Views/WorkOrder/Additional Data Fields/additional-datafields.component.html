@@ -1,0 +1,47 @@
+﻿
+    <submenu>
+        <sub-menu [menuCard]=true [source]=menuData [count]=gridcount [menuIds]=enableMenu (onSubMenuChange)="onSubMenuChange($event);"> </sub-menu>
+    </submenu>
+
+        <split-view [splitviewObject]="splitviewInput" style="height:calc(100% - 35px);" [pageTitle]="pageTitle">
+            <primary-view>
+                <!--<confirmation (onConfirm)="okDelete($event)"></confirmation>-->
+                <div *ngIf="addlDataFieldCategoryId==0" style="height:54px;">
+                    <DropDownListComponent *ngIf="ddlAdditionalDataFieldCategory" [fieldObject]="ddlAdditionalDataFieldCategory" (change)="onChangeDataFieldCategory($event.target.value)" [SetAlignment]=alignContent></DropDownListComponent>
+                </div>
+                <div style="height:calc(100% - 54px);">
+                    <gridView style="display:block;height:98%;" [dataSource]="itemsSource" [properties]="inputItems" [columns]="fieldObject" (onSorting)="onSort($event)" (onSelectionChanging)="showDrawingDetails($event)"></gridView>
+                </div>
+                <paging [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="pageChanged($event);"></paging>
+                <slide [width]="200" [position]="position" [type]="dialog" [show]="showSlide" (closeDialog)="closeSlideDialog($event)">
+
+                    <div>
+                        <div>
+                            {{message}}
+
+                        </div>
+                        <div>
+
+                            <div style="width:100%">
+                                <button  class="Savebutton "type="button" (click)="okDelete($event)">Yes</button>
+                                <button  class="Savebutton "type="button" (click)="cancelClick($event)">No</button>
+                            </div>
+                        </div>
+                    </div>
+                </slide>
+            </primary-view>
+            <secondary-view *ngIf="menuClickValue == 0 || menuClickValue == 1">
+                <work-order-addldatafield-addEdit *ngIf="CategoryId !=-1 && (splitviewInput.showSecondaryView)" [selectedId]="addlDataField" [CategoryId]="CategoryId" (submitSuccess)="OnSuccessfulSubmi($event)" [addEdit]="action"></work-order-addldatafield-addEdit>
+                <!--addlDataField &&-->
+            </secondary-view>
+            <secondary-view *ngIf="menuClickValue == 3|| menuClickValue == 4">
+                <work-order-field-values *ngIf="CategoryId &&(addlDataField && (splitviewInput.showSecondaryView && (action == 'fieldvalues'))) " [addlDataField]="addlDataField" [CategoryId]="CategoryId" [fieldType]="fieldType"></work-order-field-values>
+                <!--<display-setting *ngIf="splitviewInput.showSecondaryView &&(action =='displaySettings')" [fieldObject]="fieldObject" [dataKey]="dataKey" (displaySetting)="displaySettingUpdate($event)"></display-setting>-->
+            </secondary-view>
+            <secondary-view *ngIf="menuClickValue == 5 && splitviewInput.showSecondaryView">
+                <set-workflow-entity-data-fields [workTypeId]="workTypeId" ></set-workflow-entity-data-fields>
+                <!--<display-setting *ngIf="splitviewInput.showSecondaryView &&(action =='displaySettings')" [fieldObject]="fieldObject" [dataKey]="dataKey" (displaySetting)="displaySettingUpdate($event)"></display-setting>-->
+            </secondary-view>
+        </split-view>
+
+

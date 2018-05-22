@@ -1,0 +1,6 @@
+﻿<slide [width]="300" [position]="position" [type]="'dialog'" [show]="showSlide" [title]="title" (closeDialog)="closeSlideDialog($event)">   
+    <site-addEdit style="height:550px;display:block" *ngIf="sitebuildingadd==38" [addEdit]="addedit" [moduleId]="moduleId" (submitSuccess)="OnSuccessfulSubmi($event)"></site-addEdit>
+    <building-addEdit  style="height:550px;display:block" *ngIf="sitebuildingadd==325" [pagePath]="FloorBuildingAdd" [moduleId]="moduleId" (submitSuccess)="OnSuccessfulSubmi($event)" [addEdit]="addedit"></building-addEdit>
+</slide>
+<DynamicFields [dataSource]="fieldDetailsSpaceEdit" (submitFieldObject)="onSubmitData($event)" [btnName]="btnName" (fieldChange)="fieldChange($event)" (popupItemEmit)="popupItemEmit($event)"></DynamicFields>
+

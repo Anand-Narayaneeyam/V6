@@ -1,0 +1,41 @@
+﻿{
+  "data": [
+    {
+      "Id": 11,
+      "SpaceStandard": "Office",
+      "Description": "Office with window"
+    },
+    {
+      "Id": 12,
+      "SpaceStandard": "Scheduling Space",
+      "Description": "Space used for conference and other meetings"
+    },
+    {
+      "Id": 13,
+      "SpaceStandard": "Shared Office",
+      "Description": "Office with more than one seat"
+    },
+    {
+      "Id": 14,
+      "SpaceStandard": "Network",
+      "Description": "Office with window"
+    },
+    {
+      "Id": 15,
+      "SpaceStandard": "Administration",
+      "Description": "HR Office with window"
+    },
+    {
+      "Id": 16,
+      "SpaceStandard": "Visting area",
+      "Description": "Office with more than one seat"
+    }
+  ],
+   "new": [
+        {
+      "Id": 17,
+      "SpaceStandard": "",
+      "Description": ""
+        }
+    ]
+}

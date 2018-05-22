@@ -1,0 +1,10 @@
+﻿<page [pagetitle]="pagePath" [withoutSubmenu]="true">
+    <content>
+        <tabs [(selectedTab)]="selectedTab" (getSelectedTab)="getSelectedTab($event)">
+            <tab tabTitle="Reserve Equipment" closeButtonVisible="hidden" (onTabBeforeClose)="onTabBeforeClose($event)">
+                <reserveequipmentslist *ngIf="selectedTab==0"></reserveequipmentslist>
+            </tab>
+
+        </tabs>
+    </content>
+</page>

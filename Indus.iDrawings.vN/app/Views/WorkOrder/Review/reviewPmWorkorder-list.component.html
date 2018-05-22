@@ -1,0 +1,30 @@
+﻿<div>
+    <split-view [splitviewObject]="splitviewInput" [pageTitle]="pageTitle">
+        <primary-view>
+            <submenu>
+                <sub-menu [source]=menuData [menuCard]=true [count]=totalItems [menuIds]=enableMenu (onSubMenuChange)="onSubMenuChange($event);"> </sub-menu>
+            </submenu>
+            <div class="search-container">
+                <search *ngIf="fieldObject" [searchtype]="'Grid'" [keyWordLookup]=keyWordLookup [disable]="disable" [Key]=2 [KeywordFields]=keywordFieldObject [advancesearch]=true [datasource]=advancelookup (onloadSearch)="onKeyWordSearch($event)" (loadAdvanceSearch)="loadadvanceSearch()" (Submit)="onAdvanceSearch($event)"></search>
+            </div>
+            <div style="height: calc(100% - 35px);">
+                <div [ngClass]="totalItems > itemsPerPage ? 'pagewithPaging':'pagewithoutPaging'">
+                    <gridView [(dataSource)]="itemsSource" [properties]="inputItems" [columns]="fieldObject"
+                               (onSorting)="onSort($event)"></gridView>
+                </div>
+                <div>
+                    <paging [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="pageChanged($event);"></paging>
+                </div>
+            </div>
+        </primary-view>
+        <secondary-view *ngIf="secondaryTarget == 1">
+            <DynamicFields [dataSource]="completeCloseFieldObject" (submitFieldObject)="onCompleteOrCloseSubmit($event)" [btnName]="btnName" [dataKey]="dataKey"></DynamicFields>
+        </secondary-view>
+        <secondary-view *ngIf="secondaryTarget == 2">
+            <DynamicFields [dataSource]="overrideFieldObject" (submitFieldObject)="overrideRequestSubmit($event)" [btnName]="btnName" [dataKey]="dataKey" (fieldChange)="fieldChange($event)"></DynamicFields>
+        </secondary-view>
+        <secondary-view *ngIf="secondaryTarget == 3">
+            <DynamicFields [dataSource]="reminderObject" (submitFieldObject)="onRemiderSubmit($event)" [btnName]="btnName"></DynamicFields>
+        </secondary-view>
+    </split-view>
+</div> 

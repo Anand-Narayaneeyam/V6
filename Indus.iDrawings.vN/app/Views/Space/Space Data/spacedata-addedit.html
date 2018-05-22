@@ -1,0 +1,8 @@
+﻿<split-view [splitviewObject]="splitviewInput1" [pageTitle]="pageTitle">
+    <primary-view>
+        <DynamicFields [dataSource]="fieldDetailsAdd" (submitFieldObject)="onSubmitData($event)" [btnName]="btnName" (fieldChange)="editddlChange($event)" [blndisableAllComponents]="isEditable" (popupItemEmit)="popupItemEmit($event)" [blnPopupImage]=false  [strPopupText]="strPopupText"></DynamicFields>
+    </primary-view>
+    <secondary-view *ngIf="Target == 1">     
+        <spacesharing-list style="display:block" [GrossArea]="selectedgrossArea"  [selectedId]="selectedId" (submitSuccessSpaceShare)="onsubmitSuccessSpaceShare($event)"></spacesharing-list>
+    </secondary-view>
+</split-view>

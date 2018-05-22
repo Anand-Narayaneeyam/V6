@@ -1,0 +1,15 @@
+﻿<div style="height:80%">
+
+    <div style="height:40px;margin-top:10px">
+        <button role="button" [attr.aria-label]="btnSave" class="Savebutton " (click)="Update()" [disabled]="enableBtn">{{btnSave}}</button>
+    </div>
+    <div style="height:50px">
+        <DropDownListComponent *ngIf="ddlWorkType" [fieldObject]="ddlWorkType" (change)="onChangeWorkType($event.target.value)" [SetAlignment]=alignContent></DropDownListComponent>
+    </div>
+    <div style="height:57px">
+        <DropDownListComponent *ngIf="ddlWorktypeEntity" [fieldObject]="ddlWorktypeEntity" (change)="onChangeWorktypeEntity($event.target.value)" [SetAlignment]=alignContent></DropDownListComponent>
+    </div>
+    <div style="height:calc(80% - 157px)">
+        <gridView style="display:block;" [(dataSource)]="itemsSource" [properties]="inputItems" [columns]="fieldObject" [refreshgrid]="refreshgrid" (onSorting)="onSort($event)" (onCellEdit)="onCellEdit($event)"></gridView>
+    </div>
+</div>

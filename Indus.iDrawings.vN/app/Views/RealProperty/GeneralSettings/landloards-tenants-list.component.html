@@ -1,0 +1,30 @@
+﻿<div>
+    <submenu>
+        <sub-menu [source]=menuData [menuCard]=types [count]=totalItems [menuIds]=enableMenu (onSubMenuChange)="onSubMenuChange($event);"> </sub-menu>
+    </submenu>
+    <split-view [splitviewObject]="splitviewInput" [pageTitle]="pageTitle" style="height: calc(80% - 35px);">
+        <primary-view>
+            <div style="height:100%;">
+                <div [ngClass]="totalItems > itemsPerPage ? 'pagewithPaging':'pagewithoutPaging'">
+                    <slide [width]="slidewidth" [position]="position" [show]="showSlide" (closeDialog)="closeSlideDialog($event)">
+                        <div>
+                            <div>Are you sure you want to delete the selected {{categoryname}}?  </div>
+                            <div style="width:100%">
+                                <button  class="Savebutton "type="button" (click)="okDelete($event)">Yes</button>
+                                <button  class="Savebutton "type="button" (click)="cancelClick($event)">No</button>
+                            </div>
+                        </div>
+                    </slide>
+                    <gridView [(dataSource)]="itemsSource" [properties]="inputItems" [columns]="fieldObject"
+                              (onSorting)="onSort($event)"></gridView>
+                </div>
+                <div [style.height]="totalItems >itemsPerPage ? '35px' : '0px'">
+                    <paging [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="pageChanged($event);"></paging>
+                </div>
+            </div>
+        </primary-view>
+        <secondary-view>
+            <landloards-tenants-addedit (submitSuccess)="submitReturn($event)" [action]="action" [btnName]="btnName" [selectedId]="inputItems.selectedIds" [fieldDetailsAdd]="fieldDetailsAdd1" [categorytype]="categorytype"></landloards-tenants-addedit>
+        </secondary-view>
+    </split-view>
+</div> 

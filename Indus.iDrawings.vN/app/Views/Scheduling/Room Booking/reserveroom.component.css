@@ -1,0 +1,88 @@
+﻿.gridView {
+    width:50%;
+    height:96%; 
+    float:left;
+    overflow-x:hidden;  
+}
+.schedulerView {
+    width:calc(50% + 18px);
+    height:98.4%;
+    float:left;   
+    margin-left:-22px;
+    background-color:white !important;
+}
+.gridViewFromDrawing {
+    width:19%;
+    height:95%; 
+    float:left;
+    overflow-x:auto;
+    /*margin-top: 5%;*/
+}
+.gridViewFromDrawingShow {
+    width:16%;
+    height:94%; 
+    float:left;
+    overflow-x:auto;
+    /*margin-top: 5%;*/
+}
+.gridViewFromDrawingHide {
+    width:16%;
+    height:98%; 
+    float:left;
+    overflow-x:auto;
+    /*margin-top: 5%;*/
+}
+.schedulerViewFromDrawing {
+    width:69%;
+    height:93.5%;
+    float:left;
+    /*margin-top:-10px;*/
+}
+.schedulerViewFromDrawingSeat {
+    width:calc(84% + 20px);
+    height:100%;
+    float:left;
+    margin-left:-25px;
+    background-color:white!important;
+}
+.schedulerViewwithpaging {
+      width:calc(50% + 18px);
+    height:94.4%;
+    float:right;   
+    margin-left:-22px;
+    background-color:white;
+}
+.schedulerViewFromDrawingwithpaging {
+    width:73%;
+    height:83%;
+    float:left;
+    /*margin-top:-10px;*/
+}
+.gridViewFromDrawingRoom {
+    width:33%;
+    height:93%; 
+    float:left;
+    overflow-x:auto;
+    /*margin-top: 5%;*/
+}
+.gridViewFromHideDrawingRoom {
+    width:33%;
+    height:97%; 
+    float:left;
+    overflow-x:auto;
+    /*margin-top: 5%;*/
+}
+.schedulerViewFromDrawingRoom {
+    width:calc(67% + 18px);
+    height:98.5%;
+    float:left;
+    margin-left:-27px;
+    background-color:white !important;
+}
+.schedulerViewFromDrawingwithpagingRoom {
+       width:calc(73% + 18px);
+    height:83%;
+    float:left;
+    margin-left:-27px;
+    background-color:white !important;
+}

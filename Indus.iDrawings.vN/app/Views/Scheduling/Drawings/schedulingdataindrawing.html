@@ -1,0 +1,222 @@
+﻿<div style="overflow: hidden;">
+    <tabs *ngIf="isSeatBookingEnabled!=undefined && isRoomBookingEnabled!=undefined" ([selectedTab])="selectedTab" id="workspace" style="height:100%;display:block" (getSelectedTab)="getSelectedTab($event)" class="employeeTab" [verticalTab]="true">
+        <tab *ngIf="isSeatBookingEnabled" tabTitle={{seattxt}} id="tab1" closeButtonVisible="hidden">
+            <div style="height:100%;">
+                <div style="height:35px;">
+                    <submenu>
+                        <sub-menu [menuCard]=true [source]=menuData [count]=gridcount [menuIds]=enableMenu (onSubMenuChange)="onSubMenuChange($event);"> </sub-menu>
+                    </submenu>
+                </div>
+                <div style="overflow: hidden;height: calc(100% - 35px);">
+                    <div [ngClass]="Stylename" style="overflow:visible">
+                        <!--<search *ngIf="isWorkspaceSearch" id="workspaceSearch" [disable]="disable" [searchtype]="'Grid'"  [(showSearchFilter)]="showSearchFilter" [keyWordLookup]=workSpaceKeyWordLookup [advancesearch]=true [Key]=2 [datasource]=workSpaceSearchFieldObject [dataKey]="inputItems.dataKey" [KeywordFields]=workSpaceKeyWordLookup (SaveAs)="SaveAs($event)" (Delete)="Delete($event)" (onloadSearch)="keywordSearchSubmit($event)" (loadAdvanceSearch)="workSpaceAdvanceSearch()" (Clear)="Clear($event,1)" (Submit)="advanceSearchSubmit($event)" [smartSearch]=isSmartSearch [isShowConfigure]=false></search>-->
+                        <searchforschedule *ngIf="isWorkspaceSearch" [Title]=searchSeatTitle [searchtype]="'Grid'" [(showSearchFilter)]="showSearchFilter" [keyWordLookup]=keyWordLookup [disable]="disable" [Key]=2 [KeywordFields]=workSpaceKeyWordLookup [advancesearch]=true [Customsearch]=false [datasource]=workSpaceSearchFieldObject [Target]="1" (SaveAs)="SaveAs($event)" (Delete)="Delete($event)" (onloadSearch)="keywordSearchSubmit($event)" (loadAdvanceSearch)="workSpaceAdvanceSearch()" (Clear)="Clear($event,1)" (Submit)="advanceSearchSubmit($event)" [smartSearch]=isSmartSearch [isShowConfigure]=false></searchforschedule>
+                    </div>
+                    <div [style.height]="formHeight" style="width:100%;display:block;">
+                        <gridView [dataSource]="itemsSource" [properties]="inputItems" [columns]="fieldObject" (onSorting)="onSort($event)"></gridView>
+                    </div>
+                </div>
+            </div>
+        </tab>
+        <tab *ngIf="isRoomBookingEnabled" tabTitle={{roomtext}} id="tab2" closeButtonVisible="hidden">
+            <submenu>
+                <sub-menu [menuCard]=true [source]=menuData [count]=gridcount [menuIds]=enableMenu (onSubMenuChange)="onSubMenuChange($event);"> </sub-menu>
+            </submenu>
+            <div style="overflow: hidden;height: calc(100% - 35px);">
+                <div [ngClass]="Stylename" style="overflow:visible">
+                    <!--<search *ngIf="isTeamRoomSearch" id="teamRoomsSearch" [disable]="disable" [searchtype]="'Grid'" [(showSearchFilter)]="showSearchFilter"  [keyWordLookup]=teamRoomKeyWordLookup [advancesearch]=true [Key]=2 [datasource]=teamRoomSearchFieldObject [dataKey]="inputItems.dataKey" [KeywordFields]=teamRoomKeyWordLookup (SaveAs)="SaveAs($event)" (Delete)="Delete($event)" (onloadSearch)="keywordSearchSubmit($event)" (loadAdvanceSearch)="teamRoomAdvanceSearch()" (Clear)="Clear($event,2)" (Submit)="advanceSearchSubmit($event)" [smartSearch]=isSmartSearch [isShowConfigure]=false></search>-->
+                    <searchforschedule *ngIf="isTeamRoomSearch" [Title]=searchRoomTitle [searchtype]="'Grid'" [(showSearchFilter)]="showSearchFilter" [keyWordLookup]=teamRoomKeyWordLookup [disable]="disable" [Key]=2 [KeywordFields]=teamRoomKeyWordLookup [advancesearch]=true [Customsearch]=false [datasource]=teamRoomSearchFieldObject [Target]="2" (SaveAs)="SaveAs($event)" (Delete)="Delete($event)" (onloadSearch)="keywordSearchSubmit($event)" (loadAdvanceSearch)="teamRoomAdvanceSearch()" (Clear)="Clear($event)" (Submit)="advanceSearchSubmit($event,2)" [smartSearch]=isSmartSearch [isShowConfigure]=false></searchforschedule>
+                </div>
+                <div [style.height]="formHeight" style="width:100%;display:block;height:100%;">
+                    <gridView [dataSource]="itemsSource" [properties]="inputItems" [columns]="fieldObject" (onSorting)="onSort($event)"></gridView>
+                </div>
+            </div>
+        </tab>
+        <tab tabTitle="Special Use Rooms" id="tab3" closeButtonVisible="hidden" *ngIf="isSpecialUseRoom==true && isSeatBookingEnabled">
+            <submenu>
+                <sub-menu [menuCard]=true [source]=menuData [count]=gridcount [menuIds]=enableMenu (onSubMenuChange)="onSubMenuChange($event);"> </sub-menu>
+            </submenu>
+            <div style="overflow: hidden;height: calc(100% - 35px);">
+                <div [ngClass]="Stylename" style="overflow:visible">
+                    <searchforschedule *ngIf="isSpecialRoomSearch" [Title]="'Search Special Room'" [searchtype]="'Grid'" [(showSearchFilter)]="showSearchFilter" [keyWordLookup]=specialRoomKeyWordLookup [disable]="disable" [Key]=2 [KeywordFields]=specialRoomKeyWordLookup [advancesearch]=true [Customsearch]=false [datasource]=specialRoomSearchFieldObject [Target]="2" (SaveAs)="SaveAs($event)" (Delete)="Delete($event)" (onloadSearch)="keywordSearchSubmit($event)" (loadAdvanceSearch)="specialRommAdvanceSearch()" (Clear)="Clear($event,3)" (Submit)="advanceSearchSubmit($event)" [smartSearch]=isSmartSearch [isShowConfigure]=false></searchforschedule>
+                    <!--<search *ngIf="isSpecialRoomSearch" id="SpecialUseRoomsspaceSearch" [disable]="disable" [searchtype]="'Grid'"  [(showSearchFilter)]="showSearchFilter" [keyWordLookup]=specialRoomKeyWordLookup [advancesearch]=true [Key]=2 [datasource]=specialRoomSearchFieldObject [dataKey]="inputItems.dataKey" [KeywordFields]=specialRoomKeyWordLookup (SaveAs)="SaveAs($event)" (Delete)="Delete($event)" (onloadSearch)="keywordSearchSubmit($event)" (loadAdvanceSearch)="specialRommAdvanceSearch()" (Clear)="Clear($event,3)" (Submit)="advanceSearchSubmit($event)" [smartSearch]=isSmartSearch [isShowConfigure]=false></search>-->
+                </div>
+                <div [style.height]="formHeight" style="width:100%;display:block;">
+                    <gridView [dataSource]="itemsSource" [properties]="inputItems" [columns]="fieldObject" (onSorting)="onSort($event)"></gridView>
+                </div>
+            </div>
+        </tab>
+    </tabs>
+</div>
+<style>
+    /*#workspace .navbar li {
+            width: 100px !important;
+        }*/
+    #workspace .navbar li:first-child {
+        width: 27px !important;
+    }
+
+    #workspace .navbar li:nth-child(2) {
+        width: 27px !important;
+    }
+
+    #workspace .navbar li:last-child {
+        width: 27px !important;
+    }
+
+    .search-containerInline {
+        top: 133px !important;
+        position: fixed !important;
+        position: -ms-page !important;
+        overflow: visible;
+        right: 0;
+        margin-right: 10px;
+        z-index: 10;
+    }
+    @media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 812px) 
+  and (orientation: portrait) { 
+        .search-containerInline 
+        {
+            display:none!important;
+        }
+    }
+     @media only screen and (min-device-width: 320px) 
+                and (max-device-width: 812px) 
+                and (orientation: landscape) 
+    {
+        .search-containerInline 
+        {
+            display:none!important;
+        }
+         .search-containerInlinefromgrid
+         {
+            display:none!important;
+        }
+    }
+
+    .search-containerInlinefromgrid {
+        top: 123px !important;
+        position: fixed !important;
+        position: -ms-page !important;
+        right: 0;
+        margin-right: 10px;
+        z-index: 10;
+    }
+
+    .workspaceSearch .SearchControl {
+        height: 398px !important;
+        min-height: 398px !important;
+    }
+
+    @media screen and (-ms-high-contrast: active) and (max-width:660px ), (-ms-high-contrast: none) and (max-width:660px ) {
+        .search-containerInlinefromgrid {
+            position: absolute !important;
+            top: 100px !important;
+        }
+
+        :host .filter {
+            position: -ms-page !important;
+            margin-left: -300px !important;
+        }
+
+        :host #slideout {
+            position: -ms-page !important;
+        }
+    }
+
+    @media screen and (-ms-high-contrast: active) and (min-width:660px ), (-ms-high-contrast: none) and (min-width:660px ) {
+        .search-containerInlinefromgrid {
+            position: absolute !important;
+            top: 38px !important;
+        }
+
+        :host .filter {
+            position: -ms-page !important;
+            margin-left: -540px !important;
+        }
+
+        :host #slideout {
+            position: -ms-page !important;
+        }
+    }
+
+    @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+
+        :host .background-block-slide {
+            position: -ms-page !important;
+        }
+    }
+
+
+    @media screen and (min-height: 769px) {
+        #workspaceSearch .SearchControl {
+            max-height: 500px !important;
+            min-height: 400px !important;
+        }
+    }
+
+    @media screen and (max-height: 769px) {
+        #workspaceSearch .SearchControl {
+            max-height: 500px !important;
+            min-height: 300px !important;
+        }
+    }
+
+
+    #workspaceSearch .filter {
+        max-height: 500px !important;
+    }
+
+    #workspaceSearch .filter-content {
+        max-height: 500px !important;
+    }
+
+
+    @media screen and (min-height: 769px) {
+        #teamRoomsSearch .SearchControl {
+            max-height: 500px !important;
+            min-height: 400px !important;
+        }
+    }
+
+    @media screen and (max-height: 769px) {
+        #workspaceSearch .SearchControl {
+            max-height: 500px !important;
+            min-height: 300px !important;
+        }
+    }
+
+    #teamRoomsSearch .filter {
+        max-height: 500px !important;
+    }
+
+    #teamRoomsSearch .filter-content {
+        max-height: 500px !important;
+    }
+
+    @media screen and (min-height: 769px) {
+        #SpecialUseRoomsspaceSearch .SearchControl {
+            max-height: 500px !important;
+            min-height: 400px !important;
+        }
+    }
+
+    @media screen and (max-height: 769px) {
+        #workspaceSearch .SearchControl {
+            max-height: 500px !important;
+            min-height: 300px !important;
+        }
+    }
+
+    #SpecialUseRoomsspaceSearch .filter {
+        max-height: 500px !important;
+    }
+
+    #SpecialUseRoomsspaceSearch .filter-content {
+        max-height: 500px !important;
+    }
+
+    }
+</style>

@@ -1,0 +1,56 @@
+﻿<div id="canvas-container" style="height:65%;float:left;width:calc(100% - 10px)">
+    <div style="padding: 12px;">
+        <div >  
+            <DropDownListComponent *ngIf="arrObjectSymbolData" SetAlignment="horizontal" [labelWidth]=60  [fieldObject]="getSymbolField(2938)" #symbolDropdown (ddlChange)="symbolDropdownChange($event)" ></DropDownListComponent>
+        </div>
+        <table style="width: 95%;font-size:1em;" id="tblSymbolInput">
+            <tr>
+                <td>
+                    <StringTextBox SetAlignment="horizontal" labelWidth=60  *ngIf="arrObjectSymbolData" [fieldObject]="getSymbolField(2948)"></StringTextBox>
+                </td>
+                <td>
+                    <StringTextBox SetAlignment="horizontal" labelWidth=60  *ngIf="arrObjectSymbolData" [fieldObject]="getSymbolField(2949)"></StringTextBox>
+                </td>
+                <td>
+                    <StringTextBox SetAlignment="horizontal" labelWidth=60  *ngIf="arrObjectSymbolData" [fieldObject]="getSymbolField(2950)"></StringTextBox>
+                </td>
+            </tr>
+            <tr>                
+                <td>
+                    <StringTextBox SetAlignment="horizontal" labelWidth=70  *ngIf="arrObjectSymbolData" [fieldObject]="getSymbolField(2941)"></StringTextBox>
+                </td>
+                <td>
+                    <StringTextBox SetAlignment="horizontal" labelWidth=70  *ngIf="arrObjectSymbolData" [fieldObject]="getSymbolField(2942)"></StringTextBox>
+                </td>
+                <td>
+                    <StringTextBox SetAlignment="horizontal" labelWidth=70  *ngIf="arrObjectSymbolData" [fieldObject]="getSymbolField(2940)"></StringTextBox>
+                </td>                
+            </tr>
+        </table>        
+    </div>
+    <canvas id="iWhizCreateSymbolCanvas" oncontextmenu="return false;" title="" class="canvas" style="background-color:black" #iWhizCreateSymbolCanvas></canvas>
+    <div id="loading-indicator" colspan="5" class="signal" style="position: absolute; left: 50%; top: 50%; color: grey;"></div>
+    <sub-menu  [source]="menuData" [menuCard]=true [count]="totalItems" [menuIds]="enableMenu" [isVertical]=true (onSubMenuChange)="onSubMenuChange($event);"> </sub-menu>
+    <slide [width]="300" [position]="symbolSlidePosition" [type]="dialog" [show]="showSymbolSlide" (closeDialog)="closeSlideDialog($event,1)">
+        
+         <div>
+             <div>
+                {{messageSliderText}}
+             </div>
+             <div>
+ 
+                 <div style="width:100%">
+                     <button  class="Savebutton "type="button" (click)="okDeleteSymbol($event)">Yes</button>
+                     <button  class="Savebutton "type="button" (click)="cancelClick($event)">No</button>
+                 </div>
+             </div>
+         </div>
+     </slide>
+</div>
+
+<style>
+    :host .ddllabel_2938{
+        width:180px !important;
+        margin-top:5px !important;
+    }
+</style>

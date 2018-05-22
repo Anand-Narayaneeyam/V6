@@ -1,0 +1,84 @@
+﻿<page [pagetitle]="pagePath">
+    <pagepath>
+    </pagepath>
+    <content>
+
+        <section title="Team Room Reservation Details" [isExpanded]="sectionExpansionStatus[0].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div *ngIf="sectionExpansionStatus[0].isExpanded==true">
+                <p>This report shows the list of all Team Room Reservations created in the selected Date period. Team Room Reservations are listed with From and To Dates, Event Name, No. of Participants and Requested by, grouped by Site, Building, Floor, Room Number and Space Function.</p>
+            </div>
+        </section>
+        <section title="Team Room Reservation Details by User" [isExpanded]="sectionExpansionStatus[1].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div *ngIf="sectionExpansionStatus[1].isExpanded==true">
+                <p>This report shows the list of all Team Room Reservations created by different Users in the selected Date period. Team Room Reservations are listed with From and To Dates, Event Name, No. of Participants and Requested by, grouped by Site, Building, Floor, Room Number, Space Function and Requested by.</p>
+            </div>
+        </section>
+        <section title="Team Room Reservation Summary Details" [isExpanded]="sectionExpansionStatus[2].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div *ngIf="sectionExpansionStatus[2].isExpanded==true">
+                <p>This report shows the summary of Team Room Reservations in the selected Date period. The report shows the Seats, Reservation time (in hrs), Average Participants and Total number bookings, grouped by Site, Building, Floor, Room Number and Space Function.</p>
+            </div>
+        </section>
+        <section title="Workspace Reservation Details" [isExpanded]="sectionExpansionStatus[3].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div *ngIf="sectionExpansionStatus[3].isExpanded==true">
+                <p>This report shows the list of all Workspace Reservations created in the selected Date period. Workspace Reservations are listed with From and To Dates, Seats, Location, Seat Number, Requested by, grouped by Site, Building, Floor, Room Number and Space Function.</p>
+            </div>
+        </section>
+        <section title="User Reservation Details" [isExpanded]="sectionExpansionStatus[4].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div *ngIf="sectionExpansionStatus[4].isExpanded==true">
+                <p>This report shows the list of all Reservations created in the selected Date period for different Users. Workspace Reservations are listed with From and To Dates, Seats, Location, Seat Number, Requested by, grouped by Division and Booked for User.</p>
+            </div>
+        </section>
+        <section title="Cancelled Reservation Details" [isExpanded]="sectionExpansionStatus[5].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div *ngIf="sectionExpansionStatus[5].isExpanded==true">
+                <p>This report shows the list of all Cancelled Reservations created in the selected Date period for different Users. Reservations are listed with From and To Dates, Seats, Location, Seat Number, Requested by, grouped by Division and Booked for User.</p>
+            </div>
+        </section>
+    </content>
+</page>
+<style type="text/css">
+    h3.Mainheader {
+        color: #178AE8;
+    }
+
+    .header1 {
+        font-weight: bold;
+        color: #178AE8;
+    }
+
+    .header2 {
+        font-weight: normal;
+        color: #178AE8;
+    }
+
+    p {
+        margin-left: 38px;
+        font-size: 13px;
+        margin-right: 3em;
+    }
+
+    .header3 {
+        font-weight: bold;
+        color: black;
+    }
+    /**/ h1 {
+        color: #178AE8;
+        font-size: 1.3em;
+        margin-left: 38px;
+    }
+
+    h2 {
+        color: #178AE8;
+        font-size: 1em;
+        margin-left: 38px;
+    }
+
+    .config {
+        background-color: #178AE8;
+    }
+
+    .helpicon {
+        vertical-align: baseline;
+        width: 20px;
+        height: 20px;
+    }
+</style>

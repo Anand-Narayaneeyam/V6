@@ -1,0 +1,11 @@
+﻿<div style="height:100%">
+    <div style="height:45%;margin-right:15px;">
+        <div *ngFor="let field of fieldDetailsAdd;let i=index;">
+            <StringTextBox *ngIf="field && field.DataEntryControlId == '1' && field.IsVisible" [fieldObject]=field></StringTextBox>
+        </div>
+        <div>
+            <tree-view *ngIf="enableFlag" [isShowSelectAll]="false" [CustomButtonNameForTreeView]="true" [FieldTable]=FieldTable (UpdateValues)="submit($event)" [FieldColumn]=clmFieldTable [checkedIds]="selectedFieldData" [DataKey]=DataKey [Fields]=Fields [labelData]="labelData" [selectionCriteria]="3"></tree-view>
+        </div>
+    </div>
+</div>
+

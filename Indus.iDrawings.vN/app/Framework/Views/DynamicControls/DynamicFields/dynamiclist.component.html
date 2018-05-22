@@ -1,0 +1,46 @@
+﻿<style>
+    .dynamic-list-ul {
+        list-style-type: none;
+        border-color: darkgray;
+        border: 2px solid;
+        height: 130px;
+        overflow: auto;
+        width: 400px;
+        border-color: #178AE8;
+        border-radius: 5px;
+        box-shadow: 1px 1px 1px 1px lightgrey;
+    }
+
+    li {
+        margin-left: -11%;
+        /*border:1px solid lightgrey;*/
+        height: 25px;
+        color: black;
+    }
+
+        li:hover {
+            border-color: #178AE8;
+            color: black;
+        }
+  
+</style>
+<div control-group *ngIf="!fieldObject.IsHiddenLabel && fieldObject.FieldLabel != undefined && fieldObject.FieldLabel != null" style="margin-top:9px;">
+    <label>
+        {{fieldObject.FieldLabel}}<span class="required" *ngIf="fieldObject.IsMandatory == undefined || fieldObject.IsMandatory === true"> * </span>
+    </label>
+</div>
+<div control-group style="margin-top:-9px;">
+    <div style="margin-top: 10px;display:flex;width:100%">
+        <div tabindex="0" [attr.aria-label]="fieldObject.FieldLabel+'Press Space Key to Add a New' +fieldObject.FieldLabel" (keydown)="keyForDeleteOrAdd($event,dlist,4)">
+            <ul #dlist *ngIf="fieldObject != undefined" id="dlist" class="dynamic-list-ul" (click)="dlistClick($event)">
+                <li *ngFor="let field of fieldObject.LookupDetails.LookupValues;" (focus)="dlistClick($event)" (keydown)="keyForDeleteOrAdd($event,dlist,3)" title="Press Delete Key to Delete It or Press Enter Key to Add a New Invitee" tabindex="0" id="{{field.Id + 'li' + fieldObject.ReportFieldId}}">{{field.Value}}</li>
+            </ul>
+        </div>
+        <div style="display: block; margin-left:5px;margin-top:35px;">
+            <img src="{{imgsrc1}}" *ngIf="fieldObject.IsEnabled"  tabindex="0" [attr.aria-label]="'Add '+fieldObject.FieldLabel" alt="Add '+fieldObject.FieldLabel" (keydown)="keyForDeleteOrAdd($event,dlist,1)"  (click)="addListItem($event,dlist)" >
+            <br>
+            <img src="{{imgsrc2}}" *ngIf="fieldObject.IsEnabled" tabindex="0" [attr.aria-label]="'Delete '+fieldObject.FieldLabel" alt="Delete '+fieldObject.FieldLabel" (keydown)="keyForDeleteOrAdd($event,dlist,2)" style="margin-top:2px;" [ngStyle]="fieldObject.LookupDetails && fieldObject.LookupDetails.LookupValues && fieldObject.LookupDetails.LookupValues.length>0?{'margin-top':'2px','pointer-events':'auto'}:{'margin-top':'2px','pointer-events':'none','cursor':'default','opacity':'0.5'}" (click)="removeListItem($event,dlist)">
+        </div>
+    </div>
+    <span *ngIf="blnHasValidationError == true" style="color:red;display:block;width:100%;overflow-x:hidden;word-wrap:break-word;margin-top:-12px;">{{strValidation}}</span>
+</div>

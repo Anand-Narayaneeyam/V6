@@ -1,0 +1,114 @@
+﻿<page [pagetitle]="pagePath">
+    <pagepath>
+    </pagepath>
+    <content>
+        <section title="Users" [isExpanded]="sectionExpansionStatus[0].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div *ngIf="sectionExpansionStatus[0].isExpanded">
+
+
+                <p>Users option is available under Administration Module </p>
+                <p>This option helps the administrator to add/edit/delete the users. Access permission for users to different modules and organizational entities can also be set. It is not possible for an administrator to add a new user if the maximum number of users already exist. </p>
+
+                <p>When clicking this menu, all users will be listed with their login name, user role, status, etc. The list can be sorted by clicking the column headers. Administrator can add, edit, delete or restore users through this option. </p>
+                <p><span class="header1">Add:</span> A new user can be created by clicking the <span class="header2">Add</span> <img class="helpicon" src="Content/Icons/data_addN.png" alt="Add" /> icon. The User Name, Login name, account activation and account expiry dates have to be entered. A user can be created as Administrator or Division Administrator or Module Administrator or Facility User, by selecting the corresponding User Role from the list provided. </p>
+                <p>Login Name availability can be checked by entering the Login Name and then clicking the <span class="header2">Check Availability</span> button next to Login Name.</p>
+                <p><span class="header2">Change Password on Next Login</span> option allows the user to change the password set by the administrator, in the Next login of the User.</p>
+                <p><span class="header2">Select Sites:</span> Option to select Sites ‘Select Sites’ will be displayed if User Access Level – Site is selected for the User. This option will be displayed only if the Enable Site Administrator option is enabled for the Customer. Site of the User can be selected by clicking Select Sites button and then selecting the required Site(s). Click Save Changes button to save the Sites for the User.</p>
+                <p>Click the Save button, after entering the required fields and the new user details will get added. </p>
+                <p>Note: If ‘Email Domain Validation’ is enabled by Indus, Email text box will be displayed as mandatory and only emails with the mail domains defined through <span class="header2">General Settings: Mail Domains</span> will be accepted. In this case, a random password will be generated and will be sent with the details of User Name and Password to the specific user's email account when creating a new User. User can login to the iDrawings account with the User Name and Password received through Email. When logging in, the User will be prompted to Change Password with respect to the applied Password Policy for the first Login attempt.</p>
+                <p><span class="header1">Edit:</span> Edit a user by selecting the row and clicking the <span class="header2">Edit</span> <img class="helpicon" src="Content/Layout/edit_button.png" alt="Edit" /> icon. The details will be displayed in a new window. Make the necessary changes and click the Save Changes button to save the changes. All details except the login name of the user can be edited. </p>
+                <p><span class="header1">Delete:</span> Delete a user by selecting the row and clicking the <span class="header2">Delete </span> <img class="helpicon" src="Content/Layout/delete_button.png" alt="Delete" />   icon. The selected user will be shown in the list with status Deleted. The logged-in user of this session cannot be deleted.</p>
+                <p><span class="header1">Restore:</span> Restore a user by selecting a deleted user and clicking the <span class="header2">Restore</span> <img src="Content/Icons/restorE.png" alt="Restore" />  icon. The selected user will be shown in the list with status Active.</p>
+                <p><span class="header1">Reset Password:</span> This option allows the users to reset their password. Reset the password of a user by selecting a user and clicking the <span class="header2">Reset Password</span> <img src="Content/Icons/reset_password1.png" alt="Reset Password" />  icon. If ‘Email Domain Validation’ option is enabled by Indus, on selecting Reset Password icon, a random password will be generated and will be sent with the details of User Name and Password to the specific user's email account. User can login to the iDrawings account with the User Name and Password received through Email. When logging in, the User will be prompted to Change Password with respect to the applied Password Policy for the first Login attempt. </p>
+                <p>If ‘Email Domain Validation’ option is not enabled by Indus, on selecting this icon, Reset Password window will be displayed where the user can enter the new password and click the Save Changes button to save the changes. The login name of the user will be displayed as read only. <span class="header2">Reset on Next Login</span> option allows the user to change the password set by the administrator, in the Next login of the User.</p>
+                <p><span class="header1">Forgot Password:</span> This option will be available in the login page. The user can select this option to retrieve the password if he/she forgets the password while logging in. On selecting Forgot Password option, Retrieve Forgotten Password window will be opened with a field to enter User Login Name. Random generated Password will be sent to the email id registered with the User's account. After resetting the Password, User will be prompted to Change Password with respect to the applied Password Policy for the first Login attempt.</p>
+                <p><span class="header1">Export</span></p><p>This option is to export the User data to the Excel. On clicking <span class="header2">Export</span> <img class="helpicon" src="Content/Icons/exportN.png" /> icon, data will be exported to Excel.</p>
+                <p><span class="header1">Keyword Search</span></p> <p>This option helps users to search for User details using keywords. The keyword could belong to any data field of the User data. The user need not know or specify which field to look in. The Keyword could be any part of the User data viz. Login Name, First Name, Last Name, Account Expiry Date, User Role etc.</p>
+                <p>On entering the keyword and clicking on the <span class="header2">Search</span> <img class="helpicon" src="Content/Icons/keyword-search.png" /> icon, the data grid will be opened with User records having data matching the specified keyword.</p>
+
+                <p><span class="header1">Advanced Search</span></p><p>This option <img class="helpicon" src="Content/Icons/advanced-search.png" /> helps users to search for User details with specific data in known data fields. The data being searched for can be selected from the list boxes or entered into text boxes provided against the data fields. The user can select one or more data fields viz. Login Name, First Name, Last Name, Account Expiry Date, Account Activation Date, User Role etc. After entering the search criteria and click Search button, the data of the sites which satisfy the selection criteria. When a search is done, the search criteria will be saved and available for subsequent searches in the current session until another search is done with new criteria.</p>
+                <p>Fields to be displayed in the Search window can be set using the <span class="header2">Configure</span> <img class="helpicon" src="Content/Icons/settings_icon.png" title="Configure" /> icon, provided in the Search window. </p>
+                <p>Search criteria entered in the Search window can be cleared by clicking the Clear button provided in the Search window. After clearing the Search criteria and click Search button to clear the Search Results in the Site Data grid.</p>
+
+
+                <h1>User Roles</h1>
+                <p>New User can be created with different roles like Administrator, Module Administrator, Division Administrator or Facility User. </p>
+                <p><span class="header1">Administrator:</span> Users with Administrator role will have access to all functionalities of all modules without any access restrictions. </p>
+                <p><span class="header1">Module Administrator:</span> Users with Module Administrator role will have access to all functionalities of an Administrator for selected Modules. This user role is used for granting administrative privilege for facility users for one or more selected modules.  E.g. If the User is a Module Administrator of Space module only, then the user will have all privileges in the Space module, but in all other modules access is restricted to the Facility User role.</p>
+                <p><span class="header1">Division Administrator:</span> Users with Division Administrator role will have Administrator privileges in all modules, restricted to one or more selected Organizational units (Cost Center, Division, Department etc. depending upon the organizational structure of the customer). </p>
+                <p><span class="header1">Facility User:</span> Users having this role with Organization wise User Access level will have only the minimum functionalities (mainly read only) of all modules, but can be elevated to Module Administrators or Division Administrators by giving appropriate access permissions as and when required. The Administrator has to set the access privileges through the <span class="header2">Users: Access</span> <img src="Content/Icons/data_accessN.png" alt="Access" />   option.</p>
+                <p><span class="header1">Work Order User:</span> Users having this role will only have access to the Service Request creation and tracking functionality of Work Order module. This User role will be available only if Work Order User role is enabled by Indus. </p>
+
+            </div>
+        </section>
+        <section title="User Access" [isExpanded]="sectionExpansionStatus[1].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div *ngIf="sectionExpansionStatus[1].isExpanded">
+
+
+                <p>This menu is to set access permissions for users to Modules and Drawings This operation is not meant for users having Admin privilege. Select a User (other than Administrator User Role) and click Access Control   icon.  Access Control window with Module Access, Drawing Access, Division Access and Report Access options will be displayed. Division Administrator Settings and Module Administrator Settings are also displayed if selected User is a Division Administrator and Module Administrator respectively.</p>
+                <h1>Module Access</h1>
+                <p>The modules accessible to a user can be controlled using Module Access option. Module Access can be set to all active Users except Administrators. For setting Module Access, select an Active User with User Role other than Administrator and then select Module Access section from Access Control icon. All Modules will be displayed with their corresponding checkboxes. Check the required modules & click on Save Changes button. When a new User is created, access will be set to all modules by default.</p>
+                <h1>Drawing Access</h1>
+                <p>This option is convenient to use when a new user is added to the system. Access can be set for all drawings in a module for a selected user through a single page. For setting User wise Drawing Access permissions, select an Active user with User role other than Administrator from the Users list, then select the Drawing Access section from Access Control icon. Select a module to which access is to be set. The floor list will be displayed. Select the required site/building/floor by selecting the corresponding check boxes and click the Save Changes button. The Administrator has to set access to drawings in As-Builts module first. </p>
+                <h1>Division Access</h1>
+                <p>This option allows the Administrator to grant or block access to one or more Organizational units (Cost Center, Division, Department etc. depending upon the organizational structure of the customer) for a selected user. This option is convenient to use when a new user is added to the system. To grant or block access, select the user with User Role other than Administrator from the User list and click Division Access section from Access Control icon. All Organizational Units will be listed with ‘View’ checkboxes, select the Units from the list for which the access is to be granted by checking the corresponding checkboxes. To block access, deselect the Organizational Unit for which access is to be blocked. Click Save Changes to save the settings.  Divisions selected via Division Access only will be available for setting Division Administrator Settings.</p>
+                <h1>Module Administrator Settings</h1>
+                <p>This option is for granting administrative privilege to Module Administrators for a particular module. For this, select an Active User with User Role - Module Administrator, the select Module Administrator Settings section from Access Control icon. All the modules selected for Module Access for the selected User will be listed with their corresponding checkboxes. Check the required modules & click on Save Changes button. The selected user will get the privileges of an administrator for that particular module. </p>
+                <h1>Division Administrator Settings</h1>
+                <p>This option is for granting Edit privilege for the selected Division Administrator to the required Organizational Units. On selecting the active Division Administrators from the list, all Divisions for which selected User have View privilege will be listed with Edit checkboxes. Select the Divisions from the list by selecting the corresponding check boxes for Edit and click the Save Changes button. The selected Division Administrator will get the privilege to ‘Edit’ the checked Divisions. For setting the Edit option, View has to be enabled first through Division Access option. </p>
+                <h1>Report Access</h1>
+                <p>This option allows the Administrator to grant/block access to Reports in all modules to a user. By default all the reports will be available to all users.  Select an active user with User role other than Administrator, and then select Report Access section from Access Control icon. Reports available in each module will be listed with checkboxes. Administrator can block access by deselecting the corresponding check boxes. By deselecting the Module Check box, all the reports in that module will be blocked to the selected user. Select the required checkboxes and click Save Changes button. Report access will be updated to the selected User.</p>
+
+
+            </div>
+        </section>
+
+    </content>
+</page>
+<style type="text/css">
+    h3.Mainheader {
+        color: #178AE8;
+    }
+
+    .header1 {
+        font-weight: bold;
+        color: #178AE8;
+    }
+
+    .header2 {
+        font-weight: normal;
+        color: #178AE8;
+    }
+
+    p {
+        margin-left: 38px;
+        font-size: 13px;
+        margin-right: 3em;
+    }
+
+    .header3 {
+        font-weight: bold;
+        color: black;
+    }
+    /**/ h1 {
+        color: #178AE8;
+        font-size: 1.3em;
+        margin-left: 38px;
+    }
+
+    h2 {
+        color: #178AE8;
+        font-size: 1em;
+        margin-left: 38px;
+    }
+
+    .config {
+        background-color: #178AE8;
+    }
+
+    .helpicon {
+        vertical-align: baseline;
+        width: 20px;
+        height: 20px;
+    }
+</style>

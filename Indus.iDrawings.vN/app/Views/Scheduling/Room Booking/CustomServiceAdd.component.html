@@ -1,0 +1,90 @@
+﻿
+<style>
+    table {
+        /*height: 400px;
+        width: 400px;*/
+        overflow: hidden;
+        margin: 4em auto;
+        /* border-collapse: collapse;*/
+        /* min-width: 23em; width: 50%; max-width: 56em;*/
+        /* border-radius: .5em;*/
+        box-shadow: 0 0 .5em black;
+        /*box-shadow: 0px 0px 0px black;*/
+        box-shadow: 0px 0px 4px 2px #004C7E;
+        border-right: 2px solid black;
+    }
+
+    th {
+        background-color: #ffffff;
+        text-align: center;
+        color: black;
+        min-width: 60px;
+        height: 28px;
+        font-size: .8em;
+    }
+
+    tr {
+        background-color: white;
+    }
+
+    td {
+        background-color: white;
+        text-align: center;
+        height: 22px;
+        /* border: 1px solid black;
+        border-color: black;*/
+        /* whitespace : nowrap;
+         overflow : hidden;*/
+    }
+
+    table,
+    tr,
+    th,
+    td {
+        border: 0.01em solid darkgray;
+        border-color: darkgray;
+        box-shadow: 0 0 .5em darkgray;
+    }
+
+        td:hover {
+            /*background-color: #D2004A;
+        color: white;*/
+        }
+
+    .tdDisabled {
+        background-color: lightgray;
+        cursor: no-drop;
+    }
+
+    .tdEnabled {
+        background-color: white;
+        cursor: hand;
+    }
+
+    :host label {
+        display: none;
+    }
+</style>
+<div style="height:100%">
+    <div id="Services" style="display:flex;width:100%;margin-right: 12px;overflow:auto;height:80%">
+        <table id="Servicetable">
+            <tr>
+                <th> Service</th>
+                <th>Required</th>
+                <th>Optional</th>                
+            </tr>
+            <tr *ngFor="let object of ServiceList,let i=index " #tr id={{i}}>
+                <td style="font-size:14px"><StringTextBox name="Service" id="txtService{{i}}" [fieldObject]=ServiceList[i] (txtBoxChange)="txtBoxChange($event)"></StringTextBox></td>              
+                <td><input #check type="checkbox" id="chkRequired{{i}}" name="chkRequired" value="All" (change)="chkRequiredclick($event)" /></td>
+                <td><input #check type="checkbox" id="chkOptional{{i}}" name="chkOptional" value="All" (change)="chkOptionalclick($event)" /></td>               
+            </tr>
+        </table>
+        <div id="Button" style="margin-top: 15.6%;margin-left: 3px;margin-right: 5px;">
+            <img src="Content/Icons/data_addN.png" class="markupicons" (click)="onServiceAdd($event,Services)" title="Add">
+            <!--<img style="display: block;background:#2980b9;color:#fff;" (click)="onAmenityAdd($event,Amenities)">Add</img>-->
+        </div>
+    </div>
+    <div style="height:20%">
+        <button  class="Savebutton "style="display: block;" (click)="OnsubmitValue($event,Services)">Save</button>
+    </div>
+</div>

@@ -1,0 +1,48 @@
+﻿
+<page [pagetitle]="pagePath" [withoutSubmenu]="true">
+    <content>
+        <tabs [selectedTab]="selectedTab" [deleteIndex]="tabDeleteIndex" (getSelectedTab)="getSelectedTab($event)">
+            <tab tabTitle="Active" closeButtonVisible="hidden">
+                <div>
+                    <submenu>
+                        <sub-menu [source]=menuData [menuCard]=types [count]=totalItems [menuIds]=enableMenu (onSubMenuChange)="onSubMenuChange($event)"> </sub-menu>
+                    </submenu>
+                    <split-view [splitviewObject]="splitviewInput" [pageTitle]="splitViewTitle" style="height: calc(100% - 35px);">
+                        <primary-view>
+                            <div>
+                                <div [ngClass]="activeTotalItems > activeItemsPerPage ? 'pagewithPaging':'pagewithoutPaging'">
+                                    <gridView style="width:100%" [(dataSource)]="activeItemsSource" [properties]="activeInputItems" [columns]="fieldObject"
+                                              (onSorting)="onActiveSort($event)"></gridView>
+                                </div>
+                                <div>
+                                    <paging [totalItems]="activeTotalItems" [itemsPerPage]="activeItemsPerPage" (onPageChanged)="activePageChanged($event)"></paging>
+                                </div>
+                            </div>
+                        </primary-view>
+                        <secondary-view *ngIf="secondaryTarget == 0">
+
+                        </secondary-view>
+                    </split-view>
+                </div> 
+            </tab>
+            <tab *ngIf="isAllTabEnabled" tabTitle="All" closeButtonVisible="hidden">
+                <div *ngIf="selectedTab == 1">
+                    <div [ngClass]="allTotalItems > allItemsPerPage ? 'pagewithPaging':'pagewithoutPaging'">
+                        <gridView style="width:100%" [(dataSource)]="allItemsSource" [properties]="allInputItems" [columns]="fieldObject"
+                                  (onSorting)="onAllSort($event)"></gridView>
+                    </div>
+                    <div>
+                        <paging [totalItems]="allTotalItems" [itemsPerPage]="allItemsPerPage" (onPageChanged)="allPageChanged($event)"></paging>
+                    </div>
+                </div>
+            </tab>
+            <tab tabTitle="Review Work Order" *ngIf="reviewTabEnabled" closeButtonVisible="hidden">
+                <review-MoveExecution *ngIf="reviewRequestEnabled" (submitClick)="onSubmitClick($event)" [action]="action" [btnName]="btnName" [inputItems]="activeInputItems"
+                                        [fieldDetailsAdd]="reviewFields"  [outComeData]="outcomeData" [employeeData]="employeeData" (linkClick)="onLinkClick()"></review-MoveExecution>
+            </tab>
+            <tab tabTitle="Show Details" *ngIf="addOnTabEnabled" closeButtonVisible="hidden">
+               <show-details  *ngIf="showDetailsEnabled" [projectId]="activeInputItems.rowData.MoveProjectId" [MoveProjectStatus]="moveProjectStatus"></show-details>
+            </tab>
+        </tabs>
+    </content>
+</page>

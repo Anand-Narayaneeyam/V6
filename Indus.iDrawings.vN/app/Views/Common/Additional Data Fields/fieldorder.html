@@ -1,0 +1,14 @@
+﻿<table class="list-group" dnd-sortable-container *ngIf="Fieldordersource" [sortableData]="Fieldordersource">
+    <tr *ngFor="let field of (Fieldordersource);let i=index" class="list-group-item" dnd-sortable [sortableIndex]="i">
+        <td style="width:300px">
+            <span style="width:300px">{{field[colmntoOdr]}}</span>          
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <input type="image" src="Content/Layout/tick_green.png" (click)="SaveClick()" style="height:30px;" />
+
+            <input type="image" src="Content/Layout/button_cancel.png" (click)="CancelClick()" style="height:30px;" />
+        </td>
+    </tr>
+</table>

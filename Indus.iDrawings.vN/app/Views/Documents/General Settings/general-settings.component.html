@@ -1,0 +1,22 @@
+﻿<page [pagetitle]="pagePath">
+    <content>
+        <section *ngIf="userRoleId != 4 && userRoleId != 7" title="Document Categories" [isExpanded]="sectionExpansionStatus[0].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <Document-Category  *ngIf="sectionExpansionStatus[0].isExpanded"></Document-Category>
+        </section> 
+        <section *ngIf="userRoleId != 4 && userRoleId != 7" title="Optional Fields" [isExpanded]="sectionExpansionStatus[1].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <optionalfields *ngIf="sectionExpansionStatus[1].isExpanded"></optionalfields>
+        </section> 
+        <section title="Tree View Fields" [isExpanded]="sectionExpansionStatus[2].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <tree-view-fields  *ngIf="sectionExpansionStatus[2].isExpanded"> </tree-view-fields>
+        </section>     
+        <section *ngIf="userRoleId != 4 && userRoleId != 7" title="Additional Data Fields" [isExpanded]="sectionExpansionStatus[3].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <additional-datafields *ngIf="sectionExpansionStatus[3].isExpanded" [addlDataFieldCategoryId]="5"></additional-datafields>
+        </section> 
+        <section *ngIf="isDownloadFormat && userRoleId != 4 && userRoleId != 7" title="Document Download Format" [isExpanded]="sectionExpansionStatus[4].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <NumberFormat *ngIf="sectionExpansionStatus[4].isExpanded==true" [NumberFormatCategoryId]="14"  [ModuleId]="4" [target]="7"></NumberFormat>
+        </section> 
+        <section *ngIf="userRoleId != 4 && userRoleId != 7" title="Custom Reports" [isExpanded]="sectionExpansionStatus[5].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <customReportGrid *ngIf="sectionExpansionStatus[5].isExpanded==true" [moduleId]=4></customReportGrid>
+        </section>   
+    </content>
+</page>

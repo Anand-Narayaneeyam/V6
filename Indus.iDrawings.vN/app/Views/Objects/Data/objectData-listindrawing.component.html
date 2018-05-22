@@ -1,0 +1,238 @@
+﻿<div style="overflow: hidden;">
+ 
+    <split-view [splitviewObject]="splitviewInput" [pageTitle]="pageTitle" (onSecondaryClose)="onSplitViewClose($event)">
+        <primary-view>
+            <submenu>
+                <sub-menu [source]=menuData [menuCard]=true [count]=totalItems [menuIds]=enableMenu (onSubMenuChange)="onSubMenuChange($event);"> </sub-menu>
+            </submenu>   
+                <div *ngIf="totalItems>0 || IsSearchmenuNeeded==true" [ngClass]="Stylename">
+                    <search *ngIf="fieldObjectGrid" [searchtype]="'Grid'" [keyWordLookup]=keyWordLookup [disable]="disable" [Key]=2 [KeywordFields]=KeywordFieldObject [advancesearch]=true [datasource]=advancelookup [smartSearch]=true (SaveAs)="SaveAs($event)" (Delete)="Delete($event)" (onloadSearch)="onloadSearch($event)" (loadAdvanceSearch)="advanceSearch()" (Clear)="Clear($event)" (Submit)="Submit($event)"></search>
+                </div>
+                <div  style="height: calc(100% - 35px);">
+                    <div [ngClass]="totalItems > itemsPerPage ? 'pagewithPaging':'pagewithoutPaging'">
+                        <gridView style="display:block" [style.height]="gridHeight" [(dataSource)]="itemsSource" [properties]="inputItems" [columns]="fieldObjectGrid" [arrHighlightRowIds]="arrHighlightRowIds" [refreshgrid]="refreshgrid"
+                                  (onSorting)="onSort($event)" (onContextMenuOnClick)="onContextMenuOnClick($event)"></gridView>
+                        <analytics *ngIf="showAnalytics" [properties]="analyticsInput" (closeAnalytics)="closeAnalytics($event)"></analytics>
+                    </div>
+                    <div *ngIf="dataOption == 3">
+                        <paging [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="pageChanged($event);"></paging>
+                    </div>
+                </div>
+        </primary-view>
+        <secondary-view *ngIf="allObjectAction == 'displaySettings' && secondaryTarget == 3">
+            <label></label>
+            <tabs [selectedTab]="dispTab" style="height:100%;display:block" (getSelectedTab)="getSelectedTab($event)" class="Displaytab">
+                <tab  style="height:95%;" tabTitle="Common Attributes" closeButtonVisible="hidden" *ngIf="objectCategoryId != undefined">
+                    <display-setting *ngIf="dispTab == 0" [IsGrid]="blnIsGrid" [DisplaySettingCategoryId]="commonDisplaySettingCategoryId" [AdditionalDataFieldCategoryId]="commonAdditionalDataFieldCategoryId" [ObjectCategoryId]="objectCategoryId" (emitdisplaySetting)="getUpdatedDisplaySettings($event)">></display-setting>
+                </tab>
+                <tab style="height:95%;"  [tabTitle]="attributetitle" closeButtonVisible="hidden" *ngIf="objectCategoryId != undefined">
+                    <div style="width:50%;padding-bottom:1%;height:10%;float:left;" *ngIf="ddlObjectClassDisplaySettings !=undefined">
+                        <DropDownListComponent [fieldObject]="ddlObjectClassDisplaySettings" (change)="onChnageObjectClassDisplaySettings($event.target.value)"></DropDownListComponent>
+                    </div>
+                    <div style="width:100%;padding-bottom:1%;float:left;height:90%;" *ngIf="selectedObjectClassDisplaySettingsId > 0">
+                        <display-setting *ngIf="dispTab == 1" [IsGrid]="blnIsGrid" [DisplaySettingCategoryId]="commonDisplaySettingCategoryId" [AdditionalDataFieldCategoryId]="commonAdditionalDataFieldCategoryId" [ObjectCategoryId]="objectCategoryId" [ObjectClassId]="selectedObjectClassDisplaySettingsId" (emitdisplaySetting)="getUpdatedDisplaySettings($event)">></display-setting>
+                    </div>
+                </tab>
+                <tab style="height:95%;" tabTitle="Space Data" closeButtonVisible="hidden" *ngIf="objectCategoryId != undefined && dataOption != 3">
+                    <display-setting *ngIf="dispTab == 2" [IsGrid]="blnIsGrid" [DisplaySettingCategoryId]="spaceDisplaySettingCategoryId" [AdditionalDataFieldCategoryId]="spaceAdditionalDataFieldCategoryId" (emitdisplaySetting)="getUpdatedDisplaySettings($event)"></display-setting>
+                </tab>
+            </tabs>
+        </secondary-view>
+        <secondary-view *ngIf="secondaryTarget == 0">
+            <objectData-addedit *ngIf="splitviewInput.showSecondaryView" [ObjectCategoryId]="objectCategoryId" [moduleId]="moduleId" [objectCategoryName]="objectCategoryName" (submitSuccess)="submitReturn($event)"  (UpdatedSuccess)="submitReturn($event)" [action]="action" [btnName]="btnName" [selectedId]="inputItems.selectedIds[0]" [fieldDetailsAdd]="fieldDetailsAdd" [dataOption]="dataOption" [drawingIds]="drawingIds" [selectedIddetails]="inputItems" [attributeoption]="attributeoption" [target]="1" [IsBarcodeSubscribed]="IsBarcodeSubscribed" [SiteId]="SiteId"></objectData-addedit>
+        </secondary-view>
+        <secondary-view *ngIf="secondaryTarget == 6 && splitviewInput.showSecondaryView==true">
+            <ListBoxComponent *ngIf="fieldDetailsCheckBox != undefined" [fieldObject]="fieldDetailsCheckBox"></ListBoxComponent>
+            <div style="padding-top:5%">
+                <button  class="Savebutton "type="button" style="display: block;" (click)="onClassSelected($event)">Save</button>
+            </div>
+        </secondary-view>
+        <secondary-view *ngIf="secondaryTarget == 9">
+            <attachments *ngIf="splitviewInput.showSecondaryView && secondaryTarget == 9" [attachmentCategoryId]="7" [moduleId]="moduleId" [baseEntityId]="inputItems.selectedIds[0]"  [objectClassId]="tempObjectClassId" [isallattachmentmenuneeded]="Isallattachmentmenuneeded" (attachmentSuccess)="attachmentSuccess($event)" class ="attachment"></attachments>
+        </secondary-view>     
+        <!--<div *ngIf="secondaryTarget == 10">
+            <drawingdetails [moduleId]="7" [pageTarget]="1" [selectedRow]="inputItems" [objectCategoryId]="objectCategoryId"></drawingdetails>
+        </div>-->
+        <secondary-view *ngIf="secondaryTarget == 16">
+            <warranty-list *ngIf="splitviewInput.showSecondaryView && secondaryTarget == 16" [objectCategoryName]="objectCategoryName" [isallattachmentmenuneeded]="Isallattachmentmenuneeded" [selectedId]="inputItems.selectedIds[0]" (SuccessReturn)="SuccessReturn($event)" style="width:750px;display:block;"></warranty-list>
+        </secondary-view>
+        <secondary-view *ngIf="secondaryTarget == 17">
+            <multiple-Edit *ngIf="splitviewInput.showSecondaryView" [datasource]="multipleEditFieldDetails" [applicationFormId]="objectsService.objectDataAddEditFormId" [objectCategoryId]="objectCategoryId" [moduleId]="moduleId" (onUpdate)="onMultipleEditUpdate($event)"> </multiple-Edit>
+        </secondary-view>
+    </split-view>
+    <slide [width]="slidewidth" [position]="position" [show]="showSlide" (closeDialog)="closeSlideDialog($event)">
+        <div>
+            <div>{{message}} </div>
+            <div style="width:100%">
+                <button  class="Savebutton "type="button" (click)="okDelete($event)">Yes</button>
+                <button  class="Savebutton "type="button" (click)="cancelClick($event)">No</button>
+            </div>
+        </div>
+    </slide>
+    <slide [width]="slidewidth" [position]="position" [show]="showSlidedelink" (closeDialog)="closeSlideDialogdelink($event)">
+        <div>
+            <div>{{message}} </div>
+            <div style="width:100%">
+                <button  class="Savebutton "type="button" (click)="okDelink($event)">Yes</button>
+                <button  class="Savebutton "type="button" (click)="cancelDelinClick($event)">No</button>
+            </div>
+        </div>
+    </slide>
+    <slide [width]="300" [position]="position" [type]="dialog" [show]="showMultipleAssign" (closeDialog)="closeMultipleAssign($event)">
+
+
+        <div>
+            <div>
+                <div>{{message}} </div>
+            </div>
+            <div>
+
+                <div style="width:100%">
+                    <button class="Savebutton " type="button" (click)="okMultipleAssign($event)">Yes</button>
+                    <button class="Savebutton " type="button" (click)="cancelMultipleAssign($event)">No</button>
+                </div>
+            </div>
+        </div>
+    </slide>
+</div>
+<style>
+    .search-containerInline {
+        position: fixed!important;
+        position:-ms-page!important;
+        right: 0;
+        top: 133px!important;
+        margin-right: 10px;
+        z-index: 10;
+    }
+    @media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 812px) 
+  and (orientation: portrait) { 
+        .search-containerInline 
+        {
+            display:none!important;
+        }
+    }
+     @media only screen and (min-device-width: 320px) 
+                and (max-device-width: 812px) 
+                and (orientation: landscape) 
+    {
+        .search-containerInline 
+        {
+            display:none!important;
+        }
+         .search-containerInlinefromgrid
+         {
+            display:none!important;
+        }
+    }
+
+    .search-containerInlinefromgrid {
+        position: fixed!important;
+        position:-ms-page!important;
+        right: 0;
+        top: 125px!important;
+        margin-right: 0px;
+        z-index: 10;
+    }
+    .search-containerInlineforplace {
+        position: fixed!important;
+        position:-ms-page!important;
+        right: 0;
+        top: 160px!important;
+        margin-right: 10px;
+        z-index: 10;
+    }
+
+     @media screen and (-ms-high-contrast: active) and (max-width:660px ), (-ms-high-contrast: none) and (max-width:660px ) {
+        .search-containerInlinefromgrid {
+            position: absolute!important;
+            top: 2px !important;
+        }
+        .search-containerInline {
+            position: absolute!important;
+            top: 2px !important;
+        }
+         @media screen and (max-width: 480px) {
+            .search-containerInline 
+            {
+                display:none!important;
+            }
+        }
+        .search-containerInlineforplace {
+            position: absolute!important;
+            top: 2px !important;
+        }
+         :host .filter{
+            position:-ms-page!important;
+            margin-left: -300px!important;
+        }
+
+        :host #slideout 
+        {
+            position:-ms-page!important;
+        }
+    }
+
+    @media screen and (-ms-high-contrast: active) and (min-width:660px ), (-ms-high-contrast: none) and (min-width:660px ) {
+        .search-containerInlinefromgrid {
+            position: absolute!important;
+            top: 2px !important;
+        }
+        .search-containerInline {
+            position: absolute!important;
+            top: 2px !important;
+        }
+         @media screen and (max-width: 480px) {
+            .search-containerInline 
+            {
+                display:none!important;
+            }
+        }
+        .search-containerInlineforplace {
+            position: absolute!important;
+            top: 2px !important;
+        }
+         :host .filter{
+            position:-ms-page!important;
+            margin-left: -540px!important;
+        }
+    }
+
+     .Displaytab .navbar li {
+        width: 150px !important;
+    }
+
+
+     @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+
+        :host .background-block-slide{
+            position:-ms-page!important;
+        }
+    }
+     
+    .employeeTab .navbar li {
+        width: 100px !important;
+    }
+    
+    .attachment {
+        width: 750px;
+        display: block;
+    }
+
+    @media only screen and (min-device-width: 320px) and (max-device-width: 813px) and (orientation: portrait) {
+        .attachment {
+            width: 100%;
+        }
+    }
+
+    @media only screen and (min-device-width: 320px) and (max-device-width: 812px) and (orientation: landscape) {
+        .attachment {
+            width: 100%;
+        }
+    }
+
+
+
+</style>
+

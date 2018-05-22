@@ -1,0 +1,52 @@
+﻿@using Indus.iDrawings.Utils;
+@model System.Web.Mvc.HandleErrorInfo
+@{
+    ViewBag.Title = "Information";
+    //ErrorPage error=new ErrorPage();
+    if (ViewBag.Id == null)
+    {
+        ViewBag.Id = 0;
+    }
+    ErrorPage error = ViewBag.Id;
+
+}
+<h1 class="text-danger">Information.</h1>
+@switch (error)
+{
+    case ErrorPage.ApplicationError:
+        {
+
+            <h2 class="text-danger">iDrawings encountered a problem while executing your command.</h2>
+            break;
+        }
+    case ErrorPage.ResponseError:
+        {
+
+            <h2 class="text-danger">An error occurred while processing your request.</h2>
+            break;
+        }
+    case ErrorPage.AccountLock:
+        {
+            <h2 class="text-danger">This account has been locked out, please try again later.</h2>
+            break;
+        }
+    case ErrorPage.Permission:
+        {
+            <h2 class="text-danger">Access Denied</h2>
+            break;
+        }
+    case ErrorPage.HtmlError:
+        {
+            <h2 class="text-danger">A potentially dangerous Request.Path value was detected from the client.</h2>
+            break;
+        }
+    default:
+        {
+
+            <h2 class="text-danger">iDrawings encountered a problem while executing your command.</h2>
+            break;
+        }
+
+
+}
+

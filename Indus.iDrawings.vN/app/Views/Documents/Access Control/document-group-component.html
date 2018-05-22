@@ -1,0 +1,52 @@
+﻿<div>
+    <submenu>
+        <sub-menu [source]=menuData [count]=totalItems [menuIds]=enableMenu (onSubMenuChange)="onSubMenuChange($event);"> </sub-menu>
+    </submenu>
+    <split-view [splitviewObject]="splitviewInput" [pageTitle]="pageTitle" style="height: calc(100% - 35px);">
+        <primary-view>
+            <div>
+                <div [ngClass]="totalItems > itemsPerPage ? 'pagewithPaging':'pagewithoutPaging'">
+                    <gridView [(dataSource)]="itemsSource" [properties]="inputItems" [columns]="fieldObject" [refreshgrid]="refreshgrid" (onSorting)="onSort($event)" (onRowDelete)="inlineDelete($event)"></gridView>
+                </div>
+                <div [style.height]="totalItems >itemsPerPage ? '35px' : '0px'">
+                    <paging [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="pageChanged($event);"></paging>
+                </div>
+            </div>
+        </primary-view>
+        <secondary-view *ngIf="splitviewInput.showSecondaryView == true">
+            <documentGroup-add-edit *ngIf="(action == 'add' || action == 'edit')" (submitSuccess)="submitReturn($event)" [action]="action" [btnName]="btnName" [selectedId]="inputItems.selectedIds" [fieldDetailsAdd]="fieldDetailsAdd1"></documentGroup-add-edit>
+            <documentsfor-documentGroups *ngIf="action == 'documents'" [documentgroupId]="inputItems.selectedIds[0]" [UserCategoryId]="1" [DocumentGroupName]="documentGroupName"></documentsfor-documentGroups>   
+            <access-documentGroup-by-manyUsers *ngIf="action == 'manyUsers'" [DocumentGroupId]="inputItems.selectedIds[0]" ></access-documentGroup-by-manyUsers>                      
+        </secondary-view>
+    </split-view>
+    <slide [width]="200" [position]="position" [type]="dialog" [show]="showSlide" (closeDialog)="closeSlideDialog($event)">
+
+        <div>
+            <div tabindex ="0" aria-label="Are you sure you want to delete the selected Document Group?">
+                {{message}}
+            </div>
+            <div>
+
+                <div style="width:100%">
+                    <button class="Savebutton " type="button" (click)="okDelete($event)" role="button" aria-label="Yes">Yes</button>
+                    <button class="Savebutton " type="button" (click)="cancelClick($event)" role="button" aria-label="No">No</button>
+                </div>
+            </div>
+        </div>
+    </slide>
+    <slide [width]="200" [position]="position" [type]="dialog" [show]="showSlideMsg" (closeDialog)="closeSlideDialogMsg($event)">
+
+        <div>
+            <div tabindex ="0" aria-label="Selected Document Group is in use. Are you sure you want to delete the selected Document Group?">
+                {{messageMsg}}
+            </div>
+            <div>
+
+                <div style="width:100%">
+                    <button class="Savebutton " type="button" (click)="okDeleteMsg($event)" role="button" aria-label="Yes">Yes</button>
+                    <button class="Savebutton " type="button" (click)="cancelClickMsg($event)" role="button" aria-label="No">No</button>
+                </div>
+            </div>
+        </div>
+    </slide>
+</div>

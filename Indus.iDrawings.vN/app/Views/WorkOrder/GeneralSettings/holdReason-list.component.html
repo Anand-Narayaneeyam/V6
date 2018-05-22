@@ -1,0 +1,42 @@
+﻿<slide [width]="slidewidth" [position]="position" [show]="showSlide" (closeDialog)="closeSlideDialog($event)">
+    <div>
+        <div>Are you sure you want to delete the selected Reason?  </div>
+        <div style="width:100%">
+            <button  class="Savebutton "type="button" (click)="okDelete($event)">Yes</button>
+            <button  class="Savebutton "type="button" (click)="cancelClick($event)">No</button>
+        </div>
+    </div>
+</slide>
+
+<submenu>
+    <sub-menu [menuCard]=types [source]=menuData [count]=totalItems [menuIds]=enableMenu (onSubMenuChange)="onSubMenuChange($event);"></sub-menu>
+</submenu>
+<div style="height: calc(100% - 35px);">
+    <!--<list [source]=holdReasonSource [(selectedIds)]="selIds" [datakey]="'Id'" [selectionMode] ="'Single'" [ngClass]="totalItems > itemsPerPage ? 'pagewithPaging':'pagewithoutPaging'" style="overflow:auto;">
+        <template let-item>
+            <card [enableEditBtn]="cardButtonPrivilege[0]" [enableDeleBtn]="cardButtonPrivilege[1]" (onSubmition)="onCardSubmit($event)" [datakeyValue]="item.Id" (inlineDelete)="onDelete($event)" (onCancelClick)="onCardCancel($event)" [submitSuccess]="submitSuccess">
+                <div *ngIf="fields">
+                    <field [isEditEnabled]="cardButtonPrivilege[0]" [(fieldObject)]="fields[1]" [(fieldValue)]="item['Reason']"></field>
+                    <field [isEditEnabled]="cardButtonPrivilege[0]" [(fieldObject)]="fields[2]" [(fieldValue)]="item['Description']"></field>
+                    <field [hidden]="true" [isEditEnabled]="cardButtonPrivilege[0]" [(fieldObject)]="fields[3]" [(fieldValue)]="item['IsFromWorkFlow']"></field>
+                </div>
+            </card>
+        </template>
+    </list>
+    <paging [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="pageChanged($event);" [style.height]="totalItems >itemsPerPage ? '35px' : '0px'"></paging>-->
+    <split-view [splitviewObject]="splitviewInput" [pageTitle]="pageTitle" style="height:calc(100% - 35px);">
+        <primary-view>
+            <div>
+                <div>
+                    <gridView [(dataSource)]="holdReasonSource" [ngClass]="totalItems > itemsPerPage ? 'pagewithPaging':'pagewithoutPaging'" [properties]="inputItems" [columns]="fields" [refreshgrid]="refreshgrid" (onSorting)="onSort($event)"></gridView>
+                </div>
+                <div>
+                    <paging *ngIf="totalItems >itemsPerPage ? 'true' : 'false'" [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="pageChanged($event);"></paging>
+                </div>
+            </div>
+        </primary-view>
+        <secondary-view>
+            <holdReason-add-edit *ngIf="splitviewInput.showSecondaryView == true" (submitSuccess)="submitReturn($event)" [action]="action" [btnName]="btnName" [selectedId]="inputItems.selectedIds" [fieldDetailsAdd]="fieldDetailsAdd1"></holdReason-add-edit>
+        </secondary-view>
+    </split-view>
+</div>

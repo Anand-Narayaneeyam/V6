@@ -1,0 +1,8 @@
+﻿<tabs [selectedTab]="selectedTab" style="height:95%;display:block">
+    <tab tabTitle="Month/Time" closeButtonVisible="hidden">
+        <room-booking [selRowObj]="spaceDataItem" (divClick)="onDoubleClick($event)"></room-booking>
+    </tab>
+    <!--<tab tabTitle="Space" closeButtonVisible="hidden">
+       
+    </tab>-->
+</tabs>

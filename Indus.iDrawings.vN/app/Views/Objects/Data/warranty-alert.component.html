@@ -1,0 +1,36 @@
+﻿<div style="overflow:auto;height: calc(100% - 75px);">
+    <div>
+        <div style="max-height:200px!important;height:auto">
+            <div style="height:50px; margin-top:30px;">
+                <DropDownListComponent *ngIf="ddlEmailRecipientNotificationTemplate !=undefined" [fieldObject]="ddlEmailRecipientNotificationTemplate" (change)="onChnageEmailRecipientNotificationTemplate($event.target.value)"></DropDownListComponent>
+            </div>
+        </div>
+    </div>
+    <div>
+        <section *ngIf="sectionEnable != -1" [isGrid]=true title="iDrawings Users" [isExpanded]="sectionExpansionStatus[0].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div style="height:60%">
+                <gridView style="width:600px;display:block;height:400px" *ngIf="sectionExpansionStatus[0].isExpanded" [(dataSource)]="itemsSourceiDrawingsUser" [properties]="inputItemsiDrawingsUser" [columns]="fieldObjectiDrawingsUser" (onSorting)="onSortiDrawingsUser($event)"></gridView>
+            </div>
+            <div style="height:10%">
+                <paging [totalItems]="totalItemsiDrawingsUser" [itemsPerPage]="itemsPerPageiDrawingsUser" (onPageChanged)="iDrawingpageChanged($event);"></paging>
+            </div>
+        </section>
+        <section *ngIf="sectionEnable != -1" [isGrid]=true title="Contacts" [isExpanded]="sectionExpansionStatus[1].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div style="height:60%">
+                <gridView style="width:600px;display:block;height:400px" *ngIf="sectionExpansionStatus[1].isExpanded" [(dataSource)]="itemsSourceContacts" [properties]="inputItemsContacts" [columns]="fieldObjectContacts" (onSorting)="onSortContacts($event)"></gridView>
+            </div>
+            <div style="height:10%">
+                <paging [totalItems]="totalItemsContacts" [itemsPerPage]="itemsPerPageContacts" (onPageChanged)="contactpageChanged($event);"></paging>
+            </div>
+        </section>
+    </div>
+</div>
+<div style="margin-top: 10px;">
+    <div *ngIf="btnEnable == true">
+        <button  class="Savebutton "type="button" (click)="Updateclick()">Save Alert</button>
+    </div>
+    <div *ngIf="btnEnable == false">
+        <button  class="Savebutton "type="button" style="cursor:not-allowed" (click)="Updateclick()" disabled>Save Alert</button>
+    </div>
+</div>
+

@@ -1,0 +1,92 @@
+﻿<style>
+    .btndiv{
+        width:100%;
+        height:40px;
+        padding-top: 5px;        
+    }
+    .parentdiv {
+        width:100%;
+        height:80%;
+        border-collapse: collapse;
+        border: 1px solid #c6c6c6;           
+    }
+    .hdrTable {           
+         height:30px;
+        font-family: Arial, Helvetica, sans-serif;     
+        font-size: 13px;  
+        font-weight:bold;                    
+        text-wrap:normal; 
+        color: #747474; 
+      
+    }
+    .hdrTable tr {
+        border-bottom: 1px solid #c6c6c6;
+         font-family: Arial, Helvetica, sans-serif;     
+        font-size: 13px; 
+    }
+    .bodyTable { 
+        font-family: Arial, Helvetica, sans-serif;     
+        font-size: 13px;  
+        display: block;    
+        height:calc(100% - 30px);
+        overflow-y:auto;       
+    }
+    .colheader{          
+        top:0px;
+        left:0px;        
+    }
+    .bodyTable tr {            
+        border-bottom: 1px solid #c6c6c6;
+        font-family: Arial, Helvetica, sans-serif;     
+       font-size: 13px;  
+    }
+  .customTxtBox_2065 div span span input {
+    margin: 2px 0px 2px 2px;
+    height:23px !important;
+    width: 58px !important;
+   }
+   .customTxtBox_2100 div span span input {       
+        margin:2px 0px 2px 2px;
+        width:195px !important;
+        height:23px !important;                  
+    }
+   
+  
+</style>
+<div style="width:100%;height:100%;">
+  
+    <div style="padding-right: 5px; display: flex; padding-top:15px; padding-top: 15px;">
+       
+        <div class="parentdiv">
+            <table class="hdrTable">
+                <tr>
+                    <th class="colheader" *ngFor="let column of fieldObject">
+                        <div *ngIf="column.IsVisible" id="head_col{{column.DataEntryControlId}}" [style.width.px]="column.Width">
+                            <CheckBoxComponent id="{{column.FieldId}}_{{i}}" *ngIf="column.DataEntryControlId == '6'&& column.FieldId==2066" [fieldObject]="column" (chkBoxClick)="hdrChkChange($event, column)"></CheckBoxComponent>
+                            <span *ngIf="column.FieldId!=2066">{{column.FieldLabel}}</span>
+                        </div>
+                    </th>
+                </tr>
+            </table>
+            <div class="bodyTable">
+                <table>
+                    <tr *ngFor="let item of itemSource;let i=index">
+                        <td *ngFor="let col of sourceFieldObj[i]" id="colum_{{i}}">
+                            <div *ngIf="col.IsVisible" [style.width.px]="col.Width" style="overflow:hidden;">
+                                <!--<span style="padding-left:2px;" id="{{col.FieldId}}_{{i}}" *ngIf="col.DataEntryControlId == '1' && col.FieldId==2100">{{col.FieldValue}} </span>-->
+                                <StringTextBox id="{{col.FieldId}}_{{i}}" class="customTxtBox_{{col.FieldId}}" *ngIf="col.DataEntryControlId == '1'" [fieldObject]="col"></StringTextBox>
+                                <CheckBoxComponent id="{{col.FieldId}}_{{i}}" *ngIf="col.DataEntryControlId == '6'" [fieldObject]="col" (chkBoxClick)="chkBoxChange($event, sourceFieldObj[i],i)"></CheckBoxComponent>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div style="margin-left:5px;">
+            <img *ngIf="pageTarget==2" src="Content/Icons/data_addN.png" class="markupicons" (click)="onResourceAdd($event)" title="Add">
+        </div>
+    </div>
+    <div class="btndiv">
+        <button class="Savebutton " (click)="btnSaveClick()">Save Changes</button>
+    </div>
+</div>

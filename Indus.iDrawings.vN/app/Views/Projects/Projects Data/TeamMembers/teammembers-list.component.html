@@ -1,0 +1,14 @@
+﻿<div tabindex="0" style="height:35px;">
+    <submenu>
+        <sub-menu [source]=menuData [menuCard]=types [count]=totalItems [menuIds]=enableMenu (onSubMenuChange)="onSubMenuChange($event);"> </sub-menu>
+    </submenu>
+</div>
+<div style="height:35px;">
+    Project Name:<LabelComponent style="display:inline-block" [fieldObject]=fieldProjectName></LabelComponent><br/>
+    Project Manager:<LabelComponent style="display:inline-block" [fieldObject]=fieldPM></LabelComponent><br/>
+</div>
+<div style="height:calc(100% - 70px);">
+    <div tabindex="0" [ngClass]="totalItems > itemsPerPage ? 'pagewithPaging':'pagewithoutPaging'">
+        <gridView style="width:100%" [(dataSource)]="itemSource" [properties]="inputItems" [columns]="fieldObject" (onCellEdit)="checkBxClick($event)"></gridView>
+    </div>
+</div>

@@ -1,0 +1,76 @@
+﻿<page [pagetitle]="pagePath">
+    <pagepath>
+    </pagepath>
+    <content>
+        <section title="Trend Analysis" [isExpanded]="true" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div>
+                <p>The trend analysis shows the trends in the Usable Areas, Chargeable Areas, Space Functions and Costs for all the Organizational Units (Divisions, Departments, Cost Centers, etc). This option is available only to the Administrator.</p>
+                <p>The trends are based on data from the Snapshots saved by the user. Snapshots can be taken periodically or whenever there is a significant change in space assignments.The trends in areas show the value on the Start Date (the Start Date selected by the user), Distribution Percentage for the Organizational Unit on this Date, value on the End Date (the End Date selected by the user), Distribution Percentage for the Organizational Unit on this Date, Average Sq. ft. for the selected period and Average Distribution percentage.</p>
+                <h1>Snapshots </h1>
+                <p>To see the Trends or track changes in the spaces occupied by the Organizational Units (Divisions, Departments, Cost Centers etc.) in an Organization, users need to save Snapshots of data as and when changes happen. It should be a deliberate action taken by the user when he/she feels that a particular space change is significant.</p>
+                <p>A Snapshot saved on a particular date, will have the Usable Areas, Chargeable Areas, Functional Areas and Costs of Space for all the Organizational Units. These values are in fact the corresponding values available in the Organizational Distribution Report on that date. Snapshots can be exported to select file format from the list.</p>
+                <p>On clicking <span class="header2"> Snapshots</span>  option, a list of all available snapshots will be displayed; the details of a snapshot can be viewed by selecting the snapshot, and clicking <span class="header2"> View </span><img class="helpicon" src="Content/Icons/view-drawingN.png" title="View" /> icon. </p>
+                <p><span class="header1">Add: </span> On clicking the <span class="header2"> Add </span> <img class="helpicon" src="Content/Icons/data_addN.png" title="Add" /> icon , Snapshots can be created and exported to Excel/pdf/txt/rtf files or saved in the database specifying a Snapshot date.</p>
+                <p><span class="header1"> Delete : </span> By selecting one or more snapshots from the list and then clicking the <span class="header2"> Delete </span> <img class="helpicon" src="Content/Icons/data_deleteN.png" title="Delete" /> icon, the snapshot can be deleted. </p>
+                <p><span class="header1"> View: </span> The details of a snapshot can be viewed by selecting the snapshot, and clicking <span class="header2"> View </span> <img class="helpicon" src="Content/Icons/view-drawingN.png" title="View"> icon.</p>
+                <h1> Chargeable Areas </h1>
+                <p>This report shows the trend in the Chargeable Areas for the Organizational Units over the selected period of time. The chargeable area calculation is based on the user's preference to include or exclude External Wall Areas and/or Vertical Space Areas. The option to make this choice is available in the Chargeback Options under the Space Module Setup. Report can be created for a specific period. The report can be exported to select file formats.</p>
+                <p><span class="header1"> History </span></p>
+                <p>A detailed trend report can be seen by clicking the <span class="header2"> History </span> button on top. This shows the area occupancy report, i.e. the area occupied by the Organizational Units during periods of change.  </p>
+                <h1> Usable Areas </h1>
+                <p>This report shows the trend in the Usable Areas for the Organizational Units over the selected period of time. Specify the period for which the report is required. Click on Show Report <img class="helpicon" src="Content/Icons/NeXt.png" title="Show Report" /> icon,and the report will be opened. The report can be exported to selected file formats.</p>
+                <h1> Cost </h1>
+                <p>This report shows the trend in the Cost for the Organizational Units over the selected period of time. </p>
+                <h1> Space Functions </h1>
+                <p>This report shows the trend in the Space Areas occupied by the Organizational Units on the basis of Space Function, over the selected period of time.</p>
+            </div>
+        </section>
+    </content>
+</page>
+<style type="text/css">
+    h3.Mainheader {
+        color: #178AE8;
+    }
+
+    .header1 {
+        font-weight: bold;
+        color: #178AE8;
+    }
+
+    .header2 {
+        font-weight: normal;
+        color: #178AE8;
+    }
+
+    p {
+        margin-left: 38px;
+        font-size: 13px;
+        margin-right: 3em;
+    }
+
+    .header3 {
+        font-weight: bold;
+        color: black;
+    }
+    /**/ h1 {
+        color: #178AE8;
+        font-size: 1.3em;
+        margin-left: 38px;
+    }
+
+    h2 {
+        color: #178AE8;
+        font-size: 1em;
+        margin-left: 38px;
+    }
+
+    .config {
+        background-color: #178AE8;
+    }
+
+    .helpicon {
+        vertical-align: baseline;
+        width: 20px;
+        height: 20px;
+    }
+</style>

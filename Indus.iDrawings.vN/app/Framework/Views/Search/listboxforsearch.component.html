@@ -1,0 +1,105 @@
+﻿<div [style.display]="setAlignment">
+    <div control-group *ngIf="!fieldObject.IsHiddenLabel && fieldObject.FieldLabel != undefined && fieldObject.FieldLabel != null" style="margin-top:5px;">
+        <label>
+            {{fieldObject.FieldLabel}}<span class="required" *ngIf="fieldObject.IsMandatory == undefined || fieldObject.IsMandatory === true"> * </span>
+        </label>
+    </div>
+    <div *ngIf="header1 !=null || header1 != undefined" style="background-color:darkgrey;margin-top:5px;" [style.display]="showDiv">
+        &nbsp;<label style="color:white;width:auto">{{header1}}</label>&nbsp;&nbsp;
+        <label style="color:white">{{header2}}</label>
+    </div>
+    <div control-group [attr.tabindex]="(labeltitle && labeltitle.length>0)?0:-1" [attr.aria-label]="setlabeltitle()">
+        <div style="height:auto;" [style.width]="fieldWidth" *ngIf="fieldObject.IsEnabled == true">
+            <div *ngIf="blnSelectAllVisible == true" style="display:block;background-color:#178AE8;border-radius:5px;" id="sdf">
+                <!--<span style="width:250px;overflow:hidden" class="readOnly" *ngIf="fieldObject.ReadOnlyMode == undefined || fieldObject.ReadOnlyMode === true">{{//fieldObject.FieldValue}}</span>-->
+                <input *ngIf="fieldObject.ReadOnlyMode === true" #SelectAll id="{{fieldObject.FieldId}}" type="checkbox" name="SelectAll" value="All" [checked]="IsSelectAllChecked" (change)="selectAllOptions($event)" style="width:10%" disabled />
+                <span *ngIf="blnDisableSelectAll == false">
+                    <input #SelectAll id="{{fieldObject.FieldId}}" aria-label="Select All" type="checkbox" name="SelectAll" value="All" [checked]="IsSelectAllChecked" (change)="selectAllOptions($event)" style="width:10%" />
+                </span>
+                <span *ngIf="blnDisableSelectAll == true">
+                    <input #SelectAll id="{{fieldObject.FieldId}}" aria-label="Select All" type="checkbox" name="SelectAll" value="All" [checked]="IsSelectAllChecked" (change)="selectAllOptions($event)" style="width:10%" disabled />
+                </span>
+                <label style="display:inline;width:20%;font-weight:bold;color:snow;">Select All</label>
+            </div>
+            <div style="max-height:80%;overflow-y:auto;background-color:white;border: 1px solid darkgray;border-radius: 4px;">
+                <div *ngFor="let field of fieldObject.LookupDetails.LookupValues; let i = index" class="col-sm-6">
+                    <label *ngIf="field.IsEnabled == true" style="display:flex">
+                        <span style="width:10%">
+                            <input type="checkbox" style="width:20px;margin-left:10px;"
+                                   name={{fieldObject.ReportFieldId}}
+                                   id={{field['Id']}}
+                                   [value]="field['Id']"
+                                   [checked]="checkedOption(field) && IsChecked"
+                                   (change)="updateCheckedOptions(field, $event)"
+                                   [attr.aria-label]="''+field['Value']" />
+                        </span>
+                        <span style="width:80%;word-wrap:break-word;margin-left:10px">
+                            {{field["Value"]}}
+                        </span>
+                    </label>
+                    <label *ngIf="field.IsEnabled == undefined || field.IsEnabled == false" style="display:flex">
+                        <span style="width:10%">
+                            <input *ngIf="field.IsDisabled == true" type="checkbox" style="width:20px;margin-left:10px;"
+                                   name={{fieldObject.ReportFieldId}}
+                                   [value]="field['Id']"
+                                   [checked]="checkedOption(field) && IsChecked"
+                                   (change)="updateCheckedOptions(field, $event)" disabled />
+
+                            <input *ngIf="field.IsDisabled == false ||field.IsDisabled == undefined " type="checkbox" style="width:20px;margin-left:10px;"
+                                   name={{fieldObject.ReportFieldId}}
+                                   [value]="field['Id']"
+                                   [checked]="checkedOption(field) && IsChecked"
+                                   (change)="updateCheckedOptions(field, $event)"
+                                   [attr.aria-label]="''+field['Value']" readonly />
+                        </span>
+                        <span style="width:80%;word-wrap:break-word;margin-left:10px">
+                            {{field["Value"]}}
+                        </span>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div style="height:auto" *ngIf="fieldObject.IsEnabled == false" [style.width]="fieldWidth">
+            <div style="display:block;background-color:lightgray;border-radius:5px;">
+                <!--<span style="width:250px;overflow:hidden" class="readOnly" *ngIf="fieldObject.ReadOnlyMode == undefined || fieldObject.ReadOnlyMode === true">{{//fieldObject.FieldValue}}</span>-->
+                <input *ngIf="fieldObject.ReadOnlyMode === true" #SelectAll id="{{fieldObject.FieldId}}" type="checkbox" name="SelectAll" value="All" [checked]="IsSelectAllChecked" (change)="selectAllOptions($event)" style="width:10%" disabled />
+                <span *ngIf="blnDisableSelectAll == false">
+                    <input #SelectAll id="{{fieldObject.FieldId}}" type="checkbox" name="SelectAll" value="All" [checked]="IsSelectAllChecked" (change)="selectAllOptions($event)" style="width:10%" disabled />
+                </span>
+                <span *ngIf="blnDisableSelectAll == true">
+                    <input #SelectAll id="{{fieldObject.FieldId}}" type="checkbox" name="SelectAll" value="All" [checked]="IsSelectAllChecked" (change)="selectAllOptions($event)" style="width:10%" disabled />
+                </span>
+                <label style="display:inline;width:20%;font-weight:bold">Select All</label>
+            </div>
+            <div style="max-height:80%;overflow-y:scroll">
+                <div *ngFor="let field of fieldObject.LookupDetails.LookupValues; let i = index" class="checkboxlist">
+                    <label style="display:flex" *ngIf="field.IsEnabled== true">
+                        <span style="width:15%">
+                            <input type="checkbox" style="width:20px;margin-left:10px;"
+                                   name="options"
+                                   [value]="field['Id']"
+                                   [checked]="checkedOption(field) && IsChecked"
+                                   (change)="updateCheckedOptions(field, $event)" disabled />
+                        </span>
+                        <span style="width:80%;word-wrap:break-word;margin-left:10px">
+                            {{field["Value"]}}
+                        </span>
+                    </label>
+                    <label *ngIf="field.IsEnabled == undefined || field.IsEnabled == false" style="display:flex">
+                        <span style="width:15%">
+                            <input type="checkbox" style="width:20px;margin-left:10px;"
+                                   name="options"
+                                   [value]="field['Id']"
+                                   [checked]="checkedOption(field) && IsChecked"
+                                   (change)="updateCheckedOptions(field, $event)" disabled />
+                        </span>
+                        <span style="width:80%;word-wrap:break-word;margin-left:10px">
+                            {{field["Value"]}}
+                        </span>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <span *ngIf="blnHasValidationError == true" style="color:red;display:block;width:100%;overflow-x:hidden;word-wrap:break-word">{{strValidation}}</span>
+    </div>
+</div> 

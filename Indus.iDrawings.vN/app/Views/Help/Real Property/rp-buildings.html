@@ -1,0 +1,100 @@
+﻿<page [pagetitle]="pagePath">
+    <pagepath>
+    </pagepath>
+    <content>
+        <section title="Data" [isExpanded]="sectionExpansionStatus[0].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div *ngIf="sectionExpansionStatus[0].isExpanded">
+                <p>This option is used to display the details of the buildings added through the Administration module. </p>
+                <h2>Owned</h2>
+                <p>This option will list all the Buildings with its Ownership Type assigned as 'Owned' or 'Purchased' with their Site Name, Building Name, Ownership Type, Floor count, Attachments etc. The Gross Area value will be the total Gross Area of all floors in the building. Any additional data fields added for building will also be displayed.  The user can add, edit, delete, view or download Attachments to the selected Building. List can be sorted by clicking the column headers. This option allows the users to edit building details and add renovations to the buildings.</p>
+                <p><span class="header1">Edit:</span> This option is for editing the building details. Select the building to be edited and click <span class="header2">Edit</span> <img class="helpicon" src="Content/Icons/data_editN.png" title="Edit" /> icon.The details will be displayed in a new window. Make necessary changes and click the Save Changes button. In Edit Building window, Estimated Useful Life refers to the period over which a building is usable. Here Estimated Useful Life is usually expressed in number of years. Salvage Value refers to the estimated value of property at the end of its useful life. </p>
+                <p><span class="header1">Renovations:</span> This option is used to view/add/edit/delete Renovations associated to the selected building. Select the Building that requires renovation and click <span class="header2">Renovations</span> <img class="helpicon" src="Content/Icons/rennovatioN.png" alt="Renovations" title="Renovations" /> icon. The user can provide Renovation details like the Renovation Date and Cost invested in the renovation process of the selected Building using this option.</p>
+                <p><span class="header1">Add:</span> A Renovation can be added by clicking on <span class="header2">Add</span> <img class="helpicon" src="Content/Icons/data_addN.png" title="Add" /> icon.Enter the Renovation Date and Cost. User can save the renovation details by clicking on Save button.  </p>
+                <p><span class="header1">Edit:</span> A Renovation can be edited by selecting it and then clicking the <span class="header2">Edit</span> <img class="helpicon" src="Content/Icons/data_editN.png" title="Edit" /> icon. By clicking this option only Cost can be edited. </p>
+                <p><span class="header1">Delete:</span> A Renovation can be deleted by clicking the <span class="header2">Delete </span> <img class="helpicon" src="content/Icons/data_deleteN.png" title="Delete" /> icon.</p>
+                <p><span class="header1">Attachments</span></p>
+                <p>Administrators can add/edit/delete/view/download attachments to a building using this option. Select the required Building and click the <span class="header2">Attachments </span> <img class="helpicon" src="Content/Icons/attachmentN.png" alt="Attachments" title="Attachments" /> icon. The files that can be attached will be restricted to data files like Word, Excel, pdf, jpg, gif, bmp etc.  </p>
+                <p>The File attachments window opens up on selecting <span class="header2"> Attachments</span> <img class="helpicon" src="Content/Icons/attachmentN.png" alt="Attachments" title="Attachments" /> icon, showing any files that are already attached to this building. Attachments can now be added to the selected building.</p>
+                <p><span class="header3">Add:</span> An attachment can be added by clicking on the <span class="header2">Add</span> <img class="helpicon" src="Content/Icons/data_addN.png" title="Add" /> icon. The New Attachment window will be displayed. Select the Attachment Category first, and then select the required file. The attachment has to be uploaded by clicking on the Upload button.</p>
+                <p><span class="header3">Edit:</span>An Attachment can be edited by clicking the <span class="header2">Edit</span> <img class="helpicon" src="Content/Icons/data_editN.png" title="Edit" /> icon. </p>
+                <p>Select an attachment and click on the <span class="header2">Edit</span> icon. The Edit Attachment window will be displayed with the current file name. The user can select the attachment category and select the required file. The attachment has to be updated by clicking on the Save Changes button.</p>
+                <p><span class="header3">Delete:</span> Delete an Attachment by selecting it and clicking the <span class="header2">Delete </span> <img class="helpicon" src="content/Icons/data_deleteN.png" title="Delete" /> icon.</p>
+                <p><span class="header3">View:</span> The attachment can be viewed by selecting the file and then clicking the  <span class="header2">View </span> <img class="helpicon" src="Content/Icons/view-drawingN.png" alt="View" title="View" /> icon.</p>
+                <p><span class="header3">Download :</span> Attachment can be downloaded and saved in the user's computer by clicking the  <span class="header2">View </span> <img class="helpicon" src="Content/Layout/download_icon.png" alt="Download" title="Download" /> icon.</p>
+                <p><span class="header1">Export</span></p>
+                <p>This option is to export the owned building data to the Excel. On clicking <span class="header2">Export</span> <img class="helpicon" src="Content/Icons/exportN.png" alt="Export" title="Export" /> icon, data will be exported to Excel.</p>
+                <h2>Leased</h2>
+                <p>The Buildings with its Ownership Type assigned as Leased will be listed with its corresponding details. The Gross Area value will be the total Gross Area of all floors in the building. Any additional data fields added for building will also be displayed.  The user can add, edit, delete, view or download Attachments to the selected Building. List can be sorted by clicking the column headers. This option allows the users to edit building details and add renovations to the buildings.</p>
+                <p><span class="header1">Edit:</span> This option is for editing the building details. Select the building to be edited and click <span class="header2">Edit</span> <img class="helpicon" src="Content/Icons/data_editN.png" title="Edit" /> icon. The details will be displayed in a new window. Make necessary changes and click the Save Changes button. In Edit Building window, Estimated Useful Life refers to the period over which a building is usable. Here Estimated Useful Life is usually expressed in number of years. Salvage Value refers to the estimated value of property at the end of its useful life.  </p>
+                <p><span class="header1">Renovations:</span> This option is used to view/add/edit/delete Renovations associated to the selected building. Select the Building that requires renovation and click  <span class="header2">Renovations</span> <img class="helpicon" src="Content/Icons/rennovatioN.png" alt="Renovations" title="Renovations" /> icon.The user can provide Renovation details like the Renovation Date and Cost invested in the renovation process of the selected Building using this option.</p>
+                <p><span class="header1">Add:</span> A Renovation can be added by clicking on  <span class="header2">Add</span> <img class="helpicon" src="Content/Icons/data_addN.png" title="Add" /> icon.Enter the Renovation Date and Cost. User can save the renovation details by clicking on Save button.  </p>
+                <p><span class="header1">Edit:</span> A Renovation can be edited by selecting it and then clicking the  <span class="header2">Edit</span> <img class="helpicon" src="Content/Icons/data_editN.png" title="Edit" /> icon.  By clicking this option only Cost can be edited. </p>
+                <p><span class="header1">Delete:</span> A Renovation can be deleted by clicking the <span class="header2">Delete </span> <img class="helpicon" src="content/Icons/data_deleteN.png" title="Delete" /> icon.</p>
+                <p><span class="header1">Attachments</span></p>
+                <p>Administrators can add/edit/delete/view/download attachments to a building using this option. Select the required Building and click the <span class="header2">Attachments</span> <img class="helpicon" src="Content/Icons/attachmentN.png" alt="Attachments" title="Attachments" /> icon. The files that can be attached will be restricted to data files like Word, Excel, pdf, jpg, gif, bmp etc. </p>
+                <p>The File attachments window opens up on selecting <span class="header2"> Attachments</span> <img class="helpicon" src="Content/Icons/attachmentN.png" alt="Attachments" title="Attachments" /> icon, showing any files that are already attached to this building. Attachments can now be added to the selected building. </p>
+                <p><span class="header3">Add:</span> An attachment can be added by clicking on the <span class="header2"> Add </span> <img class="helpicon" src="Content/Icons/data_addN.png" title="Add" /> icon. The New Attachment window will be displayed. Select the Attachment Category first, and then select the required file. The attachment has to be uploaded by clicking on the Upload button.</p>
+                <p><span class="header3">Edit:</span> An Attachment can be edited by clicking the <span class="header2">Edit</span> <img class="helpicon" src="Content/Icons/data_editN.png" title="Edit" /> icon.</p>
+                <p>Select an attachment and click on the <span class="header2"> Edit</span> icon. The Edit Attachment window will be displayed with the current file name. The user can select the attachment category and select the required file. The attachment has to be updated by clicking on the Save Changes button.</p>
+                <p><span class="header3">Delete:</span> Delete an Attachment by selecting it and clicking the <span class="header2"> Delete </span> <img class="helpicon" src="content/Icons/data_deleteN.png" title="Delete" /> icon.</p>
+                <p><span class="header3">View :</span> The attachment can be viewed by selecting the file and then clicking the <span class="header2">View</span> <img class="helpicon" src="Content/Icons/view-drawingN.png" alt="View" title="View" /> icon.</p>
+                <p><span class="header3">Download:</span> ttachment can be downloaded and saved in the user's computer by clicking the <span class="header2">Download</span> <img class="helpicon" src="Content/Layout/download_icon.png" alt="Download" title="Download" /> icon.</p>
+                <p><span class="header1">Export:</span> This option is to export the owned building data to the Excel. On clicking <span class="header2">Export </span> <img class="helpicon" src="Content/Icons/exportN.png" alt="Export" title="Export" /> icon, data will be exported to Excel.</p>
+
+            </div>
+        </section>
+        <section title="Map" [isExpanded]="sectionExpansionStatus[1].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div *ngIf="sectionExpansionStatus[1].isExpanded">
+                <p>This option allows the users to view the world map and it helps the users to locate the buildings on the map. The pushpins will indicate the building location and are displayed based on the coordinates (latitude and longitude) provided while adding a new building. On placing the cursor on these pushpins, tool tip showing its corresponding building details will be displayed. The user can right click on the pushpin to edit the building details including the coordinates or select "Validate on Map" link in the Edit Building page to reallocate the building location on the map. This option will be available only if "Enable GIS Support" option is enabled by Indus.</p>
+                <p>The user can zoom in/out the map to trace the Building locations. The Ownership Type combo box displayed at the top of the map page lists the different ownership types such as All, Owned and Leased. Based on this selection the corresponding buildings will be indicated on the map. "All" option will be selected by default in the Ownership Type combo box.</p>
+            </div>
+        </section>
+    </content>
+</page>
+<style type="text/css">
+    h3.Mainheader {
+        color: #178AE8;
+    }
+
+    .header1 {
+        font-weight: bold;
+        color: #178AE8;
+    }
+
+    .header2 {
+        font-weight: normal;
+        color: #178AE8;
+    }
+
+    p {
+        margin-left: 38px;
+        font-size: 13px;
+        margin-right: 3em;
+    }
+
+    .header3 {
+        font-weight: bold;
+        color: black;
+    }
+    /**/ h1 {
+        color: #178AE8;
+        font-size: 1.3em;
+        margin-left: 38px;
+    }
+
+    h2 {
+        color: #178AE8;
+        font-size: 1em;
+        margin-left: 38px;
+    }
+
+    .config {
+        background-color: #178AE8;
+    }
+
+    .helpicon {
+        vertical-align: baseline;
+        width: 20px;
+        height: 20px;
+    }
+</style>

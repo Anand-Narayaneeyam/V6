@@ -1,0 +1,16 @@
+﻿<submenu>
+    <sub-menu [source]=menuData [count]=gridcount [menuIds]=enableMenu (onSubMenuChange)="onSubMenuChange($event);"> </sub-menu>
+</submenu>
+<sort *ngIf="fields" [fieldNames]="fields" [listItems]=sourceData (sortEvent)="onSorting($event)"></sort>
+<list [source]=sourceData [(selectedIds)]="selIds" [datakey]="'Id'">
+    <template let-item>
+        <card (onSubmition)="onCardSubmit()" [datakeyValue]="item.Id" [type]="'list'"  (inlineDelete)="ondelete($event)">
+            <div *ngIf="fields">
+
+                <field [fieldObject]="fields[1]" [fieldValue]="item.LayerName"></field>
+            </div>
+        </card>
+    </template>
+</list>
+<paging [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="pageChanged($event);"></paging>
+

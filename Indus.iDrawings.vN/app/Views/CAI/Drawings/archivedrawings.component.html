@@ -1,0 +1,13 @@
+﻿<split-view [splitviewObject]="splitViewDataGrid">
+    <primary-view>
+        <tabs [(selectedTab)]="selectedTab" (getSelectedTab)="getSelectedTab($event)" (onTabBeforeClose)="onTabBeforeClose($event)">
+            <tab *ngIf="moduleId" tabTitle={{floorTabName}} closeButtonVisible="hidden">
+                <submenu *ngIf="selectedTab ==0 && (IsOpenDrawingComponentActive==false)">
+                    <sub-menu [menuCard]=true [source]=menuData [menuIds]="enableMenu" (onSubMenuChange)="onSubMenuChange($event);"> </sub-menu>
+                </submenu>
+                <floor-drawing-list *ngIf="selectedTab ==0 && (IsOpenDrawingComponentActive==false) && drawingCount > 1" [action]="action" [archiveId]="archiveId" [pageTarget]=pageTarget [selectedRowDetails]="selectedRowDetails" [moduleId]="moduleId" (updateFloorSelectedIds)="updateFloorDrawingSelectedID($event)"></floor-drawing-list>
+                <opendrawing *ngIf="selectedTab ==0 && (IsOpenDrawingComponentActive==true)" [archiveId]="archiveId" [extDrawingId]="drawingId" [extRevisionNo]="revisionNo" [moduleId]=moduleId [activeModuleIds]=moduleId [pageTarget]=10 [extDrawingType]="drawingType" [extDrawingCategoryId]="drawingCategoryId" [extDrawingDetails]="dwgDetails" (outDrawingobject)="outDrawingObject($event)" ></opendrawing>
+            </tab>
+        </tabs>
+    </primary-view>
+</split-view>

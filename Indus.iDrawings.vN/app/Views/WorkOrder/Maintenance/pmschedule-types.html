@@ -1,0 +1,20 @@
+﻿<tabs [selectedTab]="selectedTab" (getSelectedTab)="getSelectedTab($event)" (onTabClose)="onTabClose($event)" [deleteIndex]="deleteIndex">
+    <tab tabTitle="Schedule Types" closeButtonVisible="hidden">
+        <DynamicFields [dataSource]="fieldDetailsPMScheduleTypes" id="pmshedule" (submitFieldObject)="onNextClick($event)" [btnName]="btnName" (fieldChange)="fieldChange($event)" (rbnChange)="scheduleTypesChange($event)"></DynamicFields>
+    </tab>
+    <tab tabTitle="PM Schedules" *ngIf="pmSchedulesTab == true" closeButtonVisible="hidden">
+        <div>
+            <pmSchedules-list [siteId]="siteId" [SiteName]="siteName" [equipmentCategoryId]="equipmentCategoryId" [equipmentClassId]="equipmentClassId" [routeId]="routeId" [RouteName]="routeName" (onProcedureClicked)="onProcedureClicked($event)"></pmSchedules-list>
+        </div>
+    </tab>
+    <!--<tab tabTitle="Procedures" *ngIf="pmProcedureTab">
+    </tab>-->
+</tabs>
+
+<style >
+ #pmshedule #form .list-group
+{
+    height:auto!important;
+    max-height: -webkit-calc(100% - 40px)!important;
+}
+</style>

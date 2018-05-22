@@ -1,0 +1,63 @@
+﻿{
+  "data": [
+    {
+      "Id": "1",
+      "Field Name": "Floor Finish",
+      "Field Type": "Single Line Text",
+      "Max Characters Allowed": 10,
+      "Mandatory": false,
+      "Totalizable": false,
+      "Validated": true
+    },
+    {
+      "Id": "2",
+      "Field Name": "Wall Colour",
+      "Field Type": "Single Line Text",
+      "Max Characters Allowed": "",
+      "Mandatory": false,
+      "Totalizable": false,
+      "Validated": true
+    },
+    {
+      "Id": "3",
+      "Field Name": "Room Description",
+      "Field Type": "Single Line Text",
+      "Max Characters Allowed": 10,
+      "Mandatory": false,
+      "Totalizable": false,
+      "Validated": false
+    },
+    {
+      "Id": "4",
+      "Field Name": "Ceiling Finish",
+      "Field Type": "Single Line Text",
+      "Max Characters Allowed": 10,
+      "Mandatory": false,
+      "Totalizable": false,
+      "Validated": true
+    },
+    {
+      "Id": "5",
+      "Field Name": "Max Capacity",
+      "Field Type": "Integer",
+      "Max Characters Allowed": "",
+      "Mandatory": true,
+      "Totalizable": true,
+      "Validated": false
+    },
+    {
+      "Id": "6",
+      "Field Name": "Number of Lighting Fixtures",
+      "Field Type": "Numeric",
+      "Max Characters Allowed": "",
+      "Mandatory": false,
+      "Totalizable": true,
+      "Validated": false
+    }
+  ],
+  "count": [
+    {
+      "TotalItems": "15"
+    }
+  ]
+}

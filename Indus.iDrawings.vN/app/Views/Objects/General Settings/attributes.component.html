@@ -1,0 +1,34 @@
+﻿<div>
+    <submenu>
+        <sub-menu [menuCard]=true [source]=menuData [count]=gridcount [menuIds]=enableMenu (onSubMenuChange)="onSubMenuChange($event);"> </sub-menu>
+    </submenu>
+    <split-view [splitviewObject]="splitviewInput" style="height: calc(100% - 35px);" [pageTitle]="pageTitle">
+        <primary-view>
+            <div [ngClass]="totalItems > itemsPerPage ? 'pagewithPaging':'pagewithoutPaging'">
+                <gridView style="display:block;" [(dataSource)]="itemsSource" [properties]="inputItems" [columns]="fieldObject" [refreshgrid]="refreshgrid"
+                      (onSorting)="onSort($event)"></gridView>
+            </div>
+            <paging [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="pageChanged($event);"></paging>
+
+        </primary-view>
+        <secondary-view *ngIf="menuClickValue == 0|| menuClickValue == 1">
+            <attributes-addedit style="display: block;width:270px;" [objectCategoryId]="objectCategoryId" [moduleId]="moduleId" [AttributesAddEdit]="AttributesAddEdit" [action]="action" [btnName]="btnName"
+                                (submitSuccess)="OnSuccessfulSubmit($event)" [selectedId]="inputItems.selectedIds[0]" [messages]="messages"></attributes-addedit>
+
+        </secondary-view>
+        <secondary-view *ngIf="menuClickValue == 4">
+            <attributevalues *ngIf = "action == 'fieldvalues' && splitviewInput.showSecondaryView"  style="display: block;width:400px;" [objectCategoryId]="objectCategoryId" [moduleId]="moduleId"
+                                [selectedId]="inputItems.selectedIds[0]" [fieldType]="fieldType" [PageTarget] ="1" (AddSuccess)="Successfulladd($event)"></attributevalues>
+        </secondary-view>
+    </split-view>
+    <slide [width]="slidewidth" [position]="position" [show]="showSlide" (closeDialog)="closeSlideDialog($event)">
+        <div>
+            <div> {{message}}  </div>
+            <div style="width:100%">
+                <button  class="Savebutton "type="button" (click)="okDelete($event)">Yes</button>
+                <button  class="Savebutton "type="button" (click)="cancelClick($event)">No</button>
+            </div>
+        </div>
+    </slide>
+</div>
+

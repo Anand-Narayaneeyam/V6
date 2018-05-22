@@ -1,0 +1,33 @@
+﻿<split-view [splitviewObject]="splitviewInputbook" [pageTitle]="pageTitle">
+    <primary-view>
+        <div style="height:calc(100% - 48px)">
+            <DynamicFields [holidaysDisabled]="true" [dataSource]="fieldDetailsBook" (submitFieldObject)="onReserve($event)" [btnName]="'Reserve'" (btnItemEmit)="checkbtnClick($event)" (rbnChange)="rdBtnchange($event)" (fieldChange)="ddlChange($event)" (dynamicListAddEmit)="resourcelistAdd($event)" (dynamicListRemoveEmit)="resourceListDelete($event)" (dateChange)="datepickerChange($event)" (lookupSelectEmit)="lookupSelect($event)"></DynamicFields>
+        </div>
+    </primary-view>
+    <secondary-view>
+        <hotellingresource *ngIf="showResource == true && splitviewInputbook.showSecondaryView == true" [selSeatIds]="selSeatId" [pageTarget]="'2'" (seatResourceAdd)="seatResourceListAdd($event)" [resourcesCloneObj]="allresourceCloneObj"></hotellingresource>
+    </secondary-view>
+</split-view>
+<style>
+     .MainContainer_915 {
+         padding-top: 5px;
+     }
+
+     .MainContainer_2051 {
+         margin-top: 5px;
+     }
+
+     .Radio-1372 {
+         display: block !important;
+     }
+
+     /*  .MainContainer_1373{
+        margin:18px 0px 0px 60px;
+     }
+    .MainContainer_1374{
+        margin:-18px 0px 0px 60px;
+    }
+    .MainContainer_1375{
+         margin: -54px 0px 0px 170px;
+    }*/
+</style>

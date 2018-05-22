@@ -1,0 +1,14 @@
+﻿<page [pagetitle]="pagePath">
+    <content>
+        <div>
+            <submenu>
+                <sub-menu [source]=menuData [menuCard]=iscard [menuIds]=enableMenu (onSubMenuChange)="onSubMenuChange($event);"> </sub-menu>
+            </submenu>
+
+            <div style="display:inline;" *ngIf="ListboxData != undefined">
+                <ListBoxComponent *ngIf="ListboxData != undefined" (lstBox)="getListBoxData($event)" (selAll)="getListBoxData($event)" [fieldObject]=ListboxData></ListBoxComponent>
+            </div>
+        </div>
+    </content>
+</page>
+

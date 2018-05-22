@@ -1,0 +1,73 @@
+﻿<div [style.display]="setAlignment">
+    <div control-group style="margin-top:6px;min-width:150px;" *ngIf="!fieldObject.IsHiddenLabel && fieldObject.FieldLabel != undefined && fieldObject.FieldLabel != null" [style.max-width]="labelWidth" [style.min-width]="labelWidth">
+        <label>
+            {{fieldObject.FieldLabel}}<span class="required" *ngIf="fieldObject.IsMandatory == undefined || fieldObject.IsMandatory === true"> * </span>
+        </label>
+    </div>
+    <div control-group *ngIf="readonlymode!=true" [class]="'Div-'+fieldObject.FieldId">
+        <div *ngIf="fieldObject.IsEnabled == true || fieldObject.IsEnabled == null">
+            <!--<span style="overflow:hidden" class="readOnly" *ngIf="fieldObject.ReadOnlyMode === true">{{//selectedDateValue}}</span>-->
+            <!--<input #txtDate *ngIf="fieldObject.ReadOnlyMode === true" type="text" id="txtDate" [value]=selectedDateValue validatetext [fieldObject]='fieldObject' style="width:250px;height:30px" disabled />-->
+            <input *ngIf="fieldObject.ReadOnlyMode === true" type="text" id="txtDate" [value]=selectedDateValue validatetext [validationData]="validationData" [fieldObject]='fieldObject' [style.width]="fieldWidth" class="readOnly" disabled />
+            <div *ngIf="fieldObject.ReadOnlyMode == undefined || fieldObject.ReadOnlyMode === false" style="border-radius:5px;">
+                <span>
+                    <input type="text" #txtDate id="{{fieldObject.FieldId}}" [attr.aria-label]="fieldObject.FieldLabel" [value]=fieldObject.FieldValue validatetext [validationData]="validationData" [fieldObject]='fieldObject' class="date-picker" (click)="datetoggle()" (change)="getChangedValue($event.target.value)" (keypress)="getKeyPress($event)" (keydown)="getkeydown($event)" [style.width]="fieldWidth" style="height:30px;background-color:white;" title="Date" placeholder="Date" />
+                </span>
+                <div [style.display]="displayStyle" style="position:absolute;height:100%;width:90%;top:0px;left:0px;z-index:99;" (click)="datetoggle()"></div>
+                <div [style.display]="displayStyle" style="position:relative;background-color:white;">
+                    <div id="dateContainerDiv" class="date-container-div">
+                        <datepicker id="{{fieldObject.FieldId}}" [disableDates]="disableDates" [(ngModel)]="dt" [minDate]="minDate" [showWeeks]="false" (click)="getSelectedValue(dt,$event)"></datepicker>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="fieldObject.IsEnabled == false">
+            <div *ngIf="fieldObject.ReadOnlyMode == true">
+                <span>
+                    <input type="text" #txtDate id="txtDate" [attr.aria-label]="fieldObject.FieldLabel" [value]=selectedDateValue validatetext [validationData]="validationData" [fieldObject]='fieldObject' class="" (change)="getChangedValue($event.target.value)" (keypress)="getKeyPress($event)" [style.width]="fieldWidth" style="height:30px;background-color:#EAEADC;" readonly />
+                </span>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="readonlymode==true" style="margin-top: 6px;">
+        <label style="overflow:hidden;font-weight: 800;">{{fieldObject.FieldValue}}</label>
+    </div>
+</div>
+
+<style>
+    .date-picker {
+        background-image: url("Content/Images/calendar.png");
+        background-size: 20px 20px;
+        background-repeat: no-repeat;
+        background-position: right;
+    }
+
+    .date-container-div {
+        opacity: 0.99;
+        z-index: 100;
+        display: block;
+        width: 312px;
+        position: absolute;
+        border: 1px solid;
+        border-radius: 5px;
+        min-height: 250px;
+        box-shadow: 2px 2px 3px 2px lightgray;
+        background-color: white;
+    }
+
+    @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+
+
+        .date-container-div {
+            opacity: 0.99;
+            z-index: 100;
+            display: block;
+            background-color: white;
+            position: relative;
+            border: 1px solid;
+            border-radius: 5px;
+            min-height: 250px;
+            box-shadow: 2px 2px 3px 2px lightgray;
+        }
+    }
+</style>

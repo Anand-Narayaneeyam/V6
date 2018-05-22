@@ -1,0 +1,166 @@
+﻿<page [pagetitle]="pagePath">
+    <pagepath>
+    </pagepath>
+    <content>
+        <section title="Space Planning Projects" [isExpanded]="sectionExpansionStatus[0].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div *ngIf="sectionExpansionStatus[0].isExpanded">
+                <p>This option is for planning employee moves by creating Space Planning Projects and configuring space assignments visually using a space planning tool. Using this space planning tool, Occupancy and Vacancy details based on Employee Organizational Unitcan be viewed, modified and saved before executing the move. </p>
+                <p>The Space Planning Project Manager can explore multiple options to plan the allocation of seats in the selected floors of a building and can try out moving organizational units from one floor to another in the stack plan. Once the move is finalized using stack plan, it can be approved and then converted to a move project. The move project can be directly executed or different seating scenarios can be created and one of them can be executed directly or through a Move Project Work Order.</p>
+                <p>A Space Planning Project is to be defined first with a Project Name and details like Project Manager, Requester, Request Date, Expected Completion Date etc. Then the floors being considered for the planning are selected, and are added to this Space Planning Project.  Once the floors are selected, the Space Assignment can be viewed graphically as a Stack Plan through the Stack Plans option. </p>
+                <p>Through the Stack Plans option, the Space Assignment (Occupancy and Vacancy) details based on the employee organizational units can be viewed, modified through Drag and Drop operations, and saved. Width of each organizational unit will be based on the percentage of total occupancy and limited to a minimum width (30 pixels).</p>
+                <p>After making the required changes, click the Save button to save the plan. More than one Stack Plan can be created for a Space Planning Project. Only one Stack Plan can be approved for a Space Planning Project. The saved Stack Plan has to be approved before executing the move. Once it is approved it will be available in the Approved Stack Plans list. All the employees in the moved Organizational Unit will be added to the Move details with the source location as the floor from which it is moved and destination location as the floor to which it is moved. The move status of each employee will indicate with status Planned. After assigning move location to employees, it can be converted to a Move Project. </p>
+                <p>A Scenario can be created if required, or the Move Project can be executed directly or through a Move Project Work Order. If a scenario is created, the seating can be further fine-tuned, and then the finalized plan can be executed. Once it is executed the Stack Plan Project status will be set to Executed.</p>
+                <h2>Projects</h2>
+                <p>This option is used to create Space planning projects for planning the Employee moves and Resources. On selecting this option all the Space Planning Projects created will be listed in the data grid.</p>
+                <p><span class="header2">Add:</span> New Space Planning project can be created by clicking <span class="header2"> Add</span> <img class="helpicon" src="Content/Icons/data_addN.png" title="Add" /> icon.</p>
+                <p>On selecting this option, the Space Planning Project Data Entry window is displayed, with the predefined data fields like Project Name, Description, Project Manager, Requested by, Date Requested, Date to complete etc. and the additional data fields defined by the user. The details of the Space Planning Project can be entered. On clicking the Save button, the Space Planning Project will be saved in the system. </p>
+                <p><span class="header2">Edit:</span> This option is for editing the details of a Space Planning Project. Select the desired Project to be edited and click <span class="header2">Edit</span> <img class="helpicon" src="Content/Icons/data_editN.png" title="Edit" /> icon. The details will be displayed. Make the necessarychanges and changes can be updated by clicking the Save Changes button. Only Active Projects can be edited. </p>
+                <p><span class="header2">Delete:</span> This option is for deleting a Space Planning Project which is Active. Select the record to be deleted and click <span class="header2">Delete</span> <img class="helpicon" src="Content/Icons/data_deleteN.png" title="Delete" /> icon. A confirmation message will be displayed. On clickingYes, the project's status will be changed to Deleted. Approved or Executed Space Planning Projects cannot be deleted.</p>
+                <p><span class="header2">Restore: </span> This option is for restoring a deleted project. Select the project to be restored and click <span class="header2">Restore</span> <img class="helpicon" src="Content/Icons/restorE.png" title="Restore" /> icon, the project will get restored.  </p>
+                <p><span clss="header2">Discard :</span> This option is for discarding a Space Planning Project. Select the record to be discarded and click <span class="header2">Discard</span> <img class="helpicon" src="Content/Icons/discarD.png" title="Discard" /> icon. A confirmation message will be displayed. On clickingYes, the project's status will be changed to Discarded. Approved/Executed Projects cannot be discarded. </p>
+                <p><span class="header2">More</span> <img class="helpicon" src="Content/Icons/moreIconVertical.png" title="Space Planning" /></p>
+                <p>Select Floors and Stack Plans options are grouped under <span class="header2">More</span> <img class="helpicon" src="Content/Icons/moreIconVertical.png" title="Space Planning" /> icon. </p>
+                <p>Through this, the floors involved in a Space Planning Project can be selected, seat allotment options based on employee organizational units can be tried out, and one of the options can be approved for the implementation. </p>
+                <p><span class="header2">Select Floors</span></p>
+                <p>Floors involved in the Space planning Project can be selected by clicking the Select Floors option from <span class="header2">More</span> <img class="helpicon" src="Content/Icons/moreIconVertical.png" title="Space Planning" /> icon and then added to Space Planning Project. Click on Select Floors menu, Floors enabled for Employee module and if any proposed Floors added in Administration module also will be listed with Save Changes icon. Select the required floors by selecting the checkboxes and click Save Changes, the selected floors will be added to the selected Space Planning Project. </p>
+                <p><span class="header2">Stack Plans</span></p>
+                <p>Stack Plans option is available under More <img class="helpicon" src="Content/Icons/moreIconVertical.png" title="Space Planning" /> icon. Through this,Stack plans can be added/edited/deleted and the Occupancy and Vacancy details based on the employee organizational units can be viewed, modified, saved before executing the move. This Stack based Planning tool provides a visual interface that shows the effect of moving employee groups between floors. </p>
+                <p>On clicking this option, Stack Plan list page will be displayed with Add/Edit/Deleteand Approve icons. If the selected Space Planning Project is not Active then only View Stack icon will be displayed.</p>
+                <p><span class="header2">Add</span></p>
+                <p>On clicking <span class="header2">Add</span> <img class="helpicon" src="Content/Icons/data_addN.png" title="Add" /> icon, Space Assignment Plan of the selected floors will be displayed as a stack based on employee organizational unit, one floor above the other. Floor wise occupancy details of each floor will be displayed in a graphical stack. Site/Building/Floor details will be displayed in the left side of the page with Maximum Capacity and Vacancy details of each floor. If it is over occupied it will be denoted with a caption ‘Over’ in a red colored upward arrow icon. </p>
+                <p>Organizational Units of Employees in each floor will be displayed in a rectangular block in different colors (according to the color selected in the Distribution map option) along with the number of employees. Same Organizational Unit will have same color in all the floors. The employee organizational unit will be shown in tooltip when bringing the cursor over each block.</p>
+                <p>User can do the planning by dragging and dropping Organizational Unit blocks from one floor to another. More than one Stack Plan can be created for the same Project and the most suitable plan can be finalized. </p>
+                <p>On dragging and dropping Organizational Unit from one floor to the other, the total number of employees will be updated dynamically in the stack plan. Vacancy will be displayed in a separate block. Moved Organizational unit will be shown with the symbol [-> (a square bracket with an arrow) and details of Site/Building/Floor from which the Move was made will show up in the tooltip. Employee and vacancy count will be displayed within the blocks as left aligned. Width of each organizational unit will be based on the percentage of total occupancy.</p>
+                <p><span class="header2"> Save: </span> After making the required changes in the Space Assignment Plan by dragging and dropping the Organizational Unit blocks, click the Save button, New Stack Plan window will be displayed to enter Stack Plan details. Enter the required details and click Save, the stack plan will be created and listed with Status Planned. Any number of Stack Plans can be created for the same Space Planning Project.</p>
+                <p><span class="header2">Edit</span></p>
+                <p>This option is for editing a Stack Plan. Select a Stack Plan and click <span class="header2">Edit </span> <img class="helpicon" src="Content/Icons/data_editN.png" title="Edit" /> icon,the Space Assignment Plan page will be displayed. Make the required changes and click Save Changes button, the Edit Stack Plan window will be displayed. Changes can be updated by clicking the Save Changes button. </p>
+                <p><span class="header2">Delete</span></p>
+                <p>This option is for deleting a Stack Plan. Select a Stack Plan and click <span class="header2">Delete</span> <img class="helpicon" src="Content/Icons/data_deleteN.png" title="Delete" /> icon, the selected stack plan will be deleted. Approved and Discarded stack plans cannot be edited or deleted.</p>
+                <p><span class="header2">View Stack:</span> This option is for viewing the stack of Approved/Discarded/Executed stack plans. On clicking <span class="header2">View Stack </span> <img class="helpicon" src="Content/Icons/view_stacK.png" title="View Stack" /> icon menu after selecting a Space Planning Project with Statusother than Active, Space Assignment Plan of the selected Stack Plan will be displayed. The Stack plan view cannot be modified through this option. The Organizational Units which are moved will be displayed with an arrow and details of Site/Building/Floor from which the Move was made will be displayed in tooltip along with the name of the employee organizational unit. </p>
+                <p><span class="header2">Approve:</span> This option is for approving a Stack Plan. Approval of Space Assignment plan can be done by clicking the <span class="header2">Approve </span> <img class="helpicon" src="Content/Icons/approvE.png" title="Approve" /> icon. The status of the Stack Plan will be set as Approved.  </p>
+                <p>Only one Stack Plan can be approved for a Space Planning Project. Stack Plans having proposed Seats/Floors cannot be approved. All the other Stack Plans will be set as Discarded. Approved projects will be moved to <span class="header2"> Approved Stack Plans </span> menu for further processing. </p>
+
+            </div>
+        </section>
+        <section title="Approved Stack Plans" [isExpanded]="sectionExpansionStatus[1].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div *ngIf="sectionExpansionStatus[1].isExpanded">
+                <p>Different options like View Stack, Show Details, Create a Scenario and Convert to Move Project for doing further processing of the approved Stack Plans are available under Approved Stack Plan menu. Only approved Stack Plans will be displayed here. </p>
+                <p><span class="header2">View Stack</span></p>
+                <p>On clicking <span class="header2"> View Stack</span> <img class="helpicon" src="Content/Icons/view_stacK.png" title="View Stack" /> icon, Space Assignment Plan of Approved Stack Plan will be displayed. The Stack plan view cannot be modified through this option. The Organizational Units which are moved will be displayed with square bracket [with arrow and details of Site/Building/Floor from which the Move is made will be displayed in tooltip. </p>
+                <p><span class="header2">Show Details</span></p>
+                <p><span class="header2">Show Details </span> <img class="helpicon" src="Content/Icons/show_detailS.png" title="Show Details" /> icon is for viewing the employee details ofthe approved Space Planning Project. All the employees in the Organizational Units planned for move will be automatically added to the Move details with From location as the floor from which it is moved and To location as the floor to which they are to be moved. The Move Status of each employee will be shown as Planned.   </p>
+                <p>Details of the Approved Stack Plan can be viewed by clicking the Show Details <img class="helpicon" src="Content/Icons/show_detailS.png" title="Show Details" />  icon. The employee details of the selected Stack Plan will be displayed in a data grid.   </p>
+                <p>This data grid has the options to edit the move details, delete an employee scheduled for a move and assign location for Employee Move.</p>
+                <p><span class="header2">Edit</span></p>
+                <p>This option is for editing the move details of an employee whose new location is assigned. Employees with Planned or Moved status cannot be edited. Select an employee to be edited and click on the <span class="header2">Edit</span> <img class="helpicon" src="Content/Icons/data_editN.png" title="Edit" /> icon the Employee Move details will be displayed. The Move location can now be changed.  </p>
+                <p><span class="header2">Delete</span></p>
+                <p>This option is for deleting an employee from aStack Plan Project. Select the employee to be deleted, and click on <span class="header2">Delete</span> <img class="helpicon" src="Content/Icons/data_deleteN.png" title="Delete" /> icon. A confirmation message will be shown. Click on Yes, and the employee will be deleted from the Move Project as well as from the associated Stack Plan. </p>
+                <p><span class="header2=">Assign Location</span></p>
+                <p>The <span class="header2">Assign Location </span> <img class="helpicon" src="Content/Icons/assign_locatioN.png" title="Assign Location" /> icon will be available only if the Stack Plan is Approved, If the status of the Approved Stack Plan is ’Scenario created’, ‘Move Project created’ or ‘Executed’, the Assign Location icon will not be available. </p>
+                <p>This option is for selecting the ‘Move to’ locations (except Site, Building, and Floor) for the employees in the Stack Plan Project. One or more employees can be selected. If more than one employee is selected, all selected employees should have the same ‘Move to’ locations specified.</p>
+                <p>On clicking <span class="header2">Assign Location </span> <img class="helpicon" src="Content/Icons/assign_locatioN.png" title="Assign Location" /> icon, a window for selecting the Move location will be shown. The Site/Building/Floor details will be populated in corresponding fields and shown as disabled. The Room No. can be picked up from the list and click Save button. </p>
+                <p>Note: If the status of the Stack Plan is ‘Scenario created’ or ‘Move Project created’, the above options will not be available.</p>
+                <p><span class="header2">Create a Scenario</span></p>
+                <p>This option is for creating a scenario showing the employee locations based on the Approved Stack Plan. Multiple scenarios can be created for the same Stack Plan. Different seating configurations can be tried out in each scenario by moving the employees around. Employees planned for move will be shown in a different color in the scenario drawings. Scenario can be created only after assigning move location to all employees in the Approved Stack Plan. Select the Approved Stack Plan for which Scenario is to be created and click on <span class="header2">Create a Scenario </span> <img class="helpicon" src="Content/Icons/scenariO.png" title="Create a Scenario" /> icon. Scenario will be created based on the Stack Plan and will be moved under Scenarios menu.  </p>
+                <p><span class="header2">Convert to Move Project</span></p>
+                <p>This option is for converting a Space Planning project to a Move Project based on the Approved Stack Plan. Move Project can be created only after assigning move location to all employees in that Approved Stack Plan. Select the Approved Stack Plan for which Move Project is to be created and click on <span class="header2">Convert to Move Project </span> src="Content/Icons/convert_to_moveprojecT.png" title="Convert to Move Project"/> icon. Move Project will be created based on the Stack Plan and the project will be moved under <span class="header2"> Move Projects </span> menu. If Scenario is created for the selected Stack Plan, then Convert to Move Project can be done through the Scenarios menu only.</p>
+
+            </div>
+        </section>
+        <section title="Scenarios" [isExpanded]="sectionExpansionStatus[2].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div *ngIf="sectionExpansionStatus[2].isExpanded">
+                <p>This option shows the Scenarios created from approved Stack Plan.</p>
+                <span class="header2">Edit Scenario </span>
+                <p>This option is for editing Scenarios. The user can edit a scenario by selecting it and clicking the <span class="header2"> Edit Scenario </span> <img class="helpicon" src="Content/Icons/data_editN.png" title="Edit" /> icon. </p>
+                <p><span class="header2">Drawings</span></p>
+                <p>Drawings belonging to the selected Scenario can be viewed through this. On clicking this menu, the drawings belonging to the selected Scenario will be listed. </p>
+                <p><span class="header2">View </span></p>
+                <p>Drawings can be viewed by selecting the drawing and clicking the  <span class="header2">View</span> <img class="helpicon" src="Content/Icons/view-drawingN.png" title="View Drawing" /> icon. The drawing will be opened in browser window. The employees that are moved through Space Assignment Plan and have locations assigned will be placed in the drawing and will be shown in a different color from that of the existing employees in their original positions. </p>
+                <p><span class="header2">Move Single Employee</span></p>
+                <p>This option is to move an employee from one place to another. On clicking this option, a message window will be displayed, prompting to select the employee to be moved. Select the employee by clicking on the employee. The selected employee will be hatched. Then click on the location where the employee is to be moved. Only employees scheduled through Space Planning Project can be moved.  </p>
+                <p><span class="header2">Save scenario</span></p>
+                <p>Scenario can be saved by clicking this option. This option will be displayed only if an Active Scenario is selected.</p>
+                <p><span class="header2">Create a Move Project</span></p>
+                <p>This option is for creating a Move Project based on the Scenario. Move Project can be created only for Scenarios with Active status. Select the Scenario for which Move Project is to be created and click on <span class="header2"> Create a Move Project </span> <img class="helpicon" src="Content/Icons/convert_to_moveprojecT.png" title="Convert to Move Project" /> icon. A Move Project is created for the selected Scenario and the status is changed to ‘Move Project Created’. The Move Project created based on the Scenario will be available under <span class="header2">Move Projects </span> menu for further processing </p>
+
+            </div>
+        </section>
+        <section title="Move Projects" [isExpanded]="sectionExpansionStatus[3].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div *ngIf="sectionExpansionStatus[3].isExpanded">
+                <p>This option displays the Move Projects which are converted from approved Stack Plan or Move Projects created from Scenarios menu. </p>
+                <p><span class="header2">Show Details</span></p>
+                <p><span class="header2"> Show Details </span> <img class="helpicon" src="Content/Icons/show_detailS.png" title="Show Details" />  icon is for viewing the employee details for a Move Project. All the employees in the moved Organizational Unit will be displayed with Move details of From location, the floor from which it is moved, To location, the floor to which they are to be moved. The move status of each employee will indicate with status Assigned. </p>
+                <p><span class="header2">Execute</span></p>
+                <p>This option is for executing the move action for the selected employees in the Move Project to the specified locations. On performing Execute, Select the employee record to be executed and click <img class="helpicon" src="Content/Icons/executE.png" title="Execute" /> icon, the employees in the Move Project will be moved to the assigned locations, and their status will be set to ‘Moved’. </p>
+                <p><span class="header2">Execute </span></p>
+                <p>This option is for executing the move action for all the employees in the Move Project. Move Projects can be executed directly or by creating a Move Project Work Order.Select the Move Project to be executed and click on <span class="header2"> Execute</span> <img class="helpicon" src="Content/Icons/executE.png" title="Execute" />icon. A message ‘Do you want to create a Work Order to execute the Selected Move Project?’ will be displayed with Yes and No buttons. On clicking No, the employees in the selected Move Project will be moved to the selected locations and their status set to ‘Moved’ in the grid. On clicking Yes to the message Move Project Work Order window will be displayed with Work Type and Action Point Users combo. Select the Work Type Name from the combo and Action Point User (if the first Action Point is of Specific User type, Action Point user combo will be enabled and will be populated with the users associated with it. Otherwise it will show as disabled) and click Generate button. The Move Project Work Order will be generated and will be available under Move Project Work Orders menu. The particular Move Project status will be changed to ‘Work Order generated.’ Such Work Orders will be available under <span class="header2"> Move Project Work Orders </span> menu for further review.</p>
+
+            </div>
+        </section>
+        <section title="Move Project Work Orders" [isExpanded]="sectionExpansionStatus[4].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div *ngIf="sectionExpansionStatus[4].isExpanded">
+                <p>Through this option, Administrator can view all the Move Project Work Orders. The work orders will be displayed with Work Type, Request Number; Requested by, Action by etc.  And the list can be sorted on any column by clicking on the column header.</p>
+                <p>Active and All tabs are grouped under Move Project Work Orders menu. All the work orders that are pending for review will be displayed under the Active tab and all executed/discarded work orders will be listed under All tab. All tab will be available only for Administrators.  </p>
+                <p><span class="header2">Review </span></p>
+                <p>
+                    Work Orders can be reviewed by selecting the work order and clicking the <span class="header2">Review </span> <img class="helpicon" src="Content/Icons/Review.png" title="Review" /> icon. Review Move Project Work Order page will be displayed as a tab with Review Comments, Previous Comments, Work Order details, list boxes for ‘Select an Action’ and ‘Send to’.
+                    If the Action Point is associated with more than one user there is an option to specify the user at the previous Action Point. For this, the 'Specify User at Previous Action Point' should have been set through <span class="header2">Administration: Action Points: Add/Edit </span>. If so, there will be an option to select one of the Action Point users from a combo box in the Review page.
+                </p>
+                <p>If the Specify User option is not set, there will not be any option to select a User in the Review page. In this case, any one of the users associated with the selected Action Point can Review the work order and take necessary action.</p>
+                <p>Employees associated with the selected move execution work order will be displayed in a list with details of Employee Name, Employee Code, From Site, From Building, From Floor, From Room No., To Site, To Building, To Floor and To Room No. </p>
+                <p><span class="header2">Show Details: </span> Employees associated with the selected move execution work order will be displayed in a list with details of Employee Name, Employee Code, From Site, From Building, From Floor, From Room No, To Site, To Building, To Floor and To Room No. </p>
+                <p><span class="header2">Execute: </span> On selecting the action Execute and on submitting the page by clicking Save Changes button, the work order will be executed and the status of the Move Project Work Order will be shown as 'Executed’ under All tab.</p>
+                <p>All the employees associated with the particular Move Project will get moved to their assigned location.</p>
+                <p><span class="header2">Discard:</span> On selecting the action Discard and on submitting the page by clicking Save Changes button, the work order will be executed and the status of the Move Project Work Order will be shown as “Discarded” under All tab. </p>
+
+            </div>
+        </section>
+    </content>
+</page>
+<style type="text/css">
+    h3.Mainheader {
+        color: #178AE8;
+    }
+
+    .header1 {
+        font-weight: bold;
+        color: #178AE8;
+    }
+
+    .header2 {
+        font-weight: normal;
+        color: #178AE8;
+    }
+
+    p {
+        margin-left: 38px;
+        font-size: 13px;
+        margin-right: 3em;
+    }
+
+    .header3 {
+        font-weight: bold;
+        color: black;
+    }
+    /**/ h1 {
+        color: #178AE8;
+        font-size: 1.3em;
+        margin-left: 38px;
+    }
+
+    h2 {
+        color: #178AE8;
+        font-size: 1em;
+        margin-left: 38px;
+    }
+
+    .config {
+        background-color: #178AE8;
+    }
+
+    .helpicon {
+        vertical-align: baseline;
+        width: 20px;
+        height: 20px;
+    }
+</style>

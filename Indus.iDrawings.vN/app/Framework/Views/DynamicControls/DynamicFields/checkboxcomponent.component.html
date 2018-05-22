@@ -1,0 +1,66 @@
+﻿<div control-group *ngIf="!fieldObject.IsHiddenLabel && fieldObject.FieldLabel != undefined && fieldObject.FieldLabel != null" >
+    <label *ngIf="fieldObject.IsEnabled == true" style="width:250px;display: inline-flex;">
+        <span *ngIf="fieldObject.ReadOnlyMode === true">
+            <input #check type="checkbox" [attr.aria-label]="fieldObject.FieldLabel" id={{fieldObject.FieldId}} name="check" value="All" [checked]="IsSelectAllChecked" (change)="selectAllOptions($event)" style="width:15px" disabled/>
+           
+        </span>
+        <span *ngIf="fieldObject.ReadOnlyMode === true" style="padding: 2px;"  aria-hidden="true">
+         
+            {{fieldObject.FieldLabel}}<span class="required" *ngIf="fieldObject.IsMandatory == undefined || fieldObject.IsMandatory === true">* </span>
+        </span>
+        <span *ngIf="fieldObject.ReadOnlyMode == undefined || fieldObject.ReadOnlyMode === false">
+            <input #check type="checkbox" [attr.aria-label]="fieldObject.FieldLabel" id={{fieldObject.FieldId}} name="check" value="All" [checked]="IsSelectAllChecked" (change)="selectAllOptions($event)" style="width:15px" />
+           
+        </span>
+        <span *ngIf="fieldObject.ReadOnlyMode == undefined || fieldObject.ReadOnlyMode === false" style="padding: 2px;"  aria-hidden="true">
+          
+            {{fieldObject.FieldLabel}}<span class="required" *ngIf="fieldObject.IsMandatory == undefined || fieldObject.IsMandatory === true">* </span>
+        </span>
+    </label>
+    <label *ngIf="fieldObject.IsEnabled == undefined ||  fieldObject.IsEnabled == false" style="width:250px;display: inline-flex;">
+        <span *ngIf="fieldObject.ReadOnlyMode === true" tabindex="0" [attr.aria-label]="fieldObject.FieldLabel+' ReadOnly'">
+            <input #check type="checkbox" [attr.aria-label]="fieldObject.FieldLabel" id={{fieldObject.FieldId}} name="check" value="All" [checked]="IsSelectAllChecked" (change)="selectAllOptions($event)" style="width:15px" disabled />
+          
+        </span>
+        <span *ngIf="fieldObject.ReadOnlyMode === true" style="padding: 2px;"  aria-hidden="true">
+           
+            {{fieldObject.FieldLabel}}<span class="required" *ngIf="fieldObject.IsMandatory == undefined || fieldObject.IsMandatory === true">* </span>
+        </span>
+        <span *ngIf="fieldObject.ReadOnlyMode == undefined || fieldObject.ReadOnlyMode === false" tabindex="0" [attr.aria-label]="fieldObject.FieldLabel+' ReadOnly'">
+            <input #check type="checkbox" [attr.aria-label]="fieldObject.FieldLabel"  id={{fieldObject.FieldId}} name="check" value="All" [checked]="IsSelectAllChecked" (change)="selectAllOptions($event)" style="width:15px" disabled />
+           
+        </span>
+        <span *ngIf="fieldObject.ReadOnlyMode == undefined || fieldObject.ReadOnlyMode === false" style="padding: 2px;" aria-hidden="true">
+          
+            {{fieldObject.FieldLabel}}<span class="required" *ngIf="fieldObject.IsMandatory == undefined || fieldObject.IsMandatory === true">* </span>
+        </span>
+</label>
+</div>
+<div control-group  *ngIf="fieldObject.IsHiddenLabel == true" >
+    <label *ngIf="fieldObject.IsEnabled == true" style="width:250px">
+        <span *ngIf="fieldObject.ReadOnlyMode === true">
+            <input #check type="checkbox" [attr.aria-label]="fieldObject.FieldLabel" id={{fieldObject.FieldId}} name="check" value="All" [checked]="IsSelectAllChecked" (change)="selectAllOptions($event)"  disabled />
+             <!--<span class="required" *ngIf="fieldObject.IsMandatory == undefined || fieldObject.IsMandatory === true">* </span>-->
+        </span>
+        <span *ngIf="fieldObject.ReadOnlyMode == undefined || fieldObject.ReadOnlyMode === false">
+            <input #check type="checkbox" [attr.aria-label]="fieldObject.FieldLabel"  id={{fieldObject.FieldId}} name="check" value="All" [checked]="IsSelectAllChecked" (change)="selectAllOptions($event)" />
+            <!--<span class="required" *ngIf="fieldObject.IsMandatory == undefined || fieldObject.IsMandatory === true">* </span>-->
+        </span>
+    </label>
+    <label *ngIf="fieldObject.IsEnabled == undefined ||  fieldObject.IsEnabled == false" style="width:250px">
+        <span *ngIf="fieldObject.ReadOnlyMode === true">
+            <input #check type="checkbox" [attr.aria-label]="fieldObject.FieldLabel"  id={{fieldObject.FieldId}} name="check" value="All" [checked]="IsSelectAllChecked" (change)="selectAllOptions($event)" disabled />
+            <!--<span class="required" *ngIf="fieldObject.IsMandatory == undefined || fieldObject.IsMandatory === true">* </span>-->
+        </span>
+        <span *ngIf="fieldObject.ReadOnlyMode == undefined || fieldObject.ReadOnlyMode === false">
+            <input #check type="checkbox" [attr.aria-label]="fieldObject.FieldLabel"  id={{fieldObject.FieldId}} name="check" value="All" [checked]="IsSelectAllChecked" (change)="selectAllOptions($event)"  disabled />
+            <!--<span class="required" *ngIf="fieldObject.IsMandatory == undefined || fieldObject.IsMandatory === true">* </span>-->
+        </span>
+    </label>
+</div>
+<!--<div  control-group *ngIf="!fieldObject.IsHiddenLabel && fieldObject.FieldLabel != undefined && fieldObject.FieldLabel != null">
+    <label>
+        {{//fieldObject.FieldLabel}}<span class="required" *ngIf="fieldObject.IsMandatory == undefined || fieldObject.IsMandatory === true">* </span>
+    </label>
+</div>-->
+

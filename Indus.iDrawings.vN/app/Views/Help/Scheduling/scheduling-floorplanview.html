@@ -1,0 +1,340 @@
+﻿<page [pagetitle]="pagePath">
+    <pagepath>
+    </pagepath>
+    <content>
+        <section title="Floor Plans" [isExpanded]="sectionExpansionStatus[0].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div *ngIf="sectionExpansionStatus[0].isExpanded==true">
+
+                <p>
+                    This option is available under <span class="header2">Scheduling Module </span> <img class="helpicon" src="Content/Images/scheduling.png" alt="Scheduling Module" /> icon. When selecting the <span class="header2">Scheduling </span> <img class="helpicon" src="Content/Images/scheduling.png" alt="Scheduling Module" /> icon, all the menu options for Scheduling Module will be displayed in the Left panel.
+                </p>
+
+                <p>This section provides an option for the users to view the floor plans enabled for Scheduling Floor Plan Management. List of all Floor Plans will be displayed, organized by Site/Building/Floor, with the Floor Plan File Names and File Size. This list can be sorted on any column by clicking on the column header.  </p>
+
+                <h1>View Floor Plan</h1>
+                <p>On selecting a Floor Plan and clicking on the  <span class="header2">View </span> <img class="helpicon" src="Content/icons/view-drawingN.png" alt="View" /> icon, the Floor Plan will be opened in a new window with a horizontal menu bar and data in the right side. The Space Data is fetched from the database and displayed in the Floor Plan in dynamically created layers. Only the Space Polyline and Space Data layers will be turned on by default. </p>
+                <p>The Scheduling data namely Workspaces, Team Rooms and Special Use Rooms corresponding to the selected Floor Plan also will be displayed in separate tabs on the right side of the Floor Plan. On bringing the mouse pointer over a space, a Tooltip will be displayed, showing the space data associated with the space</p>
+                <p>The Right Click menu options provide an easier access to the frequently used functionalities of the Scheduling module for the users, in turn saving time and effort. </p>
+                <p>On right clicking the mouse inside a Space in the floor plan, a pop-up menu will appear with the options Set as Hoteling Workspace, Set Multiple Rooms as Hoteling Workspace, Edit Space, Assign Space Standard, Select Multiple Spaces by Window, Pan, Zoom in, Zoom Out, Zoom Window, Zoom Extents and Layers</p>
+                <p>A brief description on the Right click options provided in Floor Plans of the Scheduling module is provided below. </p>
+
+                <p><span class="header2">Set as Hoteling Workspace</span>:This option is available only if the Workspace Booking option is enabled for the Customer.  This option is for assigning a Space as Hoteling Workspace and the option will be available in the right click only if the selected space is not assigned with any Space Assignment Type. </p>
+                <p>
+                    Right click on a Space and select Set as Hoteling Workspace from the menu options, selected Space will be assigned with Space Assignment Type – Hoteling and one Hoteling Workspace will be added to the Space.
+                </p>
+                <p>Note: This menu option will be available only if the selected Space is not assigned with any Space Assignment Type.</p>
+                <p><span class="header2">Set multiple Rooms as Hoteling Workspace:</span> This option is available only if the Workspace Booking option is enabled for the Customer.  This option is for assigning the selected Spaces as Hoteling Workspaces.</p>
+                <p>Right click on a Space and select the Set multiple Rooms as Hoteling Spaces option. Cursor turns to cross and wait for space selection. Select the required Spaces and then right click, all the selected spaces will be assigned as Hoteling Workspaces and one Hoteling workspace will be added to each Space.</p>
+                <p><i>Note:</i> This menu option will be available only if the selected Space is not assigned with any Space Assignment Type.</p>
+                <p><span class="header2">Book Workspace:</span> On Right clicking a Hoteling Workspace, <span class="header2">Book Workspace</span> menu will be displayed along with the other default menu options. This option is for creating a Workspace Reservation.</p>
+                <p>To Reserve a Workspace directly from the Drawing, right click a Hoteling Workspace. Then select <span class="header2">Book Workspace</span> menu. Reserve Workspace page will be displayed. Enter the Reservation details and click Reserve button. Workspace will be reserved for the logged in User.</p>
+                <p><span class="header2">Book Team Room:</span> On Right clicking a Scheduling Space, <span class="header2">Book Team Room</span> menu will be displayed along with other default menu options. This option is for creating a Team Room Reservation.</p>
+                <p>To Reserve a Team Room directly from the Floor Plan, right click a Scheduling Space. Then select <span class="header2">Book Team Room</span> menu. Reserve Room page will be displayed. Enter the Reservation details and click Reserve button. Team Room will be reserved for the logged in User.</p>
+
+                <p> <span class="header2">Edit Space: </span>This option is for editing the Space Data in the Floor Plans. </p>
+                <p> <span class="header2">Assign Space Standard: </span>This option is for assigning space standard and space assignment typeto any desired space. Space standard can be assigned/de-assigned by selecting the space, to which the space standards is to be assigned. Space Assignment Type can be set to Assignable, UnAssignable, Hoteling, Special Use Room and Scheduling Space. Scheduling Space option will be available only if Team Room Booking option is enabled for the customer. </p>
+                <p>Special Use Room and Hoteling options will be available only if Workspace Booking option is enabled for the Customer.</p>
+
+                <p> <span class="header2">Select Multiple Spaces by window: </span>This option is for selecting multiple spaces in the Floor Plan by window</p>
+                <p> <span class="header2">Pan: </span>This option enables the user to pan the Floor Plan. On selecting this option, the mouse pointer will change to a hand symbol. Now click the left mouse button, and without releasing it, move the mouse to pan the Floor Plan.</p>
+                <p> <span class="header2">Zoom In: </span>This option enables the user to Zoom in the Floor Plan.</p>
+                <p> <span class="header2">Zoom Out: </span>This option enables the user to zoom out the Floor Plan.</p>
+                <p> <span class="header2">Zoom Window: </span>This option enables the user to zoom the Floor Plan to a Window selection.</p>
+                <p> <span class="header2">Zoom Extents: </span>This option enables the user to view the Floor Plan fully within the Floor Plan display window by resetting any zoomed or panned states.</p>
+                <p> <span class="header2">Layers: </span>This option enables turning On and Off the layers in the base Floor Plan. The dynamically generated layers are not available here. These have to be controlled through the Display Settings. Clicking on the Default button turns on the default space polyline layers.</p>
+
+                <p>The following menu options are available to work with the Floor Plans. </p>
+
+                <h2>Reserve a Workspace </h2>
+                <p>Workspace Reservation can be made directly from the Floor Plan through this option.</p>
+                <p>On selecting <span class="header2">Reserve a Workspace</span> <img class="helpicon" src="Content/Icons/reserve_seaT.png" alt="Reserve a Workspace"> icon, all the Hoteling Workspaces in the floor will be shown blinking in the Floor Plan and a message 'Select a Hoteling Workspace' will be displayed. Reserve Workspace page will be displayed on selecting the required hoteling Workspace, where the user can select/enter Booked for, Comments, Date and Time details. Room No. will be displayed as read only. </p>
+
+                <p>The Booked for field will not be displayed if the logged in User is not a Division Administrator (Concierge). For Users other than Concierge, Bookings can be done only for themselves. Concierge can book for other Users in same division.</p>
+                <p><span class="header2">Check Availability</span> button will be displayed to check the availability of the Seat in the selected time slot.</p>
+                <p>Once all the requirements are entered, the request can be submitted by clicking the Reserve button. The request will be confirmed.</p>
+
+                <h2>Reserve a Team Room</h2>
+                <p>Team Room Reservations can be made directly from the Floor Plan through this option.</p>
+                <p>On selecting <span class="header2">Reserve a Team Room</span> <img class="helpicon" src="Content/Icons/reserve_rooM.png" alt="Reserve a Team Room"> icon, all the scheduling spaces will be shown as hatched and a message 'Select the Space for Scheduling' will be displayed. Select one of the hatched spaces for scheduling by clicking on it. A Month/Time view of the Calendar will be displayed with all the days of the selected Month and time as half hour slots. The time slots with booking will be highlighted in red color. Tool tip is provided for the highlighted slots to show the Event Name and time slots.</p>
+                <p>Team Room Reservation also can be made by clicking on the required time slot from the calendar view with date and time.</p>
+                <p>Reserve Room page will be displayed with Reserve Room title where the User can enter/select From (Date time), To (Date time), Event Name, Participants (Count), Booked for, Invitees and Comments. </p>
+                <p><span class="header2">Check Availability</span> button will be displayed to check the availability of the Room in the selected time slot. </p>
+                <p>The requester can specify the number of participants and also select Invitees for the meeting. </p>
+                <p>The user can add Invitees as required while reserving the room. Invitees can be selected from iDrawings Users list.</p>
+                <p> <span class="header2">Add Invitees:</span> Invitees can be added by clicking the  <span class="header2">Add</span>  <img class="helpicon" src="Content/icons/data_addN.png" alt="Add" />  icon placed at the right side of the Invitees list box. On clicking the  <span class="header2">Add</span>  <img class="helpicon" src="Content/icons/data_addN.png" alt="Add" />  icon, Invitees page will be displayed to select the invitees. User has to select the required User Category from the combo and all the Users of selected User Category will be listed. iDrawings Users will be listed in the User Category combo. Select the required Invitees and click Save button. Selected Invitees will be added. Invitees can be removed from the list by selecting the Invitee to be removed and then clicking the <span class="header2"> Remove </span> <img class="helpicon" src="Content/icons/data_addN.png" alt="Add" /> button. </p>
+                <p>Once all the requirements are entered, the request can be submitted by clicking the Reserve button. The newly submitted request will be listed in the My Reservations tab of the Booked for User. Request can be created by any iDrawings Users irrespective of the Floor Plan access set for different User roles.</p>
+
+                <h2>Move a Workspace</h2>
+                <p>This option is to move a Workspace within the selected Space.  On selecting <span class="header2">Move a Workspace</span> <img class="helpicon" src="Content/Images/Drawings/move-seat.png" alt="Move Workspace" />  icon, User will be prompted to select a Workspace and cursor will turn to cross. Select the Workspace to be moved and click another point in the assigned Space (Space where the seat is already assigned). Selected Workspace will be moved to the specified position in the assigned Space.</p>
+                <p>Note: Workspaces cannot be moved to another Space.</p>
+
+                <h2>Set Multiple Rooms as Hoteling Workspace</h2>
+                <p>This option is for assigning the Spaces as Hoteling Workspaces by selecting multiple spaces in the Floor Plan by window.</p>
+                <p>Click on the <span class="header2">Set Multiple Rooms as Hoteling Workspace </span> <img class="helpicon" src="Content/Images/Drawings/multiple-work-space.png" alt="Set Multiple Rooms as Hoteling Spaces" /> icon, a toast message 'Select a window, click to select/deselect space, Right Click to exit' is shown. Then the mouse pointer becomes a cross. Select a window by clicking and dragging inside the Floor Plan. The selected spaces will be hatched. Right Click when all the required spaces are selected,, all the selected spaces will be assigned as Hoteling Workspaces and one Hoteling workspace will be added to each Space.</p>
+
+                <h2>Set as Hoteling Workspace</h2>
+                <p>This option is for assigning a Space as Hoteling Workspace. Click on the <span class="header2">Set as Hoteling Workspace</span> <img class="helpicon" src="Content/Images/Drawings/single-work-space.png" alt="Set as Hoteling Space" />icon, a message "Select a Space" is shown. Select a Space and the selected Space will be assigned with Space Assignment Type – Hoteling and one Hoteling Workspace will be added to the Space.</p>
+
+                <h2>Distribution Map </h2>
+                <p>This option is available only after clicking the  <span class="header2">Distribution Map </span> <img class="helpicon" src="Content/Images/Drawings/distributionMap-menu-button.png" alt="Distribution Map" />  icon</p>
+                <p>This option allows users to get the distribution of space areas across different Organizational Units (Divisions, Departments, Cost Centers etc as defined in the Organizational structure) or based on the Validated Fields. The Spaces belonging to different Organizational Units or the Validated Fields are hatched in the Floor Plan with different colors and hatch pattern. Users can select the Organizational Units or the validated fields for which the distribution is required.The color displayed according to the settings in  <span class="header2">Settings: Space: General Settings: Distribution Map Settings </span> and can be changed by the user if required. </p>
+
+                <h2>Space Tools</h2>
+                <p>All the Space related operations such as Edit Space, Assign Space Standard, Move Legend, Select Multiple Spaces by Window, Totalize, Measure Distance and Measure Area are grouped under  <span class="header2">Space Tools</span> <img class="helpicon" src="Content/Images/Drawings/spaceMoreIcon.png" alt="Space Tools"> icon .</p>
+
+                <h2>Edit Space</h2>
+                <p>
+                    This option is to edit the Data of the selected Space. On selecting  <span class="header2">Edit Space</span> option from  <span class="header2">Space Tools</span> <img class="helpicon" src="Content/Images/Drawings/spaceMoreIcon.png" alt="Space Tools"> icon, user will be prompted to the select the space to be edited and the cursor turns to cross. Edit Space Data window will be displayed on clicking the required Space in the Floor Plan. Make necessary changes and click the Save button. Space Data edit is possible only to users having Edit privilege.
+                </p>
+                <p>
+                    By default, Space Category is enabled. If the value selected is one of the Common Area space categories, like Building Common, Floor Common or Vertical Space it will not be possible to edit/set the Organizational Unit for this space, and all Organizational level combo boxes will be disabled. But if it is required to assign Organizational Units to Common Spaces also, Organizational Unit Assignment to Common Area can be enabled for the customer.
+                </p>
+
+                <p>
+                    Data for additional data fields can also be entered through this data entry window.
+                </p>
+
+                <h2>Assign Space Standard</h2>
+                <p>This option is for assigning space standard and space assignment type to any desired space. On selecting  <span class="header2">Assign Space Standard</span> option from  <span class="header2">Space Tools</span> <img class="helpicon" src="Content/Images/Drawings/spaceMoreIcon.png" alt="Space Tools"> icon, user will be prompted to the select the space for assigning the Space standard and the cursor turns to cross. Assign Space Standard window will be displayed on clicking the required space in the Floor Plan. Space Standard can be assigned/de-assigned to the selected Space.  Space Assignment Type can be set to Assignable, Unassignable, Hoteling, Special Use Room and Scheduling Space. Scheduling Space option will be available only if Team Room Booking option is enabled for the customer. Hoteling and Special Use Room options will be available only if Workspace Booking option is enabled for the customer</p>
+
+                <p><span class="header1">Assignable:</span></p>
+                <p>If Workspace Booking is enabled for the customer and the Space Assignment Type is selected as Assignable, a link named  <span class="header2">'Seats'</span> will be displayed against Room Seating Capacity option to define seats for the selected space. On selecting this link, Seats window will be displayed listing all the available seats (if any). </p>
+                <p>User can add or delete single/multiple seat(s) to/from the selected space using the following options listed in the Seats page.   An option to set seats as Hoteling Seats also will be displayed in the Seats list page.</p>
+                <p>Different options such as with Prefix, With Room Number and without Prefix are provided to set the Seat Number while adding the Seats. </p>
+                <p> <span class="header2">Add Single Seat:</span> The user can add seats to the selected space, one at a time using this option. To add a single seat to the selected space, the user has to select  <span class="header2">Add</span>  <img class="helpicon" src="Content/icons/data_addN.png" alt="Add" />  icon and select 'Single' radio button. Then options to specify the Prefix and the Number of the specific seat will be displayed in the Add Seat window. The number of seats that can be added is limited to the Minimum Seating Capacity assigned to the selected space. </p>
+                <p> <span class="header2">Add Multiple Seats:</span> The user can add multiple seats at a time to the selected space using this option. To add multiple seats to the selected space, the user has to select  <span class="header2">Add</span>  <img class="helpicon" src="Content/icons/data_addN.png" alt="Add" />  icon and select 'Multiple' radio button. Then options specify the Prefix of the seats and the number range in which the seats are to be added in the Add Seat window. The number of seats that can be added is limited to the Minimum Seating Capacity assigned to the selected space. </p>
+                <p>All the Seats set as Hoteling Workspaces can be booked by Users of all User Roles.</p>
+                <p><span class="header2">Delete Seat: </span> Seats added can be deleted by selecting the required seat and then clicking <span class="header2">Delete </span> icon.</p>
+                <p>
+                    <span class="header2">Update: </span> Seats can be set as Hoteling Seat by selecting the checkbox of the required Seat and then clicking Update button.
+                </p>
+                <p><span class="header1">Hoteling:</span>If Space Assignment Type is selected as Hoteling and a Room Seating Capacity is given, Hoteling Workspaces (equal to the count of Room Seating Capacity) will be added to Space. These Workspaces can be booked for Workspace Reservations. These Workspaces can be booked by Users of all User Roles.</p>
+
+                <p><span class="header1">Special Use Rooms:</span> If Space Assignment Type is selected as Special Use Rooms and a Room Seating Capacity is given, Special Use Rooms (equal to the count of Room Seating Capacity) will be added to Space. These Workspaces can be booked for Workspace Reservations by the Concierges only.</p>
+
+                <p><span class="header1">Scheduling Space:</span> If Space Assignment Type is selected as Scheduling Space, an option to select the Amenities of the room and its count will be displayed. A Team Room can be booked only if the Space Assignment type is assigned as Scheduling Space.</p>
+
+                <h2>Move Legend</h2>
+                <p>This option is to move a legend from one point to another. Select  <span class="header2">Move Legend</span> option from  <span class="header2">Space Tools </span> <img class="helpicon" src="Content/Images/Drawings/spaceMoreIcon.png" alt="Space Tools"> icon , a toast message will be displayed, prompting 'Select an insertion point to add legend’. Then the mouse pointer turns to cross, and click on the location where the legend is to be moved.</p>
+
+                <h2>Select Multiple Spaces by Window</h2>
+                <p>This option is for selecting multiple spaces in the Floor Plan by window, for viewing details of space data linked to those spaces.</p>
+                <p>Click on the  <span class="header2">Select Multiple Spaces by Window</span> option from  <span class="header2">Space Tools</span> <img class="helpicon" src="Content/Images/Drawings/spaceMoreIcon.png" alt="Space Tools"> icon , a toast message 'Select a window, click to select/deselect space, Right Click to exit' is shown. Then the mouse pointer becomes a cross. Select a window by clicking and dragging inside the Floor Plan. The selected spaces will be hatched. Right Click when all required spaces are selected, the Data grid in the Floor Plan page will be highlighted with the data of the selected spaces. </p>
+                <p>A selected space can be deselected if required, by clicking on the  <span class="header2">De-Hatch</span> option in the Right Click or by clicking  <span class="header2">Tools: De-Hatch</span> option.</p>
+
+                <h2>Totalize</h2>
+                <p>This option is to show the number of spaces selected, Gross Area Total & Net Area Total of the selected spaces.</p>
+                <p>Select the spaces to be totalized by Select Multiple Spaces by window and click  <span class="header2">Totalize</span> option from  <span class="header2">Space Tools</span> <img class="helpicon" src="Content/Images/Drawings/spaceMoreIcon.png" alt="Space Tools"> icon , a message box will be displayed with details like Number of Spaces selected, Gross Area Total, etc. of the selected spaces.</p>
+                <p>Apart from this, if any additional data fields of Space are set as Totalizable, the total value of such fields also will be shown.  </p>
+                <p>The details shown in Totalize window can be added as legend by clicking the  <span class="header2">Add Legend</span> button in the Totalize window.</p>
+
+                <h2>Tools</h2>
+                <p>All the Floor Plan related operations such as Display Settings, De-hatch and Stop Blink are grouped under  <span class="header2">Tools</span> <img class="helpicon" src="Content/Icons/more_menuN.png" alt="Tools"> icon</p>
+
+                <h2>Display Settings</h2>
+                <p>This option is for specifying the Space Data fields to be displayed in the Floor Plan and the tooltip. Changes made here will be saved as user default settings and will be effective whenever the User opens any Floor Plan. </p>
+                <p>For making permanent changes, an administrator has to click Yes to the confirmation message "Display Settings updated. Do you want to save this as System default?"</p>
+                <p>Display Settings option is available under  <span class="header2">Tools</span> icon.</p>
+
+                <h2>De-Hatch</h2>
+                <p>
+                    This option is to de-hatch the hatched Space (if any) in the Floor Plan. De-hatch option is available under  <span class="header2">Tools</span>  <img class="helpicon" src="Content/Icons/more_menuN.png" alt="Tools">icon.
+                </p>
+
+                <h2>Stop Blink</h2>
+                <p>This option is to stop the blinking of the hatched Space (if any) in the Floor Plan.  <span class="header2">Stop Blink</span> option is available under  <span class="header2">Tools</span>  <img class="helpicon" src="Content/Icons/more_menuN.png" alt="Tools"> icon.</p>
+                <h2>Maximize</h2>
+                <p>
+                    The width of the Floor Plan and Data tab sheet can be increased / decreased by clicking the  <span class="header2">Arrow</span> <img class="helpicon" src="Content/Images/Drawings/Maximize.png" alt="Maximize"> icon provided above the top right corner of the Floor Plan window. User can change the view mode to full screen by clicking the    icon provided above the top right corner of the Floor Plan window. User can exit the full screen to normal view by clicking the  <span class="header2">Maximize</span> <img class="helpicon" src="Content/Images/Drawings/Maximize.png" alt="Maximize"> icon provided above the top right corner of the Floor Plan
+                </p>
+
+
+                <h1>Data</h1>
+
+                <p>Space data of the all the Workspaces, Team Rooms and Special Use Rooms added to the selected Floor Plan are provided as separate tabs at the right hand side of the Floor Plan. Options - Show Floor Plan, Show Zoomed and Search are provided in the each tab.</p>
+
+                <h1>Workspaces</h1>
+                <p>Workspaces tab lists all the Rooms with Space Assignment Type - Hoteling. It also lists the Spaces with Space Assignment Type – Assignable and having Hoteling Seats defined through <span class="header2">Seats</span> link.</p>
+
+                <h1>Team Rooms</h1>
+                <p>Team Rooms tab lists all the Rooms with Space Assignment Type - Scheduling Space.</p>
+
+                <h1>Special Use Rooms</h1>
+                <p>Special Use Room tabs list all the Rooms with Space Assignment Type - Special Use Rooms.</p>
+
+                <p>Following options are available in all Data tabs.</p>
+
+                <h2>Show in Floor Plan</h2>
+
+                <p>This option is for showing the selected Space in the Floor Plan. Select the Space record from the Data Grid and click on the <span class="header2">Show in Floor Plan</span> icon. The Floor Plan will be displayed with the selected Space hatched.</p>
+
+                <h2>Show Zoomed</h2>
+
+                <p>This option is for showing the selected Space in Floor Plan in the zoomed in position. Select the Space record and click on the <span class="header2">Show Zoomed</span> icon. The Floor Plan will be displayed in the zoomed in position with the selected space hatched.</p>
+
+                <h2>Keyword Search</h2>
+
+                <p>This option helps users to search for space details using keywords. The keyword could belong to any data field of the space data. The user need not know or specify which field to look in. The Keyword could be any part of the space data viz. space category, space function, room number, cost category, area, etc. or the additional data fields.</p>
+
+                <p>On entering the keyword and clicking on the <span class="header2">Search </span>  <img src="Content/Icons/keyword-search.png" alt="Keyword Search" />   icon, the data grid will be filtered with space records having data matching the specified keyword.</p>
+
+                <p>A facility user would be able to view only those floors/divisions for which privileges are granted to him. </p>
+
+                <h2>Advanced Search</h2>
+
+                <p>This option <img src="Content/Icons/advanced-search.png" alt="Advanced Search" />   helps users to search for space details with specific data in known data fields. The data being searched for can be selected from the list boxes or entered into text boxes provided against the data fields. The user can select one or more data fields viz. Date, Space Function, Room Number and Status. After entering the search criteria and click Search button, the data grid will be filtered with space records which satisfy the selection criteria. </p>
+                <p>User can check for the Available /Booked Rooms in the selected time. </p>
+                <p>Search criteria entered in the Search window can be cleared by clicking the Clear button provided in the Search window. After clearing the Search criteria and click Search button to clear the Search Results in the Space Data grid.</p>
+            </div>
+        </section>
+        <section title="Data" [isExpanded]="sectionExpansionStatus[1].isExpanded" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div *ngIf="sectionExpansionStatus[1].isExpanded==true">
+                <p>This section provides an option for the user to view and analyze the space data graphically. </p>
+                <p>Click on this, and the option for selecting the floor will be listed. Select the desired floors for which the data is to be viewed and click on the <span class="header2">Show Data</span>  <img class="helpicon" src="Content/Icons/show_datA.png" alt="Show Data" />  icon. The details will be listed in the Space data grid</p>
+
+                <h1>Edit</h1>
+                <p>Using this option, the administrator can edit the space details. Select the space to be edited and click on the <span class="header2">Edit</span>  <img class="helpicon" src="Content/Layout/edit_button.png" alt="Edit" />     icon. The details will be displayed in a new window. Make necessary changes and click the Save Changes button.</p>
+
+                <p>The Room Number field will be visible only if it is enabled for the customer and it can be set as Unique for the Organization/Site/Building/Floor. It is also possible to have the Site or Building Code or both as prefix to the Room Number. This is disabled by default, but can be turned on for the customer.</p>
+
+                <p>If the Room Number is set to be unique and the entered room number already exists, it will display a message "Room No. already exists for the Organization/Site/Building/Floor" corresponding to the set Uniqueness. If any prefix has been set for Room Number for the customer, then a read-only prefix will be displayed before the Room Number Text box. Only the Room Number need be entered, the prefix will be automatically inserted.</p>
+
+                <p>By default Space Category is enabled. If the value selected is one of the Common Area space categories, like Building Common, Floor Common or Vertical Space it will not be possible to edit/set the Organizational Unit for this space, and all Organizational level combo boxes will be disabled. But if it is required to assign Organizational Units toCommon Spacesalso, Organizational Unit Assignment to Common Area can be enabled for the customer.</p>
+
+                <p>Data for additional data fields can also be entered through this data entry window. </p>
+
+                <p><span class="header1">Share Space</span></p>
+
+                <p>Provision for Sharing a Space between Multiple Organization Units is allowed. This is needed for sharing spaces like Consulting Rooms, Conference Halls, etc. between different departments.</p>
+
+                <p>If 'Space Allocation to Multiple Departments' option is enabled for the customer, a link <span class="header2">'Share Space'</span>  will be displayed along with Organizational Unit in the Data Entry window. The Administrator can view/add/edit/delete the sharing of space using this option. The Sharing among different Organizational Units should sum up 100.</p>
+
+
+                <p>If the selected Space is already shared, it will be indicated with a caption ‘Shared’ next to the Organizational Unit name. Click '<span class="header2">View</span>' link to view the existing sharing details.  Click View link, the Space Sharing by Organizational Units window opens up with the percentages of already assigned Organizational Units.</p>
+
+                <p><span class="header3">Add:</span> On clicking <span class="header2">Add</span>  <img class="helpicon" src="Content/Icons/data_addN.png" alt="Add" /> icon, Assign Shared Organizational Unit window will be displayed with Org. Units combo boxes and Percentage textbox. Select the required Organization Unit name from the required level and enter the percentage. The sharing details will be saved by clicking Add button. </p>
+
+                <p><span class="header3">Edit:</span> Space sharing can be edited by clicking the <span class="header2">Edit</span> <img class="helpicon" src="Content/Layout/edit_button.png" alt="Edit" /> icon. The Sharing among different Organizational Units should sum up to 100.</p>
+
+                <p><span class="header3">Delete:</span> Remove an assigned Organizational Unit by selecting the same and clicking the <span class="header2">Delete</span> <img class="helpicon" src="Content/Layout/delete_button.png" alt="Delete" /> icon.</p>
+
+                <p><span class="header2">Multiple Edit</span></p>
+
+                <p>Multiple records can be edited by selecting the required spaces using the Shift or Ctrl keys, and then clicking on the Edit icon. A window will be displayed listing the fields that can be edited. Select the required Field and enter or select the value to be updated to the selected Spaces and click Save Changes button. The changes have to be made selecting one field at a time. </p>
+
+                <h1>Assign Space Standard</h1>
+
+                <p>This option is for assigning space standard and space assignment type to spaces.Select <span class="header2">Assign Space Standard</span> <img class="helpicon" src="Content/Icons/assign_spacE.png" alt="Assign Space Standard" /> icon.Space standard and Space Assignment Type can be assigned/de-assigned by invoking this option and then selecting the space for which space standard is to be assigned. Space Assignment Type can be set to Assignable, Scheduling Space and Unassignable. Scheduling Space option will be available only if Team Room Booking module is enabled for the customer.</p>
+
+                <p><span class="header1">Assignable:</span> </p>
+                <p>If Workspace Booking is enabled for the customer and the Space Assignment Type is selected as Assignable, a link named  <span class="header2">'Seats'</span> will be displayed against Room Seating Capacity option to define seats for the selected space. On selecting this link, Seats window will be displayed listing all the available seats (if any). </p>
+                <p>User can add or delete single/multiple seat(s) to/from the selected space using the following options listed in the Seats page.   An option to set seats as Hoteling Seats also will be displayed in the Seats list page.</p>
+                <p>Different options such as with Prefix, With Room Number and without Prefix are provided to set the Seat Number while adding the Seats. </p>
+                <p> <span class="header2">Add Single Seat:</span> The user can add seats to the selected space, one at a time using this option. To add a single seat to the selected space, the user has to select  <span class="header2">Add</span>  <img class="helpicon" src="Content/icons/data_addN.png" alt="Add" />  icon and select 'Single' radio button. Then options to specify the Prefix and the Number of the specific seat will be displayed in the Add Seat window. The number of seats that can be added is limited to the Minimum Seating Capacity assigned to the selected space. </p>
+                <p> <span class="header2">Add Multiple Seats:</span> The user can add multiple seats at a time to the selected space using this option. To add multiple seats to the selected space, the user has to select  <span class="header2">Add</span>  <img class="helpicon" src="Content/icons/data_addN.png" alt="Add" />  icon and select 'Multiple' radio button. Then options specify the Prefix of the seats and the number range in which the seats are to be added in the Add Seat window. The number of seats that can be added is limited to the Minimum Seating Capacity assigned to the selected space. </p>
+                <p>All the Seats set as Hoteling Workspaces can be booked by Users of all User Roles.</p>
+                <p><span class="header2">Delete Seat: </span> Seats added can be deleted by selecting the required seat and then clicking <span class="header2">Delete </span> icon.</p>
+                <p>
+                    <span class="header2">Update:</span> Seats can be set as Hoteling Seat by selecting the checkbox of the required Seat and then clicking Update button.
+                </p>
+                <p><span class="header1">Hoteling:</span>If Space Assignment Type is selected as Hoteling and a Room Seating Capacity is given, Hoteling Workspaces (equal to the count of Room Seating Capacity) will be added to Space. These Workspaces can be booked for Workspace Reservations. These Workspaces can be booked by Users of all User Roles.</p>
+
+                <p><span class="header1">Special Use Rooms:</span> If Space Assignment Type is selected as Special Use Rooms and a Room Seating Capacity is given, Special Use Rooms (equal to the count of Room Seating Capacity) will be added to Space. These Workspaces can be booked for Workspace Reservations by the Concierges only.</p>
+
+                <p><span class="header1">Scheduling Space:</span> If Space Assignment Type is selected as Scheduling Space, an option to select the Amenities of the room and its count will be displayed. A Team Room can be booked only if the Space Assignment type is assigned as Scheduling Space.</p>
+
+                <h1>Totalize</h1>
+                <p>This option is to show the Total Count, Gross Area Total & Net Area Total of the selected spaces.</p>
+                <p>Select the records to be totalized and click on <span class="header2">Totalize</span> <img class="helpicon" src="Content/Icons/totalize.png" alt="Totalize" /> icon. A message box will be displayed with the Number of Spaces selected, and the Gross and Net Areas of the selected spaces.</p>
+
+                <p>Apart from this, if any additional data fields of Space are set as Totalizable, the total value of such fields also will be shown.  </p>
+
+                <h1>Attachments</h1>
+                <p>Users can add/edit/delete/view/download attachments to a Space using this option. Select the required Asset and click the <span class="header2">Attachments</span>   icon. The files that can be attached will be restricted to data files like Word, Excel, pdf, jpg, gif, bmp etc.</p>
+                <p><span class="header3">Add</span> – An attachment can be added by selecting the Attachment Category, and the file. The attachment has to be uploaded by clicking on the Save button.</p>
+                <p><span class="header3">Edit</span> – An Attachment can be edited by clicking on the <span class="header2">Edit</span> <img class="helpicon" src="Content/Layout/edit_button.png" alt="Edit" />  icon The Edit Attachment window will be displayed with the current file name. The user can select the attachment category and the required file open. The attachment has to be updated by clicking on theSave Changes button</p>
+                <p><span class="header3">Delete</span> - Delete an attachment by selecting the required file and clicking the <span class="header2">Delete</span> <img class="helpicon" src="Content/Layout/delete_button.png" alt="Delete" />   icon.</p>
+                <p><span class="header3">View</span> – The attachment can be viewed by selecting the file and then clicking the <span class="header2">View</span>  <img class="helpicon" src="Content/Icons/view-drawingN.png" alt="View" />  icon.The selected attachment will be opened in an attachment viewer. View is supported only for image files</p>
+                <p><span class="header3">Download</span> – Attachment can be downloaded and saved in the user’s computer by clicking the <span class="header2">Download</span> <img class="helpicon" src="Content/Layout/download_icon.png" alt="Download" /> icon </p>
+
+                <h1>Show Drawing</h1>
+
+                <p>This option is for showing the selected Space in the drawing. Select the Space record from the Data Grid and click on the <span class="header2">Show Drawing</span> <img class="helpicon" src="Content/Images/Drawings/show_drawigs.png" alt="Show Drawing" title="Show Drawing" />. The drawing will be displayed with the selected Space hatched.</p>
+
+                <h1>Show Zoomed</h1>
+
+                <p>This option is for showing the selected Space in drawing in the zoomed in position. Select the Space record and click on the <span class="header2">Show Zoomed</span>  <img class="helpicon" src="Content/Images/Drawings/show_zoomed1.png" alt="Show Zoomed" />  icon. The drawing will be displayed in the zoomed in position with the selected space hatched.</p>
+
+                <h1>Export</h1>
+
+                <p>This option is to export the space to the Excel. On clicking Export icon, a confirmation message, "Do you want to export the data along with Space Handle?" with Yes and No buttons will be displayed. On clicking Yes to the message, data will be exported with space handle. Else it will be exported to excel without space handle.</p>
+
+                <p>If any Shared Spaces exist, such spaces will be exported as separate rows for each organizational unit in the shared space. All space details except the area details and organizational units will be same for those rows.</p>
+
+                <h1>Keyword Search</h1>
+
+                <p>This option helps users to search for space details using keywords. The keyword could belong to any data field of the space data. The user need not know or specify which field to look in. The Keyword could be any part of the space data viz. space category, space function, room number, cost category, area, etc. or the additional data fields.</p>
+
+                <p>On entering the keyword and clicking on the <span class="header2">Search </span>  <img class="helpicon" src="Content/Icons/keyword-search.png" alt="Keyword Search" />  icon, the data grid will be filtered with space records having data matching the specified keyword.</p>
+
+                <p>A facility user would be able to view only those floors/divisions for which privileges are granted to him. </p>
+
+                <h1>Advanced Search</h1>
+
+                <p>This option  <img class="helpicon" src="Content/Icons/advanced-search.png" alt="Advanced Search" />   helps users to search for space details with specific data in known data fields. The data being searched for can be selected from the list boxes or entered into text boxes provided against the data fields. The user can select one or more data fields viz. space category, space function, room number, cost category, area, etc. or the additional data fields. After entering the search criteria and click <span class="header2">Search</span> button, the data grid will be filtered with space records which satisfy the selection criteria. </p>
+
+                <p>Fields to be displayed in the Search window can be set using the <span class="header2">Configure</span> <img class="helpicon" src="Content/Icons/settings_icon.png" title="Configure" /> icon, provided in the Search window. </p>
+
+                <p>Search criteria entered in the Search window can be cleared by clicking the <span class="header2">Clear</span> button provided in the Search window. After clearing the <span class="header2">Search</span> criteria and click Search button to clear the Search Results in the Space Data grid.</p>
+
+            </div>
+        </section>
+    </content>
+</page>
+<style type="text/css">
+    h3.Mainheader {
+        color: #178AE8;
+    }
+
+    .header1 {
+        font-weight: bold;
+        color: #178AE8;
+    }
+
+    .header2 {
+        font-weight: normal;
+        color: #178AE8;
+    }
+
+    p {
+        margin-left: 38px;
+        font-size: 13px;
+        margin-right: 3em;
+    }
+
+    .header3 {
+        font-weight: bold;
+        color: black;
+    }
+    /**/ h1 {
+        color: #178AE8;
+        font-size: 1.3em;
+        margin-left: 38px;
+    }
+
+    h2 {
+        color: #178AE8;
+        font-size: 1em;
+        margin-left: 38px;
+    }
+
+    .config {
+        background-color: #178AE8;
+    }
+
+    .helpicon {
+        vertical-align: baseline;
+        width: 20px;
+        height: 20px;
+    }
+</style>

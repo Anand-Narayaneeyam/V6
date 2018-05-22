@@ -1,0 +1,179 @@
+﻿
+<div style="height:100%;overflow: hidden;">
+    <split-view [splitviewObject]="splitviewInput" [pageTitle]="pageTitle" (onSecondaryClose)="onSplitViewClose($event)">
+        <primary-view>
+            <div style="height:100%;">
+                <div style="height:35px;">
+                    <submenu>
+                        <sub-menu [source]=menuData [count]=totalItems [menuIds]=enableMenu (onSubMenuChange)="onSubMenuChange($event);"> </sub-menu>
+                    </submenu>
+                </div>
+                <div style="overflow: hidden;height: calc(100% - 35px);">
+                    <div [ngClass]="Stylename" *ngIf="pageTarget!=5">
+                        <search *ngIf="fieldObject" [disable]="disable" [searchtype]="'Grid'" [keyWordLookup]=keyWordLookup [advancesearch]=true [Key]=2 [datasource]=advancelookup [dataKey]="inputItems.dataKey" [KeywordFields]=KeywordFieldObject (SaveAs)="SaveAs($event)" (Delete)="Delete($event)" (onloadSearch)="onloadSearch($event)" (loadAdvanceSearch)="advanceSearch()" (Clear)="Clear($event)" (Submit)="Submit($event)" [smartSearch]=isSmartSearch></search>
+                    </div>
+                    <div style="height:100%;overflow: hidden;">
+
+                        <div style="width:100%;display:block" [ngClass]="totalItems > itemsPerPage ? 'pagewithPaging':'pagewithoutPaging'">
+                            <slide></slide>
+                            <gridView [dataSource]="itemsSource" style="display:block" [style.height]="gridHeight" [properties]="inputItems" [columns]="fieldObject" [arrHighlightRowIds]="arrHighlightRowIds" [refreshgrid]="refreshgrid" (onSorting)="onSort($event)" (onRowUpdate)="RowUpdate($event)" (onContextMenuOnClick)="onContextMenuOnClick($event)"></gridView>
+                            <analytics *ngIf="showAnalytics" [properties]="analyticsInput" (closeAnalytics)="closeAnalytics($event)"></analytics>
+                        </div>
+                        <div style="height:45px;width:100%;float:left;display:block;">
+                            <paging [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="pageChanged($event);"></paging>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </primary-view>
+        <secondary-view *ngIf="Target == 2">
+            <spacedata-addedit [moduleId]="moduleId" *ngIf="Target ==2 && splitviewInput.showSecondaryView == true" (submitSuccess)="submitReturn($event)" [action]="action" [btnName]="btnName" [selectedId]="inputItems.selectedIds" [seledrwgids]="selectedDrwgIds" [fieldDetailsAdd]="fieldDetailsAdd" [sessionUserRoleId]="sessionUserRoleId" [strPopupText]="strPopupText"></spacedata-addedit>
+        </secondary-view>
+        <secondary-view *ngIf="Target == 3">
+            <div style="width:330px !important">
+                <assign-spacestd *ngIf="splitviewInput.showSecondaryView && (inputItems.selectedIds[0] || multipledata)" [DrawingId]="DrawingId" (assignDeassignSuccess)="asignDeassignReturn($event)" [moduleId]="moduleId" [selectedId]="inputItems.selectedIds[0]" [multipledata]="multipledata" [fieldDetails]="fieldDetailsAssignSpaceStd" [seledrwgids]="selectedDrwgIds" [showbtndeassign]="showbtndeassign" [strPopupText]="hyperLinkText"></assign-spacestd>
+            </div>
+        </secondary-view>
+        <secondary-view *ngIf="Target == 5">
+            <display-setting [IsGrid]="blnIsGrid" [DisplaySettingCategoryId]="dispSettingCategoryId" [AdditionalDataFieldCategoryId]="additionalDataField" (emitdisplaySetting)="getUpdatedDisplaySettings($event)"></display-setting>
+        </secondary-view>
+        <secondary-view *ngIf="Target == 6 && isAttachment">
+            <attachments *ngIf="splitviewInput.showSecondaryView && Target == 6 && isAttachment" [attachmentCategoryId]="5" [moduleId]="" [baseEntityId]="inputItems.selectedIds[0]" (attachmentSuccess)="attachmentSuccess($event)" class="attachment"></attachments>
+        </secondary-view>
+        <secondary-view *ngIf="Target == 7">
+            <spaceResourceList *ngIf="splitviewInput.showSecondaryView==true" style="display: block;width:600px;" [SpaceData]="inputItems.rowData" [selectedId]="inputItems.selectedIds[0]"></spaceResourceList>
+        </secondary-view>
+        <secondary-view *ngIf="Target == 8">
+            <multiple-Edit *ngIf="splitviewInput.showSecondaryView" [datasource]="multipleEditFieldDetails" [applicationFormId]="spaceService.spaceAddEditFrmId" [moduleId]="moduleId" (onUpdate)="onMultipleEditUpdate($event)"> </multiple-Edit>
+        </secondary-view>
+        <secondary-view *ngIf="Target == 11">
+            <seats-List *ngIf="splitviewInput.showSecondaryView" [SelectedSpaceId]="inputItems.selectedIds[0]" [RoomSeatCapacity]="inputItems.rowData['Seating Capacity']" (seatSuccess)="seatSuccessout($event);"></seats-List>
+        </secondary-view>
+    </split-view>
+</div>
+<slide [width]="slidewidth" type="'dialog'" [position]="position" [show]="showSlide" [isAnimate]="false" (closeDialog)="closeSlideDialog($event,1)">
+    <div tabindex="0" title="Space Details  Number of Spaces selected = {{selectedCount}} {{totalizfocuseread}}">
+        <div style="padding:5px 5px 5px 5px; border:1px solid;">
+            <table align="center" style="margin:5px 0px 5px 0px;">
+                <tr><td style="font-size:15px;"><b>Space Details</b><br><br></td></tr>
+                <tr><td style="font-size:15px;">No. of Spaces selected = <b>{{selectedCount}}</b> <br><br></td></tr>
+                <tr><td style="font-size:15px;" [innerHtml]="totalizeData"></td></tr>
+            </table>
+        </div>
+        <div style="width:100%; text-align:center;margin-top:5px;">
+            <button class="Savebutton " type="button" (click)="closeTotalize($event,1)">OK</button>
+        </div>
+    </div>
+</slide>
+<slide [width]="slidewidth" type="'dialog'" [position]="'top-right'" [show]="showSlideExport" (closeDialog)="closeSlideDialog($event,2)">
+    <div tabindex="0">
+        Do you want to export the data along with 'Space Handle'?
+    </div>
+    <div>
+        <button class="Savebutton " type="button" (click)="okExportClick($event)">Yes</button>
+        <button class="Savebutton " type="button" (click)="cancelExportClick($event)">No</button>
+    </div>
+</slide>
+
+<style>
+    .search-containerInline {
+        position: fixed !important;
+        position: -ms-page !important;
+        overflow: visible;
+        right: 0;
+        top: 134px !important;
+        margin-right: 10px;
+        z-index: 10;
+    }
+
+    @media only screen and (min-device-width: 320px) and (max-device-width: 812px) and (orientation: portrait) {
+        .search-containerInline {
+            display: none !important;
+        }
+    }
+
+    @media only screen and (min-device-width: 320px) and (max-device-width: 812px) and (orientation: landscape) {
+        .search-containerInline {
+            display: none !important;
+        }
+
+        .search-containerInlinefromgrid {
+            display: none !important;
+        }
+    }
+
+    .search-containerInlinefromgrid {
+        position: fixed !important;
+        position: -ms-page !important;
+        right: 0;
+        top: 126px !important;
+        margin-right: 10px;
+        z-index: 10;
+    }
+
+    .search-containerInline {
+        position: fixed !important;
+        position: -ms-page !important;
+        right: 0;
+        top: 133px !important;
+        margin-right: 10px;
+        z-index: 10;
+    }
+
+    @media screen and (-ms-high-contrast: active) and (max-width:660px ), (-ms-high-contrast: none) and (max-width:660px ) {
+        .search-containerInlinefromgrid {
+            position: absolute !important;
+            top: 2px !important;
+        }
+
+        :host .filter {
+            position: -ms-page !important;
+            margin-left: -300px !important;
+        }
+
+        :host #slideout {
+            position: -ms-page !important;
+        }
+    }
+
+    @media screen and (-ms-high-contrast: active) and (min-width:660px ), (-ms-high-contrast: none) and (min-width:660px ) {
+        .search-containerInlinefromgrid {
+            position: absolute !important;
+            top: 2px !important;
+        }
+
+        :host .filter {
+            position: -ms-page !important;
+            margin-left: -540px !important;
+        }
+
+        :host #slideout {
+            position: -ms-page !important;
+        }
+    }
+
+    @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+
+        :host .background-block-slide {
+            position: -ms-page !important;
+        }
+    }
+
+
+    .attachment {
+        width: 750px;
+        display: block;
+    }
+
+    @media only screen and (min-device-width: 320px) and (max-device-width: 813px) and (orientation: portrait) {
+        .attachment {
+            width: 100% !important;
+        }
+    }
+
+    @media only screen and (min-device-width: 320px) and (max-device-width: 812px) and (orientation: landscape) {
+        .attachment {
+            width: 100% !important;
+        }
+    }
+</style>

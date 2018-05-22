@@ -1,0 +1,8 @@
+﻿    <!--<div style="margin-left:10px;">
+    <gridView style="margin-top:5px" [dataSource]="itemsSource" [properties]="inputItems" [columns]="fieldObject"></gridView>-->
+
+    <!--<paging [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChanged)="onPageChanged($event);"></paging>
+
+</div>
+<button type="button" (click)="updateReportsAccessData($event)"> Save Changes </button>-->
+<tree-view [FieldTable]=FieldTable (UpdateValues)="submit($event)" [labelData]="labelData" [FieldColumn]=clmFieldTable [checkedIds]="selectedIds" [DataKey]=DataKey [Fields]=Fields [dsbleSaveBtn]="dsbleSaveBtn"></tree-view>

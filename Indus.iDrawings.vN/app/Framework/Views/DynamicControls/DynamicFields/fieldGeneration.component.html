@@ -1,0 +1,107 @@
+﻿<span style="display:none">
+    <img title="Display Settings" src="Content/Images/cogwheel.png" style="height:25px;width:25px;margin-left:95%" (click)="toggleDisplaySettings()">
+</span>
+<form #form="ngForm" id="form" (ngSubmit)="onSubmit(form,form.value)" [ngClass]="multiColumnFormClass">
+    <!--<div class="list-group" dnd-sortable-container *ngIf="dataSource" [sortableData]="dataSource">
+        <div *ngFor="let field of dataSource;let i=index" class="MainContainer {{//field.FieldId}} list-group-item" dnd-sortable [sortableIndex]="i">-->
+    <div class="form-group" style="">
+        <div class="list-group" *ngIf="dataSource && validationData" style="-moz-padding-top: 20px;overflow:auto;display:block;height:100%;">
+            <div *ngFor="let field of dataSource;let i=index" class="MainContainer_{{field.FieldId}}" [ngClass]="multiColumnClass" style="min-height: 0px!important;display:block!important">
+                <StringTextBox [labelwidth]="labelWidth" [SetAlignment]="SetAlignment" id="StringTextBox" [style.display]="showComponent(field.FieldLabel,field.IsVisible)" name="StringTextBox" *ngIf="field.DataEntryControlId == '1'&& (field.HasAutoLookUp== undefined || field.HasAutoLookUp== false) " [validationData]='validationData' [fieldObject]=field (txtBoxChange)="txtBoxChanges($event)" [inttabIndex]="i" (keyUpemit)="emitKeyUp($event)" [blnPopupImage]="blnPopupImage" (popupClick)="popupClick($event)"></StringTextBox>
+                <LookupStringTextBox [labelwidth]="labelWidth" [SetAlignment]="SetAlignment" id="LookUpStringTextBox" [style.display]="showComponent(field.FieldLabel,field.IsVisible)" name="LookUpStringTextBox" *ngIf="field.DataEntryControlId == '1' && field.HasAutoLookUp== true" [validationData]='validationData' [fieldObject]=field [inttabIndex]="i" (lookupSelectEmit)="lookupSelect($event)"></LookupStringTextBox>
+
+                <DateComponent [disableDates]="disableDates" [labelwidth]="labelWidth" [SetAlignment]="SetAlignment" id="Datecomponent" [style.display]="showComponent(field.FieldLabel,field.IsVisible)" name="Datecomponent" *ngIf="field.DataEntryControlId == '2' && holidaysDisabled" [validationData]='validationData' [fieldObject]=field (datepickerOut)="datePickerChange($event)" [showDateOnLoad]="showDateOnLoad"></DateComponent>
+
+                <DateComponent [labelwidth]="labelWidth" [SetAlignment]="SetAlignment" id="Datecomponent" [style.display]="showComponent(field.FieldLabel,field.IsVisible)" name="Datecomponent" *ngIf="field.DataEntryControlId == '2' && !holidaysDisabled" [validationData]='validationData' [fieldObject]=field (datepickerOut)="datePickerChange($event)" [showDateOnLoad]="showDateOnLoad"></DateComponent>
+
+                <TextAreaComponent id="TextAreaComponent" [SetAlignment]="SetAlignment" [style.display]="showComponent(field.FieldLabel,field.IsVisible)" name="TextAreaComponent" *ngIf="field.DataEntryControlId == '3'" [validationData]='validationData' [fieldObject]=field></TextAreaComponent>
+
+                <DropDownListComponent [labelWidth]="labelWidth" [SetAlignment]="SetAlignment" id="DropDownListComponent" [style.display]="showComponent(field.FieldLabel,field.IsVisible)" name="DropDownListComponent" *ngIf="field.DataEntryControlId == '4'" [validationData]='validationData' [fieldObject]=field (ddlChange)="ddlRelationChange($event)" [blnPopupImage]="blnPopupImage" [strPopupText]="strPopUpTxt" (popupClick)="popupClick($event)"></DropDownListComponent>
+
+                <RadioComponent id="RadioComponent" [style.display]="showComponent(field.FieldLabel,field.IsVisible)" name="RadioComponent" *ngIf="field.DataEntryControlId == '5'" [validationData]='validationData' [fieldObject]=field (rbtnClick)="rbtnChange($event)"></RadioComponent>
+
+                <CheckBoxComponent id="CheckBoxComponent" [style.display]="showComponent(field.FieldLabel,field.IsVisible)" name="CheckBoxComponent" *ngIf="field.DataEntryControlId == '6'" [validationData]='validationData' [fieldObject]=field (chkBoxClick)="chkBoxChange($event)"></CheckBoxComponent>
+
+                <ListBoxComponent id="ListBoxComponent" [style.display]="showComponent(field.FieldLabel,field.IsVisible)" name="ListBoxComponent" *ngIf="field.DataEntryControlId == '7'" [validationData]='validationData' [fieldObject]=field [strLstBoxValidateMessage]=strLstBoxValidateMessage (lstBox)="listBoxChange($event)" (selAll)="SelectAllChange($event)"></ListBoxComponent>
+
+                <DateTimeComponent id="DateTimeComponent" [style.display]="showComponent(field.FieldLabel,field.IsVisible)" name="DateTimeComponent" *ngIf="field.DataEntryControlId == '8'" [validationData]='validationData' [showDateTimeOnLoad]="showDateTimeOnLoad" [fieldObject]=field></DateTimeComponent>
+
+                <FileUploadComponent id="FileUpload" [style.display]="showComponent(field.FieldLabel,field.IsVisible)" name="FileUpload" *ngIf="field.DataEntryControlId == '9'" [validationData]='validationData' [fieldObject]=field (fileData)="getFileData($event)" [commonFileExtensions]='strFileExtensions'></FileUploadComponent>
+
+                <ColorPicker id="ColorPicker" [style.display]="showComponent(field.FieldLabel,field.IsVisible)" name="ColorPicker" *ngIf="field.DataEntryControlId == '11'" [fieldObject]=field (colorPickerValueChange)="getColorChange($event)"></ColorPicker>
+
+                <ImageComponent id="ImageUpload" [style.display]="showComponent(field.FieldLabel,field.IsVisible)" name="ImageUpload" *ngIf="field.DataEntryControlId == '12'" [validationData]='validationData' [fieldObject]=field (imageData)="getImageData($event)" [fileExtensions]='strFileExtensions'></ImageComponent>
+
+                <LabelComponent [style.display]="showComponent(field.FieldLabel,field.IsVisible)" *ngIf="field.DataEntryControlId == '15'" [fieldObject]=field></LabelComponent>
+
+                <ButtonComponent [style.display]="showComponent(field.FieldLabel,field.IsVisible)" *ngIf="field.DataEntryControlId == '10'" [fieldObject]=field (btnChange)="getBtnChanges($event)"></ButtonComponent>
+
+                <DynamicListComponent [style.display]="showComponent(field.FieldLabel,field.IsVisible)" *ngIf="field.DataEntryControlId == '13'" [fieldObject]=field (dynamicListAdd)="getDynamicListAdd($event)" (dynamicListRemove)="getDynamicListRemove($event)"></DynamicListComponent>
+
+                <div *ngIf="field.SubFields" class="sub-fields">
+                    <div *ngFor="let subField of field.SubFields" class="sub-container {{subField.FieldId}}">
+
+                        <StringTextBox id="StringTextBox" name="StringTextBox" *ngIf="subField.DataEntryControlId == '1'" [validationData]='validationData' [fieldObject]=subField></StringTextBox>
+
+                        <DateComponent id="Datecomponent" name="Datecomponent" *ngIf="subField.DataEntryControlId == '2' && holidaysDisabled" [disableDates]="disableDates" [validationData]='validationData' [fieldObject]=subField></DateComponent>
+
+                        <DateComponent id="Datecomponent" name="Datecomponent" *ngIf="subField.DataEntryControlId == '2' && !holidaysDisabled " [validationData]='validationData' [fieldObject]=subField></DateComponent>
+
+                        <TextAreaComponent id="TextAreaComponent" name="TextAreaComponent" *ngIf="subField.DataEntryControlId == '3'" [validationData]='validationData' [fieldObject]=subField></TextAreaComponent>
+
+                        <DropDownListComponent id="DropDownListComponent" name="DropDownListComponent" *ngIf="subField.DataEntryControlId == '4'" [validationData]='validationData' [fieldObject]=subField (ddlChange)="ddlRelationChange($event)"></DropDownListComponent>
+
+                        <RadioComponent id="RadioComponent" name="RadioComponent" *ngIf="subField.DataEntryControlId == '5'" [validationData]='validationData' [fieldObject]=subField></RadioComponent>
+
+                        <CheckBoxComponent id="CheckBoxComponent" name="CheckBoxComponent" *ngIf="subField.DataEntryControlId == '6'" [validationData]='validationData' [fieldObject]=subField></CheckBoxComponent>
+
+                        <ListBoxComponent id="ListBoxComponent" name="ListBoxComponent" *ngIf="subField.DataEntryControlId == '7'" [validationData]='validationData' [fieldObject]=subField></ListBoxComponent>
+
+                        <DateTimeComponent id="DateTimeComponent" name="DateTimeComponent" *ngIf="subField.DataEntryControlId == '8'" [validationData]='validationData' [fieldObject]=subField></DateTimeComponent>
+
+                        <FileUploadComponent id="FileUpload" name="FileUpload" *ngIf="field.DataEntryControlId == '9'" [validationData]='validationData' [fieldObject]=subField></FileUploadComponent>
+
+                        <ColorPicker id="ColorPicker" name="ColorPicker" *ngIf="field.DataEntryControlId == '11'" [fieldObject]=subField></ColorPicker>
+
+                        <ImageComponent id="ImageUpload" name="ImageUpload" *ngIf="field.DataEntryControlId == '12'" [fieldObject]=subField></ImageComponent>
+
+                        <LabelComponent *ngIf="subField.DataEntryControlId == '15'" [fieldObject]=subField></LabelComponent>
+                    </div>
+                </div>
+                <span *ngIf="blnshowSubSwitches">
+                    <label class="switch">
+                        <input #chk type="checkbox" (change)="onSelection($event,field.FieldId,field.IsVisible)" />
+                        <span class="slider round"></span>
+                    </label>
+                </span>
+            </div>
+        </div>
+    </div>
+    <span [style.display]="enableDisplaySettings">
+
+    </span>
+    <span *ngIf="showButton == undefined || showButton == true">
+        <button type="submit" [style.display]=btnVisible showButton="showButton" class="save-button" role="button" [attr.aria-label]="btnName">{{btnName}}</button>
+    </span>
+    <span *ngIf="showButton == false">
+    </span>
+    <!--<span *ngIf="showButton == undefined || showButton == true" class="forFocusSwitch" tabindex="0" (focusout)="forFocusSwitchtoFirst($event)">
+    </span>-->
+
+
+</form>
+
+<style type="text/css">
+    @-moz-document url-prefix() {
+        .list-group {
+            padding-right: 20px !important;
+        }
+    }
+
+    button.save-button:focus {
+        /*border:3px solid rgba(0,0,0,.25)!important;*/
+        outline: 1px solid #00a3e8 !important;
+        outline-offset: 3px;
+    }
+</style>
+

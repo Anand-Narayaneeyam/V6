@@ -1,0 +1,12 @@
+﻿<page [pagetitle]="pagePath">
+    <content>
+        <span>
+            <submenu>
+                <sub-menu [source]=menuData [menuCard]=iscard [menuIds]=enableMenu (onSubMenuChange)="onSubMenuChange($event);"> </sub-menu>
+            </submenu>          
+        </span>
+        <div>
+            <tree-view [FieldTable]=FieldTable (UpdateValues)="submit($event)" [FieldColumn]=clmFieldTable [checkedIds]="selectedFieldData" [DataKey]=DataKey [Fields]=Fields [selectionCriteria]="Criteria" [HideButton]="true" [isChanged]="isChanged"></tree-view>
+        </div>
+    </content>
+</page>

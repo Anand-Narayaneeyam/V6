@@ -1,0 +1,282 @@
+﻿<page [pagetitle]="pagePath">
+    <pagepath>
+    </pagepath>
+    <content>
+        <section title="Drawings" [isExpanded]="true" (onSectionExpandChange)="onSectionExpandChange($event)">
+            <div>
+
+                <p>All drawings that are unlocked and available for Asset Management will be listed here, organized by Site, Building and Floor with the Drawing Category, Drawing File Name and File Size. If the option 'Utility Drawing Support' is enabled by Indus, all utility drawings enabled under Drawing Management also will be listed. </p>
+                <p>The Space data and Asset data are fetched from the database and displayed in the drawing in dynamically created layers. Only the Space Polyline and Space Data layers and any predefined default display layers will be turned on by default.</p>
+                <p>The Asset data corresponding to the selected Floor drawing will be displayed on the right side of the Drawing in a tab sheet labeled as 'Operational' and 'Warehoused'. All Assigned Assets will be listed under Operational Tab and all unassigned assets if any are also displayed in tab sheet labeled as 'Warehoused'</p>
+                <p>If the user has no access permission to a Division, the assets placed on spaces belonging  to that Division will not be displayed in the drawing and data of those assets also will not be listed.</p>
+
+                <p><span class="header3">Right Click Options</span></p>
+                <p>On right clicking the mouse on the Asset in the drawing, a pop-up menu will appear with the options like Edit Asset, Select Multiple Spaces by Window, Pan, Zoom In, Zoom Out, Zoom Window, Zoom Extents and Layers.</p>
+
+                <p><span class="header2">Edit Asset:</span> This option is to edit the Asset data.</p>
+                <p><span class="header2">Select Multiple Spaces by window:</span> This option is for selecting multiple spaces in the drawing by selecting individual spaces or by selecting a window for viewing details of the Assets and space data linked to those spaces.</p>
+                <p><span class="header2">Pan:</span> This option enables the user to pan the drawing. On selecting this option, the mouse pointer changes to a hand symbol. Now click the left mouse button, and without releasing it, move the mouse to pan the drawing</p>
+                <p><span class="header2">Zoom In:</span> This option enables the user to Zoom in the Drawing.</p>
+                <p><span class="header2">Zoom Out:</span> This option enables the user to zoom out the Drawing.</p>
+                <p><span class="header2">Zoom Window:</span> This option enables the user to zoom the Drawing to a Window selection.</p>
+                <p><span class="header2">Zoom Extents:</span> This option enables the user to view the Drawing fully within the drawing display window by resetting any zoomed or panned states.</p>
+                <p><span class="header2">Layers:</span> This option enables turning On and Off the layers in the base drawing. The dynamically generated layers are not available here. These have to be controlled through the Display Settings. Clicking on the Default button turns on the default space polyline layers.</p>
+
+                <p>View Drawing tab is provided with a set of icons namely Distribution Map, Space Tools, Asset Tools, Tools, Maximize, Export and Save As. All Attachments uploaded with file types - bmp, jpeg etc can be viewed by double clicking the corresponding Asset or space.</p>
+
+                <p><span class="header1">Distribution Map</span></p>
+                <p>Distribution Map <img class="helpicon" src="Content/Images/Drawings/distributionMap-menu-button.png" title="Distribution Map" /> allows users to get the distribution of space areas across different Organizational Units (Divisions, Departments, Cost Centers etc as defined in the Organizational structure) or based on the Validated Fields. The Spaces belonging to different Organizational Units or the Validated Fields are hatched in the drawing with different colors. Users can select the Organizational Units or the validated fields for which the distribution is required. The color is displayed according to the settings in <span class="header2">General Settings: Space: Distribution Map Settings</span> and can be changed by the user if required. </p>
+                <p>User can be change the color by clicking the Settings <img class="helpicon" src="Content/Layout/settings_icon.png" title="Customize" /> icon provided against each Organizational Unit and Validated Field. Settings made here will be applicable for the current instance. A legend based on the distribution map also gets inserted automatically with Color of each Organizational Unit and its Area Sq. Ft.</p>
+
+                <p><span class="header1">Space Tools </span></p>
+
+                <p><span class="header2">Edit Space</span></p>
+                <p>This option is for editing the Space Data in the Drawings. </p>
+
+                <p><span class="header2">Move Legend</span></p>
+                <p>This option is to move the legend added after viewing the Distribution map or Totalize to a user specified location. To move the Legend, select <span class="header2">Move Legend</span> option from <span class="header2">Space Tools</span> <img class="helpicon" src="Content/Images/Drawings/spaceMoreIcon.png" title="Space Tools" /> and then click to specify a new location.</p>
+
+                <p><span class="header2">Select Multiple Spaces by Window</span></p>
+                <p>This option is for selecting multiple spaces in the drawing by selecting individual spaces or by selecting a window for viewing details of the Assets and space data linked to those spaces.</p>
+                <p>Click on the <span class="header2">Select Multiple Spaces by Window</span> option from Space Tools <img class="helpicon" src="Content/Images/Drawings/spaceMoreIcon.png" title="Space Tools" />, a toast message 'Select a window, click to select/deselect space. Right Click to exit' is shown. Then the mouse pointer becomes a cross. Select a window by clicking and dragging inside the drawing. The selected spaces will be hatched. Right Click when all required spaces are selected. Then the Assets assigned in the selected spaces will be highlighted in the Operational Data gird of Drawing page.</p>
+                <p>A selected space can be deselected if required, by clicking on the De-Hatch option in the Right Click.</p>
+
+                <p><span class="header2">Totalize</span></p>
+                <p>This option is to display the Space and Asset details of the selected Spaces. Select the spaces to be totalized using Select Multiple Spaces by window option and click <span class="header2">Totalize</span> option from <span class="header2"> Space Tools</span> <img class="helpicon" src="Content/Images/Drawings/spaceMoreIcon.png" title="Space Tools" />, a message box will be displayed with Space details and Asset Details of the selected spaces. Apart from this, if any additional data fields of Space are set as Totalizable, the total value of such fields also will be shown. The details shown in Totalize window can be added as legend by clicking the Add Legend button in the Totalize window.</p>
+
+                <p><span class="header2">Measure Distance - Point to Point</span></p>
+                <p>This option is used to measure the distance between two points. Select <span class="header2">Measure Distance - Point to Point</span> option from Space Tools <img class="helpicon" src="Content/Images/Drawings/spaceMoreIcon.png" title="Space Tools" /> and the cursor will turn into a cross. Click on the first point from which the distance is to be measured and then click on the end point, the distance between the two points will be displayed. This marked distance can be removed by clicking the De-hatch option.</p>
+
+                <p><span class="header2">Measure Distance - Wall to Wall</span></p>
+                <p>This option is used to measure distance between two Walls. <span class="header2">Measure Distance - Wall to Wall</span> option from Space Tools   and the cursor will turn into a cross. Click close to the wall from which the distance is to be measured. The starting point will snap to the nearest space polyline (Net Polyline for Net only Customers). Then click close to the other wall to which the measurement is to be taken. The end point will snap to the nearest point of the corresponding space polyline/net polyline.  The distance between the two walls will be displayed. This marked distance can be removed by clicking the De-hatch option.</p>
+
+                <p><span class="header2">Measure Area </span></p>
+                <p>This option is used to measure the area of a polygon in a Drawing. To measure an area, Select <span class="header2">Measure Area</span> option from Space Tools <img class="helpicon" src="Content/Images/Drawings/spaceMoreIcon.png" title="Space Tools" /> and the cursor will turn to a cross. Mark the area to be measured by clicking on any one vertex point, and then clicking on the remaining vertex points one after the other. After the last vertex, close the polygon by right clicking in the drawing. The polygon area will be displayed. This marked area can be removed by clicking the De-Hatch option.</p>
+
+                <p><span class="header1">Asset Tools</span></p>
+                <p><span class="header2">De-Link </span></p>
+                <p>This option is to de-link the selected Asset from the assigned Space. The de-linked Asset will be moved to the warehoused grid. Only the Administrator can perform this option. On clicking <span class="header2">De-Link</span> option from Asset Tools <img class="helpicon" src="Content/Images/Drawings/asset_tool.png" title="Asset Tools" />, a toast message 'Select the Asset to be de-linked' will be displayed and the mouse pointer will turn to cross. Select the Asset by clicking on the Asset symbol. A confirmation message will be displayed. On clicking Yes, the selected Asset will be de-linked from the drawing.</p>
+
+                <p><span class="header2">Move Single Asset </span></p>
+                <p>This option is to move an Asset from one point to another. Select <span class="header2">Move Single Asset</span> option from Asset Tools <img class="helpicon" src="Content/Images/Drawings/asset_tool.png" title="Asset Tools" />, a toast message 'Select the Asset to be moved' will be displayed. Then the mouse pointer will turn to cross and select the Asset by clicking on it. Then the selected Asset will be hatched. Click on the exact location to which the asset is to be moved.</p>
+
+                <p><span class="header2">Move Multiple Assets</span></p>
+                <p>This option is to move multiple Assets from one space to another. Moving of multiple Assets to places outside the polyline is not possible through this option. Only Assets placed in the same space can be moved to another space. Only the Administrator can perform this move operation. Select <span class="header2">Move Multiple Assets</span> option from Asset Tools <img class="helpicon" src="Content/Images/Drawings/asset_tool.png" title="Asset Tools" />, a toast message window will be displayed, prompting 'Click to select/deselect Asset'. Right click to exit'. Then the mouse pointer becomes a cross. Select the Assets by clicking on it. On right clicking the mouse after selecting the required assets, a rubber band will appear, which will have the first click point as a fixed point, and the free end following the cursor to show the movement direction. Click the desired point to which the move is to be done. The Assets will be moved based on this move definition. If Some Assets are moved to different spaces after the Multiple Move operation, a confirmation message will be displayed. On clicking 'Yes' to the message, the Assets will be moved to the new locations. On clicking 'No', the move operation will get cancelled and the Assets will be moved back to their original locations. </p>
+
+                <p><span class="header1">Tools</span></p>
+                <p>All the Drawing related operations such as Display Settings, De-Hatch and Stop Blink are grouped under <span class="header2">Tools</span> <img class="helpicon" src="Content/Icons/more_menuN.png" title="Tools" /> icon.</p>
+
+                <p><span class="header2">Display Settings</span></p>
+                <p>This option is for specifying the Common Attributes, Class Attributes and Space Data fields to be displayed in the drawing and the tooltip. Changes made here will be saved as user default settings and will be effective whenever the User opens any drawing. </p>
+                <p>For making permanent changes, an administrator has to click Yes to the confirmation message "Display Settings updated. Do you want to save this as System default?"</p>
+
+                <p><span class="header3">Common Attributes</span></p>
+                <p>The Display Settings for Common Attributes of all Assets that are shown in the Drawing and in the Tooltip can be modified using this option. On selecting this option, the common attributes of all Assets will be listed with check boxes for Drawing and Tooltip. The desired boxes can be checked, and the color of text in the drawing can be changed as required. The changes become effective on clicking the Save Changes button. Changes made here will be saved as User Default Settings and this can be set as System Default settings by clicking Yes to the confirmation message "Display Settings updated. Do you want to set this as System Default?"</p>
+
+                <p><span class="header3">Class Attributes</span></p>
+                <p>The Display Settings for Class specific Attributes of each Asset Class that are shown in the Drawing and in the Tooltip can be modified using this option. On selecting the required Asset Class, any class specific attributes defined for the Asset Class will be listed with check boxes for Drawing and Tooltip. The desired boxes can be checked, and the color of text in the drawing changed as required.</p>
+                <p>The changes become effective on clicking the Save Changes button. Changes made here will be saved as User Default Settings and this can be set as System Default settings by clicking Yes to the confirmation message "Display Settings updated. Do you want to set this as System Default?"</p>
+
+                <p><span class="header3">Space Data</span></p>
+                <p>This option is for specifying the Space Data fields, to be displayed in the drawing, and the tooltip. The changes become effective on clicking the Save Changes button. Changes made here will be saved as User Default Settings and this can be set as System Default settings by clicking Yes to the confirmation message "Display Settings updated. Do you want to set this as System Default?"</p>
+                <p>If a particular data field is to be shown in drawings, check the corresponding check box of the 'Show in Drawing' column.</p>
+                <p>If a particular data field is to be shown in the Tooltip, check the corresponding check box of the 'Show in Tooltip' column. Click Save Changes button  to save the settings. </p>
+                <p>This option is available only for Architectural drawing.</p>
+
+                <p><span class="header2">De-Hatch</span></p>
+                <p>This option is to de-hatch the hatched Space (if any) in the Drawing.</p>
+
+                <p><span class="header2">Stop Blink</span></p>
+                <p>This option is to stop the blinking of the hatched Space (if any) in the Drawing.</p>
+
+                <p><span class="header1">Maximize</span></p>
+                <p>User can change the view mode to full screen by clicking the <img class="helpicon" src="Content/Images/Drawings/Maximize.png" title="Maximize" /> icon provided above the top right corner of the drawing window. User can exit the full screen to normal view by clicking the <img class="helpicon" src="Content/Images/Drawings/Minimize.png" title="Minimize" /> icon provided in the drawing toolbar.</p>
+
+                <p><span class="header1">Export</span></p>
+                <p>This option <img class="helpicon" src="Content/Images/Drawings/exportdwg.png" title="Export" /> is for exporting the current view of the drawing to the user's computer in any of the following formats namely bmp, dwf, svg, pdf etc. The drawing may be exported with the Space data layers, dynamically generated distribution maps, legends and assets if any. </p>
+
+                <p><span class="header1">Save As</span></p>
+                <p>This option <img class="helpicon" src="Content/Images/Drawings/SaveAsDwg.png" title="Save As" /> is for saving the Drawing into dwg format. Versions of the AutoCAD can be selected while saving the Drawing.</p>
+
+                <h3 class="Mainheader">&nbsp;&nbsp;&nbsp;&nbsp; Operational</h3>
+                <p>Assets assigned in the drawing will be displayed under Operational grid at the right side of the Drawing. </p>
+
+                <p><span class="header1">Edit</span></p>
+                <p>This option is for editing the details of an Asset. Select the Asset to be edited in the Data Grid and then click <span class="header2">Edit</span> <img class="helpicon" src="Content/Icons/data_editN.png" title="Edit" /> icon. The details will be displayed. Make necessary changes and click  Save Changes button to save the changes.  </p>
+
+                <p><span class="header1">Multiple Edit</span></p>
+                <p>Multiple records can be edited by selecting the required assets using the Shift or Ctrl keys, and then clicking on the Edit icon. A window will be displayed listing the fields that can be edited. Select the required Field and enter or select the value to be updated to the selected Assets and click Save Changes button. The changes have to be made selecting one field at a time. </p>
+
+                <p><span class="header1">Delete</span></p>
+                <p>This option is for deleting Assets. Select the Asset to be deleted and click <span class="header2">Delete</span> <img class="helpicon" src="Content/Icons/data_deleteN.png" title="Delete" /> icon. A confirmation message will be displayed. On clicking Yes to the confirmation message, the selected Asset will be deleted.</p>
+
+                <p><span class="header1">Class Selection</span></p>
+                <p>Class selection option provided under <span class="header2">Tools</span> <img class="helpicon" src="Content/Icons/settingS.png" title="Tools" /> icon is for flitering the Asset Classes. Asset Classes of all the Assigned Assets  will be listed with check boxes.Check the required Asset classes to be displayed and click Save button. The Assets with the selected Asset Classes will be shown </p>
+
+                <p><span class="header1">De-Link</span></p>
+                <p>This option is to de-link Assets from the drawing. Select the Asset to be de-linked from the Operational data grid and click <span class="header2">De-Link</span> option from <img class="helpicon" src="Content/Icons/settingS.png" title="Tools" /> icon, a message prompting 'Are you sure you want to de-link the selected Asset?' will be displayed. On clicking Yes to the message, the selected Asset will be de-linked from the drawing.</p>
+
+                <p><span class="header1">Show Drawing</span></p>
+                <p>This option is for showing the selected Asset in the drawing. Select the Asset record from the Data Grid and click on the <span class="header2">Show Drawing</span> option from <span class="header2">More</span> <img class="helpicon" src="Content/Icons/moreIconVertical.png" title="More" /> icon. The drawing will be displayed with the selected Asset as hatched and blinking.</p>
+
+                <p><span class="header1">Show Zoomed</span></p>
+                <p>This option is for showing the selected Asset in drawing, in the zoomed in position. Select the Asset from the Operational data grid and click on the <span class="header2">Show Zoomed</span> option from <span class="header2">More</span> <img class="helpicon" src="Content/Icons/moreIconVertical.png" title="More" /> icon. The drawing will be displayed in the zoomed in position with the selected Asset and space hatched.</p>
+
+                <p><span class="header1">Display Settings</span></p>
+
+                <p>This option is available in the <span class="header2">More</span> icon. Three tabs namely Common Attributes, Class Attributes and Space Data will be displayed.</p>
+
+                <p><span class="header3">Common Attributes</span></p>
+
+                <p>The Display Settings for Common Attributes of all Assets that are shown in the Datagrid can be modified using this option. On selecting this option, the common attributes of all Assets will be listed with check boxes for Data. The desired boxes can be checked and the changes become effective on clicking the Save Changes button. Changes made here will be saved as User Default Settings. This can be set as System Default settings by clicking Yes to the confirmation message "Display Settings updated. Do you want to set this as System Default?"</p>
+
+                <p><span class="header3">Class Attributes</span></p>
+
+                <p>The Display Settings for Class specific Attributes of each Asset Class that are shown in the Datagrid can be modified using this option. On selecting the required Asset Class, any class specific attributes defined for the Asset Class will be listed with check boxes for Data. The desired boxes can be checked and the changes become effective on clicking the Save Changes button. Changes made here will be saved as User Default Settings. This can be set as System Default settings by clicking Yes to the confirmation message "Display Settings updated. Do you want to set this as System Default?"</p>
+
+                <p><span class="header3">Space Data</span></p>
+
+                <p>This option is for specifying the Space Data fields, to be displayed in the Datagrid. All Space fields will be listed with checkboxes. The desired boxes can be checked and the changes become effective on clicking the Save Changes button. Changes made here will be saved as User default Settings. This can be set as System Default settings by clicking Yes to the confirmation message "Display Settings updated. Do you want to set this as System Default?"</p>
+
+                <p><span class="header1">Attachments</span></p>
+                <p>The File attachments window opens up on selecting <span class="header2">Attachments</span> option from <span class="header2">More</span> <img class="helpicon" src="Content/Icons/moreIconVertical.png" title="More" /> icon showing any files that are already attached to the Asset. Attachments can now be added to the selected Asset.</p>
+
+                <p><span class="header3">Add:</span> An attachment can be added by clicking on the <span class="header2">Add</span> <img class="helpicon" src="Content/Icons/data_addN.png" title="Add" /> icon. The New Attachment window will be displayed. Select the Attachment Category first, and then select the required file. The attachment has to be uploaded by clicking on the  Upload button</p>
+                <p><span class="header3">Edit:</span> An Attachment can be edited by clicking on the <span class="header2">Edit</span> <img class="helpicon" src="Content/Icons/data_editN.png" title="Edit" /> icon</p>
+                <p>Select an attachment and click on the <span class="header2">Edit</span> <img class="helpicon" src="Content/Icons/data_editN.png" title="Edit" /> icon. The Edit Attachment window will be displayed with the current file name. The user can select the attachment category and the required file. Changes can be saved by clicking the Save Changes button.</p>
+                <p><span class="header3">Delete:</span> Delete an attachment by selecting the required file and clicking the <span class="header2">Delete</span> <img class="helpicon" src="Content/Icons/data_deleteN.png" title="Delete" /> icon.</p>
+                <p><span class="header3">View:</span> The attachment can be viewed by selecting the file and then clicking the <span class="header2">View</span> <img class="helpicon" src="Content/Icons/view-drawingN.png" title="View" /> icon. The selected attachment will be opened in an attachment viewer. View is supported only for image files.</p>
+                <p><span class="header3">Download:</span> Attachment can be downloaded and saved in the user's computer by clicking the <span class="header2">Download</span> <img class="helpicon" src="Content/Layout/download_icon.png" title="Download" /> icon.</p>
+
+                <p><span class="header1">Export</span></p>
+                <p>This option is to export the Asset data to the Excel. On clicking <span class="header2">Export</span> option from <span class="header2">More</span> <img class="helpicon" src="Content/Icons/moreIconVertical.png" title="More" /> icon, data will be exported to Excel.</p>
+
+                <p><span class="header1">Warranty Details</span></p>
+                <p>Users can add/edit/delete/ warranty details to an asset using <span class="header2">Warranty Details</span> option from <span class="header2">More</span> <img class="helpicon" src="Content/Icons/moreIconVertical.png" title="More" /> icon. Select the required Asset and click the Warranty Details option.</p>
+
+                <p><span class="header1">Add:</span> Warranty Details can be added by clicking the <span class="header2">Add</span> <img class="helpicon" src="Content/Icons/data_addN.png" title="Add" /> icon. New Warranty Details window will be displayed. Select a Warranty Type and Start Date, then enter Warranty Period In Months. User can also enter Warranty Certificate Number and Description if needed. The details can be saved by clicking on the Save button.</p>
+                <p><span class="header1">Edit:</span> Warranty Details can  be edited by selecting it and then clicking the <span class="header2">Edit</span> <img class="helpicon" src="Content/Icons/data_editN.png" title="Edit" /> icon. The Edit Warranty Details window will be displayed with the saved details. The user can select Warranty Type and Start Date, then modify Warranty Period In Months. User can also enter Warranty Certificate Number and Description if needed. Changes can be saved by clicking the Save Changes button.</p>
+                <p><span class="header1">Delete:</span> Delete Warranty Details by selecting it and then clicking the <span class="header2">Delete</span> <img class="helpicon" src="Content/Icons/data_deleteN.png" title="Delete" /> icon.</p>
+                <p><span class="header1">Alert:</span> This option is used to set Warranty Alert against each Warranty details. Select a Warranty Detail and click <span class="header2">Alert</span> <img class="helpicon" src="Content/Icons/alerT.png" title="Alert" /> icon, then Warranty Alert page will be displayed. User can select a Notification Template and then the Email recipients can be selected from iDrawings Users or Contacts menu. Alert can be saved by clicking Save Alert button. </p>
+
+                <p><span class="header1">Keyword Search</span></p>
+                <p>This option is available only after clicking the <img class="helpicon" src="Content/Icons/keyword_searcH.png" title="Keyword Search" /> icon</p>
+                <p>This option helps users to search for Asset details using keywords. The keyword could belong to any data field of the Asset data. The user need not know or specify which field to look in. The Keyword could be any part of the Asset data viz. Asset No, Asset Class Name etc. On entering the keyword and clicking on the Search <img class="helpicon" src="Content/Icons/keyword-search.png" title="Keyword Search" /> icon, the data grid will be filtered with Asset records having data matching the specified keyword. The assets displaying in the grid as a result of search operation will blink in the drawing.</p>
+                <p>A facility user would be able to view only those floors/divisions for which privileges are granted to him. </p>
+
+                <p><span class="header1">Advanced Search</span></p>
+                <p>This option <img class="helpicon" src="Content/Icons/advanced-search.png" title="Advanced Search" /> helps users to search for Asset details with specific data in known data fields. The data being searched for can be selected from the list boxes or entered into text boxes provided against the data fields. The user can select one or more data fields viz. Asset No, Asset Class Name,Status etc or the additional data fields. After entering the search criteria and clicking Search button, the data grid will be filtered with asset records which satisfy the selection criteria. </p>
+                <p>Fields to be displayed in the Search window can be set using the <span class="header2">Configure</span> <img class="helpicon" src="Content/Icons/settings_icon.png" title="Configure" /> icon, provided in the Search window. Search criteria entered in the Search window can be cleared by clicking the Clear button provided in the Search window. After clearing the Search criteria and click Search button to clear the Search Results in the Operational Data grid.</p>
+                <p>A facility user would be able to view only those floors for which privileges are granted him.</p>
+
+                <h3 class="Mainheader">&nbsp;&nbsp;&nbsp;&nbsp; Warehoused</h3>
+                <p>Assets which are not assigned in the drawing will be displayed under Warehoused grid at the right side of the Drawing. </p>
+
+                <p><span class="header1">Add</span> </p>
+                <p>This option is for adding a new Asset. On selecting <span class="header2">Add</span> <img class="helpicon" src="Content/Icons/data_addN.png" title="Add" /> icon, the Asset Data Entry window will be displayed, with the predefined data fields and any additional data fields defined by the user. The details of the Asset can be entered there. On clicking Save button, the Asset will be added. If Autonumbering is not enabled by the administrator, option to enter the Asset Number will be displayed in the New Asset page.</p>
+
+                <p><span class="header1">Edit</span> </p>
+                <p>This option is for editing the details of an Asset. Select the Asset to be edited in the Data Grid and then click <span class="header2">Edit</span> <img class="helpicon" src="Content/Icons/data_editN.png" title="Edit" /> icon. The details will be displayed. Make necessary changes and click on Save Changes button to save the changes. </p>
+
+                <p><span class="header1">Multiple Edit</span> </p>
+                <p>Multiple records can be edited by selecting the required assets using the Shift or Ctrl keys, and then clicking on the Edit icon. A window will be displayed listing the fields that can be edited. Select the required Field and enter or select the value to be updated to the selected Assets and click Save Changes button. The changes have to be made selecting one field at a time. </p>
+
+                <p><span class="header1">Delete</span> </p>
+                <p>This option is for deleting Assets. Select the Asset to be deleted and click <span class="header2">Delete</span> <img class="helpicon" src="Content/Icons/data_deleteN.png" title="Delete" /> icon. A confirmation message will be displayed. On clicking Yes to the confirmation message, the selected Asset will be deleted.</p>
+
+                <p><span class="header1">Class Selection</span></p>
+                <p>Class selection option provided under <span class="header2">Tools</span> <img class="helpicon" src="Content/Icons/settingS.png" title="Tools" /> icon is for flitering the Asset Classes. Asset Classes of all the Unassigned Assets  will be listed with check boxes.Check the required Asset classes to be displayed and click Save button. The Assets with the selected Asset Classes will be shown. </p>
+
+                <p><span class="header1">Place </span></p>
+                <p>This option is to place an unassigned Asset into a Drawing. Select the unassigned Asset from the Warehoused data grid and click <span class="header2">Place</span> option from <span class="header2">Tools</span> <img class="helpicon" src="Content/Icons/settingS.png" title="Tools" /> icon. The system will prompt to select a space to place the Asset. Click on the exact location where the Asset is to be placed.The Asset will be placed there. Multiple Assets can be placed in a single Place operation, if the drawing is the same. After placing each Asset, the system will prompt for the location of the next Asset till all the selected assets are placed. </p>
+                <p>Assets having no Asset Symbols cannot be placed in a drawing.</p>
+
+                <p><span class="header1">Display Settings</span></p>
+                <p>This option is available in the <span class="header2">More</span> icon. Two tabs namely Common Attributes and Class Attributes will be displayed.</p>
+
+                <p><span class="header3">Common Attributes</span></p>
+                <p>The Display Settings for Common Attributes of all Assets that are shown in the Datagrid can be modified using this option. On selecting this option, the common attributes of all Assets will be listed with check boxes for Data. The desired boxes can be checked and the changes become effective on clicking the Save Changes button. Changes made here will be saved as User Default Settings. This can be set as System Default settings by clicking Yes to the confirmation message "Display Settings updated. Do you want to set this as System Default?"</p>
+
+                <p><span class="header3">Class Attributes</span></p>
+                <p>The Display Settings for Class specific Attributes of each Asset Class that are shown in the Datagrid can be modified using this option. On selecting the required Asset Class, any class specific attributes defined for the Asset Class will be listed with check boxes for Data. The desired boxes can be checked and the changes become effective on clicking the Save Changes button. Changes made here will be saved as User Default Settings. This can be set as System Default settings by clicking Yes to the confirmation message "Display Settings updated. Do you want to set this as System Default?"</p>
+
+                <p><span class="header1">Attachments</span></p>
+                <p>The File attachments window opens up on selecting <span class="header2">Attachments</span> option from <span class="header2">More</span> <img class="helpicon" src="Content/Icons/moreIconVertical.png" title="More" /> icon showing any files that are already attached to the Asset. Attachments can now be added to the selected Asset.</p>
+
+                <p><span class="header3">Add:</span> An attachment can be added by clicking on the <span class="header2">Add</span> <img class="helpicon" src="Content/Icons/data_addN.png" title="Add" /> icon. The New Attachment window will be displayed. Select the Attachment Category first, and then select the required file. The attachment has to be uploaded by clicking on the  Upload button</p>
+                <p><span class="header3">Edit:</span> An Attachment can be edited by clicking on the <span class="header2">Edit</span> <img class="helpicon" src="Content/Icons/data_editN.png" title="Edit" /> icon</p>
+                <p>Select an attachment and click on the <span class="header2">Edit</span> <img class="helpicon" src="Content/Icons/data_editN.png" title="Edit" /> icon. The Edit Attachment window will be displayed with the current file name. The user can select the attachment category and the required file. Changes can be saved by clicking the Save Changes button.</p>
+                <p><span class="header3">Delete:</span> Delete an attachment by selecting the required file and clicking the <span class="header2">Delete</span> <img class="helpicon" src="Content/Icons/data_deleteN.png" title="Delete" /> icon.</p>
+                <p><span class="header3">View:</span> The attachment can be viewed by selecting the file and then clicking the <span class="header2">View</span> <img class="helpicon" src="Content/Icons/view-drawingN.png" title="View" /> icon. The selected attachment will be opened in an attachment viewer. View is supported only for image files.</p>
+                <p><span class="header3">Download:</span> Attachment can be downloaded and saved in the user's computer by clicking the <span class="header2">Download</span> <img class="helpicon" src="Content/Layout/download_icon.png" title="Download" /> icon.</p>
+
+                <p><span class="header1">Export</span></p>
+                <p>This option is to export the Asset data to the Excel. On clicking <span class="header2">Export</span> option from <span class="header2">More</span> <img class="helpicon" src="Content/Icons/moreIconVertical.png" title="More" /> icon, data will be exported to Excel.</p>
+
+                <p><span class="header1">Warranty Details</span></p>
+                <p>Users can add/edit/delete/ warranty details to an asset using <span class="header2">Warranty Details</span> option from <span class="header2">More</span> <img class="helpicon" src="Content/Icons/moreIconVertical.png" title="More" /> icon. Select the required Asset and click the Warranty Details option.</p>
+                <p><span class="header1">Add:</span> Warranty Details can be added by clicking the <span class="header2">Add</span> <img class="helpicon" src="Content/Icons/data_addN.png" title="Add" /> icon. New Warranty Details window will be displayed. Select a Warranty Type and Start Date, then enter Warranty Period In Months. User can also enter Warranty Certificate Number and Description if needed. The details can be saved by clicking on the Save button.</p>
+                <p><span class="header1">Edit:</span> Warranty Details can  be edited by selecting it and then clicking the <span class="header2">Edit</span> <img class="helpicon" src="Content/Icons/data_editN.png" title="Edit" /> icon. The Edit Warranty Details window will be displayed with the saved details. The user can select Warranty Type and Start Date, then modify Warranty Period In Months. User can also enter Warranty Certificate Number and Description if needed. Changes can be saved by clicking the Save Changes button.</p>
+                <p><span class="header1">Delete:</span> Delete Warranty Details by selecting it and then clicking the <span class="header2">Delete</span> <img class="helpicon" src="Content/Icons/data_deleteN.png" title="Delete" /> icon.</p>
+                <p><span class="header1">Alert:</span> This option is used to set Warranty Alert against each Warranty details. Select a Warranty Detail and click <span class="header2">Alert</span> <img class="helpicon" src="Content/Icons/alerT.png" title="Alert" /> icon, then Warranty Alert page will be displayed. User can select a Notification Template and then the Email recipients can be selected from iDrawings Users or Contacts menu. Alert can be saved by clicking Save Alert button. </p>
+
+                <p><span class="header1">Keyword Search</span></p>
+                <p>This option is available only after clicking the <img class="helpicon" src="Content/Icons/keyword_searcH.png" title="Keyword Search" /> icon</p>
+                <p>This option helps users to search for Asset details using keywords. The keyword could belong to any data field of the Asset data. The user need not know or specify which field to look in. The Keyword could be any part of the Asset data viz. Asset No, Asset Class Name etc. On entering the keyword and clicking on the Search <img class="helpicon" src="Content/Icons/keyword-search.png" title="Keyword Search" /> icon, the data grid will be filtered with Asset records having data matching the specified keyword. The assets displaying in the grid as a result of search operation will blink in the drawing.</p>
+
+                <p><span class="header1">Advanced Search</span></p>
+                <p>This option <img class="helpicon" src="Content/Icons/advanced-search.png" title="Advanced Search" /> helps users to search for Asset details with specific data in known data fields. The data being searched for can be selected from the list boxes or entered into text boxes provided against the data fields. The user can select one or more data fields viz. Asset No, Asset Class Name,Status etc or the additional data fields. After entering the search criteria and clicking Search button, the data grid will be filtered with asset records which satisfy the selection criteria. </p>
+                <p>Fields to be displayed in the Search window can be set using the <span class="header2">Configure</span> <img class="helpicon" src="Content/Icons/settings_icon.png" title="Configure" /> icon, provided in the Search window. Search criteria entered in the Search window can be cleared by clicking the Clear button provided in the Search window. After clearing the Search criteria and click Search button to clear the Search Results in the Warehoused Data grid.</p>
+
+            </div>
+        </section>
+    </content>
+</page>
+
+<style type="text/css">
+    h3.Mainheader {
+        color: #178AE8;
+    }
+
+    .header1 {
+        font-weight: bold;
+        color: #178AE8;
+    }
+
+    .header2 {
+        font-weight: normal;
+        color: #178AE8;
+    }
+
+    p {
+        margin-left: 38px;
+        font-size: 13px;
+        margin-right: 3em;
+    }
+
+    .header3 {
+        font-weight: bold;
+        color: black;
+    }
+    /**/ h1 {
+        color: #178AE8;
+        font-size: 1.3em;
+        margin-left: 38px;
+    }
+
+    h2 {
+        color: #178AE8;
+        font-size: 1em;
+        margin-left: 38px;
+    }
+
+    .config {
+        background-color: #178AE8;
+    }
+
+    .helpicon {
+        vertical-align: baseline;
+        width: 20px;
+        height: 20px;
+    }
+</style>

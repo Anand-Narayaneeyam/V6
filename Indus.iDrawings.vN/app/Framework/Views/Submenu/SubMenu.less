@@ -1,0 +1,86 @@
+﻿    .submenu{
+        padding: 3px 0px;
+        max-width:100%;
+        list-style: none;  
+        li{
+            display: inline-block;
+            position: relative;
+            line-height: 21px;
+            text-align: left;
+            a{
+                display: block;
+                padding: 2px 4px;
+                text-decoration: none;
+                color: black;
+            }
+            ul.dropdown{
+                min-width: 100%; 
+                background: #f2f2f2;
+                display: none;
+                position: absolute;
+                z-index: 999;
+                left: 0;
+            }
+        }
+    }
+
+    @media screen and (max-width: 440px) {
+     .submenu {
+            height: 35px;
+            width:70%;
+            display: flex;
+            overflow-x: scroll;
+            overflow-y: hidden;
+             li{
+                a
+                {
+                    display: flex;
+                }
+                ul.dropdown{
+                    min-width: unset; 
+                    background: #f2f2f2;
+                    display: none;
+                    position: fixed;
+                    z-index: 999;
+                    top: unset;
+                    left: unset;
+                }
+            }
+        }
+    }
+
+    .submenu .diablemenu{
+        pointer-events: none;
+        cursor: default;
+        opacity:.5;
+
+    }
+
+    .submenu li a:hover{
+        color: #fff;
+        background: #178ae8;
+    }
+
+    .submenu li:hover ul.dropdown{
+        display: block;
+        border: 1px solid darkgrey;
+    }
+    .submenu li ul.dropdown li{
+        display: block;
+        margin-left:-40px;
+    }
+    .menuHorizontal {
+    height: 35px;
+    background-color: #ededed;
+    width: 100%;
+    display: block;
+    min-height:35px;
+}
+.menuVertical {
+    height: 100%;
+    background-color: #ededed;
+    width: 35px;
+    display: block;
+    min-width:35px;
+    float:right;
+}

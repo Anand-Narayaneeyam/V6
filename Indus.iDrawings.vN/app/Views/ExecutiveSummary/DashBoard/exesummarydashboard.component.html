@@ -1,0 +1,315 @@
+﻿<page [pagetitle]="pagePath" [withoutSubmenu]="true">
+    <content>
+        <!--<div style="width:100%;height:40px;overflow:hidden">
+            <table cellpadding="0" cellspacing="0" width="100%">
+                <tr style="background-color:#DADADA;">
+                    <td>
+                        <DropDownListComponent style="font-size: 0.9em;" *ngIf="ddlSite" [fieldObject]="ddlSite" [ShowSelectOption]="false" (change)="onChangeddlSite($event.target.value)" [SetAlignment]=alignContent></DropDownListComponent>
+                    </td>
+
+                    <td>
+                        <DropDownListComponent style="font-size: 0.9em;" *ngIf="ddlBuilding" [fieldObject]="ddlBuilding" [ShowSelectOption]="false" (change)="onChangeddlBuilding($event.target.value)" [SetAlignment]=alignContent></DropDownListComponent>
+                    </td>
+                </tr>
+            </table>
+        </div>-->
+        <!--<dashboard style="height: calc(100% - 40px);display:block;">-->
+
+        <!--<div class="panel-heading">
+            Favorite drinks
+        </div>-->
+        <!--<div class="panel-body">
+            <div class="list-group" dnd-sortable-container [sortableData]="listOne">
+                <div class="list-group-item" dnd-sortable [sortableIndex]="0">
+                    {{listOne[0]}}
+                </div>
+                <div class="list-group-item" dnd-sortable [sortableIndex]="1">
+                    {{listOne[1]}}
+                </div>
+                <div class="list-group-item" dnd-sortable [sortableIndex]="2">
+                    {{listOne[2]}}
+                </div>
+                <div class="list-group-item" dnd-sortable [sortableIndex]="3">
+                    {{listOne[3]}}
+                </div>
+            </div>
+
+        </div>-->
+        <!--<dashboard *ngIf="itemsSourceWidgets" style="height:95%;display:block;">
+            <widget *ngFor="let item of itemsSourceWidgets; let i = index">
+                <div style="font-weight:bold"> Number of Users: {{UserCount}} + {{i}} </div>
+                <piechart *ngIf="PieChart1DataAdmin != undefined" [sourceData]="PieChart1DataAdmin">                   
+                </piechart>
+            </widget>
+        </dashboard>-->
+        <!--<gaugechart></gaugechart>-->
+     <dashboard *ngIf="itemsSourceWidgets" style="height:95%;display:block;">
+         <div *ngFor="let item of itemsSourceWidgets; let i = index" >
+             <widget  *ngIf="item.Id == 1"  style="text-align:center !important;padding:2px; width: 50%;float: left;height: 50%;display:block;">
+                 <!--1-->
+                 <div style="font-weight:bold;float:left;width:100%;text-align:center;background-color:#c1c1c1;"> Number of Users: {{UserCount}} </div>
+                 <piechart *ngIf="PieChart1DataAdmin != undefined" [sourceData]="PieChart1DataAdmin"> </piechart>
+             </widget>
+
+             <widget *ngIf="item.Id == 2" style="text-align:center !important;padding:2px; width: 50%;float: left;height: 50%;display:block;">
+                 <!--2-->
+                 <div style="font-weight:bold;float:left;width:100%;text-align:center;background-color:#c1c1c1;"> Area Distribution ({{AreaUnit}}) </div>
+                 <multibarchart *ngIf="Barchart1DataAdmin != undefined" [sourceData]="Barchart1DataAdmin"> </multibarchart>
+             </widget>
+
+             <widget *ngIf="item.Id == 3" style="text-align:center !important;padding:2px; width: 50%;float: left;height: 50%;display:block;">
+                 <!--3-->
+                 <div style="font-weight:bold;float:left;width:100%;text-align:center;background-color:#c1c1c1;"> Number of Drawings: {{DwgCount}} </div>
+                 <piechart *ngIf="PieChart2DataAdmin != undefined" [sourceData]="PieChart2DataAdmin"> </piechart>
+             </widget>
+
+             <widget *ngIf="item.Id == 4"   style="text-align:center !important;padding:2px; width: 50%;float: left;height: 50%;display:block;" ><!--style="height:450px"-->
+                 <!--4-->
+                 <div style="font-weight:bold;float:left;width:100%;text-align:center;background-color:#c1c1c1;"> User List  </div>
+                 <div [ngClass]="'pagewithPaging'" style="text-align:left;" *ngIf="itemsSourceAdmin != undefined">
+                     <gridView *ngIf="fieldObjectAdmin" [(dataSource)]="itemsSourceAdmin" [properties]="inputItems" [columns]="fieldObjectAdmin"
+                               (onSorting)="onSort($event, 3)">
+                     </gridView>
+                     <div style="height:5px"></div>
+                     <div style="display:inline-flex">
+                         <div style="font-size:xx-small;">Expiring Within</div>&nbsp;
+                         <div style="color:red;font-size:xx-small;"> (30 Days)</div>&nbsp;
+                         <div style="color:blue;font-size:xx-small;"> (60 Days)</div>&nbsp;
+                         <div style="color:green;font-size:xx-small;"> (180 Days)</div>&nbsp;
+                     </div>
+                 </div>
+             </widget>
+
+
+
+             <widget *ngIf="item.Id == 5" style="text-align:center !important;padding:2px; width: 50%;float: left;height: 50%;display:block;">
+                 <!--5-->
+                 <div style="font-weight:bold;float:left;width:100%;text-align:center;background-color:#c1c1c1;"> Gross Area Distribution ({{Area}} {{AreaUnit}}) </div>
+                 <piechart *ngIf="PieChart1DataSpace != undefined" [sourceData]="PieChart1DataSpace"> </piechart>
+             </widget>
+
+             <widget *ngIf="item.Id == 6" style="text-align:center !important;padding:2px; width: 50%;float: left;height: 50%;display:block;">
+                 <!--6-->
+                 <div style="font-weight:bold;float:left;width:100%;text-align:center;background-color:#c1c1c1;"> Area in {{AreaUnit}} </div>
+                 <multibarchart *ngIf="Barchart1DataSpace != undefined" [sourceData]="Barchart1DataSpace"> </multibarchart>
+             </widget>
+
+             <widget *ngIf="item.Id == 7" style="text-align:center !important;padding:2px; width: 50%;float: left;height: 50%;display:block;">
+                 <!--7-->
+                 <div style="font-weight:bold;float:left;width:100%;text-align:center;background-color:#c1c1c1;"> Organizational Distribution ({{Area}} {{AreaUnit}}) </div>
+                 <piechart *ngIf="PieChart2DataSpace != undefined" [sourceData]="PieChart2DataSpace"> </piechart>
+             </widget>
+
+             <widget *ngIf="item.Id == 8"  style="text-align:center !important;padding:2px; width: 50%;float: left;height: 50%;display:block;"><!--style="height:350px"-->
+                 <!--8-->
+                 <div style="font-weight:bold;float:left;width:100%;text-align:center;background-color:#c1c1c1;"> Organizational Distribution  </div>
+                 <div [ngClass]="'pagewithoutPaging'" style="text-align:left!important;">
+                     <gridView *ngIf="fieldObjectSpace" [(dataSource)]="itemsSourceSpace" [properties]="inputItems" [columns]="fieldObjectSpace"
+                               (onSorting)="onSort($event, 8)">
+                     </gridView>
+                 </div>
+             </widget>
+
+
+
+             <widget *ngIf="item.Id == 9" style="text-align:center !important;padding:2px; width: 50%;float: left;height: 50%;display:block;">
+                 <!--9-->
+                 <div style="font-weight:bold;float:left;width:100%;text-align:center;background-color:#c1c1c1;"> Documents based on Category </div>
+                 <piechart *ngIf="PieChart1DataDoc != undefined" [sourceData]="PieChart1DataDoc"> </piechart>
+             </widget>
+             <widget *ngIf="item.Id == 10" style="text-align:center !important;padding:2px; width: 50%;float: left;height: 50%;display:block;">
+                 <!--10-->
+                 <div style="font-weight:bold;float:left;width:100%;text-align:center;background-color:#c1c1c1;"> Documents based on File Type </div>
+                 <piechart *ngIf="PieChart2DataDoc != undefined" [sourceData]="PieChart2DataDoc"> </piechart>
+             </widget>
+
+             <widget *ngIf="item.Id == 11"  style="text-align:center !important;padding:2px; width: 50%;float: left;height: 50%;display:block;" ><!--style="height:310px"-->
+                 <!--11-->
+                 <div style="font-weight:bold;float:left;width:100%;text-align:center;background-color:#c1c1c1;"> Recently Uploaded Documents   </div>
+                 <div [ngClass]="totalItems > itemsPerPage ? 'pagewithPaging':'pagewithoutPaging'">
+                     <gridView *ngIf="fieldObjectDoc" [(dataSource)]="itemsSourceDoc" [properties]="inputItems" [columns]="fieldObjectDoc"
+                               (onSorting)="onSort($event, 11)">
+                     </gridView>
+                 </div>
+             </widget>
+
+
+
+             <widget *ngIf="item.Id == 12" style="text-align:center !important;padding:2px; width: 50%;float: left;height: 50%;display:block;">
+                 <!--12-->
+                 <div style="font-weight:bold;float:left;width:100%;text-align:center;background-color:#c1c1c1;"> Occupancy by {{OrgLvel1Name}} </div>
+                 <piechart *ngIf="PieChart1DataEmp != undefined" [sourceData]="PieChart1DataEmp" [isSourceChanged]="changeHapndOrgOccupancy"> </piechart>
+             </widget>
+             <widget *ngIf="item.Id == 13" style="text-align:center !important;padding:2px; width: 50%;float: left;height: 50%;display:block;">
+                 <!--13-->
+                 <div style="font-weight:bold;float:left;width:100%;text-align:center;background-color:#c1c1c1;"> Occupancy / Vacancy by {{BldngFloorLabel}} </div>
+                 <multibarchart *ngIf="Barchart1DataEmp != undefined" [sourceData]="Barchart1DataEmp" [isSourceChanged]="changeHapndBldngOccupancy"> </multibarchart>
+             </widget>
+
+             <widget *ngIf="item.Id == 14" style="text-align:center !important;padding:2px; width: 50%;float: left;height: 50%;display:block;">
+                 <!--14-->
+                 <div style="font-weight:bold;float:left;width:100%;text-align:center;background-color:#c1c1c1;"> Occupancy by Space Standard  </div>
+                 <piechart *ngIf="PieChart2DataEmp != undefined" [sourceData]="PieChart2DataEmp" [isSourceChanged]="changeHapndSpaceStd"> </piechart>
+             </widget>
+
+             <widget *ngIf="item.Id == 15" style="text-align:center !important;padding:2px; width: 50%;float: left;height: 50%;display:block;">
+                 <!--15-->
+                 <div style="font-weight:bold;float:left;width:100%;text-align:center;background-color:#c1c1c1;"> Occupancy / Vacancy by {{OrgLvel1Name}} </div>
+                 <multibarchart *ngIf="Barchart2DataEmp != undefined" [sourceData]="Barchart2DataEmp" [isSourceChanged]="changeHapndOrgOccupancy"> </multibarchart>
+             </widget>
+
+
+
+             <widget *ngIf="item.Id == 16" style="text-align:center !important;padding:2px; width: 50%;float: left;height: 50%;display:block;">
+                 <!--16-->
+                 <div style="font-weight:bold;float:left;width:100%;text-align:center;background-color:#c1c1c1;"> Asset Distribution by Asset Class </div>
+                 <piechart *ngIf="PieChart1DataAsset != undefined" [sourceData]="PieChart1DataAsset"> </piechart>
+             </widget>
+             <widget *ngIf="item.Id == 17" style="text-align:center !important;padding:2px; width: 50%;float: left;height: 50%;display:block;">
+                 <!--17-->
+                 <div style="font-weight:bold;float:left;width:100%;text-align:center;background-color:#c1c1c1;"> Asset Distribution by {{Division}} </div>
+                 <piechart *ngIf="PieChart2DataAsset != undefined" [sourceData]="PieChart2DataAsset"> </piechart>
+             </widget>
+
+             <widget *ngIf="item.Id == 18"  style="text-align:center !important;padding:2px; width: 50%;float: left;height: 50%;display:block;"><!--style="height:250px;"-->
+                 <!--18-->
+                 <div style="font-weight:bold;float:left;width:100%;text-align:center;background-color:#c1c1c1;"> Asset Distribution by Floor </div>
+                 <div [ngClass]="'pagewithPaging'" style="text-align:left!important">
+                     <gridView *ngIf="fieldObject1Asset" [(dataSource)]="itemsSource1Asset" [properties]="inputItems" [columns]="fieldObject1Asset"
+                               (onSorting)="onSort($event, 18)">
+                     </gridView>
+                 </div>
+             </widget>
+
+             <widget *ngIf="item.Id == 19"  style="text-align:center !important;padding:2px; width: 50%;float: left;height: 50%;display:block;" ><!--style="height:250px"-->
+                 <!--19-->
+                 <div style="font-weight:bold;float:left;width:100%;text-align:center;background-color:#c1c1c1;"> Asset List by Floor  </div>
+                 <div [ngClass]="'pagewithPaging'" style="text-align:left!important">
+                     <gridView *ngIf="fieldObject2Asset" [(dataSource)]="itemsSource2Asset" [properties]="inputItems" [columns]="fieldObject2Asset"
+                               (onSorting)="onSort($event, 19)">
+                     </gridView>
+                 </div>
+             </widget>
+
+
+             <widget *ngIf="item.Id == 20" style="text-align:center !important;padding:2px; width: 50%;float: left;height: 50%;display:block;">
+                 <!--20-->
+                 <div style="font-weight:bold;float:left;width:100%;text-align:center;background-color:#c1c1c1;"> Furniture Distribution by Furniture Class </div>
+                 <piechart *ngIf="PieChart1DataFurniture != undefined" [sourceData]="PieChart1DataFurniture"> </piechart>
+             </widget>
+             <widget *ngIf="item.Id == 21" style="text-align:center !important;padding:2px; width: 50%;float: left;height: 50%;display:block;">
+                 <!--21-->
+                 <div style="font-weight:bold;float:left;width:100%;text-align:center;background-color:#c1c1c1;"> Furniture Distribution by {{Division}} </div>
+                 <piechart *ngIf="PieChart2DataFurniture != undefined" [sourceData]="PieChart2DataFurniture "> </piechart>
+             </widget>
+
+             <widget *ngIf="item.Id == 22"  style="text-align:center !important;padding:2px; width: 50%;float: left;height: 50%;display:block;" ><!--style="height:250px;"-->
+                 <!--22-->
+                 <div style="font-weight:bold;float:left;width:100%;text-align:center;background-color:#c1c1c1;"> Furniture Distribution by Floor </div>
+                 <div [ngClass]="'pagewithPaging'" style="text-align:left!important">
+                     <gridView *ngIf="fieldObject1Furniture" [(dataSource)]="itemsSource1Furniture" [properties]="inputItems" [columns]="fieldObject1Furniture"
+                               (onSorting)="onSort($event, 22)">
+                     </gridView>
+                 </div>
+             </widget>
+             <widget *ngIf="item.Id == 23"  style="text-align:center !important;padding:2px; width: 50%;float: left;height: 50%;display:block;" > <!--style="height:250px"-->
+                 <!--23-->
+                 <div style="font-weight:bold;float:left;width:100%;text-align:center;background-color:#c1c1c1;"> Furniture List by Floor  </div>
+                 <div [ngClass]="'pagewithPaging'" style="text-align:left!important">
+                     <gridView *ngIf="fieldObject2Furniture" [(dataSource)]="itemsSource2Furniture" [properties]="inputItems" [columns]="fieldObject2Furniture"
+                               (onSorting)="onSort($event, 23)">
+                     </gridView>
+                 </div>
+             </widget>
+
+
+
+             <widget *ngIf="item.Id == 24" style="text-align:center !important;padding:2px; width: 50%;float: left;height: 50%;display:block;">
+                 <!--24-->
+                 <div style="font-weight:bold;float:left;width:100%;text-align:center;background-color:#c1c1c1;"> PM Work Order Status - This Month </div>
+                 <piechart *ngIf="PieChart1DataWO != undefined" [sourceData]="PieChart1DataWO"> </piechart>
+             </widget>
+
+             <widget *ngIf="item.Id == 25" style="text-align:center !important;padding:2px; width: 50%;float: left;height: 50%;display:block;">
+                 <!--25-->
+                 <div style="font-weight:bold;float:left;width:100%;text-align:center;background-color:#c1c1c1;"> Open PM Work Orders Aging  </div>
+                 <multibarchart *ngIf="Barchart1DataWO != undefined" [sourceData]="Barchart1DataWO"> </multibarchart>
+             </widget>
+
+             <widget *ngIf="item.Id == 26" style="text-align:center !important;padding:2px; width: 50%;float: left;height: 50%;display:block;">
+                 <!--26-->
+                 <div style="font-weight:bold;float:left;width:100%;text-align:center;background-color:#c1c1c1;">Service Requests Status - This Month </div>
+                 <piechart *ngIf="PieChart2DataWO != undefined" [sourceData]="PieChart2DataWO"> </piechart>
+             </widget>
+
+             <widget *ngIf="item.Id == 27" style="text-align:center !important;padding:2px; width: 50%;float: left;height: 50%;display:block;">
+                 <!--27-->
+                 <div style="font-weight:bold;float:left;width:100%;text-align:center;background-color:#c1c1c1;">Service Requests Aging  </div>
+                 <multibarchart *ngIf="Barchart2DataWO != undefined" [sourceData]="Barchart2DataWO"> </multibarchart>
+             </widget>
+
+
+
+             <widget *ngIf="item.Id == 28" style="text-align:center !important;padding:2px; width: 50%;float: left;height: 50%;display:block;">
+                 <!--28-->
+                 <div style="font-weight:bold;float:left;width:100%;text-align:center;background-color:#c1c1c1;"> Lease Expiry by Year ({{AreaUnit}})  </div>
+                 <multibarchart *ngIf="Barchart1DataRPM != undefined" [sourceData]="Barchart1DataRPM"> </multibarchart>
+             </widget>
+
+             <widget *ngIf="item.Id == 29" style="text-align:center !important;padding:2px; width: 50%;float: left;height: 50%;display:block;">
+                 <!--29-->
+                 <div style="font-weight:bold;float:left;width:100%;text-align:center;background-color:#c1c1c1;"> Lease Area </div>
+                 <piechart *ngIf="PieChart1DataRPM != undefined" [sourceData]="PieChart1DataRPM"> </piechart>
+             </widget>
+
+             <widget *ngIf="item.Id == 30" style="text-align:center !important;padding:2px; width: 50%;float: left;height: 50%;display:block;">
+                 <!--30-->
+                 <div style="font-weight:bold;float:left;width:100%;text-align:center;background-color:#c1c1c1;"> Utilization (%)  </div>
+                 <multibarchart *ngIf="Barchart2DataRPM != undefined" [sourceData]="Barchart2DataRPM"> </multibarchart>
+             </widget>
+             <widget *ngIf="item.Id == 31"  style="text-align:center !important;padding:2px; width: 50%;float: left;height: 50%;display:block;" ><!--style="height:250px"-->
+                 <!--31-->
+                 <div style="font-weight:bold;float:left;width:100%;text-align:center;background-color:#c1c1c1;"> Critical Dates  </div>
+                 <div [ngClass]="'pagewithPaging'" style="text-align:left;" *ngIf="itemsSourceRPM != undefined">
+                     <gridView *ngIf="fieldObjectRPM" [(dataSource)]="itemsSourceRPM" [properties]="inputItems" [columns]="fieldObjectRPM"
+                               (onSorting)="onSort($event , 31)">
+                     </gridView>
+                     <div style="height:5px"></div>
+                     <div style="display:inline-flex">
+                         <div style="font-size:xx-small;">Expiring Within</div>&nbsp;
+                         <div style="color:red;font-size:xx-small;"> (30 Days)</div>&nbsp;
+                         <div style="color:blue;font-size:xx-small;"> (60 Days)</div>&nbsp;
+                         <div style="color:green;font-size:xx-small;"> (180 Days)</div>&nbsp;
+                     </div>
+                 </div>
+             </widget>
+         </div>
+
+
+
+     </dashboard>
+
+    </content>
+</page>
+
+
+<style>
+    @media only screen and (min-device-width: 320px) and (max-device-width: 812px) and (orientation: portrait) {
+        widget {
+            width: 100% !important;
+            float: left;
+            height: unset !important;
+            display: block;
+        }
+    }
+
+    @media only screen and (min-device-width: 320px) and (max-device-width: 812px) and (orientation: landscape) {
+
+        widget {
+            width: 100% !important;
+            float: left;
+            height: unset !important;
+            display: block;
+        }
+    }
+</style>
